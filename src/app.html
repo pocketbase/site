@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/jetbrains-mono/jetbrains-mono-v12-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === 'undefined') {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement('div');
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add('no-animations');
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+    </script>
+
+    %sveltekit.head%
+</head>
+<body>
+    <div class="page-body">%sveltekit.body%</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env.*
+!.env.example
+
+# generated markdown previews
+README.html
+CHANGELOG.html
+LICENSE.html
