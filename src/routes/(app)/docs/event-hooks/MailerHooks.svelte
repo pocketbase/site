@@ -118,7 +118,7 @@
                         // send custom email
                         err := e.MailClient.Send(
                             mail.Address{Address: "support@example.com"},
-                            mail.Address{Address: e.Record.Email},
+                            mail.Address{Address: e.Record.Email()},
                             "YOUR_SUBJECT...",
                             "YOUR_HTML_BODY...",
                             nil, // attachments
@@ -201,7 +201,7 @@
                         // send custom email
                         err := e.MailClient.Send(
                             mail.Address{Address: "support@example.com"},
-                            mail.Address{Address: e.Record.Email},
+                            mail.Address{Address: e.Record.Email()},
                             "YOUR_SUBJECT...",
                             "YOUR_HTML_BODY...",
                             nil, // attachments
