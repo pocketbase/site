@@ -81,7 +81,7 @@
 
             ...
 
-            const record = await client.records.create('demo', {
+            const record = await client.collection('demo').create({
                 title: 'Lorem ipsum',
             });
         `}
@@ -92,7 +92,7 @@
 
             ...
 
-            final record = await client.records.create('demo', body: {
+            final record = await client.collection('demo').create(body: {
                 'title': 'Lorem ipsum',
             });
         `}

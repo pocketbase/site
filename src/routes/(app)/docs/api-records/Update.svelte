@@ -81,7 +81,7 @@
 
             ...
 
-            const record = await client.records.update('demo', 'YOUR_RECORD_ID', {
+            const record = await client.collection('demo').update('YOUR_RECORD_ID', {
                 title: 'Lorem ipsum',
             });
         `}
@@ -92,7 +92,7 @@
 
             ...
 
-            final record = await client.records.update('demo', 'YOUR_RECORD_ID', body: {
+            final record = await client.collection('demo').update('YOUR_RECORD_ID', body: {
                 'title': 'Lorem ipsum',
             });
         `}
