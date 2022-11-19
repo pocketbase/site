@@ -1,11 +1,11 @@
 <script>
-    import ListAccordion from "./ListAccordion.svelte";
-    import ViewAccordion from "./ViewAccordion.svelte";
-    import StatsAccordion from "./StatsAccordion.svelte";
+    import List from "./List.svelte";
+    import View from "./View.svelte";
+    import Stats from "./Stats.svelte";
 </script>
 
 <div class="accordions">
-    <ListAccordion />
-    <ViewAccordion />
-    <StatsAccordion />
+    <List />
+    <View />
+    <Stats />
 </div>

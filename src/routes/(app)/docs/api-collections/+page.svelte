@@ -1,17 +1,17 @@
 <script>
-    import ListAccordion from "./ListAccordion.svelte";
-    import ViewAccordion from "./ViewAccordion.svelte";
-    import CreateAccordion from "./CreateAccordion.svelte";
-    import UpdateAccordion from "./UpdateAccordion.svelte";
-    import DeleteAccordion from "./DeleteAccordion.svelte";
-    import ImportAccordion from "./ImportAccordion.svelte";
+    import List from "./List.svelte";
+    import View from "./View.svelte";
+    import Create from "./Create.svelte";
+    import Update from "./Update.svelte";
+    import Delete from "./Delete.svelte";
+    import Import from "./Import.svelte";
 </script>
 
 <div class="accordions">
-    <ListAccordion />
-    <ViewAccordion />
-    <CreateAccordion />
-    <UpdateAccordion />
-    <DeleteAccordion />
-    <ImportAccordion />
+    <List />
+    <View />
+    <Create />
+    <Update />
+    <Delete />
+    <Import />
 </div>

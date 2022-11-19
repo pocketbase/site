@@ -1,13 +1,13 @@
 <script>
-    import ListAccordion from "./ListAccordion.svelte";
-    import UpdateAccordion from "./UpdateAccordion.svelte";
-    import TestS3Accordion from "./TestS3Accordion.svelte";
-    import TestEmailAccordion from "./TestEmailAccordion.svelte";
+    import List from "./List.svelte";
+    import Update from "./Update.svelte";
+    import TestS3 from "./TestS3.svelte";
+    import TestEmail from "./TestEmail.svelte";
 </script>
 
 <div class="accordions">
-    <ListAccordion />
-    <UpdateAccordion />
-    <TestS3Accordion />
-    <TestEmailAccordion />
+    <List />
+    <Update />
+    <TestS3 />
+    <TestEmail />
 </div>

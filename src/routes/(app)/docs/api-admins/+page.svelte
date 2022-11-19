@@ -1,23 +1,23 @@
 <script>
-    import AuthWithPasswordAccordion from "./AuthWithPasswordAccordion.svelte";
-    import AuthRefreshAccordion from "./AuthRefreshAccordion.svelte";
-    import RequestPasswordResetAccordion from "./RequestPasswordResetAccordion.svelte";
-    import ConfirmPasswordResetAccordion from "./ConfirmPasswordResetAccordion.svelte";
-    import ListAccordion from "./ListAccordion.svelte";
-    import ViewAccordion from "./ViewAccordion.svelte";
-    import CreateAccordion from "./CreateAccordion.svelte";
-    import UpdateAccordion from "./UpdateAccordion.svelte";
-    import DeleteAccordion from "./DeleteAccordion.svelte";
+    import AuthWithPassword from "./AuthWithPassword.svelte";
+    import AuthRefresh from "./AuthRefresh.svelte";
+    import RequestPasswordReset from "./RequestPasswordReset.svelte";
+    import ConfirmPasswordReset from "./ConfirmPasswordReset.svelte";
+    import List from "./List.svelte";
+    import View from "./View.svelte";
+    import Create from "./Create.svelte";
+    import Update from "./Update.svelte";
+    import Delete from "./Delete.svelte";
 </script>
 
 <div class="accordions">
-    <AuthWithPasswordAccordion />
-    <AuthRefreshAccordion />
-    <RequestPasswordResetAccordion />
-    <ConfirmPasswordResetAccordion />
-    <ListAccordion />
-    <ViewAccordion />
-    <CreateAccordion />
-    <UpdateAccordion />
-    <DeleteAccordion />
+    <AuthWithPassword />
+    <AuthRefresh />
+    <RequestPasswordReset />
+    <ConfirmPasswordReset />
+    <List />
+    <View />
+    <Create />
+    <Update />
+    <Delete />
 </div>
