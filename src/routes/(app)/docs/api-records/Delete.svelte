@@ -63,20 +63,20 @@
         js={`
             import PocketBase from 'pocketbase';
 
-            const client = new PocketBase('http://127.0.0.1:8090');
+            const pb = new PocketBase('http://127.0.0.1:8090');
 
             ...
 
-            await client.collection('demo').delete('YOUR_RECORD_ID');
+            await pb.collection('demo').delete('YOUR_RECORD_ID');
         `}
         dart={`
             import 'package:pocketbase/pocketbase.dart';
 
-            final client = PocketBase('http://127.0.0.1:8090');
+            final pb = PocketBase('http://127.0.0.1:8090');
 
             ...
 
-            await client.collection('demo').delete('YOUR_RECORD_ID');
+            await pb.collection('demo').delete('YOUR_RECORD_ID');
         `}
     />
 

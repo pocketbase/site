@@ -77,22 +77,22 @@
         js={`
             import PocketBase from 'pocketbase';
 
-            const client = new PocketBase('http://127.0.0.1:8090');
+            const pb = new PocketBase('http://127.0.0.1:8090');
 
             ...
 
-            const record = await client.collection('demo').create({
+            const record = await pb.collection('demo').create({
                 title: 'Lorem ipsum',
             });
         `}
         dart={`
             import 'package:pocketbase/pocketbase.dart';
 
-            final client = PocketBase('http://127.0.0.1:8090');
+            final pb = PocketBase('http://127.0.0.1:8090');
 
             ...
 
-            final record = await client.collection('demo').create(body: {
+            final record = await pb.collection('demo').create(body: {
                 'title': 'Lorem ipsum',
             });
         `}

@@ -73,26 +73,26 @@
         js={`
             import PocketBase from 'pocketbase';
 
-            const client = new PocketBase('http://127.0.0.1:8090');
+            const pb = new PocketBase('http://127.0.0.1:8090');
 
             ...
 
-            await client.admins.authWithPassword('test@example.com', '123456');
+            await pb.admins.authWithPassword('test@example.com', '123456');
 
-            const stats = await client.logs.getRequestsStats({
+            const stats = await pb.logs.getRequestsStats({
                 filter: 'status >= 400'
             });
         `}
         dart={`
             import 'package:pocketbase/pocketbase.dart';
 
-            final client = PocketBase('http://127.0.0.1:8090');
+            final pb = PocketBase('http://127.0.0.1:8090');
 
             ...
 
-            await client.admins.authWithPassword('test@example.com', '123456');
+            await pb.admins.authWithPassword('test@example.com', '123456');
 
-            final stats = await client.logs.getRequestsStats(
+            final stats = await pb.logs.getRequestsStats(
                 filter: 'status >= 400'
             );
         `}
