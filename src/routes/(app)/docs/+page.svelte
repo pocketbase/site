@@ -139,7 +139,7 @@
 </p>
 
 <p>
-    To check all avaialble commands and their options, you could run
+    To check all available commands and their options, you could run
     <code>./pocketbase --help</code> or
     <code>./pocketbase [command] --help</code>
 </p>
