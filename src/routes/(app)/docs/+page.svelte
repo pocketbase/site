@@ -134,7 +134,7 @@
 <hr />
 
 <p>
-    PocketBase will automically create a new directory
+    PocketBase will automatically create a new directory
     <code>pb_data</code> alongside the executable to store your application data and settings.
 </p>
 
