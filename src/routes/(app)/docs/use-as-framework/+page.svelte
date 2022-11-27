@@ -62,7 +62,7 @@
 
 <hr />
 
-<p>PocketBase could be extented by:</p>
+<p>PocketBase could be extended by:</p>
 
 <ul>
     <li class="m-b-sm">

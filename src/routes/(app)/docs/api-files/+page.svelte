@@ -39,7 +39,7 @@
 </p>
 
 <p>
-    The File API is usually used to fetch/downoad a file resource (with support for basic image manipulations,
+    The File API is usually used to fetch/download a file resource (with support for basic image manipulations,
     like generating thumbs).
 </p>
 
