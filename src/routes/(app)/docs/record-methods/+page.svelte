@@ -124,12 +124,12 @@
 
         ...
 
-        collection, err := app.Dao().FindCollectionById("articles")
+        collection, err := app.Dao().FindCollectionByNameOrId("articles")
         if err != nil {
             return err
         }
 
-        record = models.NewRecord(collection)
+        record := models.NewRecord(collection)
         record.Set("title", "Lorem ipsum")
         record.Set("active", true)
         record.Set("someOtherField", 123)
@@ -151,12 +151,12 @@
 
         ...
 
-        collection, err := app.Dao().FindCollectionById("articles")
+        collection, err := app.Dao().FindCollectionByNameOrId("articles")
         if err != nil {
             return err
         }
 
-        record = models.NewRecord(collection)
+        record := models.NewRecord(collection)
 
         form := forms.NewRecordUpsert(app, record)
 
