@@ -190,7 +190,7 @@
 
 <header class="highlighted-title bg-danger-alt m-t-0">
     <span class="label label-primary">highly recommended</span>
-    <HeadingLink title="Use SMPT mail server" tag="h5" />
+    <HeadingLink title="Use SMTP mail server" tag="h5" />
 </header>
 <p>
     By default, PocketBase uses the internal Unix <code>sendmail</code> command for sending emails.
