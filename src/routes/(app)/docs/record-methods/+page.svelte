@@ -27,6 +27,10 @@
         // export the public safe record fields as map[string]any
         record.PublicExport()
 
+        // returns a new model copy populated with the original/intial record data
+        // (could be useful if you want to compare old and new field values)
+        record.OriginalCopy()
+
         // retrieve a single record field value
         record.Get("someField")            // -> as any
         record.GetBool("someField")        // -> as bool
