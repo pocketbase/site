@@ -7,7 +7,7 @@
 
     let expandedSections = {
         Basics: true,
-        Extend: true,
+        Advanced: true,
     };
 
     let links = docLinks;

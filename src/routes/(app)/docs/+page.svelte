@@ -131,21 +131,36 @@
     account (email and pass).
 </p>
 
-<hr />
+<hr class="m-t-sm m-b-sm" />
 
 <p>
-    PocketBase will automatically create a new directory
-    <code>pb_data</code> alongside the executable to store your application data and settings.
+    The prebuilt PocketBase executable will automatically create and manage 2 new directories alongside the
+    executable:
 </p>
+<ul>
+    <li>
+        <code>pb_data</code> - stores your application data, uploaded files, etc. (usually should be added in
+        <code>.gitignore</code>).
+    </li>
+    <li>
+        <code>pb_migrations</code> - contains JS migration files with your collection changes (can be safely
+        commited in your repository).
+        <br />
+        <div class="txt-hint m-b-xs">
+            You can even write custom migration scripts. For more info check the
+            <a href="/docs/migrations">Migrations docs</a>.
+        </div>
+    </li>
+</ul>
 
 <p>
-    To check all available commands and their options, you could run
+    You could find all available commands and their options by running
     <code>./pocketbase --help</code> or
     <code>./pocketbase [command] --help</code>
 </p>
 
 <p class="txt-bold txt-hint">
     For more advanced usage and customizations, you could also use PocketBase as a Go framework (
-    <a href="/docs/use-as-framework">see the <em>Extend</em> section</a>
+    <a href="/docs/use-as-framework">see the <em>Advanced</em> section</a>
     ).
 </p>

@@ -37,7 +37,7 @@ const links = [
         ],
     },
     {
-        title: "Extend",
+        title: "Advanced",
         items: [
             {
                 href: "/docs/use-as-framework",
