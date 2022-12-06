@@ -91,7 +91,7 @@
 
     <div class="api-route alert alert-success">
         <strong class="label label-primary">POST</strong>
-        <div class="content">/api/admins/refresh</div>
+        <div class="content">/api/admins/auth-refresh</div>
         <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
     </div>
 
