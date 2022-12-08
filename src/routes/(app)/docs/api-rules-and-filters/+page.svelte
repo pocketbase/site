@@ -32,7 +32,7 @@
     </li>
 </ul>
 <p>
-    Auth collections has an additional <code>options.manageRule</code> used to to allow one user (it could be even
+    Auth collections has an additional <code>options.manageRule</code> used to allow one user (it could be even
     from a different collection) to be able to fully manage the data of another user (eg. changing their email,
     password, etc.).
 </p>
