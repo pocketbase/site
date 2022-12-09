@@ -33,13 +33,12 @@
 
                     app.OnMailerBeforeAdminResetPasswordSend().Add(func(e *core.MailerAdminEvent) error {
                         // send custom email
-                        err := e.MailClient.Send(
-                            mail.Address{Address: "support@example.com"},
-                            mail.Address{Address: e.Admin.Email},
-                            "YOUR_SUBJECT...",
-                            "YOUR_HTML_BODY...",
-                            nil, // attachments
-                        )
+                        err := e.MailClient.Send(&mailer.Message{
+                            From:    mail.Address{Address: "support@example.com"},
+                            To:      mail.Address{Address: e.Admin.Email},
+                            Subject: "YOUR_SUBJECT...",
+                            HTML:    "YOUR_HTML_BODY...",
+                        })
                         if err != nil {
                             return err
                         }
@@ -116,13 +115,12 @@
 
                     app.OnMailerBeforeRecordResetPasswordSend().Add(func(e *core.MailerRecordEvent) error {
                         // send custom email
-                        err := e.MailClient.Send(
-                            mail.Address{Address: "support@example.com"},
-                            mail.Address{Address: e.Record.Email()},
-                            "YOUR_SUBJECT...",
-                            "YOUR_HTML_BODY...",
-                            nil, // attachments
-                        )
+                        err := e.MailClient.Send(&mailer.Message{
+                            From:    mail.Address{Address: "support@example.com"},
+                            To:      mail.Address{Address: e.Admin.Email},
+                            Subject: "YOUR_SUBJECT...",
+                            HTML:    "YOUR_HTML_BODY...",
+                        })
                         if err != nil {
                             return err
                         }
@@ -199,13 +197,12 @@
 
                     app.OnMailerBeforeRecordVerificationSend().Add(func(e *core.MailerRecordEvent) error {
                         // send custom email
-                        err := e.MailClient.Send(
-                            mail.Address{Address: "support@example.com"},
-                            mail.Address{Address: e.Record.Email()},
-                            "YOUR_SUBJECT...",
-                            "YOUR_HTML_BODY...",
-                            nil, // attachments
-                        )
+                        err := e.MailClient.Send(&mailer.Message{
+                            From:    mail.Address{Address: "support@example.com"},
+                            To:      mail.Address{Address: e.Admin.Email},
+                            Subject: "YOUR_SUBJECT...",
+                            HTML:    "YOUR_HTML_BODY...",
+                        })
                         if err != nil {
                             return err
                         }
@@ -284,13 +281,12 @@
                         newAddr := e.Meta["newEmail"]
 
                         // send custom email
-                        err := e.MailClient.Send(
-                            mail.Address{Address: "support@example.com"},
-                            mail.Address{Address: newAddr},
-                            "YOUR_SUBJECT...",
-                            "YOUR_HTML_BODY...",
-                            nil, // attachments
-                        )
+                        err := e.MailClient.Send(&mailer.Message{
+                            From:    mail.Address{Address: "support@example.com"},
+                            To:      mail.Address{Address: e.Admin.Email},
+                            Subject: "YOUR_SUBJECT...",
+                            HTML:    "YOUR_HTML_BODY...",
+                        })
                         if err != nil {
                             return err
                         }

@@ -16,7 +16,7 @@
 
         <slot />
 
-        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn">
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu">
             <span />
             <i class="ri-menu-3-fill" />
             <Toggler class="dropdown dropdown-lg dropdown-right dropdown-nowrap responsive-menu-dropdown">
