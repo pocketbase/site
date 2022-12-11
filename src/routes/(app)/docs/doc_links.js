@@ -108,6 +108,10 @@ const links = [
                 href: "/docs/api-logs",
                 title: "Logs",
             },
+            {
+                href: "/docs/api-health",
+                title: "Health",
+            },
         ],
     },
 ];

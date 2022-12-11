@@ -171,6 +171,14 @@
             "someOtherField": 123,
         })
 
+        // manually upload file(s)
+        f1, _ := filesystem.NewFileFromPath("/path/to/file1")
+        f2, _ := filesystem.NewFileFromPath("/path/to/file2")
+        form.AddFiles("yourFileField1", f1, f2)
+
+        // or mark file(s) for deletion
+        form.RemoveFiles("yourFileField2", "demo_xzihx0w.png")
+
         // validate and submit (internally it calls app.Dao().SaveRecord(record) in a transaction)
         if err := form.Submit(); err != nil {
             return err
