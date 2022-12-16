@@ -1,19 +1,14 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from "@sveltejs/adapter-static";
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 const config = {
     kit: {
         adapter: adapter(),
-        // https://kit.svelte.dev/docs/adapters#supported-environments-static-sites
-        trailingSlash: 'always',
         alias: {
-            "@": 'src/lib',
+            "@": "src/lib",
         },
     },
-    vitePlugin: {
-        experimental: {
-            useVitePreprocess: true,
-        },
-    },
+    preprocess: [vitePreprocess()],
 };
 
 export default config;
