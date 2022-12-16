@@ -81,7 +81,7 @@
         record, err := app.Dao().FindRecordById("articles", "RECORD_ID")
 
         // retrieve a single "articles" collection record by a single key-value pair
-        record, err := app.Dao().FindRecordByData("articles", "slug", "test")
+        record, err := app.Dao().FindFirstRecordByData("articles", "slug", "test")
     `}
 />
 
