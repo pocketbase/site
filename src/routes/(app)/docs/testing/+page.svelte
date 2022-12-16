@@ -81,7 +81,7 @@
     Now we have to prepare our test/mock data. There are several ways you can approach this, but the easiest
     one would be to start your application with a custom <code>test_pb_data</code> directory, eg.:
 </p>
-<CodeBlock content={`./pocketbase serve --dir="./test_pb_data"`} />
+<CodeBlock content={`./pocketbase serve --dir="./test_pb_data" --automigrate=0`} />
 <p>
     Go to your browser and create the test data via the Admin UI (both collections and records). Once
     completed, terminate the process and commit <code>test_pb_data</code> to your repo.
