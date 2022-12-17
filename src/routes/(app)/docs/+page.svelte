@@ -75,7 +75,7 @@
         </div>
     </li>
 </ul>
-<p class="txt-sm txt-hint m-b-sm">
+<p class="txt-sm txt-hint">
     See the
     <a href={import.meta.env.PB_GITHUB_RELEASES_URL} target="_blank" rel="noreferrer noopener">
         GitHub Releases page
@@ -89,6 +89,8 @@
         rel="noreferrer noopener">v0.7.x Migration guide</a
     >.
 </p>
+
+<hr />
 
 <p>
     Once you've downloaded and extracted the archive, you could start the application by running the following
@@ -130,9 +132,6 @@
     The first time, when you access the Admin dashboard UI, it will prompt you to create your first admin
     account (email and pass).
 </p>
-
-<hr class="m-t-sm m-b-sm" />
-
 <p>
     The prebuilt PocketBase executable will automatically create and manage 2 new directories alongside the
     executable:
