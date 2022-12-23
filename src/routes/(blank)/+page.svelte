@@ -54,7 +54,7 @@
                 });
 
                 // subscribe to changes in any record from the 'example' collection
-                pb.collection('example').subscribe(function (e) {
+                pb.collection('example').subscribe('*', function (e) {
                     console.log(e.record);
                 });
 
@@ -89,7 +89,7 @@
                 });
 
                 // subscribe to changes in any record from the 'example' collection
-                pb.collection('example').subscribe((e) => print(e.record));
+                pb.collection('example').subscribe('*', (e) => print(e.record));
 
                 // stop listening for changes in the 'example' collection
                 pb.collection('example').unsubscribe();
