@@ -117,7 +117,7 @@
                         // send custom email
                         err := e.MailClient.Send(&mailer.Message{
                             From:    mail.Address{Address: "support@example.com"},
-                            To:      mail.Address{Address: e.Admin.Email},
+                            To:      mail.Address{Address: e.Record.Email()},
                             Subject: "YOUR_SUBJECT...",
                             HTML:    "YOUR_HTML_BODY...",
                         })
@@ -199,7 +199,7 @@
                         // send custom email
                         err := e.MailClient.Send(&mailer.Message{
                             From:    mail.Address{Address: "support@example.com"},
-                            To:      mail.Address{Address: e.Admin.Email},
+                            To:      mail.Address{Address: e.Record.Email()},
                             Subject: "YOUR_SUBJECT...",
                             HTML:    "YOUR_HTML_BODY...",
                         })
@@ -283,7 +283,7 @@
                         // send custom email
                         err := e.MailClient.Send(&mailer.Message{
                             From:    mail.Address{Address: "support@example.com"},
-                            To:      mail.Address{Address: e.Admin.Email},
+                            To:      mail.Address{Address: e.Record.Email()},
                             Subject: "YOUR_SUBJECT...",
                             HTML:    "YOUR_HTML_BODY...",
                         })
