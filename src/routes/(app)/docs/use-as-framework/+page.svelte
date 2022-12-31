@@ -70,7 +70,7 @@
         <CodeBlock
             language="go"
             content={`
-                app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordEvent) error {
+                app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordCreateEvent) error {
                     // overwrite the newly submitted "posts" record status to pending
                     if e.Record.Collection().Name == "posts" {
                         e.Record.Set("status", "pending")

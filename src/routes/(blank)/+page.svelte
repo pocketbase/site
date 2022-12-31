@@ -247,7 +247,7 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnRecordAfterUpdateRequest().Add(func(e *core.RecordEvent) error {
+                    app.OnRecordAfterUpdateRequest().Add(func(e *core.RecordUpdateEvent) error {
                         log.Println(e.Record.Id)
                         return nil
                     })
