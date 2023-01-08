@@ -9,7 +9,7 @@
 <p>
     <strong>Collections</strong> represents your application data.
     <br />
-    Under the hood they are plain SQLite table that are generated automatically with the collection
+    Under the hood they are plain SQLite tables that are generated automatically with the collection
     <strong>name</strong>
     and
     <strong>fields</strong> (aka. columns).
