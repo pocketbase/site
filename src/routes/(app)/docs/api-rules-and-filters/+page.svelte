@@ -128,7 +128,7 @@
         a category id:
         <CodeBlock
             content={`
-                @collection.news.categoryId = categoryId && @collection.news.author = @request.auth.id
+                @collection.news.categoryId ?= categoryId && @collection.news.author ?= @request.auth.id
             `}
         />
     </li>

@@ -80,20 +80,29 @@
         );
     `}
 />
-<p>
-    Each uploaded file will be stored with the original filename (sanitized) and suffixed with a random (10
-    chars) part (eg. <code>test_52iWbGinWd.png</code>).
-</p>
-<p>
-    When you upload a new file to a <strong>single file upload field</strong> (aka.
-    <strong>Max Files option is 1</strong>) PocketBase will automatically delete the previous uploaded file
-    (if any) and upload the new one in its place.
-</p>
-<p>
-    When you upload a new file to a <strong>multiple file upload field</strong> (aka.
-    <strong>Max Files option is > 1</strong>) the new file will be appended to the existing field values (as
-    long as the <strong>Max Files</strong> limit is not reached, otherwise an error will be thrown).
-</p>
+
+<div class="alert alert-info m-t-10 m-b-10">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            Each uploaded file will be stored with the original filename (sanitized) and suffixed with a
+            random (10 chars) part (eg. <code>test_52iWbGinWd.png</code>).
+        </p>
+        <p>
+            When you upload a new file to a <strong>single file upload field</strong> (aka.
+            <strong>Max Files option is 1</strong>) PocketBase will automatically delete the previous uploaded
+            file (if any) and upload the new one in its place.
+        </p>
+        <p>
+            When you upload a new file to a <strong>multiple file upload field</strong> (aka.
+            <strong>Max Files option is > 1</strong>) the new file will be appended to the existing field
+            values (as long as the <strong>Max Files</strong> limit is not reached, otherwise an error will be
+            thrown).
+        </p>
+    </div>
+</div>
 
 <HeadingLink title="Deleting files" />
 <p>
@@ -102,7 +111,8 @@
 </p>
 <p>
     If you want to <strong>delete only a single file from a multiple file upload field</strong>, you could
-    provide the index or the filename of the file to delete. Here are some examples using the SDKs:
+    suffix the field name with <code>-</code> and filename(s) you want to delete. Here are some examples using
+    the SDKs:
 </p>
 <!-- prettier-ignore -->
 <SdkTabs
@@ -118,11 +128,9 @@
             'documents': null,
         });
 
-        // delete individual files by their index or filename
+        // delete individual files
         await pb.collection('example').update('RECORD_ID', {
-            'documents.0': null,
-            'documents.2': null,
-            'documents.text_abcd.pdf': null,
+            'documents-': ["file1.pdf", "file2.txt"],
         });
     `}
     dart={`
@@ -137,11 +145,9 @@
             'documents': null,
         });
 
-        // delete individual files by their index or filename
+        // delete individual files
         await pb.collection('example').update('RECORD_ID', body: {
-            'documents.0': null,
-            'documents.2': null,
-            'documents.text_abcd.pdf': null,
+            'documents-': ["file1.pdf", "file2.txt"],
         });
     `}
 />

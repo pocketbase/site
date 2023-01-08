@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import TocList from "@/components/TocList.svelte";
 
-    export let contentContainer;
+    export let contentContainer = undefined;
 
     export let headingSelector = "h1, h2, h3, h4, h5, h6";
 
@@ -50,6 +50,6 @@
     });
 </script>
 
-<div class="toc" bind:this={tocContainer}>
+<div bind:this={tocContainer} class="toc">
     <TocList {links} />
 </div>

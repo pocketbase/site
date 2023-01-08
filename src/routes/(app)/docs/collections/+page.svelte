@@ -23,60 +23,73 @@
     <thead>
         <tr>
             <th>Field</th>
-            <th>Supported value</th>
+            <th>Example values</th>
+            <th>Supported modifiers</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><code>text</code></td>
             <td><code>""</code>, <code>"example"</code></td>
+            <td />
         </tr>
         <tr>
             <td><code>number</code></td>
             <td><code>0</code>, <code>-1</code>, <code>1</code>, <code>1.5</code></td>
+            <td><code>+</code> (<em>add</em>), <code>-</code> (<em>subtract</em>)</td>
         </tr>
         <tr>
             <td><code>bool</code></td>
             <td><code>false</code>, <code>true</code></td>
+            <td />
         </tr>
         <tr>
             <td><code>email</code></td>
             <td><code>""</code>, <code>"test@example.com"</code></td>
+            <td />
         </tr>
         <tr>
             <td><code>url</code></td>
             <td><code>""</code>, <code>"https://example.com"</code></td>
+            <td />
         </tr>
         <tr>
             <td><code>date</code></td>
             <td><code>""</code>, <code>"2022-01-01 00:00:00.000Z"</code></td>
+            <td />
         </tr>
         <tr>
             <td><code>select</code> (<em>single</em>)</td>
             <td><code>""</code>, <code>"optionA"</code></td>
+            <td />
         </tr>
         <tr>
             <td><code>select</code> (<em>multiple</em>)</td>
             <td><code>[]</code>, <code>["optionA", "optionB"]</code></td>
-        </tr>
-        <tr>
-            <td><code>file</code> (<em>single</em>)</td>
-            <td><code>""</code>, <code>"example123_Ab24ZjL.png"</code></td>
-        </tr>
-        <tr>
-            <td><code>file</code> (<em>multiple</em>)</td>
-            <td
-                ><code>[]</code>,
-                <code>["example123_Ab24ZjL.png", "example456_Frq24ZjL.txt"]</code></td
-            >
+            <td><code>+</code> (<em>append</em>), <code>-</code> (<em>remove</em>)</td>
         </tr>
         <tr>
             <td><code>relation</code> (<em>single</em>)</td>
             <td><code>""</code>, <code>"JJ2YRU30FBG8MqX"</code></td>
+            <td />
         </tr>
         <tr>
             <td><code>relation</code> (<em>multiple</em>)</td>
             <td><code>[]</code>, <code>["JJ2YRU30FBG8MqX", "eP2jCr1h3NGtsbz"]</code></td>
+            <td><code>+</code> (<em>append</em>), <code>-</code> (<em>remove</em>)</td>
+        </tr>
+        <tr>
+            <td><code>file</code> (<em>single</em>)</td>
+            <td><code>""</code>, <code>"example123_Ab24ZjL.png"</code></td>
+            <td />
+        </tr>
+        <tr>
+            <td><code>file</code> (<em>multiple</em>)</td>
+            <td>
+                <code>[]</code>,
+                <code>["file1_Ab24ZjL.png", "file2_Frq24ZjL.txt"]</code>
+            </td>
+            <td><code>-</code> (<em>remove</em>)</td>
         </tr>
         <tr>
             <td><code>json</code></td>
