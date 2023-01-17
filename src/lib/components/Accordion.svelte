@@ -28,6 +28,10 @@
         }, 200);
     }
 
+    export function isExpanded() {
+        return !!active;
+    }
+
     export function expand() {
         collapseSiblings();
         active = true;

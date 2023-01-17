@@ -139,13 +139,16 @@
     for deployments. PocketBase doesn't have an official Docker image yet, but you could use the below
     Dockerfile as an example:
 </p>
-<!-- prettier-ignore -->
 <CodeBlock
     language="docker"
     content={`
         FROM alpine:latest
 
-        ARG PB_VERSION=` + import.meta.env.PB_VERSION.substring(1) + `
+        ARG PB_VERSION=` +
+        (import.meta.env.PB_VERSION.startsWith("v")
+            ? import.meta.env.PB_VERSION.substring(1)
+            : import.meta.env.PB_VERSION) +
+        `
 
         RUN apk add --no-cache \\
             unzip \\
