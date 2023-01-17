@@ -144,7 +144,7 @@
     content={`
         FROM alpine:latest
 
-        ARG PB_VERSION=0.8.0
+        ARG PB_VERSION=0.11.2
 
         RUN apk add --no-cache \\
             unzip \\
