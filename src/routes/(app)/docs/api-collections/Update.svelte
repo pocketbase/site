@@ -425,7 +425,7 @@
                     </div>
                 </td>
                 <td>
-                    <span class="label">Boolean</span>
+                    <span class="label">Array</span>
                 </td>
                 <td>
                     Whether to allow sign-ups only with the email domains not listed in the specified list.
@@ -440,7 +440,7 @@
                     </div>
                 </td>
                 <td>
-                    <span class="label">Boolean</span>
+                    <span class="label">Array</span>
                 </td>
                 <td> Whether to allow sign-ups only with the email domains listed in the specified list. </td>
             </tr>
