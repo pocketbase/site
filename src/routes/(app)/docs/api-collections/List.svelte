@@ -66,8 +66,8 @@
                         "allowUsernameAuth": true,
                         "allowEmailAuth": true,
                         "requireEmail": true,
-                        "exceptEmailDomains": "",
-                        "onlyEmailDomains": "",
+                        "exceptEmailDomains": [],
+                        "onlyEmailDomains": [],
                         "minPasswordLength": 8
                       }
                     },
