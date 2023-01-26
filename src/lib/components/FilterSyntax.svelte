@@ -41,7 +41,7 @@
                     </li>
                     <li>
                         <code class="filter-op">{"<"}</code>
-                        <span class="txt">Less than or equal</span>
+                        <span class="txt">Less than</span>
                     </li>
                     <li>
                         <code class="filter-op">{"<="}</code>
@@ -85,7 +85,7 @@
                     <li>
                         <code class="filter-op">{"?<"}</code>
                         <em class="txt-hint">Any/At least one of</em>
-                        <span class="txt">Less than or equal</span>
+                        <span class="txt">Less than</span>
                     </li>
                     <li>
                         <code class="filter-op">{"?<="}</code>
