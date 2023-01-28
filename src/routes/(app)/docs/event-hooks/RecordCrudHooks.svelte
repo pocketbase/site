@@ -4,14 +4,14 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
 </script>
 
-<HeadingLink title="Admin API hooks" />
+<HeadingLink title="Record CRUD API hooks" />
 <div class="accordions m-b-base">
     <Accordion single>
         <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnAdminsListRequest</div>
+            <div class="flex txt-bold txt-select">OnRecordsListRequest</div>
         </svelte:fragment>
         <p>
-            Triggered on each API <em>Admins list</em> request. Could be used to validate or modify the response
+            Triggered on each API Records list request. Could be used to validate or modify the response
             before returning it to the client.
         </p>
         <CodeBlock
@@ -29,7 +29,7 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAdminsListRequest().Add(func(e *core.AdminsListEvent) error {
+                    app.OnRecordsListRequest().Add(func(e *core.RecordsListEvent) error {
                         log.Println(e.Result)
                         return nil
                     })
@@ -44,11 +44,11 @@
 
     <Accordion single>
         <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnAdminViewRequest</div>
+            <div class="flex txt-bold txt-select">OnRecordViewRequest</div>
         </svelte:fragment>
         <p>
-            Triggered on each API <em>Admin view</em> request. Could be used to validate or modify the response
-            before returning it to the client.
+            Triggered on each API Record view request. Could be used to validate or modify the response before
+            returning it to the client.
         </p>
         <CodeBlock
             language="go"
@@ -65,8 +65,8 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAdminViewRequest().Add(func(e *core.AdminViewEvent) error {
-                        log.Println(e.Admin)
+                    app.OnRecordViewRequest().Add(func(e *core.RecordViewEvent) error {
+                        log.Println(e.Record)
                         return nil
                     })
 
@@ -80,10 +80,10 @@
 
     <Accordion single>
         <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnAdminBeforeCreateRequest</div>
+            <div class="flex txt-bold txt-select">OnRecordBeforeCreateRequest</div>
         </svelte:fragment>
         <p>
-            Triggered before each API <em>Admin create</em> request (after request data load and before model
+            Triggered before each API Record create request (after request data load and before model
             persistence).
             <br />
             Could be used to additionally validate the request data or implement completely different persistence
@@ -104,8 +104,8 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAdminBeforeCreateRequest().Add(func(e *core.AdminCreateEvent) error {
-                        log.Println(e.Admin) // still unsaved
+                    app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordCreateEvent) error {
+                        log.Println(e.Record) // still unsaved
                         return nil
                     })
 
@@ -119,11 +119,9 @@
 
     <Accordion single>
         <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnAdminAfterCreateRequest</div>
+            <div class="flex txt-bold txt-select">OnRecordAfterCreateRequest</div>
         </svelte:fragment>
-        <p>
-            Triggered after each successful API <em>Admin create</em> request.
-        </p>
+        <p>Triggered after each successful API Record create request.</p>
         <CodeBlock
             language="go"
             content={`
@@ -139,8 +137,8 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAdminAfterCreateRequest().Add(func(e *core.AdminCreateEvent) error {
-                        log.Println(e.Admin.Email)
+                    app.OnRecordAfterCreateRequest().Add(func(e *core.RecordCreateEvent) error {
+                        log.Println(e.Record.Id)
                         return nil
                     })
 
@@ -154,10 +152,10 @@
 
     <Accordion single>
         <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnAdminBeforeUpdateRequest</div>
+            <div class="flex txt-bold txt-select">OnRecordBeforeUpdateRequest</div>
         </svelte:fragment>
         <p>
-            Triggered before each API <em>Admin update</em> request (after request data load and before model
+            Triggered before each API Record update request (after request data load and before model
             persistence).
             <br />
             Could be used to additionally validate the request data or implement completely different persistence
@@ -178,8 +176,8 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAdminBeforeUpdateRequest().Add(func(e *core.AdminUpdateEvent) error {
-                        log.Println(e.Admin.Email) // not saved yet
+                    app.OnRecordBeforeUpdateRequest().Add(func(e *core.RecordUpdateEvent) error {
+                        log.Println(e.Record.GetStringDataValue("title")) // not saved yet
                         return nil
                     })
 
@@ -193,11 +191,9 @@
 
     <Accordion single>
         <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnAdminAfterUpdateRequest</div>
+            <div class="flex txt-bold txt-select">OnRecordAfterUpdateRequest</div>
         </svelte:fragment>
-        <p>
-            Triggered after each successful API <em>Admin update</em> request.
-        </p>
+        <p>Triggered after each successful API Record update request.</p>
         <CodeBlock
             language="go"
             content={`
@@ -213,8 +209,8 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAdminAfterUpdateRequest().Add(func(e *core.AdminUpdateEvent) error {
-                        log.Println(e.Admin.Email)
+                    app.OnRecordAfterUpdateRequest().Add(func(e *core.RecordUpdateEvent) error {
+                        log.Println(e.Record.Id)
                         return nil
                     })
 
@@ -228,11 +224,10 @@
 
     <Accordion single>
         <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnAdminBeforeDeleteRequest</div>
+            <div class="flex txt-bold txt-select">OnRecordBeforeDeleteRequest</div>
         </svelte:fragment>
         <p>
-            Triggered before each API <em>Admin delete</em> request (after model load and before actual
-            deletion).
+            Triggered before each API Record delete request (after model load and before actual deletion).
             <br />
             Could be used to additionally validate the request data or implement completely different delete behavior
             (returning <code>hook.StopPropagation</code>).
@@ -252,8 +247,8 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAdminBeforeDeleteRequest().Add(func(e *core.AdminDeleteEvent) error {
-                        log.Println(e.Admin.Id) // not deleted yet
+                    app.OnRecordBeforeDeleteRequest().Add(func(e *core.RecordDeleteEvent) error {
+                        log.Println(e.Record.Id) // not deleted yet
                         return nil
                     })
 
@@ -267,11 +262,9 @@
 
     <Accordion single>
         <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnAdminAfterDeleteRequest</div>
+            <div class="flex txt-bold txt-select">OnRecordAfterDeleteRequest</div>
         </svelte:fragment>
-        <p>
-            Triggered after each successful API <em>Admin delete</em> request.
-        </p>
+        <p>Triggered after each successful API Record delete request.</p>
         <CodeBlock
             language="go"
             content={`
@@ -287,8 +280,8 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAdminAfterDeleteRequest().Add(func(e *core.AdminDeleteEvent) error {
-                        log.Println(e.Admin.Id) // already deleted from the DB
+                    app.OnRecordAfterDeleteRequest().Add(func(e *core.RecordDeleteEvent) error {
+                        log.Println(e.Record.Id) // already deleted from the DB
                         return nil
                     })
 
@@ -302,13 +295,12 @@
 
     <Accordion single>
         <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnAdminAuthRequest</div>
+            <div class="flex txt-bold txt-select">OnRecordAuthRequest</div>
         </svelte:fragment>
         <p>
-            Triggered on each successful API <em>Admin authentication</em> request (sign-in, token refresh,
-            etc.).
+            Triggered on each successful auth record authentication request (sign-in, token refresh, etc.).
             <br />
-            Could be used to additionally validate or modify the authenticated admin data and token.
+            Could be used to additionally validate or modify the authenticated auth record data and token.
         </p>
         <CodeBlock
             language="go"
@@ -325,7 +317,8 @@
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAdminAuthRequest().Add(func(e *core.AdminAuthEvent) error {
+                    app.OnRecordAuthRequest().Add(func(e *core.RecordAuthEvent) error {
+                        log.Println(e.Record)
                         log.Println(e.Token)
                         return nil
                     })

@@ -68,6 +68,10 @@ const links = [
                 title: "Custom models",
             },
             {
+                href: "/docs/sending-emails",
+                title: "Sending emails",
+            },
+            {
                 href: "/docs/migrations",
                 title: "Migrations",
             },

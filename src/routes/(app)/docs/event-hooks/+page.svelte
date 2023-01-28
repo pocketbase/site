@@ -3,10 +3,12 @@
     import AppHooks from "./AppHooks.svelte";
     import ModelHooks from "./ModelHooks.svelte";
     import MailerHooks from "./MailerHooks.svelte";
-    import RecordHooks from "./RecordHooks.svelte";
+    import RecordCrudHooks from "./RecordCrudHooks.svelte";
+    import RecordAuthHooks from "./RecordAuthHooks.svelte";
     import RealtimeHooks from "./RealtimeHooks.svelte";
     import FileHooks from "./FileHooks.svelte";
-    import AdminHooks from "./AdminHooks.svelte";
+    import AdminCrudHooks from "./AdminCrudHooks.svelte";
+    import AdminAuthHooks from "./AdminAuthHooks.svelte";
     import CollectionHooks from "./CollectionHooks.svelte";
     import SettingsHooks from "./SettingsHooks.svelte";
 </script>
@@ -38,9 +40,11 @@
 <AppHooks />
 <ModelHooks />
 <MailerHooks />
-<RecordHooks />
+<RecordCrudHooks />
+<RecordAuthHooks />
 <RealtimeHooks />
 <FileHooks />
 <CollectionHooks />
 <SettingsHooks />
-<AdminHooks />
+<AdminCrudHooks />
+<AdminAuthHooks />

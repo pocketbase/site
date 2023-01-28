@@ -19,7 +19,7 @@
     import UnlinkExternalAuth from "./UnlinkExternalAuth.svelte";
 </script>
 
-<HeadingLink title="Crud actions" />
+<HeadingLink title="CRUD actions" />
 <div class="accordions">
     <List />
     <View />

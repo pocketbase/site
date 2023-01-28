@@ -4,295 +4,8 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
 </script>
 
-<HeadingLink title="Record API hooks" />
+<HeadingLink title="Record Auth API hooks" />
 <div class="accordions m-b-base">
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnRecordsListRequest</div>
-        </svelte:fragment>
-        <p>
-            Triggered on each API Records list request. Could be used to validate or modify the response
-            before returning it to the client.
-        </p>
-        <CodeBlock
-            language="go"
-            content={`
-                package main
-
-                import (
-                    "log"
-
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                )
-
-                func main() {
-                    app := pocketbase.New()
-
-                    app.OnRecordsListRequest().Add(func(e *core.RecordsListEvent) error {
-                        log.Println(e.Result)
-                        return nil
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
-                    }
-                }
-            `}
-        />
-    </Accordion>
-
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnRecordViewRequest</div>
-        </svelte:fragment>
-        <p>
-            Triggered on each API Record view request. Could be used to validate or modify the response before
-            returning it to the client.
-        </p>
-        <CodeBlock
-            language="go"
-            content={`
-                package main
-
-                import (
-                    "log"
-
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                )
-
-                func main() {
-                    app := pocketbase.New()
-
-                    app.OnRecordViewRequest().Add(func(e *core.RecordViewEvent) error {
-                        log.Println(e.Record)
-                        return nil
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
-                    }
-                }
-            `}
-        />
-    </Accordion>
-
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnRecordBeforeCreateRequest</div>
-        </svelte:fragment>
-        <p>
-            Triggered before each API Record create request (after request data load and before model
-            persistence).
-            <br />
-            Could be used to additionally validate the request data or implement completely different persistence
-            behavior (returning <code>hook.StopPropagation</code>).
-        </p>
-        <CodeBlock
-            language="go"
-            content={`
-                package main
-
-                import (
-                    "log"
-
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                )
-
-                func main() {
-                    app := pocketbase.New()
-
-                    app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordCreateEvent) error {
-                        log.Println(e.Record) // still unsaved
-                        return nil
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
-                    }
-                }
-            `}
-        />
-    </Accordion>
-
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnRecordAfterCreateRequest</div>
-        </svelte:fragment>
-        <p>Triggered after each successful API Record create request.</p>
-        <CodeBlock
-            language="go"
-            content={`
-                package main
-
-                import (
-                    "log"
-
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                )
-
-                func main() {
-                    app := pocketbase.New()
-
-                    app.OnRecordAfterCreateRequest().Add(func(e *core.RecordCreateEvent) error {
-                        log.Println(e.Record.Id)
-                        return nil
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
-                    }
-                }
-            `}
-        />
-    </Accordion>
-
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnRecordBeforeUpdateRequest</div>
-        </svelte:fragment>
-        <p>
-            Triggered before each API Record update request (after request data load and before model
-            persistence).
-            <br />
-            Could be used to additionally validate the request data or implement completely different persistence
-            behavior (returning <code>hook.StopPropagation</code>).
-        </p>
-        <CodeBlock
-            language="go"
-            content={`
-                package main
-
-                import (
-                    "log"
-
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                )
-
-                func main() {
-                    app := pocketbase.New()
-
-                    app.OnRecordBeforeUpdateRequest().Add(func(e *core.RecordUpdateEvent) error {
-                        log.Println(e.Record.GetStringDataValue("title")) // not saved yet
-                        return nil
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
-                    }
-                }
-            `}
-        />
-    </Accordion>
-
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnRecordAfterUpdateRequest</div>
-        </svelte:fragment>
-        <p>Triggered after each successful API Record update request.</p>
-        <CodeBlock
-            language="go"
-            content={`
-                package main
-
-                import (
-                    "log"
-
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                )
-
-                func main() {
-                    app := pocketbase.New()
-
-                    app.OnRecordAfterUpdateRequest().Add(func(e *core.RecordUpdateEvent) error {
-                        log.Println(e.Record.Id)
-                        return nil
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
-                    }
-                }
-            `}
-        />
-    </Accordion>
-
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnRecordBeforeDeleteRequest</div>
-        </svelte:fragment>
-        <p>
-            Triggered before each API Record delete request (after model load and before actual deletion).
-            <br />
-            Could be used to additionally validate the request data or implement completely different delete behavior
-            (returning <code>hook.StopPropagation</code>).
-        </p>
-        <CodeBlock
-            language="go"
-            content={`
-                package main
-
-                import (
-                    "log"
-
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                )
-
-                func main() {
-                    app := pocketbase.New()
-
-                    app.OnRecordBeforeDeleteRequest().Add(func(e *core.RecordDeleteEvent) error {
-                        log.Println(e.Record.Id) // not deleted yet
-                        return nil
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
-                    }
-                }
-            `}
-        />
-    </Accordion>
-
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnRecordAfterDeleteRequest</div>
-        </svelte:fragment>
-        <p>Triggered after each successful API Record delete request.</p>
-        <CodeBlock
-            language="go"
-            content={`
-                package main
-
-                import (
-                    "log"
-
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                )
-
-                func main() {
-                    app := pocketbase.New()
-
-                    app.OnRecordAfterDeleteRequest().Add(func(e *core.RecordDeleteEvent) error {
-                        log.Println(e.Record.Id) // already deleted from the DB
-                        return nil
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
-                    }
-                }
-            `}
-        />
-    </Accordion>
-
     <Accordion single>
         <svelte:fragment slot="header">
             <div class="flex txt-bold txt-select">OnRecordAuthRequest</div>
@@ -320,6 +33,241 @@
                     app.OnRecordAuthRequest().Add(func(e *core.RecordAuthEvent) error {
                         log.Println(e.Record)
                         log.Println(e.Token)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `}
+        />
+    </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <div class="flex txt-bold txt-select">OnRecordBeforeAuthWithPasswordRequest</div>
+        </svelte:fragment>
+        <p>
+            Triggered before each Record auth with password API request (after request data load and before
+            password validation).
+            <br />
+            Could be used to implement for example a custom password validation or to locate a different Record
+            identity (by assigning <code>RecordAuthWithPasswordEvent.Record</code>).
+        </p>
+        <CodeBlock
+            language="go"
+            content={`
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRecordBeforeAuthWithPasswordRequest().Add(func(e *core.RecordAuthWithPasswordEvent) error {
+                        log.Println(e.Record) // could be nil
+                        log.Println(e.Identity)
+                        log.Println(e.Password)
+
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `}
+        />
+    </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <div class="flex txt-bold txt-select">OnRecordAfterAuthWithPasswordRequest</div>
+        </svelte:fragment>
+        <p>Triggered after each successful Record auth with password API request.</p>
+        <CodeBlock
+            language="go"
+            content={`
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRecordAfterAuthWithPasswordRequest().Add(func(e *core.RecordAuthWithPasswordEvent) error {
+                        log.Println(e.Record)
+                        log.Println(e.Identity)
+                        log.Println(e.Password)
+
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `}
+        />
+    </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <div class="flex txt-bold txt-select">OnRecordBeforeAuthWithOAuth2Request</div>
+        </svelte:fragment>
+        <p>
+            Triggered before each Record OAuth2 sign-in/sign-up API request (after token exchange and before
+            external provider linking).
+        </p>
+        <p>
+            If the <code>RecordAuthWithOAuth2Event.Record</code> is <code>nil</code>, then the OAuth2 request
+            will try to create a new auth Record.
+        </p>
+        <p>
+            To assign or link a different existing record model you can overwrite/modify the
+            <code>RecordAuthWithOAuth2Event.Record</code> field.
+        </p>
+        <CodeBlock
+            language="go"
+            content={`
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRecordBeforeAuthWithOAuth2Request().Add(func(e *core.RecordAuthWithOAuth2Event) error {
+                        log.Println(e.Record) // could be nil
+                        log.Println(e.OAuth2User)
+
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `}
+        />
+    </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <div class="flex txt-bold txt-select">OnRecordAfterAuthWithOAuth2Request</div>
+        </svelte:fragment>
+        <p>Triggered after each successful Record OAuth2 API request.</p>
+        <CodeBlock
+            language="go"
+            content={`
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRecordAfterAuthWithOAuth2Request().Add(func(e *core.RecordAuthWithOAuth2Event) error {
+                        log.Println(e.Record)
+                        log.Println(e.OAuth2User)
+
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `}
+        />
+    </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <div class="flex txt-bold txt-select">OnRecordBeforeAuthRefreshRequest</div>
+        </svelte:fragment>
+        <p>
+            Triggered before each Record auth refresh API request (right before generating a new auth token).
+            <br />
+            Could be used to additionally validate the request data or implement completely different auth refresh
+            behavior (returning <code>hook.StopPropagation</code>).
+        </p>
+        <CodeBlock
+            language="go"
+            content={`
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRecordBeforeAuthRefreshRequest().Add(func(e *core.RecordAuthRefreshEvent) error {
+                        log.Println(e.Record)
+
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `}
+        />
+    </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <div class="flex txt-bold txt-select">OnRecordAfterAuthRefreshRequest</div>
+        </svelte:fragment>
+        <p>
+            Triggered after each successful auth refresh API request (right after generating a new auth
+            token).
+        </p>
+        <CodeBlock
+            language="go"
+            content={`
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRecordAfterAuthRefreshRequest().Add(func(e *core.RecordAuthRefreshEvent) error {
+                        log.Println(e.Record)
+
                         return nil
                     })
 

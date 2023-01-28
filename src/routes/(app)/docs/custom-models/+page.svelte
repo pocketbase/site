@@ -9,18 +9,20 @@
 <HeadingLink title="Custom model struct" />
 
 <p>
-    The available <a href="/docs/record-methods"><code>models.Record</code> and its helpers</a>
-    should be enough for most cases, but if you want to have typed access to your record fields you could also
-    create your own custom model struct. The only requirement is to implement
+    <strong>
+        The available <a href="/docs/record-methods"><code>models.Record</code> and its helpers</a>
+        is usually the preferred way to interact with your data
+    </strong>, but in some cases you may want to query and update your data using a typed struct. You can
+    define your own model structs by implementing the
     <a href="{import.meta.env.PB_GODOC_URL}@v0.7.10/models#Model" target="_blank" rel="noopener noreferrer">
         <code class="link-primary">models.Model</code>
     </a>
     interface.
 </p>
 <p>
-    To make it easier, PocketBase also comes with a <code>models.BaseModel</code> struct that you can embed in
-    your model, leaving only the <code>TableName()</code> method to be implemented (aka. your collection name).
-    For example:
+    To make it a little bit easier, PocketBase also comes with a <code>models.BaseModel</code> struct that you
+    can embed in your model, leaving only the <code>TableName()</code> method to be implemented (aka. your collection
+    name). For example:
 </p>
 
 <CodeBlock
@@ -53,6 +55,21 @@
 />
 
 <HeadingLink title="Working with the custom model struct" />
+
+<div class="alert alert-info m-t-sm">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            Please note that the internal <a href="/docs/event-hooks">Record API and other related hooks</a>
+            works only with the
+            <code>models.Record</code> and you'll have to manually convert the <code>models.Record</code> to your
+            custom struct if you want to use it inside the event hooks.
+        </p>
+    </div>
+</div>
+
 <p>
     To query your custom "Article" model you can use the <code>app.Dao()</code> instance and its query builder
     (<a href="https://pkg.go.dev/github.com/pocketbase/dbx" target="_blank" rel="noopener noreferrer">dbx</a

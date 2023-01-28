@@ -40,15 +40,15 @@
     <script>
         // CSS3 animations support check
         (function () {
-            if (typeof document === 'undefined') {
+            if (typeof document === "undefined") {
                 return; // serverside rendering
             }
 
-            let elem = document.createElement('div');
+            let elem = document.createElement("div");
             let hasAnimation = elem.style.animationName !== undefined;
 
             if (!hasAnimation) {
-                document.documentElement.classList.add('no-animations');
+                document.documentElement.classList.add("no-animations");
             }
         })();
     </script>

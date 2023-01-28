@@ -47,7 +47,9 @@
                 // firefox scrollbar
                 scrollbar-color: rgba(#a9b4bc, 0.5) $trackColor;
                 scrollbar-width: auto;
-                scroll-behavior: smooth;
+                &.smooth-scroll {
+                    scroll-behavior: smooth;
+                }
 
                 * {
                     scrollbar-width: inherit;
