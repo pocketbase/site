@@ -34,6 +34,11 @@
             <td />
         </tr>
         <tr>
+            <td><code>editor</code></td>
+            <td><code>""</code>, <code>"{`<p>example</p>`}"</code></td>
+            <td />
+        </tr>
+        <tr>
             <td><code>number</code></td>
             <td><code>0</code>, <code>-1</code>, <code>1</code>, <code>1.5</code></td>
             <td><code>+</code> (<em>add</em>), <code>-</code> (<em>subtract</em>)</td>

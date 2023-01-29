@@ -18,8 +18,7 @@
         <code class="link-primary">models.Model</code>
     </a>
     interface.
-</p>
-<p>
+    <br />
     To make it a little bit easier, PocketBase also comes with a <code>models.BaseModel</code> struct that you
     can embed in your model, leaving only the <code>TableName()</code> method to be implemented (aka. your collection
     name). For example:

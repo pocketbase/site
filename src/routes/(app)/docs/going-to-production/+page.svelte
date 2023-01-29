@@ -46,61 +46,65 @@
               [root@dev ~]$ /root/pb/pocketbase serve --http="yourdomain.com:80" --https="yourdomain.com:443"
             `}
         />
+        <blockquote>
+            <p>
+                Notice that in the above example we are logged in as <strong>root</strong> which allow us to
+                bind to the
+                <strong>privileged 80 and 443 ports</strong>.
+                <br />
+                For <strong>non-root</strong> users usually you'll need special privileges to be able to do
+                that. You have several options depending on your OS - <code>authbind</code>,
+                <code>setcap</code>,
+                <code>iptables</code>, <code>sysctl</code>, etc. Here is an example using <code>setcap</code>:
+            </p>
+            <CodeBlock
+                content={`
+                    [myuser@dev ~]$ sudo setcap 'cap_net_bind_service=+ep' /root/pb/pocketbase
+                `}
+            />
+        </blockquote>
+    </li>
+    <li>
+        <p>(Optional) Systemd service</p>
         <p>
-            Notice that in the above example we are logged in as <strong>root</strong> which allow us to bind
-            to the
-            <strong>privileged 80 and 443 ports</strong>.
-            <br />
-            For <strong>non-root</strong> users usually you'll need special privileges to be able to do that.
-            You have several options depending on your OS - <code>authbind</code>, <code>setcap</code>,
-            <code>iptables</code>, <code>sysctl</code>, etc. Here is an example using <code>setcap</code>:
+            To allow your application to start on its own (or to restart in case the process get killed), you
+            could create a <em>Systemd</em> service for it.
+        </p>
+        <p>
+            Here is an example service file (usually created in
+            <code>/lib/systemd/system/pocketbase.service</code>):
         </p>
         <CodeBlock
             content={`
-                [myuser@dev ~]$ sudo setcap 'cap_net_bind_service=+ep' /root/pb/pocketbase
+                [Unit]
+                Description = pocketbase
+
+                [Service]
+                Type           = simple
+                User           = root
+                Group          = root
+                LimitNOFILE    = 4096
+                Restart        = always
+                RestartSec     = 5s
+                StandardOutput = append:/root/pb/errors.log
+                StandardError  = append:/root/pb/errors.log
+                ExecStart      = /root/pb/pocketbase serve --http="yourdomain.com:80" --https="yourdomain.com:443"
+
+                [Install]
+                WantedBy = multi-user.target
+            `}
+        />
+        <p>
+            After that we just have to enable it and start the service using <code>systemctl</code>:
+        </p>
+        <CodeBlock
+            content={`
+                [root@dev ~]$ systemctl enable pocketbase.service
+                [root@dev ~]$ systemctl start pocketbase
             `}
         />
     </li>
 </ol>
-
-<HeadingLink title="Systemd service" tag="h5" />
-<p>
-    To allow your application to start on its own (or to restart in case the process get killed), you could
-    create a <em>Systemd</em> service for it.
-</p>
-<p>
-    Here is an example service file (usually created at
-    <code>/lib/systemd/system/pocketbase.service</code>):
-</p>
-<CodeBlock
-    content={`
-        [Unit]
-        Description = pocketbase
-
-        [Service]
-        Type           = simple
-        User           = root
-        Group          = root
-        LimitNOFILE    = 4096
-        Restart        = always
-        RestartSec     = 5s
-        StandardOutput = append:/root/pb/errors.log
-        StandardError  = append:/root/pb/errors.log
-        ExecStart      = /root/pb/pocketbase serve --http="yourdomain.com:80" --https="yourdomain.com:443"
-
-        [Install]
-        WantedBy = multi-user.target
-    `}
-/>
-<p>
-    After that we just have to enable it and start the service using <code>systemctl</code>:
-</p>
-<CodeBlock
-    content={`
-        [root@dev ~]$ systemctl enable pocketbase.service
-        [root@dev ~]$ systemctl start pocketbase
-    `}
-/>
 
 <HeadingLink title="Using reverse proxy" tag="h5" />
 <p>

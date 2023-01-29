@@ -21,15 +21,19 @@
 <CodeBlock
     language="go"
     content={`
-        // change the specified record field value to 123
-        record.Set("someField", 123)
-
         // export the public safe record fields as map[string]any
         record.PublicExport()
 
         // returns a new model copy populated with the original/intial record data
         // (could be useful if you want to compare old and new field values)
         record.OriginalCopy()
+
+        // returns a copy of the current record model populated only
+        // with its latest data state and everything else reset to the defaults
+        record.CleanCopy()
+
+        // change the specified record field value to 123
+        record.Set("someField", 123)
 
         // retrieve a single record field value
         record.Get("someField")            // -> as any
@@ -40,6 +44,9 @@
         record.GetTime("someField")        // -> as time.Time
         record.GetDateTime("someField")    // -> as types.DateTime
         record.GetStringSlice("someField") // -> as []string
+
+        // unmarshal a single json field value into the provided result
+        record.UnmarshalJSONField("someJsonField", &result)
 
         // auth records only
         // ---

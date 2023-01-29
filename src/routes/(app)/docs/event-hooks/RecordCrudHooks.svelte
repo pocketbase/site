@@ -292,42 +292,4 @@
             `}
         />
     </Accordion>
-
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <div class="flex txt-bold txt-select">OnRecordAuthRequest</div>
-        </svelte:fragment>
-        <p>
-            Triggered on each successful auth record authentication request (sign-in, token refresh, etc.).
-            <br />
-            Could be used to additionally validate or modify the authenticated auth record data and token.
-        </p>
-        <CodeBlock
-            language="go"
-            content={`
-                package main
-
-                import (
-                    "log"
-
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                )
-
-                func main() {
-                    app := pocketbase.New()
-
-                    app.OnRecordAuthRequest().Add(func(e *core.RecordAuthEvent) error {
-                        log.Println(e.Record)
-                        log.Println(e.Token)
-                        return nil
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
-                    }
-                }
-            `}
-        />
-    </Accordion>
 </div>

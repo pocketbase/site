@@ -11,7 +11,7 @@
 
 <p>
     Depending on your configured mail settings (<em>Admin UI > Settings > Mail settings</em>) it will use the
-    <code>sendmail</code> command or a SMTP server.
+    <code>sendmail</code> command or a SMTP client.
 </p>
 
 <Toc />
