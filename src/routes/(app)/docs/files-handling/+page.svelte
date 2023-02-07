@@ -107,7 +107,7 @@
 <HeadingLink title="Deleting files" />
 <p>
     To delete uploaded file(s), you could either edit the Record from the admin UI, or use the API and set the
-    file field to a zero-value <br /> (<code>null</code>, <code>[]</code>, empty string, etc.).
+    file field to a zero-value <br /> (<code>null</code>, <code>[]</code>, empty string, etc.). If using <code>FormData</code> set the file field to an empty string.
 </p>
 <p>
     If you want to <strong>delete only a single file from a multiple file upload field</strong>, you could
