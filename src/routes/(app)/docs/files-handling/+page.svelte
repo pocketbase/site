@@ -107,7 +107,7 @@
 <HeadingLink title="Deleting files" />
 <p>
     To delete uploaded file(s), you could either edit the Record from the admin UI, or use the API and set the
-    file field to a zero-value <br /> (<code>null</code>, <code>[]</code>, empty string, etc.). If using <code>FormData</code> set the file field to an empty string.
+    file field to a zero-value <br /> (<code>null</code>, <code>[]</code>, empty string, etc.).
 </p>
 <p>
     If you want to <strong>delete only a single file from a multiple file upload field</strong>, you could
@@ -152,9 +152,10 @@
     `}
 />
 
-<p class="txt-hint">
-    The above examples use the JSON object data format, but you could also use FormData instance for
-    <em>multipart/form-data</em> requests.
+<p>
+    The above examples use the JSON object data format, but you could also use <code>FormData</code> instance
+    for <em>multipart/form-data</em> requests. If using
+    <code>FormData</code> set the file field to an empty string.
 </p>
 
 <HeadingLink title="File URL" />
