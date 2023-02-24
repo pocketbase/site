@@ -74,7 +74,7 @@
 
             const authData = await pb.admins.authWithPassword('test@example.com', '123456');
 
-            const newAuthData = await pb.admins.refresh();
+            const newAuthData = await pb.admins.authRefresh();
         `}
         dart={`
             import 'package:pocketbase/pocketbase.dart';
@@ -85,7 +85,7 @@
 
             final authData = await pb.admins.authWithPassword('test@example.com', '123456');
 
-            final newAuthData = await pb.admins.refresh();
+            final newAuthData = await pb.admins.authRefresh();
         `}
     />
 
