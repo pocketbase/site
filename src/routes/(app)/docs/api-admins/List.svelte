@@ -92,7 +92,7 @@
             });
 
             // you can also fetch all records at once via getFullList
-            const admins = await pb.admins.getFullList(200 /* batch size */, { sort: '-created' });
+            const admins = await pb.admins.getFullList({ sort: '-created' });
 
             // or fetch only the first admin that matches the specified filter
             const admin = await pb.admins.getFirstListItem('email~"test"');
@@ -114,7 +114,7 @@
             );
 
             // alternatively you can also fetch all admins at once via getFullList
-            final admins = await pb.admins.getFullList(batch: 200, sort: '-created');
+            final admins = await pb.admins.getFullList(sort: '-created');
 
             // or fetch only the first admin that matches the specified filter
             final admin = await pb.admins.getFirstListItem('email~"test"');

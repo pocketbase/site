@@ -164,7 +164,7 @@
             });
 
             // you can also fetch all records at once via getFullList
-            const collections = await pb.collections.getFullList(200 /* batch size */, { sort: '-created' });
+            const collections = await pb.collections.getFullList({ sort: '-created' });
 
             // or fetch only the first collection that matches the specified filter
             const collection = await pb.collections.getFirstListItem('type="auth"');
@@ -186,7 +186,7 @@
             );
 
             // you can also fetch all records at once via getFullList
-            final collections = await pb.collections.getFullList(batch: 200, sort: '-created');
+            final collections = await pb.collections.getFullList(sort: '-created');
 
             // or fetch only the first collection that matches the specified filter
             final collection = await pb.collections.getFirstListItem('type="auth"');

@@ -17,8 +17,8 @@
                     "updated": "2022-06-24 06:24:18.889Z",
                     "username": "test@example.com",
                     "email": "test@example.com",
-                    "verified": false,
-                    "emailVisibility": true,
+                    "verified": true,
+                    "emailVisibility": false,
                     "someCustomField": "example 123"
                   },
                   "meta": {
@@ -27,6 +27,9 @@
                     "username": "john.doe",
                     "email": "test@example.com",
                     "avatarUrl": "https://example.com/avatar.png"
+                    "rawUser": {...},
+                    "accessToken": "..."
+                    "refreshToken": "..."
                   }
                 }
             `,

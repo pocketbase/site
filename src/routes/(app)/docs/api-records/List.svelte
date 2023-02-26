@@ -91,7 +91,7 @@
             });
 
             // you can also fetch all records at once via getFullList
-            const records = await pb.collection('posts').getFullList(200 /* batch size */, {
+            const records = await pb.collection('posts').getFullList({
                 sort: '-created',
             });
 
@@ -115,10 +115,7 @@
             );
 
             // you can also fetch all records at once via getFullList
-            final records = await pb.collection('posts').getFullList(
-              batch: 200,
-              sort: '-created',
-            );
+            final records = await pb.collection('posts').getFullList(sort: '-created');
 
             // or fetch only the first record that matches the specified filter
             final record = await pb.collection('posts').getFirstListItem(

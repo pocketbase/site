@@ -337,12 +337,41 @@
                 OrderBy("published DESC").
                 Limit(10)
 
-            rows := []dbx.NullStringMap{}
-            if err := query.All(&rows); err != nil {
+            records := []*models.Record{}
+            if err := query.All(&records); err != nil {
                 return nil, err
             }
 
-            return models.NewRecordsFromNullStringMaps(collection, rows), nil
+            return records, nil
         }
+    `}
+/>
+
+<HeadingLink title="Transaction" />
+<CodeBlock
+    language="go"
+    content={`
+        titles := []string{"title1", "title2", "title3"}
+
+        collection, err := app.Dao().FindCollectionByNameOrId("articles")
+        if err != nil {
+            return err
+        }
+
+        app.Dao().RunInTransaction(func(txDao *daos.Dao) error {
+            // create new record for each title
+            for _, title := range titles {
+                record := models.NewRecord(collection)
+                record.Set("title", title)
+
+                if err := txDao.SaveRecord(record); err != nil {
+                    return err
+                }
+            }
+
+            // do something else...
+
+            return nil
+        })
     `}
 />

@@ -1,6 +1,7 @@
 <script>
     import HeadingLink from "@/components/HeadingLink.svelte";
     import Toc from "@/components/Toc.svelte";
+    import CodeBlock from "@/components/CodeBlock.svelte";
 </script>
 
 <Toc />
@@ -130,6 +131,28 @@
     <br />
     Only the <code>id</code> can be explicitly set (<em>15 characters string</em>).
 </p>
+
+<HeadingLink title="View collection" />
+<p>
+    <strong>View collection</strong> is a read-only collection type where the data is populate from a plain
+    SQL <code>SELECT</code> statement, allowing users to perform aggregations or any other custom queries in
+    general.
+    <br />
+    For example, the following query will create a read-only collection with 3 <em>posts</em>
+    fields - <em>id</em>, <em>name</em> and <em>totalComments</em>:
+</p>
+<CodeBlock
+    language="sql"
+    content={`
+        SELECT
+            posts.id,
+            posts.name,
+            count(comments.id) as totalComments
+        FROM posts
+        LEFT JOIN comments on comments.postId = posts.id
+        GROUP BY posts.id
+    `}
+/>
 
 <HeadingLink title="Auth collection" />
 <p>

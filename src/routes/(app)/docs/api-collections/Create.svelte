@@ -220,7 +220,10 @@
                 <td>
                     <span class="label">String</span>
                 </td>
-                <td>The type of the collection - <code>base</code> (<em>default</em>), <code>auth</code>.</td>
+                <td>
+                    The type of the collection - <code>base</code> (<em>default</em>), <code>auth</code> or
+                    <code>view</code>.
+                </td>
             </tr>
             <tr>
                 <td>
@@ -235,6 +238,11 @@
                 <td>
                     <div class="content">
                         <p>List with the collection fields.</p>
+                        <p>This field is optional for <code>auth</code> collections.</p>
+                        <p>
+                            This field is autopopulated for <code>view</code> collections based on the
+                            <code>options.query</code>.
+                        </p>
                         <p>
                             For more info about the supported fields and their options, you could check the
                             <strong>pocketbase/models/schema</strong>
@@ -361,14 +369,33 @@
                 </td>
             </tr>
 
+            <!-- view options -->
+            <tr>
+                <td colspan="3" class="bg-info-alt">
+                    <strong>options (<em>view</em>)</strong>
+                </td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">├─</span>
+                        <span class="label label-success">Required</span>
+                        <em>query</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">null|String</span>
+                </td>
+                <td>
+                    The SQL <code>SELECT</code> statement that will be used to create the underlying view of the
+                    collection.
+                </td>
+            </tr>
+
             <!-- auth options -->
             <tr>
                 <td colspan="3" class="bg-info-alt">
-                    <strong>options</strong>
-                    <br />
-                    <small class="txt-hint">
-                        Collection options (currently only for <code>auth</code> collection types).
-                    </small>
+                    <strong>options (<em>auth</em>)</strong>
                 </td>
             </tr>
             <tr>
