@@ -11,7 +11,7 @@
 
 <HeadingLink title="Minimal setup" tag="h5" />
 <p>
-    One of the best PocketBase feature is that it's completely portable. This mean that it doesn't require any
+    One of the best PocketBase features is that it's completely portable. This mean that it doesn't require any
     external dependency and <strong>
         could be deployed by just uploading the executable on your server
     </strong>.
