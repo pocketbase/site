@@ -16,99 +16,89 @@
         <br />
         <ul>
             <li>
-                <code class="txt-success">OPERAND</code> - could be any of the above field literal, string (single
-                or double quoted), number, null, true, false
+                <code class="filter-op">{"="}</code>
+                <span class="txt">Equal</span>
             </li>
             <li>
-                <code class="txt-danger">OPERATOR</code> - is one of:
-                <br />
-                <ul>
-                    <li>
-                        <code class="filter-op">{"="}</code>
-                        <span class="txt">Equal</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"!="}</code>
-                        <span class="txt">NOT equal</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{">"}</code>
-                        <span class="txt">Greater than</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{">="}</code>
-                        <span class="txt">Greater than or equal</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"<"}</code>
-                        <span class="txt">Less than</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"<="}</code>
-                        <span class="txt">Less than or equal</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"~"}</code>
-                        <span class="txt">
-                            Like/Contains (if not specified auto wraps the right string OPERAND in a "%" for
-                            wildcard match)
-                        </span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"!~"}</code>
-                        <span class="txt">
-                            NOT Like/Contains (if not specified auto wraps the right string OPERAND in a "%"
-                            for wildcard match)
-                        </span>
-                    </li>
+                <code class="filter-op">{"!="}</code>
+                <span class="txt">NOT equal</span>
+            </li>
+            <li>
+                <code class="filter-op">{">"}</code>
+                <span class="txt">Greater than</span>
+            </li>
+            <li>
+                <code class="filter-op">{">="}</code>
+                <span class="txt">Greater than or equal</span>
+            </li>
+            <li>
+                <code class="filter-op">{"<"}</code>
+                <span class="txt">Less than</span>
+            </li>
+            <li>
+                <code class="filter-op">{"<="}</code>
+                <span class="txt">Less than or equal</span>
+            </li>
+            <li>
+                <code class="filter-op">{"~"}</code>
+                <span class="txt">
+                    Like/Contains (if not specified auto wraps the right string OPERAND in a "%" for wildcard
+                    match)
+                </span>
+            </li>
+            <li>
+                <code class="filter-op">{"!~"}</code>
+                <span class="txt">
+                    NOT Like/Contains (if not specified auto wraps the right string OPERAND in a "%" for
+                    wildcard match)
+                </span>
+            </li>
 
-                    <li>
-                        <code class="filter-op">{"?="}</code>
-                        <em class="txt-hint">Any/At least one of</em>
-                        <span class="txt">Equal</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"?!="}</code>
-                        <em class="txt-hint">Any/At least one of</em>
-                        <span class="txt">NOT equal</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"?>"}</code>
-                        <em class="txt-hint">Any/At least one of</em>
-                        <span class="txt">Greater than</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"?>="}</code>
-                        <em class="txt-hint">Any/At least one of</em>
-                        <span class="txt">Greater than or equal</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"?<"}</code>
-                        <em class="txt-hint">Any/At least one of</em>
-                        <span class="txt">Less than</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"?<="}</code>
-                        <em class="txt-hint">Any/At least one of</em>
-                        <span class="txt">Less than or equal</span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"?~"}</code>
-                        <em class="txt-hint">Any/At least one of</em>
-                        <span class="txt">
-                            Like/Contains (if not specified auto wraps the right string OPERAND in a "%" for
-                            wildcard match)
-                        </span>
-                    </li>
-                    <li>
-                        <code class="filter-op">{"?!~"}</code>
-                        <em class="txt-hint">Any/At least one of</em>
-                        <span class="txt">
-                            NOT Like/Contains (if not specified auto wraps the right string OPERAND in a "%"
-                            for wildcard match)
-                        </span>
-                    </li>
-                </ul>
+            <li>
+                <code class="filter-op">{"?="}</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Equal</span>
+            </li>
+            <li>
+                <code class="filter-op">{"?!="}</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">NOT equal</span>
+            </li>
+            <li>
+                <code class="filter-op">{"?>"}</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Greater than</span>
+            </li>
+            <li>
+                <code class="filter-op">{"?>="}</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Greater than or equal</span>
+            </li>
+            <li>
+                <code class="filter-op">{"?<"}</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Less than</span>
+            </li>
+            <li>
+                <code class="filter-op">{"?<="}</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Less than or equal</span>
+            </li>
+            <li>
+                <code class="filter-op">{"?~"}</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">
+                    Like/Contains (if not specified auto wraps the right string OPERAND in a "%" for wildcard
+                    match)
+                </span>
+            </li>
+            <li>
+                <code class="filter-op">{"?!~"}</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">
+                    NOT Like/Contains (if not specified auto wraps the right string OPERAND in a "%" for
+                    wildcard match)
+                </span>
             </li>
         </ul>
     </li>
