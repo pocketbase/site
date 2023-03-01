@@ -200,7 +200,7 @@
             <tr>
                 <td>
                     <div class="inline-flex">
-                        <span class="label label-success">Required</span>
+                        <span class="label label-info">Req|Opt</span>
                         <span class="txt">schema</span>
                     </div>
                 </td>
@@ -210,9 +210,11 @@
                 <td>
                     <div class="content">
                         <p>List with the collection fields.</p>
-                        <p>This field is optional for <code>auth</code> collections.</p>
+                        <p>This field is <strong>required</strong> for <code>base</code> collections.</p>
+                        <p>This field is <strong>optional</strong> for <code>auth</code> collections.</p>
                         <p>
-                            This field is autopopulated for <code>view</code> collections based on the
+                            This field is <strong>optional</strong> and autopopulated for <code>view</code>
+                            collections based on the
                             <code>options.query</code>.
                         </p>
                         <p>
@@ -288,14 +290,20 @@
                     <span class="label">{"null|String"}</span>
                 </td>
                 <td>
-                    API <em>Create</em> action rule.
-                    <br />
-                    <em class="txt-hint">
-                        Check
-                        <a href="/docs/manage-collections/#rules-filters-syntax">Rules/Filters syntax guide</a
-                        >
-                        for more details.
-                    </em>
+                    <p>
+                        API <em>Create</em> action rule.
+                        <br />
+                        <em class="txt-hint">
+                            Check
+                            <a href="/docs/manage-collections/#rules-filters-syntax"
+                                >Rules/Filters syntax guide</a
+                            >
+                            for more details.
+                        </em>
+                    </p>
+                    <p>
+                        This rule must be <code>null</code> for <code>view</code> collections.
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -309,14 +317,20 @@
                     <span class="label">{"null|String"}</span>
                 </td>
                 <td>
-                    API <em>Update</em> action rule.
-                    <br />
-                    <em class="txt-hint">
-                        Check
-                        <a href="/docs/manage-collections/#rules-filters-syntax">Rules/Filters syntax guide</a
-                        >
-                        for more details.
-                    </em>
+                    <p>
+                        API <em>Update</em> action rule.
+                        <br />
+                        <em class="txt-hint">
+                            Check
+                            <a href="/docs/manage-collections/#rules-filters-syntax"
+                                >Rules/Filters syntax guide</a
+                            >
+                            for more details.
+                        </em>
+                    </p>
+                    <p>
+                        This rule must be <code>null</code> for <code>view</code> collections.
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -330,14 +344,20 @@
                     <span class="label">{"null|String"}</span>
                 </td>
                 <td>
-                    API <em>Delete</em> action rule.
-                    <br />
-                    <em class="txt-hint">
-                        Check
-                        <a href="/docs/manage-collections/#rules-filters-syntax">Rules/Filters syntax guide</a
-                        >
-                        for more details.
-                    </em>
+                    <p>
+                        API <em>Delete</em> action rule.
+                        <br />
+                        <em class="txt-hint">
+                            Check
+                            <a href="/docs/manage-collections/#rules-filters-syntax"
+                                >Rules/Filters syntax guide</a
+                            >
+                            for more details.
+                        </em>
+                    </p>
+                    <p>
+                        This rule must be <code>null</code> for <code>view</code> collections.
+                    </p>
                 </td>
             </tr>
 
