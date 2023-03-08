@@ -116,7 +116,7 @@
 <p>Here is what the collection panel looks like:</p>
 <img src="/images/screenshots/collection-panel.png" alt="Collection panel screenshot" class="screenshot" />
 <p>
-    Currently there are 2 collection types: <strong>Base</strong> and
+    Currently there are 3 collection types: <strong>Base</strong>, <strong>View</strong> and
     <strong>Auth</strong>.
 </p>
 
