@@ -35,7 +35,8 @@
                     "region": "",
                     "endpoint": "",
                     "accessKey": "",
-                    "secret": ""
+                    "secret": "",
+                    "forcePathStyle": ""
                   },
                   "adminAuthToken": {
                     "secret": "******",
@@ -515,7 +516,7 @@
             <tr>
                 <td class="min-width">
                     <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
+                        <span class="txt">├─</span>
                         <span class="label label-success">Required</span>
                         <em>secret</em>
                     </div>
@@ -524,6 +525,27 @@
                     <span class="label">String</span>
                 </td>
                 <td>S3 storage secret (required if enabled).</td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">└─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>forcePathStyle</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">Boolean</span>
+                </td>
+                <td>
+                    S3 storage forcePathStyle.
+                    <br />
+                    <small class="txt-hint"
+                        >Forces the request to use path-style addressing, eg.
+                        "https://s3.amazonaws.com/BUCKET/KEY" instead of the default
+                        "https://BUCKET.s3.amazonaws.com/KEY".
+                    </small>
+                </td>
             </tr>
 
             <!-- adminAuthToken -->

@@ -35,7 +35,8 @@
                     "region": "",
                     "endpoint": "",
                     "accessKey": "",
-                    "secret": ""
+                    "secret": "",
+                    "forcePathStyle": false
                   },
                   "adminAuthToken": {
                     "secret": "******",
