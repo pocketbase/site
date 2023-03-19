@@ -538,8 +538,9 @@
                     <span class="label">Boolean</span>
                 </td>
                 <td>
-                    Forces the request to use path-style addressing, eg. "https://s3.amazonaws.com/BUCKET/KEY"
-                    instead of the default "https://BUCKET.s3.amazonaws.com/KEY".
+                    Forces the S3 request to use path-style addressing, eg.
+                    "https://s3.amazonaws.com/BUCKET/KEY" instead of the default
+                    "https://BUCKET.s3.amazonaws.com/KEY".
                 </td>
             </tr>
 
