@@ -134,7 +134,7 @@
 
 <HeadingLink title="View collection" />
 <p>
-    <strong>View collection</strong> is a read-only collection type where the data is populate from a plain
+    <strong>View collection</strong> is a read-only collection type where the data is populated from a plain
     SQL <code>SELECT</code> statement, allowing users to perform aggregations or any other custom queries in
     general.
     <br />
