@@ -29,7 +29,7 @@
                 <i class="ri-qq-fill" />
                 <span class="txt">Download {import.meta.env.PB_VERSION} for Linux</span>
             </a>
-            <small>(~{import.meta.env.PB_LINUX_SIZE}MB zip)</small>
+            <small class="txt-hint">(~{import.meta.env.PB_LINUX_SIZE}MB zip)</small>
         </div>
     </li>
     <li>
@@ -43,7 +43,7 @@
                 <i class="ri-windows-fill" />
                 <span class="txt">Download {import.meta.env.PB_VERSION} for Windows</span>
             </a>
-            <small>(~{import.meta.env.PB_WINDOWS_SIZE}MB zip)</small>
+            <small class="txt-hint">(~{import.meta.env.PB_WINDOWS_SIZE}MB zip)</small>
         </div>
     </li>
     <li>
@@ -57,7 +57,7 @@
                 <i class="ri-apple-fill" />
                 <span class="txt">Download {import.meta.env.PB_VERSION} for macOS x64</span>
             </a>
-            <small>(~{import.meta.env.PB_MAC_AMD_SIZE}MB zip)</small>
+            <small class="txt-hint">(~{import.meta.env.PB_MAC_AMD_SIZE}MB zip)</small>
         </div>
     </li>
     <li>
@@ -71,7 +71,7 @@
                 <i class="ri-apple-fill" />
                 <span class="txt">Download {import.meta.env.PB_VERSION} for macOS ARM64</span>
             </a>
-            <small>(~{import.meta.env.PB_MAC_ARM_SIZE}MB zip)</small>
+            <small class="txt-hint">(~{import.meta.env.PB_MAC_ARM_SIZE}MB zip)</small>
         </div>
     </li>
 </ul>
@@ -81,13 +81,6 @@
         GitHub Releases page
     </a>
     for other platforms and more details.
-    <br />
-    If you are using PocketBase v0.7.x, please check the
-    <a
-        href="{import.meta.env.PB_REPO_URL}/blob/master/CHANGELOG.md#migrate-from-v07x"
-        target="_blank"
-        rel="noreferrer noopener">v0.7.x Migration guide</a
-    >.
 </p>
 
 <hr />

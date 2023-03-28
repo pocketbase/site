@@ -43,14 +43,14 @@
         <strong>"locked"</strong> - aka. <code>null</code>, which means that the action could be performed
         only by an authorized admin
         <!--  -->
-        (<em>this is the default</em>)
+        (<strong>this is the default</strong>)
     </li>
     <li>
         <strong>Empty string</strong> - anyone will be able to perform the action (admins, authorized users and
         guests)
     </li>
     <li>
-        <strong>Non-empty string</strong> - only users (authorized or not) that satisfies the rule filter expression
+        <strong>Non-empty string</strong> - only users (authorized or not) that satisfy the rule filter expression
         will be able to perform this action
     </li>
 </ul>
@@ -105,6 +105,15 @@
             <li>
                 <code>@request.method</code> - the HTTP request method (eg.
                 <code>@request.method = 'GET'</code>)
+            </li>
+            <li>
+                <code>@request.headers.*</code> - the request headers (eg.
+                <code>@request.headers.x_token = 'test'</code>)
+                <br />
+                <small class="txt-hint">
+                    Note: All header keys are normalized to lowercase and "-" is replaced with "_" (for
+                    example "X-Token" is "x_token").
+                </small>
             </li>
             <li>
                 <code>@request.query.*</code> - the request query parameters (eg.

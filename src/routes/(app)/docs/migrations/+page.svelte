@@ -203,3 +203,20 @@
         </p>
     </div>
 </div>
+
+<HeadingLink title="migrate history-sync" />
+<p>
+    During local development often you might end up making various collection changes to test different
+    approaches.
+    <br />
+    This could lead in a migration history with unnecessary intermediate steps that may not be wanted in the final
+    migration history.
+    <br />
+    To avoid the clutter and to prevent applying the intermediate steps in production you can remove/squash the
+    unnecessary migration files manually and then update the local migrations history by running:
+</p>
+<CodeBlock
+    content={`
+        [root@dev project]$ go run main.go migrate history-sync
+    `}
+/>

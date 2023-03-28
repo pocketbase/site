@@ -53,7 +53,8 @@
                   "createRule": "id = @request.user.id",
                   "updateRule": "id = @request.user.id",
                   "deleteRule": null,
-                  "options": {}
+                  "options": {},
+                  "indexes": ["create index title_idx on posts (title)"]
                 }
             `,
         },

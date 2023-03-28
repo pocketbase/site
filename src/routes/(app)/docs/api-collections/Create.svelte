@@ -53,7 +53,8 @@
                   "viewRule": "id = @request.user.id",
                   "createRule": "id = @request.user.id",
                   "updateRule": "id = @request.user.id",
-                  "deleteRule": null
+                  "deleteRule": null,
+                  "indexes": ["create index name_idx on posts (name)"]
                 }
             `,
         },
@@ -451,6 +452,23 @@
                     </p>
                     <p>
                         This rule must be <code>null</code> for <code>view</code> collections.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="inline-flex flex-nowrap">
+                        <span class="label label-warning">Optional</span>
+                        <span class="txt">indexes</span>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">{"Array<String>"}</span>
+                </td>
+                <td>
+                    <p>The collection indexes and unique constriants.</p>
+                    <p>
+                        Note that <code>view</code> collections don't support indexes.
                     </p>
                 </td>
             </tr>

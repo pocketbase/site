@@ -69,7 +69,8 @@
                         "exceptEmailDomains": [],
                         "onlyEmailDomains": [],
                         "minPasswordLength": 8
-                      }
+                      },
+                      "indexes": ["create index title_idx on users (title)"]
                     },
                     {
                       "id": "a98f514eb05f454",
@@ -97,7 +98,8 @@
                       "createRule": null,
                       "updateRule": null,
                       "deleteRule": null,
-                      "options": {}
+                      "options": {},
+                      "indexes": []
                     }
                   ]
                 }
