@@ -245,8 +245,9 @@
                         />
                         <p>
                             <strong>Supported collection sort fields:</strong> <br />
-                            <code>id</code>, <code>created</code>, <code>updated</code>,
-                            <code>name</code>, <code>type</code>, <code>system</code>
+                            <code>@random</code>, <code>id</code>, <code>created</code>,
+                            <code>updated</code>, <code>name</code>, <code>type</code>,
+                            <code>system</code>
                         </p>
                     </div>
                 </td>

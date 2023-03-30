@@ -186,10 +186,10 @@
                         />
                         <p>
                             <strong>Supported request log sort fields:</strong> <br />
-                            <code>rowid</code>, <code>id</code>, <code>created</code>, <code>updated</code>,
-                            <code>url</code>, <code>method</code>, <code>status</code>, <code>auth</code>,
-                            <code>remoteIp</code>, <code>userIp</code>, <code>referer</code>,
-                            <code>userAgent</code>
+                            <code>@random</code>, <code>rowid</code>, <code>id</code>, <code>created</code>,
+                            <code>updated</code>, <code>url</code>, <code>method</code>, <code>status</code>,
+                            <code>auth</code>, <code>remoteIp</code>, <code>userIp</code>,
+                            <code>referer</code>, <code>userAgent</code>
                         </p>
                     </div>
                 </td>

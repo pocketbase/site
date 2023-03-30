@@ -145,7 +145,63 @@
 
 <FilterSyntax />
 
-<HeadingLink title="Examples" tag="h5" />
+<HeadingLink title="Special identifiers and modifiers" />
+
+<HeadingLink title="@now identifier" tag="h5" />
+<p>
+    <code>@now</code> represents the current datetime. Often used for defining date constraints. For example:
+</p>
+<CodeBlock
+    content={`
+        @request.data.publicDate >= @now
+    `}
+/>
+
+<HeadingLink title=":isset modifier" tag="h5" />
+<p>
+    The <code>:isset</code> field modifier is available only for the <code>@request.*</code> fields and can be
+    used to check whether the client submitted a specific data with the request. Here is for example a rule that
+    disallows changing a "role" field:
+</p>
+<CodeBlock
+    content={`
+        @request.data.role:isset = false
+    `}
+/>
+
+<HeadingLink title=":length modifier" tag="h5" />
+<p>
+    The <code>:length</code> field modifier could be used to check the number of items in an array field
+    (multiple <code>file</code>, <code>select</code>, <code>relation</code>).
+    <br />
+    Could be used with both the collection schema fields and the <code>@request.data.*</code> fields. For example:
+</p>
+<CodeBlock
+    content={`
+        // check example submitted data: {"someSelectField": ["val1", "val2"]}
+        @request.data.someSelectField:length > 1
+
+        // check existing record field length
+        someRelationField:length = 2
+    `}
+/>
+
+<HeadingLink title=":each modifier" tag="h5" />
+<p>
+    The <code>:each</code> field modifier works only with multiple <code>select</code> fields. It could be
+    used to apply a condition on each <code>select</code> item. For example:
+</p>
+<CodeBlock
+    content={`
+        // check if all submitted select options contain the "create" text
+        @request.data.someSelectField:each ~ "create"
+
+        // check if all existing someSelectField has "pb_" prefix
+        someSelectField:each ~ 'pb_%'
+    `}
+/>
+
+<HeadingLink title="Examples" />
 <ul>
     <li class="m-b-sm">
         Allow only registered users:

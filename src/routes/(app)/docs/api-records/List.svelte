@@ -194,8 +194,8 @@
                         />
                         <p>
                             <strong>Supported record sort fields:</strong> <br />
-                            <code>id</code>, <code>created</code>, <code>updated</code>,
-                            <strong>+ any field from the collection schema</strong>.
+                            <code>@random</code>, <code>id</code>, <code>created</code>, <code>updated</code>,
+                            <strong>and any other field from the collection schema</strong>.
                         </p>
                     </div>
                 </td>

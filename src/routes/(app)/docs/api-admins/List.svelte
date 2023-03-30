@@ -171,8 +171,8 @@
                         />
                         <p>
                             <strong>Supported admin sort fields:</strong> <br />
-                            <code>id</code>, <code>created</code>, <code>updated</code>, <code>email</code>,
-                            <code>name</code>
+                            <code>@random</code>, <code>id</code>, <code>created</code>,
+                            <code>updated</code>, <code>email</code>, <code>name</code>
                         </p>
                     </div>
                 </td>
@@ -191,7 +191,7 @@
                             `}
                         />
                         <p>
-                            <strong>Supported admin sort fields:</strong> <br />
+                            <strong>Supported admin filter fields:</strong> <br />
                             <code>id</code>, <code>created</code>, <code>updated</code>, <code>email</code>,
                             <code>name</code>
                         </p>
