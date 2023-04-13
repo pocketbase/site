@@ -71,7 +71,7 @@ export const redirectExample = `
         }
 
         // authenticate
-        pb.collection('users').authWithOAuth2(
+        pb.collection('users').authWithOAuth2Code(
             provider.name,
             params.get('code'),
             provider.codeVerifier,

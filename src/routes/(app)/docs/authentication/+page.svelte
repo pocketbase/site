@@ -1,9 +1,8 @@
 <script>
     import HeadingLink from "@/components/HeadingLink.svelte";
-    import CodeBlock from "@/components/CodeBlock.svelte";
     import SdkTabs from "@/components/SdkTabs.svelte";
     import Toc from "@/components/Toc.svelte";
-    import { indexExample, redirectExample } from "./oauth2Examples.js";
+    import OAuth2 from "./OAuth2.svelte";
 </script>
 
 <p>
@@ -112,41 +111,5 @@
     section below for an example OAuth2 web integration.
 </p>
 
-<HeadingLink title="Web OAuth2 integration" />
-<div class="alert alert-info m-t-10 m-b-10">
-    <div class="icon">
-        <i class="ri-information-line" />
-    </div>
-    <div class="content">
-        Before starting, you'll need to create an OAuth2 app in the provider's dashboard in order to get a <strong
-            >Client Id</strong
-        >
-        and <strong>Client Secret</strong>, and register the redirect URL (eg.
-        https://127.0.0.1:8090/redirect.html).
-        <br />
-        Once you have obtained the <strong>Client Id</strong> and <strong>Client Secret</strong>, you can
-        enable and configure the provider from your PocketBase admin settings page.
-    </div>
-</div>
-<p>
-    In general, when authenticating with OAuth2 you'll need 2 client-side endpoints - one to show the "Login
-    with ..." links and another one to handle the provider's redirect in order to exchange the auth code for
-    token. Here is a simple web example:
-</p>
-<ol>
-    <li class="m-b-xs">
-        <p>
-            <strong>Links page</strong>
-            (eg. https://127.0.0.1:8090 serving <code>pb_public/index.html</code>):
-        </p>
-        <CodeBlock language="html" content={indexExample} />
-    </li>
-    <li class="m-b-xs">
-        <p>
-            <strong>Redirect handler page</strong>
-            (eg. https://127.0.0.1:8090/redirect.html serving
-            <code>pb_public/redirect.html</code>):
-        </p>
-        <CodeBlock language="html" content={redirectExample} />
-    </li>
-</ol>
+<HeadingLink title="OAuth2 integration" />
+<OAuth2 />

@@ -207,7 +207,7 @@
 
         // returns something like:
         // http://127.0.0.1:8090/api/files/example/kfzjt5oy8r34hvn/test_52iWbGinWd.png?thumb=100x250
-        const url = pb.getFileUrl(record, firstFilename, {'thumb': '100x250'});
+        const url = pb.files.getUrl(record, firstFilename, {'thumb': '100x250'});
     `}
     dart={`
         import 'package:pocketbase/pocketbase.dart';
@@ -228,7 +228,69 @@
 
         // returns something like:
         // http://127.0.0.1:8090/api/files/example/kfzjt5oy8r34hvn/test_52iWbGinWd.png?thumb=100x250
-        final url = pb.getFileUrl(record, firstFilename, query: { 'thumb': '100x250' });
+        final url = pb.files.getUrl(record, firstFilename, thumb: '100x250');
+    `}
+/>
+
+<HeadingLink title="Private files" />
+<p>By default all files are public accessible if you know their full url.</p>
+<p>
+    For most applications this is fine since all files have a random part, but in some cases you may want an
+    extra security to prevent unauthorized access to sensitive files like ID card or Passport copies,
+    contracts, etc.
+</p>
+<p>
+    To do this you need to mark the <code>file</code> field as <em>Private</em> and then request the file with
+    a special <strong>short-lived file token</strong>.
+</p>
+<div class="alert alert-info m-t-sm m-b-sm">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            Only requests that satisfy the <em>View API rule</em> of the record collection will be able to access
+            or download the private file(s).
+        </p>
+    </div>
+</div>
+<img src="/images/screenshots/file-options.png" alt="File options panel" class="screenshot" />
+<div class="clearfix m-b-sm" />
+<!-- prettier-ignore -->
+<SdkTabs
+    js={`
+        import PocketBase from 'pocketbase';
+
+        const pb = new PocketBase('http://127.0.0.1:8090');
+
+        ...
+
+        // authenticate
+        await pb.collection('users').authWithPassword('test@example.com', '1234567890');
+
+        // generate a file token
+        const fileToken = await pb.files.getToken();
+
+        // retrieve an example private file url (will be valid ~5min)
+        const record = await pb.collection('example').getOne('RECORD_ID');
+        const url = pb.files.getUrl(record, record.myPrivateFile, {'token': fileToken});
+    `}
+    dart={`
+        import 'package:pocketbase/pocketbase.dart';
+
+        final pb = PocketBase('http://127.0.0.1:8090');
+
+        ...
+
+        // authenticate
+        await pb.collection('users').authWithPassword('test@example.com', '1234567890');
+
+        // generate a file token
+        final fileToken = await pb.files.getToken();
+
+        // retrieve an example private file url (will be valid ~5min)
+        final record = await pb.collection('example').getOne('RECORD_ID');
+        final url = pb.files.getUrl(record, record.getStringValue('myPrivateFile'), token: fileToken);
     `}
 />
 
