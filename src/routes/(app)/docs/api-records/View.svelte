@@ -81,7 +81,7 @@
             ...
 
             final record1 = await pb.collection('posts').getOne('RECORD_ID',
-              'expand': 'relField1,relField2.subRelField',
+              expand: 'relField1,relField2.subRelField',
             );
         `}
     />
