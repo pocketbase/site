@@ -232,7 +232,7 @@
     `}
 />
 
-<HeadingLink title="Private files" />
+<HeadingLink title="Protected files" />
 <p>By default all files are public accessible if you know their full url.</p>
 <p>
     For most applications this is fine since all files have a random part, but in some cases you may want an
@@ -240,8 +240,8 @@
     contracts, etc.
 </p>
 <p>
-    To do this you need to mark the <code>file</code> field as <em>Private</em> and then request the file with
-    a special <strong>short-lived file token</strong>.
+    To do this you can mark the <code>file</code> field as <em>Protected</em> and then request the file with a
+    special <strong>short-lived file token</strong>.
 </p>
 <div class="alert alert-info m-t-sm m-b-sm">
     <div class="icon">
@@ -249,8 +249,8 @@
     </div>
     <div class="content">
         <p>
-            Only requests that satisfy the <em>View API rule</em> of the record collection will be able to access
-            or download the private file(s).
+            Only requests that satisfy the <strong>View API rule</strong> of the record collection will be able
+            to access or download the private file(s).
         </p>
     </div>
 </div>
