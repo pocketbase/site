@@ -250,7 +250,7 @@
     <div class="content">
         <p>
             Only requests that satisfy the <strong>View API rule</strong> of the record collection will be able
-            to access or download the private file(s).
+            to access or download the protected file(s).
         </p>
     </div>
 </div>
@@ -271,7 +271,7 @@
         // generate a file token
         const fileToken = await pb.files.getToken();
 
-        // retrieve an example private file url (will be valid ~5min)
+        // retrieve an example protected file url (will be valid ~5min)
         const record = await pb.collection('example').getOne('RECORD_ID');
         const url = pb.files.getUrl(record, record.myPrivateFile, {'token': fileToken});
     `}
@@ -288,7 +288,7 @@
         // generate a file token
         final fileToken = await pb.files.getToken();
 
-        // retrieve an example private file url (will be valid ~5min)
+        // retrieve an example protected file url (will be valid ~5min)
         final record = await pb.collection('example').getOne('RECORD_ID');
         final url = pb.files.getUrl(record, record.getStringValue('myPrivateFile'), token: fileToken);
     `}

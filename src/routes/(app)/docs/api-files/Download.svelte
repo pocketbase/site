@@ -117,10 +117,10 @@
                 </td>
                 <td valign="top">
                     Optional <strong>file token</strong> for granting access to
-                    <strong>private file(s)</strong>.
+                    <strong>protected file(s)</strong>.
                     <br />
                     For an example, you can check
-                    <a href="/docs/files-handling/#private-files">"Files upload and handling"</a>.
+                    <a href="/docs/files-handling/#protected-files">"Files upload and handling"</a>.
                 </td>
             </tr>
         </tbody>

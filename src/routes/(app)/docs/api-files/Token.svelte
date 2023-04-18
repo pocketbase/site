@@ -29,13 +29,13 @@
 
 <Accordion single>
     <svelte:fragment slot="header">
-        <strong>Generate private file token</strong>
+        <strong>Generate protected file token</strong>
     </svelte:fragment>
 
     <div class="content m-b-base">
         <p>
             Generates a <strong>short-lived file token</strong> for accessing
-            <strong>private protected file(s)</strong>.
+            <strong>protected file(s)</strong>.
         </p>
         <p>
             The client must be admin or auth record authenticated (aka. have regular authorization token sent
