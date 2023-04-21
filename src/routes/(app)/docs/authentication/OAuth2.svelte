@@ -95,6 +95,7 @@
                     // window will be automatically closed and the OAuth2 data sent back
                     // to the user through the previously established realtime connection.
                     final authData = await pb.collection('users').authWithOAuth2('google', (url) async {
+                      // or use something like flutter_custom_tabs to make the transitions between native and web content more seamless
                       await launchUrl(url);
                     });
 
