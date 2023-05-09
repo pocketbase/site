@@ -150,7 +150,7 @@
 
                 // sign-in/sign-up with OAuth2 (Google, Facebook, etc.)
                 await pb.collection('users').authWithOAuth2('google', (url) async {
-                    await launchUrl(url);
+                    // eg. await launchUrl(url);
                 });
 
                 // send verification email
