@@ -115,13 +115,12 @@
                 // sign-in with username/email and password
                 await pb.collection('users').authWithPassword('test@example.com', '123456');
 
-                // sign-in/sign-up with OAuth2 (Google, Facebook, etc.)
-                await pb.collection('users').authWithOAuth2(
-                    'google',
-                    'YOUR_CODE',
-                    'YOUR_CODE_VERIFIER',
-                    'YOUR_REDIRECT_URL'
-                );
+                // This method initializes a one-off realtime subscription and will
+                // open a popup window with the OAuth2 vendor page to authenticate.
+                // Once the external OAuth2 sign-in/sign-up flow is completed, the popup
+                // window will be automatically closed and the OAuth2 data sent back
+                // to the user through the previously established realtime connection.
+                await pb.collection('users').authWithOAuth2({ provider: 'google' });
 
                 // send verification email
                 await pb.collection('users').requestVerification('test@example.com');
@@ -148,13 +147,17 @@
                 // sign-in with username/email and password
                 await pb.collection('users').authWithPassword('test@example.com', '123456');
 
-                // sign-in/sign-up with OAuth2 (Google, Facebook, etc.)
-                await pb.collection('users').authWithOAuth2(
-                    'google',
-                    'YOUR_CODE',
-                    'YOUR_CODE_VERIFIER',
-                    'YOUR_REDIRECT_URL'
-                );
+                // This method initializes a one-off realtime subscription and will
+                // call the provided urlCallback with the OAuth2 vendor url to authenticate.
+                //
+                // Once the external OAuth2 sign-in/sign-up flow is completed, the browser
+                // window will be automatically closed and the OAuth2 data sent back
+                // to the user through the previously established realtime connection.
+                await pb.collection('users').authWithOAuth2('google', (url) async {
+                    // or use something like flutter_custom_tabs to make the transitions between native and web content more seamless
+                    await launchUrl(url);
+                });
+
 
                 // send verification email
                 await pb.collection('users').requestVerification('test@example.com');
