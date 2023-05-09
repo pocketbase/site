@@ -116,18 +116,18 @@
                 await pb.collection('users').authWithPassword('test@example.com', '123456');
 
                 // sign-in/sign-up with OAuth2 (Google, Facebook, etc.)
-                await pb.collection('users').authWithOAuth2(
-                    'google',
-                    'YOUR_CODE',
-                    'YOUR_CODE_VERIFIER',
-                    'YOUR_REDIRECT_URL'
-                );
+                await pb.collection('users').authWithOAuth2({
+                    provider: 'google',
+                });
 
                 // send verification email
                 await pb.collection('users').requestVerification('test@example.com');
 
                 // send password reset email
                 await pb.collection('users').requestPasswordReset('test@example.com');
+
+                // send request email change email
+                await pb.collection('users').requestEmailChange('new@example.com');
             `,
             dart: `
                 // Dart SDK
@@ -149,18 +149,18 @@
                 await pb.collection('users').authWithPassword('test@example.com', '123456');
 
                 // sign-in/sign-up with OAuth2 (Google, Facebook, etc.)
-                await pb.collection('users').authWithOAuth2(
-                    'google',
-                    'YOUR_CODE',
-                    'YOUR_CODE_VERIFIER',
-                    'YOUR_REDIRECT_URL'
-                );
+                await pb.collection('users').authWithOAuth2('google', (url) async {
+                    await launchUrl(url);
+                });
 
                 // send verification email
                 await pb.collection('users').requestVerification('test@example.com');
 
                 // send password reset email
                 await pb.collection('users').requestPasswordReset('test@example.com');
+
+                // send request email change email
+                await pb.collection('users').requestEmailChange('new@example.com');
             `,
         },
         storage: {
