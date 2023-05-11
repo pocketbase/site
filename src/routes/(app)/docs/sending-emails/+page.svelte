@@ -86,7 +86,7 @@
                         Address: app.Settings().Meta.SenderAddress,
                         Name:    app.Settings().Meta.SenderName,
                     },
-                    To:      mail.Address{Address: e.Record.Email()},
+                    To:      []mail.Address{{Address: e.Record.Email()}},
                     Subject: "YOUR_SUBJECT...",
                     HTML:    "YOUR_HTML_BODY...",
                     // bcc, cc, attachments and custom headers are also supported...
