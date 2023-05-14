@@ -107,7 +107,7 @@
                 <code>@request.method = 'GET'</code>)
             </li>
             <li>
-                <code>@request.headers.*</code> - the request headers (eg.
+                <code>@request.headers.*</code> - the request headers as string values (eg.
                 <code>@request.headers.x_token = 'test'</code>)
                 <br />
                 <small class="txt-hint">
@@ -116,8 +116,8 @@
                 </small>
             </li>
             <li>
-                <code>@request.query.*</code> - the request query parameters (eg.
-                <code>@request.query.page = 1</code>)
+                <code>@request.query.*</code> - the request query parameters as string values (eg.
+                <code>@request.query.page = "1"</code>)
             </li>
             <li>
                 <code>@request.data.*</code> - the submitted body parameters (eg.
