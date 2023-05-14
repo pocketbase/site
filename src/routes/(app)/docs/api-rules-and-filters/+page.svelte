@@ -104,11 +104,11 @@
         <ul>
             <li>
                 <code>@request.method</code> - the HTTP request method (eg.
-                <code>@request.method = 'GET'</code>)
+                <code>@request.method = "GET"</code>)
             </li>
             <li>
                 <code>@request.headers.*</code> - the request headers as string values (eg.
-                <code>@request.headers.x_token = 'test'</code>)
+                <code>@request.headers.x_token = "test"</code>)
                 <br />
                 <small class="txt-hint">
                     Note: All header keys are normalized to lowercase and "-" is replaced with "_" (for
