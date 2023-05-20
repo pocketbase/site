@@ -2,6 +2,7 @@
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import SdkTabs from "@/components/SdkTabs.svelte";
+    import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
         {

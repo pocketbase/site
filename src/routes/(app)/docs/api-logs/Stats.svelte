@@ -3,6 +3,7 @@
     import CodeBlock from "@/components/CodeBlock.svelte";
     import SdkTabs from "@/components/SdkTabs.svelte";
     import FilterSyntax from "@/components/FilterSyntax.svelte";
+    import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
         {
@@ -137,6 +138,7 @@
                     </div>
                 </td>
             </tr>
+            <FieldsQueryParam />
         </tbody>
     </table>
 

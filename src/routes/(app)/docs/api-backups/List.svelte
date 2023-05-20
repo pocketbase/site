@@ -2,6 +2,7 @@
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import SdkTabs from "@/components/SdkTabs.svelte";
+    import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
         {
@@ -105,16 +106,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td id="query-page">fields</td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    Comma separated string of the fields to return in the JSON response
-                    <em>(by default returns all fields)</em>.
-                </td>
-            </tr>
+            <FieldsQueryParam />
         </tbody>
     </table>
 

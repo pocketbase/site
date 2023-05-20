@@ -1,6 +1,7 @@
 <script>
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
+    import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
         {
@@ -30,6 +31,20 @@
         <strong class="label label-primary">GET</strong>
         <div class="content">/api/health</div>
     </div>
+
+    <div class="section-title">Query parameters</div>
+    <table class="table-compact table-border m-b-base">
+        <thead>
+            <tr>
+                <th>Param</th>
+                <th>Type</th>
+                <th width="50%">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <FieldsQueryParam />
+        </tbody>
+    </table>
 
     <div class="section-title">Responses</div>
     <div class="tabs">

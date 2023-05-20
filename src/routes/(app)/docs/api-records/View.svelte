@@ -2,6 +2,8 @@
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import SdkTabs from "@/components/SdkTabs.svelte";
+    import ExpandQueryParam from "@/components/ExpandQueryParam.svelte";
+    import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
         {
@@ -130,22 +132,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td valign="top">expand</td>
-                <td valign="top">
-                    <span class="label">String</span>
-                </td>
-                <td valign="top">
-                    Auto expand nested record relations. Ex.:
-                    <CodeBlock content={`?expand=rel1,rel2.subrel21.subrel22`} />
-                    Supports up to 6-levels depth nested relations expansion.
-                    <br />
-                    The expanded relations will be appended to each individual record under the
-                    <code>expand</code> property (eg. <code>{`"expand": {"relField1": {...}, ...}`}</code>).
-                    <br />
-                    For more info check the <a href="/docs/expanding-relations">Expanding relations docs</a>.
-                </td>
-            </tr>
+            <ExpandQueryParam />
+            <FieldsQueryParam />
         </tbody>
     </table>
 

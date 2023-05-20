@@ -2,6 +2,7 @@
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import SdkTabs from "@/components/SdkTabs.svelte";
+    import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
         {
@@ -20,6 +21,19 @@
                   },
                   "logs": {
                     "maxDays": 7
+                  },
+                  "backups": {
+                    "cron": "0 0 * * *",
+                    "cronMaxKeep": 1,
+                    "s3": {
+                      "enabled": false,
+                      "bucket": "",
+                      "region": "",
+                      "endpoint": "",
+                      "accessKey": "",
+                      "secret": "",
+                      "forcePathStyle": false
+                    }
                   },
                   "smtp": {
                     "enabled": false,
@@ -344,6 +358,54 @@
                     <span class="label">Number</span>
                 </td>
                 <td>Max retention period. Set to <em>0</em> for no logs.</td>
+            </tr>
+
+            <!-- backups -->
+            <tr>
+                <td colspan="3" class="bg-info-alt">
+                    <strong>backups</strong>
+                    <br />
+                    <small class="txt-hint">App data backups settings.</small>
+                </td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">├─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>cron</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">String</span>
+                </td>
+                <td>Cron expression to schedule auto backups, eg. <code>0 0 * * *</code>.</td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">├─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>cronMaxKeep</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">Number</span>
+                </td>
+                <td>The max number of cron generated backups to keep before removing older entries.</td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">└─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>s3</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">Object</span>
+                </td>
+                <td>S3 configuration (the same fields as for the S3 file storage settings).</td>
             </tr>
 
             <!-- smtp -->
@@ -1383,6 +1445,20 @@
         Body parameters could be sent as <em>JSON</em> or
         <em>multipart/form-data</em>.
     </small>
+
+    <div class="section-title">Query parameters</div>
+    <table class="table-compact table-border m-b-base">
+        <thead>
+            <tr>
+                <th>Param</th>
+                <th>Type</th>
+                <th width="50%">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <FieldsQueryParam />
+        </tbody>
+    </table>
 
     <div class="section-title">Responses</div>
     <div class="tabs">
