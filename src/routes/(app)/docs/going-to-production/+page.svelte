@@ -212,7 +212,7 @@
 <p>
     To avoid deliverability issues, consider using a local SMTP server or an external mail service like
     <a href="https://www.mailersend.com/" target="_blank" rel="noreferrer noopener">MailerSend</a>,
-    <a href="https://www.sendinblue.com/" target="_blank" rel="noreferrer noopener">Sendinblue</a>,
+    <a href="https://www.brevo.com/" target="_blank" rel="noreferrer noopener">Brevo</a>,
     <a href="https://sendgrid.com/" target="_blank" rel="noreferrer noopener">SendGrid</a>,
     <a href="https://www.mailgun.com/" target="_blank" rel="noreferrer noopener">Mailgun</a>,
     <a href="https://aws.amazon.com/ses/" target="_blank" rel="noreferrer noopener">AWS SES</a>, etc.
