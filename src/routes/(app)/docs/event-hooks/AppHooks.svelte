@@ -211,4 +211,41 @@
             `}
         />
     </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <div class="flex txt-bold txt-select">OnTerminate</div>
+        </svelte:fragment>
+        <p>
+            Triggered when the app is in the process of being terminated (eg. on <code>SIGTERM</code> signal).
+            <br>
+            Note that the app could be terminated abruptly without awaiting the hook completion.
+        </p>
+        <CodeBlock
+            language="go"
+            content={`
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnTerminate().Add(func(e *core.TerminateEvent) error {
+                        log.Println(e.App)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `}
+        />
+    </Accordion>
 </div>
