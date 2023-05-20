@@ -185,16 +185,18 @@
 </p>
 
 <HeadingLink title="Backup and Restore" />
-<p>Another great PocketBase feature is how easy and simple it is to backup and restore.</p>
+<p></p>
 <p>
-    To backup your application, it is usually enough to just copy the <code>pb_data</code> directory (<em
-        >for transactional safety make sure that the application is not running</em
-    >). Or alternatively, you could also use the
-    <code>sqlite3 .backup</code> command on the database file.
+    PocketBase v0.16+ comes with built-in backups and restore APIs that could be accessed from the Admin UI
+    (<em>Settings</em> > <em>Backups</em>):
+</p>
+<img src="/images/screenshots/backups.png" alt="Backups settings screenshot" class="screenshot m-b-xs" />
+<p>
+    Backups can be stored locally (default) or in an external S3 storage.
 </p>
 <p>
-    To restore, as you may have already guessed, you just have to do the opposite - upload the
-    <code>pb_data</code> backup directory to your server and restart the application.
+    Alternatively, you can always manually copy your <code>pb_data</code> directory
+    <em>(for transactional safety make sure that the application is not running)</em>.
 </p>
 
 <HeadingLink title="Recommendations" />
@@ -218,7 +220,7 @@
     <a href="https://aws.amazon.com/ses/" target="_blank" rel="noreferrer noopener">AWS SES</a>, etc.
 </p>
 <p>
-    Once you've decided on a mail service, you could configure the PocketBase SMTP settings from the admin UI
+    Once you've decided on a mail service, you could configure the PocketBase SMTP settings from the Admin UI
     (<em>Settings</em> > <em>Mail settings</em>):
 </p>
 <img src="/images/screenshots/smtp-settings.png" alt="SMTP settings screenshot" class="screenshot m-b-xs" />
