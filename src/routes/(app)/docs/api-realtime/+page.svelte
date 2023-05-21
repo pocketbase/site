@@ -238,19 +238,19 @@
         // (Optionally) authenticate
         await pb.collection('users').authWithPassword('test@example.com', '1234567890');
 
-        // Subscribe to changes in any users record
-        pb.collection('users').subscribe('*', (e) {
-            console.log(e.record);
+        // Subscribe to changes in any record in the collection
+        pb.collection('example').subscribe('*', (e) {
+            print(e.record);
         });
 
         // Subscribe to changes only in the specified record
-        pb.collection('users').subscribe('RECORD_ID', (e) {
-            console.log(e.record);
+        pb.collection('example').subscribe('RECORD_ID', (e) {
+            print(e.record);
         });
 
         // Unsubscribe
-        pb.collection('users').unsubscribe('RECORD_ID'); // remove all 'RECORD_ID' subscriptions
-        pb.collection('users').unsubscribe('*'); // remove all '*' topic subscriptions
-        pb.collection('users').unsubscribe(); // remove all subscriptions in the collection
+        pb.collection('example').unsubscribe('RECORD_ID'); // remove all 'RECORD_ID' subscriptions
+        pb.collection('example').unsubscribe('*'); // remove all '*' topic subscriptions
+        pb.collection('example').unsubscribe(); // remove all subscriptions in the collection
     `}
 />
