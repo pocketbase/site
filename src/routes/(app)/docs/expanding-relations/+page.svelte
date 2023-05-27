@@ -23,7 +23,7 @@
             Only the relations that the request client can <strong>View</strong> (aka. satisfies the relation
             collection's <strong>View API Rule</strong>) will be expanded.
             <br />
-            Nested releations are supported via dot-notation and up to 6-levels depth.
+            Nested relations are supported via dot-notation and up to 6-levels depth.
         </p>
     </div>
 </div>
