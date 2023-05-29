@@ -177,7 +177,7 @@
                     app := pocketbase.New()
 
                     app.OnRecordBeforeUpdateRequest().Add(func(e *core.RecordUpdateEvent) error {
-                        log.Println(e.Record.GetStringDataValue("title")) // not saved yet
+                        log.Println(e.Record.GetString("title")) // not saved yet
                         return nil
                     })
 

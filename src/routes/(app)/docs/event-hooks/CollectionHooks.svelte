@@ -179,7 +179,7 @@
                     app := pocketbase.New()
 
                     app.OnCollectionBeforeUpdateRequest().Add(func(e *core.CollectionUpdateEvent) error {
-                        log.Println(e.Collection.GetStringDataValue("title")) // not saved yet
+                        log.Println(e.Collection.Name) // not saved yet
                         return nil
                     })
 
