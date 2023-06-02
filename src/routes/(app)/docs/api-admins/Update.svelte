@@ -89,7 +89,7 @@
 
             const admin = await pb.admins.update('ADMIN_ID', {
                 password: '0987654321',
-                passwodConfirm: '0987654321',
+                passwordConfirm: '0987654321',
                 avatar: 4,
             });
         `}
@@ -104,7 +104,7 @@
 
             final admin = await pb.admins.update('ADMIN_ID', body: {
                 'password': '0987654321',
-                'passwodConfirm': '0987654321',
+                'passwordConfirm': '0987654321',
                 'avatar': 4,
             });
         `}
