@@ -127,19 +127,18 @@
                 border-radius: 50%;
                 background: #fff;
                 &.left {
-                    left: 15px;
+                    left: 18px;
                     top: 18px;
-                    width: 26px;
+                    width: 23px;
                     height: 25px;
                 }
                 &.right {
                     left: auto;
                     right: 3px;
-                    top: 20px;
-                    width: 18px;
-                    height: 23px;
-                    border-top-left-radius: 7px;
-                    border-bottom-left-radius: 7px;
+                    top: 21px;
+                    width: 16px;
+                    height: 21px;
+                    border-radius: 14px 100% 15px 100%;
                     .eye {
                         right: 0px;
                     }
