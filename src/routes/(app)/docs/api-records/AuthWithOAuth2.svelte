@@ -28,6 +28,7 @@
                     "name": "John Doe",
                     "username": "john.doe",
                     "email": "test@example.com",
+                    "isNew": false,
                     "avatarUrl": "https://example.com/avatar.png"
                     "rawUser": {...},
                     "accessToken": "..."
