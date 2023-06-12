@@ -215,11 +215,13 @@
 
         // Subscribe to changes in any record in the collection
         pb.collection('example').subscribe('*', function (e) {
+            console.log(e.action);
             console.log(e.record);
         });
 
         // Subscribe to changes only in the specified record
         pb.collection('example').subscribe('RECORD_ID', function (e) {
+            console.log(e.action);
             console.log(e.record);
         });
 
@@ -240,11 +242,13 @@
 
         // Subscribe to changes in any record in the collection
         pb.collection('example').subscribe('*', (e) {
+            print(e.action);
             print(e.record);
         });
 
         // Subscribe to changes only in the specified record
         pb.collection('example').subscribe('RECORD_ID', (e) {
+            print(e.action);
             print(e.record);
         });
 

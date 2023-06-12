@@ -45,8 +45,13 @@
         func main() {
             app := pocketbase.New()
 
+            // loosely check if it was run using "go run"
+            isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
+
             migratecmd.MustRegister(app, app.RootCmd, &migratecmd.Options{
-                Automigrate: true, // auto creates migration files when making collection changes
+                // enable auto creation of migration files when making collection changes
+                // (the isGoRun check is to enable it only during development)
+                Automigrate: isGoRun,
             })
 
             if err := app.Start(); err != nil {
