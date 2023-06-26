@@ -11,6 +11,11 @@
     import AdminAuthHooks from "./AdminAuthHooks.svelte";
     import CollectionHooks from "./CollectionHooks.svelte";
     import SettingsHooks from "./SettingsHooks.svelte";
+
+    import CodeBlock from "@/components/CodeBlock.svelte";
+    import Accordion from "@/components/Accordion.svelte";
+    import HeadingLink from "@/components/HeadingLink.svelte";
+    import eventHooks from "../event_hooks.js";
 </script>
 
 <p>
@@ -51,11 +56,39 @@
 <p>You can explore all available event hooks below:</p>
 <Toc />
 
-<AppHooks />
-<ModelHooks />
-<MailerHooks />
-<RecordCrudHooks />
-<RecordAuthHooks />
+{#each Object.entries(eventHooks) as [groupTitle, groupHooks]}
+    <HeadingLink title={groupTitle} />
+
+    <div class="accordions">
+        {#each Object.entries(groupHooks) as [hookTitle, hookInfo]}
+            <Accordion single>
+                <svelte:fragment slot="header" let:expand>
+                    <HeadingLink title={hookTitle} tag="strong">
+                        <svelte:fragment slot="after">
+                            <!-- svelte-ignore a11y-click-events-have-key-events -->
+                            <span
+                                class="fade link-hint p-l-5"
+                                title="Link anchor"
+                                on:click|stopPropagation={() => expand?.()}
+                            >
+                                #
+                            </span>
+                        </svelte:fragment>
+                    </HeadingLink>
+                </svelte:fragment>
+
+                <div class="content m-b-sm">
+                    {@html hookInfo.html}
+                </div>
+
+                <CodeBlock language="javascript" content={hookInfo.js} />
+
+                <CodeBlock language="go" content={hookInfo.go} />
+            </Accordion>
+        {/each}
+    </div>
+{/each}
+
 <RealtimeHooks />
 <FileHooks />
 <CollectionHooks />

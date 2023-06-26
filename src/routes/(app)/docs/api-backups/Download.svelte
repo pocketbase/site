@@ -1,7 +1,7 @@
 <script>
     import CodeBlock from "@/components/CodeBlock.svelte";
     import Accordion from "@/components/Accordion.svelte";
-    import SdkTabs from "@/components/SdkTabs.svelte";
+    import CodeTabs from "@/components/CodeTabs.svelte";
 
     let responseTab = 200;
 
@@ -42,7 +42,7 @@
         <p>Downloads a single backup file. Example:</p>
     </div>
 
-    <SdkTabs
+    <CodeTabs
         js={`
             import PocketBase from 'pocketbase';
 

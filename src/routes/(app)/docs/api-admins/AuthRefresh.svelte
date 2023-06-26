@@ -1,7 +1,7 @@
 <script>
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
-    import SdkTabs from "@/components/SdkTabs.svelte";
+    import CodeTabs from "@/components/CodeTabs.svelte";
     import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
@@ -65,7 +65,7 @@
         <p>Returns a new auth response (token and admin data) for already authenticated admin.</p>
     </div>
 
-    <SdkTabs
+    <CodeTabs
         js={`
             import PocketBase from 'pocketbase';
 

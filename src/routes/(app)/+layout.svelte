@@ -10,7 +10,15 @@
         // generated content could misplace the original scroll anchor
         let scrollTimeout = setTimeout(() => {
             const anchor = window.location.hash && document.getElementById(window.location.hash.substring(1));
-            if (anchor) {
+            if (!anchor) {
+                return;
+            }
+
+            const parentAccordion = anchor.closest(".accordion-header");
+            if (parentAccordion) {
+                // expand the accordion item
+                parentAccordion.click();
+            } else {
                 anchor.scrollIntoView({ behavior: "auto" });
             }
 

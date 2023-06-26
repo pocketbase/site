@@ -1,4 +1,4 @@
-const links = [
+export default [
     {
         title: "Basics",
         items: [
@@ -15,8 +15,8 @@ const links = [
                 title: "API rules and filters",
             },
             {
-                href: "/docs/client-side-integration",
-                title: "Client-side integration (SDKs)",
+                href: "/docs/client-side-sdks",
+                title: "Client-side SDKs",
             },
             {
                 href: "/docs/authentication",
@@ -31,13 +31,60 @@ const links = [
                 title: "Expanding relations",
             },
             {
+                href: "/docs/extend-with-go-or-javascript",
+                title: "Extend with Go or JavaScript",
+            },
+
+            {
                 href: "/docs/going-to-production",
                 title: "Going to production",
+            },
+            {
+                href: "/docs/api-records",
+                title: "Web APIs reference",
+                children: [
+                    {
+                        href: "/docs/api-records",
+                        title: "API Records",
+                    },
+                    {
+                        href: "/docs/api-realtime",
+                        title: "API Realtime",
+                    },
+                    {
+                        href: "/docs/api-files",
+                        title: "API Files",
+                    },
+                    {
+                        href: "/docs/api-admins",
+                        title: "API Admins",
+                    },
+                    {
+                        href: "/docs/api-collections",
+                        title: "API Collections",
+                    },
+                    {
+                        href: "/docs/api-settings",
+                        title: "API Settings",
+                    },
+                    {
+                        href: "/docs/api-logs",
+                        title: "API Logs",
+                    },
+                    {
+                        href: "/docs/api-backups",
+                        title: "API Backups",
+                    },
+                    {
+                        href: "/docs/api-health",
+                        title: "API Health",
+                    },
+                ],
             },
         ],
     },
     {
-        title: "Advanced",
+        title: "Extend with Go",
         items: [
             {
                 href: "/docs/use-as-framework",
@@ -82,46 +129,48 @@ const links = [
         ],
     },
     {
-        title: "Web APIs",
+        title: "Extend with JavaScript",
         items: [
             {
-                href: "/docs/api-records",
-                title: "Records",
+                href: "/docs/js-overview",
+                title: "Overview",
             },
             {
-                href: "/docs/api-realtime",
-                title: "Realtime",
+                href: "/docs/js-event-hooks",
+                title: "Event hooks",
             },
             {
-                href: "/docs/api-files",
-                title: "Files",
+                href: "/docs/js-routing",
+                title: "Routing",
             },
             {
-                href: "/docs/api-admins",
-                title: "Admins",
+                href: "/docs/js-database",
+                title: "Database",
             },
             {
-                href: "/docs/api-collections",
-                title: "Collections",
+                href: "/docs/js-records",
+                title: "Record operations",
             },
             {
-                href: "/docs/api-settings",
-                title: "Settings",
+                href: "/docs/js-collections",
+                title: "Collection operations",
             },
             {
-                href: "/docs/api-logs",
-                title: "Logs",
+                href: "/docs/js-sending-emails",
+                title: "Sending emails",
             },
             {
-                href: "/docs/api-backups",
-                title: "Backups",
+                href: "/docs/js-sending-http-requests",
+                title: "Sending HTTP requests",
             },
             {
-                href: "/docs/api-health",
-                title: "Health",
+                href: "/docs/js-migrations",
+                title: "Migrations",
             },
-        ],
+            {
+                href: "/docs/js-binding-references",
+                title: "Types reference",
+            },
+        ]
     },
 ];
-
-export default links;

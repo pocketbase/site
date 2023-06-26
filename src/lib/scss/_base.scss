@@ -129,7 +129,7 @@ code {
     font-weight: normal;
     font-style: normal;
     color: var(--txtPrimaryColor);
-    background: var(--baseAlt2Color);
+    background: var(--baseAlt1Color);
     border-radius: var(--baseRadius);
     @media only screen and (max-width: 600px) {
         white-space: pre-wrap;
@@ -220,6 +220,9 @@ a {
 }
 .txt-bold {
     font-weight: 600 !important;
+}
+.txt-italic {
+    font-style: italic !important;
 }
 .txt-strikethrough {
     text-decoration: line-through !important;
@@ -432,19 +435,38 @@ a,
 }
 
 .label {
+    --labelVPadding: 3px;
+    --labelHPadding: 9px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    vertical-align: top;
     gap: 5px;
-    line-height: 1;
-    padding: 3px 8px;
-    min-height: 23px;
+    padding: var(--labelVPadding) var(--labelHPadding);
+    min-height: 24px;
+    max-width: 100%;
     text-align: center;
+    line-height: var(--smLineHeight);
     font-size: var(--smFontSize);
-    border-radius: 30px;
     background: var(--baseAlt2Color);
     color: var(--txtPrimaryColor);
     white-space: nowrap;
+    border-radius: 30px;
+
+    .btn:last-child {
+        margin-right: calc(-0.5 * var(--labelHPadding));
+    }
+    .btn:first-child {
+        margin-left: calc(-0.5 * var(--labelHPadding));
+    }
+
+    // styles
+    &.label-sm {
+        --labelHPadding: 5px;
+        font-size: var(--xsFontSize);
+        min-height: 18px;
+        line-height: 1;
+    }
     &.label-primary {
         color: var(--baseColor);
         background: var(--primaryColor);

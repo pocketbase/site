@@ -218,7 +218,7 @@
         </svelte:fragment>
         <p>
             Triggered when the app is in the process of being terminated (eg. on <code>SIGTERM</code> signal).
-            <br>
+            <br />
             Note that the app could be terminated abruptly without awaiting the hook completion.
         </p>
         <CodeBlock

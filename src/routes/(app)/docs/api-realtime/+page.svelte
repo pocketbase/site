@@ -1,7 +1,7 @@
 <script>
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
-    import SdkTabs from "@/components/SdkTabs.svelte";
+    import CodeTabs from "@/components/CodeTabs.svelte";
 
     const pageTitle = "Realtime";
 
@@ -202,7 +202,7 @@
     All of this is seamlessly handled by the SDKs using just the <code>subscribe</code> and
     <code>unsubscribe</code> methods:
 </p>
-<SdkTabs
+<CodeTabs
     js={`
         import PocketBase from 'pocketbase';
 

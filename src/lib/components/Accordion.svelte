@@ -1,6 +1,5 @@
 <script>
     import { onMount, createEventDispatcher } from "svelte";
-    import { slide } from "svelte/transition";
 
     const dispatch = createEventDispatcher();
 
@@ -25,7 +24,7 @@
                     block: "start",
                 });
             }
-        }, 200);
+        }, 0);
     }
 
     export function isExpanded() {
@@ -95,12 +94,11 @@
         class:interactive
         on:click|preventDefault={() => interactive && toggle()}
     >
-        <slot name="header" {active} />
+        <slot name="header" {active} {toggle} {expand} {collapse} />
     </button>
 
-    {#if active}
-        <div class="accordion-content" transition:slide|local={{ duration: 150 }}>
-            <slot />
-        </div>
-    {/if}
+    <!-- note: the accordion content is added to the dom even when not active so that it can be indexed -->
+    <div class="accordion-content" class:hidden={!active}>
+        <slot />
+    </div>
 </div>

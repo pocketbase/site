@@ -5,13 +5,18 @@
     export let tag = "h3";
     export let id = "";
 
+    let classes = "";
+    export { classes as class }; // export reserved keyword
+
     $: if (!id) {
         id = CommonHelper.slugify(title, "-").toLowerCase();
     }
 </script>
 
-<svelte:element this={tag} {id}>
+<svelte:element this={tag} {id} class="heading-link {classes}">
     <a href={id ? "#" + id : null} class="link-primary">
+        <slot name="before" />
         {title}
+        <slot name="after" />
     </a>
 </svelte:element>

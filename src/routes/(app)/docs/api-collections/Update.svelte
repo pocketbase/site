@@ -1,7 +1,7 @@
 <script>
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
-    import SdkTabs from "@/components/SdkTabs.svelte";
+    import CodeTabs from "@/components/CodeTabs.svelte";
     import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
@@ -108,7 +108,7 @@
         <p>Only admins can access this action.</p>
     </div>
 
-    <SdkTabs
+    <CodeTabs
         js={`
             import PocketBase from 'pocketbase';
 
@@ -254,8 +254,7 @@
                     <br />
                     <em class="txt-hint">
                         Check
-                        <a href="/docs/manage-collections/#rules-filters-syntax">Rules/Filters syntax guide</a
-                        >
+                        <a href="/docs/api-rules-and-filters/">Rules/Filters syntax guide</a>
                         for more details.
                     </em>
                 </td>
@@ -275,8 +274,7 @@
                     <br />
                     <em class="txt-hint">
                         Check
-                        <a href="/docs/manage-collections/#rules-filters-syntax">Rules/Filters syntax guide</a
-                        >
+                        <a href="/docs/api-rules-and-filters/">Rules/Filters syntax guide</a>
                         for more details.
                     </em>
                 </td>
@@ -297,9 +295,7 @@
                         <br />
                         <em class="txt-hint">
                             Check
-                            <a href="/docs/manage-collections/#rules-filters-syntax"
-                                >Rules/Filters syntax guide</a
-                            >
+                            <a href="/docs/api-rules-and-filters/">Rules/Filters syntax guide</a>
                             for more details.
                         </em>
                     </p>
@@ -324,9 +320,7 @@
                         <br />
                         <em class="txt-hint">
                             Check
-                            <a href="/docs/manage-collections/#rules-filters-syntax"
-                                >Rules/Filters syntax guide</a
-                            >
+                            <a href="/docs/api-rules-and-filters/">Rules/Filters syntax guide</a>
                             for more details.
                         </em>
                     </p>
@@ -351,9 +345,7 @@
                         <br />
                         <em class="txt-hint">
                             Check
-                            <a href="/docs/manage-collections/#rules-filters-syntax"
-                                >Rules/Filters syntax guide</a
-                            >
+                            <a href="/docs/api-rules-and-filters/">Rules/Filters syntax guide</a>
                             for more details.
                         </em>
                     </p>

@@ -1,6 +1,6 @@
 <script>
     import CodeBlock from "@/components/CodeBlock.svelte";
-    import SdkTabs from "@/components/SdkTabs.svelte";
+    import CodeTabs from "@/components/CodeTabs.svelte";
     import { indexExample, redirectExample } from "./oauth2Examples.js";
 
     const TAB_ALL_IN_ONE = "all_in_one";
@@ -56,7 +56,7 @@
 
             <div class="clearfix m-b-xs" />
             <!-- prettier-ignore -->
-            <SdkTabs
+            <CodeTabs
                 js={`
                     import PocketBase from 'pocketbase';
 

@@ -1,7 +1,7 @@
 <script>
     import HeadingLink from "@/components/HeadingLink.svelte";
     import ThumbFormats from "@/components/ThumbFormats.svelte";
-    import SdkTabs from "@/components/SdkTabs.svelte";
+    import CodeTabs from "@/components/CodeTabs.svelte";
     import Toc from "@/components/Toc.svelte";
 </script>
 
@@ -22,7 +22,7 @@
     the example file field "documents" using the SDKs:
 </p>
 <!-- prettier-ignore -->
-<SdkTabs
+<CodeTabs
     js={`
         // Example HTML:
         // <input type="file" id="fileInput" />
@@ -115,7 +115,7 @@
     the SDKs:
 </p>
 <!-- prettier-ignore -->
-<SdkTabs
+<CodeTabs
     js={`
         import PocketBase from 'pocketbase';
 
@@ -188,7 +188,7 @@
 </p>
 
 <!-- prettier-ignore -->
-<SdkTabs
+<CodeTabs
     js={`
         import PocketBase from 'pocketbase';
 
@@ -258,7 +258,7 @@
 <img src="/images/screenshots/file-options.png" alt="File options panel" class="screenshot" />
 <div class="clearfix m-b-sm" />
 <!-- prettier-ignore -->
-<SdkTabs
+<CodeTabs
     js={`
         import PocketBase from 'pocketbase';
 

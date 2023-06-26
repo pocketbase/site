@@ -1,7 +1,7 @@
 <script>
     import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
-    import SdkTabs from "@/components/SdkTabs.svelte";
+    import CodeTabs from "@/components/CodeTabs.svelte";
     import Toc from "@/components/Toc.svelte";
 </script>
 
@@ -275,7 +275,7 @@
     The official PocketBase SDKs expose the internal <code>send()</code> method that could be used to send requests
     to your custom endpoint(s).
 </p>
-<SdkTabs
+<CodeTabs
     js={`
         import PocketBase from 'pocketbase';
 

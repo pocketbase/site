@@ -66,19 +66,28 @@
             <div bind:this={container} class="sidebar-content">
                 {#each links as section (section.title)}
                     <nav class="sidebar-list">
+                        {#if section.title.includes("JavaScript")}
+                            <div class="txt-hint txt-bold m-b-sm">Extend with</div>
+                            <div class="tabs-header stretched compact">
+                                <button type="button" class="tab-item">Go</button>
+                                <button type="button" class="tab-item active">JavaScript</button>
+                            </div>
+                        {/if}
                         <button
                             type="button"
-                            class="sidebar-title link-hint"
+                            class="sidebar-title {!expandedSections[section.title]
+                                ? 'link-hint'
+                                : 'link-primary'}"
                             on:click={() => {
                                 expandedSections[section.title] = !expandedSections[section.title];
                             }}
                         >
-                            {#if expandedSections[section.title]}
+                            <!--                             {#if expandedSections[section.title]}
                                 <i class="ri-checkbox-indeterminate-line" />
                             {:else}
                                 <i class="ri-add-box-line" />
-                            {/if}
-                            <span class="txt">{section.title}</span>
+                            {/if} -->
+                            <!-- <span class="txt">{section.title}</span> -->
                         </button>
                         {#if expandedSections[section.title]}
                             <div class="block">
@@ -88,6 +97,7 @@
                                         class="list-item"
                                         class:active={isCurrentPath(item.href)}
                                     >
+                                        <!-- <small class="label label-sm">JS</small> -->
                                         {item.title}
                                     </a>
                                     {#if item.children && isCurrentPath(item.href)}

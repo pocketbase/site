@@ -134,13 +134,21 @@
         margin: -1px 0 0;
         &:first-child {
             margin-top: 0;
-            border-top-left-radius: var(--baseRadius);
+            border-top-left-radius:  var(--baseRadius);
             border-top-right-radius: var(--baseRadius);
+            .accordion-header {
+                border-top-left-radius:  calc(var(--baseRadius) / 2);
+                border-top-right-radius: calc(var(--baseRadius) / 2);
+            }
         }
         &:last-child {
             margin-bottom: 0;
             border-bottom-left-radius: var(--baseRadius);
             border-bottom-right-radius: var(--baseRadius);
+            .accordion-header {
+                border-bottom-left-radius:  calc(var(--baseRadius) / 2);
+                border-bottom-right-radius: calc(var(--baseRadius) / 2);
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 <script>
     import HeadingLink from "@/components/HeadingLink.svelte";
-    import SdkTabs from "@/components/SdkTabs.svelte";
+    import CodeTabs from "@/components/CodeTabs.svelte";
     import Toc from "@/components/Toc.svelte";
     import OAuth2 from "./OAuth2.svelte";
 </script>
@@ -20,7 +20,7 @@
     <strong>Admins can access everything and API rules don't apply to them.</strong>
 </p>
 <!-- prettier-ignore -->
-<SdkTabs
+<CodeTabs
     class="m-b-sm"
     js={`
         import PocketBase from 'pocketbase';
@@ -68,7 +68,7 @@
     </em>
 </p>
 <!-- prettier-ignore -->
-<SdkTabs
+<CodeTabs
     class="m-b-sm"
     js={`
         import PocketBase from 'pocketbase';

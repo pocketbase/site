@@ -3,7 +3,7 @@
     import { onMount, tick } from "svelte";
     import { fly } from "svelte/transition";
     import tooltip from "@/actions/tooltip";
-    import { sdk } from "@/stores/preferences";
+    import { codePreferences, setCodePreference } from "@/stores/preferences";
     import CommonHelper from "@/utils/CommonHelper";
     import PageHeader from "@/components/PageHeader.svelte";
     import PageFooter from "@/components/PageFooter.svelte";
@@ -19,12 +19,14 @@
         dart: "Dart",
     };
 
-    $: previewLanguage = codePreviews?.[activePreview]?.[$sdk]
-        ? $sdk
+    $: preference = $codePreferences[""]; // the default group preference
+
+    $: previewLanguage = codePreviews?.[activePreview]?.[preference]
+        ? preference
         : Object.keys(codePreviews?.[activePreview] || {})[0];
 
     $: previewContent =
-        codePreviews?.[activePreview]?.[$sdk] || Object.values(codePreviews?.[activePreview] || {})[0];
+        codePreviews?.[activePreview]?.[preference] || Object.values(codePreviews?.[activePreview] || {})[0];
 
     const codePreviews = {
         database: {
@@ -539,10 +541,10 @@
                                 type="button"
                                 class="
                                     btn btn-sm btn-expanded-sm
-                                    {$sdk === btnLanguage ? 'btn-outline' : 'btn-hint'}
+                                    {preference === btnLanguage ? 'btn-outline' : 'btn-hint'}
                                 "
                                 on:click={() => {
-                                    $sdk = btnLanguage;
+                                    setCodePreference(btnLanguage);
                                 }}
                             >
                                 <span class="txt">{btnTitle}</span>
