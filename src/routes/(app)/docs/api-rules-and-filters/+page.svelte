@@ -220,6 +220,14 @@
         />
     </li>
     <li class="m-b-sm">
+        Allow only registered users who are listed in an <em>allowed_users</em> multi-relation field value:
+        <CodeBlock
+            content={`
+                @request.auth.id != "" && allowed_users.id ?= @request.auth.id
+            `}
+        />
+    </li>
+    <li class="m-b-sm">
         Allow access by anyone and return only the records where the <em>title</em> field value starts with
         "Lorem" (eg. "Lorem ipsum"):
         <CodeBlock
