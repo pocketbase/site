@@ -27,11 +27,7 @@
     ];
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Generate protected file token</strong>
-    </svelte:fragment>
-
+<Accordion single title="Generate protected file token">
     <div class="content m-b-base">
         <p>
             Generates a <strong>short-lived file token</strong> for accessing

@@ -43,11 +43,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Restore backup</strong>
-    </svelte:fragment>
-
+<Accordion single title="Restore backup">
     <div class="content m-b-sm">
         <p>Restore a single backup by its name and restarts the current running PocketBase process.</p>
         <p>

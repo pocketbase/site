@@ -53,11 +53,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Delete admin</strong>
-    </svelte:fragment>
-
+<Accordion single title={"Delete admin"}>
     <div class="content m-b-sm">
         <p>Deletes a single admin by its id.</p>
         <p>Only admins can access this action.</p>

@@ -143,11 +143,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>List settings</strong>
-    </svelte:fragment>
-
+<Accordion single title="List settings">
     <div class="content m-b-sm">
         <p>Returns a list with all available application settings.</p>
         <p>Secret/password fields are automatically redacted with <em>******</em> characters.</p>

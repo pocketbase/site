@@ -1,41 +1,24 @@
 <script>
     import { onMount, tick } from "svelte";
+    import { goto } from "$app/navigation";
     import { page } from "$app/stores";
-    import docLinks from "./doc_links.js";
+    import { codePreferences, setCodePreference, extendGroup } from "@/stores/preferences";
+    import { baseLinks, jsLinks, goLinks, hasPath } from "./doc_links.js";
+    import NavList from "./NavList.svelte";
 
     let container;
 
-    let expandedSections = {
-        Basics: true,
-        Advanced: true,
-    };
-
-    let links = docLinks;
-
     $: if ($page) {
-        links = docLinks; // reasign to refresh the current path checks
-        expandCurrentSection();
+        if (hasPath($page.url.pathname, jsLinks)) {
+            setCodePreference("javascript", extendGroup);
+        } else if (hasPath($page.url.pathname, goLinks)) {
+            setCodePreference("go", extendGroup);
+        }
+
         scrollToActive();
     }
 
-    function trimTrailingSlash(url) {
-        return url.endsWith("/") ? url.slice(0, -1) : url;
-    }
-
-    function isCurrentPath(path) {
-        return trimTrailingSlash($page.url.pathname) === trimTrailingSlash(path);
-    }
-
-    function expandCurrentSection() {
-        for (let section of links) {
-            for (let link of section.items) {
-                if (isCurrentPath(link.href)) {
-                    expandedSections[section.title] = true;
-                    break;
-                }
-            }
-        }
-    }
+    $: extendLang = $codePreferences[extendGroup] || "go";
 
     async function scrollToActive() {
         if (typeof document === "undefined") {
@@ -64,58 +47,54 @@
     <div class="sticky-wrapper">
         <div class="absolute-wrapper">
             <div bind:this={container} class="sidebar-content">
-                {#each links as section (section.title)}
-                    <nav class="sidebar-list">
-                        {#if section.title.includes("JavaScript")}
-                            <div class="txt-hint txt-bold m-b-sm">Extend with</div>
-                            <div class="tabs-header stretched compact">
-                                <button type="button" class="tab-item">Go</button>
-                                <button type="button" class="tab-item active">JavaScript</button>
-                            </div>
-                        {/if}
-                        <button
-                            type="button"
-                            class="sidebar-title {!expandedSections[section.title]
-                                ? 'link-hint'
-                                : 'link-primary'}"
-                            on:click={() => {
-                                expandedSections[section.title] = !expandedSections[section.title];
-                            }}
-                        >
-                            <!--                             {#if expandedSections[section.title]}
-                                <i class="ri-checkbox-indeterminate-line" />
-                            {:else}
-                                <i class="ri-add-box-line" />
-                            {/if} -->
-                            <!-- <span class="txt">{section.title}</span> -->
-                        </button>
-                        {#if expandedSections[section.title]}
-                            <div class="block">
-                                {#each section.items as item (item.href + item.title)}
-                                    <a
-                                        href={item.href}
-                                        class="list-item"
-                                        class:active={isCurrentPath(item.href)}
-                                    >
-                                        <!-- <small class="label label-sm">JS</small> -->
-                                        {item.title}
-                                    </a>
-                                    {#if item.children && isCurrentPath(item.href)}
-                                        {#each item.children as child (child.href + child.title)}
-                                            <a
-                                                href={child.href}
-                                                class="sub-list-item"
-                                                class:active={$page?.url?.hash === child.href}
-                                            >
-                                                {child.title}
-                                            </a>
-                                        {/each}
-                                    {/if}
-                                {/each}
-                            </div>
-                        {/if}
-                    </nav>
-                {/each}
+                <NavList items={baseLinks} />
+
+                <div class="clearfix m-t-base" />
+
+                <div class="tabs-header stretched compact">
+                    <button
+                        type="button"
+                        class="tab-item"
+                        class:active={extendLang == "go"}
+                        on:click={() => {
+                            goto(goLinks[0].href);
+                        }}
+                    >
+                        <div class="block">
+                            Extend with <br />
+                            <span class="txt" class:txt-bold={extendLang == "go"}>Go</span>
+                        </div>
+                    </button>
+                    <button
+                        type="button"
+                        class="tab-item"
+                        class:active={extendLang == "javascript"}
+                        on:click={() => {
+                            goto(jsLinks[0].href);
+                        }}
+                    >
+                        <div class="block">
+                            Extend with <br />
+                            <span class="txt" class:txt-bold={extendLang == "javascript"}>JavaScript</span>
+                        </div>
+                    </button>
+                </div>
+                <div class="tabs-content">
+                    <div class="tab-item" class:active={extendLang == "go"}>
+                        <NavList items={goLinks}>
+                            <svelte:fragment slot="before">
+                                <span class="label label-sm">Go</span>
+                            </svelte:fragment>
+                        </NavList>
+                    </div>
+                    <div class="tab-item" class:active={extendLang == "javascript"}>
+                        <NavList items={jsLinks}>
+                            <svelte:fragment slot="before">
+                                <span class="label label-sm">JS</span>
+                            </svelte:fragment>
+                        </NavList>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

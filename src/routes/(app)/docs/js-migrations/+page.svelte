@@ -5,223 +5,187 @@
 </script>
 
 <p>
-    PocketBase provides a simple <code>migrate</code> command, allowing you to share your DB structure, create
-    collections programmatically, initialize default settings and/or run anything that needs to be executed only
-    once.
+    PocketBase comes with a builtin DB and data migration utility, allowing you to version your DB structure,
+    create collections programmatically, initialize default settings and/or run anything that needs to be
+    executed only once.
 </p>
-
 <p>
-    The <code>migrate</code> command comes also with "automigrate" functionality that will create seamlessly the
-    necessary migration files for you when making collection changes from the Admin UI.
+    The user defined migrations are located in <code>pb_migrations</code> directory (it can be changed using
+    the
+    <code>--migrationsDir</code> flag) and each unapplied migration inside it will be executed automatically in
+    a transaction on application start.
 </p>
-
-<p>You can write migrations with Go or <em>JavaScript (more information will be available soon)</em>.</p>
+<p>
+    The generated migrations are safe to be commited to version control and can be shared with your other team
+    members.
+</p>
 
 <Toc />
 
-<HeadingLink title="Enable Go migrations" />
-
+<HeadingLink title="Automigrate" />
 <p>
-    The prebuilt executable enables the <code>migrate</code> command by default, but when you are extending PocketBase
-    with Go you have to enable it manually:
+    The prebuilt executable has the <code>--automigrate</code> flag enabled by default, meaning that every collection
+    configuration change from the Admin UI will generate the related migration file automatically for you.
 </p>
 
-<CodeBlock
-    language="go"
-    content={`
-        // main.go
-        package main
-
-        import (
-            "log"
-
-            "github.com/pocketbase/pocketbase"
-            "github.com/pocketbase/pocketbase/plugins/migratecmd"
-
-            // uncomment once you have at least one .go migration file in the "migrations" directory
-            // _ "yourpackage/migrations"
-        )
-
-        func main() {
-            app := pocketbase.New()
-
-            // loosely check if it was executed using "go run"
-            isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
-
-            migratecmd.MustRegister(app, app.RootCmd, &migratecmd.Options{
-                // enable auto creation of migration files when making collection changes
-                // (the isGoRun check is to enable it only during development)
-                Automigrate: isGoRun,
-            })
-
-            if err := app.Start(); err != nil {
-                log.Fatal(err)
-            }
-        }
-    `}
-/>
-
-<HeadingLink title="migrate create" />
-
+<HeadingLink title="Creating migrations" />
 <p>
-    The easiest way to create a new migration file is to use <code>migrate create</code> during development:
+    To create a new blank migration you can run <code>migrate create</code>.
 </p>
 <CodeBlock
     content={`
-        // Since the "create" command makes sense only during development,
-        // it is expected the user to be in the app working directory
-        // and to be using "go run ..."
-
-        [root@dev project]$ go run main.go migrate create "your_new_migration"
+        [root@dev app]$ ./pocketbase migrate create "your_new_migration"
     `}
 />
+<div class="clearfix m-t-xs" />
+<CodeBlock
+    language="javascript"
+    content={`
+        // pb_migrations/1687801097_your_new_migration.js
+        migrate((db) => {
+            // add up queries...
+        }, (db) => {
+            // add down queries...
+        })
+    `}
+/>
+<p class="txt-bold">New migrations are applied automatically with the start of the application.</p>
 <p>
-    The above will create a new directory <code>migrations</code> with a blank migration file inside it.
+    Optionally, you could apply new migrations manually by running <code>migrate up</code>.
 </p>
-
-<p class="txt-bold">
-    To make your application aware of the registered migrations, you simply have to import the above
-    <code>migrations</code> package in one of your <code>main</code> package files:
-</p>
-<CodeBlock
-    language="go"
-    content={`
-        package main
-
-        import _ "yourpackage/migrations"
-
-        // ...
-    `}
-/>
-
-<p>Here is for example what a single migration file could look like:</p>
-<CodeBlock
-    language="go"
-    content={`
-        // migrations/1655834400_your_new_migration.go
-        package migrations
-
-        import (
-            "github.com/pocketbase/dbx"
-            "github.com/pocketbase/pocketbase/daos"
-            m "github.com/pocketbase/pocketbase/migrations"
-        )
-
-        func init() {
-            m.Register(func(db dbx.Builder) error {
-                // set a default "pending" status to all articles
-                query := db.NewQuery("UPDATE articles SET status = 'pending' WHERE status = ''")
-                if _, err := query.Execute(); err != nil {
-                    return err
-                }
-
-                // you can also access the Dao helpers
-                dao := daos.New(db)
-                record, _ := dao.FindRecordById("articles", "RECORD_ID")
-                record.Set("status", "active")
-                if err := dao.SaveRecord(record); err != nil {
-                    return err
-                }
-
-                // and even set default app settings
-                settings, _ := dao.FindSettings()
-                settings.Meta.AppName = "test"
-                settings.Smtp.Enabled = false
-                if err := dao.SaveSettings(settings); err != nil {
-                    return err
-                }
-
-                return nil
-            }, func(db dbx.Builder) error {
-                // revert changes...
-
-                return nil
-            })
-        }
-    `}
-/>
-
-<div class="alert alert-info m-t-sm m-b-sm">
-    <div class="icon">
-        <i class="ri-information-line" />
-    </div>
-    <div class="content">
-        Because the migrations are Go functions, besides applying schema changes, they could be used also to
-        adjust existing data to fit the new schema or any other app specific logic that you want to run only
-        once.
-        <br />
-        And as a bonus, being <code>.go</code> files also ensures that the migrations will be embedded seamlessly
-        in your final executable.
-    </div>
-</div>
-
-<p class="txt-bold">
-    When you deploy the final executable on your production server, the new migrations will be auto applied
-    with the start of the application.
-</p>
-
 <p>
-    Optionally, you could apply new migrations explicitly using <code>migrate up</code>:
+    To revert the last applied migration(s), you could run <code>migrate down [number]</code>.
 </p>
-<CodeBlock
-    content={`
-        [root@dev ~]$ ./yourapp migrate up
-    `}
-/>
 
-<p>To revert the last applied migration(s), you could run <code>migrate down [number]</code>:</p>
-<CodeBlock
-    content={`
-        [root@dev ~]$ ./yourapp migrate down
-    `}
-/>
+<HeadingLink title="Migration file" tag="h5" />
+<p>Each migration file should have a single <code>migrate(upFunc, downFunc)</code> call.</p>
+<p>
+    In the migration file, you are expected to write your "upgrade" code in the <code>upFunc</code> callback.
+    <br />
+    The <code>downFunc</code> is optional and it should contains the "downgrade" operations to revert the
+    changes made by the
+    <code>upFunc</code>.
+</p>
+<p>
+    Both callbacks accept a single <code>db</code> argument (<code>dbx.Builder</code>) that you can use
+    directly or create a <code>Dao</code> instance and use its available helpers. You can explore the
+    <a href="/docs/js-database">Database guide</a>
+    for more details how to operate with the <code>db</code> object and its available methods.
+</p>
 
-<HeadingLink title="migrate collections" />
+<HeadingLink title="Collections snapshot" />
 <p>
     PocketBase comes also with a <code>migrate collections</code> command that will generate a full snapshot of
     your current Collections configuration without having to type it manually:
 </p>
-<CodeBlock
-    content={`
-        // Since the "collections" command makes sense only during development,
-        // it is expected the user to be in the app working directory
-        // and to be using "go run ..."
-
-        [root@dev project]$ go run main.go migrate collections
-    `}
-/>
+<CodeBlock content={`[root@dev app]$ ./pocketbase migrate collections`} />
 <p>
     Similar to the <code>migrate create</code> command, this will generate a new migration file in the
-    <code>migrations</code> directory.
+    <code>pb_migrations</code> directory.
 </p>
+<p>It is safe to run the command multiple times and generate multiple snapshot migration files.</p>
 
-<p>It is safe to run the command multiple times and generate multiple migration files.</p>
-
-<div class="alert alert-info m-t-sm m-b-sm">
-    <div class="icon">
-        <i class="ri-information-line" />
-    </div>
-    <div class="content">
-        <p>
-            If <code>Automigrate</code> is enabled, running this command usually is not necessarily since every
-            collection change will have its own migration file.
-        </p>
-    </div>
-</div>
-
-<HeadingLink title="migrate history-sync" />
+<HeadingLink title="Migrations history" />
 <p>
-    During local development often you might end up making various collection changes to test different
-    approaches.
+    All applied migration filenames are stored in the internal <code>_migrations</code> table.
     <br />
-    This could lead in a migration history with unnecessary intermediate steps that may not be wanted in the final
-    migration history.
+    During local development often you might end up making various collection changes to test different approaches.
     <br />
-    To avoid the clutter and to prevent applying the intermediate steps in production you can remove/squash the
-    unnecessary migration files manually and then update the local migrations history by running:
+    When <code>--automigrate</code> is enabled (<em>which is the default</em>) this could lead in a migration
+    history with unnecessary intermediate steps that may not be wanted in the final migration history.
 </p>
+<p class="txt-bold">
+    To avoid the clutter and to prevent applying the intermediate steps in production, you can remove (or
+    squash) the unnecessary migration files manually and then update the local migrations history by running:
+</p>
+<CodeBlock content={`[root@dev app]$ ./pocketbase migrate history-sync`} />
+<p>
+    The above command will remove any entry from the <code>_migrations</code> table that doesn't have a related
+    migration file associated with it.
+</p>
+
+<HeadingLink title="Examples" />
+
+<HeadingLink title="Running raw SQL statements" tag="h5" />
 <CodeBlock
+    language="javascript"
     content={`
-        [root@dev project]$ go run main.go migrate history-sync
+        // pb_migrations/1687801090_set_pending_status.js
+        //
+        // set a default "pending" status to all empty status articles
+        migrate((db) => {
+            db.newQuery("UPDATE articles SET status = 'pending' WHERE status = ''")
+                .execute()
+        })
+    `}
+/>
+
+<HeadingLink title="Initialize default application settings" tag="h5" />
+<CodeBlock
+    language="javascript"
+    content={`
+        // pb_migrations/1687801090_initial_settings.js
+        migrate((db) => {
+            const dao = new Dao(db);
+
+            const settings = dao.findSettings()
+            settings.meta.appName = "test"
+            settings.logs.maxDays = 2
+
+            dao.saveSettings(settings)
+        })
+    `}
+/>
+
+<HeadingLink title="Creating new admin" tag="h5" />
+<CodeBlock
+    language="javascript"
+    content={`
+        // pb_migrations/1687801090_initial_admin.js
+        migrate((db) => {
+            const dao = new Dao(db);
+
+            const admin = new Admin();
+            admin.email = "test@example.com"
+            admin.setPassword("1234567890")
+
+            dao.saveAdmin(admin)
+        }, (db) => {
+            const dao = new Dao(db);
+
+            try {
+                const admin = dao.findAdminByEmail("test@example.com")
+
+                dao.deleteAdmin(admin)
+            } catch (_) { /* most likely already deleted */ }
+        })
+    `}
+/>
+
+<HeadingLink title="Creating new collection record" tag="h5" />
+<CodeBlock
+    language="javascript"
+    content={`
+        // pb_migrations/1687801090_new_example_record.js
+        migrate((db) => {
+            const dao = new Dao(db);
+
+            const collection = dao.findCollectionByNameOrId("example")
+
+            const record = new Record(collection)
+            record.set("title", "Hello world!")
+            record.set("title", "hello-world")
+            record.set("description", "Lorem ipsum...")
+
+            dao.saveRecord(record)
+        }, (db) => {
+            const dao = new Dao(db);
+
+            try {
+                const record = dao.findFirstRecordByData("example", "slug", "hello-world")
+
+                dao.deleteRecord(record)
+            } catch (_) { /* most likely already deleted */ }
+        })
     `}
 />

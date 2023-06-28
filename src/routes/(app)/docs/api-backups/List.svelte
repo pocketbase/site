@@ -57,11 +57,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>List backups</strong>
-    </svelte:fragment>
-
+<Accordion single title="List backups">
     <div class="content m-b-sm">
         <p>Returns list with all available backup files.</p>
     </div>

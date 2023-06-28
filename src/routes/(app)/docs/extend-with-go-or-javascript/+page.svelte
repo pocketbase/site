@@ -1,10 +1,11 @@
 <script>
     import CodeTabs from "@/components/CodeTabs.svelte";
+    import { extendGroup } from "@/stores/preferences";
 </script>
 
 <p>
     One of the main feature of PocketBase is that
-    <strong>it can be used as a framework</strong> that enables you to build your own custom app business
+    <strong>it can be used as a framework</strong> that enables you to write your own custom app business
     logic in
     <a href="/docs/go-overview">Go</a> or <a href="/docs/js-overview">JavaScript</a> and still have a single portable
     executable at the end.
@@ -31,7 +32,7 @@
     so most of the time the slight performance penalty will be negliable because they'll invoke the Go functions
     under the hood.
     <br />
-    As a bonus, because the JS APIs mirror the Go ones, you could migrate gradually without much code changes from
+    As a bonus, because the JS VM mirrors the Go APIs, you could migrate gradually without much code changes from
     JS -> Go at later stage in case you hit a bottleneck or want more execution control.
 </p>
 
@@ -40,7 +41,7 @@
     <li class="m-b-sm">
         <strong>Bind to event hooks and intercept responses:</strong>
         <CodeTabs
-            group="extend"
+            group={extendGroup}
             go={`
                 app.OnRecordBeforeCreateRequest("posts").Add(func(e *core.RecordCreateEvent) error {
                     requestData := apis.RequestData(e.HttpContext)
@@ -68,7 +69,7 @@
     <li class="m-b-sm">
         <strong>Register custom routes:</strong>
         <CodeTabs
-            group="extend"
+            group={extendGroup}
             go={`
                 app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
                     e.Router.GET(
@@ -102,7 +103,7 @@
     <li class="m-b-sm">
         <strong>Register custom console commands:</strong>
         <CodeTabs
-            group="extend"
+            group={extendGroup}
             go={`
                 app.RootCmd.AddCommand(&cobra.Command{
                     Use: "hello",

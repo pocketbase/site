@@ -43,11 +43,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Create backup</strong>
-    </svelte:fragment>
-
+<Accordion single title="Create backup">
     <div class="content m-b-sm">
         <p>Creates a new app data backup.</p>
         <p>

@@ -141,11 +141,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>List collections</strong>
-    </svelte:fragment>
-
+<Accordion single title="List collections">
     <div class="content m-b-sm">
         <p>Returns a paginated Collections list.</p>
         <p>Only admins can access this action.</p>

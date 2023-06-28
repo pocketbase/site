@@ -67,11 +67,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Update admin</strong>
-    </svelte:fragment>
-
+<Accordion single title={"Update admin"}>
     <div class="content m-b-sm">
         <p>Update a single admin model by its ID.</p>
         <p>Only admins can access this action.</p>

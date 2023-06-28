@@ -18,11 +18,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Health check</strong>
-    </svelte:fragment>
-
+<Accordion single title="Health check">
     <div class="content m-b-sm">
         <p>Returns the health status of the server.</p>
     </div>

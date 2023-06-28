@@ -52,11 +52,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>View admin</strong>
-    </svelte:fragment>
-
+<Accordion single title={"View admin"}>
     <div class="content m-b-sm">
         <p>Return a single admin by its ID.</p>
         <p>Only admins can access this action.</p>

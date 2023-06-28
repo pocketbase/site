@@ -60,11 +60,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>List/Search records</strong>
-    </svelte:fragment>
-
+<Accordion single title="List/Search records">
     <div class="content m-b-sm">
         <p>Returns a paginated records list, supporting sorting and filtering.</p>
         <p>

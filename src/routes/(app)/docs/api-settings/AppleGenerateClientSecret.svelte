@@ -37,11 +37,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Generate Apple client secret</strong>
-    </svelte:fragment>
-
+<Accordion single title="Generate Apple client secret">
     <div class="content m-b-sm">
         <p>Generates a new Apple OAuth2 client secret key.</p>
     </div>

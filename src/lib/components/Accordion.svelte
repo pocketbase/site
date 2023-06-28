@@ -1,5 +1,6 @@
 <script>
     import { onMount, createEventDispatcher } from "svelte";
+    import HeadingLink from "@/components/HeadingLink.svelte";
 
     const dispatch = createEventDispatcher();
 
@@ -12,6 +13,7 @@
     export let active = false;
     export let interactive = true;
     export let single = false; // ensures that only one accordion is expanded in its given parent container
+    export let title = "Toggle"; // fallback accordion header (it can be replaced with custom formatting by specifying the "header" slot)
 
     $: if (active) {
         clearTimeout(expandTimeoutId);
@@ -94,7 +96,20 @@
         class:interactive
         on:click|preventDefault={() => interactive && toggle()}
     >
-        <slot name="header" {active} {toggle} {expand} {collapse} />
+        <slot name="header" {active} {toggle} {expand} {collapse}>
+            <HeadingLink {title} tag="strong">
+                <svelte:fragment slot="after">
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <span
+                        class="fade link-hint p-l-5"
+                        title="Link anchor"
+                        on:click|stopPropagation={() => expand()}
+                    >
+                        #
+                    </span>
+                </svelte:fragment>
+            </HeadingLink>
+        </slot>
     </button>
 
     <!-- note: the accordion content is added to the dom even when not active so that it can be indexed -->

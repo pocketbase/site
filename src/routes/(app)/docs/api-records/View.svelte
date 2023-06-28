@@ -44,11 +44,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>View record</strong>
-    </svelte:fragment>
-
+<Accordion single title="View record">
     <div class="content m-b-sm">
         <p>Returns a single collection record by its ID.</p>
         <p>

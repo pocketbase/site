@@ -1,0 +1,50 @@
+{
+  "name": "PocketBase JSVM reference",
+  "out": "../static/jsvm",
+  "readme": "none",
+  "tsconfig": "./tsconfig.json",
+  "entryPoints": ["./types.d.ts"],
+  "skipErrorChecking": true,
+  "excludeExternals": "true",
+  "lightHighlightTheme": "github-light",
+  "darkHighlightTheme": "github-dark",
+  "visibilityFilters": {
+      "inherited": true,
+      "external": true,
+  },
+  "customCss": "./custom.css",
+  "navigationLinks": {
+    "PocketBase site": "https://pocketbase.io"
+  },
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true
+  },
+  "groupOrder": ["PocketBase", "*"],
+  "kindSortOrder": [
+      "Project",
+      "Namespace",
+      "Variable",
+      "Function",
+      "Accessor",
+      "Method",
+      "Class",
+      "Interface",
+      "Constructor",
+      "ConstructorSignature",
+      "IndexSignature",
+      "CallSignature",
+      "GetSignature",
+      "SetSignature",
+      "Reference",
+      "Module",
+      "Enum",
+      "EnumMember",
+      "Property",
+      "ObjectLiteral",
+      "Parameter",
+      "TypeParameter",
+      "TypeLiteral",
+      "TypeAlias"
+  ]
+}

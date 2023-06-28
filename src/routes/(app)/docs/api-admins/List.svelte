@@ -67,11 +67,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>List admins</strong>
-    </svelte:fragment>
-
+<Accordion single title={"List admins"}>
     <div class="content m-b-sm">
         <p>Returns a paginated admins list.</p>
         <p>Only admins can access this action.</p>

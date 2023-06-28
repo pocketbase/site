@@ -205,6 +205,7 @@
         font-size: var(--baseFontSize);
         color: var(--txtHintColor);
         margin: 0 0 10px;
+        padding: 0 10px;
         i {
             font-weight: normal;
         }
@@ -241,8 +242,8 @@
         .sub-list-item {
             @extend %block;
             outline: 0;
-            margin: 2px 0 8px;
-            padding-left: 25px;
+            margin: 8px 0;
+            padding-left: 15px;
             text-decoration: none;
             color: var(--txtHintColor);
             &:hover,
@@ -254,6 +255,9 @@
         }
         .sub-list-item + .list-item {
             margin-top: 15px;
+        }
+        .tree-node {
+            margin-right: 5px;
         }
     }
 

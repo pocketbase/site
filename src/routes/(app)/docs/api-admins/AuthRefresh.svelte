@@ -55,12 +55,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Auth refresh</strong>
-        <div class="flex-fill" />
-    </svelte:fragment>
-
+<Accordion single title="Auth refresh">
     <div class="content m-b-sm">
         <p>Returns a new auth response (token and admin data) for already authenticated admin.</p>
     </div>

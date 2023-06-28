@@ -28,11 +28,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Confirm password reset</strong>
-    </svelte:fragment>
-
+<Accordion single title={"Confirm password reset"}>
     <div class="content m-b-sm">
         <p>Confirms a password reset request and sets a new admin password.</p>
     </div>

@@ -82,11 +82,7 @@
 </div>
 
 <div class="accordions m-b-base">
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <strong id="connect">Connect</strong>
-        </svelte:fragment>
-
+    <Accordion single title="Connect">
         <div class="api-route alert alert-info">
             <strong class="label label-primary">GET</strong>
             <div class="content">/api/realtime</div>
@@ -108,11 +104,7 @@
         </p>
     </Accordion>
 
-    <Accordion single>
-        <svelte:fragment slot="header">
-            <strong id="set-subscriptions">Set subscriptions</strong>
-        </svelte:fragment>
-
+    <Accordion single title="Set subscriptions">
         <div class="api-route alert alert-success">
             <strong class="label label-primary">POST</strong>
             <div class="content">/api/realtime</div>

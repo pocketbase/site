@@ -1,7 +1,0 @@
-{
-    "typedocOptions": {
-        "entryPoints": ["gojatypes.d.ts"],
-        "skipErrorChecking": true,
-        "out": "htmldocs"
-    }
-}

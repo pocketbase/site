@@ -59,11 +59,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Update record</strong>
-    </svelte:fragment>
-
+<Accordion single title="Update record">
     <div class="content m-b-sm">
         <p>Updates an existing collection <em>Record</em>.</p>
         <p>

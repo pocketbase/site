@@ -1,13 +1,12 @@
 <script>
     import { page } from "$app/stores";
-    import docLinks from "./doc_links.js";
+    import { baseLinks, jsLinks, goLinks } from "./doc_links.js";
 
     let prevLink = {};
     let nextLink = {};
-    let links = docLinks;
+    let groups = [baseLinks, jsLinks, goLinks];
 
     $: if ($page) {
-        links = docLinks; // reasign to refresh the current path checks
         loadPrevAndNextLinks();
     }
 
@@ -22,20 +21,20 @@
         prevLink = {};
         nextLink = {};
 
-        for (const group of links) {
-            for (let i = 0; i < group.items.length; i++) {
-                const item = group.items[i];
+        for (const links of groups) {
+            for (let i = 0; i < links.length; i++) {
+                const item = links[i];
 
                 if (!trimTrailingSlash(item.href).includes(currentPath)) {
                     continue;
                 }
 
                 if (i > 0) {
-                    prevLink = group.items[i - 1];
+                    prevLink = links[i - 1];
                 }
 
-                if (i < group.items.length - 1) {
-                    nextLink = group.items[i + 1];
+                if (i < links.length - 1) {
+                    nextLink = links[i + 1];
                 }
 
                 return;

@@ -99,11 +99,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Create collection</strong>
-    </svelte:fragment>
-
+<Accordion single title="Create collection">
     <div class="content m-b-sm">
         <p>Creates a new Collection.</p>
         <p>Only admins can access this action.</p>

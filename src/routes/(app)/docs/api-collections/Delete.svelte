@@ -53,11 +53,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Delete collection</strong>
-    </svelte:fragment>
-
+<Accordion single title="Delete collection">
     <div class="content m-b-sm">
         <p>Deletes a single Collection by its ID or name.</p>
         <p>Only admins can access this action.</p>

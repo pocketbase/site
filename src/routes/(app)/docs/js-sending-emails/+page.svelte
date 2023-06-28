@@ -31,13 +31,13 @@
                     address: $app.settings().meta.senderAddress,
                     name:    $app.settings().meta.senderName,
                 },
-                to:      [{address: e.Record.Email()}],
+                to:      [{address: e.record.email()}],
                 subject: "YOUR_SUBJECT...",
                 html:    "YOUR_HTML_BODY...",
                 // bcc, cc, attachments and custom headers are also supported...
             })
 
-            return $app.newMailClient().send(message)
+            $app.newMailClient().send(message)
         })
     `}
 />

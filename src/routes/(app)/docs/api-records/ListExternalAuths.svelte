@@ -65,11 +65,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>List linked external auth providers</strong>
-    </svelte:fragment>
-
+<Accordion single title="List linked external auth providers">
     <div class="content m-b-sm">
         <p>Return a list with all external auth providers linked to a single record.</p>
         <p>Only admins and the account owner can access this action.</p>

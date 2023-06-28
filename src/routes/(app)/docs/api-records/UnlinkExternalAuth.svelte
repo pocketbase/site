@@ -43,11 +43,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Unlink external auth provider</strong>
-    </svelte:fragment>
-
+<Accordion single title="Unlink external auth provider">
     <div class="content m-b-sm">
         <p>Unlink a single external OAuth2 provider from an auth record.</p>
         <p>Only admins and the account owner can access this action.</p>

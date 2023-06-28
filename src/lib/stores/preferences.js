@@ -4,6 +4,8 @@ var storage = typeof window !== 'undefined' ? window.localStorage : null;
 
 const CODE_PREFERENCE_KEY = "pb_code_preference";
 
+export const extendGroup = "extend"
+
 export const codePreferences = writable(getStoragePreferences());
 
 export function setCodePreference(val, group = "") {

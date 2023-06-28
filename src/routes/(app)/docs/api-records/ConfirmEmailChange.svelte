@@ -28,11 +28,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Confirm email change</strong>
-    </svelte:fragment>
-
+<Accordion single title="Confirm email change">
     <div class="content m-b-sm">
         <p>Confirms email address change.</p>
     </div>

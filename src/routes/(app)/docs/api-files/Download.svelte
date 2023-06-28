@@ -33,11 +33,7 @@
     ];
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Download / Fetch file</strong>
-    </svelte:fragment>
-
+<Accordion single title="Download / Fetch file">
     <div class="content m-b-base">
         <p>Downloads a single file resource (aka. the URL address to the file). Example:</p>
         <CodeBlock

@@ -44,11 +44,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Delete record</strong>
-    </svelte:fragment>
-
+<Accordion single title="Delete record">
     <div class="content m-b-sm">
         <p>Deletes a single collection <em>Record</em> by its ID.</p>
         <p>

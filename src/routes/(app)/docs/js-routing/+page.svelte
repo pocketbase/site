@@ -14,7 +14,7 @@
 
 <HeadingLink title="Routes" />
 
-<HeadingLink title="Registering new routes" tag="h6" />
+<HeadingLink title="Registering new routes" tag="h5" />
 <p>
     Each route consists of at least a path and a handler function. For example, the below code registers
     <code>GET /hello/:name</code> route that responds with a json body:
@@ -66,7 +66,27 @@
     Below you can find common request context operations.
 </p>
 
-<HeadingLink title="Retrieving the current auth state" tag="h6" />
+<HeadingLink title="Request context store" tag="h5" />
+<p>
+    The request context comes with a local store that you can use to share data between your middlewares
+    and route that is related only to the current request.
+</p>
+<CodeBlock
+    language="javascript"
+    content={`
+        // store for the duration of the request
+        c.set("someKey", 123)
+
+        // retrieve later
+        const val = c.get("someKey") // 123
+    `}
+/>
+
+<HeadingLink title="Retrieving the current auth state" tag="h5" />
+<p>
+    We also use the store to manage the current auth state with the <code>admin</code> and
+    <code>authRecord</code> special keys.
+</p>
 <CodeBlock
     language="javascript"
     content={`
@@ -76,19 +96,19 @@
     `}
 />
 
-<HeadingLink title="Reading path parameters" tag="h6" />
+<HeadingLink title="Reading path parameters" tag="h5" />
 <CodeBlock language="javascript" content={`const id = c.pathParam("id")`} />
 
-<HeadingLink title="Reading query parameters" tag="h6" />
+<HeadingLink title="Reading query parameters" tag="h5" />
 <CodeBlock language="javascript" content={`const search = c.queryParam("search")`} />
 
-<HeadingLink title="Reading request headers" tag="h6" />
+<HeadingLink title="Reading request headers" tag="h5" />
 <CodeBlock language="javascript" content={`const token = c.request().header.get("Some-Header")`} />
 
-<HeadingLink title="Writing response headers" tag="h6" />
+<HeadingLink title="Writing response headers" tag="h5" />
 <CodeBlock language="javascript" content={`c.response().header().set("Some-Header", "123")`} />
 
-<HeadingLink title="Reading request body" tag="h6" />
+<HeadingLink title="Reading request body" tag="h5" />
 <CodeBlock
     language="javascript"
     content={`
@@ -112,7 +132,7 @@
     `}
 />
 
-<HeadingLink title="Writing response body" tag="h6" />
+<HeadingLink title="Writing response body" tag="h5" />
 <CodeBlock
     language="javascript"
     content={`
@@ -150,7 +170,7 @@
     `}
 />
 
-<HeadingLink title="Builtin middlewares" tag="h6" />
+<HeadingLink title="Builtin middlewares" tag="h5" />
 <CodeBlock
     language="javascript"
     content={`
@@ -175,7 +195,7 @@
     `}
 />
 
-<HeadingLink title="Custom middlewares" tag="h6" />
+<HeadingLink title="Custom middlewares" tag="h5" />
 <CodeBlock
     language="javascript"
     content={`
@@ -232,7 +252,7 @@
 <p>
     The global <code>$apis</code> namespace expose several helpers you can use as part of your route hooks.
 </p>
-<HeadingLink title="Auth response" tag="h6" />
+<HeadingLink title="Auth response" tag="h5" />
 <p>
     <code>$apis.recordAuthResponse()</code> writes standardised json record auth response (aka. token + record
     data) into the specified request context. Could be used as a return result from a custom auth route.
@@ -260,7 +280,7 @@
         })
     `}
 />
-<HeadingLink title="Enrich record(s)" tag="h6" />
+<HeadingLink title="Enrich record(s)" tag="h5" />
 <p>
     <code>$apis.enrichRecord()</code> and <code>$apis.enrichRecords()</code> helpers parses the request context
     and enrich the provided record(s) by:

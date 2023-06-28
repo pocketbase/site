@@ -59,11 +59,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>View request log</strong>
-    </svelte:fragment>
-
+<Accordion single title="View request log">
     <div class="content m-b-sm">
         <p>Returns a single request log by its ID.</p>
         <p>Only admins can access this action.</p>

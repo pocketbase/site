@@ -48,11 +48,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Import collections</strong>
-    </svelte:fragment>
-
+<Accordion single title="Import collections">
     <div class="content m-b-sm">
         <p>Bulk imports the provided <em>Collections</em> configuration.</p>
         <p>Only admins can access this action.</p>

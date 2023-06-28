@@ -45,11 +45,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>List auth methods</strong>
-    </svelte:fragment>
-
+<Accordion single title="List auth methods">
     <div class="content m-b-sm">
         <p>Returns a public list with the allowed collection authentication methods.</p>
     </div>

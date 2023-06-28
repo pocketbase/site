@@ -33,11 +33,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Test S3 storage connection</strong>
-    </svelte:fragment>
-
+<Accordion single title="Test S3 storage connection">
     <div class="content m-b-sm">
         <p>Performs a S3 storage connection test.</p>
         <p>Only admins can access this action.</p>

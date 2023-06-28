@@ -57,11 +57,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Auth with OAuth2</strong>
-    </svelte:fragment>
-
+<Accordion single title={"Auth with OAuth2"}>
     <div class="content m-b-sm">
         <p>Authenticate with an OAuth2 provider and returns a new auth token and record data.</p>
         <p>This action usually should be called right after the provider login page redirect.</p>

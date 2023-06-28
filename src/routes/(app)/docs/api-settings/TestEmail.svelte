@@ -38,11 +38,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Send test email</strong>
-    </svelte:fragment>
-
+<Accordion single title="Send test email">
     <div class="content m-b-sm">
         <p>Sends a test user email.</p>
         <p>Only admins can access this action.</p>

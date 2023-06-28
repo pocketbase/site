@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "jsvm": "npx typedoc --options ./jsvm/typedoc.json",
+    "build": "jsvm && vite build",
     "preview": "vite preview"
   },
   "prettier": {

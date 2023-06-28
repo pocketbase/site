@@ -145,7 +145,7 @@
     `}
 />
 
-<HeadingLink title="select(), andSelect(), distinct()" tag="h6" />
+<HeadingLink title="select(), andSelect(), distinct()" tag="h5" />
 <p>
     The <code>select(...cols)</code> method initializes a <code>SELECT</code> query builder. It accepts a list
     of the column names to be selected.
@@ -165,7 +165,7 @@
     `}
 />
 
-<HeadingLink title="from()" tag="h6" />
+<HeadingLink title="from()" tag="h5" />
 <p>
     The <code>from(...tables)</code> method specifies which tables to select from (plain table names are automatically
     quoted).
@@ -180,7 +180,7 @@
     `}
 />
 
-<HeadingLink title="join()" tag="h6" />
+<HeadingLink title="join()" tag="h5" />
 <p>
     The <code>join(type, table, on)</code> method specifies a <code>JOIN</code> clause. It takes 3 parameters:
 </p>
@@ -207,7 +207,7 @@
     `}
 />
 
-<HeadingLink title="where(), andWhere(), orWhere()" tag="h6" />
+<HeadingLink title="where(), andWhere(), orWhere()" tag="h5" />
 <p>
     The <code>where(exp)</code> method specifies the <code>WHERE</code> condition of the query.
     <br />
@@ -461,7 +461,7 @@
     </li>
 </ul>
 
-<HeadingLink title="orderBy(), andOrderBy()" tag="h6" />
+<HeadingLink title="orderBy(), andOrderBy()" tag="h5" />
 <p>
     The <code>orderBy(...cols)</code> specifies the <code>ORDER BY</code> clause of the query.
     <br />
@@ -482,7 +482,7 @@
     `}
 />
 
-<HeadingLink title="groupBy(), andGroupBy()" tag="h6" />
+<HeadingLink title="groupBy(), andGroupBy()" tag="h5" />
 <p>
     The <code>groupBy(...cols)</code> specifies the <code>GROUP BY</code> clause of the query.
     <br />
@@ -500,7 +500,7 @@
     `}
 />
 
-<HeadingLink title="having(), andHaving(), orHaving()" tag="h6" />
+<HeadingLink title="having(), andHaving(), orHaving()" tag="h5" />
 <p>
     The <code>having(exp)</code> specifies the <code>HAVING</code> clause of the query.
     <br />
@@ -523,7 +523,7 @@
     `}
 />
 
-<HeadingLink title="limit()" tag="h6" />
+<HeadingLink title="limit()" tag="h5" />
 <p>
     The <code>limit(number)</code> method specifies the <code>LIMIT</code> clause of the query.
 </p>
@@ -538,7 +538,7 @@
     `}
 />
 
-<HeadingLink title="offset()" tag="h6" />
+<HeadingLink title="offset()" tag="h5" />
 <p>
     The <code>offset(number)</code> method specifies the <code>OFFSET</code> clause of the query. Usually used
     together with <code>limit(number)</code>.

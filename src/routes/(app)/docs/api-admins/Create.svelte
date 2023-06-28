@@ -57,11 +57,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>Create admin</strong>
-    </svelte:fragment>
-
+<Accordion single title={"Create admin"}>
     <div class="content m-b-sm">
         <p>Creates a new admin.</p>
         <p>Only admins can access this action.</p>

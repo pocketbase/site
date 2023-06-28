@@ -94,11 +94,7 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single>
-    <svelte:fragment slot="header">
-        <strong>List request logs</strong>
-    </svelte:fragment>
-
+<Accordion single title="List request logs">
     <div class="content m-b-sm">
         <p>Returns a paginated request logs list.</p>
         <p>Only admins can access this action.</p>
