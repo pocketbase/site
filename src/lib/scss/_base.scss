@@ -136,6 +136,16 @@ code {
         word-break: break-all;
     }
 }
+a {
+    code {
+        text-decoration: none;
+        font-weight: 600;
+        transition: background var(--baseAnimationSpeed);
+    }
+    &:hover code {
+        background: var(--baseAlt2Color);
+    }
+}
 
 ol,
 ul {
@@ -219,7 +229,7 @@ a {
     font-size: var(--xlFontSize) !important;
 }
 .txt-bold {
-    font-weight: 500 !important;
+    font-weight: 600 !important;
 }
 .txt-italic {
     font-style: italic !important;

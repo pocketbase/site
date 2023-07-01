@@ -1,6 +1,5 @@
 <script>
     import { onMount, tick } from "svelte";
-    import { goto } from "$app/navigation";
     import { page } from "$app/stores";
     import { codePreferences, setCodePreference, extendGroup } from "@/stores/preferences";
     import { baseLinks, jsLinks, goLinks, hasPath } from "./doc_links.js";
@@ -52,45 +51,31 @@
                 <div class="clearfix m-t-base" />
 
                 <div class="tabs-header stretched compact">
-                    <button
-                        type="button"
-                        class="tab-item"
-                        class:active={extendLang == "go"}
-                        on:click={() => {
-                            goto(goLinks[0].href);
-                        }}
-                    >
+                    <a class="tab-item" href={goLinks[0].href} class:active={extendLang == "go"}>
                         <div class="block">
                             Extend with <br />
                             <span class="txt" class:txt-bold={extendLang == "go"}>Go</span>
                         </div>
-                    </button>
-                    <button
-                        type="button"
-                        class="tab-item"
-                        class:active={extendLang == "javascript"}
-                        on:click={() => {
-                            goto(jsLinks[0].href);
-                        }}
-                    >
+                    </a>
+                    <a class="tab-item" href={jsLinks[0].href} class:active={extendLang == "javascript"}>
                         <div class="block">
                             Extend with <br />
                             <span class="txt" class:txt-bold={extendLang == "javascript"}>JavaScript</span>
                         </div>
-                    </button>
+                    </a>
                 </div>
                 <div class="tabs-content">
                     <div class="tab-item" class:active={extendLang == "go"}>
                         <NavList items={goLinks}>
                             <svelte:fragment slot="before">
-                                <span class="label label-sm">Go</span>
+                                <span class="label label-sm label-info">Go</span>
                             </svelte:fragment>
                         </NavList>
                     </div>
                     <div class="tab-item" class:active={extendLang == "javascript"}>
                         <NavList items={jsLinks}>
                             <svelte:fragment slot="before">
-                                <span class="label label-sm">JS</span>
+                                <span class="label label-sm label-warning">JS</span>
                             </svelte:fragment>
                         </NavList>
                     </div>
@@ -117,5 +102,8 @@
         position: absolute;
         left: 0;
         top: 0;
+    }
+    .label-sm {
+        min-width: 24px;
     }
 </style>

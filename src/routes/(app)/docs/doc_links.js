@@ -81,44 +81,48 @@ export const baseLinks = [
 
 export const goLinks = [
     {
-        href: "/docs/use-as-framework",
-        title: "Use as framework",
+        href: "/docs/go-overview",
+        title: "Overview",
     },
     {
-        href: "/docs/event-hooks",
+        href: "/docs/go-event-hooks",
         title: "Event hooks",
     },
     {
-        href: "/docs/router",
-        title: "Router",
+        href: "/docs/go-routing",
+        title: "Routing",
     },
     {
-        href: "/docs/database",
+        href: "/docs/go-database",
         title: "Database",
     },
     {
-        href: "/docs/collection-methods",
-        title: "Collection methods",
+        href: "/docs/go-records",
+        title: "Record operations",
     },
     {
-        href: "/docs/record-methods",
-        title: "Record methods",
+        href: "/docs/go-collections",
+        title: "Collection operations",
     },
     {
-        href: "/docs/custom-models",
-        title: "Custom models",
-    },
-    {
-        href: "/docs/sending-emails",
-        title: "Sending emails",
-    },
-    {
-        href: "/docs/migrations",
+        href: "/docs/go-migrations",
         title: "Migrations",
     },
     {
-        href: "/docs/testing",
+        href: "/docs/go-sending-emails",
+        title: "Sending emails",
+    },
+    {
+        href: "/docs/go-jobs-scheduling",
+        title: "Jobs scheduling",
+    },
+    {
+        href: "/docs/go-testing",
         title: "Testing",
+    },
+    {
+        href: "/docs/go-custom-models",
+        title: "Custom models",
     },
 ];
 

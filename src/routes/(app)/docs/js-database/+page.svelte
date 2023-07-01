@@ -190,7 +190,7 @@
     <li><code>on</code> - optional <code>dbx.Expression</code> as an <code>ON</code> clause</li>
 </ul>
 <p>
-    For convenience, you can also use the shorcuts <code>innerJoin(table, on)</code>,
+    For convenience, you can also use the shortcuts <code>innerJoin(table, on)</code>,
     <code>leftJoin(table, on)</code>,
     <code>rightJoin(table, on)</code> to specify <code>INNER JOIN</code>, <code>LEFT JOIN</code> and
     <code>RIGHT JOIN</code>, respectively.
@@ -360,7 +360,7 @@
                 $dbx.like("name", "test1", "test2")
 
                 // name LIKE "test1%"
-                $dbx.like("name", "test1").Match(false, true)
+                $dbx.like("name", "test1").match(false, true)
             `}
         />
     </li>
@@ -375,7 +375,7 @@
                 $dbx.notLike("name", "test1", "test2")
 
                 // name NOT LIKE "test1%"
-                $dbx.notLike("name", "test1").Match(false, true)
+                $dbx.notLike("name", "test1").match(false, true)
             `}
         />
     </li>
@@ -391,7 +391,7 @@
                 $dbx.orLike("name", "test1", "test2")
 
                 // name LIKE "test1%" OR name LIKE "test2%"
-                $dbx.orLike("name", "test1", "test2").Match(false, true)
+                $dbx.orLike("name", "test1", "test2").match(false, true)
             `}
         />
     </li>
@@ -407,7 +407,7 @@
                 $dbx.orNotLike("name", "test1", "test2")
 
                 // name NOT LIKE "test1%" OR name NOT LIKE "test2%"
-                $dbx.orNotLike("name", "test1", "test2").Match(false, true)
+                $dbx.orNotLike("name", "test1", "test2").match(false, true)
             `}
         />
     </li>
@@ -563,7 +563,7 @@
     You can nest <code>Dao.runInTransaction()</code> as many times as you want.
 </p>
 <p>
-    <strong>The transaction will be commited only if there are no errors.</strong>
+    <strong>The transaction will be committed only if there are no errors.</strong>
 </p>
 <CodeBlock
     language="javascript"
@@ -572,7 +572,7 @@
             // update a record
             const record = txDao.findRecordById("articles", "RECORD_ID")
             record.set("status", "active")
-            txDao.saveRecord(record);
+            txDao.saveRecord(record)
 
             // run some custom raw query
             txDao.db().newQuery("DELETE articles WHERE status = 'pending'").execute()

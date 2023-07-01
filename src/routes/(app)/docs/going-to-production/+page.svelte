@@ -11,10 +11,9 @@
 
 <HeadingLink title="Minimal setup" tag="h5" />
 <p>
-    One of the best PocketBase features is that it's completely portable. This mean that it doesn't require any
-    external dependency and <strong>
-        could be deployed by just uploading the executable on your server
-    </strong>.
+    One of the best PocketBase features is that it's completely portable. This mean that it doesn't require
+    any external dependency and
+    <strong>could be deployed by just uploading the executable on your server</strong>.
 </p>
 <p>
     Here is an example for starting a production HTTPS server (auto managed TLS with Let's Encrypt) on clean
@@ -185,15 +184,15 @@
 </p>
 
 <HeadingLink title="Backup and Restore" />
-<p></p>
+<p />
 <p>
-    PocketBase v0.16+ comes with built-in backups and restore APIs that could be accessed from the Admin UI
-    (<em>Settings</em> > <em>Backups</em>):
+    PocketBase v0.16+ comes with built-in backups and restore APIs that could be accessed from the Admin UI (<em
+        >Settings</em
+    >
+    > <em>Backups</em>):
 </p>
 <img src="/images/screenshots/backups.png" alt="Backups settings screenshot" class="screenshot m-b-xs" />
-<p>
-    Backups can be stored locally (default) or in an external S3 storage.
-</p>
+<p>Backups can be stored locally (default) or in an external S3 storage.</p>
 <p>
     Alternatively, you can always manually copy your <code>pb_data</code> directory
     <em>(for transactional safety make sure that the application is not running)</em>.

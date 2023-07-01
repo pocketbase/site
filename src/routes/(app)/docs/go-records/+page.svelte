@@ -87,6 +87,10 @@
         // retrieve a single "articles" collection record by its id
         record, err := app.Dao().FindRecordById("articles", "RECORD_ID")
 
+        // retrieve a single "articles" collection record by a string filter expression
+        // (the expression uses the same "filter" parameter format as in the Web APIs)
+        record, err := app.Dao().FindFirstRecordByFilter("articles", "status = 'public' && category = 'news'")
+
         // retrieve a single "articles" collection record by a single key-value pair
         record, err := app.Dao().FindFirstRecordByData("articles", "slug", "test")
     `}
@@ -99,11 +103,19 @@
         // retrieve multiple "articles" collection records by their ids
         records, err := app.Dao().FindRecordsByIds("articles", []string{"RECORD_ID1", "RECORD_ID2"})
 
+        // retrieve multiple "articles" collection records by a string filter expression
+        // (the expression uses the same "filter" parameter format as in the Web APIs)
+        records, err := app.Dao().FindRecordsByFilter(
+            "articles",                               // collection
+            "status = 'public' && category = 'news'", // filter
+            "-publised",                              // sort
+            10                                        // limit
+        )
+
         // retrieve multiple "articles" collection records by a custom dbx expression(s)
         records, err := app.Dao().FindRecordsByExpr("articles",
-            dbx.HashExp{"status": "pending"},
-            // or even raw expressions
             dbx.NewExp("LOWER(username) = {:username}", dbx.Params{"username": "John.Doe"}),
+            dbx.HashExp{"status": "pending"},
         )
     `}
 />
@@ -204,15 +216,18 @@
 
         ...
 
-        app.OnRecordBeforeCreateRequest().Add(func(e *core.RecordCreateEvent) error {
-            if (e.Record.Collection().Name == "articles") {
-                // overwrite the submitted "active" field value to false
-                e.Record.Set("active", false)
+        app.OnRecordBeforeCreateRequest("articles").Add(func(e *core.RecordCreateEvent) error {
+            admin, _ := e.HttpContext.Get(apis.ContextAdminKey).(*models.Admin)
+            if admin != nil {
+                return nil // ignore for admins
+            }
 
-                // or you can also prevent the create event by returning an error, eg.:
-                if (e.Record.GetString("status") != "pending") {
-                    return apis.NewBadRequestError("status must be pending.", nil)
-                }
+            // overwrite the submitted "active" field value to false
+            e.Record.Set("active", false)
+
+            // or you can also prevent the create event by returning an error, eg.:
+            if (e.Record.GetString("status") != "pending") {
+                return apis.NewBadRequestError("status must be pending", nil)
             }
 
             return nil
@@ -283,15 +298,18 @@
 
         ...
 
-        app.OnRecordBeforeUpdateRequest().Add(func(e *core.RecordUpdateEvent) error {
-            if (e.Record.Collection().Name == "articles") {
-                // overwrite the submitted "active" field value to false
-                e.Record.Set("active", false)
+        app.OnRecordBeforeUpdateRequest("articles").Add(func(e *core.RecordUpdateEvent) error {
+            admin, _ := e.HttpContext.Get(apis.ContextAdminKey).(*models.Admin)
+            if admin != nil {
+                return nil // ignore for admins
+            }
 
-                // or you can also prevent the create event by returning an error, eg.:
-                if (e.Record.GetString("status") != "pending") {
-                    return apis.NewBadRequestError("status must be pending.", nil)
-                }
+            // overwrite the submitted "active" field value to false
+            e.Record.Set("active", false)
+
+            // or you can also prevent the create event by returning an error, eg.:
+            if (e.Record.GetString("status") != "pending") {
+                return apis.NewBadRequestError("status must be pending.", nil)
             }
 
             return nil
@@ -314,7 +332,40 @@
     `}
 />
 
+<HeadingLink title="Transaction" />
+<CodeBlock
+    language="go"
+    content={`
+        titles := []string{"title1", "title2", "title3"}
+
+        collection, err := app.Dao().FindCollectionByNameOrId("articles")
+        if err != nil {
+            return err
+        }
+
+        app.Dao().RunInTransaction(func(txDao *daos.Dao) error {
+            // create new record for each title
+            for _, title := range titles {
+                record := models.NewRecord(collection)
+                record.Set("title", title)
+
+                if err := txDao.SaveRecord(record); err != nil {
+                    return err
+                }
+            }
+
+            return nil
+        })
+    `}
+/>
+
 <HeadingLink title="Custom record query" />
+<p>
+    In addition to the above read and write helpers, you can also create custom Record model queries using
+    <code>Dao.RecordQuery(collection)</code>
+    method. It returns a DB builder that can be used with the same methods described in the
+    <a href="/docs/go-database">Database guide</a>.
+</p>
 <CodeBlock
     language="go"
     content={`
@@ -344,34 +395,5 @@
 
             return records, nil
         }
-    `}
-/>
-
-<HeadingLink title="Transaction" />
-<CodeBlock
-    language="go"
-    content={`
-        titles := []string{"title1", "title2", "title3"}
-
-        collection, err := app.Dao().FindCollectionByNameOrId("articles")
-        if err != nil {
-            return err
-        }
-
-        app.Dao().RunInTransaction(func(txDao *daos.Dao) error {
-            // create new record for each title
-            for _, title := range titles {
-                record := models.NewRecord(collection)
-                record.Set("title", title)
-
-                if err := txDao.SaveRecord(record); err != nil {
-                    return err
-                }
-            }
-
-            // do something else...
-
-            return nil
-        })
     `}
 />

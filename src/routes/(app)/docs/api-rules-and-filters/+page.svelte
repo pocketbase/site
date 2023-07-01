@@ -61,7 +61,7 @@
     </div>
     <div class="content">
         <p>
-            <strong>PocketBase API Rules acts also as records filter!</strong>
+            <strong>PocketBase API Rules act also as records filter!</strong>
             <br />
             Or in other words, you could for example allow listing only the "active" records of your collection,
             by using a simple filter expression such as:
@@ -69,8 +69,16 @@
             (where "status" is a field defined in your Collection).
         </p>
         <p>
+            Because of the above, the API will return 200 empty items response in case a request doesn't
+            satisfy a <code>listRule</code>, 400 for unsatisfied <code>createRule</code> and 404 for
+            unsatisfied <code>viewRule</code>, <code>updateRule</code> and <code>deleteRule</code>.
+            <br />
+            All rules will return 403 in case they were "locked" (aka. admin only) and the request client is not
+            an admin.
+        </p>
+        <p>
             The API Rules are ignored when the action is performed by an authorized admin (<strong
-                >admins can always access everything</strong
+                >admins can access everything</strong
             >)!
         </p>
     </div>

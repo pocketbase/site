@@ -66,6 +66,14 @@
             <code>models.Record</code> and you'll have to manually convert the <code>models.Record</code> to your
             custom struct if you want to use it inside the event hooks.
         </p>
+        <p class="txt-bold">
+            There are plans to improve this workflow in the future with codegeneration (see
+            <a
+                href="https://github.com/pocketbase/pocketbase/discussions/2697#discussioncomment-6154067"
+                target="_blank"
+                rel="noopener noreferrer">Discussion#2697</a
+            >).
+        </p>
     </div>
 </div>
 

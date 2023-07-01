@@ -15,12 +15,15 @@
     >) which enables you to write custom server-side code using plain JavaScript.
 </p>
 <p>
-    You can start using it by creating <code>*.pb.js</code> file(s) inside a <code>pb_hooks</code>
-    directory, next to your <code>pb_data</code>:
+    You can start by creating <code>*.pb.js</code> file(s) inside a <code>pb_hooks</code>
+    directory, next to your <code>pb_data</code>. The <code>*.pb.js</code> files are loaded in their filename sort
+    order.
 </p>
 <CodeBlock
     content={`
         // pb_hooks/main.pb.js
+
+        console.log("this file was loaded!")
 
         $app.onModelAfterUpdate("users").add((e) => {
             console.log("user updated...", e.model.get("title"))
@@ -32,18 +35,12 @@
         })
     `}
 />
-<div class="alert alert-info m-t-sm">
-    <div class="icon">
-        <i class="ri-information-line" />
-    </div>
-    <div class="content">
-        <p>
-            The <code>*.pb.js</code> files are loaded in their filename sort order. For convenience, when
-            making changes to the files inside <code>pb_hooks</code>, the process will automatically
-            restart/reload itself (<em>currently supported only on UNIX based platforms</em>).
-        </p>
-    </div>
-</div>
+<p>
+    <em>
+        For convenience, when making changes to the files inside <code>pb_hooks</code>, the process will
+        automatically restart/reload itself (currently supported only on UNIX based platforms).
+    </em>
+</p>
 <p>
     For most parts, the JavaScript APIs are derived from <a href="/docs/go-overview">Go</a> with 2 main differences:
 </p>
@@ -60,7 +57,7 @@
     The running PocketBase instance is exposed as global <code>$app</code> object (
     <em>
         for all exposed APIs, please refer to the
-        <a href="/docs/js-overview#global-namespace">JS Bindings reference</a>
+        <a href="/jsvm/index.html" target="_blank">JS Bindings reference</a>
     </em>
     ).
 </p>

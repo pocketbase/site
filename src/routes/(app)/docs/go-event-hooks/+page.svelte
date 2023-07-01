@@ -61,22 +61,7 @@
 
     <div class="accordions">
         {#each Object.entries(groupHooks) as [hookTitle, hookInfo]}
-            <Accordion single>
-                <svelte:fragment slot="header" let:expand>
-                    <HeadingLink title={hookTitle} tag="strong">
-                        <svelte:fragment slot="after">
-                            <!-- svelte-ignore a11y-click-events-have-key-events -->
-                            <span
-                                class="fade link-hint p-l-5"
-                                title="Link anchor"
-                                on:click|stopPropagation={() => expand?.()}
-                            >
-                                #
-                            </span>
-                        </svelte:fragment>
-                    </HeadingLink>
-                </svelte:fragment>
-
+            <Accordion single title={hookTitle}>
                 <div class="content m-b-sm">
                     {@html hookInfo.html}
                 </div>
@@ -89,8 +74,6 @@
     </div>
 {/each}
 
-<RealtimeHooks />
-<FileHooks />
 <CollectionHooks />
 <SettingsHooks />
 <AdminCrudHooks />

@@ -2731,4 +2731,403 @@ export default {
             `,
         },
     },
+
+    "Realtime API hooks": {
+        OnRealtimeConnectRequest: {
+            html: `
+                <code>OnRealtimeConnectRequest</code> hook is triggered right before establishing
+                the SSE client connection.
+            `,
+            js: `
+                $app.onRealtimeConnectRequest().add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.client.id())
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRealtimeConnectRequest().Add(func(e *core.RealtimeConnectEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Client.Id())
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnRealtimeDisconnectRequest: {
+            html: `
+                <code>OnRealtimeDisconnectRequest</code> hook is triggered on disconnected/interrupted
+                SSE client connection.
+            `,
+            js: `
+                $app.onRealtimeDisconnectRequest().add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.client.id())
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRealtimeDisconnectRequest().Add(func(e *core.RealtimeDisconnectEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Client.Id())
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnRealtimeBeforeMessageSend: {
+            html: `
+                <p>
+                    <code>OnRealtimeBeforeMessageSend</code> hook is triggered right before sending
+                    an SSE message to a client.
+                </p>
+                <p>
+                    Returning <code>hook.StopPropagation</code> will prevent sending the message.
+                    Returning any other error will close the realtime connection.
+                </p>
+            `,
+            js: `
+                $app.onRealtimeBeforeMessageSend().add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.client.id())
+                    console.log(e.message)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRealtimeBeforeMessageSend().Add(func(e *core.RealtimeMessageEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Client.Id())
+                        log.Println(e.Message)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnRealtimeAfterMessageSend: {
+            html: `
+                <code>OnRealtimeAfterMessageSend</code> hook is triggered right after sending
+                an SSE message to a client.
+            `,
+            js: `
+                $app.onRealtimeAfterMessageSend().add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.client.id())
+                    console.log(e.message)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRealtimeAfterMessageSend().Add(func(e *core.RealtimeMessageEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Client.Id())
+                        log.Println(e.Message)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnRealtimeBeforeSubscribeRequest: {
+            html: `
+                <code>OnRealtimeBeforeSubscribeRequest</code> hook is triggered before changing
+                the client subscriptions, allowing you to further validate and
+                modify the submitted change.
+            `,
+            js: `
+                $app.onRealtimeBeforeSubscribeRequest().add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.client.id())
+                    console.log(e.subscriptions)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRealtimeBeforeSubscribeRequest().Add(func(e *core.RealtimeSubscribeEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Client.Id())
+                        log.Println(e.Subscriptions)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnRealtimeAfterSubscribeRequest: {
+            html: `
+                <code>OnRealtimeAfterSubscribeRequest</code> hook is triggered after the client
+                subscriptions were successfully changed.
+            `,
+            js: `
+                $app.onRealtimeAfterSubscribeRequest().add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.client.id())
+                    console.log(e.subscriptions)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnRealtimeAfterSubscribeRequest().Add(func(e *core.RealtimeSubscribeEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Client.Id())
+                        log.Println(e.Subscriptions)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+    },
+
+    "File API hooks": {
+        OnFileDownloadRequest: {
+            html: `
+                <code>OnFileDownloadRequest</code> hook is triggered before each API File download request.
+                Could be used to validate or modify the file response before returning it to the client.
+            `,
+            js: `
+                $app.onFileDownloadRequest().add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.record)
+                    console.log(e.fileField)
+                    console.log(e.servedPath)
+                    console.log(e.servedName)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnFileDownloadRequest().Add(func(e *core.FileDownloadEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Record)
+                        log.Println(e.FileField)
+                        log.Println(e.ServedPath)
+                        log.Println(e.ServedName)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnFileBeforeTokenRequest: {
+            html: `
+                <p>
+                    <code>OnFileBeforeTokenRequest</code> hook is triggered before each file
+                    token API request.
+                </p>
+                <p>
+                    If no token or model was submitted, e.Model and e.Token will be empty,
+                    allowing you to implement your own custom model file auth implementation.
+                </p>
+                <p>
+                    If the optional "tags" list (Collection ids or names) is specified,
+                    then all event handlers registered via the created hook will be
+                    triggered and called only if their event data origin matches the tags.
+                </p>
+            `,
+            js: `
+                // fires for every auth model
+                $app.onFileBeforeTokenRequest().add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.token)
+                })
+
+                // fires only for "users"
+                $app.onFileBeforeTokenRequest("users").add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.token)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    // fires for every auth model
+                    app.OnFileBeforeTokenRequest().Add(func(e *core.FileTokenEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Token)
+                        return nil
+                    })
+
+                    // fires only for "users"
+                    app.OnFileBeforeTokenRequest("users").Add(func(e *core.FileTokenEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Token)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnFileAfterTokenRequest: {
+            html: `
+                <p>
+                    <code>OnFileAfterTokenRequest</code> hook is triggered after each
+                    successful file token API request.
+                </p>
+                <p>
+                    If the optional "tags" list (Collection ids or names) is specified,
+                    then all event handlers registered via the created hook will be
+                    triggered and called only if their event data origin matches the tags.
+                </p>
+            `,
+            js: `
+                // fires for every auth model
+                $app.onFileAfterTokenRequest().add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.token)
+                })
+
+                // fires only for "users"
+                $app.onFileAfterTokenRequest("users").add((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.token)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    // fires for every auth model
+                    app.OnFileAfterTokenRequest().Add(func(e *core.FileTokenEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Token)
+                        return nil
+                    })
+
+                    // fires only for "users"
+                    app.OnFileAfterTokenRequest("users").Add(func(e *core.FileTokenEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Token)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+    },
 }

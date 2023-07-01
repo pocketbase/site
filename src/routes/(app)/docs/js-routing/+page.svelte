@@ -68,8 +68,8 @@
 
 <HeadingLink title="Request context store" tag="h5" />
 <p>
-    The request context comes with a local store that you can use to share data between your middlewares
-    and route that is related only to the current request.
+    The request context comes with a local store that you can use to share data related only to the current
+    request between routes and middlewares.
 </p>
 <CodeBlock
     language="javascript"
@@ -149,10 +149,10 @@
 
 <HeadingLink title="Middlewares" />
 <p>
-    Middlewares could be used to apply a shared behavior or to intercept and modify a route request.
+    Middlewares could be used to apply a shared behavior or to intercept and modify route requests.
     <br />
-    Middlewares can be registered both to a single route (by passing them after the handler) and globally using
-    <code>e.router.use(someMiddlereFunc)</code>.
+    Middlewares can be registered both to a single route (by passing them after the handler) and globally usually
+    by using <code>e.router.use(someMiddlereFunc)</code>.
 </p>
 <CodeBlock
     language="javascript"

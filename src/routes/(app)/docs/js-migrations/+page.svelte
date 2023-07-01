@@ -174,8 +174,8 @@
 
             const record = new Record(collection)
             record.set("title", "Hello world!")
-            record.set("title", "hello-world")
             record.set("description", "Lorem ipsum...")
+            record.set("rank", 123)
 
             dao.saveRecord(record)
         }, (db) => {
