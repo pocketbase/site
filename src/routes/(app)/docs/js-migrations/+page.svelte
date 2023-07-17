@@ -150,7 +150,7 @@
             admin.setPassword("1234567890")
 
             dao.saveAdmin(admin)
-        }, (db) => {
+        }, (db) => { // optional revert
             const dao = new Dao(db);
 
             try {
@@ -174,11 +174,12 @@
 
             const record = new Record(collection)
             record.set("title", "Hello world!")
+            record.set("slug", "hello-world")
             record.set("description", "Lorem ipsum...")
             record.set("rank", 123)
 
             dao.saveRecord(record)
-        }, (db) => {
+        }, (db) => { // optional revert
             const dao = new Dao(db);
 
             try {

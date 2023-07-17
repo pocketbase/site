@@ -113,6 +113,10 @@ export const goLinks = [
         title: "Jobs scheduling",
     },
     {
+        href: "/docs/go-console-commands",
+        title: "Console commands",
+    },
+    {
         href: "/docs/go-sending-emails",
         title: "Sending emails",
     },
@@ -158,6 +162,10 @@ export const jsLinks = [
     {
         href: "/docs/js-jobs-scheduling",
         title: "Jobs scheduling",
+    },
+    {
+        href: "/docs/js-console-commands",
+        title: "Console commands",
     },
     {
         href: "/docs/js-sending-emails",

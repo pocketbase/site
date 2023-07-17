@@ -185,7 +185,7 @@
 
 <HeadingLink title="Running raw SQL statements" tag="h5" />
 <CodeBlock
-    language="javascript"
+    language="go"
     content={`
         // migrations/1687801090_set_pending_status.go
         package migrations
@@ -207,7 +207,7 @@
 
 <HeadingLink title="Initialize default application settings" tag="h5" />
 <CodeBlock
-    language="javascript"
+    language="go"
     content={`
         // migrations/1687801090_initial_settings.go
         package migrations
@@ -234,7 +234,7 @@
 
 <HeadingLink title="Creating new admin" tag="h5" />
 <CodeBlock
-    language="javascript"
+    language="go"
     content={`
         // migrations/1687801090_initial_admin.go
         package migrations
@@ -255,15 +255,16 @@
                 admin.SetPassword("1234567890")
 
                 return dao.SaveAdmin(admin)
-            }, func(db dbx.Builder) error {
+            }, func(db dbx.Builder) error { // optional revert operation
+
                 dao := daos.New(db)
 
                 admin, _ := dao.FindAdminByEmail("test@example.com")
                 if admin != nil {
-                    dao.DeleteAdmin(admin)
+                    return dao.DeleteAdmin(admin)
                 }
 
-                // most likely already deleted
+                // already deleted
                 return nil
             })
         }
@@ -272,28 +273,40 @@
 
 <HeadingLink title="Creating new collection record" tag="h5" />
 <CodeBlock
-    language="javascript"
+    language="go"
     content={`
-        // pb_migrations/1687801090_new_example_record.js
-        migrate((db) => {
-            const dao = new Dao(db);
+        // migrations/1687801090_new_example_record.go
+        package migrations
 
-            const collection = dao.findCollectionByNameOrId("example")
+        import (
+            "github.com/pocketbase/dbx"
+            "github.com/pocketbase/pocketbase/daos"
+            m "github.com/pocketbase/pocketbase/migrations"
+            "github.com/pocketbase/pocketbase/models"
+        )
 
-            const record = new Record(collection)
-            record.set("title", "Hello world!")
-            record.set("description", "Lorem ipsum...")
-            record.set("rank", 123)
+        func init() {
+            m.Register(func(db dbx.Builder) error {
+                dao := daos.New(db)
 
-            dao.saveRecord(record)
-        }, (db) => {
-            const dao = new Dao(db);
+                record := models.NewRecord(collections)
+                record.Set("title", "Hello world!")
+                record.Set("slug", "hello-world")
+                record.Set("description", "Lorem ipsum...")
+                record.Set("rank", 123)
 
-            try {
-                const record = dao.findFirstRecordByData("example", "slug", "hello-world")
+                return dao.SaveRecord(record)
+            }, func(db dbx.Builder) error { // optional revert operation
+                dao := daos.New(db)
 
-                dao.deleteRecord(record)
-            } catch (_) { /* most likely already deleted */ }
-        })
+                record := dao.FindFirstRecordByData("example", "slug", "hello-world")
+                if record != nil {
+                    return dao.DeleteRecord(record)
+                }
+
+                // already deleted
+                return nil
+            })
+        }
     `}
 />

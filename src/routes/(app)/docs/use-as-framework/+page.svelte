@@ -103,7 +103,7 @@
                     run: (cmd, args) => {
                         console.log("Hello world!")
                     },
-                })
+                }))
             `}
         />
     </li>
