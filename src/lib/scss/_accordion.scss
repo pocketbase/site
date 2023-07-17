@@ -117,6 +117,9 @@
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
         }
+        .accordion-content {
+            border-top: 1px solid var(--baseAlt2Color);
+        }
     }
     &.disabled {
         z-index: 0;
@@ -145,7 +148,7 @@
             margin-bottom: 0;
             border-bottom-left-radius: var(--baseRadius);
             border-bottom-right-radius: var(--baseRadius);
-            .accordion-header {
+            &:not(.active) .accordion-header {
                 border-bottom-left-radius:  calc(var(--baseRadius) / 2);
                 border-bottom-right-radius: calc(var(--baseRadius) / 2);
             }

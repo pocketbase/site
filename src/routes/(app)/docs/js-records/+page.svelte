@@ -290,9 +290,8 @@
 
 <HeadingLink title="Custom record query" />
 <p>
-    In addition to the above read and write helpers, you can also create custom Record model queries using <code
-        >Dao.recordQuery(collection)</code
-    >
+    In addition to the above read and write helpers, you can also create custom Record model queries using
+    <code>Dao.recordQuery(collection)</code>
     method. It returns a DB builder that can be used with the same methods described in the
     <a href="/docs/js-database">Database guide</a>.
 </p>
@@ -305,11 +304,9 @@
     language="javascript"
     content={`
         function findTopArticle(dao) {
-            const collection = dao.findCollectionByNameOrId("articles")
-
             const record = new Record();
 
-            dao.recordQuery(collection)
+            dao.recordQuery("articles")
                 .andWhere($dbx.hashExp({ "status": "active" }))
                 .orderBy("rank ASC")
                 .limit(1)
@@ -323,7 +320,7 @@
 />
 <p>
     For retrieving multiple Record models with the <code>all()</code> executor, you can use
-    <code>$arrayOf(new Record)</code>
+    <code>arrayOf(new Record)</code>
     to create an array placeholder in which to populate the resolved DB result.
 </p>
 <CodeBlock
@@ -333,11 +330,9 @@
         // dao.findRecordsByFilter("articles", "status = 'active'", '-published', 10)
         // but allows more advanced use cases and filtering (aggregations, subqueries, etc.)
         function findLatestArticles(dao) {
-            const collection = dao.findCollectionByNameOrId("articles")
+            const records = arrayOf(new Record);
 
-            const records = $arrayOf(new Record);
-
-            dao.recordQuery(collection)
+            dao.recordQuery("articles")
                 .andWhere($dbx.hashExp({ "status": "active" }))
                 .orderBy("published DESC")
                 .limit(10)

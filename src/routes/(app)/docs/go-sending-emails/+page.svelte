@@ -18,9 +18,9 @@
 
 <HeadingLink title="Send custom email" />
 <p>
-    You can also send your own custom email from everywhere within your app (hooks, middlewares, endpoints,
-    etc.) by using <code>app.NewMailClient().Send(message)</code>. Here is an example of sending a custom
-    email after a user request creation:
+    You can also send your own custom email from everywhere within your app (hooks, middlewares, routes, etc.)
+    by using <code>app.NewMailClient().Send(message)</code>. Here is an example of sending a custom email
+    after user registration:
 </p>
 <CodeBlock
     language="go"

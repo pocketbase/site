@@ -11,28 +11,51 @@
         <div class="content">
             <h5>1. Do you offer hosting?</h5>
             <p>
-                No. PocketBase is self-hosted only.
-                <br />
-                <strong>
-                    If you are looking for a free option, I recommend
-                    <a href="https://fly.io/" target="_blank" rel="noreferrer noopener">Fly.io</a>
-                    and following the example guide -
+                No. PocketBase is self-hosted only. If you are looking for <strong>free options</strong> for small
+                POC and hobby apps, you can check:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://hop.io/" target="_blank" rel="noreferrer noopener">Hop.io</a> - see also
+                    <a
+                        href="https://github.com/pocketbase/pocketbase/discussions/2856"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        <strong>Host for free on Hop.io</strong>
+                    </a>
+                    guide (<em>the free tier comes with 1vCPU, 512MB RAM and 3GB disk storage</em>)
+                </li>
+                <li>
+                    <a href="https://fly.io/" target="_blank" rel="noreferrer noopener">Fly.io</a> - see also
                     <a
                         href="https://github.com/pocketbase/pocketbase/discussions/537"
                         target="_blank"
                         rel="noreferrer noopener"
                     >
-                        <em>Host for free on Fly.io</em>
-                    </a>.
-                </strong>
-                <br />
-                For a more traditional setup you can use any VPS provider that comes with a persistent storage,
-                like
+                        <strong>Host for free on Fly.io</strong>
+                    </a>
+                    guide (<em
+                        >the free tier comes with 1vCPU, 256MB RAM and 1GB disk storage /up to 3GB but
+                        requires card details/</em
+                    >)
+                </li>
+                <!-- prettier-ignore -->
+                <li>
+                    <a href="https://pockethost.io/" target="_blank" rel="noreferrer noopener">PocketHost.io</a>
+                    (<em>shared single VM instance, maintained and provided by <a href="https://github.com/benallfree" target="_blank" rel="noreferrer noopener">benallfree</a></em>)
+                </li>
+            </ul>
+            <p>
+                For a more traditional setup you can use any VPS provider that comes with a persistent
+                storage, like
                 <a href="https://www.hetzner.com/" target="_blank" rel="noreferrer noopener">Hetzner</a>,
                 <a href="https://www.vultr.com/" target="_blank" rel="noreferrer noopener">Vultr</a>,
                 <a href="https://upcloud.com/" target="_blank" rel="noreferrer noopener">UpCloud</a>,
                 <a href="https://www.linode.com/" target="_blank" rel="noreferrer noopener">Linode</a>,
-                <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer noopener">DigitalOcean</a>, etc.
+                <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer noopener"
+                    >DigitalOcean</a
+                >, etc.
                 <br />
                 The
                 <a href="/docs/going-to-production/">Going to production</a> guide contains general information
@@ -48,9 +71,15 @@
                 etc.
                 <br />
                 <strong>
-                    Even without optimizations, PocketBase can easily serve 10 000+ concurrent and persistent
-                    realtime connections on a cheap $6 VPS (Hetzner 2vCPU, 4GB RAM).
+                    Even without optimizations, PocketBase can easily serve 10 000+ persistent realtime
+                    connections on a cheap $4 Hetzner CAX11 VPS (2vCPU, 4GB RAM).
                 </strong>
+                <br />
+                You can explore the official
+                <a href={import.meta.env.PB_BENCHMARKS_URL} target="_blank" rel="noreferrer noopener">
+                    benchmarks repo
+                </a>
+                for more details.
             </p>
 
             <h5>3. How to run custom code?</h5>
@@ -59,16 +88,17 @@
                 etc. and doesn't support running cloud functions.
                 <br />
                 <strong>
-                    Instead, PocketBase could be used as a Go framework that enables you to build your own
-                    custom app specific business logic and still have a single portable executable at the end
+                    Instead, PocketBase could be used as a Go or JS framework that enables you to build your
+                    own custom app specific business logic and still have a single portable executable at the
+                    end
                 </strong>
                 (check <a href="/docs/use-as-framework">Use as framework</a> guide).
             </p>
 
             <h5>4. Does it support Google or Facebook login?</h5>
             <p>
-                Yes. Currently the following OAuth2 providers are supported - Google, Facebook, GitHub, GitLab
-                (and more are coming).
+                Yes, currently we support more than 15+ OAuth2 providers - Apple, Google, Facebook, Microsoft,
+                VK, GitHub, GitLab, and many more.
             </p>
 
             <h5>5. Does it come with frontend UI for user login, register, etc. screens?</h5>
@@ -90,8 +120,16 @@
                     MySQL, MariaDB or PostgreSQL (especially for read operations).
                 </strong>
                 <br />
-                Additionally, a great companion app when you need SQLite replicas is
-                <a href="https://litestream.io/" target="_blank" rel="noreferrer noopener">Litestream</a>.
+                If you need replication and disaster recovery, a great companion app could be
+                <a href="https://litestream.io/" target="_blank" rel="noreferrer noopener">Litestream</a>
+                (other possible solutions are
+                <a href="https://maxpert.github.io/marmot/" target="_blank" rel="noreferrer noopener"
+                    >Marmot</a
+                >
+                and
+                <a href="https://github.com/superfly/litefs" target="_blank" rel="noreferrer noopener"
+                    >Litefs</a
+                >).
             </p>
 
             <h5>7. Where can I find help for my PocketBase application?</h5>

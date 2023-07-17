@@ -6,7 +6,7 @@ export default {
                 application resources (eg. before db open and initial settings load).
             `,
             js: `
-                $app.onBeforeBootstrap().add((e) => {
+                onBeforeBootstrap((e) => {
                     console.log(e.app)
                 })
             `,
@@ -40,7 +40,7 @@ export default {
                 application resources (eg. after db open and initial settings load).
             `,
             js: `
-                $app.onAfterBootstrap().add((e) => {
+                onAfterBootstrap((e) => {
                     console.log(e.app)
                 })
             `,
@@ -74,14 +74,7 @@ export default {
                 (<a href="https://github.com/labstack/echo" target="_blank"rel="noreferrer noopener" class="txt-bold">echo</a>),
                 allowing you to adjust its options and attach new routes or middlewares.
             `,
-            js: `
-                $app.onBeforeServe().add((e) => {
-                    // register new "GET /hello" route
-                    e.router.get("/hello", (c) => {
-                        c.string(200, "Hello world!")
-                    }, $apis.activityLogger(app), $apis.requireAdminOrUserAuth())
-                })
-            `,
+            js: ``,
             go: `
                 package main
 
@@ -120,7 +113,7 @@ export default {
                 or to return a completely different API response.
             `,
             js: `
-                $app.onBeforeApiError().add((e) => {
+                onBeforeApiError((e) => {
                     console.log(e.httpContext)
                     console.log(e.error)
                 })
@@ -157,7 +150,7 @@ export default {
                 It could be used for example to log the final API error in external services.
             `,
             js: `
-                $app.onAfterApiError().add((e) => {
+                onAfterApiError((e) => {
                     console.log(e.httpContext)
                     console.log(e.error)
                 })
@@ -195,7 +188,7 @@ export default {
                 Note that the app could be terminated abruptly without awaiting the hook completion.
             `,
             js: `
-                $app.onAfterApiError().add((e) => {
+                onAfterApiError((e) => {
                     console.log(e.httpContext)
                     console.log(e.error)
                 })
@@ -242,16 +235,16 @@ export default {
             `,
             js: `
                 // fires for every db model
-                $app.onModelBeforeCreate().add((e) => {
+                onModelBeforeCreate((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
                 })
 
                 // fires only for "users" and "members"
-                $app.onModelBeforeCreate("users", "members").add((e) => {
+                onModelBeforeCreate((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
-                })
+                }, "users", "members")
             `,
             go: `
                 package main
@@ -300,16 +293,16 @@ export default {
             `,
             js: `
                 // fires for every db model
-                $app.onModelAfterCreate().add((e) => {
+                onModelAfterCreate((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
                 })
 
                 // fires only for "users" and "members"
-                $app.onModelAfterCreate("users", "members").add((e) => {
+                onModelAfterCreate((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
-                })
+                }, "users", "members")
             `,
             go: `
                 package main
@@ -358,16 +351,16 @@ export default {
             `,
             js: `
                 // fires for every db model
-                $app.onModelBeforeUpdate().add((e) => {
+                onModelBeforeUpdate((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
                 })
 
                 // fires only for "users" and "members"
-                $app.onModelBeforeUpdate("users", "members").add((e) => {
+                onModelBeforeUpdate((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
-                })
+                }, "users", "members")
             `,
             go: `
                 package main
@@ -416,16 +409,16 @@ export default {
             `,
             js: `
                 // fires for every db model
-                $app.onModelAfterUpdate().add((e) => {
+                onModelAfterUpdate((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
                 })
 
                 // fires only for "users" and "members"
-                $app.onModelAfterUpdate("users", "members").add((e) => {
+                onModelAfterUpdate((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
-                })
+                }, "users", "members")
             `,
             go: `
                 package main
@@ -474,16 +467,16 @@ export default {
             `,
             js: `
                 // fires for every db model
-                $app.onModelBeforeDelete().add((e) => {
+                onModelBeforeDelete((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
                 })
 
                 // fires only for "users" and "members"
-                $app.onModelBeforeDelete("users", "members").add((e) => {
+                onModelBeforeDelete((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
-                })
+                }, "users", "members")
             `,
             go: `
                 package main
@@ -532,16 +525,16 @@ export default {
             `,
             js: `
                 // fires for every db model
-                $app.onModelAfterDelete().add((e) => {
+                onModelAfterDelete((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
                 })
 
                 // fires only for "users" and "members"
-                $app.onModelAfterDelete("users", "members").add((e) => {
+                onModelAfterDelete((e) => {
                     console.log(e.model.tableName())
                     console.log(e.model.id)
-                })
+                }, "users", "members")
             `,
             go: `
                 package main
@@ -586,7 +579,7 @@ export default {
                 to inspect and customize the email message that is being sent.
             `,
             js: `
-                $app.onMailerBeforeAdminResetPasswordSend().add((e) => {
+                onMailerBeforeAdminResetPasswordSend((e) => {
                     console.log(e.mailClient)
                     console.log(e.message)
                     console.log(e.admin)
@@ -633,7 +626,7 @@ export default {
                 admin password reset email was successfully sent.
             `,
             js: `
-                $app.onMailerAfterAdminResetPasswordSend().add((e) => {
+                onMailerAfterAdminResetPasswordSend((e) => {
                     console.log(e.mailClient)
                     console.log(e.message)
                     console.log(e.admin)
@@ -682,7 +675,7 @@ export default {
                 </p>
             `,
             js: `
-                $app.onMailerBeforeRecordResetPasswordSend().add((e) => {
+                onMailerBeforeRecordResetPasswordSend((e) => {
                     console.log(e.mailClient)
                     console.log(e.message)
                     console.log(e.record)
@@ -736,7 +729,7 @@ export default {
                 </p>
             `,
             js: `
-                $app.onMailerAfterRecordResetPasswordSend().add((e) => {
+                onMailerAfterRecordResetPasswordSend((e) => {
                     console.log(e.mailClient)
                     console.log(e.message)
                     console.log(e.record)
@@ -786,7 +779,7 @@ export default {
                 </p>
             `,
             js: `
-                $app.onMailerBeforeRecordVerificationSend().add((e) => {
+                onMailerBeforeRecordVerificationSend((e) => {
                     console.log(e.mailClient)
                     console.log(e.message)
                     console.log(e.record)
@@ -840,7 +833,7 @@ export default {
                 </p>
             `,
             js: `
-                $app.onMailerAfterRecordVerificationSend().add((e) => {
+                onMailerAfterRecordVerificationSend((e) => {
                     console.log(e.mailClient)
                     console.log(e.message)
                     console.log(e.record)
@@ -889,7 +882,7 @@ export default {
                 </p>
             `,
             js: `
-                $app.onMailerBeforeRecordChangeEmailSend().add((e) => {
+                onMailerBeforeRecordChangeEmailSend((e) => {
                     console.log(e.mailClient)
                     console.log(e.message)
                     console.log(e.record)
@@ -943,7 +936,7 @@ export default {
                 </p>
             `,
             js: `
-                $app.onMailerAfterRecordChangeEmailSend().add((e) => {
+                onMailerAfterRecordChangeEmailSend((e) => {
                     console.log(e.mailClient)
                     console.log(e.message)
                     console.log(e.record)
@@ -995,16 +988,16 @@ export default {
             `,
             js: `
                 // fires for every collection
-                $app.onRecordsListRequest().add((e) => {
+                onRecordsListRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.result)
                 })
 
                 // fires only for "users" and "articles" collections
-                $app.onRecordsListRequest("users", "articles").add((e) => {
+                onRecordsListRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.result)
-                })
+                }, "users", "articles")
             `,
             go: `
                 package main
@@ -1053,16 +1046,16 @@ export default {
             `,
             js: `
                 // fires for every collection
-                $app.onRecordViewRequest().add((e) => {
+                onRecordViewRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "articles" collections
-                $app.onRecordViewRequest("users", "articles").add((e) => {
+                onRecordViewRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "articles")
             `,
             go: `
                 package main
@@ -1114,18 +1107,18 @@ export default {
             `,
             js: `
                 // fires for every collection
-                $app.onRecordBeforeCreateRequest().add((e) => {
+                onRecordBeforeCreateRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.uploadedFiles)
                 })
 
                 // fires only for "users" and "articles" collections
-                $app.onRecordBeforeCreateRequest("users", "articles").add((e) => {
+                onRecordBeforeCreateRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.uploadedFiles)
-                })
+                }, "users", "articles")
             `,
             go: `
                 package main
@@ -1179,18 +1172,18 @@ export default {
             `,
             js: `
                 // fires for every collection
-                $app.onRecordAfterCreateRequest().add((e) => {
+                onRecordAfterCreateRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.uploadedFiles)
                 })
 
                 // fires only for "users" and "articles" collections
-                $app.onRecordAfterCreateRequest("users", "articles").add((e) => {
+                onRecordAfterCreateRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.uploadedFiles)
-                })
+                }, "users", "articles")
             `,
             go: `
                 package main
@@ -1244,18 +1237,18 @@ export default {
             `,
             js: `
                 // fires for every collection
-                $app.onRecordBeforeUpdateRequest().add((e) => {
+                onRecordBeforeUpdateRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.uploadedFiles)
                 })
 
                 // fires only for "users" and "articles" collections
-                $app.onRecordBeforeUpdateRequest("users", "articles").add((e) => {
+                onRecordBeforeUpdateRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.uploadedFiles)
-                })
+                }, "users", "articles")
             `,
             go: `
                 package main
@@ -1306,18 +1299,18 @@ export default {
             `,
             js: `
                 // fires for every collection
-                $app.onRecordAfterUpdateRequest().add((e) => {
+                onRecordAfterUpdateRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.uploadedFiles)
                 })
 
                 // fires only for "users" and "articles" collections
-                $app.onRecordAfterUpdateRequest("users", "articles").add((e) => {
+                onRecordAfterUpdateRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.uploadedFiles)
-                })
+                }, "users", "articles")
             `,
             go: `
                 package main
@@ -1371,16 +1364,16 @@ export default {
             `,
             js: `
                 // fires for every collection
-                $app.onRecordBeforeDeleteRequest().add((e) => {
+                onRecordBeforeDeleteRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "articles" collections
-                $app.onRecordBeforeDeleteRequest("users", "articles").add((e) => {
+                onRecordBeforeDeleteRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "articles")
             `,
             go: `
                 package main
@@ -1429,16 +1422,16 @@ export default {
             `,
             js: `
                 // fires for every collection
-                $app.onRecordAfterDeleteRequest().add((e) => {
+                onRecordAfterDeleteRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "articles" collections
-                $app.onRecordAfterDeleteRequest("users", "articles").add((e) => {
+                onRecordAfterDeleteRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "articles")
             `,
             go: `
                 package main
@@ -1492,7 +1485,7 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAuthRequest().add((e) => {
+                onRecordAuthRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.token)
@@ -1500,12 +1493,12 @@ export default {
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAuthRequest("users", "managers").add((e) => {
+                onRecordAuthRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.token)
                     console.log(e.meta)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -1560,7 +1553,7 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordBeforeAuthWithPasswordRequest().add((e) => {
+                onRecordBeforeAuthWithPasswordRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record) // could be null
                     console.log(e.identity)
@@ -1568,12 +1561,12 @@ export default {
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordBeforeAuthWithPasswordRequest("users", "managers").add((e) => {
+                onRecordBeforeAuthWithPasswordRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record) // could be null
                     console.log(e.identity)
                     console.log(e.password)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -1626,7 +1619,7 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAfterAuthWithPasswordRequest().add((e) => {
+                onRecordAfterAuthWithPasswordRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.identity)
@@ -1634,12 +1627,12 @@ export default {
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAfterAuthWithPasswordRequest("users", "managers").add((e) => {
+                onRecordAfterAuthWithPasswordRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.identity)
                     console.log(e.password)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -1700,7 +1693,7 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordBeforeAuthWithOAuth2Request().add((e) => {
+                onRecordBeforeAuthWithOAuth2Request((e) => {
                     console.log(e.httpContext)
                     console.log(e.providerName)
                     console.log(e.providerClient)
@@ -1710,14 +1703,14 @@ export default {
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordBeforeAuthWithOAuth2Request("users", "managers").add((e) => {
+                onRecordBeforeAuthWithOAuth2Request((e) => {
                     console.log(e.httpContext)
                     console.log(e.providerName)
                     console.log(e.providerClient)
                     console.log(e.record) // could be null
                     console.log(e.oauth2User)
                     console.log(e.isNewRecord)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -1774,7 +1767,7 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAfterAuthWithOAuth2Request().add((e) => {
+                onRecordAfterAuthWithOAuth2Request((e) => {
                     console.log(e.httpContext)
                     console.log(e.providerName)
                     console.log(e.providerClient)
@@ -1784,14 +1777,14 @@ export default {
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAfterAuthWithOAuth2Request("users", "managers").add((e) => {
+                onRecordAfterAuthWithOAuth2Request((e) => {
                     console.log(e.httpContext)
                     console.log(e.providerName)
                     console.log(e.providerClient)
                     console.log(e.record)
                     console.log(e.oauth2User)
                     console.log(e.isNewRecord)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -1850,16 +1843,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordBeforeAuthRefreshRequest().add((e) => {
+                onRecordBeforeAuthRefreshRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordBeforeAuthRefreshRequest("users", "managers").add((e) => {
+                onRecordBeforeAuthRefreshRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -1908,16 +1901,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAfterAuthRefreshRequest().add((e) => {
+                onRecordAfterAuthRefreshRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAfterAuthRefreshRequest("users", "managers").add((e) => {
+                onRecordAfterAuthRefreshRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -1966,18 +1959,18 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordListExternalAuthsRequest().add((e) => {
+                onRecordListExternalAuthsRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.externalAuths)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordListExternalAuthsRequest("users", "managers").add((e) => {
+                onRecordListExternalAuthsRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.externalAuths)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2030,18 +2023,18 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.OnRecordAfterUnlinkExternalAuthRequest().add((e) => {
+                onRecordAfterUnlinkExternalAuthRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.externalAuth)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordBeforeUnlinkExternalAuthRequest("users", "managers").add((e) => {
+                onRecordBeforeUnlinkExternalAuthRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.externalAuth)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2092,18 +2085,18 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAfterUnlinkExternalAuthRequest().add((e) => {
+                onRecordAfterUnlinkExternalAuthRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.externalAuth)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAfterUnlinkExternalAuthRequest("users", "managers").add((e) => {
+                onRecordAfterUnlinkExternalAuthRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.externalAuth)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2156,16 +2149,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordBeforeRequestPasswordResetRequest().add((e) => {
+                onRecordBeforeRequestPasswordResetRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordBeforeRequestPasswordResetRequest("users", "managers").add((e) => {
+                onRecordBeforeRequestPasswordResetRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2214,16 +2207,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAfterRequestPasswordResetRequest().add((e) => {
+                onRecordAfterRequestPasswordResetRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAfterRequestPasswordResetRequest("users", "managers").add((e) => {
+                onRecordAfterRequestPasswordResetRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2274,16 +2267,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordBeforeConfirmPasswordResetRequest().add((e) => {
+                onRecordBeforeConfirmPasswordResetRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordBeforeConfirmPasswordResetRequest("users", "managers").add((e) => {
+                onRecordBeforeConfirmPasswordResetRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2332,16 +2325,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAfterConfirmPasswordResetRequest().add((e) => {
+                onRecordAfterConfirmPasswordResetRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAfterConfirmPasswordResetRequest("users", "managers").add((e) => {
+                onRecordAfterConfirmPasswordResetRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2392,16 +2385,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordBeforeRequestVerificationRequest().add((e) => {
+                onRecordBeforeRequestVerificationRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordBeforeRequestVerificationRequest("users", "managers").add((e) => {
+                onRecordBeforeRequestVerificationRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2450,16 +2443,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAfterRequestVerificationRequest().add((e) => {
+                onRecordAfterRequestVerificationRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAfterRequestVerificationRequest("users", "managers").add((e) => {
+                onRecordAfterRequestVerificationRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2510,16 +2503,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordBeforeConfirmVerificationRequest().add((e) => {
+                onRecordBeforeConfirmVerificationRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordBeforeConfirmVerificationRequest("users", "managers").add((e) => {
+                onRecordBeforeConfirmVerificationRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2568,16 +2561,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAfterConfirmVerificationRequest().add((e) => {
+                onRecordAfterConfirmVerificationRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAfterConfirmVerificationRequest("users", "managers").add((e) => {
+                onRecordAfterConfirmVerificationRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2628,16 +2621,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordBeforeRequestEmailChangeRequest().add((e) => {
+                onRecordBeforeRequestEmailChangeRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordBeforeRequestEmailChangeRequest("users", "managers").add((e) => {
+                onRecordBeforeRequestEmailChangeRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2686,16 +2679,16 @@ export default {
             `,
             js: `
                 // fires for every auth collection
-                $app.onRecordAfterRequestEmailChangeRequest().add((e) => {
+                onRecordAfterRequestEmailChangeRequest(e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                 })
 
                 // fires only for "users" and "managers" auth collections
-                $app.onRecordAfterRequestEmailChangeRequest("users", "managers").add((e) => {
+                onRecordAfterRequestEmailChangeRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
-                })
+                }, "users", "managers")
             `,
             go: `
                 package main
@@ -2739,7 +2732,7 @@ export default {
                 the SSE client connection.
             `,
             js: `
-                $app.onRealtimeConnectRequest().add((e) => {
+                onRealtimeConnectRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.client.id())
                 })
@@ -2775,7 +2768,7 @@ export default {
                 SSE client connection.
             `,
             js: `
-                $app.onRealtimeDisconnectRequest().add((e) => {
+                onRealtimeDisconnectRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.client.id())
                 })
@@ -2817,7 +2810,7 @@ export default {
                 </p>
             `,
             js: `
-                $app.onRealtimeBeforeMessageSend().add((e) => {
+                onRealtimeBeforeMessageSend((e) => {
                     console.log(e.httpContext)
                     console.log(e.client.id())
                     console.log(e.message)
@@ -2855,7 +2848,7 @@ export default {
                 an SSE message to a client.
             `,
             js: `
-                $app.onRealtimeAfterMessageSend().add((e) => {
+                onRealtimeAfterMessageSend((e) => {
                     console.log(e.httpContext)
                     console.log(e.client.id())
                     console.log(e.message)
@@ -2894,7 +2887,7 @@ export default {
                 modify the submitted change.
             `,
             js: `
-                $app.onRealtimeBeforeSubscribeRequest().add((e) => {
+                onRealtimeBeforeSubscribeRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.client.id())
                     console.log(e.subscriptions)
@@ -2932,7 +2925,7 @@ export default {
                 subscriptions were successfully changed.
             `,
             js: `
-                $app.onRealtimeAfterSubscribeRequest().add((e) => {
+                onRealtimeAfterSubscribeRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.client.id())
                     console.log(e.subscriptions)
@@ -2973,7 +2966,7 @@ export default {
                 Could be used to validate or modify the file response before returning it to the client.
             `,
             js: `
-                $app.onFileDownloadRequest().add((e) => {
+                onFileDownloadRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.record)
                     console.log(e.fileField)
@@ -3027,16 +3020,16 @@ export default {
             `,
             js: `
                 // fires for every auth model
-                $app.onFileBeforeTokenRequest().add((e) => {
+                onFileBeforeTokenRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.token)
                 })
 
                 // fires only for "users"
-                $app.onFileBeforeTokenRequest("users").add((e) => {
+                onFileBeforeTokenRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.token)
-                })
+                }, "users")
             `,
             go: `
                 package main
@@ -3085,16 +3078,16 @@ export default {
             `,
             js: `
                 // fires for every auth model
-                $app.onFileAfterTokenRequest().add((e) => {
+                onFileAfterTokenRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.token)
                 })
 
                 // fires only for "users"
-                $app.onFileAfterTokenRequest("users").add((e) => {
+                onFileAfterTokenRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.token)
-                })
+                }, "users")
             `,
             go: `
                 package main
@@ -3120,6 +3113,1160 @@ export default {
                     app.OnFileAfterTokenRequest("users").Add(func(e *core.FileTokenEvent) error {
                         log.Println(e.HttpContext)
                         log.Println(e.Token)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+    },
+
+    "Collection API hooks": {
+        OnCollectionsListRequest: {
+            html: `
+                <code>OnCollectionsListRequest</code> hook is triggered on each API Collections list request.
+                Could be used to validate or modify the response before returning it to the client.
+            `,
+            js: `
+                onCollectionsListRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collections)
+                    console.log(e.result)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionsListRequest().Add(func(e *core.CollectionsListEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collections)
+                        log.Println(e.Result)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnCollectionViewRequest: {
+            html: `
+                <code>OnCollectionViewRequest</code> hook is triggered on each API Collection view request.
+                Could be used to validate or modify the response before returning it to the client.
+            `,
+            js: `
+                onCollectionViewRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collection)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionViewRequest().Add(func(e *core.CollectionViewEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collection)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnCollectionBeforeCreateRequest: {
+            html: `
+                <code>OnCollectionBeforeCreateRequest</code> hook is triggered before each API Collection
+                create request (after request data load and before model persistence).
+                <br/>
+                Could be used to additionally validate the request data or implement
+                completely different persistence behavior.
+            `,
+            js: `
+                onCollectionBeforeCreateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collection)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionBeforeCreateRequest().Add(func(e *core.CollectionCreateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collection)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnCollectionAfterCreateRequest: {
+            html: `
+                <code>OnCollectionAfterCreateRequest</code> hook is triggered after each
+                successful API Collection create request.
+            `,
+            js: `
+                onCollectionAfterCreateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collection)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionAfterCreateRequest().Add(func(e *core.CollectionCreateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collection)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnCollectionBeforeUpdateRequest: {
+            html: `
+                <code>OnCollectionBeforeUpdateRequest</code> hook is triggered before each API Collection
+                update request (after request data load and before model persistence).
+                <br/>
+                Could be used to additionally validate the request data or implement
+                completely different persistence behavior.
+            `,
+            js: `
+                onCollectionBeforeUpdateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collection)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionBeforeUpdateRequest().Add(func(e *core.CollectionUpdateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collection)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnCollectionAfterUpdateRequest: {
+            html: `
+                <code>OnCollectionAfterUpdateRequest</code> hook is triggered after each
+                successful API Collection update request.
+            `,
+            js: `
+                onCollectionAfterUpdateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collection)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionAfterUpdateRequest().Add(func(e *core.CollectionUpdateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collection)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnCollectionBeforeDeleteRequest: {
+            html: `
+                <code>OnCollectionBeforeDeleteRequest</code> hook is triggered before each API
+                Collection delete request (after model load and before actual deletion).
+                <br/>
+                Could be used to additionally validate the request data or implement
+                completely different delete behavior.
+            `,
+            js: `
+                onCollectionBeforeDeleteRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collection)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionBeforeDeleteRequest().Add(func(e *core.CollectionDeleteEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collection)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnCollectionAfterDeleteRequest: {
+            html: `
+                <code>OnCollectionAfterDeleteRequest</code> hook is triggered after each
+                successful API Collection delete request.
+            `,
+            js: `
+                onCollectionAfterDeleteRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collection)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionAfterDeleteRequest().Add(func(e *core.CollectionDeleteEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collection)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnCollectionsBeforeImportRequest: {
+            html: `
+                <code>OnCollectionsBeforeImportRequest</code> hook is triggered before each API
+                collections import request (after request data load and before the actual import).
+                <br/>
+                Could be used to additionally validate the imported collections or
+                to implement completely different import behavior.
+            `,
+            js: `
+                onCollectionsBeforeImportRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collections)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionsBeforeImportRequest().Add(func(e *core.CollectionsImportEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collections)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnCollectionsAfterImportRequest: {
+            html: `
+                <code>OnCollectionsAfterImportRequest</code> hook is triggered after each
+                successful API collections import request.
+            `,
+            js: `
+                onCollectionsAfterImportRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.collections)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnCollectionsAfterImportRequest().Add(func(e *core.CollectionsImportEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Collections)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+    },
+
+    "Settings API hooks": {
+        OnSettingsListRequest: {
+            html: `
+                <code>OnSettingsListRequest</code> hook is triggered on each successful
+                API Settings list request.
+                <br/>
+                Could be used to validate or modify the response before
+                returning it to the client.
+            `,
+            js: `
+                onSettingsListRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.redactedSettings)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnSettingsListRequest().Add(func(e *core.SettingsListEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.RedactedSettings)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnSettingsBeforeUpdateRequest: {
+            html: `
+                <code>OnSettingsBeforeUpdateRequest</code> hook is triggered on each successful
+                API Settings list request.
+                <br/>
+                Could be used to validate or modify the response before
+                returning it to the client.
+            `,
+            js: `
+                onSettingsBeforeUpdateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.oldSettings)
+                    console.log(e.newSettings)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnSettingsBeforeUpdateRequest().Add(func(e *core.SettingsUpdateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.OldSettings)
+                        log.Println(e.NewSettings)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnSettingsAfterUpdateRequest: {
+            html: `
+                <code>OnSettingsAfterUpdateRequest</code> hook is triggered after each
+                successful API Settings update request.
+            `,
+            js: `
+                onSettingsAfterUpdateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.oldSettings)
+                    console.log(e.newSettings)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnSettingsAfterUpdateRequest().Add(func(e *core.SettingsUpdateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.OldSettings)
+                        log.Println(e.NewSettings)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+    },
+
+    "Admin CRUD API hooks": {
+        OnAdminsListRequest: {
+            html: `
+                <code>OnAdminsListRequest</code> hook is triggered on each API Admins list request.
+                <br/>
+                Could be used to validate or modify the response before returning it to the client.
+            `,
+            js: `
+                onAdminsListRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admins)
+                    console.log(e.result)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminsListRequest().Add(func(e *core.AdminsListEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admins)
+                        log.Println(e.Result)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminViewRequest: {
+            html: `
+                <code>OnAdminViewRequest</code> hook is triggered on each API Admin view request.
+                <br/>
+                Could be used to validate or modify the response before returning it to the client.
+            `,
+            js: `
+                onAdminViewRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminViewRequest().Add(func(e *core.AdminViewEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminBeforeCreateRequest: {
+            html: `
+                <code>OnAdminBeforeCreateRequest</code> hook is triggered before each API
+                Admin create request (after request data load and before model persistence).
+                <br/>
+                Could be used to additionally validate the request data or implement
+                completely different persistence behavior.
+            `,
+            js: `
+                onAdminBeforeCreateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminBeforeCreateRequest().Add(func(e *core.AdminCreateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminAfterCreateRequest: {
+            html: `
+                <code>OnAdminAfterCreateRequest</code> hook is triggered after each
+                successful API Admin create request.
+            `,
+            js: `
+                onAdminAfterCreateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminAfterCreateRequest().Add(func(e *core.AdminCreateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminBeforeUpdateRequest: {
+            html: `
+                <code>OnAdminBeforeUpdateRequest</code> hook is triggered before each API
+                Admin update request (after request data load and before model persistence).
+                <br/>
+                Could be used to additionally validate the request data or implement
+                completely different persistence behavior.
+            `,
+            js: `
+                onAdminBeforeUpdateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminBeforeUpdateRequest().Add(func(e *core.AdminUpdateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminAfterUpdateRequest: {
+            html: `
+                <code>OnAdminAfterUpdateRequest</code> hook is triggered after each
+                successful API Admin update request.
+            `,
+            js: `
+                onAdminAfterUpdateRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminAfterUpdateRequest().Add(func(e *core.AdminUpdateEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminBeforeDeleteRequest: {
+            html: `
+                <code>OnAdminBeforeDeleteRequest</code> hook is triggered before each API
+                Admin delete request (after model load and before actual deletion).
+                <br/>
+                Could be used to additionally validate the request data or implement
+                completely different delete behavior.
+            `,
+            js: `
+                onAdminBeforeDeleteRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminBeforeDeleteRequest().Add(func(e *core.AdminDeleteEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminAfterDeleteRequest: {
+            html: `
+                <code>OnAdminAfterDeleteRequest</code> hook is triggered after each
+                successful API Admin delete request.
+            `,
+            js: `
+                onAdminAfterDeleteRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminAfterDeleteRequest().Add(func(e *core.AdminDeleteEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+    },
+
+    "Admin Auth API hooks": {
+        OnAdminAuthRequest: {
+            html: `
+                <code>OnAdminAuthRequest</code> hook is triggered on each successful API Admin
+                authentication request (sign-in, token refresh, etc.).
+                <br/>
+                Could be used to additionally validate or modify the
+                authenticated admin data and token.
+            `,
+            js: `
+                onAdminAuthRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                    console.log(e.token)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminAuthRequest().Add(func(e *core.AdminAuthEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        log.Println(e.Token)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminBeforeAuthWithPasswordRequest: {
+            html: `
+                <code>OnAdminBeforeAuthWithPasswordRequest</code> hook is triggered before each Admin
+                auth with password API request (after request data load and before password validation).
+                <br/>
+                Could be used to implement for example a custom password validation
+                or to locate a different Admin identity (by assigning <code>AdminAuthWithPasswordEvent.Admin</code>).
+            `,
+            js: `
+                onAdminBeforeAuthWithPasswordRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                    console.log(e.identity)
+                    console.log(e.password)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminBeforeAuthWithPasswordRequest().Add(func(e *core.AdminAuthWithPasswordEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        log.Println(e.Identity)
+                        log.Println(e.Password)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminAfterAuthWithPasswordRequest: {
+            html: `
+                <code>OnAdminAfterAuthWithPasswordRequest</code> hook is triggered after each
+                successful Admin auth with password API request.
+            `,
+            js: `
+                onAdminAfterAuthWithPasswordRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                    console.log(e.identity)
+                    console.log(e.password)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminAfterAuthWithPasswordRequest().Add(func(e *core.AdminAuthWithPasswordEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        log.Println(e.Identity)
+                        log.Println(e.Password)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminBeforeAuthRefreshRequest: {
+            html: `
+                <code>OnAdminBeforeAuthRefreshRequest</code> hook is triggered before each Admin
+                auth refresh API request (right before generating a new auth token).
+                <br/>
+                Could be used to additionally validate the request data or implement
+                completely different auth refresh behavior.
+            `,
+            js: `
+                onAdminBeforeAuthRefreshRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminBeforeAuthRefreshRequest().Add(func(e *core.AdminAuthRefreshEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminAfterAuthRefreshRequest: {
+            html: `
+                <code>OnAdminAfterAuthRefreshRequest</code> hook is triggered after each
+                successful auth refresh API request (right after generating a new auth token).
+            `,
+            js: `
+                onAdminAfterAuthRefreshRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminAfterAuthRefreshRequest().Add(func(e *core.AdminAuthRefreshEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminBeforeRequestPasswordResetRequest: {
+            html: `
+                <code>OnAdminBeforeRequestPasswordResetRequest</code> hook is triggered before each Admin
+                request password reset API request (after request data load and before sending the reset email).
+                <br/>
+                Could be used to additionally validate the request data or implement
+                completely different password reset behavior.
+            `,
+            js: `
+                onAdminBeforeRequestPasswordResetRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminBeforeRequestPasswordResetRequest().Add(func(e *core.AdminRequestPasswordResetEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminAfterRequestPasswordResetRequest: {
+            html: `
+                <code>OnAdminAfterRequestPasswordResetRequest</code> hook is triggered after each
+                successful request password reset API request.
+            `,
+            js: `
+                onAdminBeforeRequestPasswordResetRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminAfterRequestPasswordResetRequest().Add(func(e *core.AdminRequestPasswordResetEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminBeforeConfirmPasswordResetRequest: {
+            html: `
+                <code>OnAdminBeforeConfirmPasswordResetRequest</code> hook is triggered before each Admin
+                confirm password reset API request (after request data load and before persistence).
+                <br/>
+                Could be used to additionally validate the request data or implement
+                completely different persistence behavior.
+            `,
+            js: `
+                onAdminBeforeConfirmPasswordResetRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminBeforeConfirmPasswordResetRequest().Add(func(e *core.AdminConfirmPasswordResetEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
+                        return nil
+                    })
+
+                    if err := app.Start(); err != nil {
+                        log.Fatal(err)
+                    }
+                }
+            `,
+        },
+        OnAdminAfterConfirmPasswordResetRequest: {
+            html: `
+                <code>OnAdminAfterConfirmPasswordResetRequest</code> hook is triggered after each
+                successful confirm password reset API request.
+            `,
+            js: `
+                onAdminAfterConfirmPasswordResetRequest((e) => {
+                    console.log(e.httpContext)
+                    console.log(e.admin)
+                })
+            `,
+            go: `
+                package main
+
+                import (
+                    "log"
+
+                    "github.com/pocketbase/pocketbase"
+                    "github.com/pocketbase/pocketbase/core"
+                )
+
+                func main() {
+                    app := pocketbase.New()
+
+                    app.OnAdminAfterConfirmPasswordResetRequest().Add(func(e *core.AdminConfirmPasswordResetEvent) error {
+                        log.Println(e.HttpContext)
+                        log.Println(e.Admin)
                         return nil
                     })
 

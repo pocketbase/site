@@ -28,8 +28,8 @@ export const baseLinks = [
         title: "Expanding relations",
     },
     {
-        href: "/docs/extend-with-go-or-javascript",
-        title: "Extend with Go or JavaScript",
+        href: "/docs/use-as-framework",
+        title: "Use as framework",
     },
     {
         title: "Web APIs reference",
@@ -109,12 +109,12 @@ export const goLinks = [
         title: "Migrations",
     },
     {
-        href: "/docs/go-sending-emails",
-        title: "Sending emails",
-    },
-    {
         href: "/docs/go-jobs-scheduling",
         title: "Jobs scheduling",
+    },
+    {
+        href: "/docs/go-sending-emails",
+        title: "Sending emails",
     },
     {
         href: "/docs/go-testing",
@@ -154,6 +154,10 @@ export const jsLinks = [
     {
         href: "/docs/js-migrations",
         title: "Migrations",
+    },
+    {
+        href: "/docs/js-jobs-scheduling",
+        title: "Jobs scheduling",
     },
     {
         href: "/docs/js-sending-emails",

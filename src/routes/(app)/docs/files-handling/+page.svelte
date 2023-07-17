@@ -110,9 +110,9 @@
     file field to a zero-value <br /> (<code>null</code>, <code>[]</code>, empty string, etc.).
 </p>
 <p>
-    If you want to <strong>delete only a single file from a multiple file upload field</strong>, you could
-    suffix the field name with <code>-</code> and filename(s) you want to delete. Here are some examples using
-    the SDKs:
+    If you want to <strong>delete individual file(s) from a multiple file upload field</strong>, you could
+    suffix the field name with <code>-</code> and specify the filename(s) you want to delete. Here are some examples
+    using the SDKs:
 </p>
 <!-- prettier-ignore -->
 <CodeTabs

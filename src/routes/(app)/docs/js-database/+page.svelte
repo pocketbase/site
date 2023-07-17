@@ -66,18 +66,19 @@
     <li>
         <p>
             <HeadingLink id="execute-all" title="all()" tag="code" />
-            - to populate multiple rows into <code>DynamicList</code> object:
+            - to populate multiple rows into an array of objects (note that the array must be created with
+            <code>arrayOf</code>):
         </p>
         <CodeBlock
             language="javascript"
             content={`
-                const result = new DynamicList({
+                const result = arrayOf(new DynamicModel({
                     // describe the shape of the data (used also as initial values)
                     "id":     "",
                     "status": false,
                     "age":    0,
                     "roles":  [], // serialized json db arrays are decoded as plain arrays
-                })
+                }))
 
                 $app.dao().db()
                     .newQuery("SELECT id, status, age, roles FROM users LIMIT 100")
@@ -101,10 +102,10 @@
 <CodeBlock
     language="javascript"
     content={`
-        const result = new DynamicList({
+        const result = arrayOf(new DynamicModel({
             "name":    "",
             "created": "",
-        })
+        }))
 
         $app.dao().db()
             .newQuery("SELECT name, created FROM posts WHERE created >= {:from} and created <= {:to}")
@@ -130,10 +131,10 @@
 <CodeBlock
     language="javascript"
     content={`
-        const result = new DynamicList({
+        const result = arrayOf(new DynamicModel({
             "id":    "",
             "email": "",
-        })
+        }))
 
         $app.dao().db()
             .select("id", "email")

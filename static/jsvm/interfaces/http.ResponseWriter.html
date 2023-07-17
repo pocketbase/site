@@ -28,7 +28,7 @@ has returned.</p>
 <ul class="tsd-hierarchy">
 <li><span class="target">ResponseWriter</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3449bbe/jsvm/types.d.ts#L5590">types.d.ts:5590</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L6331">types.d.ts:6331</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -51,8 +51,8 @@ has returned.</p>
 WriteHeader. The Header map also is the mechanism with which
 Handlers can set HTTP trailers.</p>
 <p>Changing the header map after a call to WriteHeader (or
-Write) has no effect unless the HTTP status code was of the
-1xx class or the modified headers are trailers.</p>
+Write) has no effect unless the modified headers are
+trailers.</p>
 <p>There are two ways to set Trailers. The preferred way is to
 predeclare in the headers which trailers you will later
 send by setting the &quot;Trailer&quot; header to the names of the
@@ -68,7 +68,7 @@ their value to nil.</p>
 <h4 class="tsd-returns-title">Returns <a href="http.Header.html" class="tsd-signature-type tsd-kind-interface">Header</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3449bbe/jsvm/types.d.ts#L5613">types.d.ts:5613</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L6354">types.d.ts:6354</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="write" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write</span><a href="#write" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -102,7 +102,7 @@ possible to maximize compatibility.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3449bbe/jsvm/types.d.ts#L5637">types.d.ts:5637</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L6378">types.d.ts:6378</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="writeHeader" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write<wbr/>Header</span><a href="#writeHeader" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -113,16 +113,12 @@ status code.</p>
 <p>If WriteHeader is not called explicitly, the first call to Write
 will trigger an implicit WriteHeader(http.StatusOK).
 Thus explicit calls to WriteHeader are mainly used to
-send error codes or 1xx informational responses.</p>
+send error codes.</p>
 <p>The provided code must be a valid HTTP 1xx-5xx status code.
-Any number of 1xx headers may be written, followed by at most
-one 2xx-5xx header. 1xx headers are sent immediately, but 2xx-5xx
-headers may be buffered. Use the Flusher interface to send
-buffered data. The header map is cleared when 2xx-5xx headers are
-sent, but not with 1xx headers.</p>
-<p>The server will automatically send a 100 (Continue) header
-on the first read from the request body if the request has
-an &quot;Expect: 100-continue&quot; header.</p>
+Only one header may be written. Go does not currently
+support sending user-defined 1xx informational headers,
+with the exception of 100-continue response header that the
+Server sends automatically when the Request.Body is read.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -132,7 +128,7 @@ an &quot;Expect: 100-continue&quot; header.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3449bbe/jsvm/types.d.ts#L5658">types.d.ts:5658</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L6394">types.d.ts:6394</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -163,9 +159,11 @@ an &quot;Expect: 100-continue&quot; header.</p>
 <li><a href="../modules/_app.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$app</span></a></li>
 <li><a href="../modules/_dbx.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$dbx</span></a></li>
 <li><a href="../modules/_filesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$filesystem</span></a></li>
+<li><a href="../modules/_http.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$http</span></a></li>
 <li><a href="../modules/_security.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$security</span></a></li>
 <li><a href="../modules/_tokens.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$tokens</span></a></li>
 <li><a href="../functions/arrayOf.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-64"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)"></path></g></svg><span>array<wbr/>Of</span></a></li>
+<li><a href="../functions/cronAdd.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>cron<wbr/>Add</span></a></li>
 <li><a href="../functions/migrate-1.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>migrate</span></a></li>
 <li><a href="../functions/onAdminAfterAuthRefreshRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Admin<wbr/>After<wbr/>Auth<wbr/>Refresh<wbr/>Request</span></a></li>
 <li><a href="../functions/onAdminAfterAuthWithPasswordRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Admin<wbr/>After<wbr/>Auth<wbr/>With<wbr/>Password<wbr/>Request</span></a></li>
@@ -312,7 +310,6 @@ an &quot;Expect: 100-continue&quot; header.</p>
 <li><a href="../modules/dbx.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>dbx</span></a></li>
 <li><a href="../modules/driver.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>driver</span></a></li>
 <li><a href="../modules/echo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>echo</span></a></li>
-<li><a href="../modules/encoding.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>encoding</span></a></li>
 <li><a href="../modules/filesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>filesystem</span></a></li>
 <li><a href="../modules/flag.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>flag</span></a></li>
 <li><a href="../modules/fmt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>fmt</span></a></li>

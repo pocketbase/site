@@ -28,12 +28,8 @@
 
         const activeItem = document.querySelector(".sidebar-list .list-item.active");
 
-        if (
-            container &&
-            activeItem &&
-            container.scrollTop + container.clientHeight < activeItem.offsetTop + 30
-        ) {
-            container.scrollTop = activeItem.offsetTop;
+        if (activeItem?.scrollIntoViewIfNeeded) {
+            activeItem.scrollIntoViewIfNeeded();
         }
     }
 
@@ -50,34 +46,38 @@
 
                 <div class="clearfix m-t-base" />
 
-                <div class="tabs-header stretched compact">
-                    <a class="tab-item" href={goLinks[0].href} class:active={extendLang == "go"}>
-                        <div class="block">
-                            Extend with <br />
-                            <span class="txt" class:txt-bold={extendLang == "go"}>Go</span>
-                        </div>
-                    </a>
-                    <a class="tab-item" href={jsLinks[0].href} class:active={extendLang == "javascript"}>
-                        <div class="block">
-                            Extend with <br />
-                            <span class="txt" class:txt-bold={extendLang == "javascript"}>JavaScript</span>
-                        </div>
-                    </a>
-                </div>
-                <div class="tabs-content">
-                    <div class="tab-item" class:active={extendLang == "go"}>
-                        <NavList items={goLinks}>
-                            <svelte:fragment slot="before">
-                                <span class="label label-sm label-info">Go</span>
-                            </svelte:fragment>
-                        </NavList>
+                <div>
+                    <div class="tabs-header stretched compact">
+                        <a class="tab-item" href={goLinks[0].href} class:active={extendLang == "go"}>
+                            <div class="block">
+                                Extend with
+                                <br />
+                                Go
+                            </div>
+                        </a>
+                        <a class="tab-item" href={jsLinks[0].href} class:active={extendLang == "javascript"}>
+                            <div class="block">
+                                Extend with
+                                <br />
+                                JavaScript
+                            </div>
+                        </a>
                     </div>
-                    <div class="tab-item" class:active={extendLang == "javascript"}>
-                        <NavList items={jsLinks}>
-                            <svelte:fragment slot="before">
-                                <span class="label label-sm label-warning">JS</span>
-                            </svelte:fragment>
-                        </NavList>
+                    <div class="tabs-content">
+                        <div class="tab-item" class:active={extendLang == "go"}>
+                            <NavList items={goLinks}>
+                                <svelte:fragment slot="before">
+                                    <span class="label label-sm label-info">Go</span>
+                                </svelte:fragment>
+                            </NavList>
+                        </div>
+                        <div class="tab-item" class:active={extendLang == "javascript"}>
+                            <NavList items={jsLinks}>
+                                <svelte:fragment slot="before">
+                                    <span class="label label-sm label-warning">JS</span>
+                                </svelte:fragment>
+                            </NavList>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -15,10 +15,10 @@
 <ul>
     <li>name - identifier for the scheduled job; could be used to replace or remove an existing job</li>
     <li>cron expression like <code>0 0 * * *</code> (<em>supports numeric list, steps or ranges</em>)</li>
-    <li>action - the function that will be executed everytime when the job runs</li>
+    <li>handler - the function that will be executed everytime when the job runs</li>
 </ul>
 
-<p>Here are some examples:</p>
+<p>Here is an example:</p>
 <CodeBlock
     language="go"
     content={`

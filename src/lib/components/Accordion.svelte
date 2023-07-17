@@ -36,6 +36,13 @@
     export function expand() {
         collapseSiblings();
         active = true;
+
+        // replace the current url hash with the heading id (if any)
+        const id = getDynamicHeadingId();
+        if (id && history) {
+            history.replaceState({}, "", "#" + id);
+        }
+
         dispatch("expand");
     }
 
@@ -64,6 +71,10 @@
                 handler.click(); // @todo consider more reliable approach
             }
         }
+    }
+
+    function getDynamicHeadingId() {
+        return accordionElem?.querySelector(".accordion-header .heading-link")?.id;
     }
 
     function keyToggle(e) {
@@ -97,18 +108,7 @@
         on:click|preventDefault={() => interactive && toggle()}
     >
         <slot name="header" {active} {toggle} {expand} {collapse}>
-            <HeadingLink {title} tag="strong">
-                <svelte:fragment slot="after">
-                    <!-- svelte-ignore a11y-click-events-have-key-events -->
-                    <span
-                        class="fade link-hint p-l-5"
-                        title="Link anchor"
-                        on:click|stopPropagation={() => expand()}
-                    >
-                        #
-                    </span>
-                </svelte:fragment>
-            </HeadingLink>
+            <HeadingLink {title} tag="strong" />
         </slot>
     </button>
 

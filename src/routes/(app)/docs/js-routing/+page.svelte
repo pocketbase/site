@@ -6,8 +6,8 @@
 </script>
 
 <p>
-    You can register custom routes and middlewares by attaching to the <code>$app.onBeforeServe</code> hook
-    and use its <code>e.router.*</code> field.
+    You can register custom routes and middlewares by using the top-level <code>routerAdd()</code>
+    and <code>routerUse()</code> functions.
 </p>
 
 <Toc />
@@ -22,13 +22,11 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.onBeforeServe().add((e) => {
-            e.router.get("/hello/:name", (c) => {
-                let name = c.pathParam("name")
+        routerAdd("GET", "/hello/:name", (c) => {
+            let name = c.pathParam("name")
 
-                return c.json(200, { "message": "Hello " + name })
-            }, /* optional middlewares */)
-        })
+            return c.json(200, { "message": "Hello " + name })
+        }, /* optional middlewares */)
     `}
 />
 
@@ -43,20 +41,6 @@
         </p>
     </div>
 </div>
-
-<p>There are several <code>router</code> methods available, but the most common ones are:</p>
-<CodeBlock
-    language="javascript"
-    content={`
-        e.router.get(path, handler, [middlewares...])
-        e.router.post(path, handler, [middlewares...])
-        e.router.put(path, handler, [middlewares...])
-        e.router.patch(path, handler, [middlewares...])
-        e.router.delete(path, handler, [middlewares...])
-        e.router.options(path, handler, [middlewares...])
-        e.router.head(path, handler, [middlewares...])
-    `}
-/>
 
 <p>
     Each handler function receives a <strong>request context</strong> argument (usually named <code>c</code>).
@@ -152,21 +136,19 @@
     Middlewares could be used to apply a shared behavior or to intercept and modify route requests.
     <br />
     Middlewares can be registered both to a single route (by passing them after the handler) and globally usually
-    by using <code>e.router.use(someMiddlereFunc)</code>.
+    by using <code>routerUse(someMiddlereFunc)</code>.
 </p>
 <CodeBlock
     language="javascript"
     content={`
-        $app.onBeforeServe().add((e) => {
-            // attach a middleware globally to all routes
-            e.router.use(someMiddlereFunc)
+        // attach a middleware globally to all routes
+        routerUse(someMiddlereFunc)
 
-            // attach multiple middlewares to a single route
-            // each route will execute their own middlewares + the global ones
-            e.router.get("/hello", (c) => {
-                return c.string(200, "Hello world!")
-            }, $apis.activityLogger($app), $apis.requireAdminAuth())
-        })
+        // attach multiple middlewares to a single route
+        // each route will execute their own middlewares + the global ones
+        routerAdd("GET", "/hello", (c) => {
+            return c.string(200, "Hello world!")
+        }, $apis.activityLogger($app), $apis.requireAdminAuth())
     `}
 />
 
@@ -212,9 +194,7 @@
             }
         }
 
-        $app.onBeforeServe().add((e) => {
-            e.router.use(myCustomMiddleware)
-        })
+        routerUse(myCustomMiddleware)
     `}
 />
 
@@ -260,24 +240,22 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.onBeforeServe().add((e) => {
-            e.router.get("/phone-login", (c) => {
-                const data = new DynamicModel({
-                    phone:    "",
-                    password: "",
-                })
+        routerAdd("/phone-login", (c) => {
+            const data = new DynamicModel({
+                phone:    "",
+                password: "",
+            })
 
-                c.bind(data)
+            c.bind(data)
 
-                const record = $app.dao().findFirstRecordByData("users", "phone", data.phone)
+            const record = $app.dao().findFirstRecordByData("users", "phone", data.phone)
 
-                if (!record.validatePassword(data.password)) {
-                    throw $apis.badRequestError("invalid credentials")
-                }
+            if (!record.validatePassword(data.password)) {
+                throw $apis.badRequestError("invalid credentials")
+            }
 
-                return $apis.recordAuthResponse($app, c, record)
-            }, $apis.activityLogger($app))
-        })
+            return $apis.recordAuthResponse($app, c, record)
+        }, $apis.activityLogger($app))
     `}
 />
 <HeadingLink title="Enrich record(s)" tag="h5" />
@@ -297,16 +275,14 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.onBeforeServe().add((e) => {
-            e.router.get("/custom-article", (c) => {
-                const records = $app.dao().findRecordsByFilter("article", "status = 'active'", '-created', 40)
+        routerAdd("/custom-article", (c) => {
+            const records = $app.dao().findRecordsByFilter("article", "status = 'active'", '-created', 40)
 
-                // enrich the records with the "categories" relation as default expand
-                $apis.enrichRecords(c, $app.dao(), records, "categories")
+            // enrich the records with the "categories" relation as default expand
+            $apis.enrichRecords(c, $app.dao(), records, "categories")
 
-                return c.json(200, records)
-            }, $apis.activityLogger($app))
-        })
+            return c.json(200, records)
+        }, $apis.activityLogger($app))
     `}
 />
 

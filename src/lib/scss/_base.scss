@@ -128,7 +128,7 @@ code {
     white-space: nowrap;
     font-weight: normal;
     font-style: normal;
-    color: var(--txtPrimaryColor);
+    color: inherit;
     background: var(--baseAlt1Color);
     border-radius: var(--baseRadius);
     @media only screen and (max-width: 600px) {

@@ -40,7 +40,12 @@
     To list all <strong>comments</strong> with their <strong>user</strong> relation expanded, we can do the following:
 </p>
 
-<CodeBlock content={`GET /api/collections/comments/records?expand=user`} />
+<CodeBlock
+    content={`
+        // pb.collection("comments").getList(1, 30, { expand: "user" })
+        GET /api/collections/comments/records?perPage=30&expand=user
+    `}
+/>
 
 <div class="clearfix m-b-10" />
 
@@ -97,7 +102,12 @@
     <strong>users</strong> expanded, we can do the following:
 </p>
 
-<CodeBlock content={`GET /api/collections/posts/records?expand=comments(post).user`} />
+<CodeBlock
+    content={`
+        // pb.collection("posts").getList(1, 30, { expand: "comments(post).user" })
+        GET /api/collections/posts/records?perPage=30&expand=comments(post).user
+    `}
+/>
 
 <div class="clearfix m-b-10" />
 

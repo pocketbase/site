@@ -9,7 +9,7 @@
     export { classes as class }; // export reserved keyword
 
     $: if (!id) {
-        id = "h-" + CommonHelper.slugify(title, "-").toLowerCase();
+        id = CommonHelper.slugify(title, "-").toLowerCase();
     }
 </script>
 
