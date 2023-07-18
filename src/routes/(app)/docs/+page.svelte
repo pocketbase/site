@@ -14,9 +14,7 @@
     PocketBase is an open source backend consisting of embedded database (SQLite) with realtime subscriptions,
     built-in auth management, convenient dashboard UI and simple REST-ish API.
 </p>
-
 <p>The easiest way to get started is to download the prebuilt minimal PocketBase app:</p>
-
 <ul>
     <li>
         <div class="inline-flex flex-gap-5">

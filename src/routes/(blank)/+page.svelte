@@ -15,6 +15,7 @@
     let activePreview = "database";
 
     const sdkBtns = {
+        go: "Go",
         javascript: "JavaScript",
         dart: "Dart",
     };
@@ -234,40 +235,82 @@
             `,
         },
         extend: {
-            go: `
-                // main.go
-                package main
+            javascript: `
+                // pb_hooks/main.pb.js
 
-                import (
-                    "log"
+                // intercept requests
+                onRecordAfterUpdateRequest((e) => {
+                    console.log(e.record.id)
+                })
 
-                    "github.com/pocketbase/pocketbase"
-                    "github.com/pocketbase/pocketbase/core"
-                    "github.com/pocketbase/pocketbase/tools/hook"
+                // intercept system emails
+                onMailerBeforeRecordVerificationSend((e) => {
+                    // send custom email
+                    e.mailClient.send(...)
+
+                    // stops propagation
+                    return false
+                })
+
+                // register custom routes
+                routerAdd(
+                    "get",
+                    "/hello",
+                    (c) => {
+                        return c.string(200, "Hello!")
+                    },
+                    $apis.activityLogger($app),
+                    $apis.requireAdminAuth()
                 )
 
-                func main() {
-                    app := pocketbase.New()
+                // jobs scheduling
+                cronAdd("hello", "*/2 * * * *", () => {
+                    // prints "Hello!" every 2 minutes
+                    console.log("Hello!")
+                })
+            `,
+            go: `
+                // main.go
 
-                    app.OnRecordAfterUpdateRequest().Add(func(e *core.RecordUpdateEvent) error {
-                        log.Println(e.Record.Id)
-                        return nil
-                    })
+                // intercept requests
+                app.OnRecordAfterUpdateRequest().Add(func(e *core.RecordUpdateEvent) error {
+                    log.Println(e.Record.Id)
+                    return nil
+                })
 
-                    app.OnMailerBeforeRecordVerificationSend().Add(func(
-                        e *core.MailerRecordEvent,
-                    ) error {
-                        // send custom email
-                        if err := e.MailClient.Send(...); err != nil {
-                            return err
-                        }
-                        return hook.StopPropagation
-                    })
-
-                    if err := app.Start(); err != nil {
-                        log.Fatal(err)
+                // intercept system emails
+                app.OnMailerBeforeRecordVerificationSend().Add(func(
+                    e *core.MailerRecordEvent,
+                ) error {
+                    // send custom email
+                    if err := e.MailClient.Send(...); err != nil {
+                        return err
                     }
-                }
+                    return hook.StopPropagation
+                })
+
+                // register custom routes
+                app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
+                    e.Router.GET("/hello", func(c echo.Context) error {
+                        return c.String(http.StatusOK, "Hello!")
+                    }, apis.ActivityLogger(app), apis.RequireAdminAuth())
+
+                    return nil
+                })
+
+                // jobs scheduling
+                app.OnAfterBootstrap().Add(func(e *core.BootstrapEvent) error {
+                   scheduler := cron.New()
+
+                   // prints "Hello!" every 2 minutes
+                   scheduler.MustAdd("hello", "*/2 * * * *", func() {
+                       log.Println("Hello!")
+                   })
+
+                   scheduler.Start()
+
+                   return nil
+                })
             `,
         },
     };
@@ -520,9 +563,8 @@
                     </h4>
                     <div class="content">
                         <p>
-                            Use as a standalone app or as Go framework, that you can extend via hooks to
-                            create your own custom portable backend. Provides official client SDKs for
-                            painless integration.
+                            Use as a standalone app OR as a framework, that you can extend via Go and
+                            JavaScript hooks to create your own custom portable backend.
                         </p>
                     </div>
                 </button>
@@ -537,11 +579,10 @@
                     {#each Object.entries(sdkBtns) as [btnLanguage, btnTitle]}
                         {#if codePreviews?.[activePreview]?.[btnLanguage]}
                             <button
-                                transition:fly={{ duration: 150, x: 5 }}
                                 type="button"
                                 class="
                                     btn btn-sm btn-expanded-sm
-                                    {preference === btnLanguage ? 'btn-outline' : 'btn-hint'}
+                                    {previewLanguage === btnLanguage ? 'btn-outline' : 'btn-hint'}
                                 "
                                 on:click={() => {
                                     setCodePreference(btnLanguage);
