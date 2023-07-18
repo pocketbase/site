@@ -115,8 +115,8 @@
 <p>
     One possible workaround for sharing/reusing code across different handlers could be to move and export the
     reusable code portion as local module and load it with <code>require()</code> inside the handler but keep in
-    mind that the loaded modules use a shared registry and mutations should be avoided when possible to avoid concurrency
-    issues:
+    mind that the loaded modules use a shared registry and mutations should be avoided when possible to prevent
+    concurrency issues:
 </p>
 <CodeBlock
     content={`

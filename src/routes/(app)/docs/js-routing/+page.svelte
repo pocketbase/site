@@ -81,6 +81,10 @@
 />
 
 <HeadingLink title="Reading path parameters" tag="h5" />
+<p>
+    Path parameters are defined with <code>:paramName</code> placeholder and can be retrieved using
+    <code>c.pathParam("paramName")</code>.
+</p>
 <CodeBlock language="javascript" content={`const id = c.pathParam("id")`} />
 
 <HeadingLink title="Reading query parameters" tag="h5" />
@@ -125,6 +129,9 @@
 
         // send response with json body
         c.json(200, {"name": "John"})
+
+        // send response with html body
+        c.html(200, "<h1>Hello!</h1>")
 
         // send response with no body
         c.noContent(204)
@@ -187,7 +194,7 @@
                 const header = c.request().header.get("Some-Header")
                 if (!header) {
                     // throw or return an error
-                    throw $apis.newBadRequestError("Invalid request")
+                    throw new BadRequestError("Invalid request")
                 }
 
                 return next(c) // proceed with the request chain
@@ -221,10 +228,10 @@
         })
 
         // if message is empty string, a default one will be set
-        throw $apis.badRequestError(optMessage, optData)   // 400 ApiError
-        throw $apis.unauthorizedError(optMessage, optData) // 401 ApiError
-        throw $apis.forbiddenError(optMessage, optData)    // 403 ApiError
-        throw $apis.notFoundError(optMessage, optData)     // 404 ApiError
+        throw new NadRequestError(optMessage, optData)   // 400 ApiError
+        throw new UnauthorizedError(optMessage, optData) // 401 ApiError
+        throw new ForbiddenError(optMessage, optData)    // 403 ApiError
+        throw new NotFoundError(optMessage, optData)     // 404 ApiError
     `}
 />
 
@@ -251,7 +258,7 @@
             const record = $app.dao().findFirstRecordByData("users", "phone", data.phone)
 
             if (!record.validatePassword(data.password)) {
-                throw $apis.badRequestError("invalid credentials")
+                throw new NadRequestError("invalid credentials")
             }
 
             return $apis.recordAuthResponse($app, c, record)

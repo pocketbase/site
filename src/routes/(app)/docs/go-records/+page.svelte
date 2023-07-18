@@ -50,6 +50,10 @@
 
         // auth records only
         // ---
+        record.SetPassword("123456")
+        record.ValidatePassword("123456")
+        record.PasswordHash()
+        // ---
         record.Username()
         record.SetUsername("john.doe")
         // ---
@@ -71,10 +75,6 @@
         // ---
         record.LastVerificationSentAt()
         record.SetLastVerificationSentAt(types.DateTime{})
-        // ---
-        record.PasswordHash()
-        record.SetPassword("123456")
-        record.ValidatePassword("123456")
     `}
 />
 
@@ -394,6 +394,59 @@
             }
 
             return records, nil
+        }
+    `}
+/>
+
+<HeadingLink title="Check if record can be accessed" />
+<p>
+    To check whether a custom client request or user can access a single record, you can use the
+    <code>app.Dao().CanAccessRecord(record, requestInfo, rule)</code> method.
+</p>
+<p>For example:</p>
+<CodeBlock
+    language="go"
+    content={`
+        package main
+
+        import (
+            "log"
+            "net/http"
+
+            "github.com/labstack/echo/v5"
+            "github.com/pocketbase/pocketbase"
+            "github.com/pocketbase/pocketbase/apis"
+            "github.com/pocketbase/pocketbase/core"
+        )
+
+        func main() {
+            app := pocketbase.New()
+
+            app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
+                e.Router.Add("GET", "/articles/:slug", func(c echo.Context) error {
+                    info := apis.RequestInfo(c)
+
+                    slug := c.PathParam("slug")
+
+                    record, err := app.Dao().FindFirstRecordByData("articles", "slug", slug)
+                    if err != nil {
+                        return apis.NewNotFoundError("", err)
+                    }
+
+                    canAccess, err := app.Dao().CanAccessRecord(record, info, record.Collection().ViewRule)
+                    if !canAccess {
+                        return apis.NewForbiddenError("", err)
+                    }
+
+                    return c.JSON(http.StatusOK, record)
+                })
+
+                return nil
+            })
+
+            if err := app.Start(); err != nil {
+                log.Fatal(err)
+            }
         }
     `}
 />

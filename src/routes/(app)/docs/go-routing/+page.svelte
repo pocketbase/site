@@ -116,6 +116,10 @@
 />
 
 <HeadingLink title="Reading path parameters" tag="h5" />
+<p>
+    Path parameters are defined with <code>:paramName</code> placeholder and can be retrieved using
+    <code>c.PathParam("paramName")</code>.
+</p>
 <CodeBlock language="go" content={`id := c.PathParam("id")`} />
 
 <HeadingLink title="Reading query parameters" tag="h5" />
@@ -159,6 +163,9 @@
 
         // send response with json body
         c.JSON(200, map[string]any{"name": "John"})
+
+        // send response with html body
+        c.HTML(200, "<h1>Hello!</h1>")
 
         // send response with no body
         c.NoContent(204)

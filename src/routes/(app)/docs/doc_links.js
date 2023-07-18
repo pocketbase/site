@@ -24,8 +24,8 @@ export const baseLinks = [
         title: "Files upload and handling",
     },
     {
-        href: "/docs/expanding-relations",
-        title: "Expanding relations",
+        href: "/docs/working-with-relations",
+        title: "Working with relations",
     },
     {
         href: "/docs/use-as-framework",
