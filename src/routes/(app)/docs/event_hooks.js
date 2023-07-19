@@ -225,7 +225,7 @@ export default {
             html: `
                 <p>
                     <code>OnModelBeforeCreate</code> hook is triggered before inserting a new
-                    entry in the DB, allowing you to modify or validate the stored data.
+                    model in the DB, allowing you to modify or validate the stored data.
                 </p>
                 <p>
                     If the optional "tags" list (table names and/or the Collection id for Record models)
@@ -283,7 +283,7 @@ export default {
             html: `
                 <p>
                     <code>OnModelAfterCreate</code> hook is triggered after successfully
-                    inserting a new entry in the DB.
+                    inserting a new model in the DB.
                 </p>
                 <p>
                     If the optional "tags" list (table names and/or the Collection id for Record models)
@@ -341,7 +341,7 @@ export default {
             html: `
                 <p>
                     <code>OnModelBeforeUpdate</code> hook is triggered before updating existing
-                    entry in the DB, allowing you to modify or validate the stored data.
+                    model in the DB, allowing you to modify or validate the stored data.
                 </p>
                 <p>
                     If the optional "tags" list (table names and/or the Collection id for Record models)
@@ -399,7 +399,7 @@ export default {
             html: `
                 <p>
                     <code>OnModelAfterUpdate</code> hook is triggered after successfully updating
-                    existing entry in the DB.
+                    existing model in the DB.
                 </p>
                 <p>
                     If the optional "tags" list (table names and/or the Collection id for Record models)
@@ -457,7 +457,7 @@ export default {
             html: `
                 <p>
                     <code>OnModelBeforeDelete</code> hook is triggered before deleting an
-                    existing entry from the DB.
+                    existing model from the DB.
                 </p>
                 <p>
                     If the optional "tags" list (table names and/or the Collection id for Record models)
@@ -515,7 +515,7 @@ export default {
             html: `
                 <p>
                     <code>OnModelAfterDelete</code> hook is triggered after successfully
-                    deleting an existing entry from the DB.
+                    deleting an existing model from the DB.
                 </p>
                 <p>
                     If the optional "tags" list (table names and/or the Collection id for Record models)
