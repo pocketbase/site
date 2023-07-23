@@ -31,8 +31,8 @@
 <ul class="tsd-hierarchy">
 <li><a href="../modules/daos.html" class="tsd-signature-type tsd-kind-namespace">daos</a><span class="tsd-signature-symbol">.</span><a href="../interfaces/daos.Dao.html" class="tsd-signature-type tsd-kind-interface">Dao</a></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L326">types.d.ts:326</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L331">types.d.ts:331</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L399">types.d.ts:399</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L404">types.d.ts:404</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -144,7 +144,7 @@
 <h4 class="tsd-returns-title">Returns <a href="Dao.html" class="tsd-signature-type tsd-kind-class">Dao</a></h4><aside class="tsd-sources">
 <p>Inherited from daos.Dao.constructor</p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L332">types.d.ts:332</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L405">types.d.ts:405</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="adminQuery" class="tsd-anchor"></a>
@@ -158,20 +158,20 @@
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#adminQuery">adminQuery</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8101">types.d.ts:8101</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9485">types.d.ts:9485</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="canAccessRecord" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>can<wbr/>Access<wbr/>Record</span><a href="#canAccessRecord" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
-<li class="tsd-signature tsd-anchor-link" id="canAccessRecord.canAccessRecord-1"><span class="tsd-kind-call-signature">can<wbr/>Access<wbr/>Record</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">record</span>, <span class="tsd-kind-parameter">requestData</span>, <span class="tsd-kind-parameter">accessRule</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#canAccessRecord.canAccessRecord-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="canAccessRecord.canAccessRecord-1"><span class="tsd-kind-call-signature">can<wbr/>Access<wbr/>Record</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">record</span>, <span class="tsd-kind-parameter">requestInfo</span>, <span class="tsd-kind-parameter">accessRule</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><a href="#canAccessRecord.canAccessRecord-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>CanAccessRecord checks if a record is allowed to be accessed by the
-specified requestData and accessRule.</p>
-<p>Rule and db checks are ignored in case requestData.Admin is set.</p>
+specified requestInfo and accessRule.</p>
+<p>Rule and db checks are ignored in case requestInfo.Admin is set.</p>
 <p>The returned error indicate that something unexpected happened during
 the check (eg. invalid rule or db error).</p>
 <p>The method always return false on invalid access rule or db error.</p>
 <p>Example:</p>
-<pre><code><span class="hl-0"> </span><span class="hl-2">requestData</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> apis.</span><span class="hl-2">RequestData</span><span class="hl-0">(c </span><span class="hl-5">/* echo.Context */</span><span class="hl-0">)</span><br/><span class="hl-0"> record, </span><span class="hl-2">_</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> dao.</span><span class="hl-2">FindRecordById</span><span class="hl-0">(</span><span class="hl-3">&quot;example&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;RECORD_ID&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-2">rule</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> types.</span><span class="hl-2">Pointer</span><span class="hl-0">(</span><span class="hl-3">&quot;@request.auth.id != &#39;&#39; || status = &#39;public&#39;&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-5">// ... or use one of the record collection&#39;s rule, eg. record.Collection().ViewRule</span><br/><br/><span class="hl-0"> </span><span class="hl-1">if</span><span class="hl-0"> ok, </span><span class="hl-2">_</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> dao.</span><span class="hl-2">CanAccessRecord</span><span class="hl-0">(record, requestData, rule); ok { </span><span class="hl-1">...</span><span class="hl-0"> }</span>
+<pre><code><span class="hl-0"> </span><span class="hl-2">requestInfo</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> apis.</span><span class="hl-2">RequestInfo</span><span class="hl-0">(c </span><span class="hl-6">/* echo.Context */</span><span class="hl-0">)</span><br/><span class="hl-0"> record, </span><span class="hl-2">_</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> dao.</span><span class="hl-2">FindRecordById</span><span class="hl-0">(</span><span class="hl-3">&quot;example&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;RECORD_ID&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-2">rule</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> types.</span><span class="hl-2">Pointer</span><span class="hl-0">(</span><span class="hl-3">&quot;@request.auth.id != &#39;&#39; || status = &#39;public&#39;&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-6">// ... or use one of the record collection&#39;s rule, eg. record.Collection().ViewRule</span><br/><br/><span class="hl-0"> </span><span class="hl-1">if</span><span class="hl-0"> ok, </span><span class="hl-2">_</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> dao.</span><span class="hl-2">CanAccessRecord</span><span class="hl-0">(record, requestInfo, rule); ok { </span><span class="hl-1">...</span><span class="hl-0"> }</span>
 </code><button>Copy</button></pre>
 </div>
 <div class="tsd-parameters">
@@ -180,14 +180,14 @@ the check (eg. invalid rule or db error).</p>
 <li>
 <h5><span class="tsd-kind-parameter">record</span>: <a href="../interfaces/models.Record.html" class="tsd-signature-type tsd-kind-interface">Record</a></h5></li>
 <li>
-<h5><span class="tsd-kind-parameter">requestData</span>: <a href="../interfaces/models.RequestData.html" class="tsd-signature-type tsd-kind-interface">RequestData</a></h5></li>
+<h5><span class="tsd-kind-parameter">requestInfo</span>: <a href="../interfaces/models.RequestInfo.html" class="tsd-signature-type tsd-kind-interface">RequestInfo</a></h5></li>
 <li>
 <h5><span class="tsd-kind-parameter">accessRule</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#canAccessRecord">canAccessRecord</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8547">types.d.ts:8547</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9931">types.d.ts:9931</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="clone" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>clone</span><a href="#clone" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -199,7 +199,7 @@ the check (eg. invalid rule or db error).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#clone">clone</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8206">types.d.ts:8206</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9590">types.d.ts:9590</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="collectionQuery" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>collection<wbr/>Query</span><a href="#collectionQuery" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -211,7 +211,7 @@ the check (eg. invalid rule or db error).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#collectionQuery">collectionQuery</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8256">types.d.ts:8256</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9640">types.d.ts:9640</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="concurrentDB" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>concurrentDB</span><a href="#concurrentDB" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -225,7 +225,7 @@ db builder (*dbx.DB or *dbx.TX).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#concurrentDB">concurrentDB</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8191">types.d.ts:8191</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9575">types.d.ts:9575</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="createViewSchema" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>create<wbr/>View<wbr/>Schema</span><a href="#createViewSchema" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -247,7 +247,7 @@ db builder (*dbx.DB or *dbx.TX).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#createViewSchema">createViewSchema</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8725">types.d.ts:8725</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10109">types.d.ts:10109</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="db" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>db</span><a href="#db" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -260,7 +260,7 @@ db builder (*dbx.DB or *dbx.TX).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#db">db</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8182">types.d.ts:8182</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9566">types.d.ts:9566</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="delete" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete</span><a href="#delete" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -277,7 +277,7 @@ db builder (*dbx.DB or *dbx.TX).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#delete">delete</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8241">types.d.ts:8241</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9625">types.d.ts:9625</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="deleteAdmin" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete<wbr/>Admin</span><a href="#deleteAdmin" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -295,7 +295,7 @@ db builder (*dbx.DB or *dbx.TX).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#deleteAdmin">deleteAdmin</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8142">types.d.ts:8142</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9526">types.d.ts:9526</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="deleteCollection" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete<wbr/>Collection</span><a href="#deleteCollection" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -318,7 +318,7 @@ This method automatically deletes the related collection records table.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#deleteCollection">deleteCollection</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8299">types.d.ts:8299</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9683">types.d.ts:9683</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="deleteExternalAuth" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete<wbr/>External<wbr/>Auth</span><a href="#deleteExternalAuth" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -335,7 +335,7 @@ This method automatically deletes the related collection records table.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#deleteExternalAuth">deleteExternalAuth</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8360">types.d.ts:8360</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9744">types.d.ts:9744</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="deleteOldRequests" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete<wbr/>Old<wbr/>Requests</span><a href="#deleteOldRequests" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -352,7 +352,7 @@ This method automatically deletes the related collection records table.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#deleteOldRequests">deleteOldRequests</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8625">types.d.ts:8625</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10009">types.d.ts:10009</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="deleteParam" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete<wbr/>Param</span><a href="#deleteParam" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -369,7 +369,7 @@ This method automatically deletes the related collection records table.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#deleteParam">deleteParam</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8387">types.d.ts:8387</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9771">types.d.ts:9771</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="deleteRecord" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete<wbr/>Record</span><a href="#deleteRecord" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -390,7 +390,7 @@ reference in another record (aka. cannot be deleted or unset).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#deleteRecord">deleteRecord</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8568">types.d.ts:8568</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9952">types.d.ts:9952</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="deleteTable" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete<wbr/>Table</span><a href="#deleteTable" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -410,7 +410,7 @@ reference in another record (aka. cannot be deleted or unset).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#deleteTable">deleteTable</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8688">types.d.ts:8688</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10072">types.d.ts:10072</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="deleteView" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>delete<wbr/>View</span><a href="#deleteView" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -430,7 +430,7 @@ reference in another record (aka. cannot be deleted or unset).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#deleteView">deleteView</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8706">types.d.ts:8706</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10090">types.d.ts:10090</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="expandRecord" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>expand<wbr/>Record</span><a href="#expandRecord" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -454,7 +454,7 @@ returns all relation records.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#expandRecord">expandRecord</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8579">types.d.ts:8579</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9963">types.d.ts:9963</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="expandRecords" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>expand<wbr/>Records</span><a href="#expandRecords" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -478,7 +478,7 @@ returns all relation records.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#expandRecords">expandRecords</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8590">types.d.ts:8590</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9974">types.d.ts:9974</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="externalAuthQuery" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>external<wbr/>Auth<wbr/>Query</span><a href="#externalAuthQuery" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -490,7 +490,7 @@ returns all relation records.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#externalAuthQuery">externalAuthQuery</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8327">types.d.ts:8327</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9711">types.d.ts:9711</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findAdminByEmail" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Admin<wbr/>By<wbr/>Email</span><a href="#findAdminByEmail" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -507,7 +507,7 @@ returns all relation records.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findAdminByEmail">findAdminByEmail</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8113">types.d.ts:8113</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9497">types.d.ts:9497</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findAdminById" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Admin<wbr/>By<wbr/>Id</span><a href="#findAdminById" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -524,7 +524,7 @@ returns all relation records.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findAdminById">findAdminById</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8107">types.d.ts:8107</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9491">types.d.ts:9491</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findAdminByToken" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Admin<wbr/>By<wbr/>Token</span><a href="#findAdminByToken" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -544,7 +544,7 @@ returns all relation records.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findAdminByToken">findAdminByToken</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8121">types.d.ts:8121</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9505">types.d.ts:9505</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findAllExternalAuthsByRecord" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>All<wbr/>External<wbr/>Auths<wbr/>By<wbr/>Record</span><a href="#findAllExternalAuthsByRecord" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -562,7 +562,7 @@ linked to the provided auth record.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findAllExternalAuthsByRecord">findAllExternalAuthsByRecord</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8334">types.d.ts:8334</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9718">types.d.ts:9718</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findAuthRecordByEmail" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Auth<wbr/>Record<wbr/>By<wbr/>Email</span><a href="#findAuthRecordByEmail" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -582,7 +582,7 @@ linked to the provided auth record.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findAuthRecordByEmail">findAuthRecordByEmail</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8504">types.d.ts:8504</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9888">types.d.ts:9888</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findAuthRecordByToken" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Auth<wbr/>Record<wbr/>By<wbr/>Token</span><a href="#findAuthRecordByToken" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -602,7 +602,7 @@ linked to the provided auth record.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findAuthRecordByToken">findAuthRecordByToken</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8496">types.d.ts:8496</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9880">types.d.ts:9880</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findAuthRecordByUsername" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Auth<wbr/>Record<wbr/>By<wbr/>Username</span><a href="#findAuthRecordByUsername" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -622,7 +622,7 @@ linked to the provided auth record.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findAuthRecordByUsername">findAuthRecordByUsername</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8512">types.d.ts:8512</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9896">types.d.ts:9896</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findById" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>By<wbr/>Id</span><a href="#findById" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -642,7 +642,7 @@ scans the result into m.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findById">findById</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8227">types.d.ts:8227</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9611">types.d.ts:9611</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findCollectionByNameOrId" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Collection<wbr/>By<wbr/>Name<wbr/>Or<wbr/>Id</span><a href="#findCollectionByNameOrId" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -659,7 +659,7 @@ scans the result into m.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findCollectionByNameOrId">findCollectionByNameOrId</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8268">types.d.ts:8268</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9652">types.d.ts:9652</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findCollectionReferences" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Collection<wbr/>References</span><a href="#findCollectionReferences" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -682,7 +682,7 @@ as the excludeId argument.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findCollectionReferences">findCollectionReferences</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8288">types.d.ts:8288</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9672">types.d.ts:9672</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findCollectionsByType" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Collections<wbr/>By<wbr/>Type</span><a href="#findCollectionsByType" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -699,7 +699,7 @@ as the excludeId argument.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findCollectionsByType">findCollectionsByType</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8262">types.d.ts:8262</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9646">types.d.ts:9646</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findExternalAuthByProvider" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>External<wbr/>Auth<wbr/>By<wbr/>Provider</span><a href="#findExternalAuthByProvider" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -717,7 +717,7 @@ ExternalAuth model for the specified provider and providerId.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findExternalAuthByProvider">findExternalAuthByProvider</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8341">types.d.ts:8341</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9725">types.d.ts:9725</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findExternalAuthByRecordAndProvider" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>External<wbr/>Auth<wbr/>By<wbr/>Record<wbr/>And<wbr/>Provider</span><a href="#findExternalAuthByRecordAndProvider" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -737,7 +737,7 @@ ExternalAuth model for the specified record data and provider.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findExternalAuthByRecordAndProvider">findExternalAuthByRecordAndProvider</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8348">types.d.ts:8348</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9732">types.d.ts:9732</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findFirstRecordByData" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>First<wbr/>Record<wbr/>By<wbr/>Data</span><a href="#findFirstRecordByData" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -759,7 +759,7 @@ the provided key-value pair.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findFirstRecordByData">findFirstRecordByData</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8437">types.d.ts:8437</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9821">types.d.ts:9821</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findFirstRecordByFilter" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>First<wbr/>Record<wbr/>By<wbr/>Filter</span><a href="#findFirstRecordByFilter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -783,7 +783,7 @@ practically would allow the users to inject their own custom filter.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findFirstRecordByFilter">findFirstRecordByFilter</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8474">types.d.ts:8474</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9858">types.d.ts:9858</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findParamByKey" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Param<wbr/>By<wbr/>Key</span><a href="#findParamByKey" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -800,7 +800,7 @@ practically would allow the users to inject their own custom filter.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findParamByKey">findParamByKey</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8372">types.d.ts:8372</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9756">types.d.ts:9756</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findRecordById" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Record<wbr/>By<wbr/>Id</span><a href="#findRecordById" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -821,7 +821,7 @@ practically would allow the users to inject their own custom filter.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findRecordById">findRecordById</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8403">types.d.ts:8403</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9787">types.d.ts:9787</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findRecordByViewFile" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Record<wbr/>By<wbr/>View<wbr/>File</span><a href="#findRecordByViewFile" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -843,7 +843,7 @@ provided view collection file.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findRecordByViewFile">findRecordByViewFile</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8732">types.d.ts:8732</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10116">types.d.ts:10116</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findRecordsByExpr" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Records<wbr/>By<wbr/>Expr</span><a href="#findRecordsByExpr" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -868,7 +868,7 @@ provided view collection file.</p>
 </div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findRecordsByExpr">findRecordsByExpr</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8430">types.d.ts:8430</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9814">types.d.ts:9814</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findRecordsByFilter" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Records<wbr/>By<wbr/>Filter</span><a href="#findRecordsByFilter" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -901,7 +901,7 @@ practically would allow the users to inject their own custom filter.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findRecordsByFilter">findRecordsByFilter</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8459">types.d.ts:8459</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9843">types.d.ts:9843</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findRecordsByIds" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Records<wbr/>By<wbr/>Ids</span><a href="#findRecordsByIds" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -923,7 +923,7 @@ If no records are found, returns an empty slice.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findRecordsByIds">findRecordsByIds</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8410">types.d.ts:8410</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9794">types.d.ts:9794</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findRequestById" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Request<wbr/>By<wbr/>Id</span><a href="#findRequestById" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -940,7 +940,7 @@ If no records are found, returns an empty slice.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findRequestById">findRequestById</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8613">types.d.ts:8613</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9997">types.d.ts:9997</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="findSettings" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>find<wbr/>Settings</span><a href="#findSettings" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -961,7 +961,7 @@ decrypting the value and then decode it again.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#findSettings">findSettings</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8643">types.d.ts:8643</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10027">types.d.ts:10027</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="hasTable" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>has<wbr/>Table</span><a href="#hasTable" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -978,7 +978,7 @@ decrypting the value and then decode it again.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#hasTable">hasTable</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8657">types.d.ts:8657</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10041">types.d.ts:10041</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="importCollections" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>import<wbr/>Collections</span><a href="#importCollections" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1016,7 +1016,7 @@ If you need validations, use [forms.CollectionsImport].</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#importCollections">importCollections</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8321">types.d.ts:8321</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9705">types.d.ts:9705</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="isAdminEmailUnique" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>is<wbr/>Admin<wbr/>Email<wbr/>Unique</span><a href="#isAdminEmailUnique" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1036,7 +1036,7 @@ already in use by other admins.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#isAdminEmailUnique">isAdminEmailUnique</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8134">types.d.ts:8134</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9518">types.d.ts:9518</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="isCollectionNameUnique" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>is<wbr/>Collection<wbr/>Name<wbr/>Unique</span><a href="#isCollectionNameUnique" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1057,7 +1057,7 @@ with the provided name (case insensitive!).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#isCollectionNameUnique">isCollectionNameUnique</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8277">types.d.ts:8277</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9661">types.d.ts:9661</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="isRecordValueUnique" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>is<wbr/>Record<wbr/>Value<wbr/>Unique</span><a href="#isRecordValueUnique" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1086,7 +1086,7 @@ are considered different: <code>[]string{&quot;a&quot;,&quot;b&quot;}</code> and
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#isRecordValueUnique">isRecordValueUnique</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8488">types.d.ts:8488</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9872">types.d.ts:9872</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="modelQuery" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>model<wbr/>Query</span><a href="#modelQuery" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1104,7 +1104,7 @@ SELECT, FROM and other common fields based on the provided model.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#modelQuery">modelQuery</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8220">types.d.ts:8220</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9604">types.d.ts:9604</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="nonconcurrentDB" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>nonconcurrentDB</span><a href="#nonconcurrentDB" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1118,7 +1118,7 @@ db builder (*dbx.DB or *dbx.TX).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#nonconcurrentDB">nonconcurrentDB</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8200">types.d.ts:8200</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9584">types.d.ts:9584</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="paramQuery" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>param<wbr/>Query</span><a href="#paramQuery" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1130,7 +1130,7 @@ db builder (*dbx.DB or *dbx.TX).</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#paramQuery">paramQuery</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8366">types.d.ts:8366</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9750">types.d.ts:9750</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="recordQuery" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>record<wbr/>Query</span><a href="#recordQuery" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1150,7 +1150,7 @@ and will fail once an executor (Row(), One(), All(), etc.) is called.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#recordQuery">recordQuery</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8397">types.d.ts:8397</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9781">types.d.ts:9781</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="requestQuery" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>request<wbr/>Query</span><a href="#requestQuery" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1162,7 +1162,7 @@ and will fail once an executor (Row(), One(), All(), etc.) is called.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#requestQuery">requestQuery</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8607">types.d.ts:8607</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9991">types.d.ts:9991</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="requestsStats" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>requests<wbr/>Stats</span><a href="#requestsStats" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1179,7 +1179,7 @@ and will fail once an executor (Row(), One(), All(), etc.) is called.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#requestsStats">requestsStats</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8619">types.d.ts:8619</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10003">types.d.ts:10003</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="runInTransaction" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>run<wbr/>In<wbr/>Transaction</span><a href="#runInTransaction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1208,7 +1208,7 @@ and will fail once an executor (Row(), One(), All(), etc.) is called.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#runInTransaction">runInTransaction</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8235">types.d.ts:8235</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9619">types.d.ts:9619</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="save" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>save</span><a href="#save" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1227,7 +1227,7 @@ To explicitly mark a model for update you can use m.MarkAsNotNew().</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#save">save</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8250">types.d.ts:8250</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9634">types.d.ts:9634</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="saveAdmin" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>save<wbr/>Admin</span><a href="#saveAdmin" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1244,7 +1244,7 @@ To explicitly mark a model for update you can use m.MarkAsNotNew().</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#saveAdmin">saveAdmin</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8148">types.d.ts:8148</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9532">types.d.ts:9532</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="saveCollection" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>save<wbr/>Collection</span><a href="#saveCollection" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1264,7 +1264,7 @@ To explicitly mark a collection for update you can use collecction.MarkAsNotNew(
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#saveCollection">saveCollection</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8309">types.d.ts:8309</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9693">types.d.ts:9693</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="saveExternalAuth" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>save<wbr/>External<wbr/>Auth</span><a href="#saveExternalAuth" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1281,7 +1281,7 @@ To explicitly mark a collection for update you can use collecction.MarkAsNotNew(
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#saveExternalAuth">saveExternalAuth</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8354">types.d.ts:8354</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9738">types.d.ts:9738</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="saveParam" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>save<wbr/>Param</span><a href="#saveParam" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1304,7 +1304,7 @@ The value argument will be encoded as json string.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#saveParam">saveParam</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8381">types.d.ts:8381</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9765">types.d.ts:9765</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="saveRecord" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>save<wbr/>Record</span><a href="#saveRecord" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1323,7 +1323,7 @@ To explicitly mark a record for update you can use record.MarkAsNotNew().</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#saveRecord">saveRecord</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8556">types.d.ts:8556</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9940">types.d.ts:9940</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="saveRequest" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>save<wbr/>Request</span><a href="#saveRequest" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1340,7 +1340,7 @@ To explicitly mark a record for update you can use record.MarkAsNotNew().</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#saveRequest">saveRequest</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8631">types.d.ts:8631</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10015">types.d.ts:10015</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="saveSettings" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>save<wbr/>Settings</span><a href="#saveSettings" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1360,7 +1360,7 @@ To explicitly mark a record for update you can use record.MarkAsNotNew().</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#saveSettings">saveSettings</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8651">types.d.ts:8651</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10035">types.d.ts:10035</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="saveView" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>save<wbr/>View</span><a href="#saveView" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1381,7 +1381,7 @@ To explicitly mark a record for update you can use record.MarkAsNotNew().</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#saveView">saveView</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8715">types.d.ts:8715</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10099">types.d.ts:10099</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="suggestUniqueAuthRecordUsername" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>suggest<wbr/>Unique<wbr/>Auth<wbr/>Record<wbr/>Username</span><a href="#suggestUniqueAuthRecordUsername" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1405,7 +1405,7 @@ and return a new &quot;unique&quot; username with appended random numeric part
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#suggestUniqueAuthRecordUsername">suggestUniqueAuthRecordUsername</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8522">types.d.ts:8522</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9906">types.d.ts:9906</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="syncRecordTableSchema" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>sync<wbr/>Record<wbr/>Table<wbr/>Schema</span><a href="#syncRecordTableSchema" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1426,7 +1426,7 @@ and applies the necessary related record table changes.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#syncRecordTableSchema">syncRecordTableSchema</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8601">types.d.ts:8601</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9985">types.d.ts:9985</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="tableColumns" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>table<wbr/>Columns</span><a href="#tableColumns" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1443,7 +1443,7 @@ and applies the necessary related record table changes.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#tableColumns">tableColumns</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8663">types.d.ts:8663</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10047">types.d.ts:10047</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="tableIndexes" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>table<wbr/>Indexes</span><a href="#tableIndexes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1461,7 +1461,7 @@ and applies the necessary related record table changes.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#tableIndexes">tableIndexes</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8677">types.d.ts:8677</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10061">types.d.ts:10061</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="tableInfo" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>table<wbr/>Info</span><a href="#tableInfo" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1478,7 +1478,7 @@ and applies the necessary related record table changes.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#tableInfo">tableInfo</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8669">types.d.ts:8669</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10053">types.d.ts:10053</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="totalAdmins" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>total<wbr/>Admins</span><a href="#totalAdmins" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1490,7 +1490,7 @@ and applies the necessary related record table changes.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#totalAdmins">totalAdmins</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8127">types.d.ts:8127</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9511">types.d.ts:9511</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="vacuum" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>vacuum</span><a href="#vacuum" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1503,7 +1503,7 @@ reclaim unused db disk space.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#vacuum">vacuum</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8695">types.d.ts:8695</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L10079">types.d.ts:10079</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="withoutHooks" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>without<wbr/>Hooks</span><a href="#withoutHooks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -1516,7 +1516,7 @@ as the current one, but without create/update/delete hooks.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#withoutHooks">withoutHooks</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8213">types.d.ts:8213</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9597">types.d.ts:9597</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="afterCreateFunc" class="tsd-anchor"></a>
@@ -1540,7 +1540,7 @@ as the current one, but without create/update/delete hooks.</p>
 <p>Implementation of <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#afterCreateFunc">afterCreateFunc</a></p>
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#afterCreateFunc">afterCreateFunc</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8170">types.d.ts:8170</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9554">types.d.ts:9554</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="afterDeleteFunc" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>after<wbr/>Delete<wbr/>Func</span><a href="#afterDeleteFunc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">after<wbr/>Delete<wbr/>Func</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">eventDao</span>, <span class="tsd-kind-parameter">m</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
@@ -1562,7 +1562,7 @@ as the current one, but without create/update/delete hooks.</p>
 <p>Implementation of <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#afterDeleteFunc">afterDeleteFunc</a></p>
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#afterDeleteFunc">afterDeleteFunc</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8174">types.d.ts:8174</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9558">types.d.ts:9558</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="afterUpdateFunc" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>after<wbr/>Update<wbr/>Func</span><a href="#afterUpdateFunc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">after<wbr/>Update<wbr/>Func</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">eventDao</span>, <span class="tsd-kind-parameter">m</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
@@ -1584,7 +1584,7 @@ as the current one, but without create/update/delete hooks.</p>
 <p>Implementation of <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#afterUpdateFunc">afterUpdateFunc</a></p>
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#afterUpdateFunc">afterUpdateFunc</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8172">types.d.ts:8172</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9556">types.d.ts:9556</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="beforeCreateFunc" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>before<wbr/>Create<wbr/>Func</span><a href="#beforeCreateFunc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">before<wbr/>Create<wbr/>Func</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">eventDao</span>, <span class="tsd-kind-parameter">m</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
@@ -1609,7 +1609,7 @@ as the current one, but without create/update/delete hooks.</p>
 <p>Implementation of <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#beforeCreateFunc">beforeCreateFunc</a></p>
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#beforeCreateFunc">beforeCreateFunc</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8169">types.d.ts:8169</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9553">types.d.ts:9553</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="beforeDeleteFunc" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>before<wbr/>Delete<wbr/>Func</span><a href="#beforeDeleteFunc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">before<wbr/>Delete<wbr/>Func</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">eventDao</span>, <span class="tsd-kind-parameter">m</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
@@ -1631,7 +1631,7 @@ as the current one, but without create/update/delete hooks.</p>
 <p>Implementation of <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#beforeDeleteFunc">beforeDeleteFunc</a></p>
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#beforeDeleteFunc">beforeDeleteFunc</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8173">types.d.ts:8173</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9557">types.d.ts:9557</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="beforeUpdateFunc" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>before<wbr/>Update<wbr/>Func</span><a href="#beforeUpdateFunc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">before<wbr/>Update<wbr/>Func</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">eventDao</span>, <span class="tsd-kind-parameter">m</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
@@ -1653,7 +1653,7 @@ as the current one, but without create/update/delete hooks.</p>
 <p>Implementation of <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#beforeUpdateFunc">beforeUpdateFunc</a></p>
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#beforeUpdateFunc">beforeUpdateFunc</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8171">types.d.ts:8171</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9555">types.d.ts:9555</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="maxLockRetries" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>max<wbr/>Lock<wbr/>Retries</span><a href="#maxLockRetries" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">max<wbr/>Lock<wbr/>Retries</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
@@ -1663,7 +1663,7 @@ as the current one, but without create/update/delete hooks.</p>
 <p>Implementation of <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#maxLockRetries">maxLockRetries</a></p>
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#maxLockRetries">maxLockRetries</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8159">types.d.ts:8159</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9543">types.d.ts:9543</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="modelQueryTimeout" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>model<wbr/>Query<wbr/>Timeout</span><a href="#modelQueryTimeout" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">model<wbr/>Query<wbr/>Timeout</span><span class="tsd-signature-symbol">:</span> <a href="../interfaces/time.Duration.html" class="tsd-signature-type tsd-kind-interface">Duration</a></div>
@@ -1674,7 +1674,7 @@ as the current one, but without create/update/delete hooks.</p>
 <p>Implementation of <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#modelQueryTimeout">modelQueryTimeout</a></p>
 <p>Inherited from <a href="../interfaces/daos.Dao.html">Dao</a>.<a href="../interfaces/daos.Dao.html#modelQueryTimeout">modelQueryTimeout</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/d8914a2/jsvm/types.d.ts#L8165">types.d.ts:8165</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/16210d8/jsvm/types.d.ts#L9549">types.d.ts:9549</a></li></ul></aside></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -1784,6 +1784,7 @@ as the current one, but without create/update/delete hooks.</p>
 <li><a href="../modules/_filesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$filesystem</span></a></li>
 <li><a href="../modules/_http.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$http</span></a></li>
 <li><a href="../modules/_security.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$security</span></a></li>
+<li><a href="../modules/_template.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$template</span></a></li>
 <li><a href="../modules/_tokens.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$tokens</span></a></li>
 <li><a href="../functions/arrayOf.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-64"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)"></path></g></svg><span>array<wbr/>Of</span></a></li>
 <li><a href="../functions/cronAdd.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>cron<wbr/>Add</span></a></li>
@@ -1892,6 +1893,7 @@ as the current one, but without create/update/delete hooks.</p>
 <li><a href="CollectionsImportForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Collections<wbr/>Import<wbr/>Form</span></a></li>
 <li><a href="Command.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Command</span></a></li>
 <li><a href="Dao.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Dao</span></a></li>
+<li><a href="DateTime.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Date<wbr/>Time</span></a></li>
 <li><a href="DynamicModel.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Dynamic<wbr/>Model</span></a></li>
 <li><a href="ForbiddenError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Forbidden<wbr/>Error</span></a></li>
 <li><a href="MailerMessage.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Mailer<wbr/>Message</span></a></li>
@@ -1964,6 +1966,7 @@ as the current one, but without create/update/delete hooks.</p>
 <li><a href="../modules/sql.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>sql</span></a></li>
 <li><a href="../modules/store.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>store</span></a></li>
 <li><a href="../modules/subscriptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>subscriptions</span></a></li>
+<li><a href="../modules/template.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>template</span></a></li>
 <li><a href="../modules/textproto.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>textproto</span></a></li>
 <li><a href="../modules/time.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>time</span></a></li>
 <li><a href="../modules/tls.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>tls</span></a></li>

@@ -189,6 +189,7 @@
 
 <!-- prettier-ignore -->
 <CodeTabs
+    class="m-t-10 m-b-xs"
     js={`
         import PocketBase from 'pocketbase';
 
@@ -232,6 +233,12 @@
         final url = pb.files.getUrl(record, firstFilename, thumb: '100x250');
     `}
 />
+<p>
+    <em>
+        Additionally, to instruct the browser to always download the file instead of showing a preview when
+        accessed directly, you can append the <code>?download</code> query parameter to the file url.
+    </em>
+</p>
 
 <HeadingLink title="Protected files" />
 <p>By default all files are public accessible if you know their full url.</p>

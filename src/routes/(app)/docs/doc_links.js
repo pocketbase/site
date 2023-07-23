@@ -121,6 +121,10 @@ export const goLinks = [
         title: "Sending emails",
     },
     {
+        href: "/docs/go-rendering-templates",
+        title: "Rendering templates",
+    },
+    {
         href: "/docs/go-testing",
         title: "Testing",
     },
@@ -174,6 +178,10 @@ export const jsLinks = [
     {
         href: "/docs/js-sending-http-requests",
         title: "Sending HTTP requests",
+    },
+    {
+        href: "/docs/js-rendering-templates",
+        title: "Rendering templates",
     },
     {
         href:   "/jsvm/index.html",

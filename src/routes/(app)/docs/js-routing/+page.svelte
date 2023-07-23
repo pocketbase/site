@@ -124,11 +124,11 @@
 <CodeBlock
     language="javascript"
     content={`
-        // send response with string body
-        c.string(200, "Lorem ipsum...")
-
         // send response with json body
         c.json(200, {"name": "John"})
+
+        // send response with string body
+        c.string(200, "Lorem ipsum...")
 
         // send response with html body
         c.html(200, "<h1>Hello!</h1>")

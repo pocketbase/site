@@ -158,11 +158,11 @@
 <CodeBlock
     language="go"
     content={`
-        // send response with string body
-        c.String(200, "Lorem ipsum...")
-
         // send response with json body
         c.JSON(200, map[string]any{"name": "John"})
+
+        // send response with string body
+        c.String(200, "Lorem ipsum...")
 
         // send response with html body
         c.HTML(200, "<h1>Hello!</h1>")
@@ -284,7 +284,7 @@
 <HeadingLink title="Helpers" />
 <p>
     The
-    <a href="{import.meta.PB_GODOC_URL}/apis" target="_blank" rel="noopener noreferrer">
+    <a href="{import.meta.env.PB_GODOC_URL}/apis" target="_blank" rel="noopener noreferrer">
         <code>apis</code> package
     </a>
     expose several helpers you can use as part of your route hooks.
