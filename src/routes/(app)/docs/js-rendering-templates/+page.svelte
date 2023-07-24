@@ -8,7 +8,7 @@
 
 <HeadingLink title="Overview" />
 <p>
-    A common task when creating custom routes or emails is the need of returning HTML output. To assist with
+    A common task when creating custom routes or emails is the need of generating HTML output. To assist with
     this, PocketBase provides the global <code>$template</code> helper for parsing and rendering HTML templates.
 </p>
 <CodeBlock
@@ -25,19 +25,19 @@
     The general flow when working with composed and nested templates is that you create "base" template(s)
     that defines various placeholders using the
     <code>{`{{template "placeholderName" .}}`}</code> or
-    <code>{`{{block "placeholderName" .}}default content...{{end}}`}</code> actions.
+    <code>{`{{block "placeholderName" .}}default...{{end}}`}</code> actions.
 </p>
 <p>
     Then in the partials, you define the content for those placeholders using the
-    <code>{`{{define "placeholderName"}}custom content...{{end}}`}</code> action.
+    <code>{`{{define "placeholderName"}}custom...{{end}}`}</code> action.
 </p>
 <p>
     The dot object (<code class="txt-bold">.</code>) in the above represents the data passed to the templates
-    via the <code>render(data)</code> function.
+    via the <code>render(data)</code> method.
 </p>
 
 <p>
-    Below you can find some examples, but for more details on the template syntax please refer to
+    Below you can find some examples, but more information about the template syntax please refer to the
     <a href="https://pkg.go.dev/html/template#hdr-A_fuller_picture" target="_blank" rel="noopener noreffer">
         <code>html/template</code>
     </a>
@@ -48,7 +48,7 @@
     packages documentation.
 </p>
 
-<HeadingLink title="Example HTML page response" />
+<HeadingLink title="Example HTML page with layout" />
 <p>Consider the following app directory structure:</p>
 <CodeBlock
     language="html"
@@ -56,14 +56,14 @@
         /yourapp/
             pb_hooks/
                 views/
-                    base.html
+                    layout.html
                     hello.html
                 main.pb.js
             pocketbase
     `}
 />
 
-<p>We define the content for <code>views/base.html</code> as:</p>
+<p>We define the content for <code>layout.html</code> as:</p>
 <CodeBlock
     language="html"
     content={`
@@ -85,7 +85,7 @@
     `}
 />
 
-<p>We define the content for <code>views/hello.html</code> as:</p>
+<p>We define the content for <code>hello.html</code> as:</p>
 <CodeBlock
     language="html"
     content={`
@@ -107,7 +107,7 @@
             const name = c.pathParam("name")
 
             const html = $template.loadFiles(
-                "pb_hooks/views/base.html",
+                "pb_hooks/views/layout.html",
                 "pb_hooks/views/hello.html",
             ).render({
                 "name": name,

@@ -43,6 +43,10 @@
         const result = new DynamicModel({ ... })
         record.unmarshalJSONField("someJsonField", result)
 
+        // retrieve a single or multiple expanded data
+        record.expandedOne("author")     // -> as null|Record
+        record.expandedAll("categories") // -> as []Record
+
         // auth records only
         // ---
         record.setPassword("123456")
@@ -343,6 +347,33 @@
         }
 
         const articles = findLatestArticles()
+    `}
+/>
+
+<HeadingLink title="Programmatically expanding relations" />
+<p>
+    To expand record relations programmatically you can use the
+    <code>$app.dao().expandRecord(record, expands, customFetchFunc)</code> or
+    <code>$app.dao().expandRecords(records, expands, customFetchFunc)</code>
+    methods.
+</p>
+<p>
+    Once loaded, you can access the expanded relations via
+    <code>record.expandedOne(relName)</code> or
+    <code>record.expandedAll(relName)</code> methods.
+</p>
+<p>For example:</p>
+<CodeBlock
+    language="javascript"
+    content={`
+        const record = $app.dao().findFirstRecordByData("articles", "slug", "lorem-ipsum")
+
+        // expand the "author" and "categories" relations
+        $app.dao().expandRecord(record, ["author", "categories"], null)
+
+        // print the expanded records
+        console.log(record.expandedOne("author"))
+        console.log(record.expandedAll("categories"))
     `}
 />
 

@@ -165,7 +165,11 @@
         c.String(200, "Lorem ipsum...")
 
         // send response with html body
+        // (check also the "Rendering templates" section)
         c.HTML(200, "<h1>Hello!</h1>")
+
+        // redirect
+        c.Redirect(307, "https://example.com")
 
         // send response with no body
         c.NoContent(204)
@@ -289,6 +293,7 @@
     </a>
     expose several helpers you can use as part of your route hooks.
 </p>
+
 <HeadingLink title="Auth response" tag="h5" />
 <p>
     <code>apis.RecordAuthResponse()</code> writes standardised json record auth response (aka. token + record data)
@@ -350,6 +355,18 @@
 
                 return c.JSON(http.StatusOK, records)
             }, /* optional middlewares */)
+
+            return nil
+        })
+    `}
+/>
+<HeadingLink title="Serving static files" tag="h5" />
+<CodeBlock
+    language="go"
+    content={`
+        app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
+            // serves static files from the provided dir (if exists)
+            e.Router.GET("/*", apis.StaticDirectoryHandler(os.DirFS("/path/to/public"), false))
 
             return nil
         })

@@ -2,38 +2,47 @@ export const baseLinks = [
     {
         href: "/docs",
         title: "Introduction",
+        icon: "ri-home-2-line",
     },
     {
         href: "/docs/collections",
         title: "Collections",
+        icon: "ri-database-2-line",
     },
     {
         href: "/docs/api-rules-and-filters",
         title: "API rules and filters",
+        icon: "ri-shield-check-line",
     },
     {
         href: "/docs/client-side-sdks",
         title: "Client-side SDKs",
+        icon: "ri-tools-line",
     },
     {
         href: "/docs/authentication",
         title: "Authentication",
+        icon: "ri-group-line",
     },
     {
         href: "/docs/files-handling",
         title: "Files upload and handling",
+        icon: "ri-upload-cloud-2-line",
     },
     {
         href: "/docs/working-with-relations",
         title: "Working with relations",
+        icon: "ri-organization-chart",
     },
     {
         href: "/docs/use-as-framework",
         title: "Use as framework",
+        icon: "ri-code-s-slash-line",
     },
     {
         title: "Web APIs reference",
         href: "/docs/api-records",
+        icon: "ri-file-list-2-line",
         children: [
             {
                 href: "/docs/api-records",
@@ -76,6 +85,7 @@ export const baseLinks = [
     {
         href: "/docs/going-to-production",
         title: "Going to production",
+        icon: "ri-flag-2-line",
     },
 ];
 

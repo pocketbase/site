@@ -131,7 +131,11 @@
         c.string(200, "Lorem ipsum...")
 
         // send response with html body
+        // (check also the "Rendering templates" section)
         c.html(200, "<h1>Hello!</h1>")
+
+        // redirect
+        c.redirect(307, "https://example.com")
 
         // send response with no body
         c.noContent(204)
@@ -247,7 +251,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        routerAdd("/phone-login", (c) => {
+        routerAdd("GET", "/phone-login", (c) => {
             const data = new DynamicModel({
                 phone:    "",
                 password: "",
@@ -282,7 +286,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        routerAdd("/custom-article", (c) => {
+        routerAdd("GET", "/custom-article", (c) => {
             const records = $app.dao().findRecordsByFilter("article", "status = 'active'", '-created', 40)
 
             // enrich the records with the "categories" relation as default expand
@@ -290,6 +294,13 @@
 
             return c.json(200, records)
         }, $apis.activityLogger($app))
+    `}
+/>
+<HeadingLink title="Serving static files" tag="h5" />
+<CodeBlock
+    language="javascript"
+    content={`
+        routerAdd("GET", "/*", $apis.staticDirectoryHandler("/path/to/public", false))
     `}
 />
 

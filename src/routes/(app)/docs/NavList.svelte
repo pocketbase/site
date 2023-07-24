@@ -17,7 +17,10 @@
             rel={item.target == "_blank" ? "noopener noreferrer" : null}
         >
             <slot name="before" {item} />
-            {item.title}
+            {#if item.icon}
+                <span class="icon"><i class={item.icon} /></span>
+            {/if}
+            <span class="txt">{item.title}</span>
             <slot name="after" {item} />
         </a>
         {#if item.children?.length && hasCurrentChild}

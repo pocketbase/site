@@ -48,6 +48,10 @@
         // unmarshal a single json field value into the provided result
         record.UnmarshalJSONField("someJsonField", &result)
 
+        // retrieve a single or multiple expanded data
+        record.ExpandedOne("author")     // -> as nil|*models.Record
+        record.ExpandedAll("categories") // -> as []*models.Record
+
         // auth records only
         // ---
         record.SetPassword("123456")
@@ -395,6 +399,38 @@
 
             return records, nil
         }
+    `}
+/>
+
+<HeadingLink title="Programmatically expanding relations" />
+<p>
+    To expand record relations programmatically you can use the
+    <code>app.Dao().ExpandRecord(record, expands, customFetchFunc)</code> or
+    <code>app.Dao().ExpandRecords(records, expands, customFetchFunc)</code>
+    methods.
+</p>
+<p>
+    Once loaded, you can access the expanded relations via
+    <code>record.ExpandedOne(relName)</code> or
+    <code>record.ExpandedAll(relName)</code> methods.
+</p>
+<p>For example:</p>
+<CodeBlock
+    language="go"
+    content={`
+        record, err := app.Dao().FindFirstRecordByData("articles", "slug", "lorem-ipsum")
+        if err != nil {
+            return err
+        }
+
+        // expand the "author" and "categories" relations
+        if errs := app.Dao().ExpandRecord(record, ["author", "categories"], null); len(errs) > 0 {
+            return fmt.Errorf("failed to expand: %v", errs)
+        }
+
+        // print the expanded records
+        log.Println(record.ExpandedOne("author"))
+        log.Println(record.ExpandedAll("categories"))
     `}
 />
 
