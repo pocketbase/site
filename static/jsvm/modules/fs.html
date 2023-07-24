@@ -22,8 +22,8 @@ but also by other packages.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/f874e8e/jsvm/types.d.ts#L6799">types.d.ts:6799</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/f874e8e/jsvm/types.d.ts#L13400">types.d.ts:13400</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b9e164c/jsvm/types.d.ts#L7066">types.d.ts:7066</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b9e164c/jsvm/types.d.ts#L13855">types.d.ts:13855</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
@@ -35,6 +35,7 @@ but also by other packages.</p>
 <a href="../interfaces/fs.FileInfo.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>File<wbr/>Info</span></a>
 <a href="../interfaces/fs.FileMode.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>File<wbr/>Mode</span></a>
 <a href="../interfaces/fs.PathError.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>Path<wbr/>Error</span></a>
+<a href="../interfaces/fs.WalkDirFunc.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>Walk<wbr/>Dir<wbr/>Func</span></a>
 </div></section></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
@@ -58,6 +59,7 @@ but also by other packages.</p>
 <li><a href="_apis.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$apis</span></a></li>
 <li><a href="_app.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$app</span></a></li>
 <li><a href="_dbx.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$dbx</span></a></li>
+<li><a href="_filepath.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$filepath</span></a></li>
 <li><a href="_filesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$filesystem</span></a></li>
 <li><a href="_http.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$http</span></a></li>
 <li><a href="_os.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$os</span></a></li>
@@ -214,6 +216,7 @@ but also by other packages.</p>
 <li><a href="driver.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>driver</span></a></li>
 <li><a href="echo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>echo</span></a></li>
 <li><a href="exec.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>exec</span></a></li>
+<li><a href="filepath.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>filepath</span></a></li>
 <li><a href="filesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>filesystem</span></a></li>
 <li><a href="flag.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>flag</span></a></li>
 <li><a href="fmt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>fmt</span></a></li>
@@ -231,7 +234,8 @@ but also by other packages.</p>
 <li><a href="../interfaces/fs.File.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>File</span></a></li>
 <li><a href="../interfaces/fs.FileInfo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>File<wbr/>Info</span></a></li>
 <li><a href="../interfaces/fs.FileMode.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>File<wbr/>Mode</span></a></li>
-<li><a href="../interfaces/fs.PathError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>Path<wbr/>Error</span></a></li></ul></div></details></li></ul></div></details></li>
+<li><a href="../interfaces/fs.PathError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>Path<wbr/>Error</span></a></li>
+<li><a href="../interfaces/fs.WalkDirFunc.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>Walk<wbr/>Dir<wbr/>Func</span></a></li></ul></div></details></li></ul></div></details></li>
 <li><a href="hash.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>hash</span></a></li>
 <li><a href="hook.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>hook</span></a></li>
 <li><a href="http.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>http</span></a></li>

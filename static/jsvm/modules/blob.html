@@ -20,6 +20,8 @@
 within a storage location. Subpackages contain driver implementations of
 blob for supported services.</p>
 <p>See <a href="https://gocloud.dev/howto/blob/">https://gocloud.dev/howto/blob/</a> for a detailed how-to guide.</p>
+<p>*blob.Bucket implements io/fs.FS and io/fs.SubFS, so it can be used with
+functions in that package.</p>
 <a id="md:errors" class="tsd-anchor"></a><h1><a href="#md:errors">Errors</a></h1><p>The errors returned from this package can be inspected in several ways:</p>
 <p>The Code function from gocloud.dev/gcerrors will return an error code, also
 defined in that package, when invoked on an error.</p>
@@ -47,7 +49,7 @@ To enable metric collection in your application, see &quot;Exporting stats&quot;
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/f874e8e/jsvm/types.d.ts#L9009">types.d.ts:9009</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b9e164c/jsvm/types.d.ts#L9969">types.d.ts:9969</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
@@ -87,6 +89,7 @@ To enable metric collection in your application, see &quot;Exporting stats&quot;
 <li><a href="_apis.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$apis</span></a></li>
 <li><a href="_app.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$app</span></a></li>
 <li><a href="_dbx.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$dbx</span></a></li>
+<li><a href="_filepath.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$filepath</span></a></li>
 <li><a href="_filesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$filesystem</span></a></li>
 <li><a href="_http.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$http</span></a></li>
 <li><a href="_os.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$os</span></a></li>
@@ -253,6 +256,7 @@ To enable metric collection in your application, see &quot;Exporting stats&quot;
 <li><a href="driver.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>driver</span></a></li>
 <li><a href="echo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>echo</span></a></li>
 <li><a href="exec.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>exec</span></a></li>
+<li><a href="filepath.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>filepath</span></a></li>
 <li><a href="filesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>filesystem</span></a></li>
 <li><a href="flag.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>flag</span></a></li>
 <li><a href="fmt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>fmt</span></a></li>
