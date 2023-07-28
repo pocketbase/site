@@ -15,7 +15,7 @@
 <p>
     To make it slightly easier to load template files concurrently and on the fly, PocketBase also provides a
     thin wrapper around the standard library in the
-    <a href="{import.meta.env.PB_GODOC_URL}/tools/template" target="_blank" rel="noopener noreffer">
+    <a href="{import.meta.env.PB_GODOC_URL}/tools/template" target="_blank" rel="noopener noreferrer">
         <code>github.com/pocketbase/pocketbase/tools/template</code>
     </a>
     utility package.
@@ -49,17 +49,39 @@
     via the <code>Render(data)</code> method.
 </p>
 
-<p>
-    Below you can find some examples, but more information about the template syntax please refer to the
-    <a href="https://pkg.go.dev/html/template#hdr-A_fuller_picture" target="_blank" rel="noopener noreffer">
-        <code>html/template</code>
-    </a>
-    and
-    <a href="https://pkg.go.dev/text/template" target="_blank" rel="noopener noreffer">
-        <code>text/template</code>
-    </a>
-    packages documentation.
-</p>
+<div class="alert alert-info m-t-10 m-b-sm">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            For more information about the template syntax please refer to the
+            <a
+                href="https://pkg.go.dev/html/template#hdr-A_fuller_picture"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <em>html/template</em>
+            </a>
+            and
+            <a href="https://pkg.go.dev/text/template" target="_blank" rel="noopener noreferrer">
+                <em>text/template</em>
+            </a>
+            package godocs.
+            <strong>
+                Another great resource is also the Hashicorp's
+                <a
+                    href="https://developer.hashicorp.com/nomad/tutorials/templates/go-template-syntax"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Learn Go Template Syntax
+                </a>
+                tutorial.
+            </strong>
+        </p>
+    </div>
+</div>
 
 <HeadingLink title="Example HTML page with layout" />
 <p>Consider the following app directory structure:</p>

@@ -22,14 +22,15 @@
     content={`
         // pb_hooks/main.pb.js
 
-        onModelAfterUpdate((e) => {
-            console.log("user updated...", e.model.get("title"))
-        }, "users")
+        routerAdd("GET", "/hello/:name", (c) => {
+            let name = c.pathParam("name")
 
-        onRecordAuthRequest((e) => {
-            console.log(e.record)
-            console.log(e.token)
+            return c.json(200, { "message": "Hello " + name })
         })
+
+        onModelAfterUpdate((e) => {
+            console.log("user updated...", e.model.get("email"))
+        }, "users")
     `}
 />
 <p>
@@ -92,13 +93,14 @@
     `}
 />
 
-<HeadingLink title="Caveats" />
+<HeadingLink title="Caveats and limitations" />
 
-<HeadingLink title="Handlers context" tag="h5" />
+<HeadingLink title="Handlers scope" tag="h5" />
 <p>
-    Each handler function (hook, route, middleware, etc.) is serialized and executed in its own isolated
-    context as a separate "program". This means that you don't have access to custom variables and functions
-    declared outside of the handler scope. For example, the below code will fail:
+    Each handler function (hook, route, middleware, etc.) is
+    <strong>serialized and executed in its own isolated context as a separate "program"</strong>. This means
+    that you don't have access to custom variables and functions declared outside of the handler scope. For
+    example, the below code will fail:
 </p>
 <CodeBlock
     content={`
@@ -110,7 +112,8 @@
     `}
 />
 <p class="txt-hint txt-italic">
-    The above isolation context is also the reason why error stack trace line numbers may not be accurate.
+    The above serialization and isolation context is also the reason why error stack trace line numbers may
+    not be accurate.
 </p>
 <p>
     One possible workaround for sharing/reusing code across different handlers could be to move and export the
@@ -118,15 +121,25 @@
     mind that the loaded modules use a shared registry and mutations should be avoided when possible to prevent
     concurrency issues:
 </p>
+<!-- prettier-ignore -->
 <CodeBlock
     content={`
         onAfterBootstrap((e) => {
-            const base = require("/path/to/pb_hooks/base.js")
+            const config = require(` + "`${__hooks}/config.js`" + `)
 
-            console.log(base.name)
+            console.log(config.name)
         })
     `}
 />
+
+<HeadingLink title="Relative paths" tag="h5" />
+<p>
+    Relative file paths are relative to the current working directory (CWD) and not to the
+    <code>pb_hooks</code>.
+    <br />
+    To get an absolute path to the <code>pb_hooks</code> directory you can use the global
+    <code class="txt-bold">__hooks</code> variable.
+</p>
 
 <HeadingLink title="Loading modules" tag="h5" />
 <div class="alert alert-danger m-b-sm">
@@ -164,38 +177,48 @@
 <p>A common usage of local modules is for loading shared helpers or configuration parameters, for example:</p>
 <CodeBlock
     content={`
-        // pb_hooks/config.js
+        // pb_hooks/utils.js
         module.exports = {
-            "secret": "..."
+            hello: (name) => {
+                console.log("Hello " + name)
+            }
         }
     `}
 />
 <div class="clearfix m-b-10" />
+<!-- prettier-ignore -->
 <CodeBlock
     content={`
         // pb_hooks/main.pb.js
-        routerAdd("get", "/hello", (c) => {
-            const config = require("/path/to/pb_hooks/config.js");
+        onAfterBootstrap((e) => {
+            const utils = require(` + "`${__hooks}/utils.js`" + `)
 
-            console.log(config.secret)
-
-            // do something with the secret...
-
-            return c.string(200, "Hello!")
+            utils.hello("world")
         })
     `}
 />
+<div class="alert alert-info m-t-10 m-b-sm">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            Loaded modules use a shared registry and mutations should be avoided when possible to prevent
+            concurrency issues.
+        </p>
+    </div>
+</div>
 
 <HeadingLink title="Performance" tag="h5" />
 <p>
-    The prebuilt executable comes with a prewarmed pool of 50 JS runtimes, which helps maintaining the
-    handlers execution times on par with the Go equivalent code (see
+    The prebuilt executable comes with a <strong>prewarmed pool of 50 JS runtimes</strong>, which helps
+    maintaining the handlers execution times on par with the Go equivalent code (see
     <a
         href="https://github.com/pocketbase/benchmarks/blob/master/results/hetzner_cax11.md#go-vs-js-route-execution"
         target="blank"
         rel="noopener noreferrer">benchmarks</a
     >). You can adjust the pool size manually with the <code>--hooksPool=100</code> flag (<em
-        >increasing the pool size may improve the performance in high concurrent scenarios but also may
+        >increasing the pool size may improve the performance in high concurrent scenarios but also will
         increase the memory usage</em
     >).
 </p>

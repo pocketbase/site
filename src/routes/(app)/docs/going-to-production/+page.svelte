@@ -192,7 +192,10 @@
     > <em>Backups</em>):
 </p>
 <img src="/images/screenshots/backups.png" alt="Backups settings screenshot" class="screenshot m-b-xs" />
-<p>Backups can be stored locally (default) or in an external S3 storage.</p>
+<p>
+    Backups can be stored locally (default) or in an external S3 storage. During the backup's archive
+    generation only read operations will be allowed.
+</p>
 <p>
     Alternatively, you can always manually copy your <code>pb_data</code> directory
     <em>(for transactional safety make sure that the application is not running)</em>.

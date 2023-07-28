@@ -15,7 +15,6 @@
         alt="Expand diagram"
     />
 </div>
-
 <p>
     The <code>relation</code> fields follow the same rules as any other collection field and
     <strong>
@@ -23,7 +22,6 @@
     </strong>
     , in case a multiple relation field is used.
 </p>
-
 <p>
     Below is an example that shows creating a new <em>posts</em> record with 2 assigned tags.
 </p>
@@ -57,7 +55,8 @@
 
 <HeadingLink title="Append to multiple relation" />
 <p>
-    To append a single or multiple relation id(s) you can use the <code class="txt-bold">+</code> field modifier:
+    To append a single or multiple relation id(s) to an existing value you can use the
+    <code class="txt-bold">+</code> field modifier:
 </p>
 <!-- prettier-ignore -->
 <CodeTabs
@@ -95,7 +94,8 @@
 
 <HeadingLink title="Remove from multiple relation" />
 <p>
-    To remove a single or multiple relation id(s) you can use the <code class="txt-bold">-</code> field modifier:
+    To remove a single or multiple relation id(s) from an existing value you can use the
+    <code class="txt-bold">-</code> field modifier:
 </p>
 <!-- prettier-ignore -->
 <CodeTabs

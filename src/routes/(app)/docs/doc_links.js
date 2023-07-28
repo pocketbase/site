@@ -27,12 +27,12 @@ export const baseLinks = [
     {
         href: "/docs/files-handling",
         title: "Files upload and handling",
-        icon: "ri-upload-cloud-2-line",
+        icon: "ri-upload-cloud-line",
     },
     {
         href: "/docs/working-with-relations",
         title: "Working with relations",
-        icon: "ri-organization-chart",
+        icon: "ri-mind-map",
     },
     {
         href: "/docs/use-as-framework",
@@ -85,7 +85,7 @@ export const baseLinks = [
     {
         href: "/docs/going-to-production",
         title: "Going to production",
-        icon: "ri-flag-2-line",
+        icon: "ri-check-double-line",
     },
 ];
 

@@ -11,13 +11,14 @@
     A common task when creating custom routes or emails is the need of generating HTML output. To assist with
     this, PocketBase provides the global <code>$template</code> helper for parsing and rendering HTML templates.
 </p>
+<!-- prettier-ignore -->
 <CodeBlock
     language="javascript"
     content={`
         const html = $template.loadFiles(
-            "pb_hooks/views/base.html",
-            "pb_hooks/views/partial1.html",
-            "pb_hooks/views/partial2.html",
+            ` + "`${__hooks}/views/base.html`" + `,
+            ` + "`${__hooks}/views/partial1.html`" + `,
+            ` + "`${__hooks}/views/partial2.html`" + `,
         ).render(data)
     `}
 />
@@ -36,17 +37,39 @@
     via the <code>render(data)</code> method.
 </p>
 
-<p>
-    Below you can find some examples, but more information about the template syntax please refer to the
-    <a href="https://pkg.go.dev/html/template#hdr-A_fuller_picture" target="_blank" rel="noopener noreffer">
-        <code>html/template</code>
-    </a>
-    and
-    <a href="https://pkg.go.dev/text/template" target="_blank" rel="noopener noreffer">
-        <code>text/template</code>
-    </a>
-    packages documentation.
-</p>
+<div class="alert alert-info m-t-10 m-b-sm">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            For more information about the template syntax please refer to the
+            <a
+                href="https://pkg.go.dev/html/template#hdr-A_fuller_picture"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <em>html/template</em>
+            </a>
+            and
+            <a href="https://pkg.go.dev/text/template" target="_blank" rel="noopener noreferrer">
+                <em>text/template</em>
+            </a>
+            package godocs.
+            <strong>
+                Another great resource is also the Hashicorp's
+                <a
+                    href="https://developer.hashicorp.com/nomad/tutorials/templates/go-template-syntax"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Learn Go Template Syntax
+                </a>
+                tutorial.
+            </strong>
+        </p>
+    </div>
+</div>
 
 <HeadingLink title="Example HTML page with layout" />
 <p>Consider the following app directory structure:</p>
@@ -100,6 +123,7 @@
 />
 
 <p>Then to output the final page, we'll register a custom <code>/hello/:name</code> route:</p>
+<!-- prettier-ignore -->
 <CodeBlock
     language="javascript"
     content={`
@@ -107,8 +131,8 @@
             const name = c.pathParam("name")
 
             const html = $template.loadFiles(
-                "pb_hooks/views/layout.html",
-                "pb_hooks/views/hello.html",
+                ` + "`${__hooks}/views/layout.html`" + `,
+                ` + "`${__hooks}/views/hello.html`" + `,
             ).render({
                 "name": name,
             })

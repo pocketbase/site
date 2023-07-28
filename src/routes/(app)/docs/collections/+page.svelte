@@ -153,6 +153,15 @@
         GROUP BY posts.id
     `}
 />
+<div class="alert alert-info m-t-sm">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        View collections don't receive realtime events because they don't have create/update/delete
+        operations.
+    </div>
+</div>
 
 <HeadingLink title="Auth collection" />
 <p>

@@ -139,6 +139,45 @@
     `}
 />
 
+<HeadingLink title="Custom record query" tag="h5" />
+<p>
+    In addition to the above read and write helpers, you can also create custom Record model queries using
+    <code>Dao.RecordQuery(collection)</code>
+    method. It returns a DB builder that can be used with the same methods described in the
+    <a href="/docs/go-database">Database guide</a>.
+</p>
+<CodeBlock
+    language="go"
+    content={`
+        import (
+            "github.com/pocketbase/dbx"
+            "github.com/pocketbase/pocketbase/daos"
+            "github.com/pocketbase/pocketbase/models"
+        )
+
+        ...
+
+        func FindActiveArticles(dao *daos.Dao) ([]*models.Record, error) {
+            collection, err := dao.FindCollectionByNameOrId("articles")
+            if err != nil {
+                return nil, err
+            }
+
+            query := dao.RecordQuery(collection).
+                AndWhere(dbx.HashMap{"status": "active"}).
+                OrderBy("published DESC").
+                Limit(10)
+
+            records := []*models.Record{}
+            if err := query.All(&records); err != nil {
+                return nil, err
+            }
+
+            return records, nil
+        }
+    `}
+/>
+
 <HeadingLink title="Create new record" />
 
 <HeadingLink title="Create new record WITHOUT data validations" tag="h5" />
@@ -360,45 +399,6 @@
 
             return nil
         })
-    `}
-/>
-
-<HeadingLink title="Custom record query" />
-<p>
-    In addition to the above read and write helpers, you can also create custom Record model queries using
-    <code>Dao.RecordQuery(collection)</code>
-    method. It returns a DB builder that can be used with the same methods described in the
-    <a href="/docs/go-database">Database guide</a>.
-</p>
-<CodeBlock
-    language="go"
-    content={`
-        import (
-            "github.com/pocketbase/dbx"
-            "github.com/pocketbase/pocketbase/daos"
-            "github.com/pocketbase/pocketbase/models"
-        )
-
-        ...
-
-        func FindActiveArticles(dao *daos.Dao) ([]*models.Record, error) {
-            collection, err := dao.FindCollectionByNameOrId("articles")
-            if err != nil {
-                return nil, err
-            }
-
-            query := dao.RecordQuery(collection).
-                AndWhere(dbx.HashMap{"status": "active"}).
-                OrderBy("published DESC").
-                Limit(10)
-
-            records := []*models.Record{}
-            if err := query.All(&records); err != nil {
-                return nil, err
-            }
-
-            return records, nil
-        }
     `}
 />
 
