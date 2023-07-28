@@ -136,7 +136,7 @@
     </li>
     <li>
         <code>pb_migrations</code> - contains JS migration files with your collection changes (can be safely
-        commited in your repository).
+        committed in your repository).
         <br />
         <div class="txt-hint m-b-xs">
             You can even write custom migration scripts. For more info check the
