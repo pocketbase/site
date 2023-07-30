@@ -163,7 +163,7 @@
 
                     html, err := registry.LoadFiles(
                         "views/layout.html",
-                        "views/page.html",
+                        "views/hello.html",
                     ).Render(map[string]any{
                         "name": name,
                     })
