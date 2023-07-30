@@ -195,7 +195,7 @@
         overflow-x: hidden;
         overflow-y: auto; /* fallback */
         overflow-y: overlay;
-        padding-right: var(--baseSpacing);
+        padding-right: calc(var(--baseSpacing) - 5px);
         & > :first-child {
             margin-top: 0;
         }
