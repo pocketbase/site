@@ -62,10 +62,10 @@
             group={extendGroup}
             go={`
                 app.OnRecordBeforeCreateRequest("posts").Add(func(e *core.RecordCreateEvent) error {
-                    requestData := apis.RequestData(e.HttpContext)
+                    requestInfo := apis.RequestInfo(e.HttpContext)
 
                     // if not an admin, overwrite the newly submitted "posts" record status to pending
-                    if requestData.Admin == nil {
+                    if requestInfo.Admin == nil {
                         e.Record.Set("status", "pending")
                     }
 
@@ -74,10 +74,10 @@
             `}
             js={`
                 onRecordBeforeCreateRequest((e) => {
-                    let requestData = $apis.requestData(e.httpContext)
+                    let requestInfo = $apis.requestInfo(e.httpContext)
 
                     // if not an admin, overwrite the newly submitted "posts" record status to pending
-                    if (!requestData.admin) {
+                    if (!requestInfo.admin) {
                         e.record.set("status", "pending")
                     }
                 }, "posts")
