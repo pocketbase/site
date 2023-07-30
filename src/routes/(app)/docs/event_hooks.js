@@ -188,9 +188,8 @@ export default {
                 Note that the app could be terminated abruptly without awaiting the hook completion.
             `,
             js: `
-                onAfterApiError((e) => {
-                    console.log(e.httpContext)
-                    console.log(e.error)
+                onTerminate((e) => {
+                    console.log("terminating...")
                 })
             `,
             go: `
@@ -206,9 +205,8 @@ export default {
                 func main() {
                     app := pocketbase.New()
 
-                    app.OnAfterApiError().Add(func(e *core.ApiErrorEvent) error {
-                        log.Println(e.HttpContext)
-                        log.Println(e.Error)
+                    app.OnTerminate().Add(func(e *core.TerminateEvent) error {
+                        log.Println("terminating...")
                         return nil
                     })
 
