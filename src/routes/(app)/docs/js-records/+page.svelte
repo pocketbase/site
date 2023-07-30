@@ -86,12 +86,12 @@
         // retrieve a single "articles" collection record by its id
         const recorr = $app.dao().findRecordById("articles", "RECORD_ID")
 
-        // retrieve a single "articles" collection record by a string filter expression
-        // (the expression uses the same "filter" parameter format as in the Web APIs)
-        const record = $app.dao().findFirstRecordByFilter("articles", "status = 'public' && category = 'news'")
-
         // retrieve a single "articles" collection record by a single key-value pair
         const record = $app.dao().findFirstRecordByData("articles", "slug", "test")
+
+        // retrieve a single "articles" collection record by a string filter expression
+        // ( use only with trusted input)
+        const record = $app.dao().findFirstRecordByFilter("articles", "status = 'public' && category = 'news'")
     `}
 />
 
@@ -102,20 +102,20 @@
         // retrieve multiple "articles" collection records by their ids
         const records = $app.dao().findRecordsByIds("articles", "RECORD_ID1", "RECORD_ID2")
 
-        // retrieve multiple "articles" collection records by a string filter expression
-        // (the expression uses the same "filter" parameter format as in the Web APIs)
-        const records = $app.dao().findRecordsByFilter(
-            "articles",                               // collection
-            "status = 'public' && category = 'news'", // filter
-            "-publised",                              // sort
-            10                                        // limit
-        )
-
         // retrieve multiple "articles" collection records by a custom dbx expression(s)
         // (for all avalaible expressions, please check the Database guide)
         const records = $app.dao().findRecordsByExpr("articles",
             $dbx.exp("LOWER(username) = {:username}", { "username": "John.Doe" }),
             $dbx.hashExp({ status: "pending" })
+        )
+
+        // retrieve multiple "articles" collection records by a string filter expression
+        // (use only with trusted input)
+        const records = $app.dao().findRecordsByFilter(
+            "articles",                               // collection
+            "status = 'public' && category = 'news'", // filter
+            "-publised",                              // sort
+            10                                        // limit
         )
     `}
 />

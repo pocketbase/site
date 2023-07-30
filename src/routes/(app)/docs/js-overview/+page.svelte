@@ -35,9 +35,9 @@
 />
 <p>
     <em>
-        The <code>*.pb.js</code> files are loaded per their filename sort order. For convenience, when making
-        changes to the files inside <code>pb_hooks</code>, the process will automatically restart/reload
-        itself (currently supported only on UNIX based platforms).
+        For convenience, when making changes to the files inside <code>pb_hooks</code>, the process will
+        automatically restart/reload itself (currently supported only on UNIX based platforms). The
+        <code>*.pb.js</code> files are loaded per their filename sort order.
     </em>
 </p>
 <p class="txt-bold">
@@ -77,11 +77,7 @@
         target="_blank"
         rel="noopener">reference tripple-slash directive</a
     >
-    at the top of your JS file
-    <em class="txt-sm">
-        (Usually it will be added automatically when creating new files but some editors may overwrite it or
-        provide their own default content, so you may have to add it manually)
-    </em>.
+    at the top of your JS file:
 </p>
 <CodeBlock
     content={`
@@ -92,6 +88,10 @@
         })
     `}
 />
+<p>
+    If after referencing the types your editor still doesn't perform linting, then you can try to rename your
+    file to have <code>.pb.ts</code> extension.
+</p>
 
 <HeadingLink title="Caveats and limitations" />
 

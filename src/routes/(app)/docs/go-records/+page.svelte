@@ -91,12 +91,12 @@
         // retrieve a single "articles" collection record by its id
         record, err := app.Dao().FindRecordById("articles", "RECORD_ID")
 
-        // retrieve a single "articles" collection record by a string filter expression
-        // (the expression uses the same "filter" parameter format as in the Web APIs)
-        record, err := app.Dao().FindFirstRecordByFilter("articles", "status = 'public' && category = 'news'")
-
         // retrieve a single "articles" collection record by a single key-value pair
         record, err := app.Dao().FindFirstRecordByData("articles", "slug", "test")
+
+        // retrieve a single "articles" collection record by a string filter expression
+        // (use only with trusted input)
+        record, err := app.Dao().FindFirstRecordByFilter("articles", "status = 'public' && category = 'news'")
     `}
 />
 
@@ -107,19 +107,19 @@
         // retrieve multiple "articles" collection records by their ids
         records, err := app.Dao().FindRecordsByIds("articles", []string{"RECORD_ID1", "RECORD_ID2"})
 
+        // retrieve multiple "articles" collection records by a custom dbx expression(s)
+        records, err := app.Dao().FindRecordsByExpr("articles",
+            dbx.NewExp("LOWER(username) = {:username}", dbx.Params{"username": "John.Doe"}),
+            dbx.HashExp{"status": "pending"},
+        )
+
         // retrieve multiple "articles" collection records by a string filter expression
-        // (the expression uses the same "filter" parameter format as in the Web APIs)
+        // (use only with trusted input)
         records, err := app.Dao().FindRecordsByFilter(
             "articles",                               // collection
             "status = 'public' && category = 'news'", // filter
             "-publised",                              // sort
             10                                        // limit
-        )
-
-        // retrieve multiple "articles" collection records by a custom dbx expression(s)
-        records, err := app.Dao().FindRecordsByExpr("articles",
-            dbx.NewExp("LOWER(username) = {:username}", dbx.Params{"username": "John.Doe"}),
-            dbx.HashExp{"status": "pending"},
         )
     `}
 />

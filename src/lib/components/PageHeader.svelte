@@ -14,6 +14,11 @@
 
         <div class="flex-fill" />
 
+        <!-- disable for now until a search index is created -->
+        <!-- <div class="form-field searchbar">
+            <input type="text" placeholder="Search..." />
+        </div> -->
+
         <slot />
 
         <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu">

@@ -76,7 +76,7 @@
 <CodeBlock
     language="html"
     content={`
-        /yourapp/
+        yourapp/
             pb_hooks/
                 views/
                     layout.html

@@ -10,7 +10,7 @@
 
 <p>
     <strong>
-        The available <a href="/docs/record-methods"><code>models.Record</code> and its helpers</a>
+        The available <a href="/docs/go-records"><code>models.Record</code> and its helpers</a>
         is usually the preferred way to interact with your data
     </strong>, but in some cases you may want to query and update your data using a typed struct. You can
     define your own model structs by implementing the
@@ -61,7 +61,8 @@
     </div>
     <div class="content">
         <p>
-            Please note that the internal <a href="/docs/event-hooks">Record API and other related hooks</a>
+            Please note that the internal
+            <a href="/docs/go-event-hooks">Record API and other related hooks</a>
             works only with the
             <code>models.Record</code> and you'll have to manually convert the <code>models.Record</code> to your
             custom struct if you want to use it inside the event hooks.

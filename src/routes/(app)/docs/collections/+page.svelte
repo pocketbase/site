@@ -110,7 +110,7 @@
     <span class="txt-hint">
         Usually you'll create your collections from the Admin UI and manage your records with the API using
         the
-        <a href="/docs/client-side-integration">client-side SDKs</a>.
+        <a href="/docs/client-side-sdks">client-side SDKs</a>.
     </span>
 </p>
 <p>Here is what the collection panel looks like:</p>

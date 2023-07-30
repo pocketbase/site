@@ -62,7 +62,6 @@
                     Name:     "title",
                     Type:     schema.FieldTypeText,
                     Required: true,
-                    Unique:   true,
                     Options:  &schema.TextOptions{
                         Max: types.Pointer(10),
                     },
@@ -119,7 +118,6 @@
             Name:     "title",
             Type:     schema.FieldTypeText,
             Required: true,
-            Unique:   true,
             Options: &schema.TextOptions{
                 Max: types.Pointer(10),
             },

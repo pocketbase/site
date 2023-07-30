@@ -4,6 +4,7 @@
     import FilterSyntax from "@/components/FilterSyntax.svelte";
     import CodeTabs from "@/components/CodeTabs.svelte";
     import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
+    import SkipTotalQueryParam from "@/components/SkipTotalQueryParam.svelte";
 
     const responses = [
         {
@@ -13,6 +14,7 @@
                   "page": 1,
                   "perPage": 100,
                   "totalItems": 2,
+                  "totalPages": 1,
                   "items": [
                     {
                       "id": "b6e4b08274f34e9",
@@ -197,6 +199,7 @@
                 </td>
             </tr>
             <FieldsQueryParam />
+            <SkipTotalQueryParam />
         </tbody>
     </table>
 

@@ -88,7 +88,7 @@
 <CodeBlock
     language="html"
     content={`
-        /yourapp/
+        yourapp/
             views/
                 layout.html
                 hello.html

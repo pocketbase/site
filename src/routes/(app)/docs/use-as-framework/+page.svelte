@@ -7,8 +7,8 @@
     One of the main feature of PocketBase is that
     <strong>it can be used as a framework</strong> which enables you to write your own custom app business
     logic in
-    <a href="/docs/go-overview">Go</a> or <a href="/docs/js-overview">JavaScript</a> and still have a single portable
-    executable at the end.
+    <a href="/docs/go-overview">Go</a> or <a href="/docs/js-overview">JavaScript</a> and still have a portable
+    backend at the end.
 </p>
 
 <p>
@@ -25,11 +25,10 @@
 <p>
     <strong>
         Choose <a href="/docs/js-overview" class="label label-warning">Extend with JavaScript</a>
-        if you don't intend to write too much custom business logic and want a quick way to explore the PocketBase
-        capabilities.
+        if you don't intend to write too much custom code and want a quick way to explore the PocketBase capabilities.
     </strong>
-    The embedded JavaScript engine is a wrapper around the existing Go APIs, so most of the time the slight performance
-    penalty will be negliable because it'll invoke the Go functions under the hood.
+    The embedded JavaScript engine is a pluggable wrapper around the existing Go APIs, so most of the time the
+    slight performance penalty will be negliable because it'll invoke the Go functions under the hood.
     <br />
     As a bonus, because the JS VM mirrors the Go APIs, you would be able migrate gradually without much code changes
     from JS -> Go at later stage in case you hit a bottleneck or want more control over the execution flow.

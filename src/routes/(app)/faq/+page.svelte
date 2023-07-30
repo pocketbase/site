@@ -89,8 +89,7 @@
                 <br />
                 <strong>
                     Instead, PocketBase could be used as a Go or JS framework that enables you to build your
-                    own custom app specific business logic and still have a single portable executable at the
-                    end
+                    own custom app specific business logic and still have a portable backend at the end
                 </strong>
                 (check <a href="/docs/use-as-framework">Use as framework</a> guide).
             </p>
@@ -121,15 +120,7 @@
                 </strong>
                 <br />
                 If you need replication and disaster recovery, a great companion app could be
-                <a href="https://litestream.io/" target="_blank" rel="noreferrer noopener">Litestream</a>
-                (other possible solutions are
-                <a href="https://maxpert.github.io/marmot/" target="_blank" rel="noreferrer noopener"
-                    >Marmot</a
-                >
-                and
-                <a href="https://github.com/superfly/litefs" target="_blank" rel="noreferrer noopener"
-                    >Litefs</a
-                >).
+                <a href="https://litestream.io/" target="_blank" rel="noreferrer noopener">Litestream</a>.
             </p>
 
             <h5>7. Where can I find help for my PocketBase application?</h5>

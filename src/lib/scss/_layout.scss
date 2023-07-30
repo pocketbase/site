@@ -51,9 +51,17 @@
             }
         }
     }
-
     .responsive-menu-btn {
         display: none;
+    }
+    .searchbar {
+        width: 300px;
+        margin: 0 var(--baseSpacing);
+        transition: width var(--baseAnimationSpeed);
+        max-width: 100%;
+        &:focus-within {
+            width: 305px;
+        }
     }
 
     @media only screen and (max-width: 800px) {

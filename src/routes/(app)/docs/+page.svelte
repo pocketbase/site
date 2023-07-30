@@ -5,7 +5,16 @@
     <div class="content">
         <p>
             Please keep in mind that PocketBase is still under active development and full backward
-            compatibility is not guaranteed before reaching v1.0.0.
+            compatibility is not guaranteed before reaching v1.0.0. PocketBase is not recommended for
+            production critical applications yet, unless you are fine with reading the
+            <a
+                href="{import.meta.env.PB_REPO_URL}/blob/master/CHANGELOG.md"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                changelog
+            </a>
+            and applying some manual migration steps from time to time.
         </p>
     </div>
 </div>
@@ -133,7 +142,7 @@
     </li>
     <li>
         <code>pb_migrations</code> - contains JS migration files with your collection changes (can be safely
-        commited in your repository).
+        committed in your repository).
         <br />
         <div class="txt-hint m-b-xs">
             You can even write custom migration scripts. For more info check the

@@ -24,6 +24,16 @@
         .responsive-menu-dropdown {
             border: 0;
         }
+        .searchbar {
+            input {
+                background: rgba(#fff, 0.5);
+            }
+            &:focus-within {
+                input {
+                    background: rgba(#fff, 0.8);
+                }
+            }
+        }
     }
 
     .hero-preview {
