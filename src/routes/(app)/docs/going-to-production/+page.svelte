@@ -25,7 +25,7 @@
         <CodeBlock
             language="html"
             content={`
-                yourapp/
+                myapp/
                     pb_migrations/
                     pb_hooks/
                     pocketbase
@@ -39,7 +39,7 @@
         </p>
         <CodeBlock
             content={`
-                rsync -avz -e ssh /local/path/to/yourapp root@YOUR_SERVER_IP:/root/pb
+                rsync -avz -e ssh /local/path/to/myapp root@YOUR_SERVER_IP:/root/pb
             `}
         />
     </li>

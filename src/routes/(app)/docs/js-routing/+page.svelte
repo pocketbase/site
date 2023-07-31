@@ -37,7 +37,7 @@
     <div class="content">
         <p>
             To avoid collisions with future internal routes you should avoid using the <code>/api/...</code>
-            base path or consider combining it with a unique prefix like <code>/api/yourapp/...</code>.
+            base path or consider combining it with a unique prefix like <code>/api/myapp/...</code>.
         </p>
     </div>
 </div>

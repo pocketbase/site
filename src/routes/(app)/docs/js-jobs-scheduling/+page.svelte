@@ -7,7 +7,9 @@
     <code>cronAdd(name, expr, handler)</code>.
 </p>
 
-<p>Each scheduled job runs in its own goroutine and must have:</p>
+<p>
+    Each scheduled job runs in its own goroutine as part of the <code>serve</code> command process and must have:
+</p>
 
 <ul>
     <li>name - identifier for the scheduled job; could be used to replace or remove an existing job</li>

@@ -36,7 +36,7 @@
         func main() {
             app := pocketbase.New()
 
-            app.OnAfterBootstrap().Add(func(e *core.BootstrapEvent) error {
+            app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
                 scheduler := cron.New()
 
                 // prints "Hello!" every 2 minutes

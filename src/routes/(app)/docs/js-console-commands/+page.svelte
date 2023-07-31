@@ -20,3 +20,24 @@
         }))
     `}
 />
+
+<p>To run the command you can execute:</p>
+<CodeBlock
+    language="html"
+    content={`
+        ./pocketbase hello
+    `}
+/>
+
+<div class="alert alert-info m-t-sm m-b-sm">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            Keep in mind that the console commands execute in their own separate app process and run
+            independently from the main <code>serve</code> command (aka. hook events between different processes
+            are not shared with one another).
+        </p>
+    </div>
+</div>
