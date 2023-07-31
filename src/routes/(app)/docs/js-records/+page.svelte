@@ -152,7 +152,7 @@
         function findTopArticle() {
             const record = new Record();
 
-            $app.dao()recordQuery("articles")
+            $app.dao().recordQuery("articles")
                 .andWhere($dbx.hashExp({ "status": "active" }))
                 .orderBy("rank ASC")
                 .limit(1)

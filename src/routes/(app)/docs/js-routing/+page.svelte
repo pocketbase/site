@@ -232,7 +232,7 @@
         })
 
         // if message is empty string, a default one will be set
-        throw new NadRequestError(optMessage, optData)   // 400 ApiError
+        throw new BadRequestError(optMessage, optData)   // 400 ApiError
         throw new UnauthorizedError(optMessage, optData) // 401 ApiError
         throw new ForbiddenError(optMessage, optData)    // 403 ApiError
         throw new NotFoundError(optMessage, optData)     // 404 ApiError
@@ -262,7 +262,7 @@
             const record = $app.dao().findFirstRecordByData("users", "phone", data.phone)
 
             if (!record.validatePassword(data.password)) {
-                throw new NadRequestError("invalid credentials")
+                throw new BadRequestError("invalid credentials")
             }
 
             return $apis.recordAuthResponse($app, c, record)
