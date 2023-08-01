@@ -88,10 +88,26 @@
 <CodeBlock language="javascript" content={`const id = c.pathParam("id")`} />
 
 <HeadingLink title="Reading query parameters" tag="h5" />
-<CodeBlock language="javascript" content={`const search = c.queryParam("search")`} />
+<CodeBlock
+    language="javascript"
+    content={`
+        const search = c.queryParam("search")
+
+        // or via the cached request object
+        const search = $apis.requestInfo(c).query.search
+    `}
+/>
 
 <HeadingLink title="Reading request headers" tag="h5" />
-<CodeBlock language="javascript" content={`const token = c.request().header.get("Some-Header")`} />
+<CodeBlock
+    language="javascript"
+    content={`
+    const token = c.request().header.get("Some-Header")
+
+    // or via the cached request object (the header value is always normalized)
+    const token = $apis.requestInfo(c).headers["some_header"]
+`}
+/>
 
 <HeadingLink title="Writing response headers" tag="h5" />
 <CodeBlock language="javascript" content={`c.response().header().set("Some-Header", "123")`} />
@@ -100,7 +116,13 @@
 <CodeBlock
     language="javascript"
     content={`
-        // read multiple body request fields at once
+        // read the body via the cached request object
+        // (this method is commonly used in hook handlers because it allows reading the body more than once)
+        const data = $apis.requestInfo(c).data
+        console.log(data.title)
+
+        // read/scan the request body fields into a typed object
+        // (note that a body cannot be read twice with "bind" because it is a stream)
         const data = new DynamicModel({
             // describe the fields to read (used also as initial values)
             someTextField:   "",

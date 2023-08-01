@@ -123,10 +123,26 @@
 <CodeBlock language="go" content={`id := c.PathParam("id")`} />
 
 <HeadingLink title="Reading query parameters" tag="h5" />
-<CodeBlock language="go" content={`search := c.QueryParam("search")`} />
+<CodeBlock
+    language="go"
+    content={`
+        search := c.QueryParam("search")
+
+        // or via the cached request object
+        search := apis.RequestInfo(c).Query["search"]
+    `}
+/>
 
 <HeadingLink title="Reading request headers" tag="h5" />
-<CodeBlock language="go" content={`token := c.Request().Header.Get("Some-Header")`} />
+<CodeBlock
+    language="go"
+    content={`
+        token := c.Request().Header.Get("Some-Header")
+
+        // or via the cached request object (the header value is always normalized)
+        token := apis.RequestInfo(c).Headers["some_header"]
+    `}
+/>
 
 <HeadingLink title="Writing response headers" tag="h5" />
 <CodeBlock language="go" content={`c.Response().Header().Set("Some-Header", "123")`} />
@@ -136,9 +152,15 @@
 <CodeBlock
     language="go"
     content={`
-        // read multiple body request fields at once
+        // read the body via the cached request object
+        // (this method is commonly used in hook handlers because it allows reading the body more than once)
+        data := apis.RequestInfo(c).Data
+        title := data["title"]
+
+        // read/scan the request body fields into a typed struct
+        // (note that a body cannot be read twice with Bind because it is a stream)
         data := struct {
-            Title       string ` + "`" + `json:"name" form:"name"` + "`" + `
+            Title       string ` + "`" + `json:"title" form:"title"` + "`" + `
             Description string ` + "`" + `json:"description" form:"description"` + "`" + `
             Public      bool   ` + "`" + `json:"public" form:"public"` + "`" + `
         }{}
