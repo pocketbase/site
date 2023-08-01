@@ -108,8 +108,12 @@
     language="go"
     content={`
         admin, _ := c.Get(apis.ContextAdminKey).(*models.Admin)
-
         record, _ := c.Get(apis.ContextAuthRecordKey).(*models.Record)
+
+        // alternatively, you can also read the auth state form the cached request info
+        info   := apis.RequestInfo(c)
+        admin  := info.Admin      // nil if not authenticated as admin
+        record := info.AuthRecord // nil if not authenticated as regular auth record
 
         isGuest := admin == nil && record == nil
     `}
