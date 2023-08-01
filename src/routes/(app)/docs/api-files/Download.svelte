@@ -119,6 +119,17 @@
                     <a href="/docs/files-handling/#protected-files">"Files upload and handling"</a>.
                 </td>
             </tr>
+            <tr>
+                <td valign="top">download</td>
+                <td valign="top">
+                    <span class="label">Boolean</span>
+                </td>
+                <td valign="top">
+                    If it is set to a truthy value (<em>1</em>, <em>t</em>, <em>true</em>) the file will be
+                    served with <code>Content-Disposition: attachment</code> header instructing the browser to
+                    ignore the file preview for pdf, images, videos, etc. and to directly download the file.
+                </td>
+            </tr>
         </tbody>
     </table>
 
