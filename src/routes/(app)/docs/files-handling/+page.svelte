@@ -236,7 +236,7 @@
 <p>
     <em>
         Additionally, to instruct the browser to always download the file instead of showing a preview when
-        accessed directly, you can append the <code>?download</code> query parameter to the file url.
+        accessed directly, you can append the <code>?download=1</code> query parameter to the file url.
     </em>
 </p>
 
