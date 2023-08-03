@@ -1696,7 +1696,7 @@ export default {
                     console.log(e.providerName)
                     console.log(e.providerClient)
                     console.log(e.record) // could be null
-                    console.log(e.oauth2User)
+                    console.log(e.oAuth2User)
                     console.log(e.isNewRecord)
                 })
 
@@ -1706,7 +1706,7 @@ export default {
                     console.log(e.providerName)
                     console.log(e.providerClient)
                     console.log(e.record) // could be null
-                    console.log(e.oauth2User)
+                    console.log(e.oAuth2User)
                     console.log(e.isNewRecord)
                 }, "users", "managers")
             `,
@@ -1770,7 +1770,7 @@ export default {
                     console.log(e.providerName)
                     console.log(e.providerClient)
                     console.log(e.record)
-                    console.log(e.oauth2User)
+                    console.log(e.oAuth2User)
                     console.log(e.isNewRecord)
                 })
 
@@ -1780,7 +1780,7 @@ export default {
                     console.log(e.providerName)
                     console.log(e.providerClient)
                     console.log(e.record)
-                    console.log(e.oauth2User)
+                    console.log(e.oAuth2User)
                     console.log(e.isNewRecord)
                 }, "users", "managers")
             `,
