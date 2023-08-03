@@ -17,7 +17,7 @@
         const res = $http.send({
             url:     "",
             method:  "GET",
-            data:    {},
+            body:    "", // eg. JSON.stringify({"test": 123})
             headers: {"content-type": "application/json"},
             timeout: 120, // in seconds
         })

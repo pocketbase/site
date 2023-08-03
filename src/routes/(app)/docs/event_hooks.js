@@ -2733,6 +2733,7 @@ export default {
                 onRealtimeConnectRequest((e) => {
                     console.log(e.httpContext)
                     console.log(e.client.id())
+                    console.log(e.idleTimeout) // in nanosec
                 })
             `,
             go: `
@@ -2751,6 +2752,7 @@ export default {
                     app.OnRealtimeConnectRequest().Add(func(e *core.RealtimeConnectEvent) error {
                         log.Println(e.HttpContext)
                         log.Println(e.Client.Id())
+                        log.Println(e.IdleTimeout)
                         return nil
                     })
 
