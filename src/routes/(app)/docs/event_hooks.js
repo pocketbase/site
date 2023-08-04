@@ -1606,7 +1606,7 @@ export default {
         OnRecordAfterAuthWithPasswordRequest: {
             html: `
                 <p>
-                    <code>OnRecordAfterAuthWithPasswordRequest</code> hook is triggered hook is triggered after each
+                    <code>OnRecordAfterAuthWithPasswordRequest</code> hook is triggered after each
                     successful Record auth with password API request.
                 </p>
                 <p>
