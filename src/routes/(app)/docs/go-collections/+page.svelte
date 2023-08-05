@@ -77,7 +77,7 @@
                     },
                 },
             ),
-            Index: types.JsonArray[string]{
+            Indexes: types.JsonArray[string]{
                 "CREATE UNIQUE INDEX idx_user ON example (user)",
             },
         }
