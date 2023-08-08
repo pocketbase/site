@@ -85,12 +85,12 @@
 
             await pb.admins.authWithPassword('test@example.com', '123456');
 
-            // fetch a paginated records list
+            // fetch a paginated admins list
             const resultList = await pb.admins.getList(1, 100, {
                 filter: 'created >= '2022-01-01 00:00:00'',
             });
 
-            // you can also fetch all records at once via getFullList
+            // you can also fetch all admins at once via getFullList
             const admins = await pb.admins.getFullList({ sort: '-created' });
 
             // or fetch only the first admin that matches the specified filter
@@ -105,7 +105,7 @@
 
             await pb.admins.authWithPassword('test@example.com', '123456');
 
-            // fetch a paginated records list
+            // fetch a paginated admins list
             final resultList = await pb.admins.getList(
                 page: 1,
                 perPage: 100,

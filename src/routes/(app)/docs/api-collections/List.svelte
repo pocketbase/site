@@ -159,12 +159,12 @@
 
             await pb.admins.authWithPassword('test@example.com', '1234567890');
 
-            // fetch a paginated records list
+            // fetch a paginated collections list
             const pageResult = await pb.collections.getList(1, 100, {
                 filter: 'created >= "2022-01-01 00:00:00"',
             });
 
-            // you can also fetch all records at once via getFullList
+            // you can also fetch all collections at once via getFullList
             const collections = await pb.collections.getFullList({ sort: '-created' });
 
             // or fetch only the first collection that matches the specified filter
@@ -179,14 +179,14 @@
 
             await pb.admins.authWithPassword('test@example.com', '1234567890');
 
-            // fetch a paginated records list
+            // fetch a paginated collections list
             final pageResult = await pb.collections.getList(
                 page: 1,
                 perPage: 100,
                 filter: 'created >= "2022-01-01 00:00:00"',
             );
 
-            // you can also fetch all records at once via getFullList
+            // you can also fetch all collections at once via getFullList
             final collections = await pb.collections.getFullList(sort: '-created');
 
             // or fetch only the first collection that matches the specified filter
