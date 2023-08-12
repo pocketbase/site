@@ -119,7 +119,7 @@
         // ...
     `}
 />
-<p class="txt-bold">New migrations are applied automatically with the start of the application.</p>
+<p class="txt-bold">New migrations are applied automatically on <code>serve</code>.</p>
 <p>
     Optionally, you could apply new migrations manually by running <code>migrate up</code>.
 </p>

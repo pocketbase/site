@@ -12,8 +12,8 @@
 <p>
     The user defined migrations are located in <code>pb_migrations</code> directory (it can be changed using
     the
-    <code>--migrationsDir</code> flag) and each unapplied migration inside it will be executed automatically in
-    a transaction on application start.
+    <code>--migrationsDir</code> flag) and each unapplied migration inside it will be executed automatically
+    in a transaction on <code>serve</code> (or on <code>migrate up</code>).
 </p>
 <p>
     The generated migrations are safe to be commited to version control and can be shared with your other team
@@ -49,7 +49,7 @@
         })
     `}
 />
-<p class="txt-bold">New migrations are applied automatically with the start of the application.</p>
+<p class="txt-bold">New migrations are applied automatically on <code>serve</code>.</p>
 <p>
     Optionally, you could apply new migrations manually by running <code>migrate up</code>.
 </p>
