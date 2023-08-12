@@ -147,7 +147,7 @@
                     Method:          http.MethodPost,
                     Url:             "/my/hello",
                     ExpectedStatus:  405,
-                    ExpectedContent: []string{"\"data\":{}"},
+                    ExpectedContent: []string{"\\"data\\":{}"},
                     TestAppFactory:  setupTestApp,
                 },
                 {
@@ -155,7 +155,7 @@
                     Method:          http.MethodGet,
                     Url:             "/my/hello",
                     ExpectedStatus:  401,
-                    ExpectedContent: []string{"\"data\":{}"},
+                    ExpectedContent: []string{"\\"data\\":{}"},
                     TestAppFactory:  setupTestApp,
                 },
                 {
@@ -166,7 +166,7 @@
                         "Authorization": recordToken,
                     },
                     ExpectedStatus:  401,
-                    ExpectedContent: []string{"\"data\":{}"},
+                    ExpectedContent: []string{"\\"data\\":{}"},
                     TestAppFactory:  setupTestApp,
                 },
                 {
