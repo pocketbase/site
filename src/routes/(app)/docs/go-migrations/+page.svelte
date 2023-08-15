@@ -33,6 +33,7 @@
 
         import (
             "log"
+            "strings"
 
             "github.com/pocketbase/pocketbase"
             "github.com/pocketbase/pocketbase/plugins/migratecmd"
