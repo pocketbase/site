@@ -52,6 +52,12 @@
     vertical-align: middle;
 }
 
+.tsd-navigation li,
+.tsd-page-navigation li,
+a.tsd-index-link {
+    margin: 3px 0;
+}
+
 /* custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;

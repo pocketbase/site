@@ -41,7 +41,8 @@
                     "port": 587,
                     "username": "",
                     "password": "",
-                    "tls": true
+                    "tls": true,
+                    "localName": ""
                   },
                   "s3": {
                     "enabled": false,
@@ -480,7 +481,7 @@
             <tr>
                 <td class="min-width">
                     <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
+                        <span class="txt">├─</span>
                         <span class="label label-warning">Optional</span>
                         <em>tls</em>
                     </div>
@@ -495,6 +496,26 @@
                         When <em>false</em> <em>StartTLS</em> command is send, leaving the server to decide whether
                         to upgrade the connection or not).
                     </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">└─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>localName</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">String</span>
+                </td>
+                <td>
+                    Optional domain name or (IP address) to use for the initial EHLO/HELO exchange.
+                    <br />
+                    If not explicitly set, <code>localhost</code> will be used.
+                    <br />
+                    Note that some SMTP providers, such as Gmail SMTP-relay, requires a proper domain name and
+                    and will reject attempts to use localhost.
                 </td>
             </tr>
 

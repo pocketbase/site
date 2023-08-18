@@ -41,7 +41,8 @@
                     "port": 587,
                     "username": "",
                     "password": "",
-                    "tls": true
+                    "tls": true,
+                    "localName": ""
                   },
                   "s3": {
                     "enabled": false,
