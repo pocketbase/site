@@ -424,7 +424,7 @@
         }
 
         // expand the "author" and "categories" relations
-        if errs := app.Dao().ExpandRecord(record, ["author", "categories"], null); len(errs) > 0 {
+        if errs := app.Dao().ExpandRecord(record, []string{"author", "categories"}, nil); len(errs) > 0 {
             return fmt.Errorf("failed to expand: %v", errs)
         }
 
