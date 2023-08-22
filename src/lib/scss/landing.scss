@@ -47,8 +47,9 @@
             z-index: 1;
             display: inline-block;
             vertical-align: top;
-            max-width: 100%;
             height: auto;
+            max-width: 100%;
+            min-height: var(--heroPreviewMargin);
             margin: 0 auto;
             border-radius: var(--lgRadius);
             background: var(--primaryColor);
@@ -214,6 +215,11 @@
             gap: 10px;
             flex-wrap: wrap;
             font-size: var(--baseFontSize);
+        }
+        .hero-preview {
+            .preview {
+                min-height: 0;
+            }
         }
     }
     @media only screen and (max-width: 640px) {
