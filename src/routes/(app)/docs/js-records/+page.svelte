@@ -26,8 +26,11 @@
         // with its latest data state and everything else reset to the defaults
         record.cleanCopy()
 
-        // change the specified record field value to 123
+        // set the value of a single record field
         record.set("someField", 123)
+
+        // bulk set fields from a map
+        record.load(data)
 
         // retrieve a single record field value
         record.get("someField")            // -> as any
@@ -270,6 +273,8 @@
     content={`
         const record = $app.dao().findRecordById("articles", "RECORD_ID")
 
+        // set individual fields
+        // or bulk load with record.load({...})
         record.set("title", "Lorem ipsum")
         record.set("active", true)
         record.set("someOtherField", 123)

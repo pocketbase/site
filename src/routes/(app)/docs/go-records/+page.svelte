@@ -32,8 +32,11 @@
         // with its latest data state and everything else reset to the defaults
         record.CleanCopy()
 
-        // change the specified record field value to 123
+        // set the value of a single record field
         record.Set("someField", 123)
+
+        // bulk set fields from a map
+        record.Load(data)
 
         // retrieve a single record field value
         record.Get("someField")            // -> as any
@@ -196,6 +199,9 @@
         }
 
         record := models.NewRecord(collection)
+
+        // set individual fields
+        // or bulk load with record.Load(map[string]any{...})
         record.Set("title", "Lorem ipsum")
         record.Set("active", true)
         record.Set("someOtherField", 123)
@@ -289,6 +295,8 @@
             return err
         }
 
+        // set individual fields
+        // or bulk load with record.Load(map[string]any{...})
         record.Set("title", "Lorem ipsum")
         record.Set("active", true)
         record.Set("someOtherField", 123)
