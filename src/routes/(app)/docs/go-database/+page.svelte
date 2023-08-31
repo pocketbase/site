@@ -246,8 +246,8 @@
             AndWhere(dbx.Like("name", "john")).
             OrWhere(dbx.And(
                 dbx.HashExp{
-                    role:     "manager",
-                    fullTime: true,
+                    "role":     "manager",
+                    "fullTime": true,
                 },
                 dbx.NewExp("experience > {:exp}", dbx.Params{ "exp": 10 })
             ))
