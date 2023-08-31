@@ -242,7 +242,7 @@
             Select("users.*").
             From("users").
             Where(dbx.NewExp("id = {:id}", dbx.Params{ "id": "someId" })).
-            AndWhere(dbx.HashExp{status: "public"}).
+            AndWhere(dbx.HashExp{"status": "public"}).
             AndWhere(dbx.Like("name", "john")).
             OrWhere(dbx.And(
                 dbx.HashExp{
