@@ -167,7 +167,7 @@
             }
 
             query := dao.RecordQuery(collection).
-                AndWhere(dbx.HashMap{"status": "active"}).
+                AndWhere(dbx.HashExp{"status": "active"}).
                 OrderBy("published DESC").
                 Limit(10)
 
