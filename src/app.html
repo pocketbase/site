@@ -60,6 +60,14 @@
         }
         window.Prism = window.Prism || {};
         window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined") {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
     </script>
 
     %sveltekit.head%

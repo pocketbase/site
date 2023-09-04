@@ -155,15 +155,30 @@
 
 <HeadingLink title="Special identifiers and modifiers" />
 
-<HeadingLink title="@now identifier" tag="h5" />
-<p>
-    <code>@now</code> represents the current datetime. Often used for defining date constraints. For example:
-</p>
+<HeadingLink title="@ macros" tag="h5" />
+<p>The following datetime macros are available and can be used as part of filter expression:</p>
 <CodeBlock
+    language="html"
     content={`
-        @request.data.publicDate >= @now
+        // all macros are UTC based
+        @now        - the current datetime as string
+        @second     - @now second number (0-59)
+        @minute     - @now minute number (0-59)
+        @hour       - @now hour number (0-23)
+        @weekday    - @now weekday number (0-6)
+        @day        - @now day number
+        @month      - @now month number
+        @year       - @now year number
+        @todayStart - beginning of the current day as datetime string
+        @todayEnd   - end of the current day as datetime string
+        @monthStart - beginning of the current month as datetime string
+        @monthEnd   - end of the current month as datetime string
+        @yearStart  - beginning of the current year as datetime string
+        @yearEnd    - end of the current year as datetime string
     `}
 />
+<p>For example:</p>
+<CodeBlock content={`@request.data.publicDate >= @now`} />
 
 <HeadingLink title=":isset modifier" tag="h5" />
 <p>

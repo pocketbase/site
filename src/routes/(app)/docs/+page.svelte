@@ -1,3 +1,22 @@
+<script>
+    const AMD = "amd";
+    const ARM = "arm";
+
+    let architecture = getDefault();
+
+    function changePlatform(newPlatform) {
+        architecture = newPlatform || getDefault();
+    }
+
+    function getDefault() {
+        if (typeof window !== "undefined" && window.UA_ARCHITECTURE) {
+            return window.UA_ARCHITECTURE === "arm" ? ARM : AMD;
+        }
+
+        return AMD;
+    }
+</script>
+
 <div class="alert alert-danger m-b-sm">
     <div class="icon">
         <i class="ri-alert-line" />
@@ -23,65 +42,123 @@
     PocketBase is an open source backend consisting of embedded database (SQLite) with realtime subscriptions,
     built-in auth management, convenient dashboard UI and simple REST-ish API.
 </p>
+
 <p>The easiest way to get started is to download the prebuilt minimal PocketBase app:</p>
-<ul>
-    <li>
-        <div class="inline-flex flex-gap-5">
-            <a
-                href={import.meta.env.PB_LINUX_URL}
-                class="inline-flex flex-gap-5 txt-bold"
-                target="_blank"
-                rel="noreferrer noopener"
-            >
-                <i class="ri-qq-fill" />
-                <span class="txt">Download {import.meta.env.PB_VERSION} for Linux</span>
-            </a>
-            <small class="txt-hint">(~{import.meta.env.PB_LINUX_SIZE}MB zip)</small>
+<div class="tabs compact tabs-architecture m-b-sm">
+    <div class="tabs-header left">
+        <button
+            type="button"
+            class="tab-item"
+            class:active={architecture == AMD}
+            on:click|preventDefault={() => changePlatform(AMD)}
+        >
+            x64
+        </button>
+        <button
+            type="button"
+            class="tab-item"
+            class:active={architecture == ARM}
+            on:click|preventDefault={() => changePlatform(ARM)}
+        >
+            ARM64
+        </button>
+    </div>
+    <div class="tabs-content">
+        <div class="tab-item" class:active={architecture == AMD}>
+            <ul>
+                <li>
+                    <div class="inline-flex flex-gap-5">
+                        <a
+                            href={import.meta.env.PB_LINUX_AMD_URL}
+                            class="inline-flex flex-gap-5 txt-bold"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            <i class="ri-qq-fill" />
+                            <span class="txt">Download {import.meta.env.PB_VERSION} for Linux x64</span>
+                        </a>
+                        <small class="txt-hint">(~{import.meta.env.PB_LINUX_AMD_SIZE}MB zip)</small>
+                    </div>
+                </li>
+                <li>
+                    <div class="inline-flex flex-gap-5">
+                        <a
+                            href={import.meta.env.PB_WINDOWS_AMD_URL}
+                            class="inline-flex flex-gap-5 txt-bold"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            <i class="ri-windows-fill" />
+                            <span class="txt">Download {import.meta.env.PB_VERSION} for Windows x64</span>
+                        </a>
+                        <small class="txt-hint">(~{import.meta.env.PB_WINDOWS_AMD_SIZE}MB zip)</small>
+                    </div>
+                </li>
+                <li>
+                    <div class="inline-flex flex-gap-5">
+                        <a
+                            href={import.meta.env.PB_MAC_AMD_URL}
+                            class="inline-flex flex-gap-5 txt-bold"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            <i class="ri-apple-fill" />
+                            <span class="txt">Download {import.meta.env.PB_VERSION} for macOS x64</span>
+                        </a>
+                        <small class="txt-hint">(~{import.meta.env.PB_MAC_AMD_SIZE}MB zip)</small>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </li>
-    <li>
-        <div class="inline-flex flex-gap-5">
-            <a
-                href={import.meta.env.PB_WINDOWS_URL}
-                class="inline-flex flex-gap-5 txt-bold"
-                target="_blank"
-                rel="noreferrer noopener"
-            >
-                <i class="ri-windows-fill" />
-                <span class="txt">Download {import.meta.env.PB_VERSION} for Windows</span>
-            </a>
-            <small class="txt-hint">(~{import.meta.env.PB_WINDOWS_SIZE}MB zip)</small>
+        <div class="tab-item" class:active={architecture == ARM}>
+            <ul>
+                <li>
+                    <div class="inline-flex flex-gap-5">
+                        <a
+                            href={import.meta.env.PB_LINUX_ARM_URL}
+                            class="inline-flex flex-gap-5 txt-bold"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            <i class="ri-qq-fill" />
+                            <span class="txt">Download {import.meta.env.PB_VERSION} for Linux ARM64</span>
+                        </a>
+                        <small class="txt-hint">(~{import.meta.env.PB_LINUX_ARM_SIZE}MB zip)</small>
+                    </div>
+                </li>
+                <li>
+                    <div class="inline-flex flex-gap-5">
+                        <a
+                            href={import.meta.env.PB_WINDOWS_ARM_URL}
+                            class="inline-flex flex-gap-5 txt-bold"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            <i class="ri-windows-fill" />
+                            <span class="txt">Download {import.meta.env.PB_VERSION} for Windows ARM64</span>
+                        </a>
+                        <small class="txt-hint">(~{import.meta.env.PB_WINDOWS_ARM_SIZE}MB zip)</small>
+                    </div>
+                </li>
+                <li>
+                    <div class="inline-flex flex-gap-5">
+                        <a
+                            href={import.meta.env.PB_MAC_ARM_URL}
+                            class="inline-flex flex-gap-5 txt-bold"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            <i class="ri-apple-fill" />
+                            <span class="txt">Download {import.meta.env.PB_VERSION} for macOS ARM64</span>
+                        </a>
+                        <small class="txt-hint">(~{import.meta.env.PB_MAC_ARM_SIZE}MB zip)</small>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </li>
-    <li>
-        <div class="inline-flex flex-gap-5">
-            <a
-                href={import.meta.env.PB_MAC_AMD_URL}
-                class="inline-flex flex-gap-5 txt-bold"
-                target="_blank"
-                rel="noreferrer noopener"
-            >
-                <i class="ri-apple-fill" />
-                <span class="txt">Download {import.meta.env.PB_VERSION} for macOS x64</span>
-            </a>
-            <small class="txt-hint">(~{import.meta.env.PB_MAC_AMD_SIZE}MB zip)</small>
-        </div>
-    </li>
-    <li>
-        <div class="inline-flex flex-gap-5">
-            <a
-                href={import.meta.env.PB_MAC_ARM_URL}
-                class="inline-flex flex-gap-5 txt-bold"
-                target="_blank"
-                rel="noreferrer noopener"
-            >
-                <i class="ri-apple-fill" />
-                <span class="txt">Download {import.meta.env.PB_VERSION} for macOS ARM64</span>
-            </a>
-            <small class="txt-hint">(~{import.meta.env.PB_MAC_ARM_SIZE}MB zip)</small>
-        </div>
-    </li>
-</ul>
+    </div>
+</div>
+
 <p class="txt-sm txt-hint">
     See the
     <a href={import.meta.env.PB_GITHUB_RELEASES_URL} target="_blank" rel="noreferrer noopener">
@@ -146,7 +223,7 @@
         <br />
         <div class="txt-hint m-b-xs">
             You can even write custom migration scripts. For more info check the
-            <a href="/docs/go-migrations">JS migrations docs</a>.
+            <a href="/docs/js-migrations">JS migrations docs</a>.
         </div>
     </li>
 </ul>
@@ -155,3 +232,9 @@
     <code>./pocketbase --help</code> or
     <code>./pocketbase [command] --help</code>
 </p>
+
+<style>
+    .tabs-architecture .tabs-header .tab-item {
+        min-width: 70px;
+    }
+</style>

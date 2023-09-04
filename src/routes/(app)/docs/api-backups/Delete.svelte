@@ -50,7 +50,7 @@
             This action will return an error if the backup to delete is still being generated or part of a
             restore operation.
         </p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

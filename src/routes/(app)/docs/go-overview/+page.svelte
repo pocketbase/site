@@ -13,9 +13,10 @@
         <a href="https://go.dev/doc/install" target="_blank" rel="noreferrer noopener">Install Go 1.18+</a>
     </li>
     <li>
-        Create a new project directory with <code>main.go</code> file inside it. This is what an example
-        PocketBase application looks like:
-        <br />
+        <p>
+            Create a new project directory with <code>main.go</code> file inside it. This is what an example PocketBase
+            application looks like:
+        </p>
         <CodeBlock
             language="go"
             content={`

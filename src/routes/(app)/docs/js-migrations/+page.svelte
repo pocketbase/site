@@ -162,28 +162,27 @@
     `}
 />
 
-<HeadingLink title="Creating new collection record" tag="h5" />
+<HeadingLink title="Creating new auth record" tag="h5" />
 <CodeBlock
     language="javascript"
     content={`
-        // pb_migrations/1687801090_new_example_record.js
+        // pb_migrations/1687801090_new_users_record.js
         migrate((db) => {
             const dao = new Dao(db);
 
-            const collection = dao.findCollectionByNameOrId("example")
+            const collection = dao.findCollectionByNameOrId("users")
 
             const record = new Record(collection)
-            record.set("title", "Hello world!")
-            record.set("slug", "hello-world")
-            record.set("description", "Lorem ipsum...")
-            record.set("rank", 123)
+            record.set("name", "John Doe")
+            record.set("email", "test@example.com")
+            record.setPassword("1234567890")
 
             dao.saveRecord(record)
         }, (db) => { // optional revert
             const dao = new Dao(db);
 
             try {
-                const record = dao.findFirstRecordByData("example", "slug", "hello-world")
+                const record = dao.findAuthRecordByEmail("users", "test@example.com")
 
                 dao.deleteRecord(record)
             } catch (_) { /* most likely already deleted */ }

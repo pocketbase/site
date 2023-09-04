@@ -1,4 +1,5 @@
 <script>
+    import tooltip from "@/actions/tooltip";
     import CodeBlock from "@/components/CodeBlock.svelte";
 </script>
 
@@ -14,7 +15,16 @@
 
 <ul>
     <li>name - identifier for the scheduled job; could be used to replace or remove an existing job</li>
-    <li>cron expression like <code>0 0 * * *</code> (<em>supports numeric list, steps or ranges</em>)</li>
+    <li>
+        cron expression like <code>0 0 * * *</code> (
+        <em>
+            supports numeric list, steps, ranges or
+            <span
+                class="link-hint"
+                use:tooltip={"@yearly\n@annually\n@monthly\n@weekly\n@daily\n@midnight\n@hourly"}>macros</span
+            >
+        </em>)
+    </li>
     <li>handler - the function that will be executed everytime when the job runs</li>
 </ul>
 

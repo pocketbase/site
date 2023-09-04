@@ -46,20 +46,20 @@
 
                 <div class="clearfix m-t-base" />
 
-                <div>
+                <div class="sidebar-bg-section">
                     <div class="tabs-header stretched compact">
                         <a class="tab-item" href={goLinks[0].href} class:active={extendLang == "go"}>
                             <div class="block">
                                 Extend with
                                 <br />
-                                Go
+                                <strong>Go</strong>
                             </div>
                         </a>
                         <a class="tab-item" href={jsLinks[0].href} class:active={extendLang == "javascript"}>
                             <div class="block">
                                 Extend with
                                 <br />
-                                JavaScript
+                                <strong>JavaScript</strong>
                             </div>
                         </a>
                     </div>

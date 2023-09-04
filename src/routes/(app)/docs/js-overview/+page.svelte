@@ -40,14 +40,6 @@
         <code>*.pb.js</code> files are loaded per their filename sort order.
     </em>
 </p>
-<p class="txt-bold">
-    The running PocketBase instance is exposed as global <code>$app</code> object (
-    <em>
-        for all exposed APIs, please refer to the
-        <a href="/jsvm/index.html" target="_blank">JS Types reference</a>
-    </em>
-    ).
-</p>
 <p>
     For most parts, the JavaScript APIs are derived from <a href="/docs/go-overview">Go</a> with 2 main differences:
 </p>
@@ -59,6 +51,41 @@
         <code>$app.dao().findRecordById("example", "RECOR_ID")</code>.
     </li>
     <li>Errors are thrown as regular JavaScript exceptions and not returned as Go values.</li>
+</ul>
+
+<HeadingLink title="Global objects" tag="h5" />
+<p>Below is a list with some of the commonly used global objects that are accessible from everywhere:</p>
+<ul>
+    <li>
+        <a href="/jsvm/modules/__hooks.html" target="_blank">
+            <code>__hooks</code>
+        </a>
+        - The absolute path to the app <code>pb_hooks</code> directory.
+    </li>
+    <li>
+        <a href="/jsvm/modules/_app.html" target="_blank">
+            <code>$app</code>
+        </a> - The current running PocketBase application instance.
+    </li>
+    <li>
+        <a href="/jsvm/modules/_apis.html" target="_blank">
+            <code>$apis.*</code>
+        </a> - API routing helpers and middlewares.
+    </li>
+    <li>
+        <a href="/jsvm/modules/_os.html" target="_blank">
+            <code>$os.*</code>
+        </a> - OS level primitives (deleting directories, executing shell commands, etc.).
+    </li>
+    <li>
+        <a href="/jsvm/modules/_security.html" target="_blank">
+            <code>$security.*</code>
+        </a> - Low level helpers for creating and parsing JWTs, random string generation, AES encryption, etc.
+    </li>
+    <li class="txt-bold">
+        And many more - for all exposed APIs, please refer to the
+        <a href="/jsvm/index.html" target="_blank">JSVM reference docs</a>.
+    </li>
 </ul>
 
 <HeadingLink title="TypeScript declarations and code completion" />
@@ -211,7 +238,7 @@
 
 <HeadingLink title="Performance" tag="h5" />
 <p>
-    The prebuilt executable comes with a <strong>prewarmed pool of 50 JS runtimes</strong>, which helps
+    The prebuilt executable comes with a <strong>prewarmed pool of 25 JS runtimes</strong>, which helps
     maintaining the handlers execution times on par with the Go equivalent code (see
     <a
         href="https://github.com/pocketbase/benchmarks/blob/master/results/hetzner_cax11.md#go-vs-js-route-execution"

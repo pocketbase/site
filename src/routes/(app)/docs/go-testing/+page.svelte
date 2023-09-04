@@ -128,17 +128,17 @@
             }
 
             // setup the test ApiScenario app instance
-            setupTestApp := func() (*tests.TestApp, error) {
+            setupTestApp := func(t *testing.T) *tests.TestApp {
                 testApp, err := tests.NewTestApp(testDataDir)
                 if err != nil {
-                    return nil, err
+                    t.Fatal(err)
                 }
                 // no need to cleanup since scenario.Test() will do that for us
                 // defer testApp.Cleanup()
 
                 bindAppHooks(testApp)
 
-                return testApp, nil
+                return testApp
             }
 
             scenarios := []tests.ApiScenario{

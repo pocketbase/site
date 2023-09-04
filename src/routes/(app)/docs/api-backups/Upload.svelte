@@ -13,8 +13,14 @@
             body: `
                 {
                   "code": 400,
-                  "message": "Try again later - another backup/restore process has already been started.",
-                  "data": {}
+                  "message": "Something went wrong while processing your request.",
+                  "data": {
+                    "file": {
+                        "code": "validation_invalid_mime_type",
+                        "message": "\\\"test_backup.txt\\\" mime type must be one of: application/zip."
+                      }
+                    }
+                  }
                 }
             `,
         },
@@ -43,12 +49,9 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single title="Restore backup">
+<Accordion single title="Upload backup">
     <div class="content m-b-sm">
-        <p>Restore a single backup by its name and restarts the current running PocketBase process.</p>
-        <p>
-            This action will return an error if there is another backup/restore operation already in progress.
-        </p>
+        <p>Uploads an existing backup zip file.</p>
         <p>Only admins can perform this action.</p>
     </div>
 
@@ -62,7 +65,7 @@
 
             await pb.admins.authWithPassword('test@example.com', '1234567890');
 
-            await pb.backups.restore('pb_data_backup.zip');
+            await pb.backups.upload({ file: new Blob([...]) });
         `}
         dart={`
             import 'package:pocketbase/pocketbase.dart';
@@ -73,18 +76,18 @@
 
             await pb.admins.authWithPassword('test@example.com', '1234567890');
 
-            await pb.backups.restore('pb_data_backup.zip');
+            await pb.backups.upload(http.MultipartFile.fromBytes('file', ...));
         `}
     />
 
     <div class="api-route alert alert-success">
         <strong class="label label-primary">POST</strong>
-        <div class="content">/api/backups/<code>key</code>/restore</div>
+        <div class="content">/api/backups/upload</div>
         <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
     </div>
 
-    <div class="section-title">Path parameters</div>
-    <table class="table-compact table-border m-b-base">
+    <div class="section-title">Body Parameters</div>
+    <table class="table-compact table-border">
         <thead>
             <tr>
                 <th>Param</th>
@@ -94,14 +97,22 @@
         </thead>
         <tbody>
             <tr>
-                <td>key</td>
                 <td>
-                    <span class="label">String</span>
+                    <div class="inline-flex">
+                        <span class="label label-success">Required</span>
+                        <span>file</span>
+                    </div>
                 </td>
-                <td>The key of the backup file to restore.</td>
+                <td>
+                    <span class="label">File</span>
+                </td>
+                <td>The zip archive to upload.</td>
             </tr>
         </tbody>
     </table>
+    <small class="block txt-hint m-t-10 m-b-base">
+        Uploading files is supported only via <em>multipart/form-data</em>.
+    </small>
 
     <div class="section-title">Responses</div>
     <div class="tabs">

@@ -42,6 +42,7 @@
                     "username": "",
                     "password": "",
                     "tls": true,
+                    "authMethod": "",
                     "localName": ""
                   },
                   "s3": {

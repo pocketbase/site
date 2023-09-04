@@ -202,10 +202,10 @@
 `}
 />
 
-<HeadingLink title="Indirect expand" tag="h5" />
+<HeadingLink title="Back-relation expand" tag="h5" />
 <p>
-    We can also do <em>indirect expansions</em> - expand where the <code>relation</code> field is not in the main
-    collection.
+    We can also do <em>back-relation expansions</em> - expand where the <code>relation</code> field is not in the
+    main collection.
 </p>
 <p>
     The following notation is used: <code>?expand=referenceCollection(relField)[.*]</code>
@@ -280,19 +280,19 @@
         <i class="ri-information-line" />
     </div>
     <div class="content">
-        <p>The indirect expand has some caveats:</p>
+        <p>The back-relation expand has some caveats:</p>
         <ul>
             <li>
-                Currently only single <code>relation</code> fields can be indirect expanded (aka. when "Max Select"
-                field option is 1).
+                Currently only single <code>relation</code> fields can be back-relation expanded (aka. when "Max
+                Select" field option is 1).
             </li>
             <li>
-                The "Unique" indirect <code>relation</code> field option is used to determine whether an array
-                or a single object should be expanded.
+                The "Unique" back-relation field option is used to determine whether an array or a single
+                object should be expanded.
             </li>
             <li>
-                As a side effect of the nested indirect expansion support, referencing the root relation is
-                also allowed, eg. <code>?expand=comments(post).post</code>.
+                As a side effect of the nested expansion support, referencing the back-relation field itself
+                is also allowed, eg. <code>?expand=comments(post).post</code>.
             </li>
         </ul>
     </div>

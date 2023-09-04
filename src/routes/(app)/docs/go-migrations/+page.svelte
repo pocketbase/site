@@ -272,11 +272,11 @@
     `}
 />
 
-<HeadingLink title="Creating new collection record" tag="h5" />
+<HeadingLink title="Creating new auth record" tag="h5" />
 <CodeBlock
     language="go"
     content={`
-        // migrations/1687801090_new_example_record.go
+        // migrations/1687801090_new_users_record.go
         package migrations
 
         import (
@@ -290,17 +290,21 @@
             m.Register(func(db dbx.Builder) error {
                 dao := daos.New(db)
 
-                record := models.NewRecord(collections)
-                record.Set("title", "Hello world!")
-                record.Set("slug", "hello-world")
-                record.Set("description", "Lorem ipsum...")
-                record.Set("rank", 123)
+                collection, err := dao.FindCollectionByNameOrId("users")
+                if err != nil {
+                    return err
+                }
+
+                record := models.NewRecord(collection)
+                record.Set("name", "John Doe")
+                record.Set("email", "test@example.com")
+                record.SetPassword("1234567890")
 
                 return dao.SaveRecord(record)
             }, func(db dbx.Builder) error { // optional revert operation
                 dao := daos.New(db)
 
-                record := dao.FindFirstRecordByData("example", "slug", "hello-world")
+                record := dao.FindFirstAuthRecordByEmail("users", "test@example.com")
                 if record != nil {
                     return dao.DeleteRecord(record)
                 }

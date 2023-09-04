@@ -179,9 +179,11 @@
 }
 
 .page-sidebar {
+    --sidebarWidth: 265px;
+
     position: relative;
     z-index: 0;
-    width: 245px;
+    width: var(--sidebarWidth);
     flex-shrink: 0;
     border-right: 1px solid var(--baseAlt1Color);
     .sidebar-content {
@@ -229,7 +231,7 @@
             gap: 10px;
             font-size: var(--lgFontSize);
             text-decoration: none;
-            min-height: 38px;
+            min-height: var(--btnHeight);
             padding: 5px 10px;
             margin: 0 0 5px;
             background: transparent;
@@ -268,6 +270,17 @@
             margin-right: 5px;
         }
     }
+    .sidebar-bg-section {
+        background: var(--bodyColor);
+        border-radius: calc(var(--baseRadius) + 2px);
+        border: 1px solid var(--baseAlt1Color);
+        padding: 10px;
+        .tabs-header {
+            gap: 0;
+            width: auto;
+            margin: -10px -10px 10px;
+        }
+    }
 
     &.highlight {
         background: var(--baseColor);
@@ -279,6 +292,14 @@
             width: 1800px;
             height: 100%;
             background: var(--baseColor);
+        }
+    }
+
+    // responsive styles
+    @media only screen and (max-width: 1140px) {
+        --sidebarWidth: 250px;
+        .sidebar-content  {
+            padding-right: var(--smSpacing);
         }
     }
 }

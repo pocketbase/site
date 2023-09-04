@@ -60,6 +60,7 @@
 <Accordion single title="List backups">
     <div class="content m-b-sm">
         <p>Returns list with all available backup files.</p>
+        <p>Only admins can access this action.</p>
     </div>
 
     <CodeTabs

@@ -52,12 +52,10 @@
         />
     </li>
     <li>
-        <p>
-            Start the executable (the <code>--https</code> flag issues a Let's Encrypt certificate):
-        </p>
+        <p>Start the executable (specifying a domain name will issue a Let's encrypt certificate for it)</p>
         <CodeBlock
             content={`
-              [root@dev ~]$ /root/pb/pocketbase serve --http="yourdomain.com:80" --https="yourdomain.com:443"
+              [root@dev ~]$ /root/pb/pocketbase serve yourdomain.com
             `}
         />
         <blockquote>
@@ -101,7 +99,7 @@
                 RestartSec     = 5s
                 StandardOutput = append:/root/pb/errors.log
                 StandardError  = append:/root/pb/errors.log
-                ExecStart      = /root/pb/pocketbase serve --http="yourdomain.com:80" --https="yourdomain.com:443"
+                ExecStart      = /root/pb/pocketbase serve yourdomain.com
 
                 [Install]
                 WantedBy = multi-user.target

@@ -93,8 +93,11 @@
         const record = $app.dao().findFirstRecordByData("articles", "slug", "test")
 
         // retrieve a single "articles" collection record by a string filter expression
-        // ( use only with trusted input)
-        const record = $app.dao().findFirstRecordByFilter("articles", "status = 'public' && category = 'news'")
+        // (use "{:placeholder}" to safely bind untrested user input parameters)
+        const record = $app.dao().findFirstRecordByFilter(
+            "articles", "status = 'public' && category = {:category}",
+            { category: "news" },
+        )
     `}
 />
 
@@ -113,12 +116,14 @@
         )
 
         // retrieve multiple "articles" collection records by a string filter expression
-        // (use only with trusted input)
+        // (use "{:placeholder}" to safely bind untrested user input parameters)
         const records = $app.dao().findRecordsByFilter(
-            "articles",                               // collection
-            "status = 'public' && category = 'news'", // filter
-            "-publised",                              // sort
-            10                                        // limit
+            "articles",                                    // collection
+            "status = 'public' && category = {:category}", // filter
+            "-publised",                                   // sort
+            10,                                            // limit
+            0,                                             // limit
+            { category: "news" },                          // optional filter params
         )
     `}
 />

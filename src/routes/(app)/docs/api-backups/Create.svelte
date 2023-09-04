@@ -49,7 +49,7 @@
         <p>
             This action will return an error if there is another backup/restore operation already in progress.
         </p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

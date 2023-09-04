@@ -42,6 +42,7 @@
                     "username": "",
                     "password": "",
                     "tls": true,
+                    "authMethod": "",
                     "localName": ""
                   },
                   "s3": {
@@ -496,6 +497,23 @@
                         When <em>false</em> <em>StartTLS</em> command is send, leaving the server to decide whether
                         to upgrade the connection or not).
                     </small>
+                </td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">├─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>authMethod</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">String</span>
+                </td>
+                <td>
+                    The SMTP AUTH method to use - <em>PLAIN</em> or <em>LOGIN</em> (used mainly by Microsoft).
+                    <br />
+                    Default to <em>PLAIN</em> if empty.
                 </td>
             </tr>
             <tr>

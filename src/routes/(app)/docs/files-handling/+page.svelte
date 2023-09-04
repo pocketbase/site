@@ -11,7 +11,7 @@
 <p>
     To upload files, you must first add a <code>file</code> field to your collection:
 </p>
-<img src="/images/screenshots/file-field.png" alt="File field screenshot" width="500" class="screenshot" />
+<img src="/images/screenshots/file-field.png" alt="File field screenshot" width="465" class="screenshot" />
 <p>
     Once added, you could create/update a Record and upload "documents" files by sending a
     <code>multipart/form-data</code> request using the <em>Records create/update APIs</em>.
