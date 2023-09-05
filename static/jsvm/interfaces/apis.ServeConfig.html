@@ -25,7 +25,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">ServeConfig</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1c8890fe/jsvm/types.d.ts#L6219">types.d.ts:6219</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/86c1742c/jsvm/types.d.ts#L6270">types.d.ts:6270</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -34,6 +34,7 @@
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Properties</h3>
 <div class="tsd-index-list"><a href="apis.ServeConfig.html#allowedOrigins" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-1024"><rect fill="var(--color-icon-background)" stroke="#FF984D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M9.354 16V7.24H12.174C12.99 7.24 13.638 7.476 14.118 7.948C14.606 8.412 14.85 9.036 14.85 9.82C14.85 10.604 14.606 11.232 14.118 11.704C13.638 12.168 12.99 12.4 12.174 12.4H10.434V16H9.354ZM10.434 11.428H12.174C12.646 11.428 13.022 11.284 13.302 10.996C13.59 10.7 13.734 10.308 13.734 9.82C13.734 9.324 13.59 8.932 13.302 8.644C13.022 8.356 12.646 8.212 12.174 8.212H10.434V11.428Z" fill="var(--color-text)"></path></g></svg><span>allowed<wbr/>Origins</span></a>
+<a href="apis.ServeConfig.html#certificateDomains" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>certificate<wbr/>Domains</span></a>
 <a href="apis.ServeConfig.html#httpAddr" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>http<wbr/>Addr</span></a>
 <a href="apis.ServeConfig.html#httpsAddr" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>https<wbr/>Addr</span></a>
 <a href="apis.ServeConfig.html#showStartBanner" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>show<wbr/>Start<wbr/>Banner</span></a>
@@ -47,23 +48,34 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1c8890fe/jsvm/types.d.ts#L6235">types.d.ts:6235</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/86c1742c/jsvm/types.d.ts#L6295">types.d.ts:6295</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="certificateDomains" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>certificate<wbr/>Domains</span><a href="#certificateDomains" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">certificate<wbr/>Domains</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+<div class="tsd-comment tsd-typography"><p>Optional domains list to use when issuing the TLS certificate.</p>
+<p>If not set, the host from the bound server address will be used.</p>
+<p>For convenience, for each &quot;non-www&quot; domain a &quot;www&quot; entry and
+redirect will be automatically added.</p>
+</div>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/86c1742c/jsvm/types.d.ts#L6291">types.d.ts:6291</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="httpAddr" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>http<wbr/>Addr</span><a href="#httpAddr" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">http<wbr/>Addr</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-<div class="tsd-comment tsd-typography"><p>HttpAddr is the HTTP server address to bind (eg. <code>127.0.0.1:80</code>).</p>
+<div class="tsd-comment tsd-typography"><p>HttpAddr is the TCP address to listen for the HTTP server (eg. <code>127.0.0.1:80</code>).</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1c8890fe/jsvm/types.d.ts#L6227">types.d.ts:6227</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/86c1742c/jsvm/types.d.ts#L6278">types.d.ts:6278</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="httpsAddr" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>https<wbr/>Addr</span><a href="#httpsAddr" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">https<wbr/>Addr</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-<div class="tsd-comment tsd-typography"><p>HttpsAddr is the HTTPS server address to bind (eg. <code>127.0.0.1:443</code>).</p>
+<div class="tsd-comment tsd-typography"><p>HttpsAddr is the TCP address to listen for the HTTPS server (eg. <code>127.0.0.1:443</code>).</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1c8890fe/jsvm/types.d.ts#L6231">types.d.ts:6231</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/86c1742c/jsvm/types.d.ts#L6282">types.d.ts:6282</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="showStartBanner" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>show<wbr/>Start<wbr/>Banner</span><a href="#showStartBanner" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">show<wbr/>Start<wbr/>Banner</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
@@ -71,7 +83,7 @@
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1c8890fe/jsvm/types.d.ts#L6223">types.d.ts:6223</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/86c1742c/jsvm/types.d.ts#L6274">types.d.ts:6274</a></li></ul></aside></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -89,6 +101,7 @@
 <div class="tsd-accordion-details">
 <ul>
 <li><a href="#allowedOrigins" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>allowed<wbr/>Origins</span></a></li>
+<li><a href="#certificateDomains" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>certificate<wbr/>Domains</span></a></li>
 <li><a href="#httpAddr" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>http<wbr/>Addr</span></a></li>
 <li><a href="#httpsAddr" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>https<wbr/>Addr</span></a></li>
 <li><a href="#showStartBanner" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>show<wbr/>Start<wbr/>Banner</span></a></li></ul></div></details></div>

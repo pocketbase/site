@@ -57,7 +57,7 @@
 <p>Below is a list with some of the commonly used global objects that are accessible from everywhere:</p>
 <ul>
     <li>
-        <a href="/jsvm/modules/__hooks.html" target="_blank">
+        <a href="/jsvm/variables/__hooks.html" target="_blank">
             <code>__hooks</code>
         </a>
         - The absolute path to the app <code>pb_hooks</code> directory.
