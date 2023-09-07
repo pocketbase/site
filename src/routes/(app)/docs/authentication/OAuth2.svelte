@@ -110,7 +110,7 @@
             />
         </div>
         <div class="tab-item" class:active={activeTab === TAB_MANUAL_CODE}>
-            <p>When authenticating manually with OAuth2 code you'll need 2 client-side endpoints:</p>
+            <p>When authenticating manually with OAuth2 code you'll need 2 endpoints:</p>
             <ul>
                 <li>somewhere to show the "Login with ..." links</li>
                 <li>
