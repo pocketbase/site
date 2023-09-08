@@ -182,10 +182,15 @@
         # uncomment to copy the local pb_hooks dir into the image
         # COPY ./pb_hooks /pb/pb_hooks
 
+        VOLUME /pb_data
         EXPOSE 8080
 
         # start PocketBase
-        CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
+        CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080", "--dir=/pb_data"]
+
+        # Comment the line above and uncomment this to use pb_hooks and pb_migrations
+        # CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080", "--dir=/pb_data", "--hooksDir=/pb/pb_hooks", "--migrationsDir=/pb/pb_hooks"]
+
     `}
 />
 <p class="txt-hint">
@@ -198,13 +203,21 @@
         >
             "Host for free on Fly.io"
         </a>
-        or
+        ,
         <a
             href="https://github.com/pocketbase/pocketbase/discussions/2856"
             target="_blank"
             rel="noopener noreferrer"
         >
             "Host for free on Hop.io"
+        </a>
+        or
+        <a
+            href="https://github.com/pocketbase/pocketbase/discussions/3279"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            "Self host with Docker and Docker Compose"
         </a>
         guides.
     </em>
