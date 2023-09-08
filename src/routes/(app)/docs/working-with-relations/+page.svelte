@@ -34,7 +34,7 @@
 
         ...
 
-        const post = await pb.colleciton('posts').create({
+        const post = await pb.collection('posts').create({
             'title': 'Lorem ipsum...',
             'tags':  ['TAG_ID1', 'TAG_ID2'],
         });
@@ -46,7 +46,7 @@
 
         ...
 
-        final post = await pb.colleciton('posts').create(body: {
+        final post = await pb.collection('posts').create(body: {
             'title': 'Lorem ipsum...',
             'tags':  ['TAG_ID1', 'TAG_ID2'],
         });
