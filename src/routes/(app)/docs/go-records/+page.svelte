@@ -98,7 +98,7 @@
         record, err := app.Dao().FindFirstRecordByData("articles", "slug", "test")
 
         // retrieve a single "articles" collection record by a string filter expression
-        // (use "{:placeholder}" to safely bind untrested user input parameters)
+        // (use "{:placeholder}" to safely bind untrusted user input parameters)
         record, err := app.Dao().FindFirstRecordByFilter(
             "articles", "status = 'public' && category = {:category}",
             dbx.Params{ "category": "news" },
@@ -120,7 +120,7 @@
         )
 
         // retrieve multiple "articles" collection records by a string filter expression
-        // (use "{:placeholder}" to safely bind untrested user input parameters)
+        // (use "{:placeholder}" to safely bind untrusted user input parameters)
         records, err := app.Dao().FindRecordsByFilter(
             "articles",                                    // collection
             "status = 'public' && category = {:category}", // filter
