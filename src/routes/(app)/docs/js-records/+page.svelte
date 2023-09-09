@@ -93,7 +93,7 @@
         const record = $app.dao().findFirstRecordByData("articles", "slug", "test")
 
         // retrieve a single "articles" collection record by a string filter expression
-        // (use "{:placeholder}" to safely bind untrested user input parameters)
+        // (use "{:placeholder}" to safely bind untrusted user input parameters)
         const record = $app.dao().findFirstRecordByFilter(
             "articles", "status = 'public' && category = {:category}",
             { category: "news" },
@@ -116,7 +116,7 @@
         )
 
         // retrieve multiple "articles" collection records by a string filter expression
-        // (use "{:placeholder}" to safely bind untrested user input parameters)
+        // (use "{:placeholder}" to safely bind untrusted user input parameters)
         const records = $app.dao().findRecordsByFilter(
             "articles",                                    // collection
             "status = 'public' && category = {:category}", // filter
