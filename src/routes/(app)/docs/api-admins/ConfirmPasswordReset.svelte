@@ -31,6 +31,7 @@
 <Accordion single title={"Confirm password reset"}>
     <div class="content m-b-sm">
         <p>Confirms a password reset request and sets a new admin password.</p>
+        <p>After this request all previously issued admin tokens will be automatically invalidated.</p>
     </div>
 
     <CodeTabs

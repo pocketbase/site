@@ -31,6 +31,10 @@
 <Accordion single title="Confirm password reset">
     <div class="content m-b-sm">
         <p>Confirms a password reset request and sets a new auth record password.</p>
+        <p>
+            After this request all previously issued tokens for the specified record will be automatically
+            invalidated.
+        </p>
     </div>
 
     <CodeTabs
