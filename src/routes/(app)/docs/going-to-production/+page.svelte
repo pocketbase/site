@@ -188,6 +188,9 @@
         CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
     `}
 />
+<p>
+    To persist your data you need to mount a volume at <code>/pb/pb_data</code>.
+</p>
 <p class="txt-hint">
     <em>
         For a full example you could check the
