@@ -22,6 +22,8 @@
             timeout: 120, // in seconds
         })
 
+        console.log(res.headers)    // the response headers (eg. res.headers['X-Custom'][0])
+        console.log(res.cookies)    // the response cookies (eg. res.cookies.sessionId.value)
         console.log(res.statusCode) // the response HTTP status code
         console.log(res.raw)        // the response body as plain text
         console.log(res.json)       // the response body as parsed json array or map
