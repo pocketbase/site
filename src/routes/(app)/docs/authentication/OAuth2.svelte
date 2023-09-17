@@ -1,4 +1,5 @@
 <script>
+    import tooltip from "@/actions/tooltip";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import CodeTabs from "@/components/CodeTabs.svelte";
     import { indexExample, redirectExample } from "./oauth2Examples.js";
@@ -16,8 +17,13 @@
     <div class="content">
         <p>
             Before starting, you'll need to create an OAuth2 app in the provider's dashboard in order to get a
-            <strong>Client Id</strong> and <strong>Client Secret</strong>, and register a redirect URL. The
-            default redirect URL is <code>http://127.0.0.1:8090/api/oauth2-redirect</code>.
+            <strong>Client Id</strong> and <strong>Client Secret</strong>, and register a redirect URL
+            <i
+                class="ri-question-line link-hint"
+                use:tooltip={`For the "All in one" flow it should be \nhttps://yourdomain.com/api/oauth2-redirect.` +
+                    `\n\n` +
+                    `For the "Manual code exchange" flow, the redirect URL is your own custom endpoint.`}
+            />.
         </p>
         <p>
             Once you have obtained the <strong>Client Id</strong> and <strong>Client Secret</strong>, you can
@@ -50,8 +56,13 @@
                 deeplinks or even page reload.
             </p>
             <p>
-                When creating your OAuth2 app, for a callback/redirect URL you have to use
-                <code>https://yourdomain.com/api/oauth2-redirect</code>.
+                <strong>
+                    When creating your OAuth2 app, for a callback/redirect URL you have to use the
+                    <code class="txt-bold">https://yourdomain.com/api/oauth2-redirect</code>
+                </strong>
+                (<em>
+                    or when testing locally - <code>http://127.0.0.1:8090/api/oauth2-redirect</code>
+                </em>).
             </p>
 
             <div class="clearfix m-b-xs" />
