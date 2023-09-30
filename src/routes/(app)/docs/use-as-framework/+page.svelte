@@ -44,7 +44,7 @@
                 app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
                     e.Router.GET("/hello", func(c echo.Context) error {
                         return c.String(http.StatusOK, "Hello world!")
-                    }, apis.ActivityLogger(app), apis.RequireAdminAuth())
+                    }, apis.ActivityLogger(app))
 
                     return nil
                 })
@@ -52,7 +52,7 @@
             js={`
                 routerAdd("GET", "/hello", (c) => {
                     return c.string(200, "Hello world!")
-                }, $apis.activityLogger($app), $apis.requireAdminAuth())
+                }, $apis.activityLogger($app))
             `}
         />
     </li>
