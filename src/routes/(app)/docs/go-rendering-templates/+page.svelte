@@ -27,7 +27,7 @@
 
         data := map[string]any{"name": "John"}
 
-        html, err := template.LoadFiles(
+        html, err := template.NewRegistry().LoadFiles(
             "views/base.html",
             "views/partial1.html",
             "views/partial2.html",
