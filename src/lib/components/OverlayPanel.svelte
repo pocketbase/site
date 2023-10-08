@@ -185,6 +185,7 @@
 <div class="overlay-panel-wrapper" bind:this={wrapper}>
     {#if active}
         <div class="overlay-panel-container" class:padded={popup} class:active>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div
                 class="overlay"
                 on:click|preventDefault={() => (overlayClose ? hide() : true)}
@@ -203,7 +204,12 @@
             >
                 <div class="overlay-panel-section panel-header">
                     {#if btnClose && !popup}
-                        <div class="overlay-close" on:click|preventDefault={hide}>
+                        <!-- svelte-ignore a11y-click-events-have-key-events -->
+                        <div
+                            class="overlay-close"
+                            transition:fly={{ duration: transitionSpeed, x: 30 }}
+                            on:click|preventDefault={hide}
+                        >
                             <i class="ri-close-line" />
                         </div>
                     {/if}

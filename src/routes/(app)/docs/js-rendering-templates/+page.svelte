@@ -36,6 +36,11 @@
     The dot object (<code class="txt-bold">.</code>) in the above represents the data passed to the templates
     via the <code>render(data)</code> method.
 </p>
+<p>
+    By default the templates apply contextual (HTML, JS, CSS, URI) auto escaping so the generated template
+    content should be injection-safe. To render raw/verbatim trusted content in the templates you can use the
+    builtin <code>raw</code> function (eg. <code>{`{{.content|raw}}`}</code>).
+</p>
 
 <div class="alert alert-info m-t-10 m-b-sm">
     <div class="icon">

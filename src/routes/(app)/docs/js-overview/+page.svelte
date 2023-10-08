@@ -16,7 +16,7 @@
 </p>
 <p>
     You can start by creating <code>*.pb.js</code> file(s) inside a <code>pb_hooks</code>
-    directory.
+    directory next to your executable.
 </p>
 <CodeBlock
     content={`
