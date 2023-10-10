@@ -47,8 +47,8 @@
     <li>
         Go exported method and field names are converted to camelCase, for example:
         <br />
-        <code>app.Dao().FindRecordById("example", "RECOR_ID")</code> becomes
-        <code>$app.dao().findRecordById("example", "RECOR_ID")</code>.
+        <code>app.Dao().FindRecordById("example", "RECORD_ID")</code> becomes
+        <code>$app.dao().findRecordById("example", "RECORD_ID")</code>.
     </li>
     <li>Errors are thrown as regular JavaScript exceptions and not returned as Go values.</li>
 </ul>
