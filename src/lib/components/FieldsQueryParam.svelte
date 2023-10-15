@@ -1,5 +1,5 @@
 <script>
-    import CodeBlock from "@/components/base/CodeBlock.svelte";
+    import CodeBlock from "@/components/CodeBlock.svelte";
 </script>
 
 <tr>

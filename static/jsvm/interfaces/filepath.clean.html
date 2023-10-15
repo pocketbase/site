@@ -27,15 +27,25 @@
 <div class="tsd-comment tsd-typography"><p>Clean returns the shortest path name equivalent to path
 by purely lexical processing. It applies the following rules
 iteratively until no further processing can be done:</p>
-<pre><code><span class="hl-0"> </span><span class="hl-4">1.</span><span class="hl-0"> Replace multiple Separator elements </span><span class="hl-1">with</span><span class="hl-0"> a single one.</span><br/><span class="hl-0"> </span><span class="hl-4">2.</span><span class="hl-0"> Eliminate each . path name </span><span class="hl-2">element</span><span class="hl-0"> (the current directory).</span><br/><span class="hl-0"> </span><span class="hl-4">3.</span><span class="hl-0"> Eliminate each inner .. path name </span><span class="hl-2">element</span><span class="hl-0"> (the parent directory)</span><br/><span class="hl-0">    along </span><span class="hl-1">with</span><span class="hl-0"> the non</span><span class="hl-1">-</span><span class="hl-0">.. element that precedes it.</span><br/><span class="hl-0"> </span><span class="hl-4">4.</span><span class="hl-0"> Eliminate .. elements that begin a rooted </span><span class="hl-2">path</span><span class="hl-0">:</span><br/><span class="hl-0">    that is, replace </span><span class="hl-3">&quot;/..&quot;</span><span class="hl-0"> by </span><span class="hl-3">&quot;/&quot;</span><span class="hl-0"> at the beginning </span><span class="hl-1">of</span><span class="hl-0"> a path,</span><br/><span class="hl-0">    assuming Separator is </span><span class="hl-3">&#39;/&#39;</span><span class="hl-0">.</span>
+<ol>
+<li>Replace multiple Separator elements with a single one.</li>
+<li>Eliminate each . path name element (the current directory).</li>
+<li>Eliminate each inner .. path name element (the parent directory)</li>
+</ol>
+<pre><code><span class="hl-0">    along </span><span class="hl-1">with</span><span class="hl-0"> the non</span><span class="hl-1">-</span><span class="hl-0">.. element that precedes it.</span>
+</code><button>Copy</button></pre>
+<ol start="4">
+<li>Eliminate .. elements that begin a rooted path:</li>
+</ol>
+<pre><code><span class="hl-0">    that is, replace </span><span class="hl-3">&quot;/..&quot;</span><span class="hl-0"> by </span><span class="hl-3">&quot;/&quot;</span><span class="hl-0"> at the beginning </span><span class="hl-1">of</span><span class="hl-0"> a path,</span><br/><span class="hl-0">    assuming Separator is </span><span class="hl-3">&#39;/&#39;</span><span class="hl-0">.</span>
 </code><button>Copy</button></pre>
 <p>The returned path ends in a slash only if it represents a root directory,
 such as &quot;/&quot; on Unix or <code>C:</code> on Windows.</p>
 <p>Finally, any occurrences of slash are replaced by Separator.</p>
 <p>If the result of this process is an empty string, Clean
 returns the string &quot;.&quot;.</p>
-<p>See also Rob Pike, ``Lexical File Names in Plan 9 or
-Getting Dot-Dot Right,&#39;&#39;
+<p>See also Rob Pike, “Lexical File Names in Plan 9 or
+Getting Dot-Dot Right,”
 <a href="https://9p.io/sys/doc/lexnames.html">https://9p.io/sys/doc/lexnames.html</a></p>
 </div>
 <div class="tsd-parameters">
@@ -46,7 +56,7 @@ Getting Dot-Dot Right,&#39;&#39;
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/955b427c/jsvm/types.d.ts#L2293">types.d.ts:2293</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/f7c0757b/jsvm/types.d.ts#L2369">types.d.ts:2369</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -185,6 +195,7 @@ Getting Dot-Dot Right,&#39;&#39;
 <li><a href="../classes/CollectionUpsertForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Collection<wbr/>Upsert<wbr/>Form</span></a></li>
 <li><a href="../classes/CollectionsImportForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Collections<wbr/>Import<wbr/>Form</span></a></li>
 <li><a href="../classes/Command.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Command</span></a></li>
+<li><a href="../classes/Cookie.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Cookie</span></a></li>
 <li><a href="../classes/Dao.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Dao</span></a></li>
 <li><a href="../classes/DateTime.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Date<wbr/>Time</span></a></li>
 <li><a href="../classes/DynamicModel.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Dynamic<wbr/>Model</span></a></li>
@@ -204,6 +215,7 @@ Getting Dot-Dot Right,&#39;&#39;
 <li><a href="../classes/Schema-1.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Schema</span></a></li>
 <li><a href="../classes/SchemaField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Schema<wbr/>Field</span></a></li>
 <li><a href="../classes/SettingsUpsertForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Settings<wbr/>Upsert<wbr/>Form</span></a></li>
+<li><a href="../classes/SubscriptionMessage.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Subscription<wbr/>Message</span></a></li>
 <li><a href="../classes/TestEmailSendForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Test<wbr/>Email<wbr/>Send<wbr/>Form</span></a></li>
 <li><a href="../classes/TestS3FilesystemForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Test<wbr/>S3<wbr/>Filesystem<wbr/>Form</span></a></li>
 <li><a href="../classes/UnauthorizedError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Unauthorized<wbr/>Error</span></a></li>

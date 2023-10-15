@@ -31,7 +31,7 @@ has returned.</p>
 <h4 class="tsd-before-signature">Indexable</h4>
 <div class="tsd-signature"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/955b427c/jsvm/types.d.ts#L10277">types.d.ts:10277</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/f7c0757b/jsvm/types.d.ts#L8494">types.d.ts:8494</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -54,8 +54,8 @@ has returned.</p>
 WriteHeader. The Header map also is the mechanism with which
 Handlers can set HTTP trailers.</p>
 <p>Changing the header map after a call to WriteHeader (or
-Write) has no effect unless the modified headers are
-trailers.</p>
+Write) has no effect unless the HTTP status code was of the
+1xx class or the modified headers are trailers.</p>
 <p>There are two ways to set Trailers. The preferred way is to
 predeclare in the headers which trailers you will later
 send by setting the &quot;Trailer&quot; header to the names of the
@@ -71,7 +71,7 @@ their value to nil.</p>
 <h4 class="tsd-returns-title">Returns <a href="http.Header.html" class="tsd-signature-type tsd-kind-interface">Header</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/955b427c/jsvm/types.d.ts#L10301">types.d.ts:10301</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/f7c0757b/jsvm/types.d.ts#L8518">types.d.ts:8518</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="write" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write</span><a href="#write" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -101,11 +101,11 @@ possible to maximize compatibility.</p>
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">_arg0</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h5><span class="tsd-kind-parameter">_arg0</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/955b427c/jsvm/types.d.ts#L10325">types.d.ts:10325</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/f7c0757b/jsvm/types.d.ts#L8542">types.d.ts:8542</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="writeHeader" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write<wbr/>Header</span><a href="#writeHeader" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -116,12 +116,16 @@ status code.</p>
 <p>If WriteHeader is not called explicitly, the first call to Write
 will trigger an implicit WriteHeader(http.StatusOK).
 Thus explicit calls to WriteHeader are mainly used to
-send error codes.</p>
+send error codes or 1xx informational responses.</p>
 <p>The provided code must be a valid HTTP 1xx-5xx status code.
-Only one header may be written. Go does not currently
-support sending user-defined 1xx informational headers,
-with the exception of 100-continue response header that the
-Server sends automatically when the Request.Body is read.</p>
+Any number of 1xx headers may be written, followed by at most
+one 2xx-5xx header. 1xx headers are sent immediately, but 2xx-5xx
+headers may be buffered. Use the Flusher interface to send
+buffered data. The header map is cleared when 2xx-5xx headers are
+sent, but not with 1xx headers.</p>
+<p>The server will automatically send a 100 (Continue) header
+on the first read from the request body if the request has
+an &quot;Expect: 100-continue&quot; header.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -131,7 +135,7 @@ Server sends automatically when the Request.Body is read.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/955b427c/jsvm/types.d.ts#L10341">types.d.ts:10341</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/f7c0757b/jsvm/types.d.ts#L8563">types.d.ts:8563</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -277,6 +281,7 @@ Server sends automatically when the Request.Body is read.</p>
 <li><a href="../classes/CollectionUpsertForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Collection<wbr/>Upsert<wbr/>Form</span></a></li>
 <li><a href="../classes/CollectionsImportForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Collections<wbr/>Import<wbr/>Form</span></a></li>
 <li><a href="../classes/Command.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Command</span></a></li>
+<li><a href="../classes/Cookie.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Cookie</span></a></li>
 <li><a href="../classes/Dao.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Dao</span></a></li>
 <li><a href="../classes/DateTime.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Date<wbr/>Time</span></a></li>
 <li><a href="../classes/DynamicModel.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Dynamic<wbr/>Model</span></a></li>
@@ -296,6 +301,7 @@ Server sends automatically when the Request.Body is read.</p>
 <li><a href="../classes/Schema-1.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Schema</span></a></li>
 <li><a href="../classes/SchemaField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Schema<wbr/>Field</span></a></li>
 <li><a href="../classes/SettingsUpsertForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Settings<wbr/>Upsert<wbr/>Form</span></a></li>
+<li><a href="../classes/SubscriptionMessage.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Subscription<wbr/>Message</span></a></li>
 <li><a href="../classes/TestEmailSendForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Test<wbr/>Email<wbr/>Send<wbr/>Form</span></a></li>
 <li><a href="../classes/TestS3FilesystemForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Test<wbr/>S3<wbr/>Filesystem<wbr/>Form</span></a></li>
 <li><a href="../classes/UnauthorizedError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Unauthorized<wbr/>Error</span></a></li>

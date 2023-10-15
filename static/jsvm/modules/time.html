@@ -19,8 +19,7 @@
 <div class="tsd-comment tsd-typography"><p>Package time provides functionality for measuring and displaying time.</p>
 <p>The calendrical calculations always assume a Gregorian calendar, with
 no leap seconds.</p>
-<p>Monotonic Clocks</p>
-<p>Operating systems provide both a “wall clock,” which is subject to
+<a id="md:monotonic-clocks" class="tsd-anchor"></a><h1><a href="#md:monotonic-clocks">Monotonic Clocks</a></h1><p>Operating systems provide both a “wall clock,” which is subject to
 changes for clock synchronization, and a “monotonic clock,” which is
 not. The general rule is that the wall clock is for telling time and
 the monotonic clock is for measuring time. Rather than split the API,
@@ -64,6 +63,9 @@ constructors time.Date, time.Parse, time.ParseInLocation, and time.Unix,
 as well as the unmarshalers t.GobDecode, t.UnmarshalBinary.
 t.UnmarshalJSON, and t.UnmarshalText always create times with
 no monotonic clock reading.</p>
+<p>The monotonic clock reading exists only in Time values. It is not
+a part of Duration values or the Unix times returned by t.Unix and
+friends.</p>
 <p>Note that the Go == operator compares not just the time instant but
 also the Location and the monotonic clock reading. See the
 documentation for the Time type for a discussion of equality
@@ -74,8 +76,8 @@ that difference will be visible when printing t.String() and u.String().</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/955b427c/jsvm/types.d.ts#L6710">types.d.ts:6710</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/955b427c/jsvm/types.d.ts#L13974">types.d.ts:13974</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/f7c0757b/jsvm/types.d.ts#L6875">types.d.ts:6875</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/f7c0757b/jsvm/types.d.ts#L14284">types.d.ts:14284</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
@@ -98,7 +100,14 @@ that difference will be visible when printing t.String() and u.String().</p>
 <ul id="tsd-filter-options">
 <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></form></div>
 <div class="tsd-theme-toggle">
-<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div></div>
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg>On This Page</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li>
+<ul>
+<li><a href="#md:monotonic-clocks"><span>Monotonic <wbr/>Clocks</span></a></li></ul></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>Pocket<wbr/>Base JSVM reference</span></a>
 <ul class="tsd-small-nested-navigation">
@@ -225,6 +234,7 @@ that difference will be visible when printing t.String() and u.String().</p>
 <li><a href="../classes/CollectionUpsertForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Collection<wbr/>Upsert<wbr/>Form</span></a></li>
 <li><a href="../classes/CollectionsImportForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Collections<wbr/>Import<wbr/>Form</span></a></li>
 <li><a href="../classes/Command.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Command</span></a></li>
+<li><a href="../classes/Cookie.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Cookie</span></a></li>
 <li><a href="../classes/Dao.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Dao</span></a></li>
 <li><a href="../classes/DateTime.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Date<wbr/>Time</span></a></li>
 <li><a href="../classes/DynamicModel.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Dynamic<wbr/>Model</span></a></li>
@@ -244,6 +254,7 @@ that difference will be visible when printing t.String() and u.String().</p>
 <li><a href="../classes/Schema-1.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Schema</span></a></li>
 <li><a href="../classes/SchemaField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Schema<wbr/>Field</span></a></li>
 <li><a href="../classes/SettingsUpsertForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Settings<wbr/>Upsert<wbr/>Form</span></a></li>
+<li><a href="../classes/SubscriptionMessage.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Subscription<wbr/>Message</span></a></li>
 <li><a href="../classes/TestEmailSendForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Test<wbr/>Email<wbr/>Send<wbr/>Form</span></a></li>
 <li><a href="../classes/TestS3FilesystemForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Test<wbr/>S3<wbr/>Filesystem<wbr/>Form</span></a></li>
 <li><a href="../classes/UnauthorizedError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Unauthorized<wbr/>Error</span></a></li>
