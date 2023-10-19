@@ -87,7 +87,7 @@
     language="javascript"
     content={`
         // retrieve a single "articles" collection record by its id
-        const recorr = $app.dao().findRecordById("articles", "RECORD_ID")
+        const record = $app.dao().findRecordById("articles", "RECORD_ID")
 
         // retrieve a single "articles" collection record by a single key-value pair
         const record = $app.dao().findFirstRecordByData("articles", "slug", "test")
