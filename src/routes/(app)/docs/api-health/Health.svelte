@@ -10,6 +10,9 @@
                 {
                   "code": 200,
                   "message": "API is healthy.",
+                  "data": {
+                    "canBackup": false
+                  }
                 }
             `,
         },
