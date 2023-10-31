@@ -28,7 +28,7 @@
         if you don't intend to write too much custom code and want a quick way to explore the PocketBase capabilities.
     </strong>
     The embedded JavaScript engine is a pluggable wrapper around the existing Go APIs, so most of the time the
-    slight performance penalty will be negliable because it'll invoke the Go functions under the hood.
+    slight performance penalty will be negligible because it'll invoke the Go functions under the hood.
     <br />
     As a bonus, because the JS VM mirrors the Go APIs, you would be able migrate gradually without much code changes
     from JS -> Go at later stage in case you hit a bottleneck or want more control over the execution flow.
