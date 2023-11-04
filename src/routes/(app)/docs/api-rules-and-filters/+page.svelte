@@ -156,7 +156,7 @@
 <HeadingLink title="Special identifiers and modifiers" />
 
 <HeadingLink title="@ macros" tag="h5" />
-<p>The following datetime macros are available and can be used as part of filter expression:</p>
+<p>The following datetime macros are available and can be used as part of the filter expression:</p>
 <CodeBlock
     language="html"
     content={`

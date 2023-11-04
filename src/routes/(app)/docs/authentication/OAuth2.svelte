@@ -81,6 +81,9 @@
                     // Once the external OAuth2 sign-in/sign-up flow is completed, the popup
                     // window will be automatically closed and the OAuth2 data sent back
                     // to the user through the previously established realtime connection.
+                    //
+                    // If the popup is being blocked on Safari, you can try the suggestion from:
+                    // https://github.com/pocketbase/pocketbase/discussions/2429#discussioncomment-5943061.
                     const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' });
 
                     // after the above you can also access the auth data from the authStore

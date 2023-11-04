@@ -104,8 +104,8 @@
     </li>
 </ul>
 
-<p>
-    To group and combine several expressions you could use brackets
+<p class="txt-bold">
+    To group and combine several expressions you could use parenthesis
     <code>(...)</code>, <code>&&</code> (AND) and <code>||</code> (OR) tokens.
 </p>
 
