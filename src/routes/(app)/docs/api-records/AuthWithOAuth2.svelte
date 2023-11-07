@@ -75,7 +75,7 @@
 
             ...
 
-            const authData = await pb.collection('users').authWithOAuth2(
+            const authData = await pb.collection('users').authWithOAuth2Code(
                 'google',
                 'CODE',
                 'VERIFIER',
@@ -101,7 +101,7 @@
 
             ...
 
-            final authData = await pb.collection('users').authWithOAuth2(
+            final authData = await pb.collection('users').authWithOAuth2Code(
               'google',
               'CODE',
               'VERIFIER',
