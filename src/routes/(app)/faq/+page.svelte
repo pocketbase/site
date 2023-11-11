@@ -16,17 +16,6 @@
             </p>
             <ul>
                 <li>
-                    <a href="https://hop.io/" target="_blank" rel="noreferrer noopener">Hop.io</a> - see also
-                    <a
-                        href="https://github.com/pocketbase/pocketbase/discussions/2856"
-                        target="_blank"
-                        rel="noreferrer noopener"
-                    >
-                        <strong>Host for free on Hop.io</strong>
-                    </a>
-                    guide (<em>the free tier comes with 1vCPU, 512MB RAM and 3GB disk storage</em>)
-                </li>
-                <li>
                     <a href="https://fly.io/" target="_blank" rel="noreferrer noopener">Fly.io</a> - see also
                     <a
                         href="https://github.com/pocketbase/pocketbase/discussions/537"

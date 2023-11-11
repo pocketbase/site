@@ -201,15 +201,7 @@
         >
             "Host for free on Fly.io"
         </a>
-        or
-        <a
-            href="https://github.com/pocketbase/pocketbase/discussions/2856"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            "Host for free on Hop.io"
-        </a>
-        guides.
+        guide.
     </em>
 </p>
 
