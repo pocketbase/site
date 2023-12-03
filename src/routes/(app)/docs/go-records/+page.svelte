@@ -166,12 +166,7 @@
         ...
 
         func FindActiveArticles(dao *daos.Dao) ([]*models.Record, error) {
-            collection, err := dao.FindCollectionByNameOrId("articles")
-            if err != nil {
-                return nil, err
-            }
-
-            query := dao.RecordQuery(collection).
+            query := dao.RecordQuery("articles").
                 AndWhere(dbx.HashExp{"status": "active"}).
                 OrderBy("published DESC").
                 Limit(10)
