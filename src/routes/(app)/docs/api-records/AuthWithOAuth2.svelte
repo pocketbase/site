@@ -33,6 +33,7 @@
                     "rawUser": {...},
                     "accessToken": "..."
                     "refreshToken": "..."
+                    "expiry": "..."
                   }
                 }
             `,
