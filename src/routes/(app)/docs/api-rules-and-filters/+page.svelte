@@ -133,7 +133,7 @@
             </li>
             <li>
                 <code>@request.auth.*</code> - the current authenticated model (eg.
-                <code>@request.auth.id != ''</code>)
+                <code>@request.auth.id != ""</code>)
             </li>
         </ul>
     </li>
@@ -220,7 +220,7 @@
         @request.data.someSelectField:each ~ "create"
 
         // check if all existing someSelectField has "pb_" prefix
-        someSelectField:each ~ 'pb_%'
+        someSelectField:each ~ "pb_%"
     `}
 />
 
