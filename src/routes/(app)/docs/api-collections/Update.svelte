@@ -498,6 +498,21 @@
             <tr>
                 <td class="min-width">
                     <div class="inline-flex flex-nowrap">
+                        <span class="txt">├─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>onlyVerified</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">Boolean</span>
+                </td>
+                <td>
+                    If enabled, it will return 403 for any new auth request performed by unverified user.
+                </td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
                         <span class="txt">└─</span>
                         <span class="label label-warning">Optional</span>
                         <em>minPasswordLength</em>

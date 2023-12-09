@@ -608,7 +608,7 @@
                 class="list-item"
                 use:tooltip={"View Dart SDK"}
             >
-                <img src="/images/flutter_logo.png?v1" alt="Flutter logo" width="41" height="50" />
+                <img src="/images/flutter_logo.svg?v2" alt="Flutter logo" width="40" height="50" />
             </a>
             <a
                 href={import.meta.env.PB_JS_SDK_URL}
@@ -617,7 +617,7 @@
                 class="list-item"
                 use:tooltip={"View JavaScript SDK"}
             >
-                <img src="/images/svelte_logo.png?v1" alt="Svelte logo" width="42" height="50" />
+                <img src="/images/svelte_logo.svg?v2" alt="Svelte logo" width="41" height="50" />
             </a>
             <a
                 href={import.meta.env.PB_JS_SDK_URL}
@@ -626,7 +626,7 @@
                 class="list-item"
                 use:tooltip={"View JavaScript SDK"}
             >
-                <img src="/images/vue_logo.png?v1" alt="Vue logo" width="53" height="46" />
+                <img src="/images/vue_logo.svg?v2" alt="Vue logo" width="53" height="46" />
             </a>
             <a
                 href={import.meta.env.PB_JS_SDK_URL}
@@ -635,7 +635,7 @@
                 class="list-item"
                 use:tooltip={"View JavaScript SDK"}
             >
-                <img src="/images/react_logo.png?v1" alt="React logo" width="58" height="50" />
+                <img src="/images/react_logo.svg?v2" alt="React logo" width="57" height="51" />
             </a>
             <a
                 href={import.meta.env.PB_JS_SDK_URL}
@@ -644,7 +644,7 @@
                 class="list-item"
                 use:tooltip={"View JavaScript SDK"}
             >
-                <img src="/images/angular_logo.png?v1" alt="Angular logo" width="47" height="50" />
+                <img src="/images/angular_logo.svg?v2" alt="Angular logo" width="47" height="50" />
             </a>
         </div>
     </section>

@@ -20,10 +20,10 @@
 <p>Get, Head, Post, and PostForm make HTTP (or HTTPS) requests:</p>
 <pre><code><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">Get</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com/&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-1">...</span><br/><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">Post</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com/upload&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;image/jpeg&quot;</span><span class="hl-0">, </span><span class="hl-1">&amp;</span><span class="hl-0">buf)</span><br/><span class="hl-0"> </span><span class="hl-1">...</span><br/><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">PostForm</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com/form&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">   url.Values{</span><span class="hl-3">&quot;key&quot;</span><span class="hl-0">: {</span><span class="hl-3">&quot;Value&quot;</span><span class="hl-0">}, </span><span class="hl-3">&quot;id&quot;</span><span class="hl-0">: {</span><span class="hl-3">&quot;123&quot;</span><span class="hl-0">}})</span>
 </code><button>Copy</button></pre>
-<p>The client must close the response body when finished with it:</p>
+<p>The caller must close the response body when finished with it:</p>
 <pre><code><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">Get</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com/&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-1">if</span><span class="hl-0"> err </span><span class="hl-1">!=</span><span class="hl-0"> nil {</span><br/><span class="hl-0">   </span><span class="hl-5">// handle error</span><br/><span class="hl-0"> }</span><br/><span class="hl-0"> defer resp.Body.</span><span class="hl-2">Close</span><span class="hl-0">()</span><br/><span class="hl-0"> body, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> io.</span><span class="hl-2">ReadAll</span><span class="hl-0">(resp.Body)</span><br/><span class="hl-0"> </span><span class="hl-5">// ...</span>
 </code><button>Copy</button></pre>
-<p>For control over HTTP client headers, redirect policy, and other
+<a id="md:clients-and-transports" class="tsd-anchor"></a><h1><a href="#md:clients-and-transports">Clients and Transports</a></h1><p>For control over HTTP client headers, redirect policy, and other
 settings, create a Client:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> </span><span class="hl-1">&amp;</span><span class="hl-0">http.Client{</span><br/><span class="hl-0">   </span><span class="hl-2">CheckRedirect</span><span class="hl-0">: redirectPolicyFunc,</span><br/><span class="hl-0"> }</span><br/><br/><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> client.</span><span class="hl-2">Get</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-5">// ...</span><br/><br/><span class="hl-0"> req, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">NewRequest</span><span class="hl-0">(</span><span class="hl-3">&quot;GET&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;http://example.com&quot;</span><span class="hl-0">, nil)</span><br/><span class="hl-0"> </span><span class="hl-5">// ...</span><br/><span class="hl-0"> req.Header.</span><span class="hl-2">Add</span><span class="hl-0">(</span><span class="hl-3">&quot;If-None-Match&quot;</span><span class="hl-0">, </span><span class="hl-3">`W/&quot;wyzzy&quot;`</span><span class="hl-0">)</span><br/><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> client.</span><span class="hl-2">Do</span><span class="hl-0">(req)</span><br/><span class="hl-0"> </span><span class="hl-5">// ...</span>
 </code><button>Copy</button></pre>
@@ -33,7 +33,7 @@ compression, and other settings, create a Transport:</p>
 </code><button>Copy</button></pre>
 <p>Clients and Transports are safe for concurrent use by multiple
 goroutines and for efficiency should only be created once and re-used.</p>
-<p>ListenAndServe starts an HTTP server with a given address and handler.
+<a id="md:servers" class="tsd-anchor"></a><h1><a href="#md:servers">Servers</a></h1><p>ListenAndServe starts an HTTP server with a given address and handler.
 The handler is usually nil, which means to use DefaultServeMux.
 Handle and HandleFunc add handlers to DefaultServeMux:</p>
 <pre><code><span class="hl-0"> http.</span><span class="hl-2">Handle</span><span class="hl-0">(</span><span class="hl-3">&quot;/foo&quot;</span><span class="hl-0">, fooHandler)</span><br/><br/><span class="hl-0"> http.</span><span class="hl-2">HandleFunc</span><span class="hl-0">(</span><span class="hl-3">&quot;/bar&quot;</span><span class="hl-0">, </span><span class="hl-2">func</span><span class="hl-0">(w http.ResponseWriter, r </span><span class="hl-1">*</span><span class="hl-0">http.Request) {</span><br/><span class="hl-0">   fmt.Fprintf(w, </span><span class="hl-3">&quot;Hello, %q&quot;</span><span class="hl-0">, html.EscapeString(r.URL.Path))</span><br/><span class="hl-0"> })</span><br/><br/><span class="hl-0"> log.</span><span class="hl-2">Fatal</span><span class="hl-0">(http.</span><span class="hl-2">ListenAndServe</span><span class="hl-0">(</span><span class="hl-3">&quot;:8080&quot;</span><span class="hl-0">, nil))</span>
@@ -42,17 +42,15 @@ Handle and HandleFunc add handlers to DefaultServeMux:</p>
 custom Server:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-2">s</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> </span><span class="hl-1">&amp;</span><span class="hl-0">http.Server{</span><br/><span class="hl-0">   </span><span class="hl-2">Addr</span><span class="hl-0">:           </span><span class="hl-3">&quot;:8080&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">   </span><span class="hl-2">Handler</span><span class="hl-0">:        myHandler,</span><br/><span class="hl-0">   </span><span class="hl-2">ReadTimeout</span><span class="hl-0">:    </span><span class="hl-4">10</span><span class="hl-0"> </span><span class="hl-1">*</span><span class="hl-0"> time.Second,</span><br/><span class="hl-0">   </span><span class="hl-2">WriteTimeout</span><span class="hl-0">:   </span><span class="hl-4">10</span><span class="hl-0"> </span><span class="hl-1">*</span><span class="hl-0"> time.Second,</span><br/><span class="hl-0">   </span><span class="hl-2">MaxHeaderBytes</span><span class="hl-0">: </span><span class="hl-4">1</span><span class="hl-0"> </span><span class="hl-1">&lt;&lt;</span><span class="hl-0"> </span><span class="hl-4">20</span><span class="hl-0">,</span><br/><span class="hl-0"> }</span><br/><span class="hl-0"> log.</span><span class="hl-2">Fatal</span><span class="hl-0">(s.</span><span class="hl-2">ListenAndServe</span><span class="hl-0">())</span>
 </code><button>Copy</button></pre>
-<p>Starting with Go 1.6, the http package has transparent support for the
+<a id="md:http2" class="tsd-anchor"></a><h1><a href="#md:http2">HTTP/2</a></h1><p>Starting with Go 1.6, the http package has transparent support for the
 HTTP/2 protocol when using HTTPS. Programs that must disable HTTP/2
 can do so by setting Transport.TLSNextProto (for clients) or
 Server.TLSNextProto (for servers) to a non-nil, empty
-map. Alternatively, the following GODEBUG environment variables are
+map. Alternatively, the following GODEBUG settings are
 currently supported:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-4">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">http2client</span><span class="hl-1">=</span><span class="hl-4">0</span><span class="hl-0">  # disable </span><span class="hl-4">HTTP</span><span class="hl-1">/</span><span class="hl-4">2</span><span class="hl-0"> client support</span><br/><span class="hl-0"> </span><span class="hl-4">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">http2server</span><span class="hl-1">=</span><span class="hl-4">0</span><span class="hl-0">  # disable </span><span class="hl-4">HTTP</span><span class="hl-1">/</span><span class="hl-4">2</span><span class="hl-0"> server support</span><br/><span class="hl-0"> </span><span class="hl-4">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">http2debug</span><span class="hl-1">=</span><span class="hl-4">1</span><span class="hl-0">   # enable verbose </span><span class="hl-4">HTTP</span><span class="hl-1">/</span><span class="hl-4">2</span><span class="hl-0"> debug logs</span><br/><span class="hl-0"> </span><span class="hl-4">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">http2debug</span><span class="hl-1">=</span><span class="hl-4">2</span><span class="hl-0">   # </span><span class="hl-1">...</span><span class="hl-0"> even more verbose, </span><span class="hl-1">with</span><span class="hl-0"> frame dumps</span>
 </code><button>Copy</button></pre>
-<p>The GODEBUG variables are not covered by Go&#39;s API compatibility
-promise. Please report any issues before disabling HTTP/2
-support: <a href="https://golang.org/s/http2bug">https://golang.org/s/http2bug</a></p>
+<p>Please report any issues before disabling HTTP/2 support: <a href="https://golang.org/s/http2bug">https://golang.org/s/http2bug</a></p>
 <p>The http package&#39;s Transport and Server both automatically enable
 HTTP/2 support for simple configurations. To enable HTTP/2 for more
 complex configurations, to use lower-level HTTP/2 features, or to use
@@ -64,9 +62,9 @@ support.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/79d3f6d5/jsvm/types.d.ts#L8114">types.d.ts:8114</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/79d3f6d5/jsvm/types.d.ts#L15328">types.d.ts:15328</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/79d3f6d5/jsvm/types.d.ts#L17514">types.d.ts:17514</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/7bec89cc/jsvm/types.d.ts#L8191">types.d.ts:8191</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/7bec89cc/jsvm/types.d.ts#L15605">types.d.ts:15605</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/7bec89cc/jsvm/types.d.ts#L18287">types.d.ts:18287</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
@@ -93,7 +91,16 @@ support.</p>
 <ul id="tsd-filter-options">
 <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></form></div>
 <div class="tsd-theme-toggle">
-<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div></div>
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg>On This Page</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li>
+<ul>
+<li><a href="#md:clients-and-transports"><span>Clients and <wbr/>Transports</span></a></li>
+<li><a href="#md:servers"><span>Servers</span></a></li>
+<li><a href="#md:http2"><span>HTTP/2</span></a></li></ul></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>Pocket<wbr/>Base JSVM reference</span></a>
 <ul class="tsd-small-nested-navigation">
@@ -301,6 +308,7 @@ support.</p>
 <li><a href="search.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>search</span></a></li>
 <li><a href="security.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>security</span></a></li>
 <li><a href="settings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>settings</span></a></li>
+<li><a href="slog.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>slog</span></a></li>
 <li><a href="sql.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>sql</span></a></li>
 <li><a href="store.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>store</span></a></li>
 <li><a href="subscriptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>subscriptions</span></a></li>

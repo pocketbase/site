@@ -135,6 +135,10 @@ export const goLinks = [
         title: "Rendering templates",
     },
     {
+        href: "/docs/go-logging",
+        title: "Logging",
+    },
+    {
         href: "/docs/go-testing",
         title: "Testing",
     },
@@ -192,6 +196,10 @@ export const jsLinks = [
     {
         href: "/docs/js-rendering-templates",
         title: "Rendering templates",
+    },
+    {
+        href: "/docs/js-logging",
+        title: "Logging",
     },
     {
         href:   "/jsvm/index.html",

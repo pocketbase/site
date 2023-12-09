@@ -133,19 +133,33 @@
             </li>
             <li>
                 <code>@request.auth.*</code> - the current authenticated model (eg.
-                <code>@request.auth.id != ''</code>)
+                <code>@request.auth.id != ""</code>)
             </li>
         </ul>
     </li>
     <li>
         <code><strong>@collection.*</strong></code>
-        <br />
-        This filter could be used to target other collections that are not directly related to the current one
-        (aka. there is no relation field pointing to it) but both shares a common field value, like for example
-        a category id:
+        <p>
+            This filter could be used to target other collections that are not directly related to the current
+            one (aka. there is no relation field pointing to it) but both shares a common field value, like
+            for example a category id:
+        </p>
         <CodeBlock
             content={`
                 @collection.news.categoryId ?= categoryId && @collection.news.author ?= @request.auth.id
+            `}
+        />
+        <p>
+            In case you want to join the same collection multiple times but based on different criteria, you
+            can define an alias by appending <code>:alias</code> suffix to the collection name.
+        </p>
+        <CodeBlock
+            content={`
+                // see https://github.com/pocketbase/pocketbase/discussions/3805#discussioncomment-7634791
+                @request.auth.id != "" &&
+                @collection.courseRegistrations.user ?= id &&
+                @collection.courseRegistrations:auth.user ?= @request.auth.id &&
+                @collection.courseRegistrations.courseGroup ?= @collection.courseRegistrations:auth.courseGroup
             `}
         />
     </li>
@@ -220,7 +234,7 @@
         @request.data.someSelectField:each ~ "create"
 
         // check if all existing someSelectField has "pb_" prefix
-        someSelectField:each ~ 'pb_%'
+        someSelectField:each ~ "pb_%"
     `}
 />
 

@@ -40,10 +40,13 @@ iteratively until no further processing can be done:</p>
 <pre><code><span class="hl-0">    that is, replace </span><span class="hl-3">&quot;/..&quot;</span><span class="hl-0"> by </span><span class="hl-3">&quot;/&quot;</span><span class="hl-0"> at the beginning </span><span class="hl-1">of</span><span class="hl-0"> a path,</span><br/><span class="hl-0">    assuming Separator is </span><span class="hl-3">&#39;/&#39;</span><span class="hl-0">.</span>
 </code><button>Copy</button></pre>
 <p>The returned path ends in a slash only if it represents a root directory,
-such as &quot;/&quot; on Unix or <code>C:</code> on Windows.</p>
+such as &quot;/&quot; on Unix or <code>C:\</code> on Windows.</p>
 <p>Finally, any occurrences of slash are replaced by Separator.</p>
 <p>If the result of this process is an empty string, Clean
 returns the string &quot;.&quot;.</p>
+<p>On Windows, Clean does not modify the volume name other than to replace
+occurrences of &quot;/&quot; with ``.
+For example, Clean(&quot;//host/share/../x&quot;) returns <code>\\host\share\x</code>.</p>
 <p>See also Rob Pike, “Lexical File Names in Plan 9 or
 Getting Dot-Dot Right,”
 <a href="https://9p.io/sys/doc/lexnames.html">https://9p.io/sys/doc/lexnames.html</a></p>
@@ -56,7 +59,7 @@ Getting Dot-Dot Right,”
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/79d3f6d5/jsvm/types.d.ts#L2386">types.d.ts:2386</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/7bec89cc/jsvm/types.d.ts#L4448">types.d.ts:4448</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -256,6 +259,7 @@ Getting Dot-Dot Right,”
 <li><a href="filepath.glob.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>glob</span></a></li>
 <li><a href="filepath.hasPrefix.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>has<wbr/>Prefix</span></a></li>
 <li><a href="filepath.isAbs.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>is<wbr/>Abs</span></a></li>
+<li><a href="filepath.isLocal.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>is<wbr/>Local</span></a></li>
 <li><a href="filepath.join.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>join</span></a></li>
 <li><a href="filepath.lazybuf.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>lazybuf</span></a></li>
 <li><a href="filepath.match.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>match</span></a></li>
@@ -289,6 +293,7 @@ Getting Dot-Dot Right,”
 <li><a href="../modules/search.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>search</span></a></li>
 <li><a href="../modules/security.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>security</span></a></li>
 <li><a href="../modules/settings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>settings</span></a></li>
+<li><a href="../modules/slog.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>slog</span></a></li>
 <li><a href="../modules/sql.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>sql</span></a></li>
 <li><a href="../modules/store.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>store</span></a></li>
 <li><a href="../modules/subscriptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>subscriptions</span></a></li>

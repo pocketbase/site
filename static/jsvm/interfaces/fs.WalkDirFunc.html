@@ -27,8 +27,10 @@ argument &quot;dir/a&quot;.</p>
 <p>The error result returned by the function controls how WalkDir
 continues. If the function returns the special value SkipDir, WalkDir
 skips the current directory (path if d.IsDir() is true, otherwise
-path&#39;s parent directory). Otherwise, if the function returns a non-nil
-error, WalkDir stops entirely and returns that error.</p>
+path&#39;s parent directory). If the function returns the special value
+SkipAll, WalkDir skips all remaining files and directories. Otherwise,
+if the function returns a non-nil error, WalkDir stops entirely and
+returns that error.</p>
 <p>The err argument reports an error related to path, signaling that
 WalkDir will not walk into that directory. The function can decide how
 to handle that error; as described earlier, returning the error will
@@ -43,11 +45,11 @@ fs.DirEntry describing the directory, and err set to the error from
 ReadDir. In this second case, the function is called twice with the
 path of the directory: the first call is before the directory read is
 attempted and has err set to nil, giving the function a chance to
-return SkipDir and avoid the ReadDir entirely. The second call is
-after a failed ReadDir and reports the error from ReadDir.
+return SkipDir or SkipAll and avoid the ReadDir entirely. The second call
+is after a failed ReadDir and reports the error from ReadDir.
 (If ReadDir succeeds, there is no second call.)</p>
 <p>The differences between WalkDirFunc compared to filepath.WalkFunc are:</p>
-<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> The second argument has </span><span class="hl-1">type</span><span class="hl-0"> </span><span class="hl-2">fs</span><span class="hl-0">.DirEntry instead of fs.FileInfo.</span><br/><span class="hl-0">  - The function is called before reading a directory, to allow SkipDir</span><br/><span class="hl-0">    to bypass the directory read entirely.</span><br/><span class="hl-0">  - If a directory read fails, the function is called a second time</span><br/><span class="hl-0">    for that directory to report the error.</span>
+<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> The second argument has </span><span class="hl-1">type</span><span class="hl-0"> </span><span class="hl-2">fs</span><span class="hl-0">.DirEntry instead of fs.FileInfo.</span><br/><span class="hl-0">  - The function is called before reading a directory, to allow SkipDir</span><br/><span class="hl-0">    or SkipAll to bypass the directory read entirely or skip all remaining</span><br/><span class="hl-0">    files and directories respectively.</span><br/><span class="hl-0">  - If a directory read fails, the function is called a second time</span><br/><span class="hl-0">    for that directory to report the error.</span>
 </code><button>Copy</button></pre>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
@@ -70,7 +72,7 @@ after a failed ReadDir and reports the error from ReadDir.
 <h5><span class="tsd-kind-parameter">err</span>: <span class="tsd-signature-type ">Error</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/79d3f6d5/jsvm/types.d.ts#L7738">types.d.ts:7738</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/7bec89cc/jsvm/types.d.ts#L8025">types.d.ts:8025</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -288,6 +290,7 @@ after a failed ReadDir and reports the error from ReadDir.
 <li><a href="../modules/search.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>search</span></a></li>
 <li><a href="../modules/security.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>security</span></a></li>
 <li><a href="../modules/settings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>settings</span></a></li>
+<li><a href="../modules/slog.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>slog</span></a></li>
 <li><a href="../modules/sql.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>sql</span></a></li>
 <li><a href="../modules/store.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>store</span></a></li>
 <li><a href="../modules/subscriptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>subscriptions</span></a></li>

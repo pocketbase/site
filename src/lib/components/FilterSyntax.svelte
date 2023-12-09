@@ -109,6 +109,8 @@
     <code>(...)</code>, <code>&&</code> (AND) and <code>||</code> (OR) tokens.
 </p>
 
+<p>Single line comments are also supported: <code>// Example comment</code>.</p>
+
 <style>
     .filter-op {
         display: inline-block;
