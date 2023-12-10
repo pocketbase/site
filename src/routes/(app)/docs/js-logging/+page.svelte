@@ -21,7 +21,8 @@
     <a href="/jsvm/interfaces/slog.Logger.html" target="_blank" rel="noopener noreferrer">
         <code>slog.Logger</code>
     </a>
-    methods are available but below is a list with some of the most notable ones.
+    methods are available but below is a list with some of the most notable ones. Note that attributes are represented
+    as key-value pair arguments.
 </p>
 
 <HeadingLink title="debug(message, attrs...)" tag="h5" />

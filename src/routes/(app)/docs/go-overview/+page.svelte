@@ -10,7 +10,7 @@
 <p>To get started:</p>
 <ol start="0">
     <li>
-        <a href="https://go.dev/doc/install" target="_blank" rel="noreferrer noopener">Install Go 1.18+</a>
+        <a href="https://go.dev/doc/install" target="_blank" rel="noreferrer noopener">Install Go 1.21+</a>
     </li>
     <li>
         <p>

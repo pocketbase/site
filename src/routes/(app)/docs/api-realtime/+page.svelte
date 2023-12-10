@@ -151,12 +151,23 @@
                         <span class="label">{"Array<String>"}</span>
                     </td>
                     <td>
-                        The new client subscriptions to set in the format:
-                        <br />
-                        <code>COLLECTION_ID_OR_NAME</code> or
-                        <code>COLLECTION_ID_OR_NAME/RECORD_ID</code>.
-                        <br />
-                        Leave empty to unsubscribe from everything.
+                        <p>
+                            The new client subscriptions to set in the format:
+                            <br />
+                            <code>COLLECTION_ID_OR_NAME</code> or
+                            <code>COLLECTION_ID_OR_NAME/RECORD_ID</code>.
+                        </p>
+                        <p>
+                            You can also attach optional query and header parameters as serialized json to a
+                            single topic using the <code>options</code>
+                            query parameter, eg.:
+                            <CodeBlock
+                                content={`
+                            COLLECTION_ID_OR_NAME/RECORD_ID?options={"query": {"abc": "123"}, "headers": {"x-token": "..."}}
+                            `}
+                            />
+                        </p>
+                        <p>Leave empty to unsubscribe from everything.</p>
                     </td>
                 </tr>
             </tbody>
@@ -209,13 +220,15 @@
         pb.collection('example').subscribe('*', function (e) {
             console.log(e.action);
             console.log(e.record);
-        });
+        }, { /* other options like expand, custom headers, etc. */ });
+
 
         // Subscribe to changes only in the specified record
         pb.collection('example').subscribe('RECORD_ID', function (e) {
             console.log(e.action);
             console.log(e.record);
-        });
+        }, { /* other options like expand, custom headers, etc. */ });
+
 
         // Unsubscribe
         pb.collection('example').unsubscribe('RECORD_ID'); // remove all 'RECORD_ID' subscriptions
@@ -236,13 +249,15 @@
         pb.collection('example').subscribe('*', (e) {
             print(e.action);
             print(e.record);
-        });
+        }, /* other options like expand, custom headers, etc. */);
+
 
         // Subscribe to changes only in the specified record
         pb.collection('example').subscribe('RECORD_ID', (e) {
             print(e.action);
             print(e.record);
-        });
+        }, /* other options like expand, custom headers, etc. */);
+
 
         // Unsubscribe
         pb.collection('example').unsubscribe('RECORD_ID'); // remove all 'RECORD_ID' subscriptions
