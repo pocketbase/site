@@ -77,7 +77,7 @@
             await pb.admins.authWithPassword('test@example.com', '123456');
 
             const stats = await pb.logs.getStats({
-                filter: 'status >= 400'
+                filter: 'data.status >= 400'
             });
         `}
         dart={`
@@ -90,7 +90,7 @@
             await pb.admins.authWithPassword('test@example.com', '123456');
 
             final stats = await pb.logs.getStats(
-                filter: 'status >= 400'
+                filter: 'data.status >= 400'
             );
         `}
     />
