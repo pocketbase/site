@@ -9,18 +9,23 @@
             code: 200,
             body: `
                 {
-                  "id": "WEiJHGnOnjS3see",
-                  "created": "2022-06-01 13:09:43.429Z",
-                  "updated": "2022-06-01 13:09:43.429Z",
-                  "url": "/api/collections/users/auth-methods",
-                  "method": "get",
-                  "status": 200,
-                  "auth": "guest",
-                  "remoteIp": "127.0.0.1:56134",
-                  "userIp": "127.0.0.1:56134",
-                  "referer": "http://127.0.0.1:8090/",
-                  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-                  "meta": {}
+                  "id": "twjnabervu5log8",
+                  "created": "2023-12-10 19:56:29.556Z",
+                  "updated": "2023-12-10 19:56:29.556Z",
+                  "data": {
+                    "auth": "guest",
+                    "execTime": 0.66452,
+                    "method": "GET",
+                    "referer": "http://localhost:8090/",
+                    "remoteIp": "127.0.0.1",
+                    "status": 200,
+                    "type": "request",
+                    "url": "/api/collections/users/auth-methods",
+                    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+                    "userIp": "127.0.0.1"
+                  },
+                  "message": "GET /api/collections/users/auth-methods",
+                  "level": 0
                 }
             `,
         },
@@ -59,9 +64,9 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single title="View request log">
+<Accordion single title="View log">
     <div class="content m-b-sm">
-        <p>Returns a single request log by its ID.</p>
+        <p>Returns a single log by its ID.</p>
         <p>Only admins can access this action.</p>
     </div>
 
@@ -75,7 +80,7 @@
 
             await pb.admins.authWithEmail('test@example.com', '123456');
 
-            const log = await pb.logs.getRequest('REQUEST_ID');
+            const log = await pb.logs.getOne('LOG_ID');
         `}
         dart={`
             import 'package:pocketbase/pocketbase.dart';
@@ -86,13 +91,13 @@
 
             await pb.admins.authWithEmail('test@example.com', '123456');
 
-            final log = await pb.logs.getRequest('REQUEST_ID');
+            final log = await pb.logs.getOne('LOG_ID');
         `}
     />
 
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
-        <div class="content">/api/logs/requests/<code>id</code></div>
+        <div class="content">/api/logs/<code>id</code></div>
         <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
     </div>
 
@@ -111,7 +116,7 @@
                 <td>
                     <span class="label">String</span>
                 </td>
-                <td>ID of the Request log to view.</td>
+                <td>ID of the log to view.</td>
             </tr>
         </tbody>
     </table>

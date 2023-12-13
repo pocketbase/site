@@ -60,9 +60,9 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single title="Request logs statistics">
+<Accordion single title="Logs statistics">
     <div class="content m-b-sm">
-        <p>Returns hourly aggregated request logs statistics.</p>
+        <p>Returns hourly aggregated logs statistics.</p>
         <p>Only admins can access this action.</p>
     </div>
 
@@ -76,7 +76,7 @@
 
             await pb.admins.authWithPassword('test@example.com', '123456');
 
-            const stats = await pb.logs.getRequestsStats({
+            const stats = await pb.logs.getStats({
                 filter: 'status >= 400'
             });
         `}
@@ -89,7 +89,7 @@
 
             await pb.admins.authWithPassword('test@example.com', '123456');
 
-            final stats = await pb.logs.getRequestsStats(
+            final stats = await pb.logs.getStats(
                 filter: 'status >= 400'
             );
         `}
@@ -97,7 +97,7 @@
 
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
-        <div class="content">/api/logs/requests/stats</div>
+        <div class="content">/api/logs/stats</div>
         <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
     </div>
 
@@ -118,17 +118,17 @@
                 </td>
                 <td>
                     <div class="content">
-                        <p>Filter expression to filter/search the request logs, eg.:</p>
+                        <p>Filter expression to filter/search the logs, eg.:</p>
                         <CodeBlock
                             content={`
-                                ?filter=(url~'test.com' && created>'2022-01-01')
+                                ?filter=(data.url~'test.com' && level>0)
                             `}
                         />
                         <p>
-                            <strong>Supported request log filter fields:</strong> <br />
-                            <code>rowid</code>, <code>id</code>, <code>created</code>, <code>updated</code>,
-                            <code>url</code>, <code>method</code>, <code>status</code>, <code>auth</code>,
-                            <code>ip</code>, <code>referer</code>, <code>userAgent</code>
+                            <strong>Supported log filter fields:</strong> <br />
+                            <code>rowid</code>, <code>id</code>, <code>created</code>,
+                            <code>updated</code>, <code>level</code>, <code>message</code> and any
+                            <code>data.*</code> attribute.
                         </p>
                         <FilterSyntax />
                     </div>

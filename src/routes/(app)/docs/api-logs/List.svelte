@@ -12,48 +12,45 @@
                 {
                   "page": 1,
                   "perPage": 20,
-                  "totalItems": 3,
+                  "totalItems": 2,
                   "items": [
                     {
-                      "id": "ox0A8SjBXcdoZC0",
-                      "created": "2022-06-01 13:11:23.302Z",
-                      "updated": "2022-06-01 13:11:23.302Z",
-                      "url": "/api/users/auth-methods",
-                      "method": "get",
-                      "status": 200,
-                      "auth": "guest",
-                      "ip": "127.0.0.1:48272",
-                      "referer": "http://127.0.0.1:8090/",
-                      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-                      "meta": {}
+                      "id": "9ajmzgd99r039k9",
+                      "created": "2023-12-12 04:41:59.973Z",
+                      "updated": "2023-12-12 04:41:59.973Z",
+                      "data": {
+                        "auth": "authRecord",
+                        "execTime": 364.961387,
+                        "method": "POST",
+                        "referer": "http://localhost:8090/",
+                        "remoteIp": "127.0.0.1",
+                        "status": 200,
+                        "type": "request",
+                        "url": "/api/collections/users/auth-with-password",
+                        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+                        "userIp": "127.0.0.1"
+                      },
+                      "message": "POST /api/collections/users/auth-with-password",
+                      "level": 0
                     },
                     {
-                      "id": "elLzrW94D54Hxhj",
-                      "created": "2022-06-01 13:10:03.374Z",
-                      "updated": "2022-06-01 13:10:03.374Z",
-                      "url": "/api/users/auth-methods",
-                      "method": "get",
-                      "status": 200,
-                      "auth": "guest",
-                      "remoteIp": "127.0.0.1:56134",
-                      "userIp": "127.0.0.1:56134",
-                      "referer": "http://127.0.0.1:8090/",
-                      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-                      "meta": {}
-                    },
-                    {
-                      "id": "WEiJHGnOnjS3see",
-                      "created": "2022-06-01 13:09:43.429Z",
-                      "updated": "2022-06-01 13:09:43.429Z",
-                      "url": "/api/users/auth-methods",
-                      "method": "get",
-                      "status": 200,
-                      "auth": "guest",
-                      "remoteIp": "127.0.0.1:56134",
-                      "userIp": "127.0.0.1:56134",
-                      "referer": "http://127.0.0.1:8090/",
-                      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
-                      "meta": {}
+                      "id": "26apis4s3sm9yqm",
+                      "created": "2023-12-12 04:27:21.583Z",
+                      "updated": "2023-12-12 04:27:21.583Z",
+                      "data": {
+                        "auth": "authRecord",
+                        "execTime": 403.664712,
+                        "method": "POST",
+                        "referer": "http://localhost:8090/",
+                        "remoteIp": "127.0.0.1",
+                        "status": 200,
+                        "type": "request",
+                        "url": "/api/collections/users/auth-with-password?expand=rel\u0026fields=*%2Crecord.*%2Crecord.expand.rel.id",
+                        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+                        "userIp": "127.0.0.1"
+                      },
+                      "message": "POST /api/collections/users/auth-with-password?expand=rel\u0026fields=*%2Crecord.*%2Crecord.expand.rel.id",
+                      "level": 0
                     }
                   ]
                 }
@@ -94,9 +91,9 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single title="List request logs">
+<Accordion single title="List logs">
     <div class="content m-b-sm">
-        <p>Returns a paginated request logs list.</p>
+        <p>Returns a paginated logs list.</p>
         <p>Only admins can access this action.</p>
     </div>
 
@@ -110,9 +107,8 @@
 
             await pb.admins.authWithPassword('test@example.com', '1234567890');
 
-            const pageResult = await pb.logs.getRequestsList(1, 20, {
-                filter: 'status >= 400',
-                sort: '-created'
+            const pageResult = await pb.logs.getList(1, 20, {
+                filter: 'data.status >= 400'
             });
         `}
         dart={`
@@ -124,18 +120,17 @@
 
             await pb.admins.authWithPassword('test@example.com', '1234567890');
 
-            final pageResult = await pb.logs.getRequestsList(
+            final pageResult = await pb.logs.getList(
                 page: 1,
                 perPage: 20,
-                filter: 'status >= 400',
-                sort: '-created'
+                filter: 'data.status >= 400',
             );
         `}
     />
 
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
-        <div class="content">/api/logs/requests</div>
+        <div class="content">/api/logs</div>
         <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
     </div>
 
@@ -161,7 +156,7 @@
                 <td>
                     <span class="label">Number</span>
                 </td>
-                <td>The max returned request logs per page (<em>default to 30</em>).</td>
+                <td>The max returned logs per page (<em>default to 30</em>).</td>
             </tr>
             <tr>
                 <td id="query-sort">sort</td>
@@ -177,16 +172,15 @@
                         </p>
                         <CodeBlock
                             content={`
-                                // DESC by the insertion rowid and ASC by status
-                                ?sort=-rowid,status
+                                // DESC by the insertion rowid and ASC by level
+                                ?sort=-rowid,level
                             `}
                         />
                         <p>
-                            <strong>Supported request log sort fields:</strong> <br />
+                            <strong>Supported log sort fields:</strong> <br />
                             <code>@random</code>, <code>rowid</code>, <code>id</code>, <code>created</code>,
-                            <code>updated</code>, <code>url</code>, <code>method</code>, <code>status</code>,
-                            <code>auth</code>, <code>remoteIp</code>, <code>userIp</code>,
-                            <code>referer</code>, <code>userAgent</code>
+                            <code>updated</code>, <code>level</code>, <code>message</code> and any
+                            <code>data.*</code> attribute.
                         </p>
                     </div>
                 </td>
@@ -198,18 +192,16 @@
                 </td>
                 <td>
                     <div class="content">
-                        <p>Filter expression to filter/search the returned request logs list, eg.:</p>
+                        <p>Filter expression to filter/search the returned logs list, eg.:</p>
                         <CodeBlock
                             content={`
-                                ?filter=(url~'test.com' && created>'2022-01-01')
+                                ?filter=(data.url~'test.com' && level>0)
                             `}
                         />
                         <p>
-                            <strong>Supported request log filter fields:</strong> <br />
-                            <code>rowid</code>, <code>id</code>, <code>created</code>, <code>updated</code>,
-                            <code>url</code>, <code>method</code>, <code>status</code>, <code>auth</code>,
-                            <code>userIp</code>, <code>remoteIp</code>, <code>referer</code>,
-                            <code>userAgent</code>
+                            <strong>Supported log filter fields:</strong> <br />
+                            <code>id</code>, <code>created</code>, <code>updated</code>,
+                            <code>level</code>, <code>message</code> and any <code>data.*</code> attribute.
                         </p>
                         <FilterSyntax />
                     </div>
