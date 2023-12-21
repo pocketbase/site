@@ -279,7 +279,7 @@
         // generate a file token
         const fileToken = await pb.files.getToken();
 
-        // retrieve an example protected file url (will be valid ~5min)
+        // retrieve an example protected file url (will be valid ~2min)
         const record = await pb.collection('example').getOne('RECORD_ID');
         const url = pb.files.getUrl(record, record.myPrivateFile, {'token': fileToken});
     `}
@@ -296,7 +296,7 @@
         // generate a file token
         final fileToken = await pb.files.getToken();
 
-        // retrieve an example protected file url (will be valid ~5min)
+        // retrieve an example protected file url (will be valid ~2min)
         final record = await pb.collection('example').getOne('RECORD_ID');
         final url = pb.files.getUrl(record, record.getStringValue('myPrivateFile'), token: fileToken);
     `}
