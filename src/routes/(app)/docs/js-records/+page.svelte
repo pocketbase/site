@@ -138,7 +138,7 @@
         // retrieve a single auth collection record by its username (case insensitive)
         const user = $app.dao().findAuthRecordByUsername("users", "John.Doe")
 
-        // retrieve a single auth collection record by its JWT token (auth, password reset, etc.)
+        // retrieve a single auth collection record by its JWT (auth, password reset, etc.)
         const user = $app.dao().findAuthRecordByToken("YOUR_TOKEN", $app.settings().recordAuthToken.secret)
     `}
 />

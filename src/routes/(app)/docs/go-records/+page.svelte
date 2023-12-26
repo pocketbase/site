@@ -142,7 +142,7 @@
         // retrieve a single auth collection record by its username (case insensitive)
         user, err := app.Dao().FindAuthRecordByUsername("users", "John.Doe")
 
-        // retrieve a single auth collection record by its JWT token (auth, password reset, etc.)
+        // retrieve a single auth collection record by its JWT (auth, password reset, etc.)
         user, err := app.Dao().FindAuthRecordByToken("JWT_TOKEN", app.Settings().RecordAuthToken.Secret)
     `}
 />

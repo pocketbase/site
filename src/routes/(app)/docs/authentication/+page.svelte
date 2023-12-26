@@ -6,7 +6,7 @@
 </script>
 
 <p>
-    The PocketBase API uses JWT tokens for authentication via the <code>Authorization</code> HTTP header:
+    The PocketBase API uses JWT for authentication via the <code>Authorization</code> HTTP header:
     <code>Authorization: TOKEN</code>.
     <br />
     You can also use the dedicated auth SDK helpers as shown in the examples below.
