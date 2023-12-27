@@ -122,7 +122,7 @@ blockquote {
 code {
     display: inline-block;
     font-family: var(--monospaceFontFamily);
-    font-size: 15px;
+    font-size: var(--smFontSize);
     line-height: 1.379rem;
     padding: 0px 4px;
     white-space: nowrap;
