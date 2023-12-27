@@ -61,7 +61,7 @@
         window.Prism = window.Prism || {};
         window.Prism.manual = true;
 
-        if (typeof navigator !== "undefined") {
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
             navigator.userAgentData.getHighEntropyValues([
                 "architecture",
             ]).then((ua) => {
