@@ -171,7 +171,7 @@
         </thead>
         <tbody>
             <ExpandQueryParam />
-            <FieldsQueryParam />
+            <FieldsQueryParam prefix="record." />
         </tbody>
     </table>
 

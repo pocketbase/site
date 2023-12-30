@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
     "jstypes": "npx typedoc --options ./jsvm/typedoc.json",
-    "build": "npm run jstypes && vite build",
+    "dev": "vite dev",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "prettier": {
