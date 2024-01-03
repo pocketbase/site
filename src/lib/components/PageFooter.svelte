@@ -16,7 +16,12 @@
         <div class="primary-bar">
             <nav class="footer-col links">
                 <a href="/faq" class="link-item">FAQ</a>
-                <a href={import.meta.env.PB_DISCUSSIONS_URL} class="link-item" target="_blank" rel="noopener noreferrer">
+                <a
+                    href={import.meta.env.PB_DISCUSSIONS_URL}
+                    class="link-item"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Discussions
                 </a>
                 <a href="/support-us" class="link-item">Support us</a>
@@ -24,10 +29,20 @@
 
             <nav class="footer-col links">
                 <a href="/docs" class="link-item">Documentation</a>
-                <a href={import.meta.env.PB_JS_SDK_URL} class="link-item" target="_blank" rel="noopener noreferrer">
+                <a
+                    href={import.meta.env.PB_JS_SDK_URL}
+                    class="link-item"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     JavaScript SDK
                 </a>
-                <a href={import.meta.env.PB_DART_SDK_URL} class="link-item" target="_blank" rel="noopener noreferrer">
+                <a
+                    href={import.meta.env.PB_DART_SDK_URL}
+                    class="link-item"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Dart SDK
                 </a>
             </nav>
@@ -67,7 +82,7 @@
         <div class="secondary-bar">
             <div class="terms">
                 <span class="txt">
-                    © {new Date().getFullYear()} Pocket<strong>Base</strong>
+                    © 2023-{new Date().getFullYear()} Pocket<strong>Base</strong>
                 </span>
                 <span class="gopher-credit">
                     The Gopher artwork is from
@@ -82,7 +97,12 @@
             </div>
             <div class="flex-fill" />
             <div class="credit">
-                Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint">
+                Crafted by <a
+                    href="https://gani.bg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="link-hint"
+                >
                     <strong>Gani</strong>
                 </a>
             </div>
