@@ -254,7 +254,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.onRecordBeforeCreateRequest("articles").add((e) => {
+        onRecordBeforeCreateRequest((e) => {
             if (e.httpContext.get("admin")) {
                 return null // ignore for admins
             }
@@ -266,7 +266,7 @@
             if (e.record.get("status") != "pending") {
                 throw new BadRequestError("status must be pending")
             }
-        })
+        }, "articles")
     `}
 />
 
@@ -312,7 +312,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.onRecordBeforeUpdateRequest("articles").add((e) => {
+        onRecordBeforeUpdateRequest((e) => {
             if (e.httpContext.get("admin")) {
                 return null // ignore for admins
             }
@@ -324,7 +324,7 @@
             if (e.record.get("status") != "pending") {
                 throw new BadRequestError("status must be pending")
             }
-        })
+        }, "articles")
     `}
 />
 
