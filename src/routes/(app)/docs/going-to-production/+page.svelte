@@ -150,7 +150,24 @@
     }
     `}
 />
-
+<p>
+    Corresponding <em>Caddy</em> configuration is:
+</p>
+<CodeBlock
+    language="nginx"
+    content={`
+    example.com {
+        request_body {
+            max_size 10MB
+        }
+        reverse_proxy 127.0.0.1:8090 {
+            transport http {
+                read_timeout 360s
+            }
+        }
+    }
+    `}
+/>
 <HeadingLink title="Using Docker" tag="h5" />
 <p>
     Some hosts (eg. <a href="https://fly.io" target="_blank" rel="noopener noreferrer">fly.io</a>) use Docker
