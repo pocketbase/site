@@ -121,7 +121,10 @@
 <p>
     If you plan hosting multiple applications on a single server or need finer network controls (rate limiter,
     IPs whitelisting, etc.), you could always put PocketBase behind a reverse proxy such as
-    <em>NGINX</em> or <em>Apache</em>. Here is a minimal <em>NGINX</em> sample configuration:
+    <em>NGINX</em>, <em>Apache</em>, <em>Caddy</em>, etc.
+</p>
+<p>
+    Here is a minimal <em>NGINX</em> example configuration:
 </p>
 <CodeBlock
     language="html"
@@ -154,7 +157,7 @@
     Corresponding <em>Caddy</em> configuration is:
 </p>
 <CodeBlock
-    language="nginx"
+    language="html"
     content={`
     example.com {
         request_body {
