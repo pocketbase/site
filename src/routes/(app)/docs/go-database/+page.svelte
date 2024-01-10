@@ -62,11 +62,11 @@
                     Roles  types.JsonArray ` + "`" + `db:"roles" json:"roles"` + "`" + `
                 }
 
-                result := User{}
+                user := User{}
 
                 err := app.Dao().DB().
                     NewQuery("SELECT id, status, age, roles FROM users WHERE id=1").
-                    One(&result)
+                    One(&user)
             `}
         />
     </li>
@@ -86,11 +86,11 @@
                     Roles  types.JsonArray ` + "`" + `db:"roles" json:"roles"` + "`" + `
                 }
 
-                result := []User{}
+                users := []User{}
 
                 err := app.Dao().DB().
                     NewQuery("SELECT id, status, age, roles FROM users LIMIT 100").
-                    All(&result)
+                    All(&users)
             `}
         />
     </li>
