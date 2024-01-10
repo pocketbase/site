@@ -86,7 +86,7 @@
                     Roles  types.JsonArray ` + "`" + `db:"roles" json:"roles"` + "`" + `
                 }
 
-                users := []User{}
+                result := []User{}
 
                 err := app.Dao().DB().
                     NewQuery("SELECT id, status, age, roles FROM users LIMIT 100").
