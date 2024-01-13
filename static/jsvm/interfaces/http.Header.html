@@ -29,15 +29,15 @@ CanonicalHeaderKey.</p>
 <ul class="tsd-hierarchy">
 <li><span class="target">Header</span></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15682">types.d.ts:15682</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15683">types.d.ts:15683</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15692">types.d.ts:15692</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15702">types.d.ts:15702</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15713">types.d.ts:15713</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15723">types.d.ts:15723</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15731">types.d.ts:15731</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15737">types.d.ts:15737</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15743">types.d.ts:15743</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15726">types.d.ts:15726</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15727">types.d.ts:15727</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15736">types.d.ts:15736</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15746">types.d.ts:15746</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15757">types.d.ts:15757</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15767">types.d.ts:15767</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15775">types.d.ts:15775</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15781">types.d.ts:15781</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15787">types.d.ts:15787</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -59,7 +59,7 @@ CanonicalHeaderKey.</p>
 <section class="tsd-panel tsd-member"><a id="add" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>add</span><a href="#add" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="add.add-1"><span class="tsd-kind-call-signature">add</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">key</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#add.add-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="add.add-1"><span class="tsd-kind-call-signature">add</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">key</span>, <span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#add.add-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Add adds the key, value pair to the header.
 It appends to any existing values associated with key.
@@ -70,11 +70,13 @@ CanonicalHeaderKey.</p>
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">key</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h5><span class="tsd-kind-parameter">key</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15690">types.d.ts:15690</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15734">types.d.ts:15734</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="clone" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>clone</span><a href="#clone" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -85,7 +87,7 @@ CanonicalHeaderKey.</p>
 <h4 class="tsd-returns-title">Returns <a href="http.Header.html" class="tsd-signature-type tsd-kind-interface">Header</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15741">types.d.ts:15741</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15785">types.d.ts:15785</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="del" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>del</span><a href="#del" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -103,7 +105,7 @@ CanonicalHeaderKey.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15729">types.d.ts:15729</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15773">types.d.ts:15773</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="get" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>get</span><a href="#get" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -124,11 +126,11 @@ access the map directly.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15711">types.d.ts:15711</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15755">types.d.ts:15755</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="set" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>set</span><a href="#set" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="set.set-1"><span class="tsd-kind-call-signature">set</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">key</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#set.set-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="set.set-1"><span class="tsd-kind-call-signature">set</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">key</span>, <span class="tsd-kind-parameter">value</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#set.set-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Set sets the header entries associated with key to the
 single element value. It replaces any existing values
@@ -140,11 +142,13 @@ To use non-canonical keys, assign to the map directly.</p>
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">key</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h5><span class="tsd-kind-parameter">key</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">value</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15700">types.d.ts:15700</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15744">types.d.ts:15744</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="values" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>values</span><a href="#values" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -164,7 +168,7 @@ The returned slice is not a copy.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15721">types.d.ts:15721</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15765">types.d.ts:15765</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="write" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write</span><a href="#write" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -180,7 +184,7 @@ The returned slice is not a copy.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15735">types.d.ts:15735</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15779">types.d.ts:15779</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="writeSubset" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write<wbr/>Subset</span><a href="#writeSubset" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -200,7 +204,7 @@ Keys are not canonicalized before checking the exclude map.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/9bd254df/jsvm/types.d.ts#L15749">types.d.ts:15749</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L15793">types.d.ts:15793</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
