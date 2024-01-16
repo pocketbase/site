@@ -110,13 +110,13 @@
                 // sign-up with username/email and password
                 await pb.collection('users').create({
                     email:           'test@example.com',
-                    password:        '123456',
-                    passwordConfirm: '123456',
+                    password:        '1234567890',
+                    passwordConfirm: '1234567890',
                     name:            'John Doe',
                 });
 
                 // sign-in with username/email and password
-                await pb.collection('users').authWithPassword('test@example.com', '123456');
+                await pb.collection('users').authWithPassword('test@example.com', '1234567890');
 
                 // sign-in/sign-up with OAuth2 (Google, Facebook, etc.)
                 await pb.collection('users').authWithOAuth2({
@@ -143,13 +143,13 @@
                 // sign-up with username/email and password
                 await pb.collection('users').create(body: {
                     'email':           'test@example.com',
-                    'password':        '123456',
-                    'passwordConfirm': '123456',
+                    'password':        '1234567890',
+                    'passwordConfirm': '1234567890',
                     'name':            'John Doe',
                 });
 
                 // sign-in with username/email and password
-                await pb.collection('users').authWithPassword('test@example.com', '123456');
+                await pb.collection('users').authWithPassword('test@example.com', '1234567890');
 
                 // sign-in/sign-up with OAuth2 (Google, Facebook, etc.)
                 await pb.collection('users').authWithOAuth2('google', (url) async {
