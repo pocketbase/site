@@ -260,14 +260,14 @@ export default {
                     // fires for every db model
                     app.OnModelBeforeCreate().Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
                     // fires only for "users" and "members"
                     app.OnModelBeforeCreate("users", "members").Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
@@ -318,14 +318,14 @@ export default {
                     // fires for every db model
                     app.OnModelAfterCreate().Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
                     // fires only for "users" and "members"
                     app.OnModelAfterCreate("users", "members").Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
@@ -376,14 +376,14 @@ export default {
                     // fires for every db model
                     app.OnModelBeforeUpdate().Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
                     // fires only for "users" and "members"
                     app.OnModelBeforeUpdate("users", "members").Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
@@ -434,14 +434,14 @@ export default {
                     // fires for every db model
                     app.OnModelAfterUpdate().Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
                     // fires only for "users" and "members"
                     app.OnModelAfterUpdate("users", "members").Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
@@ -492,14 +492,14 @@ export default {
                     // fires for every db model
                     app.OnModelBeforeDelete().Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
                     // fires only for "users" and "members"
                     app.OnModelBeforeDelete("users", "members").Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
@@ -550,14 +550,14 @@ export default {
                     // fires for every db model
                     app.OnModelAfterDelete().Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
                     // fires only for "users" and "members"
                     app.OnModelAfterDelete("users", "members").Add(func(e *core.ModelEvent) error {
                         log.Println(e.Model.TableName())
-                        log.Println(e.Model.Id)
+                        log.Println(e.Model.GetId())
                         return nil
                     })
 
