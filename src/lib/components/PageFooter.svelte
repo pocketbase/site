@@ -24,11 +24,10 @@
                 >
                     Discussions
                 </a>
-                <a href="/support-us" class="link-item">Support us</a>
+                <a href="/docs" class="link-item">Documentation</a>
             </nav>
 
             <nav class="footer-col links">
-                <a href="/docs" class="link-item">Documentation</a>
                 <a
                     href={import.meta.env.PB_JS_SDK_URL}
                     class="link-item"

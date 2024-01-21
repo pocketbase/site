@@ -34,7 +34,6 @@
                 >
                     Discussions
                 </a>
-                <a href="/support-us" class="dropdown-item">Support us</a>
                 <hr />
                 <a href="/docs" class="dropdown-item">
                     <span class="txt">Documentation</span>
@@ -52,7 +51,6 @@
             >
                 Discussions
             </a>
-            <a href="/support-us" class="btn btn-secondary">Support us</a>
             <a
                 href={import.meta.env.PB_REPO_URL}
                 class="btn btn-circle btn-secondary"

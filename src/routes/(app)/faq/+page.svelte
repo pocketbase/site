@@ -112,7 +112,19 @@
                 <a href="https://litestream.io/" target="_blank" rel="noreferrer noopener">Litestream</a>.
             </p>
 
-            <h5>7. Where can I find help for my PocketBase application?</h5>
+            <h5>7. Can I donate?</h5>
+            <p>
+                No. In the past we accepted donations (I'm very grateful for everyone who contributed) but
+                financial contributions from individuals usually comes with some "unspoken expectations" and
+                to avoid the mental burden and the sense of feeling guilty when not working on the
+                contributor's feature request, I've decided to stop accepting donations for PocketBase.
+                <br />
+                If you are part of an organization that offers sponsorships or grants and want to support the project
+                development financially, feel free to reach out to
+                <em>support at pocketbase.io</em> but only if there is "no strings attached".
+            </p>
+
+            <h5>8. Where can I find help for my PocketBase application?</h5>
             <p>
                 You could always look for help in our public
                 <a href={import.meta.env.PB_DISCUSSIONS_URL} target="_blank" rel="noreferrer noopener"
