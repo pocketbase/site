@@ -56,7 +56,7 @@
 <Accordion single title={"Delete admin"}>
     <div class="content m-b-sm">
         <p>Deletes a single admin by its id.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

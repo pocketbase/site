@@ -70,7 +70,7 @@
 <Accordion single title={"Update admin"}>
     <div class="content m-b-sm">
         <p>Update a single admin model by its ID.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

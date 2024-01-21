@@ -94,7 +94,7 @@
 <Accordion single title="List logs">
     <div class="content m-b-sm">
         <p>Returns a paginated logs list.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

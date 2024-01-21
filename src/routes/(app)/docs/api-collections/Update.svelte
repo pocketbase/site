@@ -101,7 +101,7 @@
 <Accordion single title="Update collection">
     <div class="content m-b-sm">
         <p>Updates a single Collection by its ID or name.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

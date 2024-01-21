@@ -41,7 +41,7 @@
 <Accordion single title="Send test email">
     <div class="content m-b-sm">
         <p>Sends a test user email.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

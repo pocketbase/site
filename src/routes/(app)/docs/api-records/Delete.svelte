@@ -24,7 +24,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "Only admins can access this action.",
+                  "message": "Only admins can perform this action.",
                   "data": {}
                 }
             `,
