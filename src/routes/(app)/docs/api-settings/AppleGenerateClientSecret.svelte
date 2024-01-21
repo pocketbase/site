@@ -40,6 +40,7 @@
 <Accordion single title="Generate Apple client secret">
     <div class="content m-b-sm">
         <p>Generates a new Apple OAuth2 client secret key.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

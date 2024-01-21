@@ -16,7 +16,7 @@
                       "recordId": "e22581b6f1d44ea",
                       "collectionId": "systemprofiles0",
                       "provider": "google",
-                      "providerId": "2da15468800514p",
+                      "providerId": "2da15468800514p"
                     },
                     {
                       "id": "171022dc895a4e8",
@@ -25,7 +25,7 @@
                       "recordId": "e22581b6f1d44ea",
                       "collectionId": "systemprofiles0",
                       "provider": "twitter",
-                      "providerId": "720688005140514",
+                      "providerId": "720688005140514"
                     }
                 ]
             `,
