@@ -51,7 +51,7 @@
 <Accordion single title="Import collections">
     <div class="content m-b-sm">
         <p>Bulk imports the provided <em>Collections</em> configuration.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

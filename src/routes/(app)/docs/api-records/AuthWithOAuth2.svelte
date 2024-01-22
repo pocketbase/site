@@ -29,10 +29,10 @@
                     "username": "john.doe",
                     "email": "test@example.com",
                     "isNew": false,
-                    "avatarUrl": "https://example.com/avatar.png"
+                    "avatarUrl": "https://example.com/avatar.png",
                     "rawUser": {...},
-                    "accessToken": "..."
-                    "refreshToken": "..."
+                    "accessToken": "...",
+                    "refreshToken": "...",
                     "expiry": "..."
                   }
                 }

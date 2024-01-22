@@ -133,7 +133,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "Only admins can access this action.",
+                  "message": "Only admins can perform this action.",
                   "data": {}
                 }
             `,
@@ -146,7 +146,7 @@
 <Accordion single title="List collections">
     <div class="content m-b-sm">
         <p>Returns a paginated Collections list.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

@@ -35,7 +35,8 @@
 
 <Accordion single title="Download backup">
     <div class="content m-b-base">
-        <p>Downloads a single backup file. Example:</p>
+        <p>Downloads a single backup file.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

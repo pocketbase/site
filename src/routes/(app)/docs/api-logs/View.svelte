@@ -67,7 +67,7 @@
 <Accordion single title="View log">
     <div class="content m-b-sm">
         <p>Returns a single log by its ID.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

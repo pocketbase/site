@@ -55,7 +55,7 @@
 <Accordion single title={"View admin"}>
     <div class="content m-b-sm">
         <p>Return a single admin by its ID.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

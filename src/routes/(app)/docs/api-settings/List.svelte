@@ -149,7 +149,7 @@
     <div class="content m-b-sm">
         <p>Returns a list with all available application settings.</p>
         <p>Secret/password fields are automatically redacted with <em>******</em> characters.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs

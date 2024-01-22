@@ -36,7 +36,7 @@
 <Accordion single title="Test S3 storage connection">
     <div class="content m-b-sm">
         <p>Performs a S3 storage connection test.</p>
-        <p>Only admins can access this action.</p>
+        <p>Only admins can perform this action.</p>
     </div>
 
     <CodeTabs
