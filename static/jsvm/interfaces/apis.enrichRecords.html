@@ -25,7 +25,7 @@
 <li class="tsd-signature tsd-anchor-link" id="enrichRecords"><span class="tsd-kind-call-signature">enrich<wbr/>Records</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">c</span>, <span class="tsd-kind-parameter">dao</span>, <span class="tsd-kind-parameter">records</span>, <span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">defaultExpands</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#enrichRecords" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>EnrichRecords parses the request context and enriches the provided records:</p>
-<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> expands </span><span class="hl-2">relations</span><span class="hl-0"> (if defaultExpands and</span><span class="hl-1">/</span><span class="hl-0">or </span><span class="hl-1">?</span><span class="hl-0">expand query param is set)</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> ensures that the emails </span><span class="hl-1">of</span><span class="hl-0"> the auth records and their expanded auth relations</span><br/><span class="hl-0">    are visibe only for the current logged admin, record owner or record with manage access</span>
+<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> expands </span><span class="hl-2">relations</span><span class="hl-0"> (if defaultExpands and</span><span class="hl-1">/</span><span class="hl-0">or </span><span class="hl-1">?</span><span class="hl-0">expand query param is set)</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> ensures that the emails </span><span class="hl-1">of</span><span class="hl-0"> the auth records and their expanded auth relations</span><br/><span class="hl-0">    are visible only for the current logged admin, record owner or record with manage access</span>
 </code><button>Copy</button></pre>
 </div>
 <div class="tsd-parameters">
@@ -42,7 +42,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/8c3feaec/jsvm/types.d.ts#L6582">types.d.ts:6582</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L6608">types.d.ts:6608</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -242,6 +242,7 @@
 <li><a href="apis.newForbiddenError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>new<wbr/>Forbidden<wbr/>Error</span></a></li>
 <li><a href="apis.newNotFoundError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>new<wbr/>Not<wbr/>Found<wbr/>Error</span></a></li>
 <li><a href="apis.newUnauthorizedError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>new<wbr/>Unauthorized<wbr/>Error</span></a></li>
+<li><a href="apis.oauth2EventMessage.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>oauth2<wbr/>Event<wbr/>Message</span></a></li>
 <li><a href="apis.providerInfo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>provider<wbr/>Info</span></a></li>
 <li><a href="apis.realtimeApi.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>realtime<wbr/>Api</span></a></li>
 <li><a href="apis.recordApi.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>record<wbr/>Api</span></a></li>
@@ -282,6 +283,7 @@
 <li><a href="../modules/mail.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>mail</span></a></li>
 <li><a href="../modules/mailer.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>mailer</span></a></li>
 <li><a href="../modules/mails.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>mails</span></a></li>
+<li><a href="../modules/middleware.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>middleware</span></a></li>
 <li><a href="../modules/migrate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>migrate</span></a></li>
 <li><a href="../modules/models.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>models</span></a></li>
 <li><a href="../modules/multipart.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>multipart</span></a></li>

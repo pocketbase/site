@@ -15,9 +15,9 @@
                     "hideControls": false,
                     "senderName": "Support",
                     "senderAddress": "support@example.com",
-                    "verificationTemplate": " ... ",
-                    "resetPasswordTemplate": " ... ",
-                    "confirmEmailChangeTemplate": " ... "
+                    "verificationTemplate": { ... },
+                    "resetPasswordTemplate": { ... },
+                    "confirmEmailChangeTemplate": { ... }
                   },
                   "logs": {
                     "maxDays": 7

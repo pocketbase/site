@@ -213,6 +213,12 @@
         // require the request client to be authenticated as admin OR auth record
         // that matches the ownerIdParam path parameter
         $apis.requireAdminOrOwnerAuth(ownerIdParam = "id")
+
+        // compresses HTTP response using gzip
+        $apis.gzip()
+
+        // sets the maximum allowed size (in bytes) for a request body
+        $apis.bodyLimit(bytes)
     `}
 />
 
