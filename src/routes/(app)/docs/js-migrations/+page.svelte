@@ -173,10 +173,10 @@
             const collection = dao.findCollectionByNameOrId("users")
 
             const record = new Record(collection)
+            record.setUsername("u_" + $security.randomStringWithAlphabet(5, "123456789"))
+            record.setPassword("1234567890")
             record.set("name", "John Doe")
             record.set("email", "test@example.com")
-            record.set("username", "u_" + $security.randomStringWithAlphabet(5, "123456789"))
-            record.setPassword("1234567890")
 
             dao.saveRecord(record)
         }, (db) => { // optional revert

@@ -284,6 +284,7 @@
             "github.com/pocketbase/pocketbase/daos"
             m "github.com/pocketbase/pocketbase/migrations"
             "github.com/pocketbase/pocketbase/models"
+            "github.com/pocketbase/pocketbase/tools/security"
         )
 
         func init() {
@@ -296,9 +297,10 @@
                 }
 
                 record := models.NewRecord(collection)
+                record.SetUsername("u_" + security.RandomStringWithAlphabet(5, "123456789"))
+                record.SetPassword("1234567890")
                 record.Set("name", "John Doe")
                 record.Set("email", "test@example.com")
-                record.SetPassword("1234567890")
 
                 return dao.SaveRecord(record)
             }, func(db dbx.Builder) error { // optional revert operation
