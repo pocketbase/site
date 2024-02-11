@@ -27,7 +27,7 @@
     </div>
 
     <div class="api-route alert alert-info">
-        <strong class="label label-primary">GET</strong>
+        <strong class="label label-primary">GET/HEAD</strong>
         <div class="content">/api/health</div>
     </div>
 
