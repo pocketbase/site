@@ -33,7 +33,7 @@
 </ul>
 <p>
     Auth collections has an additional <code>options.manageRule</code> used to allow one user (it could be even
-    from a different collection) to be able to fully manage the data of another user (eg. changing their email,
+    from a different collection) to be able to fully manage the data of another user (ex. changing their email,
     password, etc.).
 </p>
 
@@ -101,7 +101,7 @@
     <li>
         <strong>Your Collection schema fields</strong>
         <br />
-        This also include all nested relations fields too, eg.
+        This also include all nested relations fields too, ex.
         <code>someRelField.status != "pending"</code>
     </li>
     <li>
@@ -111,11 +111,20 @@
         etc.
         <ul>
             <li>
-                <code>@request.method</code> - the HTTP request method (eg.
+                <code>@request.context</code> - the context where the rule is used (ex.
+                <code>@request.context != "oauth2"</code>)
+                <br />
+                <small class="txt-hint">
+                    The currently supported context values are <code>default</code>, <code>oauth2</code>,
+                    <code>realtime</code>, <code>protectedFile</code>.
+                </small>
+            </li>
+            <li>
+                <code>@request.method</code> - the HTTP request method (ex.
                 <code>@request.method = "GET"</code>)
             </li>
             <li>
-                <code>@request.headers.*</code> - the request headers as string values (eg.
+                <code>@request.headers.*</code> - the request headers as string values (ex.
                 <code>@request.headers.x_token = "test"</code>)
                 <br />
                 <small class="txt-hint">
@@ -124,15 +133,15 @@
                 </small>
             </li>
             <li>
-                <code>@request.query.*</code> - the request query parameters as string values (eg.
+                <code>@request.query.*</code> - the request query parameters as string values (ex.
                 <code>@request.query.page = "1"</code>)
             </li>
             <li>
-                <code>@request.data.*</code> - the submitted body parameters (eg.
+                <code>@request.data.*</code> - the submitted body parameters (ex.
                 <code>@request.data.title != ""</code>)
             </li>
             <li>
-                <code>@request.auth.*</code> - the current authenticated model (eg.
+                <code>@request.auth.*</code> - the current authenticated model (ex.
                 <code>@request.auth.id != ""</code>)
             </li>
         </ul>
@@ -266,7 +275,7 @@
     </li>
     <li class="m-b-sm">
         Allow access by anyone and return only the records where the <em>title</em> field value starts with
-        "Lorem" (eg. "Lorem ipsum"):
+        "Lorem" (ex. "Lorem ipsum"):
         <CodeBlock
             content={`
                 title ~ "Lorem%"
