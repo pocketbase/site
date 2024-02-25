@@ -15,15 +15,12 @@
         alt="Expand diagram"
     />
 </div>
-<p>
-    The <code>relation</code> fields follow the same rules as any other collection field and
-    <strong>
-        can be set/modified by directly updating the field value - with a record id or array of ids
-    </strong>
-    , in case a multiple relation field is used.
+<p class="txt-bold">
+    The <code>relation</code> fields follow the same rules as any other collection field and can be set/modified
+    by directly updating the field value - with a record id or array of ids, in case a multiple relation is used.
 </p>
 <p>
-    Below is an example that shows creating a new <em>posts</em> record with 2 assigned tags.
+    Below is an example that shows creating a new <strong>posts</strong> record with 2 assigned tags.
 </p>
 <!-- prettier-ignore -->
 <CodeTabs
@@ -144,8 +141,10 @@
         <p>
             Only the relations that the request client can <strong>View</strong> (aka. satisfies the relation
             collection's <strong>View API Rule</strong>) will be expanded.
-            <br />
-            Nested relations are supported via dot-notation and up to 6-levels depth.
+        </p>
+        <p>
+            Nested relation references in <code>expand</code>, <code>filter</code> or <code>sort</code> are supported
+            via dot-notation and up to 6-levels depth.
         </p>
     </div>
 </div>
@@ -157,11 +156,9 @@
 <CodeTabs
     class="m-b-5"
     js={`
-        // GET /api/collections/comments/records?perPage=30&expand=user
         await pb.collection("comments").getList(1, 30, { expand: "user" })
     `}
     dart={`
-        // GET /api/collections/comments/records?perPage=30&expand=user
         await pb.collection("comments").getList(perPage: 30, expand: "user")
     `}
 />
@@ -202,28 +199,35 @@
 `}
 />
 
-<HeadingLink title="Back-relation expand" tag="h5" />
+<HeadingLink title="Back-relations" tag="h3" />
 <p>
-    We can also do <em>back-relation expansions</em> - expand where the <code>relation</code> field is not in the
-    main collection.
+    PocketBase supports also <code>filter</code>, <code>sort</code> and <code>expand</code> for
+    <strong>back-relations</strong>
+    - relations where the associated <code>relation</code> field is not in the main collection.
 </p>
 <p>
-    The following notation is used: <code>?expand=referenceCollection(relField)[.*]</code>
+    The following notation is used: <code>referenceCollection<strong>_via_</strong>relField</code> (ex.
+    <code>comments_via_post</code>).
 </p>
 <p>
-    For example, to list all <strong>posts</strong> each with their <strong>comments</strong> and
-    <strong>users</strong> expanded, we can do the following:
+    For example, lets list the <strong>posts</strong> that has at least one <strong>comments</strong> record
+    containing the word <em>"hello"</em>:
 </p>
 <!-- prettier-ignore -->
 <CodeTabs
     class="m-b-5"
     js={`
-        // GET /api/collections/posts/records?perPage=30&expand=comments(post).user
-        await pb.collection("posts").getList(1, 30, { expand: "comments(post).user" })
+        await pb.collection("posts").getList(1, 30, {
+            filter: "comments_via_post.message ?~ 'hello'"
+            expand: "comments_via_post.user",
+        })
     `}
     dart={`
-        // GET /api/collections/posts/records?perPage=30&expand=comments(post).user
-        await pb.collection("posts").getList(perPage: 30, expand: "comments(post).user")
+        await pb.collection("posts").getList(
+            perPage: 30,
+            filter: "comments_via_post.message ?~ 'hello'"
+            expand: "comments_via_post.user",
+        )
     `}
 />
 <CodeBlock
@@ -242,7 +246,7 @@
                 "updated": "2022-01-01 02:15:00.456Z",
                 "title": "Lorem ipsum dolor sit...",
                 "expand": {
-                    "comments(post)": [
+                    "comments_via_post": [
                         {
                             "id": "lmPJt4Z9CkLW36z",
                             "collectionId": "BHKW36mJl3ZPt6z",
@@ -251,7 +255,30 @@
                             "updated": "2022-01-01 02:15:00.456Z",
                             "post": "WyAw4bDrvws6gGl",
                             "user": "FtHAW9feB5rze7D",
-                            "message": "Example message...",
+                            "message": "lorem ipsum...",
+                            "expand": {
+                                "user": {
+                                    "id": "FtHAW9feB5rze7D",
+                                    "collectionId": "srmAo0hLxEqYF7F",
+                                    "collectionName": "users",
+                                    "created": "2022-01-01 00:00:00.000Z",
+                                    "updated": "2022-01-01 00:00:00.000Z",
+                                    "username": "users54126",
+                                    "verified": false,
+                                    "emailVisibility": false,
+                                    "name": "John Doe"
+                                }
+                            }
+                        },
+                        {
+                            "id": "tu4Z9CkLW36mPJz",
+                            "collectionId": "BHKW36mJl3ZPt6z",
+                            "collectionName": "comments",
+                            "created": "2022-01-01 01:10:00.123Z",
+                            "updated": "2022-01-01 02:39:00.456Z",
+                            "post": "WyAw4bDrvws6gGl",
+                            "user": "FtHAW9feB5rze7D",
+                            "message": "hello...",
                             "expand": {
                                 "user": {
                                     "id": "FtHAW9feB5rze7D",
@@ -275,24 +302,32 @@
     }
 `}
 />
+<HeadingLink title="Back-relation caveats" tag="h6" />
 <div class="alert alert-info m-t-sm">
     <div class="icon">
         <i class="ri-information-line" />
     </div>
     <div class="content">
-        <p>The back-relation expand has some caveats:</p>
         <ul>
             <li>
-                Currently only single <code>relation</code> fields can be back-relation expanded (aka. when "Max
-                Select" field option is 1).
+                By default the back-relation reference is resolved as a dynamic
+                <em>multiple</em> relation field, even when the back-relation field itself is marked as
+                <em>single</em>.
+                <br />
+                This is because the main record could have more than one <em>single</em>
+                back-relation reference (see in the above example that the <code>comments_via_post</code>
+                expand is returned as array, although the original <code>comments.post</code> field is a
+                <em>single</em> relation).
+                <br />
+                The only case where the back-relation will be treated as a <em>single</em>
+                relation field is when there is
+                <code>UNIQUE</code> index constraint defined on the relation field.
             </li>
             <li>
-                The "Unique" back-relation field option is used to determine whether an array or a single
-                object should be expanded.
-            </li>
-            <li>
-                As a side effect of the nested expansion support, referencing the back-relation field itself
-                is also allowed, eg. <code>?expand=comments(post).post</code>.
+                Back-relation <code>expand</code> is limited to max 1000 records per relation field. If you
+                need to fetch larger number of back-related records a better approach could be to send a
+                separate paginated <code>getList()</code> request to the back-related collection to avoid transferring
+                large JSON payloads and to reduce the memory usage.
             </li>
         </ul>
     </div>
