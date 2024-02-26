@@ -234,8 +234,9 @@
 
 <HeadingLink title=":each modifier" tag="h5" />
 <p>
-    The <code>:each</code> field modifier works only with multiple <code>select</code> fields. It could be
-    used to apply a condition on each <code>select</code> item. For example:
+    The <code>:each</code> field modifier works only with multiple <code>select</code>, <code>file</code> and
+    <code>relation</code>
+    type fields. It could be used to apply a condition on each item from the field array. For example:
 </p>
 <CodeBlock
     content={`
