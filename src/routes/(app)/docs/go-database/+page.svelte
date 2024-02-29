@@ -593,7 +593,7 @@
             }
 
             // run some custom raw query
-            rawQuery := "DELETE articles WHERE status = 'pending'"
+            rawQuery := "DELETE FROM articles WHERE status = 'pending'"
             if _, err := txDao.DB().NewQuery(rawQuery).Execute(); err != nil {
                 return err
             }

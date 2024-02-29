@@ -576,7 +576,7 @@
             txDao.saveRecord(record)
 
             // run some custom raw query
-            txDao.db().newQuery("DELETE articles WHERE status = 'pending'").execute()
+            txDao.db().newQuery("DELETE FROM articles WHERE status = 'pending'").execute()
         })
     `}
 />
