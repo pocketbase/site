@@ -122,7 +122,7 @@
             "status = 'public' && category = {:category}", // filter
             "-publised",                                   // sort
             10,                                            // limit
-            0,                                             // limit
+            0,                                             // offset
             { category: "news" },                          // optional filter params
         )
     `}
