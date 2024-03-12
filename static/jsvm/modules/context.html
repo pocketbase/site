@@ -44,7 +44,7 @@ propagation:</p>
 <p>Do not store Contexts inside a struct type; instead, pass a Context
 explicitly to each function that needs it. The Context should be the first
 parameter, typically named ctx:</p>
-<pre><code><span class="hl-0"> func </span><span class="hl-2">DoSomething</span><span class="hl-0">(ctx context.Context, arg Arg) error {</span><br/><span class="hl-0">   </span><span class="hl-5">// ... use ctx ...</span><br/><span class="hl-0"> }</span>
+<pre><code><span class="hl-0"> func </span><span class="hl-2">DoSomething</span><span class="hl-0">(ctx context.Context, arg Arg) error {</span><br/><span class="hl-0">   </span><span class="hl-4">// ... use ctx ...</span><br/><span class="hl-0"> }</span>
 </code><button>Copy</button></pre>
 <p>Do not pass a nil [Context], even if a function permits it. Pass [context.TODO]
 if you are unsure about which Context to use.</p>
@@ -57,8 +57,8 @@ Contexts.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/f1619a65/jsvm/types.d.ts#L7981">types.d.ts:7981</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/f1619a65/jsvm/types.d.ts#L14759">types.d.ts:14759</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L7991">types.d.ts:7991</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L14721">types.d.ts:14721</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>

@@ -31,7 +31,7 @@ monotonic clock reading.</p>
 <p>For example, this code always computes a positive elapsed time of
 approximately 20 milliseconds, even if the wall clock is changed during
 the operation being timed:</p>
-<pre><code><span class="hl-0"> </span><span class="hl-2">start</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> time.</span><span class="hl-2">Now</span><span class="hl-0">()</span><br/><span class="hl-0"> </span><span class="hl-1">...</span><span class="hl-0"> operation that takes </span><span class="hl-4">20</span><span class="hl-0"> milliseconds </span><span class="hl-1">...</span><br/><span class="hl-0"> </span><span class="hl-2">t</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> time.</span><span class="hl-2">Now</span><span class="hl-0">()</span><br/><span class="hl-0"> </span><span class="hl-2">elapsed</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> t.</span><span class="hl-2">Sub</span><span class="hl-0">(start)</span>
+<pre><code><span class="hl-0"> </span><span class="hl-2">start</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> time.</span><span class="hl-2">Now</span><span class="hl-0">()</span><br/><span class="hl-0"> </span><span class="hl-1">...</span><span class="hl-0"> operation that takes </span><span class="hl-5">20</span><span class="hl-0"> milliseconds </span><span class="hl-1">...</span><br/><span class="hl-0"> </span><span class="hl-2">t</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> time.</span><span class="hl-2">Now</span><span class="hl-0">()</span><br/><span class="hl-0"> </span><span class="hl-2">elapsed</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> t.</span><span class="hl-2">Sub</span><span class="hl-0">(start)</span>
 </code><button>Copy</button></pre>
 <p>Other idioms, such as time.Since(start), time.Until(deadline), and
 time.Now().Before(deadline), are similarly robust against wall clock
@@ -76,8 +76,8 @@ that difference will be visible when printing t.String() and u.String().</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/f1619a65/jsvm/types.d.ts#L7250">types.d.ts:7250</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/f1619a65/jsvm/types.d.ts#L14660">types.d.ts:14660</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L7260">types.d.ts:7260</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L14630">types.d.ts:14630</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
