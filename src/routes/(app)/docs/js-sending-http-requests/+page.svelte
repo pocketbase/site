@@ -84,8 +84,8 @@
         const formData = new FormData();
 
         formData.append("title", "Hello world!")
-        formData.append("documents", $filesystem.fileFromBytes("doc1", "test.txt"))
-        formData.append("documents", $filesystem.fileFromBytes("doc2", "test.txt"))
+        formData.append("documents", $filesystem.fileFromBytes("doc1", "doc1.txt"))
+        formData.append("documents", $filesystem.fileFromBytes("doc2", "doc2.txt"))
 
         const res = $http.send({
             url:    "https://...",
