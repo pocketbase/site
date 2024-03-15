@@ -73,11 +73,16 @@ testing for Time values.</p>
 <p>For debugging, the result of t.String does include the monotonic
 clock reading if present. If t != u because of different monotonic clock readings,
 that difference will be visible when printing t.String() and u.String().</p>
+<a id="md:timer-resolution" class="tsd-anchor"></a><h1><a href="#md:timer-resolution">Timer Resolution</a></h1><p>Timer resolution varies depending on the Go runtime, the operating system
+and the underlying hardware.
+On Unix, the resolution is approximately 1ms.
+On Windows, the default resolution is approximately 16ms, but
+a higher resolution may be requested using [golang.org/x/sys/windows.TimeBeginPeriod].</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L7260">types.d.ts:7260</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L14630">types.d.ts:14630</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L7313">types.d.ts:7313</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L14744">types.d.ts:14744</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
@@ -107,7 +112,8 @@ that difference will be visible when printing t.String() and u.String().</p>
 <ul>
 <li>
 <ul>
-<li><a href="#md:monotonic-clocks"><span>Monotonic <wbr/>Clocks</span></a></li></ul></li></ul></div></details></div>
+<li><a href="#md:monotonic-clocks"><span>Monotonic <wbr/>Clocks</span></a></li>
+<li><a href="#md:timer-resolution"><span>Timer <wbr/>Resolution</span></a></li></ul></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>Pocket<wbr/>Base JSVM reference</span></a>
 <ul class="tsd-small-nested-navigation">

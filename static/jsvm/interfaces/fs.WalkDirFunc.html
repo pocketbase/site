@@ -17,39 +17,39 @@
 <li><a href="fs.WalkDirFunc.html">WalkDirFunc</a></li></ul>
 <h1>Interface WalkDirFunc</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>WalkDirFunc is the type of the function called by WalkDir to visit
+<div class="tsd-comment tsd-typography"><p>WalkDirFunc is the type of the function called by [WalkDir] to visit
 each file or directory.</p>
-<p>The path argument contains the argument to WalkDir as a prefix.
+<p>The path argument contains the argument to [WalkDir] as a prefix.
 That is, if WalkDir is called with root argument &quot;dir&quot; and finds a file
 named &quot;a&quot; in that directory, the walk function will be called with
 argument &quot;dir/a&quot;.</p>
-<p>The d argument is the fs.DirEntry for the named path.</p>
-<p>The error result returned by the function controls how WalkDir
-continues. If the function returns the special value SkipDir, WalkDir
+<p>The d argument is the [DirEntry] for the named path.</p>
+<p>The error result returned by the function controls how [WalkDir]
+continues. If the function returns the special value [SkipDir], WalkDir
 skips the current directory (path if d.IsDir() is true, otherwise
 path&#39;s parent directory). If the function returns the special value
-SkipAll, WalkDir skips all remaining files and directories. Otherwise,
+[SkipAll], WalkDir skips all remaining files and directories. Otherwise,
 if the function returns a non-nil error, WalkDir stops entirely and
 returns that error.</p>
 <p>The err argument reports an error related to path, signaling that
-WalkDir will not walk into that directory. The function can decide how
+[WalkDir] will not walk into that directory. The function can decide how
 to handle that error; as described earlier, returning the error will
 cause WalkDir to stop walking the entire tree.</p>
-<p>WalkDir calls the function with a non-nil err argument in two cases.</p>
-<p>First, if the initial fs.Stat on the root directory fails, WalkDir
+<p>[WalkDir] calls the function with a non-nil err argument in two cases.</p>
+<p>First, if the initial [Stat] on the root directory fails, WalkDir
 calls the function with path set to root, d set to nil, and err set to
-the error from fs.Stat.</p>
-<p>Second, if a directory&#39;s ReadDir method fails, WalkDir calls the
+the error from [fs.Stat].</p>
+<p>Second, if a directory&#39;s ReadDir method (see [ReadDirFile]) fails, WalkDir calls the
 function with path set to the directory&#39;s path, d set to an
-fs.DirEntry describing the directory, and err set to the error from
+[DirEntry] describing the directory, and err set to the error from
 ReadDir. In this second case, the function is called twice with the
 path of the directory: the first call is before the directory read is
 attempted and has err set to nil, giving the function a chance to
-return SkipDir or SkipAll and avoid the ReadDir entirely. The second call
+return [SkipDir] or [SkipAll] and avoid the ReadDir entirely. The second call
 is after a failed ReadDir and reports the error from ReadDir.
 (If ReadDir succeeds, there is no second call.)</p>
-<p>The differences between WalkDirFunc compared to filepath.WalkFunc are:</p>
-<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> The second argument has </span><span class="hl-1">type</span><span class="hl-0"> </span><span class="hl-2">fs</span><span class="hl-0">.DirEntry instead of fs.FileInfo.</span><br/><span class="hl-0">  - The function is called before reading a directory, to allow SkipDir</span><br/><span class="hl-0">    or SkipAll to bypass the directory read entirely or skip all remaining</span><br/><span class="hl-0">    files and directories respectively.</span><br/><span class="hl-0">  - If a directory read fails, the function is called a second time</span><br/><span class="hl-0">    for that directory to report the error.</span>
+<p>The differences between WalkDirFunc compared to [path/filepath.WalkFunc] are:</p>
+<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> The second argument has type [DirEntry] instead </span><span class="hl-1">of</span><span class="hl-0"> [FileInfo].</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> The </span><span class="hl-1">function</span><span class="hl-0"> </span><span class="hl-2">is</span><span class="hl-0"> </span><span class="hl-2">called</span><span class="hl-0"> </span><span class="hl-2">before</span><span class="hl-0"> </span><span class="hl-2">reading</span><span class="hl-0"> </span><span class="hl-2">a</span><span class="hl-0"> </span><span class="hl-2">directory</span><span class="hl-0">, </span><span class="hl-2">to</span><span class="hl-0"> </span><span class="hl-2">allow</span><span class="hl-0"> [</span><span class="hl-2">SkipDir</span><span class="hl-0">]</span><br/><span class="hl-0">    </span><span class="hl-2">or</span><span class="hl-0"> [</span><span class="hl-2">SkipAll</span><span class="hl-0">] </span><span class="hl-2">to</span><span class="hl-0"> </span><span class="hl-2">bypass</span><span class="hl-0"> </span><span class="hl-2">the</span><span class="hl-0"> </span><span class="hl-2">directory</span><span class="hl-0"> </span><span class="hl-2">read</span><span class="hl-0"> </span><span class="hl-2">entirely</span><span class="hl-0"> </span><span class="hl-2">or</span><span class="hl-0"> </span><span class="hl-2">skip</span><span class="hl-0"> </span><span class="hl-2">all</span><span class="hl-0"> </span><span class="hl-2">remaining</span><br/><span class="hl-0">    </span><span class="hl-2">files</span><span class="hl-0"> </span><span class="hl-2">and</span><span class="hl-0"> </span><span class="hl-2">directories</span><span class="hl-0"> </span><span class="hl-2">respectively</span><span class="hl-0">.</span><br/><span class="hl-0">  - </span><span class="hl-2">If</span><span class="hl-0"> </span><span class="hl-2">a</span><span class="hl-0"> </span><span class="hl-2">directory</span><span class="hl-0"> </span><span class="hl-2">read</span><span class="hl-0"> </span><span class="hl-2">fails</span><span class="hl-0">, </span><span class="hl-2">the</span><span class="hl-0"> </span><span class="hl-2">function</span><span class="hl-0"> </span><span class="hl-2">is</span><span class="hl-0"> </span><span class="hl-2">called</span><span class="hl-0"> </span><span class="hl-2">a</span><span class="hl-0"> </span><span class="hl-2">second</span><span class="hl-0"> </span><span class="hl-2">time</span><br/><span class="hl-0">    for that directory to report the error.</span>
 </code><button>Copy</button></pre>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
@@ -72,7 +72,7 @@ is after a failed ReadDir and reports the error from ReadDir.
 <h5><span class="tsd-kind-parameter">err</span>: <span class="tsd-signature-type ">Error</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L7935">types.d.ts:7935</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8164">types.d.ts:8164</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

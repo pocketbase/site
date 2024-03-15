@@ -47,7 +47,7 @@ as a string and passes it to the [log] package.</p>
 <pre><code><span class="hl-0"> </span><span class="hl-5">2022</span><span class="hl-1">/</span><span class="hl-5">11</span><span class="hl-1">/</span><span class="hl-5">08</span><span class="hl-0"> </span><span class="hl-5">15</span><span class="hl-0">:</span><span class="hl-5">28</span><span class="hl-0">:</span><span class="hl-5">26</span><span class="hl-0"> </span><span class="hl-5">INFO</span><span class="hl-0"> hello count</span><span class="hl-1">=</span><span class="hl-5">3</span>
 </code><button>Copy</button></pre>
 <p>For more control over the output format, create a logger with a different handler.
-This statement uses [New] to create a new logger with a TextHandler
+This statement uses [New] to create a new logger with a [TextHandler]
 that writes structured records in text form to standard error:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-2">logger</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> slog.</span><span class="hl-2">New</span><span class="hl-0">(slog.</span><span class="hl-2">NewTextHandler</span><span class="hl-0">(os.Stderr, nil))</span>
 </code><button>Copy</button></pre>
@@ -169,7 +169,7 @@ keys and values; this allows it, too, to avoid allocation.</p>
 <pre><code><span class="hl-0"> logger.</span><span class="hl-2">LogAttrs</span><span class="hl-0">(ctx, slog.LevelInfo, </span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">))</span>
 </code><button>Copy</button></pre>
 <p>is the most efficient way to achieve the same output as</p>
-<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">)</span>
+<pre><code><span class="hl-0"> slog.</span><span class="hl-2">InfoContext</span><span class="hl-0">(ctx, </span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">)</span>
 </code><button>Copy</button></pre>
 <a id="md:customizing-a-type39s-logging-behavior" class="tsd-anchor"></a><h1><a href="#md:customizing-a-type39s-logging-behavior">Customizing a type&#39;s logging behavior</a></h1><p>If a type implements the [LogValuer] interface, the [Value] returned from its LogValue
 method is used for logging. You can use this to control how values of the type
@@ -178,12 +178,12 @@ or gather a struct&#39;s fields in a Group. See the examples under [LogValuer] f
 details.</p>
 <p>A LogValue method may return a Value that itself implements [LogValuer]. The [Value.Resolve]
 method handles these cases carefully, avoiding infinite loops and unbounded recursion.
-Handler authors and others may wish to use Value.Resolve instead of calling LogValue directly.</p>
+Handler authors and others may wish to use [Value.Resolve] instead of calling LogValue directly.</p>
 <a id="md:wrapping-output-methods" class="tsd-anchor"></a><h1><a href="#md:wrapping-output-methods">Wrapping output methods</a></h1><p>The logger functions use reflection over the call stack to find the file name
 and line number of the logging call within the application. This can produce
 incorrect source information for functions that wrap slog. For instance, if you
 define this function in file mylog.go:</p>
-<pre><code><span class="hl-0"> func </span><span class="hl-2">Infof</span><span class="hl-0">(format string, args </span><span class="hl-1">...</span><span class="hl-0">any) {</span><br/><span class="hl-0">     slog.</span><span class="hl-2">Default</span><span class="hl-0">().</span><span class="hl-2">Info</span><span class="hl-0">(fmt.</span><span class="hl-2">Sprintf</span><span class="hl-0">(format, args</span><span class="hl-1">...</span><span class="hl-0">))</span><br/><span class="hl-0"> }</span>
+<pre><code><span class="hl-0"> func </span><span class="hl-2">Infof</span><span class="hl-0">(logger </span><span class="hl-1">*</span><span class="hl-0">slog.Logger, format string, args </span><span class="hl-1">...</span><span class="hl-0">any) {</span><br/><span class="hl-0">     logger.</span><span class="hl-2">Info</span><span class="hl-0">(fmt.</span><span class="hl-2">Sprintf</span><span class="hl-0">(format, args</span><span class="hl-1">...</span><span class="hl-0">))</span><br/><span class="hl-0"> }</span>
 </code><button>Copy</button></pre>
 <p>and you call it like this in main.go:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-2">Infof</span><span class="hl-0">(slog.</span><span class="hl-2">Default</span><span class="hl-0">(), </span><span class="hl-3">&quot;hello, %s&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;world&quot;</span><span class="hl-0">)</span>
@@ -245,10 +245,10 @@ handlers are responsible for their own locking.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L16765">types.d.ts:16765</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L18404">types.d.ts:18404</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L19930">types.d.ts:19930</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L20473">types.d.ts:20473</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L17697">types.d.ts:17697</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L19147">types.d.ts:19147</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L19707">types.d.ts:19707</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L20561">types.d.ts:20561</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>

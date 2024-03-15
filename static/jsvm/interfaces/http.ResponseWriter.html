@@ -19,8 +19,7 @@
 <section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography"><p>A ResponseWriter interface is used by an HTTP handler to
 construct an HTTP response.</p>
-<p>A ResponseWriter may not be used after the Handler.ServeHTTP method
-has returned.</p>
+<p>A ResponseWriter may not be used after [Handler.ServeHTTP] has returned.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
 <section class="tsd-panel tsd-hierarchy">
@@ -31,7 +30,7 @@ has returned.</p>
 <h4 class="tsd-before-signature">Indexable</h4>
 <div class="tsd-signature"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L8747">types.d.ts:8747</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L9916">types.d.ts:9916</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -51,10 +50,10 @@ has returned.</p>
 <li class="tsd-signature tsd-anchor-link" id="header.header-1"><span class="tsd-kind-call-signature">header</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="http.Header.html" class="tsd-signature-type tsd-kind-interface">Header</a><a href="#header.header-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Header returns the header map that will be sent by
-WriteHeader. The Header map also is the mechanism with which
-Handlers can set HTTP trailers.</p>
-<p>Changing the header map after a call to WriteHeader (or
-Write) has no effect unless the HTTP status code was of the
+[ResponseWriter.WriteHeader]. The [Header] map also is the mechanism with which
+[Handler] implementations can set HTTP trailers.</p>
+<p>Changing the header map after a call to [ResponseWriter.WriteHeader] (or
+[ResponseWriter.Write]) has no effect unless the HTTP status code was of the
 1xx class or the modified headers are trailers.</p>
 <p>There are two ways to set Trailers. The preferred way is to
 predeclare in the headers which trailers you will later
@@ -62,27 +61,27 @@ send by setting the &quot;Trailer&quot; header to the names of the
 trailer keys which will come later. In this case, those
 keys of the Header map are treated as if they were
 trailers. See the example. The second way, for trailer
-keys not known to the Handler until after the first Write,
-is to prefix the Header map keys with the TrailerPrefix
-constant value. See TrailerPrefix.</p>
+keys not known to the [Handler] until after the first [ResponseWriter.Write],
+is to prefix the [Header] map keys with the [TrailerPrefix]
+constant value.</p>
 <p>To suppress automatic response headers (such as &quot;Date&quot;), set
 their value to nil.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <a href="http.Header.html" class="tsd-signature-type tsd-kind-interface">Header</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L8771">types.d.ts:8771</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L9940">types.d.ts:9940</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="write" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write</span><a href="#write" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="write.write-1"><span class="tsd-kind-call-signature">write</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">_arg0</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><a href="#write.write-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Write writes the data to the connection as part of an HTTP reply.</p>
-<p>If WriteHeader has not yet been called, Write calls
+<p>If [ResponseWriter.WriteHeader] has not yet been called, Write calls
 WriteHeader(http.StatusOK) before writing the data. If the Header
 does not contain a Content-Type line, Write adds a Content-Type set
 to the result of passing the initial 512 bytes of written data to
-DetectContentType. Additionally, if the total size of all written
+[DetectContentType]. Additionally, if the total size of all written
 data is under a few KB and there are no Flush calls, the
 Content-Length header is added automatically.</p>
 <p>Depending on the HTTP protocol version and the client, calling
@@ -105,7 +104,7 @@ possible to maximize compatibility.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L8795">types.d.ts:8795</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L9964">types.d.ts:9964</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="writeHeader" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write<wbr/>Header</span><a href="#writeHeader" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -135,7 +134,7 @@ an &quot;Expect: 100-continue&quot; header.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L8816">types.d.ts:8816</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L9985">types.d.ts:9985</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

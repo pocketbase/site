@@ -17,7 +17,7 @@
 <li><a href="sql.Row.html">Row</a></li></ul>
 <h1>Interface Row</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>Row is the result of calling QueryRow to select a single row.</p>
+<div class="tsd-comment tsd-typography"><p>Row is the result of calling [DB.QueryRow] to select a single row.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
 <section class="tsd-panel tsd-hierarchy">
@@ -25,9 +25,9 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">Row</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L16371">types.d.ts:16371</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L16373">types.d.ts:16373</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L16383">types.d.ts:16383</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16270">types.d.ts:16270</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16272">types.d.ts:16272</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16282">types.d.ts:16282</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -46,24 +46,24 @@
 <li class="tsd-signature tsd-anchor-link" id="err.err-1"><span class="tsd-kind-call-signature">err</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#err.err-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Err provides a way for wrapping packages to check for
-query errors without calling Scan.
+query errors without calling [Row.Scan].
 Err returns the error, if any, that was encountered while running the query.
-If this error is not nil, this error will also be returned from Scan.</p>
+If this error is not nil, this error will also be returned from [Row.Scan].</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L16390">types.d.ts:16390</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16289">types.d.ts:16289</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="scan" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>scan</span><a href="#scan" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="scan.scan-1"><span class="tsd-kind-call-signature">scan</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">dest</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#scan.scan-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Scan copies the columns from the matched row into the values
-pointed at by dest. See the documentation on Rows.Scan for details.
+pointed at by dest. See the documentation on [Rows.Scan] for details.
 If more than one row matches the query,
 Scan uses the first row and discards the rest. If no row matches
-the query, Scan returns ErrNoRows.</p>
+the query, Scan returns [ErrNoRows].</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -73,7 +73,7 @@ the query, Scan returns ErrNoRows.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L16381">types.d.ts:16381</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16280">types.d.ts:16280</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

@@ -17,7 +17,7 @@
 <li><a href="slog.Handler.html">Handler</a></li></ul>
 <h1>Interface Handler</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>A Handler handles log records produced by a Logger..</p>
+<div class="tsd-comment tsd-typography"><p>A Handler handles log records produced by a Logger.</p>
 <p>A typical handler may print log records to standard error,
 or write them to a file or database, or perhaps augment them
 with additional attributes and pass them on to another handler.</p>
@@ -36,7 +36,7 @@ They should use the methods of [Logger] instead.</p>
 <h4 class="tsd-before-signature">Indexable</h4>
 <div class="tsd-signature"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L18435">types.d.ts:18435</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L19178">types.d.ts:19178</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -76,7 +76,7 @@ to make a decision.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L18448">types.d.ts:18448</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L19191">types.d.ts:19191</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="handle" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>handle</span><a href="#handle" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -103,7 +103,7 @@ cancellation-related problem.)</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L18470">types.d.ts:18470</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L19213">types.d.ts:19213</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="withAttrs" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>with<wbr/>Attrs</span><a href="#withAttrs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -121,7 +121,7 @@ The Handler owns the slice: it may retain, modify or discard it.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/slog.html" class="tsd-signature-type tsd-kind-namespace">slog</a><span class="tsd-signature-symbol">.</span><a href="slog.Handler.html" class="tsd-signature-type tsd-kind-interface">Handler</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L18476">types.d.ts:18476</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L19219">types.d.ts:19219</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="withGroup" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>with<wbr/>Group</span><a href="#withGroup" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -136,10 +136,10 @@ this Handler&#39;s attribute keys differ from those of another Handler
 with a different sequence of group names.</p>
 <p>A Handler should treat WithGroup as starting a Group of Attrs that ends
 at the end of the log event. That is,</p>
-<pre><code><span class="hl-0">    logger.</span><span class="hl-2">WithGroup</span><span class="hl-0">(</span><span class="hl-3">&quot;s&quot;</span><span class="hl-0">).</span><span class="hl-2">LogAttrs</span><span class="hl-0">(level, msg, slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;a&quot;</span><span class="hl-0">, </span><span class="hl-5">1</span><span class="hl-0">), slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;b&quot;</span><span class="hl-0">, </span><span class="hl-5">2</span><span class="hl-0">))</span>
+<pre><code><span class="hl-0">    logger.</span><span class="hl-2">WithGroup</span><span class="hl-0">(</span><span class="hl-3">&quot;s&quot;</span><span class="hl-0">).</span><span class="hl-2">LogAttrs</span><span class="hl-0">(ctx, level, msg, slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;a&quot;</span><span class="hl-0">, </span><span class="hl-5">1</span><span class="hl-0">), slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;b&quot;</span><span class="hl-0">, </span><span class="hl-5">2</span><span class="hl-0">))</span>
 </code><button>Copy</button></pre>
 <p>should behave like</p>
-<pre><code><span class="hl-0">    logger.</span><span class="hl-2">LogAttrs</span><span class="hl-0">(level, msg, slog.</span><span class="hl-2">Group</span><span class="hl-0">(</span><span class="hl-3">&quot;s&quot;</span><span class="hl-0">, slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;a&quot;</span><span class="hl-0">, </span><span class="hl-5">1</span><span class="hl-0">), slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;b&quot;</span><span class="hl-0">, </span><span class="hl-5">2</span><span class="hl-0">)))</span>
+<pre><code><span class="hl-0">    logger.</span><span class="hl-2">LogAttrs</span><span class="hl-0">(ctx, level, msg, slog.</span><span class="hl-2">Group</span><span class="hl-0">(</span><span class="hl-3">&quot;s&quot;</span><span class="hl-0">, slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;a&quot;</span><span class="hl-0">, </span><span class="hl-5">1</span><span class="hl-0">), slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;b&quot;</span><span class="hl-0">, </span><span class="hl-5">2</span><span class="hl-0">)))</span>
 </code><button>Copy</button></pre>
 <p>If the name is empty, WithGroup returns the receiver.</p>
 </div>
@@ -151,7 +151,7 @@ at the end of the log event. That is,</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/slog.html" class="tsd-signature-type tsd-kind-namespace">slog</a><span class="tsd-signature-symbol">.</span><a href="slog.Handler.html" class="tsd-signature-type tsd-kind-interface">Handler</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L18502">types.d.ts:18502</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L19245">types.d.ts:19245</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

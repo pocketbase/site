@@ -17,25 +17,25 @@
 <h1>Namespace http</h1></div>
 <section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography"><p>Package http provides HTTP client and server implementations.</p>
-<p>Get, Head, Post, and PostForm make HTTP (or HTTPS) requests:</p>
+<p>[Get], [Head], [Post], and [PostForm] make HTTP (or HTTPS) requests:</p>
 <pre><code><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">Get</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com/&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-1">...</span><br/><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">Post</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com/upload&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;image/jpeg&quot;</span><span class="hl-0">, </span><span class="hl-1">&amp;</span><span class="hl-0">buf)</span><br/><span class="hl-0"> </span><span class="hl-1">...</span><br/><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">PostForm</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com/form&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">   url.Values{</span><span class="hl-3">&quot;key&quot;</span><span class="hl-0">: {</span><span class="hl-3">&quot;Value&quot;</span><span class="hl-0">}, </span><span class="hl-3">&quot;id&quot;</span><span class="hl-0">: {</span><span class="hl-3">&quot;123&quot;</span><span class="hl-0">}})</span>
 </code><button>Copy</button></pre>
 <p>The caller must close the response body when finished with it:</p>
 <pre><code><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">Get</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com/&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-1">if</span><span class="hl-0"> err </span><span class="hl-1">!=</span><span class="hl-0"> nil {</span><br/><span class="hl-0">   </span><span class="hl-4">// handle error</span><br/><span class="hl-0"> }</span><br/><span class="hl-0"> defer resp.Body.</span><span class="hl-2">Close</span><span class="hl-0">()</span><br/><span class="hl-0"> body, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> io.</span><span class="hl-2">ReadAll</span><span class="hl-0">(resp.Body)</span><br/><span class="hl-0"> </span><span class="hl-4">// ...</span>
 </code><button>Copy</button></pre>
 <a id="md:clients-and-transports" class="tsd-anchor"></a><h1><a href="#md:clients-and-transports">Clients and Transports</a></h1><p>For control over HTTP client headers, redirect policy, and other
-settings, create a Client:</p>
+settings, create a [Client]:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> </span><span class="hl-1">&amp;</span><span class="hl-0">http.Client{</span><br/><span class="hl-0">   </span><span class="hl-2">CheckRedirect</span><span class="hl-0">: redirectPolicyFunc,</span><br/><span class="hl-0"> }</span><br/><br/><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> client.</span><span class="hl-2">Get</span><span class="hl-0">(</span><span class="hl-3">&quot;http://example.com&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-4">// ...</span><br/><br/><span class="hl-0"> req, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> http.</span><span class="hl-2">NewRequest</span><span class="hl-0">(</span><span class="hl-3">&quot;GET&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;http://example.com&quot;</span><span class="hl-0">, nil)</span><br/><span class="hl-0"> </span><span class="hl-4">// ...</span><br/><span class="hl-0"> req.Header.</span><span class="hl-2">Add</span><span class="hl-0">(</span><span class="hl-3">&quot;If-None-Match&quot;</span><span class="hl-0">, </span><span class="hl-3">`W/&quot;wyzzy&quot;`</span><span class="hl-0">)</span><br/><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> client.</span><span class="hl-2">Do</span><span class="hl-0">(req)</span><br/><span class="hl-0"> </span><span class="hl-4">// ...</span>
 </code><button>Copy</button></pre>
 <p>For control over proxies, TLS configuration, keep-alives,
-compression, and other settings, create a Transport:</p>
+compression, and other settings, create a [Transport]:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-2">tr</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> </span><span class="hl-1">&amp;</span><span class="hl-0">http.Transport{</span><br/><span class="hl-0">   </span><span class="hl-2">MaxIdleConns</span><span class="hl-0">:       </span><span class="hl-5">10</span><span class="hl-0">,</span><br/><span class="hl-0">   </span><span class="hl-2">IdleConnTimeout</span><span class="hl-0">:    </span><span class="hl-5">30</span><span class="hl-0"> </span><span class="hl-1">*</span><span class="hl-0"> time.Second,</span><br/><span class="hl-0">   </span><span class="hl-2">DisableCompression</span><span class="hl-0">: </span><span class="hl-5">true</span><span class="hl-0">,</span><br/><span class="hl-0"> }</span><br/><span class="hl-0"> </span><span class="hl-2">client</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> </span><span class="hl-1">&amp;</span><span class="hl-0">http.Client{</span><span class="hl-2">Transport</span><span class="hl-0">: tr}</span><br/><span class="hl-0"> resp, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> client.</span><span class="hl-2">Get</span><span class="hl-0">(</span><span class="hl-3">&quot;https://example.com&quot;</span><span class="hl-0">)</span>
 </code><button>Copy</button></pre>
 <p>Clients and Transports are safe for concurrent use by multiple
 goroutines and for efficiency should only be created once and re-used.</p>
 <a id="md:servers" class="tsd-anchor"></a><h1><a href="#md:servers">Servers</a></h1><p>ListenAndServe starts an HTTP server with a given address and handler.
-The handler is usually nil, which means to use DefaultServeMux.
-Handle and HandleFunc add handlers to DefaultServeMux:</p>
+The handler is usually nil, which means to use [DefaultServeMux].
+[Handle] and [HandleFunc] add handlers to [DefaultServeMux]:</p>
 <pre><code><span class="hl-0"> http.</span><span class="hl-2">Handle</span><span class="hl-0">(</span><span class="hl-3">&quot;/foo&quot;</span><span class="hl-0">, fooHandler)</span><br/><br/><span class="hl-0"> http.</span><span class="hl-2">HandleFunc</span><span class="hl-0">(</span><span class="hl-3">&quot;/bar&quot;</span><span class="hl-0">, </span><span class="hl-2">func</span><span class="hl-0">(w http.ResponseWriter, r </span><span class="hl-1">*</span><span class="hl-0">http.Request) {</span><br/><span class="hl-0">   fmt.Fprintf(w, </span><span class="hl-3">&quot;Hello, %q&quot;</span><span class="hl-0">, html.EscapeString(r.URL.Path))</span><br/><span class="hl-0"> })</span><br/><br/><span class="hl-0"> log.</span><span class="hl-2">Fatal</span><span class="hl-0">(http.</span><span class="hl-2">ListenAndServe</span><span class="hl-0">(</span><span class="hl-3">&quot;:8080&quot;</span><span class="hl-0">, nil))</span>
 </code><button>Copy</button></pre>
 <p>More control over the server&#39;s behavior is available by creating a
@@ -44,14 +44,14 @@ custom Server:</p>
 </code><button>Copy</button></pre>
 <a id="md:http2" class="tsd-anchor"></a><h1><a href="#md:http2">HTTP/2</a></h1><p>Starting with Go 1.6, the http package has transparent support for the
 HTTP/2 protocol when using HTTPS. Programs that must disable HTTP/2
-can do so by setting Transport.TLSNextProto (for clients) or
-Server.TLSNextProto (for servers) to a non-nil, empty
+can do so by setting [Transport.TLSNextProto] (for clients) or
+[Server.TLSNextProto] (for servers) to a non-nil, empty
 map. Alternatively, the following GODEBUG settings are
 currently supported:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-5">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">http2client</span><span class="hl-1">=</span><span class="hl-5">0</span><span class="hl-0">  # disable </span><span class="hl-5">HTTP</span><span class="hl-1">/</span><span class="hl-5">2</span><span class="hl-0"> client support</span><br/><span class="hl-0"> </span><span class="hl-5">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">http2server</span><span class="hl-1">=</span><span class="hl-5">0</span><span class="hl-0">  # disable </span><span class="hl-5">HTTP</span><span class="hl-1">/</span><span class="hl-5">2</span><span class="hl-0"> server support</span><br/><span class="hl-0"> </span><span class="hl-5">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">http2debug</span><span class="hl-1">=</span><span class="hl-5">1</span><span class="hl-0">   # enable verbose </span><span class="hl-5">HTTP</span><span class="hl-1">/</span><span class="hl-5">2</span><span class="hl-0"> debug logs</span><br/><span class="hl-0"> </span><span class="hl-5">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">http2debug</span><span class="hl-1">=</span><span class="hl-5">2</span><span class="hl-0">   # </span><span class="hl-1">...</span><span class="hl-0"> even more verbose, </span><span class="hl-1">with</span><span class="hl-0"> frame dumps</span>
 </code><button>Copy</button></pre>
 <p>Please report any issues before disabling HTTP/2 support: <a href="https://golang.org/s/http2bug">https://golang.org/s/http2bug</a></p>
-<p>The http package&#39;s Transport and Server both automatically enable
+<p>The http package&#39;s [Transport] and [Server] both automatically enable
 HTTP/2 support for simple configurations. To enable HTTP/2 for more
 complex configurations, to use lower-level HTTP/2 features, or to use
 a newer version of Go&#39;s http2 package, import &quot;golang.org/x/net/http2&quot;
@@ -62,9 +62,9 @@ support.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L8264">types.d.ts:8264</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L15619">types.d.ts:15619</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/808a7a34/jsvm/types.d.ts#L18944">types.d.ts:18944</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L9418">types.d.ts:9418</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L15555">types.d.ts:15555</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L18511">types.d.ts:18511</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
