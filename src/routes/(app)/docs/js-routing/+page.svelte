@@ -77,7 +77,7 @@
         const admin  = c.get("admin")      // empty if not authenticated as admin
         const record = c.get("authRecord") // empty if not authenticated as regular auth record
 
-        // alternatively, you can also read the auth state form the cached request info
+        // alternatively, you can also read the auth state from the cached request info
         const info   = $apis.requestInfo(c);
         const admin  = info.admin;      // empty if not authenticated as admin
         const record = info.authRecord; // empty if not authenticated as regular auth record
