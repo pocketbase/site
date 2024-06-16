@@ -362,7 +362,7 @@
         expands relations (if <code>defaultExpands</code> and/or <code>?expand</code> query parameter is set)
     </li>
     <li>
-        ensures that the emails of the auth record and its expanded auth relations are visibe only for the
+        ensures that the emails of the auth record and its expanded auth relations are visible only for the
         current logged admin, record owner or record with manage access
     </li>
 </ul>
