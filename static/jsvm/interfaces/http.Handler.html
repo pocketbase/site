@@ -18,15 +18,15 @@
 <h1>Interface Handler</h1></div>
 <section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography"><p>A Handler responds to an HTTP request.</p>
-<p>ServeHTTP should write reply headers and data to the ResponseWriter
+<p>[Handler.ServeHTTP] should write reply headers and data to the [ResponseWriter]
 and then return. Returning signals that the request is finished; it
-is not valid to use the ResponseWriter or read from the
-Request.Body after or concurrently with the completion of the
+is not valid to use the [ResponseWriter] or read from the
+[Request.Body] after or concurrently with the completion of the
 ServeHTTP call.</p>
 <p>Depending on the HTTP client software, HTTP protocol version, and
 any intermediaries between the client and the Go server, it may not
-be possible to read from the Request.Body after writing to the
-ResponseWriter. Cautious handlers should read the Request.Body
+be possible to read from the [Request.Body] after writing to the
+[ResponseWriter]. Cautious handlers should read the [Request.Body]
 first, and then reply.</p>
 <p>Except for reading the body, handlers should not modify the
 provided Request.</p>
@@ -36,7 +36,7 @@ It recovers the panic, logs a stack trace to the server error log,
 and either closes the network connection or sends an HTTP/2
 RST_STREAM, depending on the HTTP protocol. To abort a handler so
 the client sees an interrupted response but the server doesn&#39;t log
-an error, panic with the value ErrAbortHandler.</p>
+an error, panic with the value [ErrAbortHandler].</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
 <section class="tsd-panel tsd-hierarchy">
@@ -47,7 +47,7 @@ an error, panic with the value ErrAbortHandler.</p>
 <h4 class="tsd-before-signature">Indexable</h4>
 <div class="tsd-signature"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L15864">types.d.ts:15864</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L15850">types.d.ts:15850</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -73,7 +73,7 @@ an error, panic with the value ErrAbortHandler.</p>
 <h5><span class="tsd-kind-parameter">_arg1</span>: <a href="http.Request.html" class="tsd-signature-type tsd-kind-interface">Request</a></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L15866">types.d.ts:15866</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L15852">types.d.ts:15852</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

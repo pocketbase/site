@@ -1,7 +1,12 @@
 <script>
+    import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
+    import Toc from "@/components/Toc.svelte";
 </script>
 
+<Toc />
+
+<HeadingLink title="Overview" />
 <p>
     You can use the global <code>$http.send(config)</code> helper to send HTTP requests to external services.
     <br />
@@ -9,7 +14,7 @@
     provider API, etc.
 </p>
 
-<p>Below is a list with all currently supported configurations and their defaults.</p>
+<p>Below is a list with all currently supported config options and their defaults.</p>
 <CodeBlock
     language="javascript"
     content={`
@@ -17,13 +22,13 @@
         const res = $http.send({
             url:     "",
             method:  "GET",
-            body:    "", // eg. JSON.stringify({"test": 123})
+            body:    "", // ex. JSON.stringify({"test": 123}) or new FormData()
             headers: {"content-type": "application/json"},
             timeout: 120, // in seconds
         })
 
-        console.log(res.headers)    // the response headers (eg. res.headers['X-Custom'][0])
-        console.log(res.cookies)    // the response cookies (eg. res.cookies.sessionId.value)
+        console.log(res.headers)    // the response headers (ex. res.headers['X-Custom'][0])
+        console.log(res.cookies)    // the response cookies (ex. res.cookies.sessionId.value)
         console.log(res.statusCode) // the response HTTP status code
         console.log(res.raw)        // the response body as plain text
         console.log(res.json)       // the response body as parsed json array or map
@@ -40,7 +45,7 @@
         onRecordBeforeCreateRequest((e) => {
             const isbn = e.record.get("isbn");
 
-            // try to find the published date
+            // try to update with the published date from the openlibrary API
             try {
                 const res = $http.send({
                     url: "https://openlibrary.org/isbn/" + isbn + ".json",
@@ -56,11 +61,38 @@
     `}
 />
 
-<p class="m-t-sm">Some implementation caveats:</p>
-<ul>
-    <li>All requests are processed synchroniously.</li>
-    <li>
-        <code>multipart/form-data</code> requests are currently not supported
-        <em>(this may change in the future depending on the users demand)</em>.
-    </li>
-</ul>
+<HeadingLink title="multipart/form-data requests" tag="h5" />
+<p>
+    In order to send <code>multipart/form-data</code> requests (ex. uploading files) the request
+    <code>body</code> must be a <code>FormData</code> instance.
+</p>
+<p>
+    PocketBase JSVM's <code>FormData</code> has the same APIs as its
+    <a
+        href="https://developer.mozilla.org/en-US/docs/Web/API/FormData"
+        target="_blank"
+        rel="noopener noreferrer">browser equivalent</a
+    >
+    with the main difference that for file values instead of <code>Blob</code> it accepts
+    <a href="/jsvm/modules/_filesystem.html" target="_blank" rel="noopener noreferrer"
+        ><code>$filesystem.File</code></a
+    >.
+</p>
+<CodeBlock
+    language="javascript"
+    content={`
+        const formData = new FormData();
+
+        formData.append("title", "Hello world!")
+        formData.append("documents", $filesystem.fileFromBytes("doc1", "doc1.txt"))
+        formData.append("documents", $filesystem.fileFromBytes("doc2", "doc2.txt"))
+
+        const res = $http.send({
+            url:    "https://...",
+            method: "POST",
+            body:   formData,
+        })
+
+        console.log(res.statusCode)
+    `}
+/>

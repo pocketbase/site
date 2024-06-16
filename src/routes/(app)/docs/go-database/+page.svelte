@@ -108,8 +108,8 @@
     language="go"
     content={`
         type Post struct {
-            Name     string ` + "`" + `db:"name" json:"name"` + "`" + `
-            Created  bool   ` + "`" + `db:"created" json:"created"` + "`" + `
+            Name     string         ` + "`" + `db:"name" json:"name"` + "`" + `
+            Created  types.DateTime ` + "`" + `db:"created" json:"created"` + "`" + `
         }
 
         posts := []Post{}
@@ -139,7 +139,7 @@
     content={`
         users := []struct {
             Id    string ` + "`" + `db:"id" json:"id"` + "`" + `
-            Email bool   ` + "`" + `db:"email" json:"email"` + "`" + `
+            Email string ` + "`" + `db:"email" json:"email"` + "`" + `
         }{}
 
         app.Dao().DB().
@@ -593,7 +593,7 @@
             }
 
             // run some custom raw query
-            rawQuery := "DELETE articles WHERE status = 'pending'"
+            rawQuery := "DELETE FROM articles WHERE status = 'pending'"
             if _, err := txDao.DB().NewQuery(rawQuery).Execute(); err != nil {
                 return err
             }

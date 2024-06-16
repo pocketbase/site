@@ -26,15 +26,15 @@ The zero value for Server is a valid configuration.</p>
 <ul class="tsd-hierarchy">
 <li><span class="target">Server</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9437">types.d.ts:9437</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9546">types.d.ts:9546</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9560">types.d.ts:9560</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9585">types.d.ts:9585</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9595">types.d.ts:9595</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9608">types.d.ts:9608</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9623">types.d.ts:9623</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9641">types.d.ts:9641</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9650">types.d.ts:9650</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L9991">types.d.ts:9991</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10100">types.d.ts:10100</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10114">types.d.ts:10114</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10139">types.d.ts:10139</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10149">types.d.ts:10149</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10162">types.d.ts:10162</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10177">types.d.ts:10177</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10195">types.d.ts:10195</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10204">types.d.ts:10204</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -76,50 +76,50 @@ The zero value for Server is a valid configuration.</p>
 <li class="tsd-signature tsd-anchor-link" id="close.close-1"><span class="tsd-kind-call-signature">close</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#close.close-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Close immediately closes all active net.Listeners and any
-connections in state StateNew, StateActive, or StateIdle. For a
-graceful shutdown, use Shutdown.</p>
+connections in state [StateNew], [StateActive], or [StateIdle]. For a
+graceful shutdown, use [Server.Shutdown].</p>
 <p>Close does not attempt to close (and does not even know about)
 any hijacked connections, such as WebSockets.</p>
-<p>Close returns any error returned from closing the Server&#39;s
+<p>Close returns any error returned from closing the [Server]&#39;s
 underlying Listener(s).</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9558">types.d.ts:9558</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10112">types.d.ts:10112</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="listenAndServe" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>listen<wbr/>And<wbr/>Serve</span><a href="#listenAndServe" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="listenAndServe.listenAndServe-1"><span class="tsd-kind-call-signature">listen<wbr/>And<wbr/>Serve</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#listenAndServe.listenAndServe-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>ListenAndServe listens on the TCP network address srv.Addr and then
-calls Serve to handle requests on incoming connections.
+calls [Serve] to handle requests on incoming connections.
 Accepted connections are configured to enable TCP keep-alives.</p>
 <p>If srv.Addr is blank, &quot;:http&quot; is used.</p>
-<p>ListenAndServe always returns a non-nil error. After Shutdown or Close,
-the returned error is ErrServerClosed.</p>
+<p>ListenAndServe always returns a non-nil error. After [Server.Shutdown] or [Server.Close],
+the returned error is [ErrServerClosed].</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9606">types.d.ts:9606</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10160">types.d.ts:10160</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="listenAndServeTLS" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>listen<wbr/>And<wbr/>ServeTLS</span><a href="#listenAndServeTLS" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="listenAndServeTLS.listenAndServeTLS-1"><span class="tsd-kind-call-signature">listen<wbr/>And<wbr/>ServeTLS</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">certFile</span>, <span class="tsd-kind-parameter">keyFile</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#listenAndServeTLS.listenAndServeTLS-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>ListenAndServeTLS listens on the TCP network address srv.Addr and
-then calls ServeTLS to handle requests on incoming TLS connections.
+then calls [ServeTLS] to handle requests on incoming TLS connections.
 Accepted connections are configured to enable TCP keep-alives.</p>
 <p>Filenames containing a certificate and matching private key for the
-server must be provided if neither the Server&#39;s TLSConfig.Certificates
+server must be provided if neither the [Server]&#39;s TLSConfig.Certificates
 nor TLSConfig.GetCertificate are populated. If the certificate is
 signed by a certificate authority, the certFile should be the
 concatenation of the server&#39;s certificate, any intermediates, and
 the CA&#39;s certificate.</p>
 <p>If srv.Addr is blank, &quot;:https&quot; is used.</p>
-<p>ListenAndServeTLS always returns a non-nil error. After Shutdown or
-Close, the returned error is ErrServerClosed.</p>
+<p>ListenAndServeTLS always returns a non-nil error. After [Server.Shutdown] or
+[Server.Close], the returned error is [ErrServerClosed].</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -131,13 +131,13 @@ Close, the returned error is ErrServerClosed.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9668">types.d.ts:9668</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10222">types.d.ts:10222</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="registerOnShutdown" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>register<wbr/>On<wbr/>Shutdown</span><a href="#registerOnShutdown" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="registerOnShutdown.registerOnShutdown-1"><span class="tsd-kind-call-signature">register<wbr/>On<wbr/>Shutdown</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">f</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#registerOnShutdown.registerOnShutdown-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>RegisterOnShutdown registers a function to call on Shutdown.
+<div class="tsd-comment tsd-typography"><p>RegisterOnShutdown registers a function to call on [Server.Shutdown].
 This can be used to gracefully shutdown connections that have
 undergone ALPN protocol upgrade or that have been hijacked.
 This function should start protocol-specific graceful shutdown,
@@ -157,7 +157,7 @@ but should not wait for shutdown to complete.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9593">types.d.ts:9593</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10147">types.d.ts:10147</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="serve" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>serve</span><a href="#serve" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -166,11 +166,11 @@ but should not wait for shutdown to complete.</p>
 <div class="tsd-comment tsd-typography"><p>Serve accepts incoming connections on the Listener l, creating a
 new service goroutine for each. The service goroutines read requests and
 then call srv.Handler to reply to them.</p>
-<p>HTTP/2 support is only enabled if the Listener returns *tls.Conn
+<p>HTTP/2 support is only enabled if the Listener returns [*tls.Conn]
 connections and they were configured with &quot;h2&quot; in the TLS
 Config.NextProtos.</p>
 <p>Serve always returns a non-nil error and closes l.
-After Shutdown or Close, the returned error is ErrServerClosed.</p>
+After [Server.Shutdown] or [Server.Close], the returned error is [ErrServerClosed].</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -180,7 +180,7 @@ After Shutdown or Close, the returned error is ErrServerClosed.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9621">types.d.ts:9621</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10175">types.d.ts:10175</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="serveTLS" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>serveTLS</span><a href="#serveTLS" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -190,13 +190,13 @@ After Shutdown or Close, the returned error is ErrServerClosed.</p>
 new service goroutine for each. The service goroutines perform TLS
 setup and then read requests, calling srv.Handler to reply to them.</p>
 <p>Files containing a certificate and matching private key for the
-server must be provided if neither the Server&#39;s
+server must be provided if neither the [Server]&#39;s
 TLSConfig.Certificates nor TLSConfig.GetCertificate are populated.
 If the certificate is signed by a certificate authority, the
 certFile should be the concatenation of the server&#39;s certificate,
 any intermediates, and the CA&#39;s certificate.</p>
-<p>ServeTLS always returns a non-nil error. After Shutdown or Close, the
-returned error is ErrServerClosed.</p>
+<p>ServeTLS always returns a non-nil error. After [Server.Shutdown] or [Server.Close], the
+returned error is [ErrServerClosed].</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -210,7 +210,7 @@ returned error is ErrServerClosed.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9639">types.d.ts:9639</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10193">types.d.ts:10193</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="setKeepAlivesEnabled" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>set<wbr/>Keep<wbr/>Alives<wbr/>Enabled</span><a href="#setKeepAlivesEnabled" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -229,7 +229,7 @@ shutting down should disable them.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9648">types.d.ts:9648</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10202">types.d.ts:10202</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="shutdown" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>shutdown</span><a href="#shutdown" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -241,14 +241,14 @@ listeners, then closing all idle connections, and then waiting
 indefinitely for connections to return to idle and then shut down.
 If the provided context expires before the shutdown is complete,
 Shutdown returns the context&#39;s error, otherwise it returns any
-error returned from closing the Server&#39;s underlying Listener(s).</p>
-<p>When Shutdown is called, Serve, ListenAndServe, and
-ListenAndServeTLS immediately return ErrServerClosed. Make sure the
+error returned from closing the [Server]&#39;s underlying Listener(s).</p>
+<p>When Shutdown is called, [Serve], [ListenAndServe], and
+[ListenAndServeTLS] immediately return [ErrServerClosed]. Make sure the
 program doesn&#39;t exit and waits instead for Shutdown to return.</p>
 <p>Shutdown does not attempt to close nor wait for hijacked
 connections such as WebSockets. The caller of Shutdown should
 separately notify such long-lived connections of shutdown and wait
-for them to close, if desired. See RegisterOnShutdown for a way to
+for them to close, if desired. See [Server.RegisterOnShutdown] for a way to
 register shutdown notification functions.</p>
 <p>Once Shutdown has been called on a server, it may not be reused;
 future calls to methods such as Serve will return ErrServerClosed.</p>
@@ -261,7 +261,7 @@ future calls to methods such as Serve will return ErrServerClosed.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9583">types.d.ts:9583</a></li></ul></aside></li></ul></section></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10137">types.d.ts:10137</a></li></ul></aside></li></ul></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Properties</h2>
 <section class="tsd-panel tsd-member"><a id="addr" class="tsd-anchor"></a>
@@ -274,7 +274,7 @@ See net.Dial for details of the address format.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9444">types.d.ts:9444</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L9998">types.d.ts:9998</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="baseContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>base<wbr/>Context</span><a href="#baseContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">base<wbr/>Context</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">_arg0</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../modules/context.html" class="tsd-signature-type tsd-kind-namespace">context</a><span class="tsd-signature-symbol">.</span><a href="context.Context.html" class="tsd-signature-type tsd-kind-interface">Context</a><span class="tsd-signature-symbol">)</span></div>
@@ -300,7 +300,7 @@ If non-nil, it must return a non-nil context.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/context.html" class="tsd-signature-type tsd-kind-namespace">context</a><span class="tsd-signature-symbol">.</span><a href="context.Context.html" class="tsd-signature-type tsd-kind-interface">Context</a></h4>
 <div class="tsd-comment tsd-typography"></div></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9537">types.d.ts:9537</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10091">types.d.ts:10091</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="connContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>conn<wbr/>Context</span><a href="#connContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">conn<wbr/>Context</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ctx</span>, <span class="tsd-kind-parameter">c</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../modules/context.html" class="tsd-signature-type tsd-kind-namespace">context</a><span class="tsd-signature-symbol">.</span><a href="context.Context.html" class="tsd-signature-type tsd-kind-interface">Context</a><span class="tsd-signature-symbol">)</span></div>
@@ -326,7 +326,7 @@ value.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/context.html" class="tsd-signature-type tsd-kind-namespace">context</a><span class="tsd-signature-symbol">.</span><a href="context.Context.html" class="tsd-signature-type tsd-kind-interface">Context</a></h4>
 <div class="tsd-comment tsd-typography"></div></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9544">types.d.ts:9544</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10098">types.d.ts:10098</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="connState" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>conn<wbr/>State</span><a href="#connState" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">conn<wbr/>State</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">_arg0</span>, <span class="tsd-kind-parameter">_arg1</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></div>
@@ -351,7 +351,7 @@ ConnState type and associated constants for details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9521">types.d.ts:9521</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10075">types.d.ts:10075</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="disableGeneralOptionsHandler" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>disable<wbr/>General<wbr/>Options<wbr/>Handler</span><a href="#disableGeneralOptionsHandler" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">disable<wbr/>General<wbr/>Options<wbr/>Handler</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
@@ -360,7 +360,7 @@ otherwise responds with 200 OK and Content-Length: 0.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9450">types.d.ts:9450</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10004">types.d.ts:10004</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="errorLog" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>error<wbr/>Log</span><a href="#errorLog" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">error<wbr/>Log</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span></div>
@@ -371,12 +371,12 @@ If nil, logging is done via the log package&#39;s standard logger.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9528">types.d.ts:9528</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10082">types.d.ts:10082</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="handler" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>handler</span><a href="#handler" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">handler</span><span class="tsd-signature-symbol">:</span> <a href="../modules/http.html" class="tsd-signature-type tsd-kind-namespace">http</a><span class="tsd-signature-symbol">.</span><a href="http.Handler.html" class="tsd-signature-type tsd-kind-interface">Handler</a></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9445">types.d.ts:9445</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L9999">types.d.ts:9999</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="idleTimeout" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>idle<wbr/>Timeout</span><a href="#idleTimeout" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">idle<wbr/>Timeout</span><span class="tsd-signature-symbol">:</span> <a href="time.Duration.html" class="tsd-signature-type tsd-kind-interface">Duration</a></div>
@@ -387,7 +387,7 @@ zero, there is no timeout.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9495">types.d.ts:9495</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10049">types.d.ts:10049</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="maxHeaderBytes" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>max<wbr/>Header<wbr/>Bytes</span><a href="#maxHeaderBytes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">max<wbr/>Header<wbr/>Bytes</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
@@ -399,7 +399,7 @@ If zero, DefaultMaxHeaderBytes is used.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9503">types.d.ts:9503</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10057">types.d.ts:10057</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="readHeaderTimeout" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>Header<wbr/>Timeout</span><a href="#readHeaderTimeout" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">read<wbr/>Header<wbr/>Timeout</span><span class="tsd-signature-symbol">:</span> <a href="time.Duration.html" class="tsd-signature-type tsd-kind-interface">Duration</a></div>
@@ -412,7 +412,7 @@ zero, there is no timeout.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9480">types.d.ts:9480</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10034">types.d.ts:10034</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="readTimeout" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>Timeout</span><a href="#readTimeout" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">read<wbr/>Timeout</span><span class="tsd-signature-symbol">:</span> <a href="time.Duration.html" class="tsd-signature-type tsd-kind-interface">Duration</a></div>
@@ -426,7 +426,7 @@ ReadHeaderTimeout. It is valid to use them both.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9471">types.d.ts:9471</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10025">types.d.ts:10025</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="tlsConfig" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>tls<wbr/>Config</span><a href="#tlsConfig" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">tls<wbr/>Config</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span></div>
@@ -440,7 +440,7 @@ instead.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9460">types.d.ts:9460</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10014">types.d.ts:10014</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="tlsNextProto" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>tls<wbr/>Next<wbr/>Proto</span><a href="#tlsNextProto" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">tls<wbr/>Next<wbr/>Proto</span><span class="tsd-signature-symbol">:</span> <a href="../types/_TygojaDict.html" class="tsd-signature-type tsd-kind-type-alias">_TygojaDict</a></div>
@@ -456,7 +456,7 @@ automatically.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9515">types.d.ts:9515</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10069">types.d.ts:10069</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="writeTimeout" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write<wbr/>Timeout</span><a href="#writeTimeout" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">write<wbr/>Timeout</span><span class="tsd-signature-symbol">:</span> <a href="time.Duration.html" class="tsd-signature-type tsd-kind-interface">Duration</a></div>
@@ -468,7 +468,7 @@ A zero or negative value means there will be no timeout.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L9488">types.d.ts:9488</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L10042">types.d.ts:10042</a></li></ul></aside></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

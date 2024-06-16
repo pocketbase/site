@@ -106,7 +106,7 @@
     language="javascript"
     content={`
         // retrieve multiple "articles" collection records by their ids
-        const records = $app.dao().findRecordsByIds("articles", "RECORD_ID1", "RECORD_ID2")
+        const records = $app.dao().findRecordsByIds("articles", ["RECORD_ID1", "RECORD_ID2"])
 
         // retrieve multiple "articles" collection records by a custom dbx expression(s)
         // (for all avalaible expressions, please check the Database guide)
@@ -122,7 +122,7 @@
             "status = 'public' && category = {:category}", // filter
             "-publised",                                   // sort
             10,                                            // limit
-            0,                                             // limit
+            0,                                             // offset
             { category: "news" },                          // optional filter params
         )
     `}

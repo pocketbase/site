@@ -19,11 +19,11 @@
 <section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography"><p>Stmt is a prepared statement.
 A Stmt is safe for concurrent use by multiple goroutines.</p>
-<p>If a Stmt is prepared on a Tx or Conn, it will be bound to a single
-underlying connection forever. If the Tx or Conn closes, the Stmt will
+<p>If a Stmt is prepared on a [Tx] or [Conn], it will be bound to a single
+underlying connection forever. If the [Tx] or [Conn] closes, the Stmt will
 become unusable and all operations will return an error.
-If a Stmt is prepared on a DB, it will remain usable for the lifetime of the
-DB. When the Stmt needs to execute on a new underlying connection, it will
+If a Stmt is prepared on a [DB], it will remain usable for the lifetime of the
+[DB]. When the Stmt needs to execute on a new underlying connection, it will
 prepare itself on the new connection automatically.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
@@ -32,14 +32,14 @@ prepare itself on the new connection automatically.</p>
 <ul class="tsd-hierarchy">
 <li><span class="target">Stmt</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8493">types.d.ts:8493</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8495">types.d.ts:8495</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8502">types.d.ts:8502</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8512">types.d.ts:8512</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8519">types.d.ts:8519</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8529">types.d.ts:8529</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8540">types.d.ts:8540</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8561">types.d.ts:8561</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8587">types.d.ts:8587</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8589">types.d.ts:8589</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8596">types.d.ts:8596</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8606">types.d.ts:8606</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8613">types.d.ts:8613</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8623">types.d.ts:8623</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8634">types.d.ts:8634</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8655">types.d.ts:8655</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -67,16 +67,16 @@ prepare itself on the new connection automatically.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8565">types.d.ts:8565</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8659">types.d.ts:8659</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="exec" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>exec</span><a href="#exec" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="exec.exec-1"><span class="tsd-kind-call-signature">exec</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">args</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Result.html" class="tsd-signature-type tsd-kind-interface">Result</a><a href="#exec.exec-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Exec executes a prepared statement with the given arguments and
-returns a Result summarizing the effect of the statement.</p>
-<p>Exec uses context.Background internally; to specify the context, use
-ExecContext.</p>
+returns a [Result] summarizing the effect of the statement.</p>
+<p>Exec uses [context.Background] internally; to specify the context, use
+[Stmt.ExecContext].</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -86,14 +86,14 @@ ExecContext.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Result.html" class="tsd-signature-type tsd-kind-interface">Result</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8510">types.d.ts:8510</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8604">types.d.ts:8604</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="execContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>exec<wbr/>Context</span><a href="#execContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="execContext.execContext-1"><span class="tsd-kind-call-signature">exec<wbr/>Context</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ctx</span>, <span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">args</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Result.html" class="tsd-signature-type tsd-kind-interface">Result</a><a href="#execContext.execContext-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>ExecContext executes a prepared statement with the given arguments and
-returns a Result summarizing the effect of the statement.</p>
+returns a [Result] summarizing the effect of the statement.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -105,7 +105,7 @@ returns a Result summarizing the effect of the statement.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Result.html" class="tsd-signature-type tsd-kind-interface">Result</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8500">types.d.ts:8500</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8594">types.d.ts:8594</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="query" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>query</span><a href="#query" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -113,8 +113,8 @@ returns a Result summarizing the effect of the statement.</p>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Query executes a prepared query statement with the given arguments
 and returns the query results as a *Rows.</p>
-<p>Query uses context.Background internally; to specify the context, use
-QueryContext.</p>
+<p>Query uses [context.Background] internally; to specify the context, use
+[Stmt.QueryContext].</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -124,14 +124,14 @@ QueryContext.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Rows.html" class="tsd-signature-type tsd-kind-interface">Rows</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8527">types.d.ts:8527</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8621">types.d.ts:8621</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="queryContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>query<wbr/>Context</span><a href="#queryContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="queryContext.queryContext-1"><span class="tsd-kind-call-signature">query<wbr/>Context</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ctx</span>, <span class="tsd-signature-symbol">...</span><span class="tsd-kind-parameter">args</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Rows.html" class="tsd-signature-type tsd-kind-interface">Rows</a><a href="#queryContext.queryContext-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>QueryContext executes a prepared query statement with the given arguments
-and returns the query results as a *Rows.</p>
+and returns the query results as a [*Rows].</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -143,7 +143,7 @@ and returns the query results as a *Rows.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Rows.html" class="tsd-signature-type tsd-kind-interface">Rows</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8517">types.d.ts:8517</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8611">types.d.ts:8611</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="queryRow" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>query<wbr/>Row</span><a href="#queryRow" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -151,15 +151,15 @@ and returns the query results as a *Rows.</p>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>QueryRow executes a prepared query statement with the given arguments.
 If an error occurs during the execution of the statement, that error will
-be returned by a call to Scan on the returned *Row, which is always non-nil.
-If the query selects no rows, the *Row&#39;s Scan will return ErrNoRows.
-Otherwise, the *Row&#39;s Scan scans the first selected row and discards
+be returned by a call to Scan on the returned [*Row], which is always non-nil.
+If the query selects no rows, the [*Row.Scan] will return [ErrNoRows].
+Otherwise, the [*Row.Scan] scans the first selected row and discards
 the rest.</p>
 <p>Example usage:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-1">var</span><span class="hl-0"> name string</span><br/><span class="hl-0"> </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> nameByUseridStmt.</span><span class="hl-2">QueryRow</span><span class="hl-0">(id).</span><span class="hl-2">Scan</span><span class="hl-0">(</span><span class="hl-1">&amp;</span><span class="hl-0">name)</span>
 </code><button>Copy</button></pre>
-<p>QueryRow uses context.Background internally; to specify the context, use
-QueryRowContext.</p>
+<p>QueryRow uses [context.Background] internally; to specify the context, use
+[Stmt.QueryRowContext].</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -169,7 +169,7 @@ QueryRowContext.</p>
 <h4 class="tsd-returns-title">Returns <a href="sql.Row.html" class="tsd-signature-type tsd-kind-interface">Row</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8559">types.d.ts:8559</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8653">types.d.ts:8653</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="queryRowContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>query<wbr/>Row<wbr/>Context</span><a href="#queryRowContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -177,9 +177,9 @@ QueryRowContext.</p>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>QueryRowContext executes a prepared query statement with the given arguments.
 If an error occurs during the execution of the statement, that error will
-be returned by a call to Scan on the returned *Row, which is always non-nil.
-If the query selects no rows, the *Row&#39;s Scan will return ErrNoRows.
-Otherwise, the *Row&#39;s Scan scans the first selected row and discards
+be returned by a call to Scan on the returned [*Row], which is always non-nil.
+If the query selects no rows, the [*Row.Scan] will return [ErrNoRows].
+Otherwise, the [*Row.Scan] scans the first selected row and discards
 the rest.</p>
 </div>
 <div class="tsd-parameters">
@@ -192,7 +192,7 @@ the rest.</p>
 <h4 class="tsd-returns-title">Returns <a href="sql.Row.html" class="tsd-signature-type tsd-kind-interface">Row</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L8538">types.d.ts:8538</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L8632">types.d.ts:8632</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

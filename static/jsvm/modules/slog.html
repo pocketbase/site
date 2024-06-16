@@ -31,7 +31,7 @@ There is a default Logger accessible through top-level functions
 <p>A log record consists of a time, a level, a message, and a set of key-value
 pairs, where the keys are strings and the values may be of any type.
 As an example,</p>
-<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-4">3</span><span class="hl-0">)</span>
+<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">)</span>
 </code><button>Copy</button></pre>
 <p>creates a record containing the time of the call,
 a level of Info, the message &quot;hello&quot;, and a single
@@ -44,25 +44,25 @@ Each of these methods has a corresponding top-level function that uses the
 default logger.</p>
 <p>The default handler formats the log record&#39;s message, time, level, and attributes
 as a string and passes it to the [log] package.</p>
-<pre><code><span class="hl-0"> </span><span class="hl-4">2022</span><span class="hl-1">/</span><span class="hl-4">11</span><span class="hl-1">/</span><span class="hl-4">08</span><span class="hl-0"> </span><span class="hl-4">15</span><span class="hl-0">:</span><span class="hl-4">28</span><span class="hl-0">:</span><span class="hl-4">26</span><span class="hl-0"> </span><span class="hl-4">INFO</span><span class="hl-0"> hello count</span><span class="hl-1">=</span><span class="hl-4">3</span>
+<pre><code><span class="hl-0"> </span><span class="hl-5">2022</span><span class="hl-1">/</span><span class="hl-5">11</span><span class="hl-1">/</span><span class="hl-5">08</span><span class="hl-0"> </span><span class="hl-5">15</span><span class="hl-0">:</span><span class="hl-5">28</span><span class="hl-0">:</span><span class="hl-5">26</span><span class="hl-0"> </span><span class="hl-5">INFO</span><span class="hl-0"> hello count</span><span class="hl-1">=</span><span class="hl-5">3</span>
 </code><button>Copy</button></pre>
 <p>For more control over the output format, create a logger with a different handler.
-This statement uses [New] to create a new logger with a TextHandler
+This statement uses [New] to create a new logger with a [TextHandler]
 that writes structured records in text form to standard error:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-2">logger</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> slog.</span><span class="hl-2">New</span><span class="hl-0">(slog.</span><span class="hl-2">NewTextHandler</span><span class="hl-0">(os.Stderr, nil))</span>
 </code><button>Copy</button></pre>
 <p>[TextHandler] output is a sequence of key=value pairs, easily and unambiguously
 parsed by machine. This statement:</p>
-<pre><code><span class="hl-0"> logger.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-4">3</span><span class="hl-0">)</span>
+<pre><code><span class="hl-0"> logger.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">)</span>
 </code><button>Copy</button></pre>
 <p>produces this output:</p>
-<pre><code><span class="hl-0"> time</span><span class="hl-1">=</span><span class="hl-4">2022</span><span class="hl-1">-</span><span class="hl-4">11</span><span class="hl-1">-</span><span class="hl-0">08</span><span class="hl-2">T15</span><span class="hl-0">:</span><span class="hl-4">28</span><span class="hl-0">:</span><span class="hl-4">26.000</span><span class="hl-1">-</span><span class="hl-4">05</span><span class="hl-0">:</span><span class="hl-4">00</span><span class="hl-0"> level</span><span class="hl-1">=</span><span class="hl-4">INFO</span><span class="hl-0"> msg</span><span class="hl-1">=</span><span class="hl-0">hello count</span><span class="hl-1">=</span><span class="hl-4">3</span>
+<pre><code><span class="hl-0"> time</span><span class="hl-1">=</span><span class="hl-5">2022</span><span class="hl-1">-</span><span class="hl-5">11</span><span class="hl-1">-</span><span class="hl-0">08</span><span class="hl-2">T15</span><span class="hl-0">:</span><span class="hl-5">28</span><span class="hl-0">:</span><span class="hl-5">26.000</span><span class="hl-1">-</span><span class="hl-5">05</span><span class="hl-0">:</span><span class="hl-5">00</span><span class="hl-0"> level</span><span class="hl-1">=</span><span class="hl-5">INFO</span><span class="hl-0"> msg</span><span class="hl-1">=</span><span class="hl-0">hello count</span><span class="hl-1">=</span><span class="hl-5">3</span>
 </code><button>Copy</button></pre>
 <p>The package also provides [JSONHandler], whose output is line-delimited JSON:</p>
-<pre><code><span class="hl-0"> </span><span class="hl-2">logger</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> slog.</span><span class="hl-2">New</span><span class="hl-0">(slog.</span><span class="hl-2">NewJSONHandler</span><span class="hl-0">(os.Stdout, nil))</span><br/><span class="hl-0"> logger.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-4">3</span><span class="hl-0">)</span>
+<pre><code><span class="hl-0"> </span><span class="hl-2">logger</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> slog.</span><span class="hl-2">New</span><span class="hl-0">(slog.</span><span class="hl-2">NewJSONHandler</span><span class="hl-0">(os.Stdout, nil))</span><br/><span class="hl-0"> logger.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">)</span>
 </code><button>Copy</button></pre>
 <p>produces this output:</p>
-<pre><code><span class="hl-0"> {</span><span class="hl-3">&quot;time&quot;</span><span class="hl-0">:</span><span class="hl-3">&quot;2022-11-08T15:28:26.000000000-05:00&quot;</span><span class="hl-0">,</span><span class="hl-3">&quot;level&quot;</span><span class="hl-0">:</span><span class="hl-3">&quot;INFO&quot;</span><span class="hl-0">,</span><span class="hl-3">&quot;msg&quot;</span><span class="hl-0">:</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">,</span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">:</span><span class="hl-4">3</span><span class="hl-0">}</span>
+<pre><code><span class="hl-0"> {</span><span class="hl-3">&quot;time&quot;</span><span class="hl-0">:</span><span class="hl-3">&quot;2022-11-08T15:28:26.000000000-05:00&quot;</span><span class="hl-0">,</span><span class="hl-3">&quot;level&quot;</span><span class="hl-0">:</span><span class="hl-3">&quot;INFO&quot;</span><span class="hl-0">,</span><span class="hl-3">&quot;msg&quot;</span><span class="hl-0">:</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">,</span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">:</span><span class="hl-5">3</span><span class="hl-0">}</span>
 </code><button>Copy</button></pre>
 <p>Both [TextHandler] and [JSONHandler] can be configured with [HandlerOptions].
 There are options for setting the minimum level (see Levels, below),
@@ -80,7 +80,7 @@ For example, you may wish to include the URL or trace identifier of a server req
 with all log events arising from the request.
 Rather than repeat the attribute with every log call, you can use [Logger.With]
 to construct a new Logger containing the attributes:</p>
-<pre><code><span class="hl-0"> </span><span class="hl-2">logger2</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> logger.</span><span class="hl-2">With</span><span class="hl-0">(</span><span class="hl-3">&quot;url&quot;</span><span class="hl-0">, r.</span><span class="hl-4">URL</span><span class="hl-0">)</span>
+<pre><code><span class="hl-0"> </span><span class="hl-2">logger2</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> logger.</span><span class="hl-2">With</span><span class="hl-0">(</span><span class="hl-3">&quot;url&quot;</span><span class="hl-0">, r.</span><span class="hl-5">URL</span><span class="hl-0">)</span>
 </code><button>Copy</button></pre>
 <p>The arguments to With are the same key-value pairs used in [Logger.Info].
 The result is a new Logger with the same handler as the original, but additional
@@ -103,7 +103,7 @@ A LevelVar holds a Level and is safe to read or write from multiple
 goroutines.
 To vary the level dynamically for an entire program, first initialize
 a global LevelVar:</p>
-<pre><code><span class="hl-0"> </span><span class="hl-1">var</span><span class="hl-0"> programLevel </span><span class="hl-1">=</span><span class="hl-0"> </span><span class="hl-1">new</span><span class="hl-0">(slog.LevelVar) </span><span class="hl-5">// Info by default</span>
+<pre><code><span class="hl-0"> </span><span class="hl-1">var</span><span class="hl-0"> programLevel </span><span class="hl-1">=</span><span class="hl-0"> </span><span class="hl-1">new</span><span class="hl-0">(slog.LevelVar) </span><span class="hl-4">// Info by default</span>
 </code><button>Copy</button></pre>
 <p>Then use the LevelVar to construct a handler, and make it the default:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-2">h</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> slog.</span><span class="hl-2">NewJSONHandler</span><span class="hl-0">(os.Stderr, </span><span class="hl-1">&amp;</span><span class="hl-0">slog.HandlerOptions{Level: programLevel})</span><br/><span class="hl-0"> slog.</span><span class="hl-2">SetDefault</span><span class="hl-0">(slog.</span><span class="hl-2">New</span><span class="hl-0">(h))</span>
@@ -117,10 +117,10 @@ How this qualification is displayed depends on the handler.
 [TextHandler] separates the group and attribute names with a dot.
 [JSONHandler] treats each group as a separate JSON object, with the group name as the key.</p>
 <p>Use [Group] to create a Group attribute from a name and a list of key-value pairs:</p>
-<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Group</span><span class="hl-0">(</span><span class="hl-3">&quot;request&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">     </span><span class="hl-3">&quot;method&quot;</span><span class="hl-0">, r.Method,</span><br/><span class="hl-0">     </span><span class="hl-3">&quot;url&quot;</span><span class="hl-0">, r.</span><span class="hl-4">URL</span><span class="hl-0">)</span>
+<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Group</span><span class="hl-0">(</span><span class="hl-3">&quot;request&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">     </span><span class="hl-3">&quot;method&quot;</span><span class="hl-0">, r.Method,</span><br/><span class="hl-0">     </span><span class="hl-3">&quot;url&quot;</span><span class="hl-0">, r.</span><span class="hl-5">URL</span><span class="hl-0">)</span>
 </code><button>Copy</button></pre>
 <p>TextHandler would display this group as</p>
-<pre><code><span class="hl-0"> request.method</span><span class="hl-1">=</span><span class="hl-4">GET</span><span class="hl-0"> request.url</span><span class="hl-1">=</span><span class="hl-2">http</span><span class="hl-0">:</span><span class="hl-5">//example.com</span>
+<pre><code><span class="hl-0"> request.method</span><span class="hl-1">=</span><span class="hl-5">GET</span><span class="hl-0"> request.url</span><span class="hl-1">=</span><span class="hl-2">http</span><span class="hl-0">:</span><span class="hl-4">//example.com</span>
 </code><button>Copy</button></pre>
 <p>JSONHandler would display it as</p>
 <pre><code><span class="hl-0"> </span><span class="hl-3">&quot;request&quot;</span><span class="hl-0">:{</span><span class="hl-3">&quot;method&quot;</span><span class="hl-0">:</span><span class="hl-3">&quot;GET&quot;</span><span class="hl-0">,</span><span class="hl-3">&quot;url&quot;</span><span class="hl-0">:</span><span class="hl-3">&quot;http://example.com&quot;</span><span class="hl-0">}</span>
@@ -150,10 +150,10 @@ in &quot;Context&quot; do. For example,</p>
 <p>It is recommended to pass a context to an output method if one is available.</p>
 <a id="md:attrs-and-values" class="tsd-anchor"></a><h1><a href="#md:attrs-and-values">Attrs and Values</a></h1><p>An [Attr] is a key-value pair. The Logger output methods accept Attrs as well as
 alternating keys and values. The statement</p>
-<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-4">3</span><span class="hl-0">))</span>
+<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">))</span>
 </code><button>Copy</button></pre>
 <p>behaves the same as</p>
-<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-4">3</span><span class="hl-0">)</span>
+<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">)</span>
 </code><button>Copy</button></pre>
 <p>There are convenience constructors for [Attr] such as [Int], [String], and [Bool]
 for common types, as well as the function [Any] for constructing Attrs of any
@@ -166,10 +166,10 @@ without an allocation.</p>
 It is similar to [Logger.Log] but accepts only Attrs, not alternating
 keys and values; this allows it, too, to avoid allocation.</p>
 <p>The call</p>
-<pre><code><span class="hl-0"> logger.</span><span class="hl-2">LogAttrs</span><span class="hl-0">(ctx, slog.LevelInfo, </span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-4">3</span><span class="hl-0">))</span>
+<pre><code><span class="hl-0"> logger.</span><span class="hl-2">LogAttrs</span><span class="hl-0">(ctx, slog.LevelInfo, </span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, slog.</span><span class="hl-2">Int</span><span class="hl-0">(</span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">))</span>
 </code><button>Copy</button></pre>
 <p>is the most efficient way to achieve the same output as</p>
-<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-4">3</span><span class="hl-0">)</span>
+<pre><code><span class="hl-0"> slog.</span><span class="hl-2">InfoContext</span><span class="hl-0">(ctx, </span><span class="hl-3">&quot;hello&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;count&quot;</span><span class="hl-0">, </span><span class="hl-5">3</span><span class="hl-0">)</span>
 </code><button>Copy</button></pre>
 <a id="md:customizing-a-type39s-logging-behavior" class="tsd-anchor"></a><h1><a href="#md:customizing-a-type39s-logging-behavior">Customizing a type&#39;s logging behavior</a></h1><p>If a type implements the [LogValuer] interface, the [Value] returned from its LogValue
 method is used for logging. You can use this to control how values of the type
@@ -178,12 +178,12 @@ or gather a struct&#39;s fields in a Group. See the examples under [LogValuer] f
 details.</p>
 <p>A LogValue method may return a Value that itself implements [LogValuer]. The [Value.Resolve]
 method handles these cases carefully, avoiding infinite loops and unbounded recursion.
-Handler authors and others may wish to use Value.Resolve instead of calling LogValue directly.</p>
+Handler authors and others may wish to use [Value.Resolve] instead of calling LogValue directly.</p>
 <a id="md:wrapping-output-methods" class="tsd-anchor"></a><h1><a href="#md:wrapping-output-methods">Wrapping output methods</a></h1><p>The logger functions use reflection over the call stack to find the file name
 and line number of the logging call within the application. This can produce
 incorrect source information for functions that wrap slog. For instance, if you
 define this function in file mylog.go:</p>
-<pre><code><span class="hl-0"> func </span><span class="hl-2">Infof</span><span class="hl-0">(format string, args </span><span class="hl-1">...</span><span class="hl-0">any) {</span><br/><span class="hl-0">     slog.</span><span class="hl-2">Default</span><span class="hl-0">().</span><span class="hl-2">Info</span><span class="hl-0">(fmt.</span><span class="hl-2">Sprintf</span><span class="hl-0">(format, args</span><span class="hl-1">...</span><span class="hl-0">))</span><br/><span class="hl-0"> }</span>
+<pre><code><span class="hl-0"> func </span><span class="hl-2">Infof</span><span class="hl-0">(logger </span><span class="hl-1">*</span><span class="hl-0">slog.Logger, format string, args </span><span class="hl-1">...</span><span class="hl-0">any) {</span><br/><span class="hl-0">     logger.</span><span class="hl-2">Info</span><span class="hl-0">(fmt.</span><span class="hl-2">Sprintf</span><span class="hl-0">(format, args</span><span class="hl-1">...</span><span class="hl-0">))</span><br/><span class="hl-0"> }</span>
 </code><button>Copy</button></pre>
 <p>and you call it like this in main.go:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-2">Infof</span><span class="hl-0">(slog.</span><span class="hl-2">Default</span><span class="hl-0">(), </span><span class="hl-3">&quot;hello, %s&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;world&quot;</span><span class="hl-0">)</span>
@@ -213,11 +213,11 @@ and a well-written Handler should take advantage of it.</p>
 <p>The arguments to a log call are always evaluated, even if the log event is discarded.
 If possible, defer computation so that it happens only if the value is actually logged.
 For example, consider the call</p>
-<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;starting request&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;url&quot;</span><span class="hl-0">, r.</span><span class="hl-4">URL</span><span class="hl-0">.</span><span class="hl-2">String</span><span class="hl-0">())  </span><span class="hl-5">// may compute String unnecessarily</span>
+<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;starting request&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;url&quot;</span><span class="hl-0">, r.</span><span class="hl-5">URL</span><span class="hl-0">.</span><span class="hl-2">String</span><span class="hl-0">())  </span><span class="hl-4">// may compute String unnecessarily</span>
 </code><button>Copy</button></pre>
 <p>The URL.String method will be called even if the logger discards Info-level events.
 Instead, pass the URL directly:</p>
-<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;starting request&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;url&quot;</span><span class="hl-0">, </span><span class="hl-1">&amp;</span><span class="hl-0">r.</span><span class="hl-4">URL</span><span class="hl-0">) </span><span class="hl-5">// calls URL.String only if needed</span>
+<pre><code><span class="hl-0"> slog.</span><span class="hl-2">Info</span><span class="hl-0">(</span><span class="hl-3">&quot;starting request&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;url&quot;</span><span class="hl-0">, </span><span class="hl-1">&amp;</span><span class="hl-0">r.</span><span class="hl-5">URL</span><span class="hl-0">) </span><span class="hl-4">// calls URL.String only if needed</span>
 </code><button>Copy</button></pre>
 <p>The built-in [TextHandler] will call its String method, but only
 if the log event is enabled.
@@ -245,10 +245,10 @@ handlers are responsible for their own locking.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L17557">types.d.ts:17557</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L18881">types.d.ts:18881</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L19595">types.d.ts:19595</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L20445">types.d.ts:20445</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L17697">types.d.ts:17697</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L19147">types.d.ts:19147</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L19707">types.d.ts:19707</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L20561">types.d.ts:20561</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>

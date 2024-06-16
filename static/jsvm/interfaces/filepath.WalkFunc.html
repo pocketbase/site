@@ -17,7 +17,7 @@
 <li><a href="filepath.WalkFunc.html">WalkFunc</a></li></ul>
 <h1>Interface WalkFunc</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>WalkFunc is the type of the function called by Walk to visit each
+<div class="tsd-comment tsd-typography"><p>WalkFunc is the type of the function called by [Walk] to visit each
 file or directory.</p>
 <p>The path argument contains the argument to Walk as a prefix.
 That is, if Walk is called with root argument &quot;dir&quot; and finds a file
@@ -29,9 +29,9 @@ and finds a file named &quot;a&quot; in that directory, the walk function will
 be called with argument &quot;dir/a&quot;, not &quot;x/../dir/a&quot;.</p>
 <p>The info argument is the fs.FileInfo for the named path.</p>
 <p>The error result returned by the function controls how Walk continues.
-If the function returns the special value SkipDir, Walk skips the
+If the function returns the special value [SkipDir], Walk skips the
 current directory (path if info.IsDir() is true, otherwise path&#39;s
-parent directory). If the function returns the special value SkipAll,
+parent directory). If the function returns the special value [SkipAll],
 Walk skips all remaining files and directories. Otherwise, if the function
 returns a non-nil error, Walk stops entirely and returns that error.</p>
 <p>The err argument reports an error related to path, signaling that Walk
@@ -39,13 +39,13 @@ will not walk into that directory. The function can decide how to
 handle that error; as described earlier, returning the error will
 cause Walk to stop walking the entire tree.</p>
 <p>Walk calls the function with a non-nil err argument in two cases.</p>
-<p>First, if an os.Lstat on the root directory or any directory or file
+<p>First, if an [os.Lstat] on the root directory or any directory or file
 in the tree fails, Walk calls the function with path set to that
 directory or file&#39;s path, info set to nil, and err set to the error
 from os.Lstat.</p>
 <p>Second, if a directory&#39;s Readdirnames method fails, Walk calls the
 function with path set to the directory&#39;s path, info, set to an
-fs.FileInfo describing the directory, and err set to the error from
+[fs.FileInfo] describing the directory, and err set to the error from
 Readdirnames.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
@@ -68,7 +68,7 @@ Readdirnames.</p>
 <h5><span class="tsd-kind-parameter">err</span>: <span class="tsd-signature-type ">Error</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L2604">types.d.ts:2604</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L2667">types.d.ts:2667</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -276,7 +276,6 @@ Readdirnames.</p>
 <li><a href="filepath.rel.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>rel</span></a></li>
 <li><a href="filepath.split.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>split</span></a></li>
 <li><a href="filepath.splitList.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>split<wbr/>List</span></a></li>
-<li><a href="filepath.statDirEntry.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>stat<wbr/>Dir<wbr/>Entry</span></a></li>
 <li><a href="filepath.toSlash.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>to<wbr/>Slash</span></a></li>
 <li><a href="filepath.volumeName.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>volume<wbr/>Name</span></a></li>
 <li><a href="filepath.walk.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>walk</span></a></li>

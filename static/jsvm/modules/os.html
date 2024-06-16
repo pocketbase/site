@@ -26,14 +26,14 @@ will include the failing file name when printed and will be of type
 <p>The os interface is intended to be uniform across all operating systems.
 Features not generally available appear in the system-specific package syscall.</p>
 <p>Here is a simple example, opening a file and reading some of it.</p>
-<pre><code><span class="hl-0"> file, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> os.</span><span class="hl-2">Open</span><span class="hl-0">(</span><span class="hl-3">&quot;file.go&quot;</span><span class="hl-0">) </span><span class="hl-5">// For read access.</span><br/><span class="hl-0"> </span><span class="hl-1">if</span><span class="hl-0"> err </span><span class="hl-1">!=</span><span class="hl-0"> nil {</span><br/><span class="hl-0">   log.</span><span class="hl-2">Fatal</span><span class="hl-0">(err)</span><br/><span class="hl-0"> }</span>
+<pre><code><span class="hl-0"> file, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> os.</span><span class="hl-2">Open</span><span class="hl-0">(</span><span class="hl-3">&quot;file.go&quot;</span><span class="hl-0">) </span><span class="hl-4">// For read access.</span><br/><span class="hl-0"> </span><span class="hl-1">if</span><span class="hl-0"> err </span><span class="hl-1">!=</span><span class="hl-0"> nil {</span><br/><span class="hl-0">   log.</span><span class="hl-2">Fatal</span><span class="hl-0">(err)</span><br/><span class="hl-0"> }</span>
 </code><button>Copy</button></pre>
 <p>If the open fails, the error string will be self-explanatory, like</p>
 <pre><code><span class="hl-0"> open file.go: no such file or directory</span>
 </code><button>Copy</button></pre>
 <p>The file&#39;s data can then be read into a slice of bytes. Read and
 Write take their byte counts from the length of the argument slice.</p>
-<pre><code><span class="hl-0"> </span><span class="hl-2">data</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> </span><span class="hl-2">make</span><span class="hl-0">([]byte, </span><span class="hl-4">100</span><span class="hl-0">)</span><br/><span class="hl-0"> count, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> file.</span><span class="hl-2">Read</span><span class="hl-0">(data)</span><br/><span class="hl-0"> </span><span class="hl-1">if</span><span class="hl-0"> err </span><span class="hl-1">!=</span><span class="hl-0"> nil {</span><br/><span class="hl-0">   log.</span><span class="hl-2">Fatal</span><span class="hl-0">(err)</span><br/><span class="hl-0"> }</span><br/><span class="hl-0"> fmt.</span><span class="hl-2">Printf</span><span class="hl-0">(</span><span class="hl-3">&quot;read %d bytes: %q</span><span class="hl-4">\n</span><span class="hl-3">&quot;</span><span class="hl-0">, count, data[:count])</span>
+<pre><code><span class="hl-0"> </span><span class="hl-2">data</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> </span><span class="hl-2">make</span><span class="hl-0">([]byte, </span><span class="hl-5">100</span><span class="hl-0">)</span><br/><span class="hl-0"> count, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> file.</span><span class="hl-2">Read</span><span class="hl-0">(data)</span><br/><span class="hl-0"> </span><span class="hl-1">if</span><span class="hl-0"> err </span><span class="hl-1">!=</span><span class="hl-0"> nil {</span><br/><span class="hl-0">   log.</span><span class="hl-2">Fatal</span><span class="hl-0">(err)</span><br/><span class="hl-0"> }</span><br/><span class="hl-0"> fmt.</span><span class="hl-2">Printf</span><span class="hl-0">(</span><span class="hl-3">&quot;read %d bytes: %q</span><span class="hl-5">\n</span><span class="hl-3">&quot;</span><span class="hl-0">, count, data[:count])</span>
 </code><button>Copy</button></pre>
 <p>Note: The maximum number of concurrent operations on a File may be limited by
 the OS or the system. The number should be high, but exceeding it may degrade
@@ -41,7 +41,7 @@ performance or cause other issues.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L1167">types.d.ts:1167</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L1189">types.d.ts:1189</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
@@ -75,6 +75,7 @@ performance or cause other issues.</p>
 <a href="../interfaces/os.file-1.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>file</span></a>
 <a href="../interfaces/os.fileStat.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>file<wbr/>Stat</span></a>
 <a href="../interfaces/os.fileWithoutReadFrom.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>file<wbr/>Without<wbr/>Read<wbr/>From</span></a>
+<a href="../interfaces/os.fileWithoutWriteTo.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>file<wbr/>Without<wbr/>Write<wbr/>To</span></a>
 <a href="../interfaces/os.findProcess.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>find<wbr/>Process</span></a>
 <a href="../interfaces/os.getegid.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>getegid</span></a>
 <a href="../interfaces/os.getenv.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>getenv</span></a>
@@ -102,6 +103,8 @@ performance or cause other issues.</p>
 <a href="../interfaces/os.newFile.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>new<wbr/>File</span></a>
 <a href="../interfaces/os.newFileKind.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>new<wbr/>File<wbr/>Kind</span></a>
 <a href="../interfaces/os.newSyscallError.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>new<wbr/>Syscall<wbr/>Error</span></a>
+<a href="../interfaces/os.noReadFrom.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>no<wbr/>Read<wbr/>From</span></a>
+<a href="../interfaces/os.noWriteTo.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>no<wbr/>Write<wbr/>To</span></a>
 <a href="../interfaces/os.open.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>open</span></a>
 <a href="../interfaces/os.openFile.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>open<wbr/>File</span></a>
 <a href="../interfaces/os.pipe.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>pipe</span></a>
@@ -131,8 +134,9 @@ performance or cause other issues.</p>
 </div></section>
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Type Aliases</h3>
-<div class="tsd-index-list"><a href="../types/os._subofVvL.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_subof<wbr/>VvL</span></a>
-<a href="../types/os._subqkJLX.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_subqkJLX</span></a>
+<div class="tsd-index-list"><a href="../types/os._subDWinF.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_subDWinF</span></a>
+<a href="../types/os._subdqHeU.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_subdq<wbr/>HeU</span></a>
+<a href="../types/os._subxbGPe.html" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_subxbGPe</span></a>
 </div></section></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
@@ -368,6 +372,7 @@ performance or cause other issues.</p>
 <li><a href="../interfaces/os.file-1.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>file</span></a></li>
 <li><a href="../interfaces/os.fileStat.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>file<wbr/>Stat</span></a></li>
 <li><a href="../interfaces/os.fileWithoutReadFrom.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>file<wbr/>Without<wbr/>Read<wbr/>From</span></a></li>
+<li><a href="../interfaces/os.fileWithoutWriteTo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>file<wbr/>Without<wbr/>Write<wbr/>To</span></a></li>
 <li><a href="../interfaces/os.findProcess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>find<wbr/>Process</span></a></li>
 <li><a href="../interfaces/os.getegid.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>getegid</span></a></li>
 <li><a href="../interfaces/os.getenv.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>getenv</span></a></li>
@@ -395,6 +400,8 @@ performance or cause other issues.</p>
 <li><a href="../interfaces/os.newFile.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>new<wbr/>File</span></a></li>
 <li><a href="../interfaces/os.newFileKind.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>new<wbr/>File<wbr/>Kind</span></a></li>
 <li><a href="../interfaces/os.newSyscallError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>new<wbr/>Syscall<wbr/>Error</span></a></li>
+<li><a href="../interfaces/os.noReadFrom.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>no<wbr/>Read<wbr/>From</span></a></li>
+<li><a href="../interfaces/os.noWriteTo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>no<wbr/>Write<wbr/>To</span></a></li>
 <li><a href="../interfaces/os.open.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>open</span></a></li>
 <li><a href="../interfaces/os.openFile.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>open<wbr/>File</span></a></li>
 <li><a href="../interfaces/os.pipe.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>pipe</span></a></li>
@@ -425,8 +432,9 @@ performance or cause other issues.</p>
 <details class="tsd-index-accordion" data-key="os$Type Aliases"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Type Aliases</span></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../types/os._subofVvL.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_subof<wbr/>VvL</span></a></li>
-<li><a href="../types/os._subqkJLX.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_subqkJLX</span></a></li></ul></div></details></li></ul></div></details></li>
+<li><a href="../types/os._subDWinF.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_subDWinF</span></a></li>
+<li><a href="../types/os._subdqHeU.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_subdq<wbr/>HeU</span></a></li>
+<li><a href="../types/os._subxbGPe.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_subxbGPe</span></a></li></ul></div></details></li></ul></div></details></li>
 <li><a href="ozzo_validation.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>ozzo_<wbr/>validation</span></a></li>
 <li><a href="pocketbase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>pocketbase</span></a></li>
 <li><a href="schema.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>schema</span></a></li>

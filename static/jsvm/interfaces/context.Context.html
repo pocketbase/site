@@ -30,7 +30,7 @@ API boundaries.</p>
 <h4 class="tsd-before-signature">Indexable</h4>
 <div class="tsd-signature"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L7776">types.d.ts:7776</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L7864">types.d.ts:7864</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -57,7 +57,7 @@ set. Successive calls to Deadline return the same results.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L7783">types.d.ts:7783</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L7871">types.d.ts:7871</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="done" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>done</span><a href="#done" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -94,7 +94,7 @@ a Done channel for cancellation.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L7817">types.d.ts:7817</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L7905">types.d.ts:7905</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="err" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>err</span><a href="#err" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -109,7 +109,7 @@ After Err returns a non-nil error, successive calls to Err return the same error
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L7825">types.d.ts:7825</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L7913">types.d.ts:7913</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="value" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>value</span><a href="#value" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -129,7 +129,7 @@ packages should define keys as an unexported type to avoid
 collisions.</p>
 <p>Packages that define a Context key should provide type-safe accessors
 for the values stored using that key:</p>
-<pre><code><span class="hl-0"> </span><span class="hl-5">// Package user defines a User type that&#39;s stored in Contexts.</span><br/><span class="hl-0"> </span><span class="hl-1">package</span><span class="hl-0"> user</span><br/><br/><span class="hl-0"> </span><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-3">&quot;context&quot;</span><br/><br/><span class="hl-0"> </span><span class="hl-5">// User is the type of value stored in the Contexts.</span><br/><span class="hl-0"> </span><span class="hl-1">type</span><span class="hl-0"> </span><span class="hl-2">User</span><span class="hl-0"> struct {...}</span><br/><br/><span class="hl-0"> </span><span class="hl-5">// key is an unexported type for keys defined in this package.</span><br/><span class="hl-0"> </span><span class="hl-5">// This prevents collisions with keys defined in other packages.</span><br/><span class="hl-0"> </span><span class="hl-1">type</span><span class="hl-0"> </span><span class="hl-2">key</span><span class="hl-0"> int</span><br/><br/><span class="hl-0"> </span><span class="hl-5">// userKey is the key for user.User values in Contexts. It is</span><br/><span class="hl-0"> </span><span class="hl-5">// unexported; clients use user.NewContext and user.FromContext</span><br/><span class="hl-0"> </span><span class="hl-5">// instead of using this key directly.</span><br/><span class="hl-0"> </span><span class="hl-1">var</span><span class="hl-0"> userKey key</span><br/><br/><span class="hl-0"> </span><span class="hl-5">// NewContext returns a new Context that carries value u.</span><br/><span class="hl-0"> func </span><span class="hl-2">NewContext</span><span class="hl-0">(ctx context.Context, u </span><span class="hl-1">*</span><span class="hl-0">User) context.Context {</span><br/><span class="hl-0">   </span><span class="hl-1">return</span><span class="hl-0"> context.</span><span class="hl-2">WithValue</span><span class="hl-0">(ctx, userKey, u)</span><br/><span class="hl-0"> }</span><br/><br/><span class="hl-0"> </span><span class="hl-5">// FromContext returns the User value stored in ctx, if any.</span><br/><span class="hl-0"> func </span><span class="hl-2">FromContext</span><span class="hl-0">(ctx context.Context) (</span><span class="hl-1">*</span><span class="hl-0">User, bool) {</span><br/><span class="hl-0">   u, </span><span class="hl-2">ok</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> ctx.</span><span class="hl-2">Value</span><span class="hl-0">(userKey).(</span><span class="hl-1">*</span><span class="hl-0">User)</span><br/><span class="hl-0">   </span><span class="hl-1">return</span><span class="hl-0"> u, ok</span><br/><span class="hl-0"> }</span>
+<pre><code><span class="hl-0"> </span><span class="hl-4">// Package user defines a User type that&#39;s stored in Contexts.</span><br/><span class="hl-0"> </span><span class="hl-1">package</span><span class="hl-0"> user</span><br/><br/><span class="hl-0"> </span><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-3">&quot;context&quot;</span><br/><br/><span class="hl-0"> </span><span class="hl-4">// User is the type of value stored in the Contexts.</span><br/><span class="hl-0"> </span><span class="hl-1">type</span><span class="hl-0"> </span><span class="hl-2">User</span><span class="hl-0"> struct {...}</span><br/><br/><span class="hl-0"> </span><span class="hl-4">// key is an unexported type for keys defined in this package.</span><br/><span class="hl-0"> </span><span class="hl-4">// This prevents collisions with keys defined in other packages.</span><br/><span class="hl-0"> </span><span class="hl-1">type</span><span class="hl-0"> </span><span class="hl-2">key</span><span class="hl-0"> int</span><br/><br/><span class="hl-0"> </span><span class="hl-4">// userKey is the key for user.User values in Contexts. It is</span><br/><span class="hl-0"> </span><span class="hl-4">// unexported; clients use user.NewContext and user.FromContext</span><br/><span class="hl-0"> </span><span class="hl-4">// instead of using this key directly.</span><br/><span class="hl-0"> </span><span class="hl-1">var</span><span class="hl-0"> userKey key</span><br/><br/><span class="hl-0"> </span><span class="hl-4">// NewContext returns a new Context that carries value u.</span><br/><span class="hl-0"> func </span><span class="hl-2">NewContext</span><span class="hl-0">(ctx context.Context, u </span><span class="hl-1">*</span><span class="hl-0">User) context.Context {</span><br/><span class="hl-0">   </span><span class="hl-1">return</span><span class="hl-0"> context.</span><span class="hl-2">WithValue</span><span class="hl-0">(ctx, userKey, u)</span><br/><span class="hl-0"> }</span><br/><br/><span class="hl-0"> </span><span class="hl-4">// FromContext returns the User value stored in ctx, if any.</span><br/><span class="hl-0"> func </span><span class="hl-2">FromContext</span><span class="hl-0">(ctx context.Context) (</span><span class="hl-1">*</span><span class="hl-0">User, bool) {</span><br/><span class="hl-0">   u, </span><span class="hl-2">ok</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> ctx.</span><span class="hl-2">Value</span><span class="hl-0">(userKey).(</span><span class="hl-1">*</span><span class="hl-0">User)</span><br/><span class="hl-0">   </span><span class="hl-1">return</span><span class="hl-0"> u, ok</span><br/><span class="hl-0"> }</span>
 </code><button>Copy</button></pre>
 </div>
 <div class="tsd-parameters">
@@ -140,7 +140,7 @@ for the values stored using that key:</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L7875">types.d.ts:7875</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L7963">types.d.ts:7963</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

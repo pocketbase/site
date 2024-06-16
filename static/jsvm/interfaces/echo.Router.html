@@ -19,7 +19,7 @@
 <section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography"><p>Router is interface for routing request contexts to registered routes.</p>
 <p>Contract between Echo/Context instance and the router:</p>
-<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> all routes must be added through methods on echo.Echo instance.</span><br/><span class="hl-0">    </span><span class="hl-2">Reason</span><span class="hl-0">: Echo instance uses RouteInfo.</span><span class="hl-2">Params</span><span class="hl-0">() length to allocate slice for paths </span><span class="hl-2">parameters</span><span class="hl-0"> (see </span><span class="hl-3">`Echo.contextPathParamAllocSize`</span><span class="hl-0">).</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> Router must populate Context during Router.Route call </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> RoutableContext.SetPath</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> RoutableContext.</span><span class="hl-2">SetRawPathParams</span><span class="hl-0"> (</span><span class="hl-4">IMPORTANT</span><span class="hl-1">!</span><span class="hl-0"> with same slice pointer that c.</span><span class="hl-2">RawPathParams</span><span class="hl-0">() returns)</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> RoutableContext.SetRouteInfo</span><br/><span class="hl-0">    And optionally can set additional information to Context </span><span class="hl-1">with</span><span class="hl-0"> RoutableContext.Set</span>
+<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> all routes must be added through methods on echo.Echo instance.</span><br/><span class="hl-0">    </span><span class="hl-2">Reason</span><span class="hl-0">: Echo instance uses RouteInfo.</span><span class="hl-2">Params</span><span class="hl-0">() length to allocate slice for paths </span><span class="hl-2">parameters</span><span class="hl-0"> (see </span><span class="hl-3">`Echo.contextPathParamAllocSize`</span><span class="hl-0">).</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> Router must populate Context during Router.Route call </span><span class="hl-1">with</span><span class="hl-0">:</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> RoutableContext.SetPath</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> RoutableContext.</span><span class="hl-2">SetRawPathParams</span><span class="hl-0"> (</span><span class="hl-5">IMPORTANT</span><span class="hl-1">!</span><span class="hl-0"> with same slice pointer that c.</span><span class="hl-2">RawPathParams</span><span class="hl-0">() returns)</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> RoutableContext.SetRouteInfo</span><br/><span class="hl-0">    And optionally can set additional information to Context </span><span class="hl-1">with</span><span class="hl-0"> RoutableContext.Set</span>
 </code><button>Copy</button></pre>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
@@ -31,7 +31,7 @@
 <h4 class="tsd-before-signature">Indexable</h4>
 <div class="tsd-signature"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16936">types.d.ts:16936</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16958">types.d.ts:16958</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -61,7 +61,7 @@
 <h4 class="tsd-returns-title">Returns <a href="echo.RouteInfo.html" class="tsd-signature-type tsd-kind-interface">RouteInfo</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16941">types.d.ts:16941</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16963">types.d.ts:16963</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="remove" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>remove</span><a href="#remove" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -79,7 +79,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16945">types.d.ts:16945</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16967">types.d.ts:16967</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="route" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>route</span><a href="#route" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -97,7 +97,7 @@ handler function.</p>
 <h4 class="tsd-returns-title">Returns <a href="echo.HandlerFunc.html" class="tsd-signature-type tsd-kind-interface">HandlerFunc</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16955">types.d.ts:16955</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16977">types.d.ts:16977</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="routes" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>routes</span><a href="#routes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -108,7 +108,7 @@ handler function.</p>
 <h4 class="tsd-returns-title">Returns <a href="echo.Routes.html" class="tsd-signature-type tsd-kind-interface">Routes</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16949">types.d.ts:16949</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16971">types.d.ts:16971</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

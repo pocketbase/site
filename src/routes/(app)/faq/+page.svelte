@@ -121,7 +121,7 @@
                 <br />
                 If you are part of an organization that offers sponsorships or grants and want to support the project
                 development financially, feel free to reach out to
-                <em>support at pocketbase.io</em> but only if there is "no strings attached".
+                <em>support at pocketbase.io</em> but only if there are no strings attached.
             </p>
 
             <h5>8. Where can I find help for my PocketBase application?</h5>

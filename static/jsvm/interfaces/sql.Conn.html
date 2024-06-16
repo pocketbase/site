@@ -18,12 +18,12 @@
 <h1>Interface Conn</h1></div>
 <section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography"><p>Conn represents a single database connection rather than a pool of database
-connections. Prefer running queries from DB unless there is a specific
+connections. Prefer running queries from [DB] unless there is a specific
 need for a continuous single database connection.</p>
-<p>A Conn must call Close to return the connection to the database pool
+<p>A Conn must call [Conn.Close] to return the connection to the database pool
 and may do so concurrently with a running query.</p>
-<p>After a call to Close, all operations on the
-connection fail with ErrConnDone.</p>
+<p>After a call to [Conn.Close], all operations on the
+connection fail with [ErrConnDone].</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
 <section class="tsd-panel tsd-hierarchy">
@@ -31,15 +31,15 @@ connection fail with ErrConnDone.</p>
 <ul class="tsd-hierarchy">
 <li><span class="target">Conn</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16028">types.d.ts:16028</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16030">types.d.ts:16030</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16036">types.d.ts:16036</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16043">types.d.ts:16043</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16050">types.d.ts:16050</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16061">types.d.ts:16061</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16074">types.d.ts:16074</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16084">types.d.ts:16084</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16099">types.d.ts:16099</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16132">types.d.ts:16132</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16134">types.d.ts:16134</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16140">types.d.ts:16140</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16147">types.d.ts:16147</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16154">types.d.ts:16154</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16165">types.d.ts:16165</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16178">types.d.ts:16178</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16188">types.d.ts:16188</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16203">types.d.ts:16203</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -66,9 +66,9 @@ connection fail with ErrConnDone.</p>
 <div class="tsd-comment tsd-typography"><p>BeginTx starts a transaction.</p>
 <p>The provided context is used until the transaction is committed or rolled back.
 If the context is canceled, the sql package will roll back
-the transaction. Tx.Commit will return an error if the context provided to
+the transaction. [Tx.Commit] will return an error if the context provided to
 BeginTx is canceled.</p>
-<p>The provided TxOptions is optional and may be nil if defaults should be used.
+<p>The provided [TxOptions] is optional and may be nil if defaults should be used.
 If a non-default isolation level is used that the driver doesn&#39;t support,
 an error will be returned.</p>
 </div>
@@ -82,14 +82,14 @@ an error will be returned.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Tx.html" class="tsd-signature-type tsd-kind-interface">Tx</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16097">types.d.ts:16097</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16201">types.d.ts:16201</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="close" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>close</span><a href="#close" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="close.close-1"><span class="tsd-kind-call-signature">close</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#close.close-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Close returns the connection to the connection pool.
-All operations after a Close will return with ErrConnDone.
+All operations after a Close will return with [ErrConnDone].
 Close is safe to call concurrently with other operations and will
 block until all other operations finish. It may be useful to first
 cancel any used context and then call close directly after.</p>
@@ -97,7 +97,7 @@ cancel any used context and then call close directly after.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16107">types.d.ts:16107</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16211">types.d.ts:16211</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="execContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>exec<wbr/>Context</span><a href="#execContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -118,7 +118,7 @@ The args are for any placeholder parameters in the query.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Result.html" class="tsd-signature-type tsd-kind-interface">Result</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16041">types.d.ts:16041</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16145">types.d.ts:16145</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="pingContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>ping<wbr/>Context</span><a href="#pingContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -134,7 +134,7 @@ The args are for any placeholder parameters in the query.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16034">types.d.ts:16034</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16138">types.d.ts:16138</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="prepareContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>prepare<wbr/>Context</span><a href="#prepareContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -143,7 +143,7 @@ The args are for any placeholder parameters in the query.</p>
 <div class="tsd-comment tsd-typography"><p>PrepareContext creates a prepared statement for later queries or executions.
 Multiple queries or executions may be run concurrently from the
 returned statement.
-The caller must call the statement&#39;s Close method
+The caller must call the statement&#39;s [*Stmt.Close] method
 when the statement is no longer needed.</p>
 <p>The provided context is used for the preparation of the statement, not for the
 execution of the statement.</p>
@@ -158,7 +158,7 @@ execution of the statement.</p>
 <h4 class="tsd-returns-title">Returns <a href="sql.Stmt.html" class="tsd-signature-type tsd-kind-interface">Stmt</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16072">types.d.ts:16072</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16176">types.d.ts:16176</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="queryContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>query<wbr/>Context</span><a href="#queryContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -179,7 +179,7 @@ The args are for any placeholder parameters in the query.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/sql.html" class="tsd-signature-type tsd-kind-namespace">sql</a><span class="tsd-signature-symbol">.</span><a href="sql.Rows.html" class="tsd-signature-type tsd-kind-interface">Rows</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16048">types.d.ts:16048</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16152">types.d.ts:16152</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="queryRowContext" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>query<wbr/>Row<wbr/>Context</span><a href="#queryRowContext" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -187,9 +187,9 @@ The args are for any placeholder parameters in the query.</p>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>QueryRowContext executes a query that is expected to return at most one row.
 QueryRowContext always returns a non-nil value. Errors are deferred until
-Row&#39;s Scan method is called.
-If the query selects no rows, the *Row&#39;s Scan will return ErrNoRows.
-Otherwise, the *Row&#39;s Scan scans the first selected row and discards
+the [*Row.Scan] method is called.
+If the query selects no rows, the [*Row.Scan] will return [ErrNoRows].
+Otherwise, the [*Row.Scan] scans the first selected row and discards
 the rest.</p>
 </div>
 <div class="tsd-parameters">
@@ -204,7 +204,7 @@ the rest.</p>
 <h4 class="tsd-returns-title">Returns <a href="sql.Row.html" class="tsd-signature-type tsd-kind-interface">Row</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16059">types.d.ts:16059</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16163">types.d.ts:16163</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="raw" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>raw</span><a href="#raw" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -212,8 +212,8 @@ the rest.</p>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Raw executes f exposing the underlying driver connection for the
 duration of f. The driverConn must not be used outside of f.</p>
-<p>Once f returns and err is not driver.ErrBadConn, the Conn will continue to be usable
-until Conn.Close is called.</p>
+<p>Once f returns and err is not [driver.ErrBadConn], the [Conn] will continue to be usable
+until [Conn.Close] is called.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -234,7 +234,7 @@ until Conn.Close is called.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/bb8a2d8a/jsvm/types.d.ts#L16082">types.d.ts:16082</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3973e49e/jsvm/types.d.ts#L16186">types.d.ts:16186</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
