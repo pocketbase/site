@@ -279,7 +279,7 @@
     PocketBase has a global error handler and every returned or thrown <code>Error</code> from a route or
     middleware will be safely converted by default to a generic HTTP 400 error to avoid accidentally leaking
     sensitive information (the original error will be visible only in the <em>Admin UI > Logs</em> or when in
-    <code>--debug</code> mode).
+    <code>--dev</code> mode).
 </p>
 <p>
     To make it easier returning formatted json error responses, PocketBase provides
