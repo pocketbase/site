@@ -1,7 +1,7 @@
 <script>
-    import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import CodeTabs from "@/components/CodeTabs.svelte";
+    import HeadingLink from "@/components/HeadingLink.svelte";
     import Toc from "@/components/Toc.svelte";
 </script>
 
@@ -77,7 +77,7 @@
         const admin  = c.get("admin")      // empty if not authenticated as admin
         const record = c.get("authRecord") // empty if not authenticated as regular auth record
 
-        // alternatively, you can also read the auth state form the cached request info
+        // alternatively, you can also read the auth state from the cached request info
         const info   = $apis.requestInfo(c);
         const admin  = info.admin;      // empty if not authenticated as admin
         const record = info.authRecord; // empty if not authenticated as regular auth record
@@ -313,7 +313,7 @@
         expands relations (if <code>defaultExpands</code> and/or <code>?expand</code> query parameter is set)
     </li>
     <li>
-        ensures that the emails of the auth record and its expanded auth relations are visibe only for the
+        ensures that the emails of the auth record and its expanded auth relations are visible only for the
         current logged admin, record owner or record with manage access
     </li>
 </ul>

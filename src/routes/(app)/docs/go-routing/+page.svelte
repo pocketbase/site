@@ -1,7 +1,7 @@
 <script>
-    import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import CodeTabs from "@/components/CodeTabs.svelte";
+    import HeadingLink from "@/components/HeadingLink.svelte";
     import Toc from "@/components/Toc.svelte";
 </script>
 
@@ -110,7 +110,7 @@
         admin, _ := c.Get(apis.ContextAdminKey).(*models.Admin)
         record, _ := c.Get(apis.ContextAuthRecordKey).(*models.Record)
 
-        // alternatively, you can also read the auth state form the cached request info
+        // alternatively, you can also read the auth state from the cached request info
         info   := apis.RequestInfo(c)
         admin  := info.Admin      // nil if not authenticated as admin
         record := info.AuthRecord // nil if not authenticated as regular auth record
@@ -362,7 +362,7 @@
         expands relations (if <code>defaultExpands</code> and/or <code>?expand</code> query parameter is set)
     </li>
     <li>
-        ensures that the emails of the auth record and its expanded auth relations are visibe only for the
+        ensures that the emails of the auth record and its expanded auth relations are visible only for the
         current logged admin, record owner or record with manage access
     </li>
 </ul>
