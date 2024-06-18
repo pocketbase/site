@@ -149,6 +149,21 @@
                     <CodeBlock language="html" content={redirectExample} />
                 </li>
             </ol>
+
+            <div class="alert alert-info m-t-xs">
+                <div class="icon">
+                    <i class="ri-information-line" />
+                </div>
+                <div class="content">
+                    <p>
+                        When using the "Manual code exchange" flow for sign-in with Apple your redirect
+                        handler must accept <code>POST</code> requests in order to receive the name and the
+                        email of the Apple user. If you just need the Apple user id, you can keep the redirect
+                        hanldler <code>GET</code> but you'll need to replace in the Apple authorization url
+                        <code>response_mode=form_post</code> with <code>response_mode=query</code>.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
