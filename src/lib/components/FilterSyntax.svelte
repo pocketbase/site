@@ -8,7 +8,7 @@
 </p>
 <ul>
     <li>
-        <code class="txt-success">OPERAND</code> - could be any of the above field literal, string (single or double
+        <code class="txt-success">OPERAND</code> - could be any of the above field literals, string (single or double
         quoted), number, null, true, false
     </li>
     <li>

@@ -60,32 +60,28 @@
         <i class="ri-information-line" />
     </div>
     <div class="content">
-        <p>
+        <p> 
             <strong>PocketBase API Rules act also as records filter!</strong>
             <br />
-            Or in other words, you could for example allow listing only the "active" records of your collection,
-            by using a simple filter expression such as:
-            <code>status = "active"</code>
-            (where "status" is a field defined in your Collection).
+            For example: listing only the records of some Collection where the field <code>status</code> is set to <code>"active"</code> is as simple as the expression: <code>status = "active"</code>.
         </p>
         <p>
-            Because of the above, the API will return 200 empty items response in case a request doesn't
-            satisfy a <code>listRule</code>, 400 for unsatisfied <code>createRule</code> and 404 for
-            unsatisfied <code>viewRule</code>, <code>updateRule</code> and <code>deleteRule</code>.
+            <strong>API Return values</strong>
             <br />
-            All rules will return 403 in case they were "locked" (aka. admin only) and the request client is not
-            an admin.
+            The API will return status code <code>200</code> and an empty array if a request didn't
+            satisfy a <code>listRule</code>, code <code>400</code> for an unsatisfied <code>createRule</code>, and 404 for
+            unsatisfied <code>viewRule</code> <code>updateRule</code> and <code>deleteRule</code>s.
+            <br />
+            All "locked" rules (see above) return code <code>403</code> if the request doesn't come from an admin.
         </p>
         <p>
-            The API Rules are ignored when the action is performed by an authorized admin (<strong
-                >admins can access everything</strong
-            >)!
+            <strong>Admins can access everything!</strong>: API Rules are ignored when the action is performed by an authorized admin
         </p>
     </div>
 </div>
 
 <HeadingLink title="Filters syntax" />
-<p>You could find information about the supported fields in your collection API rules tab:</p>
+<p>You can find information about the available fields in your collection's API rules tab:</p>
 <img
     src="/images/screenshots/collection-rules.png"
     alt="Collection API Rules filters screenshot"
@@ -93,16 +89,15 @@
     width="550"
 />
 <p>
-    There is autocomplete to help you guide you while typing the rule filter expression, but in general, you
-    have access to
-    <strong>3 groups of fields</strong>:
+    The UI has autocomplete to help guide you while typing rule filter expressions and in general you can use 
+    <strong>3 types of fields</strong>:
 </p>
 <ul>
     <li>
         <strong>Your Collection schema fields</strong>
         <br />
-        This also include all nested relations fields too, ex.
-        <code>someRelField.status != "pending"</code>
+        This also includes all nested relation fields (e.g.
+        <code>someRelField.status != "pending"</code>).
     </li>
     <li>
         <code><strong>@request.*</strong></code>
@@ -111,8 +106,7 @@
         etc.
         <ul>
             <li>
-                <code>@request.context</code> - the context where the rule is used (ex.
-                <code>@request.context != "oauth2"</code>)
+                <code>@request.context</code> - the context where the rule is used. E.g: disallow OAuth2 user creation with the API rule <code>@request.context != "oauth2"</code>.
                 <br />
                 <small class="txt-hint">
                     The currently supported context values are <code>default</code>, <code>oauth2</code>,
@@ -149,18 +143,20 @@
     <li>
         <code><strong>@collection.*</strong></code>
         <p>
-            This filter could be used to target other collections that are not directly related to the current
-            one (aka. there is no relation field pointing to it) but both shares a common field value, like
-            for example a category id:
+            This filter can be used to target other Collections that are not directly related to the current
+            one (i.e.: there's no relation field pointing to it but both share a common field, like "categoryId"):
         </p>
         <CodeBlock
             content={`
                 @collection.news.categoryId ?= categoryId && @collection.news.author ?= @request.auth.id
             `}
         />
+        (The ?= operator is defined below).
+        <br />
+        This filter expression says: "categoryId values in the news Collection that are equal to the current table's categoryId values and where the author is the same as the auth id in the request".
         <p>
-            In case you want to join the same collection multiple times but based on different criteria, you
-            can define an alias by appending <code>:alias</code> suffix to the collection name.
+            If you want to join the same collection multiple times but based on different criteria, you
+            can define an alias by appending <code>:alias</code> suffix to the collection name. Here <code>courseRegistrations</code> is aliased to <code>courseRegistrations:auth</code>.
         </p>
         <CodeBlock
             content={`
@@ -171,6 +167,7 @@
                 @collection.courseRegistrations.courseGroup ?= @collection.courseRegistrations:auth.courseGroup
             `}
         />
+        This is a List rule on the users table and says: "Given the api request is made from someone logged in, return all the users in the current courseGroup as the user making the request". I.e. it shows your classmates!
     </li>
 </ul>
 
@@ -206,8 +203,7 @@
 <HeadingLink title=":isset modifier" tag="h5" />
 <p>
     The <code>:isset</code> field modifier is available only for the <code>@request.*</code> fields and can be
-    used to check whether the client submitted a specific data with the request. Here is for example a rule that
-    disallows changing a "role" field:
+    used to check whether the client submitted specific data with the request. E.g. disallow changing a "role" field by making sure "role" on the request is not set:
 </p>
 <CodeBlock
     content={`
@@ -220,30 +216,30 @@
     The <code>:length</code> field modifier could be used to check the number of items in an array field
     (multiple <code>file</code>, <code>select</code>, <code>relation</code>).
     <br />
-    Could be used with both the collection schema fields and the <code>@request.data.*</code> fields. For example:
+    It can be used with Collection and <code>@request.data.*</code> fields. E.g.:
 </p>
 <CodeBlock
     content={`
-        // check example submitted data: {"someSelectField": ["val1", "val2"]}
+        // data = {"someSelectField": ["val1", "val2"]}:
         @request.data.someSelectField:length > 1
 
-        // check existing record field length
-        someRelationField:length = 2
+        // check the length of a related field:
+        affiliateSignups:length >= 2
     `}
 />
 
 <HeadingLink title=":each modifier" tag="h5" />
 <p>
-    The <code>:each</code> field modifier works only with multiple <code>select</code>, <code>file</code> and
+    The <code>:each</code> field modifier works only with the multiple variety of <code>select</code>, <code>file</code> and
     <code>relation</code>
-    type fields. It could be used to apply a condition on each item from the field array. For example:
+    type fields. It can be used to apply a condition to each item in the field array. For example:
 </p>
 <CodeBlock
     content={`
-        // check if all submitted select options contain the "create" text
+        // check if all submitted select options contain the word "create":
         @request.data.someSelectField:each ~ "create"
 
-        // check if all existing someSelectField has "pb_" prefix
+        // check if all existing someSelectField have a "pb_" prefix:
         someSelectField:each ~ "pb_%"
     `}
 />
@@ -276,7 +272,7 @@
     </li>
     <li class="m-b-sm">
         Allow access by anyone and return only the records where the <em>title</em> field value starts with
-        "Lorem" (ex. "Lorem ipsum"):
+        "Lorem" (e.g. "Lorem ipsum"):
         <CodeBlock
             content={`
                 title ~ "Lorem%"
