@@ -15,12 +15,11 @@
         alt="Expand diagram"
     />
 </div>
-<p class="txt-bold">
-    The <code>relation</code> fields follow the same rules as any other collection field and can be set/modified
-    by directly updating the field value - with a record id or array of ids, in case a multiple relation is used.
+<p>
+    <strong><code>relation</code> fields follow the same rules as any other Collection field</strong> and can be set/modified by directly updating the field value—with a record id or array of record ids (for the multiple relation type).
 </p>
 <p>
-    Below is an example that shows creating a new <strong>posts</strong> record with 2 assigned tags.
+    Below is an example showing the creation of a new <strong>posts</strong> record with 2 assigned tags:
 </p>
 <!-- prettier-ignore -->
 <CodeTabs
@@ -52,7 +51,7 @@
 
 <HeadingLink title="Append to multiple relation" />
 <p>
-    To append a single or multiple relation id(s) to an existing value you can use the
+    To append single or multiple relation id(s) to an existing value you can use the
     <code class="txt-bold">+</code> field modifier:
 </p>
 <!-- prettier-ignore -->
@@ -65,7 +64,7 @@
         ...
 
         const post = await pb.collection('posts').update('POST_ID', {
-            // append single tag
+            // append a single tag
             'tags+': 'TAG_ID1',
 
             // append multiple tags at once
@@ -80,7 +79,7 @@
         ...
 
         final post = await pb.collection('posts').update('POST_ID', body: {
-            // append single tag
+            // append a single tag
             'tags+': 'TAG_ID1',
 
             // append multiple tags at once
@@ -89,9 +88,9 @@
     `}
 />
 
-<HeadingLink title="Remove from multiple relation" />
+<HeadingLink title="Remove from a multiple relation" />
 <p>
-    To remove a single or multiple relation id(s) from an existing value you can use the
+    To remove single or multiple relation id(s) from an existing value you can use the
     <code class="txt-bold">-</code> field modifier:
 </p>
 <!-- prettier-ignore -->
