@@ -9,17 +9,17 @@
 
 <HeadingLink title="Uploading files" />
 <p>
-    To upload files, you must first add a <code>file</code> field to your collection:
+    To upload files, you must first add a <code>file</code> field to your Collection:
 </p>
 <img src="/images/screenshots/file-field.png" alt="File field screenshot" width="465" class="screenshot" />
 <p>
-    Once added, you could create/update a Record and upload "documents" files by sending a
+    Once added, you can create/update a Record and upload files by sending a
     <code>multipart/form-data</code> request using the <em>Records create/update APIs</em>.
 </p>
 <p>
-    The client SDK makes things a little easier and auto detect the request content type based on the
-    parameters that you provide. Here is an example how to create a new Record and upload multiple files to
-    the example file field "documents" using the SDKs:
+    The <a href="../client-side-sdks">client SDKs</a> make things a little easier and auto detect the request content type based on the
+    parameters you provide. Here's an example showing how to create a new Record and upload multiple files to
+    the Collection <code>example</code>'s file field: "documents":
 </p>
 <!-- prettier-ignore -->
 <CodeTabs
@@ -44,7 +44,6 @@
             }
         });
 
-        // set some other regular text field value
         formData.append('title', 'Hello world!');
 
         ...
@@ -92,7 +91,7 @@
         </p>
         <p>
             When you upload a new file to a <strong>single file upload field</strong> (aka.
-            <strong>Max Files option is 1</strong>) PocketBase will automatically delete the previous uploaded
+            <strong>Max Files option is 1</strong>) PocketBase will replace the previously uploaded
             file (if any) and upload the new one in its place.
         </p>
         <p>
@@ -179,7 +178,7 @@
 
 <ThumbFormats />
 <p class="txt-hint">
-    The original file would be returned, if the requested thumb size is not found or the file is not an image!
+    Note: The original file will be returned if the requested thumb size is not found or the file is not an image!
 </p>
 
 <p>
@@ -204,7 +203,7 @@
         // note:
         // "documents" is an array of filenames because
         // the "documents" field was created with "Max Files" option > 1;
-        // if "Max Files" was 1, then the result property would be just a string
+        // if "Max Files" was 1, then the result property (here "documents") would be just a string
         const firstFilename = record.documents[0];
 
         // returns something like:
