@@ -31,7 +31,7 @@
 
         const authData = await pb.admins.authWithPassword('test@example.com', '1234567890');
 
-        // after the above you can also access the auth data from the authStore
+        // The above call also also saves auth data to "authStore", which can be accessed:
         console.log(pb.authStore.isValid);
         console.log(pb.authStore.token);
         console.log(pb.authStore.model.id);
@@ -48,7 +48,7 @@
 
         final authData = await pb.admins.authWithPassword('test@example.com', '1234567890');
 
-        // after the above you can also access the auth data from the authStore
+        // The above call also also saves auth data to "authStore", which can be accessed:
         print(pb.authStore.isValid);
         print(pb.authStore.token);
         print(pb.authStore.model.id);
@@ -60,10 +60,10 @@
 
 <HeadingLink title="Authenticate as app user" />
 <p>
-    The easiest way to authenticate your app users is with their username/email and password.
+    The easiest way to authenticate your app's users is with their username/email and password.
     <br />
     <em class="txt-hint">
-        You can customize the supported authentication options from your Auth collection configuration
+        Hint: You can customize the available authentication methods in your Auth collection's configuration
         (including disabling all auth options).
     </em>
 </p>
@@ -79,7 +79,7 @@
 
         const authData = await pb.collection('users').authWithPassword('YOUR_USERNAME_OR_EMAIL', '1234567890');
 
-        // after the above you can also access the auth data from the authStore
+        // The above call also also saves auth data to "authStore", which can be accessed:
         console.log(pb.authStore.isValid);
         console.log(pb.authStore.token);
         console.log(pb.authStore.model.id);
@@ -96,7 +96,7 @@
 
         final authData = await pb.collection('users').authWithPassword('YOUR_USERNAME_OR_EMAIL', '1234567890');
 
-        // after the above you can also access the auth data from the authStore
+        // The above call also also saves auth data to "authStore", which can be accessed:
         print(pb.authStore.isValid);
         print(pb.authStore.token);
         print(pb.authStore.model.id);
@@ -107,8 +107,7 @@
 />
 
 <p>
-    You can also authenticate your users with an OAuth2 provider (Google, GitHub, Microsoft, etc.). See the
-    section below for an example OAuth2 web integration.
+    OAuth2 authentication is also possible, including the providers: Google, GitHub, Microsoft, etc. See the section below for an example OAuth2 web integration.
 </p>
 
 <HeadingLink title="OAuth2 integration" />

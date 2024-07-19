@@ -57,8 +57,8 @@
             </p>
             <p>
                 <strong>
-                    When creating your OAuth2 app, for a callback/redirect URL you have to use the
-                    <code class="txt-bold">https://yourdomain.com/api/oauth2-redirect</code>
+                    When creating your OAuth2 app, for the callback/redirect URL you have to use:
+                    <code>https://<strong>your_domain</strong>.com/api/oauth2-redirect</code>
                 </strong>
                 (<em>
                     or when testing locally - <code>http://127.0.0.1:8090/api/oauth2-redirect</code>
