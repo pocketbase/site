@@ -1,10 +1,11 @@
-<p>The easiest way to interact with the PocketBase API is to use one of the official SDK clients:</p>
+<p>The easiest way to interact with the PocketBase API is to use one of the official SDK clients.</p> 
+<p>See more and read the documentation at:</p>
 <ul>
     <li>
         <a href={import.meta.env.PB_JS_SDK_URL} class="txt-bold" target="_blank" rel="noreferrer noopener">
             JavaScript SDK
         </a>
-        <span class="txt">(browser and node)</span>
+        <span class="txt">(browser and node)</span>, and:
     </li>
     <li>
         <a href={import.meta.env.PB_DART_SDK_URL} class="txt-bold" target="_blank" rel="noreferrer noopener">
@@ -15,7 +16,7 @@
 </ul>
 
 <p>
-    You could find usage examples in each API section, but most of the time you will work with the
+    You can find usage examples at each link, but most of the time you will work with the
     <a href="/docs/api-records" class="txt-bold">Records</a>,
     <a href="/docs/api-files" class="txt-bold">Files</a> and
     <a href="/docs/api-realtime" class="txt-bold">Realtime</a> APIs.
