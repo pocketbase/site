@@ -180,7 +180,7 @@
 <CodeBlock
     language="html"
     content={`
-        FROM alpine:latest
+        FROM alpine:latest FROM download
 
         ARG PB_VERSION=` +
         (import.meta.env.PB_VERSION.startsWith("v")
@@ -195,6 +195,10 @@
         # download and unzip PocketBase
         ADD https://github.com/pocketbase/pocketbase/releases/download/v\${PB_VERSION}/pocketbase_\${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
         RUN unzip /tmp/pb.zip -d /pb/
+
+        FROM scratch AS runner
+
+        COPY --from=download /pb/pocketbase /pb/
 
         # uncomment to copy the local pb_migrations dir into the image
         # COPY ./pb_migrations /pb/pb_migrations
