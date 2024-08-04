@@ -180,7 +180,7 @@
 <CodeBlock
     language="html"
     content={`
-        FROM alpine:latest FROM download
+        FROM alpine:latest AS download
 
         ARG PB_VERSION=` +
         (import.meta.env.PB_VERSION.startsWith("v")
