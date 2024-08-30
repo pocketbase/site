@@ -137,12 +137,17 @@
                 <code>@request.query.page = "1"</code>)
             </li>
             <li>
-                <code>@request.data.*</code> - the submitted body parameters (ex.
-                <code>@request.data.title != ""</code>)
-            </li>
-            <li>
                 <code>@request.auth.*</code> - the current authenticated model (ex.
                 <code>@request.auth.id != ""</code>)
+            </li>
+            <li>
+                <code>@request.data.*</code> - the submitted body parameters (ex.
+                <code>@request.data.title != ""</code>)
+                <br />
+                <small class="txt-hint">
+                    Note: Uploaded files are not part of the `@request.data` because they are evaluated lazily
+                    (<em>this behavior may change in the future</em>).
+                </small>
             </li>
         </ul>
     </li>
@@ -214,6 +219,14 @@
         @request.data.role:isset = false
     `}
 />
+<p>
+    <small class="txt-hint">
+        Note that <code class="txt-sm">:isset</code> at the moment doesn't support checking for new uploaded
+        files because they are evaluated lazily and cannot be serialized (<em
+            >this behavior may change in the future</em
+        >).
+    </small>
+</p>
 
 <HeadingLink title=":length modifier" tag="h5" />
 <p>
@@ -231,6 +244,14 @@
         someRelationField:length = 2
     `}
 />
+<p>
+    <small class="txt-hint">
+        Note that <code class="txt-sm">:length</code> at the moment doesn't support checking for new uploaded
+        files because they are evaluated lazily and cannot be serialized (<em
+            >this behavior may change in the future</em
+        >).
+    </small>
+</p>
 
 <HeadingLink title=":each modifier" tag="h5" />
 <p>
@@ -247,6 +268,14 @@
         someSelectField:each ~ "pb_%"
     `}
 />
+<p>
+    <small class="txt-hint">
+        Note that <code class="txt-sm">:each</code> at the moment doesn't support checking for new uploaded
+        files because they are evaluated lazily and cannot be serialized (<em
+            >this behavior may change in the future</em
+        >).
+    </small>
+</p>
 
 <HeadingLink title="Examples" />
 <ul>
