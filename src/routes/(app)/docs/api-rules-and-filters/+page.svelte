@@ -145,8 +145,8 @@
                 <code>@request.data.title != ""</code>)
                 <br />
                 <small class="txt-hint">
-                    Note: Uploaded files are not part of the `@request.data` because they are evaluated lazily
-                    (<em>this behavior may change in the future</em>).
+                    Note: Uploaded files are not part of the <code class="txt-sm">@request.data</code>
+                    because they are evaluated lazily (<em>this behavior may change in the future</em>).
                 </small>
             </li>
         </ul>
