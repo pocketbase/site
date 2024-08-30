@@ -146,7 +146,7 @@
                 <br />
                 <small class="txt-hint">
                     Note: Uploaded files are not part of the <code class="txt-sm">@request.data</code>
-                    because they are evaluated lazily (<em>this behavior may change in the future</em>).
+                    because they are evaluated separately (<em>this behavior may change in the future</em>).
                 </small>
             </li>
         </ul>
@@ -221,8 +221,8 @@
 />
 <p>
     <small class="txt-hint">
-        Note that <code class="txt-sm">:isset</code> at the moment doesn't support checking for new uploaded
-        files because they are evaluated lazily and cannot be serialized (<em
+        Note that <code class="txt-sm">@request.data.*:isset</code> at the moment doesn't support checking for
+        new uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
     </small>
@@ -246,8 +246,8 @@
 />
 <p>
     <small class="txt-hint">
-        Note that <code class="txt-sm">:length</code> at the moment doesn't support checking for new uploaded
-        files because they are evaluated lazily and cannot be serialized (<em
+        Note that <code class="txt-sm">@request.data.*:length</code> at the moment doesn't support checking
+        for new uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
     </small>
@@ -270,8 +270,8 @@
 />
 <p>
     <small class="txt-hint">
-        Note that <code class="txt-sm">:each</code> at the moment doesn't support checking for new uploaded
-        files because they are evaluated lazily and cannot be serialized (<em
+        Note that <code class="txt-sm">@request.data.*:each</code> at the moment doesn't support checking for
+        new uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
     </small>
