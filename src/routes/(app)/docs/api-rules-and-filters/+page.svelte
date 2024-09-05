@@ -277,6 +277,45 @@
     </small>
 </p>
 
+<HeadingLink title=":alias modifier" tag="h5" />
+
+<p>
+    The <code>:alias</code> field modifier allows you to define any suffix you want to a collection name, and could
+    be used in the case you want to join the same collection multiple times but based on different criteria. This
+    can be specially useful for apps that serves multiple tenants, organizations or teams. For example:
+</p>
+<CodeBlock
+    content={`
+        // check if the user is a member of a team
+        @collection.teamMembers:member.user ?= @request.auth.id &&
+
+        // check if the user is a member of this collection's team
+        @collection.teamMembers:member.team ?= team.id &&
+
+        // check if the user has the right permissions
+        @collection.teamMembers:member.permissions:each ?= "edit_stuff"
+    `}
+/>
+<p>
+    This also works with <a href="/docs/working-with-relations#back-relations">back-relations</a>:
+</p>
+<CodeBlock
+    content={`
+        // check if the user is a member of this collection's team
+        @request.auth.team_members_via_user:auth.team ?= team &&
+
+        // check if the user has a specific role
+        @collection.teamMembers:auth.role ?= "moderator"
+    `}
+/>
+<p>
+    <small class="txt-hint">
+        Note that <code class="txt-sm">:member</code> and <code class="txt-sm">:auth</code> are arbitrary aliases
+        used in this example to help indetify a collection related to an authenticated member. You can name your
+        aliases as you see fit for your use case.
+    </small>
+</p>
+
 <HeadingLink title="Examples" />
 <ul>
     <li class="m-b-sm">
