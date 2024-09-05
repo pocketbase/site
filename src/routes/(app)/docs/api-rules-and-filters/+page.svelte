@@ -164,8 +164,18 @@
             `}
         />
         <p>
+            In case you need to target relations where the associated relation field is not in the main
+            collection, you can use <a href="/docs/working-with-relations#back-relations">back-relations</a>:
+        </p>
+        <CodeBlock
+            content={`
+                comments_via_post.user ?= @request.auth.id
+            `}
+        />
+        <p>
             In case you want to join the same collection multiple times but based on different criteria, you
-            can define an alias by appending <code>:alias</code> suffix to the collection name.
+            can define an alias by appending an <code>:alias</code> suffix to the collection name (in this
+            example it was called <code>:auth</code>):
         </p>
         <CodeBlock
             content={`
