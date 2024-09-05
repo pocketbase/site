@@ -353,6 +353,22 @@
         />
     </li>
     <li class="m-b-sm">
+        Allow only registered users that are members of an <em>organization</em>:
+        <CodeBlock
+            content={`
+                @request.auth.id != "" && @request.auth.org_members_via_user.organization ?= organization
+            `}
+        />
+    </li>
+    <li class="m-b-sm">
+        Allow only <em>slugs</em> that are not already in use by other collections:
+        <CodeBlock
+            content={`
+                @collection.posts.slug ?!= slug && @collection.pages.slug ?!= slug
+            `}
+        />
+    </li>
+    <li class="m-b-sm">
         Allow access by anyone and return only the records where the <em>title</em> field value starts with
         "Lorem" (ex. "Lorem ipsum"):
         <CodeBlock
