@@ -299,23 +299,23 @@
         // check if the user is a member of a team
         @collection.teamMembers:member.user ?= @request.auth.id &&
 
-        // check if the user is a member of this collection's team
-        @collection.teamMembers:member.team ?= team.id &&
+        // check if the user is a member of the current team
+        @collection.teamMembers:member.team ?= team &&
 
         // check if the user has the right permissions
         @collection.teamMembers:member.permissions:each ?= "edit_stuff"
     `}
 />
 <p>
-    This also works with <a href="/docs/working-with-relations#back-relations">back-relations</a>:
+    Aliases also work with <a href="/docs/working-with-relations#back-relations">back-relations</a>:
 </p>
 <CodeBlock
     content={`
-        // check if the user is a member of this collection's team
+        // check if the user is a member of the current team
         @request.auth.team_members_via_user:auth.team ?= team &&
 
         // check if the user has a specific role
-        @collection.teamMembers:auth.role ?= "moderator"
+        @request.auth.team_members_via_user:auth.role ?= "moderator"
     `}
 />
 <p>
