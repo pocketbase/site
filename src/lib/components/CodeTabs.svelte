@@ -55,25 +55,3 @@
         {/each}
     </div>
 </div>
-
-<style lang="scss">
-    .code-tabs .tabs-header {
-        margin-bottom: -2px;
-        border: 0;
-        .tab-item {
-            min-width: 100px;
-            &:hover,
-            &:focus-visible {
-                background: var(--baseColor);
-            }
-            &:active,
-            &.active {
-                background: var(--baseAlt1Color);
-                &:after {
-                    content: none;
-                    display: none;
-                }
-            }
-        }
-    }
-</style>

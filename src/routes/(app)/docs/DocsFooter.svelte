@@ -43,6 +43,10 @@
     }
 </script>
 
+{#if prevLink?.href || nextLink?.href}
+    <hr />
+{/if}
+
 <div class="docs-footer">
     {#if prevLink?.href}
         <a href={prevLink.href} class="btn btn-secondary btn-prev">

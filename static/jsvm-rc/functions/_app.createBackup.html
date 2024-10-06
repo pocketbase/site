@@ -1,0 +1,370 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>createBackup | PocketBase JSVM reference</title><meta name="description" content="Documentation for PocketBase JSVM reference"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><link rel="stylesheet" href="../assets/custom.css"/><script defer src="../assets/main.js"></script><script async src="../assets/search.js" id="tsd-search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base="..">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"><a href="https://pocketbase.io">PocketBase site</a></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">PocketBase JSVM reference</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-content">
+<div class="tsd-page-title">
+<ul class="tsd-breadcrumb">
+<li><a href="../index.html">PocketBase JSVM reference</a></li>
+<li><a href="../modules/_app.html">$app</a></li>
+<li><a href="_app.createBackup.html">createBackup</a></li></ul>
+<h1>Function createBackup</h1></div>
+<section class="tsd-panel">
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="createBackup"><span class="tsd-kind-call-signature">create<wbr/>Backup</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">ctx</span>, <span class="tsd-kind-parameter">name</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#createBackup" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>CreateBackup creates a new backup of the current app pb_data directory.</p>
+<p>Backups can be stored on S3 if it is configured in app.Settings().Backups.</p>
+<p>Please refer to the godoc of the specific CoreApp implementation
+for details on the backup procedures.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">ctx</span>: <a href="../modules/context.html" class="tsd-signature-type tsd-kind-namespace">context</a><span class="tsd-signature-symbol">.</span><a href="../interfaces/context.Context.html" class="tsd-signature-type tsd-kind-interface">Context</a></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm-rc/types.d.ts#L5553">types.d.ts:5553</a></li></ul></aside></li></ul></section></div>
+<div class="col-sidebar">
+<div class="page-menu">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)" id="icon-chevronDown"></path></svg>Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div></div>
+<div class="site-menu">
+<nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>Pocket<wbr/>Base JSVM reference</span></a>
+<ul class="tsd-small-nested-navigation">
+<li>
+<details class="tsd-index-accordion" data-key="PocketBase"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>PocketBase</span></summary>
+<div class="tsd-accordion-details">
+<ul class="tsd-nested-navigation">
+<li><a href="../modules/_apis.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$apis</span></a></li>
+<li>
+<details class="tsd-index-accordion" open data-key="$app"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><a href="../modules/_app.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$app</span></a></summary>
+<div class="tsd-accordion-details">
+<ul class="tsd-nested-navigation">
+<li>
+<details class="tsd-index-accordion" data-key="$app$Functions"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Functions</span></summary>
+<div class="tsd-accordion-details">
+<ul class="tsd-nested-navigation">
+<li><a href="_app.auxDB.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-64"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-function)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.39 16V7.24H14.55V8.224H10.446V11.128H14.238V12.112H10.47V16H9.39Z" fill="var(--color-text)"></path></g></svg><span>auxDB</span></a></li>
+<li><a href="_app.auxDelete.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>Delete</span></a></li>
+<li><a href="_app.auxDeleteWithContext.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>Delete<wbr/>With<wbr/>Context</span></a></li>
+<li><a href="_app.auxModelQuery.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>Model<wbr/>Query</span></a></li>
+<li><a href="_app.auxNonconcurrentDB.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>NonconcurrentDB</span></a></li>
+<li><a href="_app.auxRunInTransaction.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>Run<wbr/>In<wbr/>Transaction</span></a></li>
+<li><a href="_app.auxSave.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>Save</span></a></li>
+<li><a href="_app.auxSaveNoValidate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>Save<wbr/>No<wbr/>Validate</span></a></li>
+<li><a href="_app.auxSaveNoValidateWithContext.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>Save<wbr/>No<wbr/>Validate<wbr/>With<wbr/>Context</span></a></li>
+<li><a href="_app.auxSaveWithContext.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>Save<wbr/>With<wbr/>Context</span></a></li>
+<li><a href="_app.auxVacuum.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>aux<wbr/>Vacuum</span></a></li>
+<li><a href="_app.bootstrap.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>bootstrap</span></a></li>
+<li><a href="_app.canAccessRecord.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>can<wbr/>Access<wbr/>Record</span></a></li>
+<li><a href="_app.collectionQuery.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>collection<wbr/>Query</span></a></li>
+<li><a href="_app.countRecords.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>count<wbr/>Records</span></a></li>
+<li><a href="_app.createBackup.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>create<wbr/>Backup</span></a></li>
+<li><a href="_app.createViewFields.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>create<wbr/>View<wbr/>Fields</span></a></li>
+<li><a href="_app.dataDir.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>data<wbr/>Dir</span></a></li>
+<li><a href="_app.db.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>db</span></a></li>
+<li><a href="_app.delete.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete</span></a></li>
+<li><a href="_app.deleteAllAuthOriginsByRecord.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete<wbr/>All<wbr/>Auth<wbr/>Origins<wbr/>By<wbr/>Record</span></a></li>
+<li><a href="_app.deleteAllMFAsByRecord.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete<wbr/>AllMFAs<wbr/>By<wbr/>Record</span></a></li>
+<li><a href="_app.deleteAllOTPsByRecord.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete<wbr/>AllOTPs<wbr/>By<wbr/>Record</span></a></li>
+<li><a href="_app.deleteExpiredMFAs.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete<wbr/>ExpiredMFAs</span></a></li>
+<li><a href="_app.deleteExpiredOTPs.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete<wbr/>ExpiredOTPs</span></a></li>
+<li><a href="_app.deleteOldLogs.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete<wbr/>Old<wbr/>Logs</span></a></li>
+<li><a href="_app.deleteTable.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete<wbr/>Table</span></a></li>
+<li><a href="_app.deleteView.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete<wbr/>View</span></a></li>
+<li><a href="_app.deleteWithContext.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>delete<wbr/>With<wbr/>Context</span></a></li>
+<li><a href="_app.encryptionEnv.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>encryption<wbr/>Env</span></a></li>
+<li><a href="_app.execute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>execute</span></a></li>
+<li><a href="_app.expandRecord.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>expand<wbr/>Record</span></a></li>
+<li><a href="_app.expandRecords.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>expand<wbr/>Records</span></a></li>
+<li><a href="_app.findAllAuthOriginsByCollection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>All<wbr/>Auth<wbr/>Origins<wbr/>By<wbr/>Collection</span></a></li>
+<li><a href="_app.findAllAuthOriginsByRecord.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>All<wbr/>Auth<wbr/>Origins<wbr/>By<wbr/>Record</span></a></li>
+<li><a href="_app.findAllCollections.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>All<wbr/>Collections</span></a></li>
+<li><a href="_app.findAllExternalAuthsByCollection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>All<wbr/>External<wbr/>Auths<wbr/>By<wbr/>Collection</span></a></li>
+<li><a href="_app.findAllExternalAuthsByRecord.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>All<wbr/>External<wbr/>Auths<wbr/>By<wbr/>Record</span></a></li>
+<li><a href="_app.findAllMFAsByCollection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>AllMFAs<wbr/>By<wbr/>Collection</span></a></li>
+<li><a href="_app.findAllMFAsByRecord.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>AllMFAs<wbr/>By<wbr/>Record</span></a></li>
+<li><a href="_app.findAllOTPsByCollection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>AllOTPs<wbr/>By<wbr/>Collection</span></a></li>
+<li><a href="_app.findAllOTPsByRecord.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>AllOTPs<wbr/>By<wbr/>Record</span></a></li>
+<li><a href="_app.findAllRecords.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>All<wbr/>Records</span></a></li>
+<li><a href="_app.findAuthOriginById.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Auth<wbr/>Origin<wbr/>By<wbr/>Id</span></a></li>
+<li><a href="_app.findAuthOriginByRecordAndFingerprint.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Auth<wbr/>Origin<wbr/>By<wbr/>Record<wbr/>And<wbr/>Fingerprint</span></a></li>
+<li><a href="_app.findAuthRecordByEmail.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Auth<wbr/>Record<wbr/>By<wbr/>Email</span></a></li>
+<li><a href="_app.findAuthRecordByToken.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Auth<wbr/>Record<wbr/>By<wbr/>Token</span></a></li>
+<li><a href="_app.findCachedCollectionByNameOrId.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Cached<wbr/>Collection<wbr/>By<wbr/>Name<wbr/>Or<wbr/>Id</span></a></li>
+<li><a href="_app.findCollectionByNameOrId.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Collection<wbr/>By<wbr/>Name<wbr/>Or<wbr/>Id</span></a></li>
+<li><a href="_app.findCollectionReferences.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Collection<wbr/>References</span></a></li>
+<li><a href="_app.findFirstExternalAuthByExpr.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>First<wbr/>External<wbr/>Auth<wbr/>By<wbr/>Expr</span></a></li>
+<li><a href="_app.findFirstRecordByData.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>First<wbr/>Record<wbr/>By<wbr/>Data</span></a></li>
+<li><a href="_app.findFirstRecordByFilter.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>First<wbr/>Record<wbr/>By<wbr/>Filter</span></a></li>
+<li><a href="_app.findLogById.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Log<wbr/>By<wbr/>Id</span></a></li>
+<li><a href="_app.findMFAById.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>findMFABy<wbr/>Id</span></a></li>
+<li><a href="_app.findOTPById.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>findOTPBy<wbr/>Id</span></a></li>
+<li><a href="_app.findRecordById.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Record<wbr/>By<wbr/>Id</span></a></li>
+<li><a href="_app.findRecordByViewFile.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Record<wbr/>By<wbr/>View<wbr/>File</span></a></li>
+<li><a href="_app.findRecordsByFilter.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Records<wbr/>By<wbr/>Filter</span></a></li>
+<li><a href="_app.findRecordsByIds.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>find<wbr/>Records<wbr/>By<wbr/>Ids</span></a></li>
+<li><a href="_app.hasTable.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>has<wbr/>Table</span></a></li>
+<li><a href="_app.importCollections.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>import<wbr/>Collections</span></a></li>
+<li><a href="_app.importCollectionsByMarshaledJSON.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>import<wbr/>Collections<wbr/>By<wbr/>MarshaledJSON</span></a></li>
+<li><a href="_app.isBootstrapped.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>is<wbr/>Bootstrapped</span></a></li>
+<li><a href="_app.isCollectionNameUnique.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>is<wbr/>Collection<wbr/>Name<wbr/>Unique</span></a></li>
+<li><a href="_app.isDev.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>is<wbr/>Dev</span></a></li>
+<li><a href="_app.isTransactional.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>is<wbr/>Transactional</span></a></li>
+<li><a href="_app.logQuery.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>log<wbr/>Query</span></a></li>
+<li><a href="_app.logger.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>logger</span></a></li>
+<li><a href="_app.logsStats.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>logs<wbr/>Stats</span></a></li>
+<li><a href="_app.modelQuery.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>model<wbr/>Query</span></a></li>
+<li><a href="_app.newBackupsFilesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>new<wbr/>Backups<wbr/>Filesystem</span></a></li>
+<li><a href="_app.newFilesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>new<wbr/>Filesystem</span></a></li>
+<li><a href="_app.newMailClient.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>new<wbr/>Mail<wbr/>Client</span></a></li>
+<li><a href="_app.nonconcurrentDB.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>nonconcurrentDB</span></a></li>
+<li><a href="_app.recordQuery.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>record<wbr/>Query</span></a></li>
+<li><a href="_app.reloadCachedCollections.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>reload<wbr/>Cached<wbr/>Collections</span></a></li>
+<li><a href="_app.reloadSettings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>reload<wbr/>Settings</span></a></li>
+<li><a href="_app.resetBootstrapState.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>reset<wbr/>Bootstrap<wbr/>State</span></a></li>
+<li><a href="_app.restart.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>restart</span></a></li>
+<li><a href="_app.restoreBackup.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>restore<wbr/>Backup</span></a></li>
+<li><a href="_app.runAllMigrations.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>run<wbr/>All<wbr/>Migrations</span></a></li>
+<li><a href="_app.runAppMigrations.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>run<wbr/>App<wbr/>Migrations</span></a></li>
+<li><a href="_app.runInTransaction.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>run<wbr/>In<wbr/>Transaction</span></a></li>
+<li><a href="_app.runSystemMigrations.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>run<wbr/>System<wbr/>Migrations</span></a></li>
+<li><a href="_app.save.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>save</span></a></li>
+<li><a href="_app.saveNoValidate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>save<wbr/>No<wbr/>Validate</span></a></li>
+<li><a href="_app.saveNoValidateWithContext.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>save<wbr/>No<wbr/>Validate<wbr/>With<wbr/>Context</span></a></li>
+<li><a href="_app.saveView.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>save<wbr/>View</span></a></li>
+<li><a href="_app.saveWithContext.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>save<wbr/>With<wbr/>Context</span></a></li>
+<li><a href="_app.settings.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>settings</span></a></li>
+<li><a href="_app.start.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>start</span></a></li>
+<li><a href="_app.store.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>store</span></a></li>
+<li><a href="_app.subscriptionsBroker.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>subscriptions<wbr/>Broker</span></a></li>
+<li><a href="_app.syncRecordTableSchema.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>sync<wbr/>Record<wbr/>Table<wbr/>Schema</span></a></li>
+<li><a href="_app.tableColumns.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>table<wbr/>Columns</span></a></li>
+<li><a href="_app.tableIndexes.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>table<wbr/>Indexes</span></a></li>
+<li><a href="_app.tableInfo.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>table<wbr/>Info</span></a></li>
+<li><a href="_app.truncateCollection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>truncate<wbr/>Collection</span></a></li>
+<li><a href="_app.unsafeWithoutHooks.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>unsafe<wbr/>Without<wbr/>Hooks</span></a></li>
+<li><a href="_app.vacuum.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>vacuum</span></a></li>
+<li><a href="_app.validate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>validate</span></a></li>
+<li><a href="_app.validateWithContext.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>validate<wbr/>With<wbr/>Context</span></a></li></ul></div></details></li>
+<li>
+<details class="tsd-index-accordion" data-key="$app$Variables"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Variables</span></summary>
+<div class="tsd-accordion-details">
+<ul class="tsd-nested-navigation">
+<li><a href="../variables/_app.rootCmd.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-32"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-variable)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.106 16L8.85 7.24H9.966L11.454 13.192C11.558 13.608 11.646 13.996 11.718 14.356C11.79 14.708 11.842 14.976 11.874 15.16C11.906 14.976 11.954 14.708 12.018 14.356C12.09 13.996 12.178 13.608 12.282 13.192L13.758 7.24H14.85L12.582 16H11.106Z" fill="var(--color-text)"></path></g></svg><span>root<wbr/>Cmd</span></a></li></ul></div></details></li></ul></div></details></li>
+<li><a href="../modules/_dbx.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$dbx</span></a></li>
+<li><a href="../modules/_filepath.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$filepath</span></a></li>
+<li><a href="../modules/_filesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$filesystem</span></a></li>
+<li><a href="../modules/_http.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$http</span></a></li>
+<li><a href="../modules/_mails.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$mails</span></a></li>
+<li><a href="../modules/_os.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$os</span></a></li>
+<li><a href="../modules/_security.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$security</span></a></li>
+<li><a href="../modules/_template.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>$template</span></a></li>
+<li><a href="../variables/__hooks.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-32"></use></svg><span>__hooks</span></a></li>
+<li><a href="arrayOf.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>array<wbr/>Of</span></a></li>
+<li><a href="cronAdd.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>cron<wbr/>Add</span></a></li>
+<li><a href="cronRemove.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>cron<wbr/>Remove</span></a></li>
+<li><a href="migrate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>migrate</span></a></li>
+<li><a href="onBackupCreate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Backup<wbr/>Create</span></a></li>
+<li><a href="onBackupRestore.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Backup<wbr/>Restore</span></a></li>
+<li><a href="onBatchRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Batch<wbr/>Request</span></a></li>
+<li><a href="onBootstrap.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Bootstrap</span></a></li>
+<li><a href="onCollectionAfterCreateError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>After<wbr/>Create<wbr/>Error</span></a></li>
+<li><a href="onCollectionAfterCreateSuccess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>After<wbr/>Create<wbr/>Success</span></a></li>
+<li><a href="onCollectionAfterDeleteError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>After<wbr/>Delete<wbr/>Error</span></a></li>
+<li><a href="onCollectionAfterDeleteSuccess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>After<wbr/>Delete<wbr/>Success</span></a></li>
+<li><a href="onCollectionAfterUpdateError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>After<wbr/>Update<wbr/>Error</span></a></li>
+<li><a href="onCollectionAfterUpdateSuccess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>After<wbr/>Update<wbr/>Success</span></a></li>
+<li><a href="onCollectionCreate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Create</span></a></li>
+<li><a href="onCollectionCreateExecute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Create<wbr/>Execute</span></a></li>
+<li><a href="onCollectionCreateRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Create<wbr/>Request</span></a></li>
+<li><a href="onCollectionDelete.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Delete</span></a></li>
+<li><a href="onCollectionDeleteExecute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Delete<wbr/>Execute</span></a></li>
+<li><a href="onCollectionDeleteRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Delete<wbr/>Request</span></a></li>
+<li><a href="onCollectionUpdate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Update</span></a></li>
+<li><a href="onCollectionUpdateExecute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Update<wbr/>Execute</span></a></li>
+<li><a href="onCollectionUpdateRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Update<wbr/>Request</span></a></li>
+<li><a href="onCollectionValidate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>Validate</span></a></li>
+<li><a href="onCollectionViewRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collection<wbr/>View<wbr/>Request</span></a></li>
+<li><a href="onCollectionsImportRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collections<wbr/>Import<wbr/>Request</span></a></li>
+<li><a href="onCollectionsListRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Collections<wbr/>List<wbr/>Request</span></a></li>
+<li><a href="onFileDownloadRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>File<wbr/>Download<wbr/>Request</span></a></li>
+<li><a href="onFileTokenRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>File<wbr/>Token<wbr/>Request</span></a></li>
+<li><a href="onMailerRecordAuthAlertSend.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Mailer<wbr/>Record<wbr/>Auth<wbr/>Alert<wbr/>Send</span></a></li>
+<li><a href="onMailerRecordEmailChangeSend.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Mailer<wbr/>Record<wbr/>Email<wbr/>Change<wbr/>Send</span></a></li>
+<li><a href="onMailerRecordOTPSend.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Mailer<wbr/>RecordOTPSend</span></a></li>
+<li><a href="onMailerRecordPasswordResetSend.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Mailer<wbr/>Record<wbr/>Password<wbr/>Reset<wbr/>Send</span></a></li>
+<li><a href="onMailerRecordVerificationSend.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Mailer<wbr/>Record<wbr/>Verification<wbr/>Send</span></a></li>
+<li><a href="onMailerSend.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Mailer<wbr/>Send</span></a></li>
+<li><a href="onModelAfterCreateError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>After<wbr/>Create<wbr/>Error</span></a></li>
+<li><a href="onModelAfterCreateSuccess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>After<wbr/>Create<wbr/>Success</span></a></li>
+<li><a href="onModelAfterDeleteError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>After<wbr/>Delete<wbr/>Error</span></a></li>
+<li><a href="onModelAfterDeleteSuccess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>After<wbr/>Delete<wbr/>Success</span></a></li>
+<li><a href="onModelAfterUpdateError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>After<wbr/>Update<wbr/>Error</span></a></li>
+<li><a href="onModelAfterUpdateSuccess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>After<wbr/>Update<wbr/>Success</span></a></li>
+<li><a href="onModelCreate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>Create</span></a></li>
+<li><a href="onModelCreateExecute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>Create<wbr/>Execute</span></a></li>
+<li><a href="onModelDelete.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>Delete</span></a></li>
+<li><a href="onModelDeleteExecute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>Delete<wbr/>Execute</span></a></li>
+<li><a href="onModelUpdate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>Update</span></a></li>
+<li><a href="onModelUpdateExecute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>Update<wbr/>Execute</span></a></li>
+<li><a href="onModelValidate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Model<wbr/>Validate</span></a></li>
+<li><a href="onRealtimeConnectRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Realtime<wbr/>Connect<wbr/>Request</span></a></li>
+<li><a href="onRealtimeMessageSend.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Realtime<wbr/>Message<wbr/>Send</span></a></li>
+<li><a href="onRealtimeSubscribeRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Realtime<wbr/>Subscribe<wbr/>Request</span></a></li>
+<li><a href="onRecordAfterCreateError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>After<wbr/>Create<wbr/>Error</span></a></li>
+<li><a href="onRecordAfterCreateSuccess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>After<wbr/>Create<wbr/>Success</span></a></li>
+<li><a href="onRecordAfterDeleteError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>After<wbr/>Delete<wbr/>Error</span></a></li>
+<li><a href="onRecordAfterDeleteSuccess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>After<wbr/>Delete<wbr/>Success</span></a></li>
+<li><a href="onRecordAfterUpdateError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>After<wbr/>Update<wbr/>Error</span></a></li>
+<li><a href="onRecordAfterUpdateSuccess.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>After<wbr/>Update<wbr/>Success</span></a></li>
+<li><a href="onRecordAuthRefreshRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Auth<wbr/>Refresh<wbr/>Request</span></a></li>
+<li><a href="onRecordAuthRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Auth<wbr/>Request</span></a></li>
+<li><a href="onRecordAuthWithOAuth2Request.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Auth<wbr/>WithOAuth2<wbr/>Request</span></a></li>
+<li><a href="onRecordAuthWithOTPRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Auth<wbr/>WithOTPRequest</span></a></li>
+<li><a href="onRecordAuthWithPasswordRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Auth<wbr/>With<wbr/>Password<wbr/>Request</span></a></li>
+<li><a href="onRecordConfirmEmailChangeRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Confirm<wbr/>Email<wbr/>Change<wbr/>Request</span></a></li>
+<li><a href="onRecordConfirmPasswordResetRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Confirm<wbr/>Password<wbr/>Reset<wbr/>Request</span></a></li>
+<li><a href="onRecordConfirmVerificationRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Confirm<wbr/>Verification<wbr/>Request</span></a></li>
+<li><a href="onRecordCreate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Create</span></a></li>
+<li><a href="onRecordCreateExecute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Create<wbr/>Execute</span></a></li>
+<li><a href="onRecordCreateRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Create<wbr/>Request</span></a></li>
+<li><a href="onRecordDelete.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Delete</span></a></li>
+<li><a href="onRecordDeleteExecute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Delete<wbr/>Execute</span></a></li>
+<li><a href="onRecordDeleteRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Delete<wbr/>Request</span></a></li>
+<li><a href="onRecordEnrich.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Enrich</span></a></li>
+<li><a href="onRecordRequestEmailChangeRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Request<wbr/>Email<wbr/>Change<wbr/>Request</span></a></li>
+<li><a href="onRecordRequestOTPRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>RequestOTPRequest</span></a></li>
+<li><a href="onRecordRequestPasswordResetRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Request<wbr/>Password<wbr/>Reset<wbr/>Request</span></a></li>
+<li><a href="onRecordRequestVerificationRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Request<wbr/>Verification<wbr/>Request</span></a></li>
+<li><a href="onRecordUpdate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Update</span></a></li>
+<li><a href="onRecordUpdateExecute.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Update<wbr/>Execute</span></a></li>
+<li><a href="onRecordUpdateRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Update<wbr/>Request</span></a></li>
+<li><a href="onRecordValidate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>Validate</span></a></li>
+<li><a href="onRecordViewRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Record<wbr/>View<wbr/>Request</span></a></li>
+<li><a href="onRecordsListRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Records<wbr/>List<wbr/>Request</span></a></li>
+<li><a href="onSettingsListRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Settings<wbr/>List<wbr/>Request</span></a></li>
+<li><a href="onSettingsReload.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Settings<wbr/>Reload</span></a></li>
+<li><a href="onSettingsUpdateRequest.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Settings<wbr/>Update<wbr/>Request</span></a></li>
+<li><a href="onTerminate.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>on<wbr/>Terminate</span></a></li>
+<li><a href="readerToString.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>reader<wbr/>To<wbr/>String</span></a></li>
+<li><a href="routerAdd.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>router<wbr/>Add</span></a></li>
+<li><a href="routerUse.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>router<wbr/>Use</span></a></li>
+<li><a href="sleep.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>sleep</span></a></li>
+<li><a href="../classes/ApiError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-128"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-class)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.898 16.1201C11.098 16.1201 10.466 15.8961 10.002 15.4481C9.53803 15.0001 9.30603 14.3841 9.30603 13.6001V9.64012C9.30603 8.85612 9.53803 8.24012 10.002 7.79212C10.466 7.34412 11.098 7.12012 11.898 7.12012C12.682 7.12012 13.306 7.34812 13.77 7.80412C14.234 8.25212 14.466 8.86412 14.466 9.64012H13.386C13.386 9.14412 13.254 8.76412 12.99 8.50012C12.734 8.22812 12.37 8.09212 11.898 8.09212C11.426 8.09212 11.054 8.22412 10.782 8.48812C10.518 8.75212 10.386 9.13212 10.386 9.62812V13.6001C10.386 14.0961 10.518 14.4801 10.782 14.7521C11.054 15.0161 11.426 15.1481 11.898 15.1481C12.37 15.1481 12.734 15.0161 12.99 14.7521C13.254 14.4801 13.386 14.0961 13.386 13.6001H14.466C14.466 14.3761 14.234 14.9921 13.77 15.4481C13.306 15.8961 12.682 16.1201 11.898 16.1201Z" fill="var(--color-text)"></path></g></svg><span>Api<wbr/>Error</span></a></li>
+<li><a href="../classes/AppleClientSecretCreateForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Apple<wbr/>Client<wbr/>Secret<wbr/>Create<wbr/>Form</span></a></li>
+<li><a href="../classes/AuthCollection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Auth<wbr/>Collection</span></a></li>
+<li><a href="../classes/AutodateField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Autodate<wbr/>Field</span></a></li>
+<li><a href="../classes/BadRequestError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Bad<wbr/>Request<wbr/>Error</span></a></li>
+<li><a href="../classes/BaseCollection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Base<wbr/>Collection</span></a></li>
+<li><a href="../classes/BoolField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Bool<wbr/>Field</span></a></li>
+<li><a href="../classes/Collection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Collection</span></a></li>
+<li><a href="../classes/Command.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Command</span></a></li>
+<li><a href="../classes/Context-1.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Context</span></a></li>
+<li><a href="../classes/Cookie.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Cookie</span></a></li>
+<li><a href="../classes/DateField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Date<wbr/>Field</span></a></li>
+<li><a href="../classes/DateTime.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Date<wbr/>Time</span></a></li>
+<li><a href="../classes/DynamicModel.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Dynamic<wbr/>Model</span></a></li>
+<li><a href="../classes/EditorField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Editor<wbr/>Field</span></a></li>
+<li><a href="../classes/EmailField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Email<wbr/>Field</span></a></li>
+<li><a href="../classes/Field.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Field</span></a></li>
+<li><a href="../classes/FieldsList.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Fields<wbr/>List</span></a></li>
+<li><a href="../classes/FileField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>File<wbr/>Field</span></a></li>
+<li><a href="../classes/ForbiddenError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Forbidden<wbr/>Error</span></a></li>
+<li><a href="../classes/InternalServerError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Internal<wbr/>Server<wbr/>Error</span></a></li>
+<li><a href="../classes/JSONField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>JSONField</span></a></li>
+<li><a href="../classes/MailerMessage.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Mailer<wbr/>Message</span></a></li>
+<li><a href="../classes/Middleware.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Middleware</span></a></li>
+<li><a href="../classes/NotFoundError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Not<wbr/>Found<wbr/>Error</span></a></li>
+<li><a href="../classes/NumberField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Number<wbr/>Field</span></a></li>
+<li><a href="../classes/PasswordField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Password<wbr/>Field</span></a></li>
+<li><a href="../classes/RecordUpsertForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Record<wbr/>Upsert<wbr/>Form</span></a></li>
+<li><a href="../classes/RelationField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Relation<wbr/>Field</span></a></li>
+<li><a href="../classes/SelectField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Select<wbr/>Field</span></a></li>
+<li><a href="../classes/SubscriptionMessage.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Subscription<wbr/>Message</span></a></li>
+<li><a href="../classes/TestEmailSendForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Test<wbr/>Email<wbr/>Send<wbr/>Form</span></a></li>
+<li><a href="../classes/TestS3FilesystemForm.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Test<wbr/>S3<wbr/>Filesystem<wbr/>Form</span></a></li>
+<li><a href="../classes/TextField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Text<wbr/>Field</span></a></li>
+<li><a href="../classes/TooManyRequestsError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Too<wbr/>Many<wbr/>Requests<wbr/>Error</span></a></li>
+<li><a href="../classes/URLField.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>URLField</span></a></li>
+<li><a href="../classes/UnauthorizedError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Unauthorized<wbr/>Error</span></a></li>
+<li><a href="../classes/ValidationError.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>Validation<wbr/>Error</span></a></li>
+<li><a href="../classes/ViewCollection.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-128"></use></svg><span>View<wbr/>Collection</span></a></li></ul></div></details></li>
+<li>
+<details class="tsd-index-accordion" data-key="Namespaces"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Namespaces</span></summary>
+<div class="tsd-accordion-details">
+<ul class="tsd-nested-navigation">
+<li><a href="../modules/apis.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>apis</span></a></li>
+<li><a href="../modules/auth.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>auth</span></a></li>
+<li><a href="../modules/blob.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>blob</span></a></li>
+<li><a href="../modules/bufio.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>bufio</span></a></li>
+<li><a href="../modules/bytes.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>bytes</span></a></li>
+<li><a href="../modules/cobra.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>cobra</span></a></li>
+<li><a href="../modules/context.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>context</span></a></li>
+<li><a href="../modules/core.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>core</span></a></li>
+<li><a href="../modules/cron.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>cron</span></a></li>
+<li><a href="../modules/dbx.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>dbx</span></a></li>
+<li><a href="../modules/exec.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>exec</span></a></li>
+<li><a href="../modules/filepath.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>filepath</span></a></li>
+<li><a href="../modules/filesystem.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>filesystem</span></a></li>
+<li><a href="../modules/forms.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>forms</span></a></li>
+<li><a href="../modules/fs.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>fs</span></a></li>
+<li><a href="../modules/hook.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>hook</span></a></li>
+<li><a href="../modules/http.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>http</span></a></li>
+<li><a href="../modules/io.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>io</span></a></li>
+<li><a href="../modules/jwt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>jwt</span></a></li>
+<li><a href="../modules/mailer.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>mailer</span></a></li>
+<li><a href="../modules/mails.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>mails</span></a></li>
+<li><a href="../modules/multipart.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>multipart</span></a></li>
+<li><a href="../modules/net.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>net</span></a></li>
+<li><a href="../modules/oauth2.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>oauth2</span></a></li>
+<li><a href="../modules/os.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>os</span></a></li>
+<li><a href="../modules/ozzo_validation.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>ozzo_<wbr/>validation</span></a></li>
+<li><a href="../modules/pocketbase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>pocketbase</span></a></li>
+<li><a href="../modules/router.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>router</span></a></li>
+<li><a href="../modules/search.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>search</span></a></li>
+<li><a href="../modules/security.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>security</span></a></li>
+<li><a href="../modules/slog.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>slog</span></a></li>
+<li><a href="../modules/sql.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>sql</span></a></li>
+<li><a href="../modules/store.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>store</span></a></li>
+<li><a href="../modules/subscriptions.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>subscriptions</span></a></li>
+<li><a href="../modules/sync.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>sync</span></a></li>
+<li><a href="../modules/syntax.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>syntax</span></a></li>
+<li><a href="../modules/syscall.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>syscall</span></a></li>
+<li><a href="../modules/template.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>template</span></a></li>
+<li><a href="../modules/textproto.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>textproto</span></a></li>
+<li><a href="../modules/time.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>time</span></a></li>
+<li><a href="../modules/types.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>types</span></a></li>
+<li><a href="../modules/url.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>url</span></a></li></ul></div></details></li>
+<li>
+<details class="tsd-index-accordion" data-key="Type Aliases"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Type Aliases</span></summary>
+<div class="tsd-accordion-details">
+<ul class="tsd-nested-navigation">
+<li><a href="../types/CoreApp.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>Core<wbr/>App</span></a></li>
+<li><a href="../types/PocketBase-1.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>Pocket<wbr/>Base</span></a></li>
+<li><a href="../types/_TygojaAny.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_<wbr/>Tygoja<wbr/>Any</span></a></li>
+<li><a href="../types/_TygojaDict.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_<wbr/>Tygoja<wbr/>Dict</span></a></li>
+<li><a href="../types/excludeHooks.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>exclude<wbr/>Hooks</span></a></li></ul></div></details></li></ul></nav></div></div></div>
+<div class="tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div></body></html>

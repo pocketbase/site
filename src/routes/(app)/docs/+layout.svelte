@@ -59,7 +59,5 @@
         <slot />
     </div>
 
-    <hr />
-
     <DocsFooter />
 </div>

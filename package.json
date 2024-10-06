@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "jstypes": "npx typedoc --options ./jsvm/typedoc.json",
+    "jstypes-rc": "npx typedoc --options ./jsvm-rc/typedoc.json",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview"

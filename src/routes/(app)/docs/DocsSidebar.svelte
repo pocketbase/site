@@ -5,8 +5,6 @@
     import { baseLinks, jsLinks, goLinks, hasPath } from "./doc_links.js";
     import NavList from "./NavList.svelte";
 
-    let container;
-
     $: if ($page) {
         if (hasPath($page.url.pathname, jsLinks)) {
             setCodePreference("javascript", extendGroup);
@@ -41,7 +39,7 @@
 <aside class="page-sidebar highlight docs-sidebar">
     <div class="sticky-wrapper">
         <div class="absolute-wrapper">
-            <div bind:this={container} class="sidebar-content">
+            <div class="sidebar-content">
                 <NavList items={baseLinks} />
 
                 <div class="clearfix m-t-base" />

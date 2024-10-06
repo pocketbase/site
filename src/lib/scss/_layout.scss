@@ -3,6 +3,9 @@
     width: 100%;
     min-height: 100vh;
     flex-direction: column;
+    &:has(.page-content.bg-base) {
+        background: var(--baseColor)
+    }
 }
 
 .page-header {

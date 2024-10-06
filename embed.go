@@ -3,11 +3,11 @@ package landing
 import (
 	"embed"
 
-	"github.com/labstack/echo/v5"
+	"github.com/pocketbase/pocketbase/apis"
 )
 
 //go:embed all:build
 var buildDir embed.FS
 
 // BuildDirFS contains the embedded build directory files (without the "build" prefix)
-var BuildDirFS = echo.MustSubFS(buildDir, "build")
+var BuildDirFS = apis.MustSubFS(buildDir, "build")
