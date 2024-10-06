@@ -18,7 +18,7 @@
             Please note that you don't have to upgrade to v0.23.0 if you are not planning further developing
             your existing app or are satisfied with the v0.22.x features set. There are no critical issues
             with PocketBase v0.22.x and in the case of reported bugs and security vulnerabilities, the fixes
-            will be backported for at least until the end of 2024 (<em>if not longer</em>).
+            will be backported for at least until Q1 of 2025 (<em>if not longer</em>).
         </p>
         <p>
             If you don't plan upgrading just make sure to pin the SDKs version to their latest PocketBase
@@ -584,7 +584,9 @@
 </p>
 <ul>
     <li>
-        <a href="/jsvm-rc/classes/NumberField.html" target="_blank"><code>{`new NumberField({ ... })`}</code></a>
+        <a href="/jsvm-rc/classes/NumberField.html" target="_blank"
+            ><code>{`new NumberField({ ... })`}</code></a
+        >
     </li>
     <li>
         <a href="/jsvm-rc/classes/BoolField.html" target="_blank"><code>{`new BoolField({ ... })`}</code></a>
@@ -592,12 +594,17 @@
     <li>
         <a href="/jsvm-rc/classes/TextField.html" target="_blank"><code>{`new TextField({ ... })`}</code></a>
     </li>
-    <li><a href="/jsvm-rc/classes/URLField.html" target="_blank"><code>{`new URLField({ ... })`}</code></a></li>
     <li>
-        <a href="/jsvm-rc/classes/EmailField.html" target="_blank"><code>{`new EmailField({ ... })`}</code></a>
+        <a href="/jsvm-rc/classes/URLField.html" target="_blank"><code>{`new URLField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/EditorField.html" target="_blank"><code>{`new EditorField({ ... })`}</code></a>
+        <a href="/jsvm-rc/classes/EmailField.html" target="_blank"><code>{`new EmailField({ ... })`}</code></a
+        >
+    </li>
+    <li>
+        <a href="/jsvm-rc/classes/EditorField.html" target="_blank"
+            ><code>{`new EditorField({ ... })`}</code></a
+        >
     </li>
     <li>
         <a href="/jsvm-rc/classes/DateField.html" target="_blank"><code>{`new DateField({ ... })`}</code></a>
@@ -616,7 +623,9 @@
         </a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/SelectField.html" target="_blank"><code>{`new SelectField({ ... })`}</code></a>
+        <a href="/jsvm-rc/classes/SelectField.html" target="_blank"
+            ><code>{`new SelectField({ ... })`}</code></a
+        >
     </li>
     <li>
         <a href="/jsvm-rc/classes/FileField.html" target="_blank"><code>{`new FileField({ ... })`}</code></a>
@@ -1324,7 +1333,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onMailerBeforeAdminResetPasswordSend -> onMailerRecordPasswordResetSend" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onMailerBeforeAdminResetPasswordSend -> onMailerRecordPasswordResetSend"
+/>
 <UpgradeTabs
     before={`
         onMailerBeforeAdminResetPasswordSend((e) => {
@@ -1340,7 +1353,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onMailerAfterAdminResetPasswordSend -> onMailerRecordPasswordResetSend" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onMailerAfterAdminResetPasswordSend -> onMailerRecordPasswordResetSend"
+/>
 <UpgradeTabs
     before={`
         onMailerAfterAdminResetPasswordSend((e) => {
@@ -1356,7 +1373,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onMailerBeforeRecordResetPasswordSend -> onMailerRecordPasswordResetSend" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onMailerBeforeRecordResetPasswordSend -> onMailerRecordPasswordResetSend"
+/>
 <UpgradeTabs
     before={`
         onMailerBeforeRecordResetPasswordSend((e) => {
@@ -1372,7 +1393,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onMailerAfterRecordResetPasswordSend -> onMailerRecordPasswordResetSend" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onMailerAfterRecordResetPasswordSend -> onMailerRecordPasswordResetSend"
+/>
 <UpgradeTabs
     before={`
         onMailerAfterRecordResetPasswordSend((e) => {
@@ -1388,7 +1413,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onMailerBeforeRecordVerificationSend -> onMailerRecordVerificationSend" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onMailerBeforeRecordVerificationSend -> onMailerRecordVerificationSend"
+/>
 <UpgradeTabs
     before={`
         onMailerBeforeRecordVerificationSend((e) => {
@@ -1404,7 +1433,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onMailerAfterRecordVerificationSend -> onMailerRecordVerificationSend" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onMailerAfterRecordVerificationSend -> onMailerRecordVerificationSend"
+/>
 <UpgradeTabs
     before={`
         onMailerAfterRecordVerificationSend((e) => {
@@ -1420,7 +1453,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onMailerBeforeRecordChangeEmailSend -> onMailerRecordEmailChangeSend" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onMailerBeforeRecordChangeEmailSend -> onMailerRecordEmailChangeSend"
+/>
 <UpgradeTabs
     before={`
         onMailerBeforeRecordChangeEmailSend((e) => {
@@ -1436,7 +1473,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onMailerAfterRecordChangeEmailSend -> onMailerRecordEmailChangeSend" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onMailerAfterRecordChangeEmailSend -> onMailerRecordEmailChangeSend"
+/>
 <UpgradeTabs
     before={`
         onMailerAfterRecordChangeEmailSend((e) => {
@@ -1622,7 +1663,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordBeforeAuthWithPasswordRequest -> onRecordAuthWithPasswordRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordBeforeAuthWithPasswordRequest -> onRecordAuthWithPasswordRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordBeforeAuthWithPasswordRequest((e) => {
@@ -1638,7 +1683,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordAfterAuthWithPasswordRequest -> onRecordAuthWithPasswordRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordAfterAuthWithPasswordRequest -> onRecordAuthWithPasswordRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordAfterAuthWithPasswordRequest((e) => {
@@ -1654,7 +1703,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordBeforeAuthWithOAuth2Request -> onRecordAuthWithOAuth2Request" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordBeforeAuthWithOAuth2Request -> onRecordAuthWithOAuth2Request"
+/>
 <UpgradeTabs
     before={`
         onRecordBeforeAuthWithOAuth2Request((e) => {
@@ -1670,7 +1723,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordAfterAuthWithOAuth2Request -> onRecordAuthWithOAuth2Request" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordAfterAuthWithOAuth2Request -> onRecordAuthWithOAuth2Request"
+/>
 <UpgradeTabs
     before={`
         onRecordAfterAuthWithOAuth2Request((e) => {
@@ -1686,7 +1743,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordBeforeAuthRefreshRequest -> onRecordAuthRefreshRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordBeforeAuthRefreshRequest -> onRecordAuthRefreshRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordBeforeAuthRefreshRequest((e) => {
@@ -1702,7 +1763,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordAfterAuthRefreshRequest -> onRecordAuthRefreshRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordAfterAuthRefreshRequest -> onRecordAuthRefreshRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordAfterAuthRefreshRequest((e) => {
@@ -1735,7 +1800,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordBeforeUnlinkExternalAuthRequest -> onRecordDeleteRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordBeforeUnlinkExternalAuthRequest -> onRecordDeleteRequest"
+/>
 <em>External auths are converted to system <code>_externalAuths</code> collection records.</em>
 <UpgradeTabs
     before={`
@@ -1752,7 +1821,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordAfterUnlinkExternalAuthRequest -> onRecordDeleteRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordAfterUnlinkExternalAuthRequest -> onRecordDeleteRequest"
+/>
 <em>External auths are converted to system <code>_externalAuths</code> collection records.</em>
 <UpgradeTabs
     before={`
@@ -1771,7 +1844,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onRecordBeforeRequestPasswordResetRequest -> onRecordRequestPasswordResetRequest"
+    class="txt-mono"
+    title="onRecordBeforeRequestPasswordResetRequest -> onRecordRequestPasswordResetRequest"
 />
 <UpgradeTabs
     before={`
@@ -1790,7 +1864,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onRecordAfterRequestPasswordResetRequest -> onRecordRequestPasswordResetRequest"
+    class="txt-mono"
+    title="onRecordAfterRequestPasswordResetRequest -> onRecordRequestPasswordResetRequest"
 />
 <UpgradeTabs
     before={`
@@ -1809,7 +1884,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onRecordBeforeConfirmPasswordResetRequest -> onRecordConfirmPasswordResetRequest"
+    class="txt-mono"
+    title="onRecordBeforeConfirmPasswordResetRequest -> onRecordConfirmPasswordResetRequest"
 />
 <UpgradeTabs
     before={`
@@ -1828,7 +1904,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onRecordAfterConfirmPasswordResetRequest -> onRecordConfirmPasswordResetRequest"
+    class="txt-mono"
+    title="onRecordAfterConfirmPasswordResetRequest -> onRecordConfirmPasswordResetRequest"
 />
 <UpgradeTabs
     before={`
@@ -1847,7 +1924,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onRecordBeforeRequestVerificationRequest -> onRecordRequestVerificationRequest"
+    class="txt-mono"
+    title="onRecordBeforeRequestVerificationRequest -> onRecordRequestVerificationRequest"
 />
 <UpgradeTabs
     before={`
@@ -1864,7 +1942,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordAfterRequestVerificationRequest -> onRecordRequestVerificationRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordAfterRequestVerificationRequest -> onRecordRequestVerificationRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordAfterRequestVerificationRequest((e) => {
@@ -1882,7 +1964,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onRecordBeforeConfirmVerificationRequest -> onRecordConfirmVerificationRequest"
+    class="txt-mono"
+    title="onRecordBeforeConfirmVerificationRequest -> onRecordConfirmVerificationRequest"
 />
 <UpgradeTabs
     before={`
@@ -1899,7 +1982,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordAfterConfirmVerificationRequest -> onRecordConfirmVerificationRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordAfterConfirmVerificationRequest -> onRecordConfirmVerificationRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordAfterConfirmVerificationRequest((e) => {
@@ -1915,7 +2002,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordBeforeRequestEmailChangeRequest -> onRecordRequestEmailChangeRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordBeforeRequestEmailChangeRequest -> onRecordRequestEmailChangeRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordBeforeRequestEmailChangeRequest((e) => {
@@ -1931,7 +2022,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordAfterRequestEmailChangeRequest -> onRecordRequestEmailChangeRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordAfterRequestEmailChangeRequest -> onRecordRequestEmailChangeRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordAfterRequestEmailChangeRequest((e) => {
@@ -1947,7 +2042,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordBeforeConfirmEmailChangeRequest -> onRecordConfirmEmailChangeRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordBeforeConfirmEmailChangeRequest -> onRecordConfirmEmailChangeRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordBeforeConfirmEmailChangeRequest((e) => {
@@ -1963,7 +2062,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRecordAfterConfirmEmailChangeRequest -> onRecordConfirmEmailChangeRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRecordAfterConfirmEmailChangeRequest -> onRecordConfirmEmailChangeRequest"
+/>
 <UpgradeTabs
     before={`
         onRecordAfterConfirmEmailChangeRequest((e) => {
@@ -2043,7 +2146,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRealtimeBeforeSubscribeRequest -> onRealtimeSubscribeRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRealtimeBeforeSubscribeRequest -> onRealtimeSubscribeRequest"
+/>
 <UpgradeTabs
     before={`
         onRealtimeBeforeSubscribeRequest((e) => {
@@ -2059,7 +2166,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onRealtimeAfterSubscribeRequest -> onRealtimeSubscribeRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onRealtimeAfterSubscribeRequest -> onRealtimeSubscribeRequest"
+/>
 <UpgradeTabs
     before={`
         onRealtimeAfterSubscribeRequest((e) => {
@@ -2262,7 +2373,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onCollectionsBeforeImportRequest -> onCollectionsImportRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onCollectionsBeforeImportRequest -> onCollectionsImportRequest"
+/>
 <UpgradeTabs
     before={`
         onCollectionBeforeImportRequest((e) => {
@@ -2278,7 +2393,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onCollectionsAfterImportRequest -> onCollectionsImportRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onCollectionsAfterImportRequest -> onCollectionsImportRequest"
+/>
 <UpgradeTabs
     before={`
         onCollectionsAfterImportRequest((e) => {
@@ -2500,7 +2619,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onAdminBeforeAuthWithPasswordRequest -> onRecordAuthWithPasswordRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onAdminBeforeAuthWithPasswordRequest -> onRecordAuthWithPasswordRequest"
+/>
 <UpgradeTabs
     before={`
         onAdminBeforeAuthWithPasswordRequest((e) => {
@@ -2517,7 +2640,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onAdminAfterAuthWithPasswordRequest -> onRecordAuthWithPasswordRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onAdminAfterAuthWithPasswordRequest -> onRecordAuthWithPasswordRequest"
+/>
 <UpgradeTabs
     before={`
         onAdminAfterAuthWithPasswordRequest((e) => {
@@ -2534,7 +2661,11 @@
     `}
 />
 
-<HeadingLink tag="h6" class="txt-mono" title="onAdminBeforeAuthRefreshRequest -> onRecordAuthRefreshRequest" />
+<HeadingLink
+    tag="h6"
+    class="txt-mono"
+    title="onAdminBeforeAuthRefreshRequest -> onRecordAuthRefreshRequest"
+/>
 <UpgradeTabs
     before={`
         onAdminBeforeAuthRefreshRequest((e) => {
@@ -2570,7 +2701,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onAdminBeforeRequestPasswordResetRequest -> onRecordRequestPasswordResetRequest"
+    class="txt-mono"
+    title="onAdminBeforeRequestPasswordResetRequest -> onRecordRequestPasswordResetRequest"
 />
 <UpgradeTabs
     before={`
@@ -2590,7 +2722,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onAdminAfterRequestPasswordResetRequest -> onRecordRequestPasswordResetRequest"
+    class="txt-mono"
+    title="onAdminAfterRequestPasswordResetRequest -> onRecordRequestPasswordResetRequest"
 />
 <UpgradeTabs
     before={`
@@ -2610,7 +2743,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onAdminBeforeConfirmPasswordResetRequest -> onRecordConfirmPasswordResetRequest"
+    class="txt-mono"
+    title="onAdminBeforeConfirmPasswordResetRequest -> onRecordConfirmPasswordResetRequest"
 />
 <UpgradeTabs
     before={`
@@ -2630,7 +2764,8 @@
 
 <HeadingLink
     tag="h6"
-    class="txt-mono" title="onAdminAfterConfirmPasswordResetRequest -> onRecordConfirmPasswordResetRequest"
+    class="txt-mono"
+    title="onAdminAfterConfirmPasswordResetRequest -> onRecordConfirmPasswordResetRequest"
 />
 <UpgradeTabs
     before={`

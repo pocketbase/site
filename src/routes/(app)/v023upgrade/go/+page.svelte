@@ -19,7 +19,7 @@
             Please note that you don't have to upgrade to v0.23.0 if you are not planning further developing
             your existing app or are satisfied with the v0.22.x features set. There are no critical issues
             with PocketBase v0.22.x and in the case of reported bugs and security vulnerabilities, the fixes
-            will be backported for at least until the end of 2024 (<em>if not longer</em>).
+            will be backported for at least until Q1 of 2025 (<em>if not longer</em>).
         </p>
         <p>
             If you don't plan upgrading just make sure to pin the SDKs version to their latest PocketBase
