@@ -1149,7 +1149,7 @@
                 return c.JSON(http.StatusOK, map[string]string{
                     "message": "Hello " + name,
                 })
-            }).BindFunc(apis.RequireAuth())
+            }).Bind(apis.RequireAuth())
 
             return se.Next()
         })
