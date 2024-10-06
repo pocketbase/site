@@ -892,7 +892,7 @@
     before={`Collection.Options.AllowUsernameAuth = true`}
     after={`
         Collection.PasswordAuth.Enabled = true
-        Collection.PasswordAuth.identityFields = []string{"username"}
+        Collection.PasswordAuth.IdentityFields = []string{"username"}
     `}
 />
 <UpgradeTabs
@@ -900,7 +900,7 @@
     before={`Collection.Options.AllowEmailAuth = true`}
     after={`
         Collection.PasswordAuth.Enabled = true
-        Collection.PasswordAuth.identityFields = []string{"email"}
+        Collection.PasswordAuth.IdentityFields = []string{"email"}
     `}
 />
 <UpgradeTabs
@@ -1345,7 +1345,7 @@
         `
         }{}
         if err := e.BindBody(&body); err != nil {
-            return apis.NewBadRequestError("Failed to read request body", err)
+            return e.BadRequestError("Failed to read request body", err)
         }
 
         // read single multipart/form-data field

@@ -875,7 +875,7 @@
         routerAdd("GET", "/*", $apis.staticDirectoryHandler("/path/to/public", false))
     `}
     after={`
-        routerAdd("GET", "/{path...}", $apis.Static("/path/to/public", false))
+        routerAdd("GET", "/{path...}", $apis.static("/path/to/public", false))
     `}
 />
 
