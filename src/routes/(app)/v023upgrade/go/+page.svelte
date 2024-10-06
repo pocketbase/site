@@ -1143,10 +1143,10 @@
     `}
     after={`
         app.OnServe().BindFunc(func(se *core.ServeEvent) error {
-            se.Router.GET("/hello/:name", func(e *core.RequestEvent) error {
+            se.Router.GET("/hello/{name}", func(e *core.RequestEvent) error {
                 name := e.Request.PathValue("name")
 
-                return c.JSON(http.StatusOK, map[string]string{
+                return e.JSON(http.StatusOK, map[string]string{
                     "message": "Hello " + name,
                 })
             }).Bind(apis.RequireAuth())
@@ -1205,7 +1205,7 @@
         app.OnServe().BindFunc(func(se *core.ServeEvent) error {
             se.Router.BindFunc(func(e *core.RequestEvent) error {
                 // eg. inspect some header value before processing the request
-                header := c.Request.Header.Get("Some-Header")
+                header := e.Request.Header.Get("Some-Header")
                 if header == "" {
                     return e.BadRequestError("Invalid request", nil)
                 }
@@ -1289,7 +1289,7 @@
         token := info.Headers["some_header"]
     `}
     after={`
-        token := c.Request.Header.Get("Some-Header")
+        token := e.Request.Header.Get("Some-Header")
 
         // or via the cached request object (the header value is always normalized)
         info, _ := e.RequestInfo()
@@ -1344,7 +1344,7 @@
         "`" +
         `
         }{}
-        if err := c.BindBody(&body); err != nil {
+        if err := e.BindBody(&body); err != nil {
             return apis.NewBadRequestError("Failed to read request body", err)
         }
 
