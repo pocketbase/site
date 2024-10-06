@@ -968,7 +968,7 @@
         const token = $apis.requestInfo(c).headers["some_header"]
     `}
     after={`
-        const token = c.request.header.get("Some-Header")
+        const token = e.request.header.get("Some-Header")
 
         // or via the cached request object (the header value is always normalized)
         const token = e.requestInfo().headers["some_header"]
