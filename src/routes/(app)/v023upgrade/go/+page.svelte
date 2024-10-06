@@ -1142,7 +1142,7 @@
         })
     `}
     after={`
-        app.OnServe().Add(func(se *core.ServeEvent) error {
+        app.OnServe().BindFunc(func(se *core.ServeEvent) error {
             se.Router.GET("/hello/:name", func(e *core.RequestEvent) error {
                 name := e.Request.PathValue("name")
 
@@ -1170,7 +1170,7 @@
         })
     `}
     after={`
-        app.OnServe().Add(func(se *core.ServeEvent) error {
+        app.OnServe().BindFunc(func(se *core.ServeEvent) error {
             se.Router.GET(
                 "/{path...}",
                 apis.Static(os.DirFS("/path/to/public"), false),
@@ -1202,7 +1202,7 @@
         })
     `}
     after={`
-        app.OnBeforeServe().Add(func(se *core.ServeEvent) error {
+        app.OnServe().BindFunc(func(se *core.ServeEvent) error {
             se.Router.BindFunc(func(e *core.RequestEvent) error {
                 // eg. inspect some header value before processing the request
                 header := c.Request.Header.Get("Some-Header")
