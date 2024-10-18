@@ -239,16 +239,18 @@ To avoid that, define a type implementing LogValuer:</p>
 </code><button>Copy</button></pre>
 <p>Now computeExpensiveValue will only be called when the line is enabled.</p>
 <p>The built-in handlers acquire a lock before calling [io.Writer.Write]
-to ensure that each record is written in one piece. User-defined
-handlers are responsible for their own locking.</p>
+to ensure that exactly one [Record] is written at a time in its entirety.
+Although each log record has a timestamp,
+the built-in handlers do not use that time to sort the written records.
+User-defined handlers are responsible for their own locking and sorting.</p>
 <a id="md:writing-a-handler" class="tsd-anchor"></a><h1><a href="#md:writing-a-handler">Writing a handler</a></h1><p>For a guide to writing a custom handler, see <a href="https://golang.org/s/slog-handler-guide">https://golang.org/s/slog-handler-guide</a>.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L17697">types.d.ts:17697</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L19147">types.d.ts:19147</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L19707">types.d.ts:19707</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L20561">types.d.ts:20561</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L17787">types.d.ts:17787</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L18883">types.d.ts:18883</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L20114">types.d.ts:20114</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L20697">types.d.ts:20697</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>

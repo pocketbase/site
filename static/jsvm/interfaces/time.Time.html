@@ -20,22 +20,22 @@
 <div class="tsd-comment tsd-typography"><p>A Time represents an instant in time with nanosecond precision.</p>
 <p>Programs using times should typically store and pass them as values,
 not pointers. That is, time variables and struct fields should be of
-type time.Time, not *time.Time.</p>
+type [time.Time], not *time.Time.</p>
 <p>A Time value can be used by multiple goroutines simultaneously except
-that the methods GobDecode, UnmarshalBinary, UnmarshalJSON and
-UnmarshalText are not concurrency-safe.</p>
-<p>Time instants can be compared using the Before, After, and Equal methods.
-The Sub method subtracts two instants, producing a Duration.
-The Add method adds a Time and a Duration, producing a Time.</p>
+that the methods [Time.GobDecode], [Time.UnmarshalBinary], [Time.UnmarshalJSON] and
+[Time.UnmarshalText] are not concurrency-safe.</p>
+<p>Time instants can be compared using the [Time.Before], [Time.After], and [Time.Equal] methods.
+The [Time.Sub] method subtracts two instants, producing a [Duration].
+The [Time.Add] method adds a Time and a Duration, producing a Time.</p>
 <p>The zero value of type Time is January 1, year 1, 00:00:00.000000000 UTC.
-As this time is unlikely to come up in practice, the IsZero method gives
+As this time is unlikely to come up in practice, the [Time.IsZero] method gives
 a simple way of detecting a time that has not been initialized explicitly.</p>
-<p>Each time has an associated Location. The methods Local, UTC, and In return a
+<p>Each time has an associated [Location]. The methods [Time.Local], [Time.UTC], and Time.In return a
 Time with a specific Location. Changing the Location of a Time value with
 these methods does not change the actual instant it represents, only the time
 zone in which to interpret it.</p>
-<p>Representations of a Time value saved by the GobEncode, MarshalBinary,
-MarshalJSON, and MarshalText methods store the Time.Location&#39;s offset, but not
+<p>Representations of a Time value saved by the [Time.GobEncode], [Time.MarshalBinary],
+[Time.MarshalJSON], and [Time.MarshalText] methods store the [Time.Location]&#39;s offset, but not
 the location name. They therefore lose information about Daylight Saving Time.</p>
 <p>In addition to the required “wall clock” reading, a Time may contain an optional
 reading of the current process&#39;s monotonic clock, to provide additional precision
@@ -57,52 +57,52 @@ clock reading.</p>
 <ul class="tsd-hierarchy">
 <li><span class="target">Time</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7314">types.d.ts:7314</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7332">types.d.ts:7332</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7339">types.d.ts:7339</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7350">types.d.ts:7350</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7400">types.d.ts:7400</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7402">types.d.ts:7402</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7408">types.d.ts:7408</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7414">types.d.ts:7414</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7421">types.d.ts:7421</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7431">types.d.ts:7431</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7438">types.d.ts:7438</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7444">types.d.ts:7444</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7450">types.d.ts:7450</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7456">types.d.ts:7456</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7462">types.d.ts:7462</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7468">types.d.ts:7468</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7477">types.d.ts:7477</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7483">types.d.ts:7483</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7489">types.d.ts:7489</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7495">types.d.ts:7495</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7501">types.d.ts:7501</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7508">types.d.ts:7508</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7591">types.d.ts:7591</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7597">types.d.ts:7597</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7606">types.d.ts:7606</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7628">types.d.ts:7628</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7634">types.d.ts:7634</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7640">types.d.ts:7640</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7650">types.d.ts:7650</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7656">types.d.ts:7656</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7663">types.d.ts:7663</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7673">types.d.ts:7673</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7684">types.d.ts:7684</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7694">types.d.ts:7694</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7704">types.d.ts:7704</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7715">types.d.ts:7715</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7721">types.d.ts:7721</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7727">types.d.ts:7727</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7733">types.d.ts:7733</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7739">types.d.ts:7739</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7748">types.d.ts:7748</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7755">types.d.ts:7755</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7764">types.d.ts:7764</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7771">types.d.ts:7771</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7777">types.d.ts:7777</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7789">types.d.ts:7789</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7388">types.d.ts:7388</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7406">types.d.ts:7406</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7413">types.d.ts:7413</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7424">types.d.ts:7424</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7474">types.d.ts:7474</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7476">types.d.ts:7476</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7482">types.d.ts:7482</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7488">types.d.ts:7488</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7495">types.d.ts:7495</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7505">types.d.ts:7505</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7512">types.d.ts:7512</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7518">types.d.ts:7518</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7524">types.d.ts:7524</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7530">types.d.ts:7530</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7536">types.d.ts:7536</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7542">types.d.ts:7542</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7551">types.d.ts:7551</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7557">types.d.ts:7557</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7563">types.d.ts:7563</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7569">types.d.ts:7569</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7575">types.d.ts:7575</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7582">types.d.ts:7582</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7665">types.d.ts:7665</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7671">types.d.ts:7671</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7680">types.d.ts:7680</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7702">types.d.ts:7702</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7708">types.d.ts:7708</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7714">types.d.ts:7714</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7724">types.d.ts:7724</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7730">types.d.ts:7730</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7737">types.d.ts:7737</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7747">types.d.ts:7747</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7758">types.d.ts:7758</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7768">types.d.ts:7768</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7778">types.d.ts:7778</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7789">types.d.ts:7789</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7795">types.d.ts:7795</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7801">types.d.ts:7801</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7807">types.d.ts:7807</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7813">types.d.ts:7813</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7822">types.d.ts:7822</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7829">types.d.ts:7829</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7838">types.d.ts:7838</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7845">types.d.ts:7845</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7851">types.d.ts:7851</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7863">types.d.ts:7863</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -173,7 +173,7 @@ clock reading.</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7595">types.d.ts:7595</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7669">types.d.ts:7669</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="addDate" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>add<wbr/>Date</span><a href="#addDate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -207,7 +207,7 @@ December 1, the normalized form for November 31.</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7626">types.d.ts:7626</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7700">types.d.ts:7700</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="after" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>after</span><a href="#after" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -223,13 +223,13 @@ December 1, the normalized form for November 31.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7406">types.d.ts:7406</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7480">types.d.ts:7480</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="appendFormat" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>append<wbr/>Format</span><a href="#appendFormat" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="appendFormat.appendFormat-1"><span class="tsd-kind-call-signature">append<wbr/>Format</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">b</span>, <span class="tsd-kind-parameter">layout</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><a href="#appendFormat.appendFormat-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>AppendFormat is like Format but appends the textual
+<div class="tsd-comment tsd-typography"><p>AppendFormat is like [Time.Format] but appends the textual
 representation to b and returns the extended buffer.</p>
 </div>
 <div class="tsd-parameters">
@@ -242,7 +242,7 @@ representation to b and returns the extended buffer.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7355">types.d.ts:7355</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7429">types.d.ts:7429</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="before" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>before</span><a href="#before" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -258,18 +258,18 @@ representation to b and returns the extended buffer.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7412">types.d.ts:7412</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7486">types.d.ts:7486</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="clock" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>clock</span><a href="#clock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="clock.clock-1"><span class="tsd-kind-call-signature">clock</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><a href="#clock.clock-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="clock.clock-1"><span class="tsd-kind-call-signature">clock</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><a href="#clock.clock-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Clock returns the hour, minute, and second within the day specified by t.</p>
 </div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7481">types.d.ts:7481</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7555">types.d.ts:7555</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="compare" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>compare</span><a href="#compare" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -286,7 +286,7 @@ if t is after u, it returns +1; if they&#39;re the same, it returns 0.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7419">types.d.ts:7419</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7493">types.d.ts:7493</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="date" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>date</span><a href="#date" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -297,7 +297,7 @@ if t is after u, it returns +1; if they&#39;re the same, it returns 0.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><a href="time.Month.html" class="tsd-signature-type tsd-kind-interface">Month</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7442">types.d.ts:7442</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7516">types.d.ts:7516</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="day" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>day</span><a href="#day" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -308,7 +308,7 @@ if t is after u, it returns +1; if they&#39;re the same, it returns 0.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7460">types.d.ts:7460</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7534">types.d.ts:7534</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="equal" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>equal</span><a href="#equal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -328,7 +328,7 @@ Time values; most code should use Equal instead.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7429">types.d.ts:7429</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7503">types.d.ts:7503</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="format" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>format</span><a href="#format" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -336,8 +336,8 @@ Time values; most code should use Equal instead.</p>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Format returns a textual representation of the time value formatted according
 to the layout defined by the argument. See the documentation for the
-constant called Layout to see how to represent the layout format.</p>
-<p>The executable example for Time.Format demonstrates the working
+constant called [Layout] to see how to represent the layout format.</p>
+<p>The executable example for [Time.Format] demonstrates the working
 of the layout string in detail and is a good reference.</p>
 </div>
 <div class="tsd-parameters">
@@ -348,19 +348,19 @@ of the layout string in detail and is a good reference.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7348">types.d.ts:7348</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7422">types.d.ts:7422</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="goString" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>go<wbr/>String</span><a href="#goString" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="goString.goString-1"><span class="tsd-kind-call-signature">go<wbr/>String</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#goString.goString-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>GoString implements fmt.GoStringer and formats t to be printed in Go source
+<div class="tsd-comment tsd-typography"><p>GoString implements [fmt.GoStringer] and formats t to be printed in Go source
 code.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7337">types.d.ts:7337</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7411">types.d.ts:7411</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="gobDecode" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>gob<wbr/>Decode</span><a href="#gobDecode" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -376,7 +376,7 @@ code.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7737">types.d.ts:7737</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7811">types.d.ts:7811</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="gobEncode" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>gob<wbr/>Encode</span><a href="#gobEncode" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -387,7 +387,7 @@ code.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7731">types.d.ts:7731</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7805">types.d.ts:7805</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="hour" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>hour</span><a href="#hour" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -398,7 +398,7 @@ code.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7487">types.d.ts:7487</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7561">types.d.ts:7561</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="in" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>in</span><a href="#in" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -417,7 +417,7 @@ purposes.</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7648">types.d.ts:7648</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7722">types.d.ts:7722</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="isDST" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>isDST</span><a href="#isDST" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -428,7 +428,7 @@ purposes.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7775">types.d.ts:7775</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7849">types.d.ts:7849</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="isZero" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>is<wbr/>Zero</span><a href="#isZero" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -440,21 +440,21 @@ January 1, year 1, 00:00:00 UTC.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7436">types.d.ts:7436</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7510">types.d.ts:7510</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="isoWeek" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>iso<wbr/>Week</span><a href="#isoWeek" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="isoWeek.isoWeek-1"><span class="tsd-kind-call-signature">iso<wbr/>Week</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><a href="#isoWeek.isoWeek-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="isoWeek.isoWeek-1"><span class="tsd-kind-call-signature">iso<wbr/>Week</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span><a href="#isoWeek.isoWeek-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>ISOWeek returns the ISO 8601 year and week number in which t occurs.
 Week ranges from 1 to 53. Jan 01 to Jan 03 of year n might belong to
 week 52 or 53 of year n-1, and Dec 29 to Dec 31 might belong to week 1
 of year n+1.</p>
 </div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7475">types.d.ts:7475</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7549">types.d.ts:7549</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="local" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>local</span><a href="#local" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -465,7 +465,7 @@ of year n+1.</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7638">types.d.ts:7638</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7712">types.d.ts:7712</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="location" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>location</span><a href="#location" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -476,7 +476,7 @@ of year n+1.</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Location.html" class="tsd-signature-type tsd-kind-interface">Location</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7654">types.d.ts:7654</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7728">types.d.ts:7728</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="marshalBinary" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>marshal<wbr/>Binary</span><a href="#marshalBinary" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -487,13 +487,13 @@ of year n+1.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7719">types.d.ts:7719</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7793">types.d.ts:7793</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="marshalJSON" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>marshalJSON</span><a href="#marshalJSON" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="marshalJSON.marshalJSON-1"><span class="tsd-kind-call-signature">marshalJSON</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><a href="#marshalJSON.marshalJSON-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>MarshalJSON implements the json.Marshaler interface.
+<div class="tsd-comment tsd-typography"><p>MarshalJSON implements the [json.Marshaler] interface.
 The time is a quoted string in the RFC 3339 format with sub-second precision.
 If the timestamp cannot be represented as valid RFC 3339
 (e.g., the year is out of range), then an error is reported.</p>
@@ -501,13 +501,13 @@ If the timestamp cannot be represented as valid RFC 3339
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7746">types.d.ts:7746</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7820">types.d.ts:7820</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="marshalText" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>marshal<wbr/>Text</span><a href="#marshalText" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="marshalText.marshalText-1"><span class="tsd-kind-call-signature">marshal<wbr/>Text</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><a href="#marshalText.marshalText-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>MarshalText implements the encoding.TextMarshaler interface.
+<div class="tsd-comment tsd-typography"><p>MarshalText implements the [encoding.TextMarshaler] interface.
 The time is formatted in RFC 3339 format with sub-second precision.
 If the timestamp cannot be represented as valid RFC 3339
 (e.g., the year is out of range), then an error is reported.</p>
@@ -515,7 +515,7 @@ If the timestamp cannot be represented as valid RFC 3339
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7762">types.d.ts:7762</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7836">types.d.ts:7836</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="minute" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>minute</span><a href="#minute" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -526,7 +526,7 @@ If the timestamp cannot be represented as valid RFC 3339
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7493">types.d.ts:7493</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7567">types.d.ts:7567</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="month" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>month</span><a href="#month" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -537,7 +537,7 @@ If the timestamp cannot be represented as valid RFC 3339
 <h4 class="tsd-returns-title">Returns <a href="time.Month.html" class="tsd-signature-type tsd-kind-interface">Month</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7454">types.d.ts:7454</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7528">types.d.ts:7528</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="nanosecond" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>nanosecond</span><a href="#nanosecond" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -549,7 +549,7 @@ in the range [0, 999999999].</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7506">types.d.ts:7506</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7580">types.d.ts:7580</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="round" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>round</span><a href="#round" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -571,7 +571,7 @@ minute, depending on the time&#39;s Location.</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7800">types.d.ts:7800</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7874">types.d.ts:7874</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="second" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>second</span><a href="#second" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -582,7 +582,7 @@ minute, depending on the time&#39;s Location.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7499">types.d.ts:7499</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7573">types.d.ts:7573</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="string" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>string</span><a href="#string" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -601,14 +601,14 @@ with an explicit format string.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7330">types.d.ts:7330</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7404">types.d.ts:7404</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="sub" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>sub</span><a href="#sub" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="sub.sub-1"><span class="tsd-kind-call-signature">sub</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">u</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="time.Duration.html" class="tsd-signature-type tsd-kind-interface">Duration</a><a href="#sub.sub-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Sub returns the duration t-u. If the result exceeds the maximum (or minimum)
-value that can be stored in a Duration, the maximum (or minimum) duration
+value that can be stored in a [Duration], the maximum (or minimum) duration
 will be returned.
 To compute t-d for a duration d, use t.Add(-d).</p>
 </div>
@@ -620,7 +620,7 @@ To compute t-d for a duration d, use t.Add(-d).</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Duration.html" class="tsd-signature-type tsd-kind-interface">Duration</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7604">types.d.ts:7604</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7678">types.d.ts:7678</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="truncate" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>truncate</span><a href="#truncate" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -641,7 +641,7 @@ minute, depending on the time&#39;s Location.</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7787">types.d.ts:7787</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7861">types.d.ts:7861</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unix" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unix</span><a href="#unix" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -657,7 +657,7 @@ value it is valid for billions of years into the past or future.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7682">types.d.ts:7682</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7756">types.d.ts:7756</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unixMicro" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unix<wbr/>Micro</span><a href="#unixMicro" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -672,7 +672,7 @@ with t.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7702">types.d.ts:7702</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7776">types.d.ts:7776</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unixMilli" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unix<wbr/>Milli</span><a href="#unixMilli" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -687,7 +687,7 @@ location associated with t.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7692">types.d.ts:7692</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7766">types.d.ts:7766</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unixNano" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unix<wbr/>Nano</span><a href="#unixNano" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -703,7 +703,7 @@ location associated with t.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7713">types.d.ts:7713</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7787">types.d.ts:7787</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unmarshalBinary" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unmarshal<wbr/>Binary</span><a href="#unmarshalBinary" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -719,13 +719,13 @@ location associated with t.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7725">types.d.ts:7725</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7799">types.d.ts:7799</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unmarshalJSON" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unmarshalJSON</span><a href="#unmarshalJSON" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="unmarshalJSON.unmarshalJSON-1"><span class="tsd-kind-call-signature">unmarshalJSON</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">data</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#unmarshalJSON.unmarshalJSON-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>UnmarshalJSON implements the json.Unmarshaler interface.
+<div class="tsd-comment tsd-typography"><p>UnmarshalJSON implements the [json.Unmarshaler] interface.
 The time must be a quoted string in the RFC 3339 format.</p>
 </div>
 <div class="tsd-parameters">
@@ -736,13 +736,13 @@ The time must be a quoted string in the RFC 3339 format.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7753">types.d.ts:7753</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7827">types.d.ts:7827</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unmarshalText" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unmarshal<wbr/>Text</span><a href="#unmarshalText" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="unmarshalText.unmarshalText-1"><span class="tsd-kind-call-signature">unmarshal<wbr/>Text</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">data</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#unmarshalText.unmarshalText-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>UnmarshalText implements the encoding.TextUnmarshaler interface.
+<div class="tsd-comment tsd-typography"><p>UnmarshalText implements the [encoding.TextUnmarshaler] interface.
 The time must be in the RFC 3339 format.</p>
 </div>
 <div class="tsd-parameters">
@@ -753,7 +753,7 @@ The time must be in the RFC 3339 format.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7769">types.d.ts:7769</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7843">types.d.ts:7843</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="utc" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>utc</span><a href="#utc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -764,7 +764,7 @@ The time must be in the RFC 3339 format.</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7632">types.d.ts:7632</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7706">types.d.ts:7706</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="weekday" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>weekday</span><a href="#weekday" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -775,7 +775,7 @@ The time must be in the RFC 3339 format.</p>
 <h4 class="tsd-returns-title">Returns <a href="time.Weekday.html" class="tsd-signature-type tsd-kind-interface">Weekday</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7466">types.d.ts:7466</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7540">types.d.ts:7540</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="year" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>year</span><a href="#year" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -786,7 +786,7 @@ The time must be in the RFC 3339 format.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7448">types.d.ts:7448</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7522">types.d.ts:7522</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="yearDay" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>year<wbr/>Day</span><a href="#yearDay" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -798,7 +798,7 @@ and [1,366] in leap years.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7513">types.d.ts:7513</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7587">types.d.ts:7587</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="zone" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>zone</span><a href="#zone" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -810,11 +810,11 @@ name of the zone (such as &quot;CET&quot;) and its offset in seconds east of UTC
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7661">types.d.ts:7661</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7735">types.d.ts:7735</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="zoneBounds" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>zone<wbr/>Bounds</span><a href="#zoneBounds" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="zoneBounds.zoneBounds-1"><span class="tsd-kind-call-signature">zone<wbr/>Bounds</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a><a href="#zoneBounds.zoneBounds-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="zoneBounds.zoneBounds-1"><span class="tsd-kind-call-signature">zone<wbr/>Bounds</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a><span class="tsd-signature-symbol">, </span><a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a><span class="tsd-signature-symbol">]</span><a href="#zoneBounds.zoneBounds-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>ZoneBounds returns the bounds of the time zone in effect at time t.
 The zone begins at start and the next zone begins at end.
@@ -822,10 +822,10 @@ If the zone begins at the beginning of time, start will be returned as a zero Ti
 If the zone goes on forever, end will be returned as a zero Time.
 The Location of the returned times will be the same as t.</p>
 </div>
-<h4 class="tsd-returns-title">Returns <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h4>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a><span class="tsd-signature-symbol">, </span><a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a><span class="tsd-signature-symbol">]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L7671">types.d.ts:7671</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L7745">types.d.ts:7745</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

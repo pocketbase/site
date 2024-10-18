@@ -25,12 +25,12 @@ does not expand any glob patterns or handle other expansions,
 pipelines, or redirections typically done by shells. The package
 behaves more like C&#39;s &quot;exec&quot; family of functions. To expand glob
 patterns, either call the shell directly, taking care to escape any
-dangerous input, or use the path/filepath package&#39;s Glob function.
+dangerous input, or use the [path/filepath] package&#39;s Glob function.
 To expand environment variables, use package os&#39;s ExpandEnv.</p>
 <p>Note that the examples in this package assume a Unix system.
 They may not run on Windows, and they do not run in the Go Playground
 used by golang.org and godoc.org.</p>
-<a id="md:executables-in-the-current-directory" class="tsd-anchor"></a><h1><a href="#md:executables-in-the-current-directory">Executables in the current directory</a></h1><p>The functions Command and LookPath look for a program
+<a id="md:executables-in-the-current-directory" class="tsd-anchor"></a><h1><a href="#md:executables-in-the-current-directory">Executables in the current directory</a></h1><p>The functions [Command] and [LookPath] look for a program
 in the directories listed in the current path, following the
 conventions of the host operating system.
 Operating systems have for decades included the current
@@ -40,10 +40,10 @@ Modern practice is that including the current directory
 is usually unexpected and often leads to security problems.</p>
 <p>To avoid those security problems, as of Go 1.19, this package will not resolve a program
 using an implicit or explicit path entry relative to the current directory.
-That is, if you run exec.LookPath(&quot;go&quot;), it will not successfully return
+That is, if you run <a href="%22go%22">LookPath</a>, it will not successfully return
 ./go on Unix nor .\go.exe on Windows, no matter how the path is configured.
 Instead, if the usual path algorithms would result in that answer,
-these functions return an error err satisfying errors.Is(err, ErrDot).</p>
+these functions return an error err satisfying [errors.Is](err, [ErrDot]).</p>
 <p>For example, consider these two program snippets:</p>
 <pre><code><span class="hl-0"> path, </span><span class="hl-2">err</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> exec.</span><span class="hl-2">LookPath</span><span class="hl-0">(</span><span class="hl-3">&quot;prog&quot;</span><span class="hl-0">)</span><br/><span class="hl-0"> </span><span class="hl-1">if</span><span class="hl-0"> err </span><span class="hl-1">!=</span><span class="hl-0"> nil {</span><br/><span class="hl-0">   log.</span><span class="hl-2">Fatal</span><span class="hl-0">(err)</span><br/><span class="hl-0"> }</span><br/><span class="hl-0"> </span><span class="hl-2">use</span><span class="hl-0">(path)</span>
 </code><button>Copy</button></pre>
@@ -71,8 +71,8 @@ See <a href="https://go.dev/blog/path-security">https://go.dev/blog/path-securit
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L4902">types.d.ts:4902</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1de4b49b/jsvm/types.d.ts#L8906">types.d.ts:8906</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L4937">types.d.ts:4937</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/0aac8637/jsvm/types.d.ts#L8337">types.d.ts:8337</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
