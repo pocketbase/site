@@ -643,10 +643,6 @@
     after={`collection.authRule = "verified = true"`}
 />
 <UpgradeTabs
-    before={`collection.options.onlyVerified = true`}
-    after={`collection.authRule = "verified = true"`}
-/>
-<UpgradeTabs
     before={`collection.options.allowOAuth2Auth = true`}
     after={`
         // note: providers can be set via collection.oauth2.providers

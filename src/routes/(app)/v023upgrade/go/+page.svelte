@@ -876,11 +876,6 @@
 />
 <UpgradeTabs
     language="go"
-    before={`Collection.Options.OnlyVerified = true`}
-    after={`Collection.AuthRule = "verified = true"`}
-/>
-<UpgradeTabs
-    language="go"
     before={`Collection.Options.AllowOAuth2Auth = true`}
     after={`
         // note: providers can be set via Collection.OAuth2.Providers
