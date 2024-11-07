@@ -1428,7 +1428,7 @@
         apis.RequireAdminAuthOnlyIfAny(app)
     `}
     after={`
-        apis.RequireSuperuserAuthOnlyIfAny()
+        N/A
     `}
 />
 <UpgradeTabs

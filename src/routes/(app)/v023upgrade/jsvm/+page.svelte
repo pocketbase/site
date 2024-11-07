@@ -1098,7 +1098,7 @@
         $apis.requireAdminAuthOnlyIfAny($app)
     `}
     after={`
-        $apis.requireSuperuserAuthOnlyIfAny()
+        N/A
     `}
 />
 <UpgradeTabs
