@@ -4,8 +4,8 @@
     </div>
     <div class="content">
         <p>
-            For better performance and to minimize blocking on hot paths, note that logs are written with
-            debounce and on batches:
+            For better performance and to minimize blocking on hot paths, logs are written with debounce and
+            on batches:
         </p>
         <ul>
             <li>3 seconds after the last debounced log write</li>

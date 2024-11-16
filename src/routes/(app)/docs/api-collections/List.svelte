@@ -12,97 +12,277 @@
             body: `
                 {
                   "page": 1,
-                  "perPage": 100,
-                  "totalItems": 3,
-                  "totalPages": 1,
+                  "perPage": 2,
+                  "totalItems": 10,
+                  "totalPages": 5,
                   "items": [
                     {
-                      "id": "d2972397d45614e",
-                      "created": "2022-06-22 07:13:00.643Z",
-                      "updated": "2022-06-22 07:13:00.643Z",
-                      "name": "users",
-                      "type": "base",
-                      "system": true,
-                      "schema": [
-                        {
-                          "system": false,
-                          "id": "njnkhxa2",
-                          "name": "title",
-                          "type": "text",
-                          "required": false,
-                          "unique": false,
-                          "options": {
-                            "min": null,
-                            "max": null,
-                            "pattern": ""
-                          }
-                        },
-                        {
-                          "system": false,
-                          "id": "9gvv0jkj",
-                          "name": "avatar",
-                          "type": "file",
-                          "required": false,
-                          "unique": false,
-                          "options": {
-                            "maxSelect": 1,
-                            "maxSize": 5242880,
-                            "mimeTypes": [
-                              "image/jpg",
-                              "image/jpeg",
-                              "image/png",
-                              "image/svg+xml",
-                              "image/gif"
-                            ],
-                            "thumbs": null
-                          }
-                        }
-                      ],
-                      "listRule": "id = @request.user.id",
-                      "viewRule": "id = @request.user.id",
-                      "createRule": "id = @request.user.id",
-                      "updateRule": "id = @request.user.id",
-                      "deleteRule": null,
-                      "options": {
-                        "manageRule": null,
-                        "allowOAuth2Auth": true,
-                        "allowUsernameAuth": true,
-                        "allowEmailAuth": true,
-                        "requireEmail": true,
-                        "exceptEmailDomains": [],
-                        "onlyEmailDomains": [],
-                        "minPasswordLength": 8
-                      },
-                      "indexes": ["create index title_idx on users (title)"]
-                    },
-                    {
-                      "id": "a98f514eb05f454",
-                      "created": "2022-06-23 10:46:16.462Z",
-                      "updated": "2022-06-24 13:25:04.170Z",
-                      "name": "posts",
-                      "system": false,
-                      "schema": [
-                        {
-                          "system": false,
-                          "id": "b7olyhbx",
-                          "name": "title",
-                          "type": "text",
-                          "required": false,
-                          "unique": false,
-                          "options": {
-                            "min": null,
-                            "max": null,
-                            "pattern": ""
-                          }
-                        }
-                      ],
-                      "listRule": "title ~ 'test'",
+                      "id": "_pbc_344172009",
+                      "listRule": null,
                       "viewRule": null,
                       "createRule": null,
                       "updateRule": null,
                       "deleteRule": null,
-                      "options": {},
-                      "indexes": []
+                      "name": "users",
+                      "type": "auth",
+                      "fields": [
+                        {
+                          "autogeneratePattern": "[a-z0-9]{15}",
+                          "hidden": false,
+                          "id": "text3208210256",
+                          "max": 15,
+                          "min": 15,
+                          "name": "id",
+                          "pattern": "^[a-z0-9]+$",
+                          "presentable": false,
+                          "primaryKey": true,
+                          "required": true,
+                          "system": true,
+                          "type": "text"
+                        },
+                        {
+                          "cost": 0,
+                          "hidden": true,
+                          "id": "password901924565",
+                          "max": 0,
+                          "min": 8,
+                          "name": "password",
+                          "pattern": "",
+                          "presentable": false,
+                          "required": true,
+                          "system": true,
+                          "type": "password"
+                        },
+                        {
+                          "autogeneratePattern": "[a-zA-Z0-9]{50}",
+                          "hidden": true,
+                          "id": "text2504183744",
+                          "max": 60,
+                          "min": 30,
+                          "name": "tokenKey",
+                          "pattern": "",
+                          "presentable": false,
+                          "primaryKey": false,
+                          "required": true,
+                          "system": true,
+                          "type": "text"
+                        },
+                        {
+                          "exceptDomains": null,
+                          "hidden": false,
+                          "id": "email3885137012",
+                          "name": "email",
+                          "onlyDomains": null,
+                          "presentable": false,
+                          "required": true,
+                          "system": true,
+                          "type": "email"
+                        },
+                        {
+                          "hidden": false,
+                          "id": "bool1547992806",
+                          "name": "emailVisibility",
+                          "presentable": false,
+                          "required": false,
+                          "system": true,
+                          "type": "bool"
+                        },
+                        {
+                          "hidden": false,
+                          "id": "bool256245529",
+                          "name": "verified",
+                          "presentable": false,
+                          "required": false,
+                          "system": true,
+                          "type": "bool"
+                        },
+                        {
+                          "autogeneratePattern": "",
+                          "hidden": false,
+                          "id": "text1579384326",
+                          "max": 255,
+                          "min": 0,
+                          "name": "name",
+                          "pattern": "",
+                          "presentable": false,
+                          "primaryKey": false,
+                          "required": false,
+                          "system": false,
+                          "type": "text"
+                        },
+                        {
+                          "hidden": false,
+                          "id": "file376926767",
+                          "maxSelect": 1,
+                          "maxSize": 0,
+                          "mimeTypes": [
+                            "image/jpeg",
+                            "image/png",
+                            "image/svg+xml",
+                            "image/gif",
+                            "image/webp"
+                          ],
+                          "name": "avatar",
+                          "presentable": false,
+                          "protected": false,
+                          "required": false,
+                          "system": false,
+                          "thumbs": null,
+                          "type": "file"
+                        },
+                        {
+                          "hidden": false,
+                          "id": "autodate2990389176",
+                          "name": "created",
+                          "onCreate": true,
+                          "onUpdate": false,
+                          "presentable": false,
+                          "system": false,
+                          "type": "autodate"
+                        },
+                        {
+                          "hidden": false,
+                          "id": "autodate3332085495",
+                          "name": "updated",
+                          "onCreate": true,
+                          "onUpdate": true,
+                          "presentable": false,
+                          "system": false,
+                          "type": "autodate"
+                        }
+                      ],
+                      "indexes": [
+                        "CREATE UNIQUE INDEX \`idx_tokenKey__pbc_344172009\` ON \`users\` (\`tokenKey\`)",
+                        "CREATE UNIQUE INDEX \`idx_email__pbc_344172009\` ON \`users\` (\`email\`) WHERE \`email\` != ''"
+                      ],
+                      "system": false,
+                      "authRule": "",
+                      "manageRule": null,
+                      "authAlert": {
+                        "enabled": true,
+                        "emailTemplate": {
+                          "subject": "Login from a new location",
+                          "body": "..."
+                        }
+                      },
+                      "oauth2": {
+                        "mappedFields": {
+                          "id": "",
+                          "name": "name",
+                          "username": "",
+                          "avatarURL": "avatar"
+                        },
+                        "enabled": false
+                      },
+                      "passwordAuth": {
+                        "enabled": true,
+                        "identityFields": [
+                          "email"
+                        ]
+                      },
+                      "mfa": {
+                        "enabled": false,
+                        "duration": 1800,
+                        "rule": ""
+                      },
+                      "otp": {
+                        "enabled": false,
+                        "duration": 180,
+                        "length": 8,
+                        "emailTemplate": {
+                          "subject": "OTP for {APP_NAME}",
+                          "body": "..."
+                        }
+                      },
+                      "authToken": {
+                        "duration": 604800
+                      },
+                      "passwordResetToken": {
+                        "duration": 1800
+                      },
+                      "emailChangeToken": {
+                        "duration": 1800
+                      },
+                      "verificationToken": {
+                        "duration": 259200
+                      },
+                      "fileToken": {
+                        "duration": 180
+                      },
+                      "verificationTemplate": {
+                        "subject": "Verify your {APP_NAME} email",
+                        "body": "..."
+                      },
+                      "resetPasswordTemplate": {
+                        "subject": "Reset your {APP_NAME} password",
+                        "body": "..."
+                      },
+                      "confirmEmailChangeTemplate": {
+                        "subject": "Confirm your {APP_NAME} new email address",
+                        "body": "..."
+                      }
+                    },
+                    {
+                      "id": "_pbc_2287844090",
+                      "listRule": null,
+                      "viewRule": null,
+                      "createRule": null,
+                      "updateRule": null,
+                      "deleteRule": null,
+                      "name": "posts",
+                      "type": "base",
+                      "fields": [
+                        {
+                          "autogeneratePattern": "[a-z0-9]{15}",
+                          "hidden": false,
+                          "id": "text3208210256",
+                          "max": 15,
+                          "min": 15,
+                          "name": "id",
+                          "pattern": "^[a-z0-9]+$",
+                          "presentable": false,
+                          "primaryKey": true,
+                          "required": true,
+                          "system": true,
+                          "type": "text"
+                        },
+                        {
+                          "autogeneratePattern": "",
+                          "hidden": false,
+                          "id": "text724990059",
+                          "max": 0,
+                          "min": 0,
+                          "name": "title",
+                          "pattern": "",
+                          "presentable": false,
+                          "primaryKey": false,
+                          "required": false,
+                          "system": false,
+                          "type": "text"
+                        },
+                        {
+                          "hidden": false,
+                          "id": "autodate2990389176",
+                          "name": "created",
+                          "onCreate": true,
+                          "onUpdate": false,
+                          "presentable": false,
+                          "system": false,
+                          "type": "autodate"
+                        },
+                        {
+                          "hidden": false,
+                          "id": "autodate3332085495",
+                          "name": "updated",
+                          "onCreate": true,
+                          "onUpdate": true,
+                          "presentable": false,
+                          "system": false,
+                          "type": "autodate"
+                        }
+                      ],
+                      "indexes": [],
+                      "system": false
                     }
                   ]
                 }
@@ -123,7 +303,7 @@
             body: `
                 {
                   "code": 401,
-                  "message": "The request requires admin authorization token to be set.",
+                  "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
             `,
@@ -133,7 +313,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "Only admins can perform this action.",
+                  "message": "Only superusers can perform this action.",
                   "data": {}
                 }
             `,
@@ -146,7 +326,7 @@
 <Accordion single title="List collections">
     <div class="content m-b-sm">
         <p>Returns a paginated Collections list.</p>
-        <p>Only admins can perform this action.</p>
+        <p>Only superusers can perform this action.</p>
     </div>
 
     <CodeTabs
@@ -157,7 +337,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             // fetch a paginated collections list
             const pageResult = await pb.collections.getList(1, 100, {
@@ -177,7 +357,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             // fetch a paginated collections list
             final pageResult = await pb.collections.getList(
@@ -194,10 +374,11 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
         <div class="content">/api/collections</div>
-        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
+        <small class="txt-hint auth-header">Requires <code>Authorization:TOKEN</code></small>
     </div>
 
     <div class="section-title">Query parameters</div>
@@ -234,7 +415,7 @@
                         <p>Specify the <em>ORDER BY</em> fields.</p>
                         <p>
                             Add <code>-</code> / <code>+</code> (default) in front of the attribute for DESC /
-                            ASC order, eg.:
+                            ASC order, e.g.:
                         </p>
                         <CodeBlock
                             content={`
@@ -258,7 +439,7 @@
                 </td>
                 <td>
                     <div class="content">
-                        <p>Filter expression to filter/search the returned collections list, eg.:</p>
+                        <p>Filter expression to filter/search the returned collections list, e.g.:</p>
                         <CodeBlock
                             content={`
                                 ?filter=(name~'abc' && created>'2022-01-01')
@@ -280,7 +461,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

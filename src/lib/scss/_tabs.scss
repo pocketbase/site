@@ -1,4 +1,14 @@
-$tabHeaderAnimationSpeed: 0.25s;
+$tabHeaderAnimationSpeed: 0.2s;
+$tabContentAnimationSpeed: 0.2s;
+
+@keyframes tabChange {
+    0% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 .tabs-header {
     display: flex;
@@ -8,8 +18,8 @@ $tabHeaderAnimationSpeed: 0.25s;
     width: 100%;
     min-height: 50px;
     user-select: none;
-    margin: 0 0 var(--smSpacing);
-    border-bottom: 1px solid var(--baseAlt2Color);
+    margin: 0 0 var(--baseSpacing);
+    border-bottom: 2px solid var(--baseAlt2Color);
     .tab-item {
         position: relative;
         outline: 0;
@@ -18,7 +28,7 @@ $tabHeaderAnimationSpeed: 0.25s;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-width: 50px;
+        min-width: 70px;
         gap: 5px;
         padding: 10px 10px;
         margin: 0;
@@ -38,7 +48,7 @@ $tabHeaderAnimationSpeed: 0.25s;
             position: absolute;
             display: block;
             left: 0;
-            bottom: -1px;
+            bottom: -2px;
             width: 100%;
             height: 2px;
             border-top-left-radius: var(--baseRadius);
@@ -89,6 +99,20 @@ $tabHeaderAnimationSpeed: 0.25s;
     }
     &.compact {
         min-height: 30px;
+        margin-bottom: var(--smSpacing);
+    }
+    &.combined {
+        border: 0;
+        margin-bottom: -2px;
+        .tab-item {
+            &:after {
+                content: none;
+                display: none;
+            }
+            &.active {
+                background: var(--baseAlt1Color);
+            }
+        }
     }
 }
 
@@ -100,6 +124,8 @@ $tabHeaderAnimationSpeed: 0.25s;
         display: none;
         &.active {
             display: block;
+            opacity: 0;
+            animation: tabChange $tabContentAnimationSpeed forwards;
         }
         & > :first-child {
             margin-top: 0;
@@ -108,29 +134,15 @@ $tabHeaderAnimationSpeed: 0.25s;
             margin-bottom: 0;
         }
     }
+    &.no-animations {
+        > .tab-item.active {
+            opacity: 1;
+            animation: none;
+        }
+    }
 }
 
 .tabs {
     @extend %block;
     position: relative;
-}
-
-.code-tabs .tabs-header {
-    margin-bottom: -2px;
-    border: 0;
-    .tab-item {
-        min-width: 100px;
-        &:hover,
-        &:focus-visible {
-            background: var(--baseColor);
-        }
-        &:active,
-        &.active {
-            background: var(--baseAlt1Color);
-            &:after {
-                content: none;
-                display: none;
-            }
-        }
-    }
 }

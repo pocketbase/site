@@ -25,7 +25,7 @@
 <div class="grid grid-sm upgrade-grid {classes}">
     {#each cols as col, i}
         <div class="col-lg-6 {i == 0 ? 'col-old' : 'col-new'}">
-            <CodeBlock language={col.language} content={col.content} />
+            <CodeBlock class="" language={col.language} content={col.content} />
         </div>
     {/each}
 </div>
@@ -34,6 +34,7 @@
     :global(.upgrade-grid .code-wrapper),
     :global(.upgrade-grid code) {
         height: 100%;
+        margin: 0;
     }
     :global(.upgrade-grid .col-old code) {
         background: var(--dangerAltColor) !important;

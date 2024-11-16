@@ -4,7 +4,9 @@
     import Create from "./Create.svelte";
     import Update from "./Update.svelte";
     import Delete from "./Delete.svelte";
+    import Truncate from "./Truncate.svelte";
     import Import from "./Import.svelte";
+    import Scaffolds from "./Scaffolds.svelte";
 </script>
 
 <div class="accordions">
@@ -13,5 +15,7 @@
     <Create />
     <Update />
     <Delete />
+    <Truncate />
     <Import />
+    <Scaffolds />
 </div>

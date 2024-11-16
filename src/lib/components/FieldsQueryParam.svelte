@@ -1,7 +1,7 @@
 <script>
     import CodeBlock from "@/components/CodeBlock.svelte";
 
-    export let prefix = ""; // examples prefix (eg. "record.")
+    export let prefix = ""; // examples prefix (e.g. "record.")
 </script>
 
 <tr>

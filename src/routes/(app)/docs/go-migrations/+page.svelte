@@ -14,16 +14,22 @@
     once.
 </p>
 <p>
-    And as a bonus, being <code>.go</code> files also ensures that the migrations will be embedded seamlessly in
+    And as a bonus, being <code>.go</code> files also ensure that the migrations will be embedded seamlessly in
     your final executable.
 </p>
 
 <Toc />
 
-<HeadingLink title="Enable the migrate command" />
+<HeadingLink title="Quick setup" />
+<HeadingLink title="0. Register the migrate command" tag="h5" />
 <p>
-    The prebuilt executable enables the <code>migrate</code> command by default, but when you are extending PocketBase
-    with Go you have to enable it manually:
+    <em>
+        You can find all available config options in the
+        <a href="{import.meta.env.PB_GODOC_URL}/plugins/migratecmd" target="_blank" rel="noopener noreferrer">
+            <code>migratecmd</code>
+        </a>
+        subpackage.
+    </em>
 </p>
 <CodeBlock
     language="go"
@@ -38,7 +44,7 @@
             "github.com/pocketbase/pocketbase"
             "github.com/pocketbase/pocketbase/plugins/migratecmd"
 
-            // uncomment once you have at least one .go migration file in the "migrations" directory
+            // enable once you have at least one migration
             // _ "yourpackage/migrations"
         )
 
@@ -49,7 +55,7 @@
             isGoRun := strings.HasPrefix(os.Args[0], os.TempDir())
 
             migratecmd.MustRegister(app, app.RootCmd, migratecmd.Config{
-                // enable auto creation of migration files when making collection changes in the Admin UI
+                // enable auto creation of migration files when making collection changes in the Dashboard
                 // (the isGoRun check is to enable it only during development)
                 Automigrate: isGoRun,
             })
@@ -60,12 +66,8 @@
         }
     `}
 />
-<p>
-    The above example also shows the <code>Automigrate</code> config option which when enabled will create automatically
-    a Go migration file for you for every collection change made in the Admin UI.
-</p>
 
-<HeadingLink title="Creating migrations" />
+<HeadingLink title="1. Create new migration" tag="h5" />
 <p>
     To create a new blank migration you can run <code>migrate create</code>.
 </p>
@@ -73,9 +75,9 @@
     content={`
         // Since the "create" command makes sense only during development,
         // it is expected the user to be in the app working directory
-        // and to be using "go run ..."
+        // and to be using "go run"
 
-        [root@dev app]$ go run main.go migrate create "your_new_migration"
+        [root@dev app]$ go run . migrate create "your_new_migration"
     `}
 />
 <div class="clearfix m-t-xs" />
@@ -86,16 +88,16 @@
         package migrations
 
         import (
-            "github.com/pocketbase/dbx"
+            "github.com/pocketbase/pocketbase/core"
             m "github.com/pocketbase/pocketbase/migrations"
         )
 
         func init() {
-            m.Register(func(db dbx.Builder) error {
+            m.Register(func(app core.App) error {
                 // add up queries...
 
                 return nil
-            }, func(db dbx.Builder) error {
+            }, func(app core.App) error {
                 // add down queries...
 
                 return nil
@@ -104,10 +106,37 @@
     `}
 />
 <p>
-    The above will create a new blank migration file inside the configured command <code>migrations</code> directory.
+    The above will create a new blank migration file inside the default command <code>migrations</code> directory.
 </p>
+<p>Each migration file should have a single <code>m.Register(upFunc, downFunc)</code> call.</p>
+<p>
+    In the migration file, you are expected to write your "upgrade" code in the <code>upFunc</code> callback.
+    <br />
+    The <code>downFunc</code> is optional and it should contains the "downgrade" operations to revert the
+    changes made by the <code>upFunc</code>.
+    <br />
+    Both callbacks accept a transactional <code>core.App</code> instance.
+</p>
+
+<div class="alert alert-info m-t-sm m-b-sm">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            You can explore the
+            <a href="/docs/go-database">Database guide</a>,
+            <a href="/docs/go-collections">Collection operations</a> and
+            <a href="/docs/go-records">Record operations</a>
+            for more details how to interact with the database. You can also find
+            <a href="#examples">some examples</a> furter below in ths guide.
+        </p>
+    </div>
+</div>
+
+<HeadingLink title="2. Load migrations" tag="h5" />
 <p class="txt-bold">
-    To make your application aware of the registered migrations, you simply have to import the above
+    To make your application aware of the registered migrations, you have to import the above
     <code>migrations</code> package in one of your <code>main</code> package files:
 </p>
 <CodeBlock
@@ -120,48 +149,41 @@
         // ...
     `}
 />
-<p class="txt-bold">New migrations are applied automatically on <code>serve</code>.</p>
-<p>
-    Optionally, you could apply new migrations manually by running <code>migrate up</code>.
-</p>
-<p>
-    To revert the last applied migration(s), you could run <code>migrate down [number]</code>.
-</p>
 
-<HeadingLink title="Migration file" tag="h5" />
-<p>Each migration file should have a single <code>m.Register(upFunc, downFunc)</code> call.</p>
-<p>
-    In the migration file, you are expected to write your "upgrade" code in the <code>upFunc</code> callback.
-    <br />
-    The <code>downFunc</code> is optional and it should contains the "downgrade" operations to revert the
-    changes made by the <code>upFunc</code>.
+<HeadingLink title="3. Run migrations" tag="h5" />
+<p class="txt-bold">
+    New unapplied migrations are automatically executed when the application server starts, aka. on
+    <code>serve</code>.
 </p>
 <p>
-    Both callbacks accept a single <code>db</code> argument (<code>dbx.Builder</code>) that you can use
-    directly or create a <code>Dao</code> instance and use its available helpers. You can explore the
-    <a href="/docs/go-database">Database guide</a>
-    for more details how to operate with the <code>db</code> object and its available methods.
+    Alternatively, you can also apply new migrations manually by running <code>migrate up</code>.
+</p>
+<p>
+    To revert the last applied migration(s), you can run <code>migrate down [number]</code>.
 </p>
 
 <HeadingLink title="Collections snapshot" />
 <p>
-    PocketBase comes also with a <code>migrate collections</code> command that will generate a full snapshot of
-    your current Collections configuration without having to type it manually:
+    The <code>migrate collections</code> command generates a full snapshot of your current collections
+    configuration without having to type it manually. Similar to the <code>migrate create</code> command, this
+    will generate a new migration file in the
+    <code>migrations</code> directory.
 </p>
 <CodeBlock
     content={`
         // Since the "collections" command makes sense only during development,
         // it is expected the user to be in the app working directory
-        // and to be using "go run ..."
+        // and to be using "go run"
 
-        [root@dev app]$ go run main.go migrate collections
+        [root@dev app]$ go run . migrate collections
     `}
 />
 <p>
-    Similar to the <code>migrate create</code> command, this will generate a new migration file in the
-    <code>migrations</code> directory.
+    By default the collections snapshot is imported in <em>extend</em> mode, meaning that collections and
+    fields that don't exist in the snapshot are preserved. If you want the snapshot to <em>delete</em>
+    missing collections and fields, you can edit the generated file and change the last argument of
+    <code>importCollections</code> method to <code>true</code>.
 </p>
-<p>It is safe to run the command multiple times and generate multiple snapshot migration files.</p>
 
 <HeadingLink title="Migrations history" />
 <p>
@@ -172,11 +194,11 @@
     When <code>Automigrate</code> is enabled this could lead in a migration history with unnecessary intermediate
     steps that may not be wanted in the final migration history.
 </p>
-<p class="txt-bold">
+<p>
     To avoid the clutter and to prevent applying the intermediate steps in production, you can remove (or
     squash) the unnecessary migration files manually and then update the local migrations history by running:
 </p>
-<CodeBlock content={`[root@dev app]$ go run main.go migrate history-sync`} />
+<CodeBlock content={`[root@dev app]$ go run . migrate history-sync`} />
 <p>
     The above command will remove any entry from the <code>_migrations</code> table that doesn't have a related
     migration file associated with it.
@@ -184,7 +206,7 @@
 
 <HeadingLink title="Examples" />
 
-<HeadingLink title="Running raw SQL statements" tag="h5" />
+<HeadingLink title="Executing raw SQL statements" tag="h5" />
 <CodeBlock
     language="go"
     content={`
@@ -192,14 +214,14 @@
         package migrations
 
         import (
-            "github.com/pocketbase/dbx"
+            "github.com/pocketbase/pocketbase/core"
             m "github.com/pocketbase/pocketbase/migrations"
         )
 
         // set a default "pending" status to all empty status articles
         func init() {
-            m.Register(func(db dbx.Builder) error {
-                _, err := db.NewQuery("UPDATE articles SET status = 'pending' WHERE status = ''").Execute()
+            m.Register(func(app core.App) error {
+                _, err := app.DB().NewQuery("UPDATE articles SET status = 'pending' WHERE status = ''").Execute()
                 return err
             }, nil)
         }
@@ -214,105 +236,136 @@
         package migrations
 
         import (
-            "github.com/pocketbase/dbx"
-            "github.com/pocketbase/pocketbase/daos"
+            "github.com/pocketbase/pocketbase/core"
             m "github.com/pocketbase/pocketbase/migrations"
         )
 
         func init() {
-            m.Register(func(db dbx.Builder) error {
-                dao := daos.New(db)
+            m.Register(func(app core.App) error {
+                settings := app.Settings()
 
-                settings, _ := dao.FindSettings()
+                // for all available settings fields you could check
+                // https://github.com/pocketbase/pocketbase/blob/develop/core/settings_model.go#L121-L130
                 settings.Meta.AppName = "test"
+                settings.Meta.AppURL = "https://example.com"
                 settings.Logs.MaxDays = 2
+                settings.Logs.LogAuthId = true
+                settings.Logs.LogIP = false
 
-                return dao.SaveSettings(settings)
+                return app.Save(settings)
             }, nil)
         }
     `}
 />
 
-<HeadingLink title="Creating new admin" tag="h5" />
+<HeadingLink title="Creating initial superuser" tag="h5" />
+<p>
+    <em>
+        For all supported record methods, you can refer to
+        <a href="/docs/go-records">Record operations</a>
+    </em>
+    .
+</p>
+<p>
+    <em>
+        You can also create the initial super user using the
+        <code>./pocketbase superuser create EMAIL PASS</code>
+        command.
+    </em>
+</p>
 <CodeBlock
     language="go"
     content={`
-        // migrations/1687801090_initial_admin.go
+        // migrations/1687801090_initial_superuser.go
         package migrations
 
         import (
-            "github.com/pocketbase/dbx"
-            "github.com/pocketbase/pocketbase/daos"
+            "github.com/pocketbase/pocketbase/core"
             m "github.com/pocketbase/pocketbase/migrations"
-            "github.com/pocketbase/pocketbase/models"
         )
 
         func init() {
-            m.Register(func(db dbx.Builder) error {
-                dao := daos.New(db)
-
-                admin := &models.Admin{}
-                admin.Email = "test@example.com"
-                admin.SetPassword("1234567890")
-
-                return dao.SaveAdmin(admin)
-            }, func(db dbx.Builder) error { // optional revert operation
-
-                dao := daos.New(db)
-
-                admin, _ := dao.FindAdminByEmail("test@example.com")
-                if admin != nil {
-                    return dao.DeleteAdmin(admin)
+            m.Register(func(app core.App) error {
+                superusers, err := app.FindCollectionByNameOrId(core.CollectionNameSuperusers)
+                if err != nil {
+                    return err
                 }
 
-                // already deleted
-                return nil
+                record := core.NewRecord(superusers)
+
+                // note: the values can be eventually loaded via os.Getenv(key)
+                // or from a special local config file
+                record.Set("email", "test@example.com")
+                record.Set("password", "1234567890")
+
+                return app.Save(record)
+            }, func(app core.App) error { // optional revert operation
+                record, _ := app.FindAuthRecordByEmail(core.CollectionNameSuperusers, "test@example.com")
+                if record == nil {
+                    return nil // probably already deleted
+                }
+
+                return app.Delete(record)
             })
         }
     `}
 />
 
-<HeadingLink title="Creating new auth record" tag="h5" />
+<HeadingLink title="Creating collection programmatically" tag="h5" />
+<p>
+    <em>
+        For all supported collection methods, you can refer to
+        <a href="/docs/go-collections">Collection operations</a>
+    </em>
+    .
+</p>
 <CodeBlock
     language="go"
     content={`
-        // migrations/1687801090_new_users_record.go
+        // migrations/1687801090_create_clients_collection.go
         package migrations
 
         import (
-            "github.com/pocketbase/dbx"
-            "github.com/pocketbase/pocketbase/daos"
+            "github.com/pocketbase/pocketbase/core"
             m "github.com/pocketbase/pocketbase/migrations"
-            "github.com/pocketbase/pocketbase/models"
-            "github.com/pocketbase/pocketbase/tools/security"
         )
 
         func init() {
-            m.Register(func(db dbx.Builder) error {
-                dao := daos.New(db)
+            m.Register(func(app core.App) error {
+                // init a new auth collection with the default system fields and auth options
+                collection := core.NewAuthCollection("clients")
 
-                collection, err := dao.FindCollectionByNameOrId("users")
+                // restrict the list and view rules for record owners
+                collection.ListRule = types.Pointer("id = @request.auth.id")
+                collection.ViewRule = types.Pointer("id = @request.auth.id")
+
+                // add extra fields in addition to the default ones
+                collection.Fields.Add(
+                    &core.TextField{
+                        Name:     "company",
+                        Required: true,
+                        Max:      100,
+                    },
+                    &core.UrlField{
+                        Name:        "website",
+                        Presentable: true,
+                    },
+                )
+
+                // disable password auth and enable OTP only
+                collection.passwordAuth.enabled = false
+                collection.otp.enabled = true
+
+                collection.AddIndex("idx_clients_company", false, "company", "")
+
+                return app.Save(collection)
+            }, func(app core.App) error { // optional revert operation
+                collection, err := app.FindCollectionByNameOrId("clients")
                 if err != nil {
                     return err
                 }
 
-                record := models.NewRecord(collection)
-                record.SetUsername("u_" + security.RandomStringWithAlphabet(5, "123456789"))
-                record.SetPassword("1234567890")
-                record.Set("name", "John Doe")
-                record.Set("email", "test@example.com")
-
-                return dao.SaveRecord(record)
-            }, func(db dbx.Builder) error { // optional revert operation
-                dao := daos.New(db)
-
-                record := dao.FindFirstAuthRecordByEmail("users", "test@example.com")
-                if record != nil {
-                    return dao.DeleteRecord(record)
-                }
-
-                // already deleted
-                return nil
+                return app.Delete(collection)
             })
         }
     `}

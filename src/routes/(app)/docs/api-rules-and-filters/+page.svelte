@@ -85,7 +85,7 @@
 </div>
 
 <HeadingLink title="Filters syntax" />
-<p>You could find information about the supported fields in your collection API rules tab:</p>
+<p>You can find information about the available fields in your collection API rules tab:</p>
 <img
     src="/images/screenshots/collection-rules.png"
     alt="Collection API Rules filters screenshot"
@@ -93,21 +93,20 @@
     width="550"
 />
 <p>
-    There is autocomplete to help you guide you while typing the rule filter expression, but in general, you
-    have access to
-    <strong>3 groups of fields</strong>:
+    There is autocomplete to help you guide you while typing the rule filter expression, but in general you
+    have access to <strong>3 groups of fields</strong>:
 </p>
 <ul>
     <li>
         <strong>Your Collection schema fields</strong>
         <br />
-        This also include all nested relations fields too, ex.
+        This includes all nested relation fields too, ex.
         <code>someRelField.status != "pending"</code>
     </li>
     <li>
         <code><strong>@request.*</strong></code>
         <br />
-        Used to access the current request data, such as query parameters, body/form data, authorized user state,
+        Used to access the current request data, such as query parameters, body/form fields, authorized user state,
         etc.
         <ul>
             <li>
@@ -141,8 +140,8 @@
                 <code>@request.auth.id != ""</code>)
             </li>
             <li>
-                <code>@request.data.*</code> - the submitted body parameters (ex.
-                <code>@request.data.title != ""</code>)
+                <code>@request.body.*</code> - the submitted body parameters (ex.
+                <code>@request.body.title != ""</code>)
                 <br />
                 <small class="txt-hint">
                     Note: Uploaded files are not part of the <code class="txt-sm">@request.data</code>
@@ -206,7 +205,7 @@
     `}
 />
 <p>For example:</p>
-<CodeBlock content={`@request.data.publicDate >= @now`} />
+<CodeBlock content={`@request.body.publicDate >= @now`} />
 
 <HeadingLink title=":isset modifier" tag="h5" />
 <p>
@@ -216,12 +215,12 @@
 </p>
 <CodeBlock
     content={`
-        @request.data.role:isset = false
+        @request.body.role:isset = false
     `}
 />
 <p>
     <small class="txt-hint">
-        Note that <code class="txt-sm">@request.data.*:isset</code> at the moment doesn't support checking for
+        Note that <code class="txt-sm">@request.body.*:isset</code> at the moment doesn't support checking for
         new uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
@@ -233,12 +232,12 @@
     The <code>:length</code> field modifier could be used to check the number of items in an array field
     (multiple <code>file</code>, <code>select</code>, <code>relation</code>).
     <br />
-    Could be used with both the collection schema fields and the <code>@request.data.*</code> fields. For example:
+    Could be used with both the collection schema fields and the <code>@request.body.*</code> fields. For example:
 </p>
 <CodeBlock
     content={`
         // check example submitted data: {"someSelectField": ["val1", "val2"]}
-        @request.data.someSelectField:length > 1
+        @request.body.someSelectField:length > 1
 
         // check existing record field length
         someRelationField:length = 2
@@ -246,7 +245,7 @@
 />
 <p>
     <small class="txt-hint">
-        Note that <code class="txt-sm">@request.data.*:length</code> at the moment doesn't support checking
+        Note that <code class="txt-sm">@request.body.*:length</code> at the moment doesn't support checking
         for new uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
@@ -262,7 +261,7 @@
 <CodeBlock
     content={`
         // check if all submitted select options contain the "create" text
-        @request.data.someSelectField:each ~ "create"
+        @request.body.someSelectField:each ~ "create"
 
         // check if all existing someSelectField has "pb_" prefix
         someSelectField:each ~ "pb_%"
@@ -270,7 +269,7 @@
 />
 <p>
     <small class="txt-hint">
-        Note that <code class="txt-sm">@request.data.*:each</code> at the moment doesn't support checking for
+        Note that <code class="txt-sm">@request.body.*:each</code> at the moment doesn't support checking for
         new uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).

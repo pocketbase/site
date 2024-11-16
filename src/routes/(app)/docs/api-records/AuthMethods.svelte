@@ -9,34 +9,32 @@
             code: 200,
             body: `
                 {
-                  "usernamePassword": false,
-                  "emailPassword": true,
-                  "authProviders": [
-                    {
-                      "name": "github",
-                      "state": "3Yd8jNkK_6PJG6hPWwBjLqKwse6Ejd",
-                      "codeVerifier": "KxFDWz1B3fxscCDJ_9gHQhLuh__ie7",
-                      "codeChallenge": "NM1oVexB6Q6QH8uPtOUfK7tq4pmu4Jz6lNDIwoxHZNE=",
-                      "codeChallengeMethod": "S256",
-                      "authUrl": "https://github.com/login/oauth/authorize?client_id=demo\u0026code_challenge=NM1oVexB6Q6QH8uPtOUfK7tq4pmu4Jz6lNDIwoxHZNE%3D\u0026code_challenge_method=S256\u0026response_type=code\u0026scope=user\u0026state=3Yd8jNkK_6PJG6hPWwBjLqKwse6Ejd\u0026redirect_uri="
-                    },
-                    {
-                      "name": "gitlab",
-                      "state": "NeQSbtO5cShr_mk5__3CUukiMnymeb",
-                      "codeVerifier": "ahTFHOgua8mkvPAlIBGwCUJbWKR_xi",
-                      "codeChallenge": "O-GATkTj4eXDCnfonsqGLCd6njvTixlpCMvy5kjgOOg=",
-                      "codeChallengeMethod": "S256",
-                      "authUrl": "https://gitlab.com/oauth/authorize?client_id=demo\u0026code_challenge=O-GATkTj4eXDCnfonsqGLCd6njvTixlpCMvy5kjgOOg%3D\u0026code_challenge_method=S256\u0026response_type=code\u0026scope=read_user\u0026state=NeQSbtO5cShr_mk5__3CUukiMnymeb\u0026redirect_uri="
-                    },
-                    {
-                      "name": "google",
-                      "state": "zB3ZPifV1TW2GMuvuFkamSXfSNkHPQ",
-                      "codeVerifier": "t3CmO5VObGzdXqieakvR_fpjiW0zdO",
-                      "codeChallenge": "KChwoQPKYlz2anAdqtgsSTdIo8hdwtc1fh2wHMwW2Yk=",
-                      "codeChallengeMethod": "S256",
-                      "authUrl": "https://accounts.google.com/o/oauth2/auth?client_id=demo\u0026code_challenge=KChwoQPKYlz2anAdqtgsSTdIo8hdwtc1fh2wHMwW2Yk%3D\u0026code_challenge_method=S256\u0026response_type=code\u0026scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email\u0026state=zB3ZPifV1TW2GMuvuFkamSXfSNkHPQ\u0026redirect_uri="
-                    }
-                  ]
+                  "password": {
+                    "enabled": true,
+                    "identityFields": ["email"]
+                  },
+                  "oauth2": {
+                    "enabled": true,
+                    "providers": [
+                      {
+                        "name": "github",
+                        "displayName": "GitHub",
+                        "state": "nT7SLxzXKAVMeRQJtxSYj9kvnJAvGk",
+                        "authURL": "https://github.com/login/oauth/authorize?client_id=test&code_challenge=fcf8WAhNI6uCLJYgJubLyWXHvfs8xghoLe3zksBvxjE&code_challenge_method=S256&response_type=code&scope=read%3Auser+user%3Aemail&state=nT7SLxzXKAVMeRQJtxSYj9kvnJAvGk&redirect_uri=",
+                        "codeVerifier": "PwBG5OKR2IyQ7siLrrcgWHFwLLLAeUrz7PS1nY4AneG",
+                        "codeChallenge": "fcf8WAhNI6uCLJYgJubLyWXHvfs8xghoLe3zksBvxjE",
+                        "codeChallengeMethod": "S256"
+                      }
+                    ]
+                  },
+                  "mfa": {
+                    "enabled": false,
+                    "duration": 0
+                  },
+                  "otp": {
+                    "enabled": false,
+                    "duration": 0
+                  }
                 }
             `,
         },
@@ -71,6 +69,7 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
         <div class="content">/api/collections/<code>collectionIdOrName</code>/auth-methods</div>
@@ -112,7 +111,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

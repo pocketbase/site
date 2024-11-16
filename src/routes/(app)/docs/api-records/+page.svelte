@@ -5,18 +5,16 @@
     import Create from "./Create.svelte";
     import Update from "./Update.svelte";
     import Delete from "./Delete.svelte";
+    import Batch from "./Batch.svelte";
     import AuthMethods from "./AuthMethods.svelte";
     import AuthWithPassword from "./AuthWithPassword.svelte";
-    import AuthWithOauth2 from "./AuthWithOAuth2.svelte";
+    import AuthWithOAuth2 from "./AuthWithOAuth2.svelte";
+    import AuthWithOTP from "./AuthWithOTP.svelte";
     import AuthRefresh from "./AuthRefresh.svelte";
-    import RequestVerification from "./RequestVerification.svelte";
-    import ConfirmVerification from "./ConfirmVerification.svelte";
-    import RequestPasswordReset from "./RequestPasswordReset.svelte";
-    import ConfirmPasswordReset from "./ConfirmPasswordReset.svelte";
-    import RequestEmailChange from "./RequestEmailChange.svelte";
-    import ConfirmEmailChange from "./ConfirmEmailChange.svelte";
-    import ListExternalAuths from "./ListExternalAuths.svelte";
-    import UnlinkExternalAuth from "./UnlinkExternalAuth.svelte";
+    import Verification from "./Verification.svelte";
+    import PasswordReset from "./PasswordReset.svelte";
+    import EmailChange from "./EmailChange.svelte";
+    import Impersonate from "./Impersonate.svelte";
 </script>
 
 <HeadingLink title="CRUD actions" />
@@ -26,20 +24,18 @@
     <Create />
     <Update />
     <Delete />
+    <Batch />
 </div>
 
 <HeadingLink title="Auth record actions" />
 <div class="accordions">
     <AuthMethods />
     <AuthWithPassword />
-    <AuthWithOauth2 />
+    <AuthWithOAuth2 />
+    <AuthWithOTP />
     <AuthRefresh />
-    <RequestVerification />
-    <ConfirmVerification />
-    <RequestPasswordReset />
-    <ConfirmPasswordReset />
-    <RequestEmailChange />
-    <ConfirmEmailChange />
-    <ListExternalAuths />
-    <UnlinkExternalAuth />
+    <Verification />
+    <PasswordReset />
+    <EmailChange />
+    <Impersonate />
 </div>

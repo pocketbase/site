@@ -50,9 +50,9 @@
     `}
 />
 
-<HeadingLink title="Append to multiple relation" />
+<HeadingLink title="Prepend/Append to multiple relation" />
 <p>
-    To append a single or multiple relation id(s) to an existing value you can use the
+    To prepend/append a single or multiple relation id(s) to an existing value you can use the
     <code class="txt-bold">+</code> field modifier:
 </p>
 <!-- prettier-ignore -->
@@ -65,8 +65,8 @@
         ...
 
         const post = await pb.collection('posts').update('POST_ID', {
-            // append single tag
-            'tags+': 'TAG_ID1',
+            // prepend single tag
+            '+tags': 'TAG_ID1',
 
             // append multiple tags at once
             'tags+': ['TAG_ID1', 'TAG_ID2'],
@@ -80,8 +80,8 @@
         ...
 
         final post = await pb.collection('posts').update('POST_ID', body: {
-            // append single tag
-            'tags+': 'TAG_ID1',
+            // prepend single tag
+            '+tags': 'TAG_ID1',
 
             // append multiple tags at once
             'tags+': ['TAG_ID1', 'TAG_ID2'],
@@ -131,7 +131,7 @@
 <HeadingLink title="Expanding relations" />
 <p>
     You can also expand record relation fields directly in the returned response without making additional
-    requests by using the <code>expand</code> query parameter, eg. <code>?expand=user,post.tags</code>
+    requests by using the <code>expand</code> query parameter, e.g. <code>?expand=user,post.tags</code>
 </p>
 <div class="alert alert-info m-t-sm">
     <div class="icon">

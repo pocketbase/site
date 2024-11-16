@@ -125,7 +125,7 @@
             body: `
                 {
                   "code": 401,
-                  "message": "The request requires admin authorization token to be set.",
+                  "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
             `,
@@ -135,7 +135,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "You are not allowed to perform this request.",
+                  "message": "The authorized record is not allowed to perform this action.",
                   "data": {}
                 }
             `,
@@ -149,7 +149,7 @@
     <div class="content m-b-sm">
         <p>Returns a list with all available application settings.</p>
         <p>Secret/password fields are automatically redacted with <em>******</em> characters.</p>
-        <p>Only admins can perform this action.</p>
+        <p>Only superusers can perform this action.</p>
     </div>
 
     <CodeTabs
@@ -160,7 +160,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             const settings = await pb.settings.getAll();
         `}
@@ -171,16 +171,17 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             final settings = await pb.settings.getAll();
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
         <div class="content">/api/settings</div>
-        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
+        <small class="txt-hint auth-header">Requires <code>Authorization:TOKEN</code></small>
     </div>
 
     <div class="section-title">Query parameters</div>
@@ -199,7 +200,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

@@ -89,7 +89,7 @@
                     // after the above you can also access the auth data from the authStore
                     console.log(pb.authStore.isValid);
                     console.log(pb.authStore.token);
-                    console.log(pb.authStore.model.id);
+                    console.log(pb.authStore.record.id);
 
                     // "logout" the last authenticated model
                     pb.authStore.clear();
@@ -116,7 +116,7 @@
                     // after the above you can also access the auth data from the authStore
                     print(pb.authStore.isValid);
                     print(pb.authStore.token);
-                    print(pb.authStore.model.id);
+                    print(pb.authStore.record.id);
 
                     // "logout" the last authenticated model
                     pb.authStore.clear();
@@ -136,14 +136,14 @@
                 <li class="m-b-xs">
                     <p>
                         <strong>Links page</strong>
-                        (eg. https://127.0.0.1:8090 serving <code>pb_public/index.html</code>):
+                        (e.g. https://127.0.0.1:8090 serving <code>pb_public/index.html</code>):
                     </p>
                     <CodeBlock language="html" content={indexExample} />
                 </li>
                 <li class="m-b-xs">
                     <p>
                         <strong>Redirect handler page</strong>
-                        (eg. https://127.0.0.1:8090/redirect.html serving
+                        (e.g. https://127.0.0.1:8090/redirect.html serving
                         <code>pb_public/redirect.html</code>):
                     </p>
                     <CodeBlock language="html" content={redirectExample} />

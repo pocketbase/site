@@ -1,5 +1,3 @@
-@include scrollbar();
-
 :focus-visible {
     outline-color: var(--primaryColor);
     outline-style: solid;
@@ -8,9 +6,18 @@
 html {
     overflow-x: hidden;
     overflow-y: auto; /* fallback */
+    scrollbar-color: var(--baseAlt2Color) transparent;
+    scrollbar-width: auto;
+    &.smooth-scroll {
+        scroll-behavior: smooth;
+    }
     @media screen and (min-width: 550px) {
         overflow-y: overlay;
     }
+}
+
+* {
+    scrollbar-width: inherit;
 }
 
 html,
@@ -27,6 +34,15 @@ body {
     display: block;
     width: 100%;
     height: 100vh;
+}
+
+// sticky header overlap fix
+.heading-link,
+.accordion.active {
+    scroll-margin-top: 70px;
+    > a {
+        scroll-margin-top: inherit;
+    }
 }
 
 %block {
@@ -97,6 +113,12 @@ sub {
     vertical-align: bottom;
 }
 
+mark {
+    padding: 0px 2px 1px;
+    background: var(--successAltColor);
+    border-radius: var(--baseRadius);
+}
+
 p {
     @extend %block;
     margin: 10px 0;
@@ -115,7 +137,7 @@ blockquote {
         left: 0;
         width: 2px;
         height: 100%;
-        background: var(--baseColor);
+        background: var(--baseAlt1Color);
     }
 }
 
@@ -123,7 +145,7 @@ code {
     display: inline-block;
     font-family: var(--monospaceFontFamily);
     font-size: var(--baseFontSize);
-    line-height: 1.379rem;
+    line-height: 1.2rem;
     padding: 0px 4px;
     white-space: nowrap;
     font-weight: normal;
@@ -136,6 +158,14 @@ code {
         word-break: break-all;
     }
 }
+.code-wrapper code {
+    line-height: 1.379rem;
+}
+.txt-sm code,
+small code {
+    font-size: var(--smFontSize);
+}
+
 a {
     code {
         text-decoration: none;
@@ -144,6 +174,13 @@ a {
     }
     &:hover code {
         background: var(--baseAlt2Color);
+    }
+    &[target="_blank"] {
+        code:after {
+            content: "\EA70";
+            font-family: var(--iconFontFamily);
+            font-size: 0.7em;
+        }
     }
 }
 
@@ -603,7 +640,7 @@ a,
     }
     .version {
         position: absolute;
-        right: -2px;
+        right: 11px;
         top: -6px;
         line-height: 1;
         font-size: 10px;

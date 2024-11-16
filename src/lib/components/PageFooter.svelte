@@ -57,16 +57,6 @@
                     <i class="ri-mail-line" />
                 </a>
                 <a
-                    href={import.meta.env.PB_TWITTER_URL}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    class="btn btn-secondary btn-circle btn-hint social-item"
-                    aria-label="Go to Twitter"
-                    use:tooltip={{ text: "Go to Twitter", position: "top" }}
-                >
-                    <i class="ri-twitter-line" />
-                </a>
-                <a
                     href={import.meta.env.PB_REPO_URL}
                     rel="noopener noreferrer"
                     target="_blank"

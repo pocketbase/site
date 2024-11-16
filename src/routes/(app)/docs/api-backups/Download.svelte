@@ -36,7 +36,7 @@
 <Accordion single title="Download backup">
     <div class="content m-b-base">
         <p>Downloads a single backup file.</p>
-        <p>Only admins can perform this action.</p>
+        <p>Only superusers can perform this action.</p>
     </div>
 
     <CodeTabs
@@ -47,7 +47,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             const token = await pb.files.getToken();
 
@@ -60,7 +60,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             final token = await pb.files.getToken();
 
@@ -68,6 +68,7 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
         <!-- prettier-ignore -->
@@ -119,7 +120,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

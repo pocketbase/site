@@ -26,6 +26,7 @@
         <p>Returns the health status of the server.</p>
     </div>
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET/HEAD</strong>
         <div class="content">/api/health</div>
@@ -47,7 +48,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

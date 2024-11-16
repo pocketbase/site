@@ -71,8 +71,8 @@
         </p>
         <p class="txt-hint">
             <em>
-                You could find individual generated records API documentation in the "Admin UI > Collections >
-                API Preview".
+                You could find individual generated records API documentation in the "Dashboard > Collections
+                > API Preview".
             </em>
         </p>
     </div>
@@ -125,6 +125,7 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
         <div class="content">/api/collections/<code>collectionIdOrName</code>/records</div>
@@ -209,7 +210,7 @@
                     <div class="content">
                         <p>
                             Filter expression to filter/search the returned records list (in addition to the
-                            collection's <code>listRule</code>), eg.:
+                            collection's <code>listRule</code>), e.g.:
                         </p>
                         <CodeBlock
                             content={`
@@ -233,7 +234,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

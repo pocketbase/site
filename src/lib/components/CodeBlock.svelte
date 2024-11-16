@@ -6,6 +6,9 @@
     import "@/scss/prism_dark.scss";
     import "@/scss/prism_light.scss";
 
+    let classes = "m-b-sm";
+    export { classes as class }; // export reserved keyword
+
     export let theme = "light";
     export let content = "";
     export let language = "javascript"; // go, javascript, html, css
@@ -31,7 +34,7 @@
     }
 </script>
 
-<div class="code-wrapper {theme === 'dark' ? 'prism-dark' : 'prism-light'}">
+<div class="code-wrapper {classes} {theme === 'dark' ? 'prism-dark' : 'prism-light'}">
     <code>{@html formattedContent}</code>
 </div>
 

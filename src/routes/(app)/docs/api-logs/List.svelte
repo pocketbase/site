@@ -15,41 +15,39 @@
                   "totalItems": 2,
                   "items": [
                     {
-                      "id": "9ajmzgd99r039k9",
-                      "created": "2023-12-12 04:41:59.973Z",
-                      "updated": "2023-12-12 04:41:59.973Z",
+                      "id": "ai5z3aoed6809au",
+                      "created": "2024-10-27 09:28:19.524Z",
                       "data": {
-                        "auth": "authRecord",
-                        "execTime": 364.961387,
-                        "method": "POST",
-                        "referer": "http://localhost:8090/",
-                        "remoteIp": "127.0.0.1",
+                        "auth": "_superusers",
+                        "execTime": 2.392327,
+                        "method": "GET",
+                        "referer": "http://localhost:8090/_/",
+                        "remoteIP": "127.0.0.1",
                         "status": 200,
                         "type": "request",
-                        "url": "/api/collections/users/auth-with-password",
-                        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
-                        "userIp": "127.0.0.1"
+                        "url": "/api/collections/_pbc_2287844090/records?page=1&perPage=1&filter=&fields=id",
+                        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+                        "userIP": "127.0.0.1"
                       },
-                      "message": "POST /api/collections/users/auth-with-password",
+                      "message": "GET /api/collections/_pbc_2287844090/records?page=1&perPage=1&filter=&fields=id",
                       "level": 0
                     },
                     {
                       "id": "26apis4s3sm9yqm",
-                      "created": "2023-12-12 04:27:21.583Z",
-                      "updated": "2023-12-12 04:27:21.583Z",
+                      "created": "2024-10-27 09:28:19.524Z",
                       "data": {
-                        "auth": "authRecord",
-                        "execTime": 403.664712,
-                        "method": "POST",
-                        "referer": "http://localhost:8090/",
-                        "remoteIp": "127.0.0.1",
+                        "auth": "_superusers",
+                        "execTime": 2.392327,
+                        "method": "GET",
+                        "referer": "http://localhost:8090/_/",
+                        "remoteIP": "127.0.0.1",
                         "status": 200,
                         "type": "request",
-                        "url": "/api/collections/users/auth-with-password?expand=rel\u0026fields=*%2Crecord.*%2Crecord.expand.rel.id",
-                        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
-                        "userIp": "127.0.0.1"
+                        "url": "/api/collections/_pbc_2287844090/records?page=1&perPage=1&filter=&fields=id",
+                        "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+                        "userIP": "127.0.0.1"
                       },
-                      "message": "POST /api/collections/users/auth-with-password?expand=rel\u0026fields=*%2Crecord.*%2Crecord.expand.rel.id",
+                      "message": "GET /api/collections/_pbc_2287844090/records?page=1&perPage=1&filter=&fields=id",
                       "level": 0
                     }
                   ]
@@ -71,7 +69,7 @@
             body: `
                 {
                   "code": 401,
-                  "message": "The request requires admin authorization token to be set.",
+                  "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
             `,
@@ -81,7 +79,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "You are not allowed to perform this request.",
+                  "message": "The authorized record is not allowed to perform this action.",
                   "data": {}
                 }
             `,
@@ -94,7 +92,7 @@
 <Accordion single title="List logs">
     <div class="content m-b-sm">
         <p>Returns a paginated logs list.</p>
-        <p>Only admins can perform this action.</p>
+        <p>Only superusers can perform this action.</p>
     </div>
 
     <CodeTabs
@@ -105,7 +103,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             const pageResult = await pb.logs.getList(1, 20, {
                 filter: 'data.status >= 400'
@@ -118,7 +116,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             final pageResult = await pb.logs.getList(
                 page: 1,
@@ -128,10 +126,11 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
         <div class="content">/api/logs</div>
-        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
+        <small class="txt-hint auth-header">Requires <code>Authorization:TOKEN</code></small>
     </div>
 
     <div class="section-title">Query parameters</div>
@@ -168,7 +167,7 @@
                         <p>Specify the <em>ORDER BY</em> fields.</p>
                         <p>
                             Add <code>-</code> / <code>+</code> (default) in front of the attribute for DESC /
-                            ASC order, eg.:
+                            ASC order, e.g.:
                         </p>
                         <CodeBlock
                             content={`
@@ -192,7 +191,7 @@
                 </td>
                 <td>
                     <div class="content">
-                        <p>Filter expression to filter/search the returned logs list, eg.:</p>
+                        <p>Filter expression to filter/search the returned logs list, e.g.:</p>
                         <CodeBlock
                             content={`
                                 ?filter=(data.url~'test.com' && level>0)
@@ -213,7 +212,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

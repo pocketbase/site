@@ -29,7 +29,7 @@
                     "username": "john.doe",
                     "email": "test@example.com",
                     "isNew": false,
-                    "avatarUrl": "https://example.com/avatar.png",
+                    "avatarURL": "https://example.com/avatar.png",
                     "rawUser": {...},
                     "accessToken": "...",
                     "refreshToken": "...",
@@ -123,6 +123,7 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-success">
         <strong class="label label-primary">POST</strong>
         <div class="content">/api/collections/<code>collectionIdOrName</code>/auth-with-oauth2</div>
@@ -168,7 +169,7 @@
                 <td>
                     <span class="label">String</span>
                 </td>
-                <td>The name of the OAuth2 client provider (eg. "google").</td>
+                <td>The name of the OAuth2 client provider (e.g. "google").</td>
             </tr>
             <tr>
                 <td>
@@ -253,7 +254,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

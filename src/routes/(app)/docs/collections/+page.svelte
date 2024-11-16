@@ -2,137 +2,49 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
     import Toc from "@/components/Toc.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
+    import Accordion from "@/components/Accordion.svelte";
 </script>
 
 <Toc />
 
 <HeadingLink title="Overview" />
 <p>
-    <strong>Collections</strong> represents your application data.
-    <br />
-    Under the hood they are plain SQLite tables that are generated automatically with the collection
-    <strong>name</strong>
-    and
-    <strong>fields</strong> (aka. columns).
+    <strong>Collections</strong> represents your application data. Under the hood they are backed by plain
+    SQLite tables that are generated automatically with the collection
+    <strong>name</strong> and <strong>fields</strong> (columns).
 </p>
 <p>
-    Single entry of a collection is called
-    <strong>record</strong> - aka. a single row in the SQL table.
+    Single entry of a collection is called <strong>record</strong> (a single row in the SQL table).
 </p>
-<p>PocketBase comes with all sort of <strong>fields</strong> that you could use:</p>
-<table class="table-compact table-border">
-    <thead>
-        <tr>
-            <th>Field</th>
-            <th>Example values</th>
-            <th>Supported modifiers</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>text</code></td>
-            <td><code>""</code>, <code>"example"</code></td>
-            <td />
-        </tr>
-        <tr>
-            <td><code>editor</code></td>
-            <td><code>""</code>, <code>"{`<p>example</p>`}"</code></td>
-            <td />
-        </tr>
-        <tr>
-            <td><code>number</code></td>
-            <td><code>0</code>, <code>-1</code>, <code>1</code>, <code>1.5</code></td>
-            <td><code>+</code> (<em>add</em>), <code>-</code> (<em>subtract</em>)</td>
-        </tr>
-        <tr>
-            <td><code>bool</code></td>
-            <td><code>false</code>, <code>true</code></td>
-            <td />
-        </tr>
-        <tr>
-            <td><code>email</code></td>
-            <td><code>""</code>, <code>"test@example.com"</code></td>
-            <td />
-        </tr>
-        <tr>
-            <td><code>url</code></td>
-            <td><code>""</code>, <code>"https://example.com"</code></td>
-            <td />
-        </tr>
-        <tr>
-            <td><code>date</code></td>
-            <td><code>""</code>, <code>"2022-01-01 00:00:00.000Z"</code></td>
-            <td />
-        </tr>
-        <tr>
-            <td><code>select</code> (<em>single</em>)</td>
-            <td><code>""</code>, <code>"optionA"</code></td>
-            <td />
-        </tr>
-        <tr>
-            <td><code>select</code> (<em>multiple</em>)</td>
-            <td><code>[]</code>, <code>["optionA", "optionB"]</code></td>
-            <td><code>+</code> (<em>append</em>), <code>-</code> (<em>remove</em>)</td>
-        </tr>
-        <tr>
-            <td><code>relation</code> (<em>single</em>)</td>
-            <td><code>""</code>, <code>"JJ2YRU30FBG8MqX"</code></td>
-            <td />
-        </tr>
-        <tr>
-            <td><code>relation</code> (<em>multiple</em>)</td>
-            <td><code>[]</code>, <code>["JJ2YRU30FBG8MqX", "eP2jCr1h3NGtsbz"]</code></td>
-            <td><code>+</code> (<em>append</em>), <code>-</code> (<em>remove</em>)</td>
-        </tr>
-        <tr>
-            <td><code>file</code> (<em>single</em>)</td>
-            <td><code>""</code>, <code>"example123_Ab24ZjL.png"</code></td>
-            <td />
-        </tr>
-        <tr>
-            <td><code>file</code> (<em>multiple</em>)</td>
-            <td>
-                <code>[]</code>,
-                <code>["file1_Ab24ZjL.png", "file2_Frq24ZjL.txt"]</code>
-            </td>
-            <td><code>-</code> (<em>remove</em>)</td>
-        </tr>
-        <tr>
-            <td><code>json</code></td>
-            <td><em>any json value</em></td>
-        </tr>
-    </tbody>
-</table>
 <p>
-    You could create <strong>collections</strong> and <strong>records</strong> from the Admin UI or the
-    <a href="/docs/api-collections">Web API</a>.
-    <br />
-    <span class="txt-hint">
-        Usually you'll create your collections from the Admin UI and manage your records with the API using
-        the
-        <a href="/docs/client-side-sdks">client-side SDKs</a>.
-    </span>
+    You can manage your <strong>collections</strong> from the Dashboard, with the Web APIs using the
+    <a href="/docs/client-side-sdks/">client-side SDKs</a>
+    (<em>superusers only</em>) or programmatically via the
+    <a href="/docs/go-migrations/">Go</a>/<a href="/docs/js-migrations/">JavaScript</a>
+    migrations.
 </p>
-<p>Here is what the collection panel looks like:</p>
+<p>
+    Similarly, you can manage your <strong>records</strong> from the Dashboard, with the Web APIs using the
+    <a href="/docs/client-side-sdks/">client-side SDKs</a>
+    or programmatically via the
+    <a href="/docs/go-records/">Go</a>/<a href="/docs/js-records/">JavaScript</a>
+    Record operations.
+</p>
+<p>Here is what a collection edit panel looks like in the Dashboard:</p>
 <img src="/images/screenshots/collection-panel.png" alt="Collection panel screenshot" class="screenshot" />
+
 <p>
     Currently there are 3 collection types: <strong>Base</strong>, <strong>View</strong> and
     <strong>Auth</strong>.
 </p>
 
-<HeadingLink title="Base collection" />
+<HeadingLink title="Base collection" tag="h5" />
 <p>
     <strong>Base collection</strong> is the default collection type and it could be used to store any application
-    data (eg. articles, products, posts, etc.).
-</p>
-<p>
-    It comes with 3 default system fields that are always available and automatically populated:
-    <code>id</code>, <code>created</code>, <code>updated</code>.
-    <br />
-    Only the <code>id</code> can be explicitly set (<em>15 characters string</em>).
+    data (articles, products, posts, etc.).
 </p>
 
-<HeadingLink title="View collection" />
+<HeadingLink title="View collection" tag="h5" />
 <p>
     <strong>View collection</strong> is a read-only collection type where the data is populated from a plain
     SQL <code>SELECT</code> statement, allowing users to perform aggregations or any other custom queries in
@@ -163,32 +75,34 @@
     </div>
 </div>
 
-<HeadingLink title="Auth collection" />
+<HeadingLink title="Auth collection" tag="h5" />
 <p>
     <strong>Auth collection</strong> has everything from the <strong>Base collection</strong> but with some additional
-    special fields to help you manage your app users providing various authentication options.
+    special fields to help you manage your app users and also providing various authentication options.
 </p>
 <p>
-    Each Auth collection comes with the following system fields:
-    <code>id</code>, <code>created</code>, <code>updated</code>,
-    <code>username</code>, <code>email</code>, <code>emailVisibility</code>, <code>verified</code>.
+    Each Auth collection has the following special system fields:
+    <code>email</code>, <code>emailVisibility</code>, <code>verified</code>,
+    <code>password</code> and <code>tokenKey</code>.
+    <br />
+    They cannot be renamed or delated but can be configured using their specific field options. For example you
+    can make the user email required or optional.
 </p>
 <p>
-    You can have as many Auth collections as you want (eg. users, managers, staffs, members, clients, etc.)
-    each with their own set of fields, separate login (email/username + password or OAuth2) and models
-    managing endpoints.
+    You can have as many Auth collections as you want (users, managers, staffs, members, clients, etc.) each
+    with their own set of fields, separate login and records managing endpoints.
 </p>
-<p>You can create all sort of different access controls:</p>
+<p>You can build all sort of different access controls:</p>
 <ul>
     <li>
         <strong>Role (Group)</strong>
         <br />
         <em>
             For example, you could attach a "role" <code>select</code> field to your Auth collection with the
-            following options: "regularUser" and "superUser". And then in some of your other collections you
-            could define the following rule to allow only "superUsers":
+            following options: "employee" and "staff". And then in some of your other collections you could
+            define the following rule to allow only "staff":
             <br />
-            <code>@request.auth.role = "superUser"</code>
+            <code>@request.auth.role = "staff"</code>
         </em>
     </li>
     <li>
@@ -201,7 +115,7 @@
             "author" of the record(s), you could use a rule like:
             <code>@request.auth.id != "" && author = @request.auth.id</code>
             <br />
-            Nested relation fields look ups are also supported, eg:
+            Nested relation fields look ups, including back-relations, are also supported, for example:
             <code>someRelField.anotherRelField.author = @request.auth.id</code>
         </em>
     </li>
@@ -211,7 +125,7 @@
         <em>
             In addition to the default "List", "View", "Create", "Update", "Delete" API rules, Auth
             collections have also a special "Manage" API rule that could be used to allow one user (it could
-            be even from a different collection) to be able to fully manage the data of another user (eg.
+            be even from a different collection) to be able to fully manage the data of another user (e.g.
             changing their email, password, etc.).
         </em>
     </li>
@@ -224,8 +138,261 @@
             (AND) and <code>||</code> (OR) operators:
             <br />
             <code>
-                @request.auth.id != "" && (@request.auth.role = "superUser" || author = @request.auth.id)
+                @request.auth.id != "" && (@request.auth.role = "staff" || author = @request.auth.id)
             </code>
         </em>
     </li>
 </ul>
+
+<HeadingLink title="Fields" />
+<div class="alert alert-info">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            All collection fields <em>(with exception of the <code>JSONField</code>)</em> are
+            <strong>non-nullable and uses a zero-default</strong> for their respective type as fallback value
+            when missing (empty string for <code>text</code>, 0 for <code>number</code>, etc.).
+        </p>
+        <p>
+            All field specific modifiers are supported both in the Web APIs and via the record Get/Set
+            methods.
+        </p>
+    </div>
+</div>
+
+<div class="accordions">
+    <Accordion single title="BoolField">
+        <div class="content">
+            <p>
+                BoolField defines <code>bool</code> type field to store a single <code>false</code>
+                (default) or <code>true</code> value.
+            </p>
+        </div>
+    </Accordion>
+    <Accordion single title="NumberField">
+        <div class="content">
+            <p>
+                NumberField defines <code>number</code> type field for storing numeric/float64 value:
+                <code>0</code> (default), <code>2</code>, <code>-1</code>, <code>1.5</code>.
+            </p>
+            <p>The following additional set modifiers are available:</p>
+            <ul>
+                <li>
+                    <code>fieldName<strong>+</strong></code>
+                    adds number to the already existing record value.
+                </li>
+                <li>
+                    <code>fieldName<strong>-</strong></code>
+                    subtracts number from the already existing record value.
+                </li>
+            </ul>
+        </div>
+    </Accordion>
+    <Accordion single title="TextField">
+        <div class="content">
+            <p>
+                TextField defines <code>text</code> type field for storing string values:
+                <code>""</code> (default), <code>"example"</code>.
+            </p>
+            <p>The following additional set modifiers are available:</p>
+            <ul>
+                <li>
+                    <code>fieldName<strong>:autogenerate</strong></code>
+                    autogenerate a field value if the <code>AutogeneratePattern</code> field option is set.
+                    <br />
+                    For example, submitting:
+                    <code>{`{"slug:autogenerate":"abc-"}`}</code> will result in <code>"abc-[random]"</code>
+                    <code>slug</code> field value.
+                </li>
+            </ul>
+        </div>
+    </Accordion>
+    <Accordion single title="EmailField">
+        <div class="content">
+            <p>
+                EmailField defines <code>email</code> type field for storing a single email string address:
+                <code>""</code> (default), <code>"john@example.com"</code>.
+            </p>
+        </div>
+    </Accordion>
+    <Accordion single title="URLField">
+        <div class="content">
+            <p>
+                URLField defines <code>url</code> type field for storing a single URL string value:
+                <code>""</code> (default), <code>"https://example.com"</code>.
+            </p>
+        </div>
+    </Accordion>
+    <Accordion single title="EditorField">
+        <div class="content">
+            <p>
+                EditorField defines <code>editor</code> type field to store HTML formatted text:
+                <code>""</code> (default), <code>{`<p>example</p>`}</code>.
+            </p>
+        </div>
+    </Accordion>
+    <Accordion single title="DateField">
+        <div class="content">
+            <p>
+                DateField defines <code>date</code> type field to store a single datetime string value:
+                <code>""</code> (default), <code>"2022-01-01 00:00:00.000Z"</code>.
+            </p>
+            <p>
+                All PocketBase dates at the moment follows the RFC3399 format <code>Y-m-d H:i:s.uZ</code>
+                (e.g. <code>2024-11-10 18:45:27.123Z</code>).
+            </p>
+            <p>
+                Dates are compared as strings, meaning that when using the filters with a date field you'll
+                have to specify the full datetime string format. For example to target a single day (e.g.
+                November 19, 2024) you can use something like:
+                <code>
+                    {`created >= '2024-11-19 00:00:00.000Z' && created <= '2024-11-19 23:59:59.999Z'`}
+                </code>
+            </p>
+        </div>
+    </Accordion>
+    <Accordion single title="AutodateField">
+        <div class="content">
+            <p>
+                AutodateField defines an <code>autodate</code> type field and it is similar to the DateField but
+                its value is auto set on record create/update.
+            </p>
+            <p>This field is usually used for defining timestamp fields like "created" and "updated".</p>
+        </div>
+    </Accordion>
+    <Accordion single title="SelectField">
+        <div class="content">
+            <p>
+                SelectField defines <code>select</code> type field for storing single or multiple string values
+                from a predefined list.
+            </p>
+            <p>
+                It is usually intended for handling enums-like values such as
+                <code>pending/public/private</code>
+                statuses, simple <code>client/staff/manager/admin</code> roles, etc.
+            </p>
+            <p>
+                For <strong>single</strong> <code>select</code>
+                <em>(the <code>MaxSelect</code> option is {`<=`} 1)</em>
+                the field value is a string:
+                <code>""</code>, <code>"optionA"</code>.
+            </p>
+            <p>
+                For <strong>multiple</strong> <code>select</code>
+                <em>(the <code>MaxSelect</code> option is {`>=`} 2)</em>
+                the field value is an array:
+                <code>[]</code>, <code>["optionA", "optionB"]</code>.
+            </p>
+            <p>The following additional set modifiers are available:</p>
+            <ul>
+                <li>
+                    <code>fieldName<strong>+</strong></code>
+                    appends one or more values to the existing one.
+                </li>
+                <li>
+                    <code><strong>+</strong>fieldName</code>
+                    prepends one or more values to the existing one.
+                </li>
+                <li>
+                    <code>fieldName<strong>-</strong></code>
+                    substracts/removes one or more values from the existing one.
+                </li>
+            </ul>
+            <p>For example: <code>{`{"permissions+": "optionA", "roles-": ["staff", "editor"]}`}</code></p>
+        </div>
+    </Accordion>
+    <Accordion single title="FileField">
+        <div class="content">
+            <p>
+                FileField defines <code>file</code> type field for managing record file(s).
+            </p>
+            <p>
+                PocketBase stores in the database only the file name. The file itself is stored either on the
+                local disk or in S3, depending on your application storage settings.
+            </p>
+            <p>
+                For <strong>single</strong> <code>file</code>
+                <em>(the <code>MaxSelect</code> option is {`<=`} 1)</em>
+                the stored value is a string:
+                <code>""</code>, <code>"file1_Ab24ZjL.png"</code>.
+            </p>
+            <p>
+                For <strong>multiple</strong> <code>file</code>
+                <em>(the <code>MaxSelect</code> option is {`>=`} 2)</em>
+                the stored value is an array:
+                <code>[]</code>, <code>["file1_Ab24ZjL.png", "file2_Frq24ZjL.txt"]</code>.
+            </p>
+            <p>The following additional set modifiers are available:</p>
+            <ul>
+                <li>
+                    <code>fieldName<strong>+</strong></code>
+                    appends one or more files to the existing field value.
+                </li>
+                <li>
+                    <code><strong>+</strong>fieldName</code>
+                    prepends one or more files to the existing field value.
+                </li>
+                <li>
+                    <code>fieldName<strong>-</strong></code>
+                    deletes one or more files from the existing field value.
+                </li>
+            </ul>
+            <p>
+                For example:
+                <code>
+                    {`{"documents+": new File(...), "documents-": ["file1_Ab24ZjL.txt", "file2_Frq24ZjL.txt"]}`}
+                </code>
+            </p>
+            <p>
+                You can find more detailed information in the
+                <a href="/docs/files-handling/">Files upload and handling</a> guide.
+            </p>
+        </div>
+    </Accordion>
+    <Accordion single title="RelationField">
+        <div class="content">
+            <p>
+                RelationField defines <code>relation</code> type field for storing single or multiple collection
+                record references.
+            </p>
+            <p>
+                For <strong>single</strong> <code>relation</code>
+                <em>(the <code>MaxSelect</code> option is {`<=`} 1)</em>
+                the field value is a string:
+                <code>""</code>, <code>"RECOD_ID"</code>.
+            </p>
+            <p>
+                For <strong>multiple</strong> <code>relation</code>
+                <em>(the <code>MaxSelect</code> option is {`>=`} 2)</em>
+                the field value is an array:
+                <code>[]</code>, <code>["RECORD_ID1", "RECORD_ID2"]</code>.
+            </p>
+            <p>The following additional set modifiers are available:</p>
+            <ul>
+                <li>
+                    <code>fieldName<strong>+</strong></code>
+                    appends one or more ids to the existing one.
+                </li>
+                <li>
+                    <code><strong>+</strong>fieldName</code>
+                    prepends one or more ids to the existing one.
+                </li>
+                <li>
+                    <code>fieldName<strong>-</strong></code>
+                    substracts/removes one or more ids from the existing one.
+                </li>
+            </ul>
+            <p>For example: <code>{`{"users+": "USER_ID", "categories-": ["CAT_ID1", "CAT_ID2"]}`}</code></p>
+        </div>
+    </Accordion>
+    <Accordion single title="JSONField">
+        <div class="content">
+            <p>
+                JSONField defines <code>json</code> type field for storing any serialized JSON value,
+                including <code>null</code> (default).
+            </p>
+        </div>
+    </Accordion>
+</div>

@@ -22,14 +22,16 @@
     content={`
         // pb_hooks/main.pb.js
 
-        routerAdd("GET", "/hello/:name", (c) => {
-            let name = c.pathParam("name")
+        routerAdd("GET", "/hello/{name}", (e) => {
+            let name = e.request.pathValue("name")
 
-            return c.json(200, { "message": "Hello " + name })
+            return e.json(200, { "message": "Hello " + name })
         })
 
-        onModelAfterUpdate((e) => {
-            console.log("user updated...", e.model.get("email"))
+        onRecordAfterUpdateSuccess((e) => {
+            console.log("user updated...", e.record.get("email"))
+
+            e.next()
         }, "users")
     `}
 />
@@ -47,8 +49,8 @@
     <li>
         Go exported method and field names are converted to camelCase, for example:
         <br />
-        <code>app.Dao().FindRecordById("example", "RECORD_ID")</code> becomes
-        <code>$app.dao().findRecordById("example", "RECORD_ID")</code>.
+        <code>app.FindRecordById("example", "RECORD_ID")</code> becomes
+        <code>$app.findRecordById("example", "RECORD_ID")</code>.
     </li>
     <li>Errors are thrown as regular JavaScript exceptions and not returned as Go values.</li>
 </ul>
@@ -110,7 +112,9 @@
     content={`
         /// <reference path="../pb_data/types.d.ts" />
 
-        onAfterBootstrap((e) => {
+        onBootstrap((e) => {
+            e.next()
+
             console.log("App initialized!")
         })
     `}
@@ -133,7 +137,9 @@
     content={`
         const name = "test"
 
-        onAfterBootstrap((e) => {
+        onBootstrap((e) => {
+            e.next()
+
             console.log(name) // <-- name will be undefined inside the handler
         })
     `}
@@ -151,9 +157,10 @@
 <!-- prettier-ignore -->
 <CodeBlock
     content={`
-        onAfterBootstrap((e) => {
-            const config = require(` + "`${__hooks}/config.js`" + `)
+        onBootstrap((e) => {
+            e.next()
 
+            const config = require(` + "`${__hooks}/config.js`" + `)
             console.log(config.name)
         })
     `}
@@ -217,9 +224,10 @@
 <CodeBlock
     content={`
         // pb_hooks/main.pb.js
-        onAfterBootstrap((e) => {
-            const utils = require(` + "`${__hooks}/utils.js`" + `)
+        onBootstrap((e) => {
+            e.next()
 
+            const utils = require(` + "`${__hooks}/utils.js`" + `)
             utils.hello("world")
         })
     `}
@@ -238,24 +246,24 @@
 
 <HeadingLink title="Performance" tag="h5" />
 <p>
-    The prebuilt executable comes with a <strong>prewarmed pool of 25 JS runtimes</strong>, which helps
+    The prebuilt executable comes with a <strong>prewarmed pool of 15 JS runtimes</strong>, which helps
     maintaining the handlers execution times on par with the Go equivalent code (see
     <a
         href="https://github.com/pocketbase/benchmarks/blob/master/results/hetzner_cax11.md#go-vs-js-route-execution"
         target="blank"
         rel="noopener noreferrer">benchmarks</a
-    >). You can adjust the pool size manually with the <code>--hooksPool=100</code> flag (<em
+    >). You can adjust the pool size manually with the <code>--hooksPool=50</code> flag (<em
         >increasing the pool size may improve the performance in high concurrent scenarios but also will
         increase the memory usage</em
     >).
 </p>
 <p>
     Note that the handlers performance may degrade if you have heavy computational tasks in pure JavaScript
-    (eg. encryption, random generators, etc.). For such cases prefer using the exposed <a
+    (encryption, random generators, etc.). For such cases prefer using the exposed <a
         href="/jsvm/index.html"
         target="_blank">Go bindings</a
     >
-    (eg. <code>$security.randomString(10)</code>).
+    (e.g. <code>$security.randomString(10)</code>).
 </p>
 
 <HeadingLink title="Engine limitations" tag="h5" />

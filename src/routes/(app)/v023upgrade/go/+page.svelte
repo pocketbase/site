@@ -181,6 +181,7 @@
             The <code>Dao</code> abstraction has been removed and most of the old <code>Dao</code>
             methods are now part of the <code>core.App</code> instance.
         </p>
+        <p>The app settings related to the OAuth2 and email templates are moved in the collection options to allow more granular customizations.</p>
         <p>
             For more details about all new app fields and methods, please refer to the
             <a
@@ -876,6 +877,11 @@
 />
 <UpgradeTabs
     language="go"
+    before={`Collection.Options.OnlyVerified = true`}
+    after={`Collection.AuthRule = "verified = true"`}
+/>
+<UpgradeTabs
+    language="go"
     before={`Collection.Options.AllowOAuth2Auth = true`}
     after={`
         // note: providers can be set via Collection.OAuth2.Providers
@@ -1183,7 +1189,7 @@
         app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
             e.Router.Use((next echo.HandlerFunc) echo.HandlerFunc {
                 return func(c echo.Context) error {
-                    // eg. inspect some header value before processing the request
+                    // e.g. inspect some header value before processing the request
                     header := c.Request().Header.Get("Some-Header")
                     if header == "" {
                         return apis.NewBadRequestError("Invalid request", nil)
@@ -1199,7 +1205,7 @@
     after={`
         app.OnServe().BindFunc(func(se *core.ServeEvent) error {
             se.Router.BindFunc(func(e *core.RequestEvent) error {
-                // eg. inspect some header value before processing the request
+                // e.g. inspect some header value before processing the request
                 header := e.Request.Header.Get("Some-Header")
                 if header == "" {
                     return e.BadRequestError("Invalid request", nil)

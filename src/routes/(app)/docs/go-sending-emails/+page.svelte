@@ -6,11 +6,11 @@
 
 <p>
     PocketBase provides a simple abstraction for sending emails via the
-    <code>app.NewMailClient()</code> helper.
+    <code>app.NewMailClient()</code> factory.
 </p>
 
 <p>
-    Depending on your configured mail settings (<em>Admin UI > Settings > Mail settings</em>) it will use the
+    Depending on your configured mail settings (<em>Dashboard > Settings > Mail settings</em>) it will use the
     <code>sendmail</code> command or a SMTP client.
 </p>
 
@@ -18,9 +18,9 @@
 
 <HeadingLink title="Send custom email" />
 <p>
-    You can also send your own custom email from everywhere within your app (hooks, middlewares, routes, etc.)
-    by using <code>app.NewMailClient().Send(message)</code>. Here is an example of sending a custom email
-    after user registration:
+    You can send your own custom email from everywhere within the app (hooks, middlewares, routes, etc.) by
+    using <code>app.NewMailClient().Send(message)</code>. Here is an example of sending a custom email after
+    user registration:
 </p>
 <CodeBlock
     language="go"
@@ -40,7 +40,11 @@
         func main() {
             app := pocketbase.New()
 
-            app.OnRecordAfterCreateRequest("users").Add(func(e *core.RecordCreateEvent) error {
+            app.OnRecordCreateRequest("users").BindFunc(func(e *core.RecordCreateEvent) error {
+                if err := e.Next(); err != nil {
+                    return err
+                }
+
                 message := &mailer.Message{
                     From: mail.Address{
                         Address: app.Settings().Meta.SenderAddress,
@@ -65,12 +69,14 @@
 <HeadingLink title="Overwrite system emails" />
 <p>
     If you want to overwrite the default system emails for forgotten password, verification, etc., you can
-    adjust the default templates from the <em>Admin UI > Settings > Mail settings.</em>
+    adjust the default templates available from the
+    <em>Dashboard > Collections > Edit collection > Options</em>
+    .
 </p>
 <p>
     Alternatively, you can also apply individual changes by binding to one of the
-    <a href="/docs/go-event-hooks/#mailer-hooks">before mailer hooks</a>. Here is an example of appending a
-    Record field value to the subject using the <code>OnMailerBeforeRecordResetPasswordSend</code> hook:
+    <a href="/docs/go-event-hooks/#mailer-hooks">mailer hooks</a>. Here is an example of appending a Record
+    field value to the subject using the <code>OnMailerRecordPasswordResetSend</code> hook:
 </p>
 <CodeBlock
     language="go"
@@ -88,11 +94,11 @@
         func main() {
             app := pocketbase.New()
 
-            app.OnMailerBeforeRecordResetPasswordSend().Add(func(e *core.MailerRecordEvent) error {
+            app.OnMailerRecordPasswordResetSend("users").BindFunc(func(e *core.MailerRecordEvent) error {
                 // modify the subject
                 e.Message.Subject += (" " + e.Record.GetString("name"))
 
-                return nil
+                return e.Next()
             })
 
             if err := app.Start(); err != nil {

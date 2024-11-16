@@ -51,7 +51,7 @@
 <p>
     By default the templates apply contextual (HTML, JS, CSS, URI) auto escaping so the generated template
     content should be injection-safe. To render raw/verbatim trusted content in the templates you can use the
-    builtin <code>raw</code> function (eg. <code>{`{{.content|raw}}`}</code>).
+    builtin <code>raw</code> function (e.g. <code>{`{{.content|raw}}`}</code>).
 </p>
 
 <div class="alert alert-info m-t-10 m-b-sm">
@@ -148,9 +148,7 @@
             "log"
             "net/http"
 
-            "github.com/labstack/echo/v5"
             "github.com/pocketbase/pocketbase"
-            "github.com/pocketbase/pocketbase/apis"
             "github.com/pocketbase/pocketbase/core"
             "github.com/pocketbase/pocketbase/tools/template"
         )
@@ -158,13 +156,13 @@
         func main() {
             app := pocketbase.New()
 
-            app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
+            app.OnServe().BindFunc(func(se *core.ServeEvent) error {
                 // this is safe to be used by multiple goroutines
                 // (it acts as store for the parsed templates)
                 registry := template.NewRegistry()
 
-                e.Router.GET("/hello/:name", func(c echo.Context) error {
-                    name := c.PathParam("name")
+                se.Router.GET("/hello/{name}", func(e *core.RequestEvent) error {
+                    name := e.Request.PathValue("name")
 
                     html, err := registry.LoadFiles(
                         "views/layout.html",
@@ -175,13 +173,13 @@
 
                     if err != nil {
                         // or redirect to a dedicated 404 HTML page
-                        return apis.NewNotFoundError("", err)
+                        return e.NotFoundError("", err)
                     }
 
-                    return c.HTML(http.StatusOK, html)
+                    return e.HTML(http.StatusOK, html)
                 })
 
-                return nil
+                return se.Next()
             })
 
             if err := app.Start(); err != nil {

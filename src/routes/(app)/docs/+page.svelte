@@ -24,10 +24,11 @@
     <div class="content">
         <p>
             Please keep in mind that PocketBase is still under active development and full backward
-            compatibility is not guaranteed before reaching v1.0.0. PocketBase is not recommended for
+            compatibility is not guaranteed before reaching v1.0.0. PocketBase is NOT recommended for
             production critical applications yet, unless you are fine with reading the
             <a
                 href="{import.meta.env.PB_REPO_URL}/blob/master/CHANGELOG.md"
+                class="txt-bold"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -40,10 +41,12 @@
 
 <p>
     PocketBase is an open source backend consisting of embedded database (SQLite) with realtime subscriptions,
-    built-in auth management, convenient dashboard UI and simple REST-ish API.
+    built-in auth management, convenient dashboard UI and simple REST-ish API. It can be used both as Go
+    framework and as standalone application.
 </p>
 
-<p>The easiest way to get started is to download the prebuilt minimal PocketBase app:</p>
+<p>The easiest way to get started is to download the prebuilt minimal PocketBase executable:</p>
+
 <div class="tabs compact tabs-architecture m-b-sm">
     <div class="tabs-header left">
         <button
@@ -174,8 +177,15 @@
     <code><strong>./pocketbase serve</strong></code> in the extracted directory.
 </p>
 <p>
-    <strong>And that's it!</strong> A web server will be started with the following routes:
+    <strong>And that's it!</strong>
+    The first time it will generate an installer link that should be automatically opened in the browser to setup
+    your first superuser account
+    <small class="txt-hint">
+        (you can also create the first superuser manually via
+        <code>./pocketbase superuser create EMAIL PASS</code>)
+    </small>.
 </p>
+<p>The started web server has the following default routes:</p>
 <div class="alert m-t-10 m-b-xs">
     <div class="content">
         <ul>
@@ -192,26 +202,19 @@
                 <a href="http://127.0.0.1:8090/_/" target="_blank">
                     <code>http://127.0.0.1:8090/_/</code>
                 </a>
-                - Admin dashboard UI
+                - superusers dashboard
             </li>
             <li>
                 <!-- svelte-ignore security-anchor-rel-noreferrer -->
                 <a href="http://127.0.0.1:8090/api/" target="_blank">
                     <code>http://127.0.0.1:8090/api/</code>
                 </a>
-                - REST API
+                - REST-ish API
             </li>
         </ul>
     </div>
 </div>
-<p>
-    The first time, when you access the Admin dashboard UI, it will prompt you to create your first admin
-    account (email and pass).
-</p>
-<p>
-    The prebuilt PocketBase executable will automatically create and manage 2 new directories alongside the
-    executable:
-</p>
+<p>The prebuilt PocketBase executable will create and manage 2 new directories alongside the executable:</p>
 <ul>
     <li>
         <code>pb_data</code> - stores your application data, uploaded files, etc. (usually should be added in

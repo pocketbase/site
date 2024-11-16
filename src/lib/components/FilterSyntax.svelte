@@ -8,8 +8,8 @@
 </p>
 <ul>
     <li>
-        <code class="txt-success">OPERAND</code> - could be any of the above field literal, string (single or double
-        quoted), number, null, true, false
+        <code class="txt-success">OPERAND</code> - could be any field literal, string (single or double quoted),
+        number, null, true, false
     </li>
     <li>
         <code class="txt-danger">OPERATOR</code> - is one of:
@@ -105,7 +105,7 @@
 </ul>
 
 <p class="txt-bold">
-    To group and combine several expressions you could use parenthesis
+    To group and combine several expressions you can use parenthesis
     <code>(...)</code>, <code>&&</code> (AND) and <code>||</code> (OR) tokens.
 </p>
 

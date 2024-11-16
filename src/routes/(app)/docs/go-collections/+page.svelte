@@ -2,205 +2,239 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import Toc from "@/components/Toc.svelte";
+    import fieldNames from "../field_names.js";
 </script>
 
 <p>
-    Collections are usually managed via the Admin UI, but there are some situations where you may want to
-    create or edit a collection programmatically (usually as part of a
-    <a href="/docs/go-migrations">DB migration</a>). PocketBase exposes several helpers to simplify the
-    Collection model operations.
+    Collections are usually managed via the Dashboard interface, but there are some situations where you may
+    want to create or edit a collection programmatically (usually as part of a
+    <a href="/docs/go-migrations">DB migration</a>). You can find all available Collection related operations
+    and methods in
+    <a href="{import.meta.env.PB_GODOC_URL}/core#App" target="_blank" rel="noopener noreferrer">
+        <code>core.App</code>
+    </a>
+    and
+    <a href="{import.meta.env.PB_GODOC_URL}/core#Collection" target="_blank" rel="noopener noreferrer">
+        <code>core.Collection</code>
+    </a>
+    , but below are listed some of the most common ones:
 </p>
 
 <Toc />
 
 <HeadingLink title="Fetch collections" />
 
-<HeadingLink title="Fetch collection by name or id" tag="h5" />
+<HeadingLink title="Fetch single collection" tag="h5" />
 <CodeBlock
     language="go"
     content={`
-        collection, err := app.Dao().FindCollectionByNameOrId("example")
+        collection, err := app.FindCollectionByNameOrId("example")
     `}
 />
 
-<HeadingLink title="Fetch collections by type" tag="h5" />
+<HeadingLink title="Fetch multiple collections" tag="h5" />
 <CodeBlock
     language="go"
     content={`
-        baseCollections, err := app.Dao().FindCollectionsByType(models.CollectionTypeBase)
+        allCollections, err := app.FindAllCollections()
 
-        authCollections, err := app.Dao().FindCollectionsByType(models.CollectionTypeAuth)
-
-        viewCollections, err := app.Dao().FindCollectionsByType(models.CollectionTypeView)
+        authAndViewCollections, err := app.FindAllCollections(core.CollectionTypeAuth, core.CollectionTypeView)
     `}
 />
+
+<HeadingLink title="Custom collection query" tag="h5" />
+<CodeBlock
+    language="go"
+    content={`
+        import (
+            "github.com/pocketbase/dbx"
+            "github.com/pocketbase/pocketbase/core"
+        )
+
+        ...
+
+        func FindSystemCollections(app core.App) ([]*core.Collection, error) {
+            collections := []*core.Collection{}
+
+            err := app.CollectionQuery().
+                AndWhere(dbx.HashExp{"system": true}).
+                OrderBy("created DESC").
+                All(&collections)
+
+            if err != nil {
+                return nil, err
+            }
+
+            return collections, nil
+        }
+    `}
+/>
+
+<HeadingLink title="Collection properties" />
+<!-- note: listed temporary until godoc adds support for promoting the public fields and method of embedded unexported types -->
+<!-- prettier-ignore -->
+<CodeBlock
+    language="go"
+    content={`
+        Id      string
+        Name    string
+        Type    string // "base", "view", "auth"
+        System  bool // !prevent collection rename, deletion and rules change of internal collections like _superusers
+        Fields  core.FieldsList
+        Indexes types.JSONArray[string]
+        Created types.DateTime
+        Updated types.DateTime
+
+        // CRUD rules
+        ListRule   *string
+        ViewRule   *string
+        CreateRule *string
+        UpdateRule *string
+        DeleteRule *string
+
+        // "view" type specific options
+        // (see ` + import.meta.env.PB_REPO_URL + `/blob/master/core/collection_model_view_options.go)
+        ViewQuery string
+
+        // "auth" type specific options
+        // (see ` + import.meta.env.PB_REPO_URL + `/blob/master/core/collection_model_auth_options.go)
+        AuthRule                   *string
+        ManageRule                 *string
+        AuthAlert                  core.AuthAlertConfig
+        OAuth2                     core.OAuth2Config
+        PasswordAuth               core.PasswordAuthConfig
+        MFA                        core.MFAConfig
+        OTP                        core.OTPConfig
+        AuthToken                  core.TokenConfig
+        PasswordResetToken         core.TokenConfig
+        EmailChangeToken           core.TokenConfig
+        VerificationToken          core.TokenConfig
+        FileToken                  core.TokenConfig
+        VerificationTemplate       core.EmailTemplate
+        ResetPasswordTemplate      core.EmailTemplate
+        ConfirmEmailChangeTemplate core.EmailTemplate
+    `}
+/>
+
+<HeadingLink title="Field definitions" />
+<ul>
+    {#each fieldNames as field}
+        <li>
+            <a href="{import.meta.env.PB_GODOC_URL}/core#{field}" target="_blank" rel="noopener noreferrer">
+                <code>core.{field}</code>
+            </a>
+        </li>
+    {/each}
+</ul>
 
 <HeadingLink title="Create new collection" />
-
-<HeadingLink title="Create new collection WITHOUT data validations" tag="h5" />
 <CodeBlock
     language="go"
     content={`
         import (
-            "github.com/pocketbase/pocketbase/models"
-            "github.com/pocketbase/pocketbase/models/schema"
+            "github.com/pocketbase/pocketbase/core"
             "github.com/pocketbase/pocketbase/tools/types"
         )
 
         ...
 
-        collection := &models.Collection{
-            Name:       "example",
-            Type:       models.CollectionTypeBase,
-            ListRule:   nil,
-            ViewRule:   types.Pointer("@request.auth.id != ''"),
-            CreateRule: types.Pointer(""),
-            UpdateRule: types.Pointer("@request.auth.id != ''"),
-            DeleteRule: nil,
-            Schema:     schema.NewSchema(
-                &schema.SchemaField{
-                    Name:     "title",
-                    Type:     schema.FieldTypeText,
-                    Required: true,
-                    Options:  &schema.TextOptions{
-                        Max: types.Pointer(10),
-                    },
-                },
-                &schema.SchemaField{
-                    Name:     "user",
-                    Type:     schema.FieldTypeRelation,
-                    Required: true,
-                    Options:  &schema.RelationOptions{
-                        MaxSelect:     types.Pointer(1),
-                        CollectionId:  "ae40239d2bc4477",
-                        CascadeDelete: true,
-                    },
-                },
-            ),
-            Indexes: types.JsonArray[string]{
-                "CREATE UNIQUE INDEX idx_user ON example (user)",
-            },
-        }
+        // core.NewAuthCollection("example")
+        // core.NewViewCollection("example")
+        collection := core.NewBaseCollection("example")
 
-        // the id is autogenerated, but you can set a specific one if you want to:
-        // collection.SetId("...")
+        // set rules
+        collection.ViewRule = types.Pointer("@request.auth.id != ''")
+        collection.CreateRule = types.Pointer("@request.auth.id != '' && @request.body.user = @request.auth.id")
+        collection.UpdateRule = types.Pointer(` +
+        "`" +
+        `
+            @request.auth.id != '' &&
+            user = @request.auth.id &&
+            (@request.body.user:isset = false || @request.body.user = @request.auth.id)
+        ` +
+        "`" +
+        `)
 
-        if err := app.Dao().SaveCollection(collection); err != nil {
+        // add text field
+        collection.Fields.Add(&core.TextField{
+            Name:     "title",
+            Required: true,
+            Max:      100,
+        })
+
+        // add relation field
+        usersCollection, err := app.FindCollectionByNameOrId("users")
+        if err != nil {
             return err
         }
-    `}
-/>
-
-<HeadingLink title="Create new collection WITH data validations" tag="h5" />
-<CodeBlock
-    language="go"
-    content={`
-        import (
-            "github.com/pocketbase/pocketbase/forms"
-            "github.com/pocketbase/pocketbase/models"
-            "github.com/pocketbase/pocketbase/models/schema"
-            "github.com/pocketbase/pocketbase/tools/types"
-        )
-
-        ...
-
-        collection := &models.Collection{}
-
-        form := forms.NewCollectionUpsert(app, collection)
-        form.Name = "example"
-        form.Type = models.CollectionTypeBase
-        form.ListRule = nil
-        form.ViewRule = types.Pointer("@request.auth.id != ''")
-        form.CreateRule = types.Pointer("")
-        form.UpdateRule = types.Pointer("@request.auth.id != ''")
-        form.DeleteRule = nil
-        form.Schema.AddField(&schema.SchemaField{
-            Name:     "title",
-            Type:     schema.FieldTypeText,
-            Required: true,
-            Options: &schema.TextOptions{
-                Max: types.Pointer(10),
-            },
-        })
-        form.Schema.AddField(&schema.SchemaField{
-            Name:     "user",
-            Type:     schema.FieldTypeRelation,
-            Required: true,
-            Options: &schema.RelationOptions{
-                MaxSelect:     types.Pointer(1),
-                CollectionId:  "ae40239d2bc4477",
-                CascadeDelete: true,
-            },
+        collection.Fields.Add(&core.RelationField{
+            Name:          "user",
+            Required:      true,
+            Max:           100,
+            CascadeDelete: true,
+            CollectionId:  usersCollection.Id,
         })
 
-        // validate and submit (internally it calls app.Dao().SaveCollection(collection) in a transaction)
-        if err := form.Submit(); err != nil {
+        // add autodate/timestamp fields (created/updated)
+        collection.Fields.Add(&core.AutodateField{
+            Name:     "created",
+            OnCreate: true,
+        })
+        collection.Fields.Add(&core.AutodateField{
+            Name:     "updated",
+            OnCreate: true,
+            OnUpdate: true,
+        })
+
+        // or: collection.Indexes = []string{"CREATE UNIQUE INDEX idx_example_user ON example (user)"}
+        collection.AddIndex("idx_example_user", true, "user", "")
+
+        // validate and persist
+        // (use SaveNoValidate to skip fields validation)
+        err = app.Save(collection)
+        if err != nil {
             return err
         }
     `}
 />
 
 <HeadingLink title="Update existing collection" />
-
-<HeadingLink title="Update collection WITHOUT data validations" tag="h5" />
 <CodeBlock
     language="go"
     content={`
         import (
-            "github.com/pocketbase/pocketbase/models/schema"
+            "github.com/pocketbase/pocketbase/core"
+            "github.com/pocketbase/pocketbase/tools/types"
         )
 
         ...
 
-        collection, err := app.Dao().FindCollectionByNameOrId("example")
+        collection, err := app.FindCollectionByNameOrId("example")
         if err != nil {
             return err
         }
 
-        // change the collection name
-        collection.Name = "example_update"
+        // change rule
+        collection.DeleteRule = types.Pointer("@request.auth.id != ''")
 
-        // add new field
-        collection.Schema.AddField(&schema.SchemaField{
-            Name: "description",
-            Type: schema.FieldTypeText,
+        // add new editor field
+        collection.Fields.Add(&core.EditorField{
+            Name:     "description",
+            Required: true,
         })
 
-        if err := app.Dao().SaveCollection(collection); err != nil {
-            return err
-        }
-    `}
-/>
+        // change existing field
+        // (returns a pointer and direct modifications are allowed without the need of reinsert)
+        titleField := collection.Fields.GetByName("title")
+        titleField.Min = 10
 
-<HeadingLink title="Update collection WITH data validations" tag="h5" />
-<CodeBlock
-    language="go"
-    content={`
-        import (
-            "github.com/pocketbase/pocketbase/forms"
-            "github.com/pocketbase/pocketbase/models/schema"
-        )
+        // or: collection.Indexes = append(collection.Indexes, "CREATE INDEX idx_example_title ON example (title)")
+        collection.AddIndex("idx_example_title", false, "title", "")
 
-        ...
-
-        collection, err := app.Dao().FindCollectionByNameOrId("example")
+        // validate and persist
+        // (use SaveNoValidate to skip fields validation)
+        err = app.Save(collection)
         if err != nil {
-            return err
-        }
-
-        form := forms.NewCollectionUpsert(app, collection)
-
-        // change the collection name
-        form.Name = "example_update"
-
-        // add new field
-        form.Schema.AddField(&schema.SchemaField{
-            Name: "description",
-            Type: schema.FieldTypeText,
-        })
-
-        // validate and submit (internally it calls app.Dao().SaveCollection(collection) in a transaction)
-        if err := form.Submit(); err != nil {
             return err
         }
     `}
@@ -210,12 +244,13 @@
 <CodeBlock
     language="go"
     content={`
-        collection, err := app.Dao().FindCollectionByNameOrId("example")
+        collection, err := app.FindCollectionByNameOrId("example")
         if err != nil {
             return err
         }
 
-        if err := app.Dao().DeleteCollection(collection); err != nil {
+        err = app.Delete(collection)
+        if err != nil {
             return err
         }
     `}

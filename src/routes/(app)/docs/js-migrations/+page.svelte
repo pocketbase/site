@@ -25,7 +25,8 @@
 <HeadingLink title="Automigrate" />
 <p>
     The prebuilt executable has the <code>--automigrate</code> flag enabled by default, meaning that every collection
-    configuration change from the Admin UI will generate the related migration file automatically for you.
+    configuration change from the Dashboard (or Web API) will generate the related migration file automatically
+    for you.
 </p>
 
 <HeadingLink title="Creating migrations" />
@@ -42,9 +43,9 @@
     language="javascript"
     content={`
         // pb_migrations/1687801097_your_new_migration.js
-        migrate((db) => {
+        migrate((app) => {
             // add up queries...
-        }, (db) => {
+        }, (app) => {
             // add down queries...
         })
     `}
@@ -66,24 +67,23 @@
     changes made by the
     <code>upFunc</code>.
 </p>
-<p>
-    Both callbacks accept a single <code>db</code> argument (<code>dbx.Builder</code>) that you can use
-    directly or create a <code>Dao</code> instance and use its available helpers. You can explore the
-    <a href="/docs/js-database">Database guide</a>
-    for more details how to operate with the <code>db</code> object and its available methods.
-</p>
+<p>Both callbacks accept a transactional <code>app</code> instance.</p>
 
 <HeadingLink title="Collections snapshot" />
 <p>
-    PocketBase comes also with a <code>migrate collections</code> command that will generate a full snapshot of
-    your current Collections configuration without having to type it manually:
+    The <code>migrate collections</code> command generates a full snapshot of your current collections
+    configuration without having to type it manually. Similar to the <code>migrate create</code> command, this
+    will generate a new migration file in the
+    <code>pb_migrations</code> directory.
 </p>
 <CodeBlock content={`[root@dev app]$ ./pocketbase migrate collections`} />
 <p>
-    Similar to the <code>migrate create</code> command, this will generate a new migration file in the
-    <code>pb_migrations</code> directory.
+    By default the collections snapshot is imported in <em>extend</em> mode, meaning that collections and
+    fields that don't exist in the snapshot are preserved. If you want the snapshot to <em>delete</em>
+    missing collections and fields, you can edit the generated file and change the last argument of
+    <code>ImportCollectionsByMarshaledJSON</code>
+    to <code>true</code>.
 </p>
-<p>It is safe to run the command multiple times and generate multiple snapshot migration files.</p>
 
 <HeadingLink title="Migrations history" />
 <p>
@@ -106,16 +106,14 @@
 
 <HeadingLink title="Examples" />
 
-<HeadingLink title="Running raw SQL statements" tag="h5" />
+<HeadingLink title="Executing raw SQL statements" tag="h5" />
 <CodeBlock
     language="javascript"
     content={`
         // pb_migrations/1687801090_set_pending_status.js
-        //
-        // set a default "pending" status to all empty status articles
-        migrate((db) => {
-            db.newQuery("UPDATE articles SET status = 'pending' WHERE status = ''")
-                .execute()
+
+        migrate((app) => {
+            app.db().newQuery("UPDATE articles SET status = 'pending' WHERE status = ''").execute()
         })
     `}
 />
@@ -125,68 +123,107 @@
     language="javascript"
     content={`
         // pb_migrations/1687801090_initial_settings.js
-        migrate((db) => {
-            const dao = new Dao(db);
 
-            const settings = dao.findSettings()
+        migrate((app) => {
+            let settings = app.settings()
+
+            // for all available settings fields you could check
+            // /jsvm/interfaces/core.Settings.html
             settings.meta.appName = "test"
+            settings.meta.appURL = "https://example.com"
             settings.logs.maxDays = 2
+            settings.logs.logAuthId = true
+            settings.logs.logIP = false
 
-            dao.saveSettings(settings)
+            app.save(settings)
         })
     `}
 />
 
-<HeadingLink title="Creating new admin" tag="h5" />
+<HeadingLink title="Creating initial superuser" tag="h5" />
+<p>
+    <em>
+        For all supported record methods, you can refer to
+        <a href="/docs/js-records">Record operations</a>
+    </em>
+    .
+</p>
 <CodeBlock
     language="javascript"
     content={`
-        // pb_migrations/1687801090_initial_admin.js
-        migrate((db) => {
-            const dao = new Dao(db);
+        // pb_migrations/1687801090_initial_superuser.js
 
-            const admin = new Admin();
-            admin.email = "test@example.com"
-            admin.setPassword("1234567890")
+        migrate((app) => {
+            let superusers = app.findCollectionByNameOrId("_superusers")
 
-            dao.saveAdmin(admin)
-        }, (db) => { // optional revert
-            const dao = new Dao(db);
+            let record = core.NewRecord(superusers)
 
-            try {
-                const admin = dao.findAdminByEmail("test@example.com")
-
-                dao.deleteAdmin(admin)
-            } catch (_) { /* most likely already deleted */ }
-        })
-    `}
-/>
-
-<HeadingLink title="Creating new auth record" tag="h5" />
-<CodeBlock
-    language="javascript"
-    content={`
-        // pb_migrations/1687801090_new_users_record.js
-        migrate((db) => {
-            const dao = new Dao(db);
-
-            const collection = dao.findCollectionByNameOrId("users")
-
-            const record = new Record(collection)
-            record.setUsername("u_" + $security.randomStringWithAlphabet(5, "123456789"))
-            record.setPassword("1234567890")
-            record.set("name", "John Doe")
+            // note: the values can be eventually loaded via $os.getenv(key)
+            // or from a special local config file
             record.set("email", "test@example.com")
+            record.set("password", "1234567890")
 
-            dao.saveRecord(record)
-        }, (db) => { // optional revert
-            const dao = new Dao(db);
-
+            app.save(record)
+        }, (app) => { // optional revert operation
             try {
-                const record = dao.findAuthRecordByEmail("users", "test@example.com")
+                let record = app.findAuthRecordByEmail("_superusers", "test@example.com")
+                app.delete(record)
+            } catch {
+                // silent errors (probably already deleted)
+            }
+        })
+    `}
+/>
 
-                dao.deleteRecord(record)
-            } catch (_) { /* most likely already deleted */ }
+<HeadingLink title="Creating collection programmatically" tag="h5" />
+<p>
+    <em>
+        For all supported collection methods, you can refer to
+        <a href="/docs/js-collections">Collection operations</a>
+    </em>
+    .
+</p>
+<CodeBlock
+    language="javascript"
+    content={`
+        // migrations/1687801090_create_clients_collection.js
+
+        migrate((app) => {
+            // missing default options, system fields like id, email, etc. are initialized automatically
+            // and will be merged with the provided configuration
+            let collection = new Collection({
+                type:     "auth",
+                name:     "clients",
+                listRule: "id = @request.auth.id",
+                viewRule: "id = @request.auth.id",
+                fields: [
+                    {
+                        type:     "text",
+                        name:     "company",
+                        required: true,
+                        max:      100,
+                    },
+                    {
+                        name:        "url",
+                        type:        "url",
+                        presentable: true,
+                    },
+                ],
+                passwordAuth: {
+                    enabled: false,
+                },
+                otp: {
+                    enabled: true,
+                }
+                indexes: [
+                    "CREATE INDEX idx_clients_company ON clients (company)"
+                ],
+            })
+
+            app.save(collection)
+        }, (app) => {
+            let collection = app.findCollectionByNameOrId("clients")
+            app.delete(collection)
         })
     `}
 />

@@ -8,7 +8,7 @@
 
 <p>
     <code>$app.logger()</code> could be used to writes any logs into the database so that they can be later
-    explored from the PocketBase <em>Admin UI > Logs</em> section.
+    explored from the PocketBase <em>Dashboard > Logs</em> section.
 </p>
 
 <LogsWriteAlert />

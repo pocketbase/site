@@ -5,18 +5,28 @@
 </script>
 
 <p>
-    The main interface to interact with your application database is via <code>$app.dao()</code>.
+    <a href="/jsvm/modules/_app.html" target="_blank">
+        <code>$app</code>
+    </a>
+    is the main interface to interact with your database.
 </p>
 <p>
-    <code>$app.dao()</code>
-    provides read and write helpers (see <a href="/docs/js-collections">Collection operations</a>
-    and <a href="/docs/js-records">Record operations</a>) and it is responsible for triggering the
-    <code>onModel*</code> event hooks.
+    <code>$app.db()</code>
+    returns a <code>dbx.Builder</code> that could run all kind of SQL statements, including raw queries.
 </p>
-<p>
-    It also exposes <code>$app.dao().db()</code> builder that allows executing various SQL statements (including
-    raw queries).
-</p>
+<div class="alert alert-info">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            For more details and examples how to interact with Record and Collection models programmatically
+            you could also check <a href="/docs/js-collections">Collection operations</a>
+            and
+            <a href="/docs/js-records">Record operations</a> sections.
+        </p>
+    </div>
+</div>
 
 <Toc />
 
@@ -33,7 +43,7 @@
         <CodeBlock
             language="javascript"
             content={`
-                $app.dao().db()
+                $app.db()
                     .newQuery("CREATE INDEX name_idx ON users (name)")
                     .execute() // throw an error on db failure
             `}
@@ -51,11 +61,11 @@
                     // describe the shape of the data (used also as initial values)
                     "id":     "",
                     "status": false,
-                    "age":    0,
+                    "age":    0, // use -0 for a float value
                     "roles":  [], // serialized json db arrays are decoded as plain arrays
                 })
 
-                $app.dao().db()
+                $app.db()
                     .newQuery("SELECT id, status, age, roles FROM users WHERE id=1")
                     .one(result) // throw an error on db failure or missing row
 
@@ -76,11 +86,11 @@
                     // describe the shape of the data (used also as initial values)
                     "id":     "",
                     "status": false,
-                    "age":    0,
+                    "age":    0, // use -0 for a float value
                     "roles":  [], // serialized json db arrays are decoded as plain arrays
                 }))
 
-                $app.dao().db()
+                $app.db()
                     .newQuery("SELECT id, status, age, roles FROM users LIMIT 100")
                     .all(result) // throw an error on db failure
 
@@ -107,7 +117,7 @@
             "created": "",
         }))
 
-        $app.dao().db()
+        $app.db()
             .newQuery("SELECT name, created FROM posts WHERE created >= {:from} and created <= {:to}")
             .bind({
                 "from": "2023-06-25 00:00:00.000Z",
@@ -136,7 +146,7 @@
             "email": "",
         }))
 
-        $app.dao().db()
+        $app.db()
             .select("id", "email")
             .from("users")
             .andWhere($dbx.like("email", "example.com"))
@@ -158,7 +168,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.dao().db()
+        $app.db()
             .select("id", "avatar as image")
             .andSelect("(firstName || ' ' || lastName) as fullName")
             .distinct()
@@ -174,7 +184,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.dao().db()
+        $app.db()
             .select("table1.id", "table2.name")
             .from("table1", "table2")
             ...
@@ -199,7 +209,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.dao().db()
+        $app.db()
             .select("users.*")
             .from("users")
             .innerJoin("profiles", $dbx.exp("profiles.user_id = users.id"))
@@ -232,7 +242,7 @@
                 experience > 10
             )
         */
-        $app.dao().db()
+        $app.db()
             .select("users.*")
             .from("users")
             .where($dbx.exp("id = {:id}", { id: "someId" }))
@@ -474,7 +484,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.dao().db()
+        $app.db()
             .select("users.*")
             .from("users")
             .orderBy("created ASC", "updated DESC")
@@ -493,7 +503,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.dao().db()
+        $app.db()
             .select("users.*")
             .from("users")
             .groupBy("department", "level")
@@ -515,7 +525,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.dao().db()
+        $app.db()
             .select("users.*")
             .from("users")
             .groupBy("department", "level")
@@ -531,7 +541,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.dao().db()
+        $app.db()
             .select("users.*")
             .from("users")
             .limit(30)
@@ -547,7 +557,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        $app.dao().db()
+        $app.db()
             .select("users.*")
             .from("users")
             .offset(5)
@@ -558,48 +568,30 @@
 
 <HeadingLink title="Transaction" />
 <p>
-    To execute multiple queries in a transaction you can use <code>$app.dao().runInTransaction()</code>
+    To execute multiple queries in a transaction you can use
+    <a href="/jsvm/functions/_app.runInTransaction.html" target="_blank">
+        <code>$app.runInTransaction()</code>
+    </a>
+    .
 </p>
 <p>
-    You can nest <code>Dao.runInTransaction()</code> as many times as you want.
+    It is safe to nest <code>runInTransaction</code> calls as long as you use the callback's
+    <code>txApp</code>.
 </p>
 <p>
-    <strong>The transaction will be committed only if there are no errors.</strong>
+    <strong>The transaction is committed only if it completes without errors.</strong>
 </p>
 <CodeBlock
     language="javascript"
     content={`
-        $app.dao().runInTransaction((txDao) => {
+        $app.runInTransaction((txApp) => {
             // update a record
-            const record = txDao.findRecordById("articles", "RECORD_ID")
+            const record = txApp.findRecordById("articles", "RECORD_ID")
             record.set("status", "active")
-            txDao.saveRecord(record)
+            txApp.save(record)
 
-            // run some custom raw query
-            txDao.db().newQuery("DELETE FROM articles WHERE status = 'pending'").execute()
+            // run a custom raw query (doesn't fire event hooks)
+            txApp.db().newQuery("DELETE FROM articles WHERE status = 'pending'").execute()
         })
-    `}
-/>
-
-<HeadingLink title="Dao without event hooks" />
-<p>
-    By default all Dao write operations (create, update, delete) trigger the <code>onModel*</code> event
-    hooks.
-    <br />
-    If you don't want this behavior, you can create a new Dao without hooks from an existing one by calling
-    <code>Dao.withoutHooks()</code>
-    or instantiate a new one with <code>new Dao(db, [nonconcurrentDB])</code>:
-</p>
-<CodeBlock
-    language="javascript"
-    content={`
-        const record = $app.dao().findRecordById("articles", "RECORD_ID")
-
-        // the below WILL fire the onModelBeforeUpdate and onModelAfterUpdate hooks
-        $app.dao().saveRecord(record)
-
-        // the below WILL NOT fire the onModelBeforeUpdate and onModelAfterUpdate hooks
-        const dao = $app.dao().withoutHooks() // or new Dao($app.dao().db())
-        dao.saveRecord(record)
     `}
 />

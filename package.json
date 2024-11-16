@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "jstypes": "npx typedoc --options ./jsvm/typedoc.json",
-    "jstypes-rc": "npx typedoc --options ./jsvm-rc/typedoc.json",
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && npx pagefind --site build --output-path static/pagefind --glob docs/**/*.{html}",
     "preview": "vite preview"
   },
   "prettier": {
@@ -16,14 +15,16 @@
     "svelteBracketNewLine": true
   },
   "devDependencies": {
-    "@sveltejs/adapter-static": "^1.0.0",
-    "@sveltejs/kit": "^1.12.0",
-    "luxon": "^3.1.1",
+    "@sveltejs/adapter-static": "^3.0.0",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "luxon": "^3.5.0",
     "prismjs": "^1.29.0",
     "sass": "^1.56.2",
-    "svelte": "^3.55.0",
+    "svelte": "^4.0.0",
     "typedoc": "^0.24.8",
     "typedoc-theme-hierarchy": "^4.0.0",
-    "vite": "^4.0.1"
+    "vite": "^5.4.10",
+    "pagefind": "^1.1.1"
   }
 }

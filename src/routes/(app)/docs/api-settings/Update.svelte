@@ -9,41 +9,26 @@
             code: 200,
             body: `
                 {
-                  "meta": {
-                    "appName": "Acme",
-                    "appUrl": "http://127.0.0.1:8090",
-                    "hideControls": false,
-                    "senderName": "Support",
-                    "senderAddress": "support@example.com",
-                    "verificationTemplate": { ... },
-                    "resetPasswordTemplate": { ... },
-                    "confirmEmailChangeTemplate": { ...}"
-                  },
-                  "logs": {
-                    "maxDays": 7
+                  "smtp": {
+                    "enabled": false,
+                    "port": 587,
+                    "host": "smtp.example.com",
+                    "username": "",
+                    "authMethod": "",
+                    "tls": false,
+                    "localName": ""
                   },
                   "backups": {
-                    "cron": "0 0 * * *",
-                    "cronMaxKeep": 1,
+                    "cron": "",
+                    "cronMaxKeep": 3,
                     "s3": {
                       "enabled": false,
                       "bucket": "",
                       "region": "",
                       "endpoint": "",
                       "accessKey": "",
-                      "secret": "",
                       "forcePathStyle": false
                     }
-                  },
-                  "smtp": {
-                    "enabled": false,
-                    "host": "smtp.example.com",
-                    "port": 587,
-                    "username": "",
-                    "password": "",
-                    "tls": true,
-                    "authMethod": "",
-                    "localName": ""
                   },
                   "s3": {
                     "enabled": false,
@@ -51,70 +36,55 @@
                     "region": "",
                     "endpoint": "",
                     "accessKey": "",
-                    "secret": "",
                     "forcePathStyle": false
                   },
-                  "adminAuthToken": {
-                    "secret": "******",
-                    "duration": 1209600
+                  "meta": {
+                    "appName": "Acme",
+                    "appURL": "https://example.com",
+                    "senderName": "Support",
+                    "senderAddress": "support@example.com",
+                    "hideControls": false
                   },
-                  "adminPasswordResetToken": {
-                    "secret": "******",
-                    "duration": 1800
+                  "logs": {
+                    "maxDays": 5,
+                    "minLevel": 0,
+                    "logIP": true,
+                    "logAuthId": false
                   },
-                  "recordAuthToken": {
-                    "secret": "******",
-                    "duration": 1209600
-                  },
-                  "recordPasswordResetToken": {
-                    "secret": "******",
-                    "duration": 1800
-                  },
-                  "recordEmailChangeToken": {
-                    "secret": "******",
-                    "duration": 1800
-                  },
-                  "recordVerificationToken": {
-                    "secret": "******",
-                    "duration": 604800
-                  },
-                  "googleAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "facebookAuth": {
+                  "batch": {
                     "enabled": false,
+                    "maxRequests": 50,
+                    "timeout": 3,
+                    "maxBodySize": 0
                   },
-                  "githubAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
+                  "rateLimits": {
+                    "rules": [
+                      {
+                        "label": "*:auth",
+                        "maxRequests": 2,
+                        "duration": 3
+                      },
+                      {
+                        "label": "*:create",
+                        "maxRequests": 20,
+                        "duration": 5
+                      },
+                      {
+                        "label": "/api/batch",
+                        "maxRequests": 3,
+                        "duration": 1
+                      },
+                      {
+                        "label": "/api/",
+                        "maxRequests": 300,
+                        "duration": 10
+                      }
+                    ],
+                    "enabled": false
                   },
-                  "gitlabAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "discordAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "twitterAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "microsoftAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "spotifyAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
+                  "trustedProxy": {
+                    "headers": [],
+                    "useLeftmostIP": false
                   }
                 }
             `,
@@ -141,7 +111,7 @@
             body: `
                 {
                   "code": 401,
-                  "message": "The request requires admin authorization token to be set.",
+                  "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
             `,
@@ -151,7 +121,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "You are not allowed to perform this request.",
+                  "message": "The authorized record is not allowed to perform this action.",
                   "data": {}
                 }
             `,
@@ -164,7 +134,7 @@
 <Accordion single title="Update settings">
     <div class="content m-b-sm">
         <p>Bulk updates application settings and returns the updated settings list.</p>
-        <p>Only admins can perform this action.</p>
+        <p>Only superusers can perform this action.</p>
     </div>
 
     <CodeTabs
@@ -175,7 +145,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '123456');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '123456');
 
             const settings = await pb.settings.update({
                 meta: {
@@ -191,7 +161,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '123456');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '123456');
 
             final settings = await pb.settings.update(body: {
                 'meta': {
@@ -202,10 +172,11 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-warning">
         <strong class="label label-primary">PATCH</strong>
         <div class="content">/api/settings</div>
-        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
+        <small class="txt-hint auth-header">Requires <code>Authorization:TOKEN</code></small>
     </div>
 
     <div class="section-title">Body Parameters</div>
@@ -264,7 +235,7 @@
                     <span class="label">Boolean</span>
                 </td>
                 <td>
-                    Hides the collection create and update controls from the Admin UI.
+                    Hides the collection create and update controls from the Dashboard.
                     <small>
                         Useful to prevent making accidental schema changes when in production environment.
                     </small>
@@ -296,52 +267,13 @@
                 </td>
                 <td>Transactional mails sender address.</td>
             </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>verificationTemplate</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Object</span>
-                </td>
-                <td>The default user verification email template.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>resetPasswordTemplate</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Object</span>
-                </td>
-                <td>The default user reset password email template.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-success">Required</span>
-                        <em>confirmEmailChangeTemplate</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Object</span>
-                </td>
-                <td>The default user email change confirmation email template.</td>
-            </tr>
 
             <!-- logs -->
             <tr>
                 <td colspan="3" class="bg-info-alt">
                     <strong>logs</strong>
                     <br />
-                    <small class="txt-hint">Request logs settings.</small>
+                    <small class="txt-hint">App logger settings.</small>
                 </td>
             </tr>
             <tr>
@@ -356,6 +288,55 @@
                     <span class="label">Number</span>
                 </td>
                 <td>Max retention period. Set to <em>0</em> for no logs.</td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">└─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>minLevel</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">Number</span>
+                </td>
+                <td>
+                    Specifies the minimum log persistent level.
+                    <br />
+                    The default log levels are:
+                    <ul>
+                        <li>-4: DEBUG</li>
+                        <li>0: INFO</li>
+                        <li>4: WARN</li>
+                        <li>8: ERROR</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">└─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>logIP</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">Boolean</span>
+                </td>
+                <td>If enabled includes the client IP in the activity request logs.</td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">└─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>logAuthId</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">Boolean</span>
+                </td>
+                <td>If enabled includes the authenticated record id in the activity request logs.</td>
             </tr>
 
             <!-- backups -->
@@ -377,7 +358,7 @@
                 <td>
                     <span class="label">String</span>
                 </td>
-                <td>Cron expression to schedule auto backups, eg. <code>0 0 * * *</code>.</td>
+                <td>Cron expression to schedule auto backups, e.g. <code>0 0 * * *</code>.</td>
             </tr>
             <tr>
                 <td class="min-width">
@@ -635,228 +616,83 @@
                     <span class="label">Boolean</span>
                 </td>
                 <td>
-                    Forces the S3 request to use path-style addressing, eg.
+                    Forces the S3 request to use path-style addressing, e.g.
                     "https://s3.amazonaws.com/BUCKET/KEY" instead of the default
                     "https://BUCKET.s3.amazonaws.com/KEY".
                 </td>
             </tr>
 
-            <!-- adminAuthToken -->
+            <!-- batch -->
             <tr>
                 <td colspan="3" class="bg-info-alt">
-                    <strong>adminAuthToken</strong>
+                    <strong>batch</strong>
                     <br />
-                    <small class="txt-hint">Admin authentication token options.</small>
+                    <small class="txt-hint">Batch logs settings.</small>
                 </td>
             </tr>
             <tr>
                 <td class="min-width">
                     <div class="inline-flex flex-nowrap">
                         <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>secret</em>
+                        <span class="label label-warning">Optional</span>
+                        <em>enabled</em>
                     </div>
                 </td>
                 <td>
-                    <span class="label">String</span>
+                    <span class="label">Boolean</span>
                 </td>
-                <td>Token secret (random 30+ characters).</td>
+                <td>Enable the batch Web APIs.</td>
             </tr>
             <tr>
                 <td class="min-width">
                     <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
+                        <span class="txt">├─</span>
                         <span class="label label-success">Required</span>
-                        <em>duration</em>
+                        <em>maxRequests</em>
                     </div>
                 </td>
                 <td>
                     <span class="label">Number</span>
                 </td>
-                <td>Token validity duration in seconds.</td>
-            </tr>
-
-            <!-- adminPasswordResetToken -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>adminPasswordResetToken</strong>
-                    <br />
-                    <small class="txt-hint">Admin password reset token options.</small>
-                </td>
+                <td>The maximum allowed batch request to execute.</td>
             </tr>
             <tr>
                 <td class="min-width">
                     <div class="inline-flex flex-nowrap">
                         <span class="txt">├─</span>
                         <span class="label label-success">Required</span>
-                        <em>secret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>Token secret (random 30+ characters).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-success">Required</span>
-                        <em>duration</em>
+                        <em>timeout</em>
                     </div>
                 </td>
                 <td>
                     <span class="label">Number</span>
                 </td>
-                <td>Token validity duration in seconds.</td>
-            </tr>
-
-            <!-- recordAuthToken -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>recordAuthToken</strong>
-                    <br />
-                    <small class="txt-hint">Record authentication token options.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>secret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>Token secret (random 30+ characters).</td>
+                <td>The max duration in seconds to wait before cancelling the batch transaction.</td>
             </tr>
             <tr>
                 <td class="min-width">
                     <div class="inline-flex flex-nowrap">
                         <span class="txt">└─</span>
-                        <span class="label label-success">Required</span>
-                        <em>duration</em>
+                        <span class="label label-warning">Optional</span>
+                        <em>maxBodySize</em>
                     </div>
                 </td>
                 <td>
                     <span class="label">Number</span>
                 </td>
-                <td>Token validity duration in seconds.</td>
+                <td>
+                    The maximum allowed batch request body size in bytes.
+                    <br />
+                    If not set, fallbacks to max ~128MB.
+                </td>
             </tr>
 
-            <!-- recordPasswordResetToken -->
+            <!-- rateLimits -->
             <tr>
                 <td colspan="3" class="bg-info-alt">
-                    <strong>recordPasswordResetToken</strong>
+                    <strong>rateLimits</strong>
                     <br />
-                    <small class="txt-hint">Record password reset token options.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>secret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>Token secret (random 30+ characters).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-success">Required</span>
-                        <em>duration</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Number</span>
-                </td>
-                <td>Token validity duration in seconds.</td>
-            </tr>
-
-            <!-- recordEmailChangeToken -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>recordEmailChangeToken</strong>
-                    <br />
-                    <small class="txt-hint">Record email change token options.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>secret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>Token secret (random 30+ characters).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-success">Required</span>
-                        <em>duration</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Number</span>
-                </td>
-                <td>Token validity duration in seconds.</td>
-            </tr>
-
-            <!-- recordVerificationToken -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>recordVerificationToken</strong>
-                    <br />
-                    <small class="txt-hint">Record verification token options.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>secret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>Token secret (random 30+ characters).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-success">Required</span>
-                        <em>duration</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Number</span>
-                </td>
-                <td>Token validity duration in seconds.</td>
-            </tr>
-
-            <!-- googleAuth -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>googleAuth</strong>
-                    <br />
-                    <small class="txt-hint">Google OAuth2 provider settings.</small>
+                    <small class="txt-hint">Rate limiter settings.</small>
                 </td>
             </tr>
             <tr>
@@ -870,92 +706,42 @@
                 <td>
                     <span class="label">Boolean</span>
                 </td>
-                <td>Enable the OAuth2 provider.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientId</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client id (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientSecret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client secret (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>authUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's authorization endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://accounts.google.com/o/oauth2/auth.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>tokenUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's token endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://accounts.google.com/o/oauth2/token.</small>
-                </td>
+                <td>Enable the builtin rate limiter.</td>
             </tr>
             <tr>
                 <td class="min-width">
                     <div class="inline-flex flex-nowrap">
                         <span class="txt">└─</span>
                         <span class="label label-warning">Optional</span>
-                        <em>userApiUrl</em>
+                        <em>rules</em>
                     </div>
                 </td>
                 <td>
-                    <span class="label">String</span>
+                    <span class="label">{`Array<RateLimitRule>`}</span>
                 </td>
                 <td>
-                    The provider's user profile endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://www.googleapis.com/oauth2/v1/userinfo.</small>
+                    List of rate limit rules. Each rule have:
+                    <ul>
+                        <li>
+                            <code>label</code> - the identifier of the rule.
+                            <br />
+                            It could be a tag, complete path or path prerefix (when ends with `/`).
+                        </li>
+                        <li><code>maxRequests</code> - the max allowed number of requests per duration.</li>
+                        <li>
+                            <code>duration</code> - specifies the interval (in seconds) per which to reset the
+                            counted/accumulated rate limiter tokens..
+                        </li>
+                    </ul>
                 </td>
             </tr>
 
-            <!-- facebookAuth -->
+            <!-- trustedProxy -->
             <tr>
                 <td colspan="3" class="bg-info-alt">
-                    <strong>facebookAuth</strong>
+                    <strong>trustedProxy</strong>
                     <br />
-                    <small class="txt-hint">Facebook OAuth2 provider settings.</small>
+                    <small class="txt-hint">Trusted proxy headers settings.</small>
                 </td>
             </tr>
             <tr>
@@ -963,516 +749,26 @@
                     <div class="inline-flex flex-nowrap">
                         <span class="txt">├─</span>
                         <span class="label label-warning">Optional</span>
-                        <em>enabled</em>
+                        <em>headers</em>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">{`Array<String>`}</span>
+                </td>
+                <td>List of explicit trusted header(s) to check.</td>
+            </tr>
+            <tr>
+                <td class="min-width">
+                    <div class="inline-flex flex-nowrap">
+                        <span class="txt">└─</span>
+                        <span class="label label-warning">Optional</span>
+                        <em>useLeftmostIP</em>
                     </div>
                 </td>
                 <td>
                     <span class="label">Boolean</span>
                 </td>
-                <td>Enable the OAuth2 provider.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientId</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client id (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientSecret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client secret (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>authUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's authorization endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://www.facebook.com/dialog/oauth.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>tokenUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's token endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://graph.facebook.com/oauth/access_token.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>userApiUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's user profile endpoint URL.
-                    <br />
-                    <small class="txt-hint">
-                        Default to https://graph.facebook.com/me?fields=name,email,picture.type(large).
-                    </small>
-                </td>
-            </tr>
-
-            <!-- githubAuth -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>githubAuth</strong>
-                    <br />
-                    <small class="txt-hint">GitHub OAuth2 provider settings.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>enabled</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Boolean</span>
-                </td>
-                <td>Enable the OAuth2 provider.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientId</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client id (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientSecret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client secret (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>authUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's authorization endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://github.com/login/oauth/authorize.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>tokenUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's token endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://github.com/login/oauth/access_token.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>userApiUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's user profile endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://api.github.com/user.</small>
-                </td>
-            </tr>
-
-            <!-- gitlabAuth -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>gitlabAuth</strong>
-                    <br />
-                    <small class="txt-hint">GitLab OAuth2 provider settings.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>enabled</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Boolean</span>
-                </td>
-                <td>Enable the OAuth2 provider.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientId</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client id (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientSecret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client secret (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>authUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's authorization endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://gitlab.com/oauth/authorize.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>tokenUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's token endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://gitlab.com/oauth/token.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>userApiUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's user profile endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://gitlab.com/api/v4/user.</small>
-                </td>
-            </tr>
-
-            <!-- discordAuth -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>discordAuth</strong>
-                    <br />
-                    <small class="txt-hint">Discord OAuth2 provider settings.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>enabled</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Boolean</span>
-                </td>
-                <td>Enable the OAuth2 provider.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientId</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client id (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientSecret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client secret (required if enabled).</td>
-            </tr>
-
-            <!-- twitterAuth -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>twitterAuth</strong>
-                    <br />
-                    <small class="txt-hint">Twitter OAuth2 provider settings.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>enabled</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Boolean</span>
-                </td>
-                <td>Enable the OAuth2 provider.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientId</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client id (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientSecret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client secret (required if enabled).</td>
-            </tr>
-
-            <!-- microsoftAuth -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>microsoftAuth</strong>
-                    <br />
-                    <small class="txt-hint">Microsoft Azure AD OAuth2 provider settings.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>enabled</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Boolean</span>
-                </td>
-                <td>Enable the OAuth2 provider.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientId</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client id (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientSecret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client secret (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>authUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's authorization endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://gitlab.com/oauth/authorize.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>tokenUrl</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The provider's token endpoint URL.
-                    <br />
-                    <small class="txt-hint">Default to https://gitlab.com/oauth/token.</small>
-                </td>
-            </tr>
-
-            <!-- spotifyAuth -->
-            <tr>
-                <td colspan="3" class="bg-info-alt">
-                    <strong>spotifyAuth</strong>
-                    <br />
-                    <small class="txt-hint">Spotify OAuth2 provider settings.</small>
-                </td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-warning">Optional</span>
-                        <em>enabled</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Boolean</span>
-                </td>
-                <td>Enable the OAuth2 provider.</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">├─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientId</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client id (required if enabled).</td>
-            </tr>
-            <tr>
-                <td class="min-width">
-                    <div class="inline-flex flex-nowrap">
-                        <span class="txt">└─</span>
-                        <span class="label label-success">Required</span>
-                        <em>clientSecret</em>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The provider's app client secret (required if enabled).</td>
+                <td>Specifies to use the left-mostish IP from the trusted headers.</td>
             </tr>
         </tbody>
     </table>
@@ -1497,7 +793,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

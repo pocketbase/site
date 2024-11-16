@@ -36,7 +36,7 @@
 </script>
 
 <div class="tabs code-tabs {classes}">
-    <div class="tabs-header compact left">
+    <div class="tabs-header compact combined left">
         {#each nonEmptyTabs as tab (tab.language)}
             <button
                 class="tab-item"

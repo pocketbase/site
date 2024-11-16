@@ -244,6 +244,11 @@ button {
         width: 100%;
     }
 
+    // pill
+    &.btn-pill {
+        border-radius: 30px;
+    }
+
     // circle
     &.btn-circle {
         border-radius: 50%;
@@ -477,18 +482,26 @@ select {
         z-index: 1;
         top: 0px;
         right: var(--hPadding);
-        min-height: var(--inputHeight);
+        min-height: 100%;
         color: var(--txtHintColor);
         .btn {
             margin-right: -5px;
         }
-        & ~ %input {
-            padding-right: 35px;
+        &:not(.prefix) ~ %input {
+            padding-right: 45px;
+        }
+        &.prefix {
+            right: auto;
+            left: var(--hPadding);
+            & ~ %input {
+                padding-left: 45px;
+            }
         }
     }
     label ~ .form-field-addon {
-        min-height: calc(var(--inputHeight) + var(--baseLineHeight));
+        min-height: calc(26px + var(--inputHeight));
     }
+
 
     // hints
     .help-block {

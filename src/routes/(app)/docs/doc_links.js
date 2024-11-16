@@ -1,44 +1,42 @@
-export const baseLinks = [
+export const introductionLinks = [
     {
         href: "/docs",
         title: "Introduction",
         icon: "ri-home-2-line",
+        children: [
+            {
+                href: "/docs/collections",
+                title: "Collections",
+            },
+            {
+                href: "/docs/api-rules-and-filters",
+                title: "API rules and filters",
+            },
+            {
+                href: "/docs/client-side-sdks",
+                title: "Client-side SDKs",
+            },
+            {
+                href: "/docs/authentication",
+                title: "Authentication",
+            },
+            {
+                href: "/docs/files-handling",
+                title: "Files upload and handling",
+            },
+            {
+                href: "/docs/working-with-relations",
+                title: "Working with relations",
+            },
+            {
+                href: "/docs/use-as-framework",
+                title: "Use as framework",
+            },
+        ]
     },
-    {
-        href: "/docs/collections",
-        title: "Collections",
-        icon: "ri-database-2-line",
-    },
-    {
-        href: "/docs/api-rules-and-filters",
-        title: "API rules and filters",
-        icon: "ri-shield-check-line",
-    },
-    {
-        href: "/docs/client-side-sdks",
-        title: "Client-side SDKs",
-        icon: "ri-tools-line",
-    },
-    {
-        href: "/docs/authentication",
-        title: "Authentication",
-        icon: "ri-group-line",
-    },
-    {
-        href: "/docs/files-handling",
-        title: "Files upload and handling",
-        icon: "ri-upload-cloud-line",
-    },
-    {
-        href: "/docs/working-with-relations",
-        title: "Working with relations",
-        icon: "ri-mind-map",
-    },
-    {
-        href: "/docs/use-as-framework",
-        title: "Use as framework",
-        icon: "ri-code-s-slash-line",
-    },
+]
+
+export const webApiLinks = [
     {
         title: "Web APIs reference",
         href: "/docs/api-records",
@@ -55,10 +53,6 @@ export const baseLinks = [
             {
                 href: "/docs/api-files",
                 title: "API Files",
-            },
-            {
-                href: "/docs/api-admins",
-                title: "API Admins",
             },
             {
                 href: "/docs/api-collections",
@@ -82,6 +76,9 @@ export const baseLinks = [
             },
         ],
     },
+]
+
+export const goingToProductionLinks = [
     {
         href: "/docs/going-to-production",
         title: "Going to production",
@@ -123,16 +120,24 @@ export const goLinks = [
         title: "Jobs scheduling",
     },
     {
-        href: "/docs/go-console-commands",
-        title: "Console commands",
-    },
-    {
         href: "/docs/go-sending-emails",
         title: "Sending emails",
     },
     {
         href: "/docs/go-rendering-templates",
         title: "Rendering templates",
+    },
+    {
+        href: "/docs/go-console-commands",
+        title: "Console commands",
+    },
+    {
+        href: "/docs/go-realtime",
+        title: "Realtime messaging",
+    },
+    {
+        href: "/docs/go-filesystem",
+        title: "Filesystem",
     },
     {
         href: "/docs/go-logging",
@@ -143,8 +148,12 @@ export const goLinks = [
         title: "Testing",
     },
     {
-        href: "/docs/go-custom-models",
-        title: "Custom models",
+        href: "/docs/go-miscellaneous",
+        title: "Miscellaneous",
+    },
+    {
+        href: "/docs/go-record-proxy",
+        title: "Record proxy",
     },
 ];
 
@@ -182,20 +191,28 @@ export const jsLinks = [
         title: "Jobs scheduling",
     },
     {
-        href: "/docs/js-console-commands",
-        title: "Console commands",
-    },
-    {
         href: "/docs/js-sending-emails",
         title: "Sending emails",
+    },
+    {
+        href: "/docs/js-rendering-templates",
+        title: "Rendering templates",
+    },
+    {
+        href: "/docs/js-console-commands",
+        title: "Console commands",
     },
     {
         href: "/docs/js-sending-http-requests",
         title: "Sending HTTP requests",
     },
     {
-        href: "/docs/js-rendering-templates",
-        title: "Rendering templates",
+        href: "/docs/js-realtime",
+        title: "Realtime messaging",
+    },
+    {
+        href: "/docs/js-filesystem",
+        title: "Filesystem",
     },
     {
         href: "/docs/js-logging",

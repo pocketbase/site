@@ -1,5 +1,0 @@
-{
-    "typedocOptions": {
-        "entryPoints": ["./types.d.ts"],
-    }
-}

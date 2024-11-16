@@ -2,7 +2,6 @@
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import CodeTabs from "@/components/CodeTabs.svelte";
-    import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
         {
@@ -24,7 +23,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "Only admins can perform this action.",
+                  "message": "Only superusers can perform this action.",
                   "data": {}
                 }
             `,
@@ -52,7 +51,7 @@
             have been restricted.
         </p>
         <p class="txt-hint">
-            <em> You could find individual generated records API documentation from the admin UI. </em>
+            <em> You could find individual generated records API documentation from the Dashboard. </em>
         </p>
     </div>
 
@@ -77,6 +76,7 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-danger">
         <strong class="label label-primary">DELETE</strong>
         <div class="content">
@@ -113,7 +113,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

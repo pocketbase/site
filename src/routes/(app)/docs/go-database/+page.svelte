@@ -5,25 +5,34 @@
 </script>
 
 <p>
-    The main interface to interact with your application database is via the
-    <a href="{import.meta.env.PB_GODOC_URL}/daos" target="_blank" rel="noopener noreferrer">
-        Dao abstraction
-    </a>.
+    <a href="{import.meta.env.PB_GODOC_URL}/core#App" target="_blank" rel="noopener noreferrer">
+        <code>core.App</code>
+    </a>
+    is the main interface to interact with the database.
 </p>
 <p>
-    <code>app.Dao()</code>
-    provides read and write helpers (see <a href="/docs/go-collections">Collection operations</a>
-    and <a href="/docs/go-records">Record operations</a>) and it is responsible for triggering the
-    <code>onModel*</code> event hooks.
+    <code>App.DB()</code> returns a <code>dbx.Builder</code> that could run all kind of SQL statements, including
+    raw queries.
 </p>
 <p>
-    It also exposes <code>app.Dao().DB()</code> builder that allows executing various SQL statements
-    (including raw queries). Most of the common DB operations are listed below, but you can find further
-    information in the
+    Most of the common DB operations are listed below, but you can find further information in the
     <a href="https://pkg.go.dev/github.com/pocketbase/dbx" target="_blank" rel="noopener noreferrer">
         dbx package godoc
     </a>.
 </p>
+<div class="alert alert-info">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            For more details and examples how to interact with Record and Collection models programmatically
+            you could also check <a href="/docs/go-collections">Collection operations</a>
+            and
+            <a href="/docs/go-records">Record operations</a> sections.
+        </p>
+    </div>
+</div>
 
 <Toc />
 
@@ -40,7 +49,7 @@
         <CodeBlock
             language="go"
             content={`
-                res, err := app.Dao().DB().
+                res, err := app.DB().
                     NewQuery("CREATE INDEX name_idx ON users (name)").
                     Execute()
             `}
@@ -56,15 +65,15 @@
             language="go"
             content={`
                 type User struct {
-                    Id     string          ` + "`" + `db:"id" json:"id"` + "`" + `
-                    Status bool            ` + "`" + `db:"status" json:"status"` + "`" + `
-                    Age    int             ` + "`" + `db:"age" json:"age"` + "`" + `
-                    Roles  types.JsonArray ` + "`" + `db:"roles" json:"roles"` + "`" + `
+                    Id     string                  ` + "`" + `db:"id" json:"id"` + "`" + `
+                    Status bool                    ` + "`" + `db:"status" json:"status"` + "`" + `
+                    Age    int                     ` + "`" + `db:"age" json:"age"` + "`" + `
+                    Roles  types.JSONArray[string] ` + "`" + `db:"roles" json:"roles"` + "`" + `
                 }
 
                 user := User{}
 
-                err := app.Dao().DB().
+                err := app.DB().
                     NewQuery("SELECT id, status, age, roles FROM users WHERE id=1").
                     One(&user)
             `}
@@ -80,15 +89,15 @@
             language="go"
             content={`
                 type User struct {
-                    Id     string          ` + "`" + `db:"id" json:"id"` + "`" + `
-                    Status bool            ` + "`" + `db:"status" json:"status"` + "`" + `
-                    Age    int             ` + "`" + `db:"age" json:"age"` + "`" + `
-                    Roles  types.JsonArray ` + "`" + `db:"roles" json:"roles"` + "`" + `
+                    Id     string                  ` + "`" + `db:"id" json:"id"` + "`" + `
+                    Status bool                    ` + "`" + `db:"status" json:"status"` + "`" + `
+                    Age    int                     ` + "`" + `db:"age" json:"age"` + "`" + `
+                    Roles  types.JSONArray[string] ` + "`" + `db:"roles" json:"roles"` + "`" + `
                 }
 
                 users := []User{}
 
-                err := app.Dao().DB().
+                err := app.DB().
                     NewQuery("SELECT id, status, age, roles FROM users LIMIT 100").
                     All(&users)
             `}
@@ -114,7 +123,7 @@
 
         posts := []Post{}
 
-        err := app.Dao().DB().
+        err := app.DB().
             NewQuery("SELECT name, created FROM posts WHERE created >= {:from} and created <= {:to}").
             Bind(dbx.Params{
                 "from": "2023-06-25 00:00:00.000Z",
@@ -142,7 +151,7 @@
             Email string ` + "`" + `db:"email" json:"email"` + "`" + `
         }{}
 
-        app.Dao().DB().
+        app.DB().
             Select("id", "email").
             From("users").
             AndWhere(dbx.Like("email", "example.com")).
@@ -164,7 +173,7 @@
 <CodeBlock
     language="go"
     content={`
-        app.Dao().DB().
+        app.DB().
             Select("id", "avatar as image").
             AndSelect("(firstName || ' ' || lastName) as fullName").
             Distinct()
@@ -180,7 +189,7 @@
 <CodeBlock
     language="go"
     content={`
-        app.Dao().DB().
+        app.DB().
             Select("table1.id", "table2.name").
             From("table1", "table2")
             ...
@@ -205,7 +214,7 @@
 <CodeBlock
     language="go"
     content={`
-        app.Dao().DB().
+        app.DB().
             Select("users.*").
             From("users").
             InnerJoin("profiles", dbx.NewExp("profiles.user_id = users.id")).
@@ -238,7 +247,7 @@
                 experience > 10
             )
         */
-        app.Dao().DB().
+        app.DB().
             Select("users.*").
             From("users").
             Where(dbx.NewExp("id = {:id}", dbx.Params{ "id": "someId" })).
@@ -259,7 +268,7 @@
     The following <code>dbx.Expression</code> methods are available:
 </p>
 <ul>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.NewExp(raw, optParams)" tag="code" />
         <br />
         Generates an expression with the specified raw query fragment. Use the <code>optParams</code> to bind
@@ -272,7 +281,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title={`dbx.HashExp{k:v}`} tag="code" />
         <br />
         Generates a hash expression from a map whose keys are DB column names which need to be filtered according
@@ -290,7 +299,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.Not(exp)" tag="code" />
         <br />
         Negates a single expression by wrapping it with <code>NOT()</code>.
@@ -302,7 +311,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.And(...exps)" tag="code" />
         <br />
         Creates a new expression by concatenating the specified ones with <code>AND</code>.
@@ -317,7 +326,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.Or(...exps)" tag="code" />
         <br />
         Creates a new expression by concatenating the specified ones with <code>OR</code>.
@@ -332,7 +341,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.In(col, ...values)" tag="code" />
         <br />
         Generates an <code>IN</code> expression for the specified column and the list of allowed values.
@@ -344,7 +353,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.NotIn(col, ...values)" tag="code" />
         <br />
         Generates an <code>NOT IN</code> expression for the specified column and the list of allowed values.
@@ -356,7 +365,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.Like(col, ...values)" tag="code" />
         <br />
         Generates a <code>LIKE</code> expression for the specified column and the possible strings that the
@@ -377,7 +386,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.NotLike(col, ...values)" tag="code" />
         <br />
         Generates a <code>NOT LIKE</code> expression in similar manner as <code>Like()</code>.
@@ -392,7 +401,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.OrLike(col, ...values)" tag="code" />
         <br />
         This is similar to <code>Like()</code> except that the column must be one of the provided values, aka.
@@ -408,7 +417,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.OrNotLike(col, ...values)" tag="code" />
         <br />
         This is similar to <code>NotLike()</code> except that the column must not be one of the provided
@@ -424,7 +433,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.Exists(exp)" tag="code" />
         <br />
         Prefix with <code>EXISTS</code> the specified expression (usually a subquery).
@@ -436,7 +445,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.NotExists(exp)" tag="code" />
         <br />
         Prefix with <code>NOT EXISTS</code> the specified expression (usually a subquery).
@@ -448,7 +457,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.Between(col, from, to)" tag="code" />
         <br />
         Generates a <code>BETWEEN</code> expression with the specified range.
@@ -460,7 +469,7 @@
             `}
         />
     </li>
-    <li class="m-b-xs">
+    <li>
         <HeadingLink title="dbx.NotBetween(col, from, to)" tag="code" />
         <br />
         Generates a <code>NOT BETWEEN</code> expression with the specified range.
@@ -486,7 +495,7 @@
 <CodeBlock
     language="go"
     content={`
-        app.Dao().DB().
+        app.DB().
             Select("users.*").
             From("users").
             OrderBy("created ASC", "updated DESC").
@@ -505,7 +514,7 @@
 <CodeBlock
     language="go"
     content={`
-        app.Dao().DB().
+        app.DB().
             Select("users.*").
             From("users").
             GroupBy("department", "level")
@@ -527,7 +536,7 @@
 <CodeBlock
     language="go"
     content={`
-        app.Dao().DB().
+        app.DB().
             Select("users.*").
             From("users").
             GroupBy("department", "level").
@@ -543,7 +552,7 @@
 <CodeBlock
     language="go"
     content={`
-        app.Dao().DB().
+        app.DB().
             Select("users.*").
             From("users").
             Limit(30)
@@ -559,7 +568,7 @@
 <CodeBlock
     language="go"
     content={`
-        app.Dao().DB().
+        app.DB().
             Select("users.*").
             From("users").
             Offset(5).
@@ -570,59 +579,44 @@
 
 <HeadingLink title="Transaction" />
 <p>
-    To execute multiple queries in a transaction you can use <code>app.Dao().RunInTransaction()</code>
+    To execute multiple queries in a transaction you can use
+    <a
+        href="{import.meta.env.PB_GODOC_URL}/core#BaseApp.RunInTransaction"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <code>app.RunInTransaction()</code>
+    </a>
+    .
 </p>
 <p>
-    You can nest <code>Dao.RunInTransaction()</code> as many times as you want.
+    It is safe to nest <code>RunInTransaction</code> calls as long as you use the callback's
+    <code>txApp</code>.
 </p>
 <p>
-    <strong>The transaction will be committed only if there are no errors.</strong>
+    <strong>The transaction is committed only if it returns <code>nil</code>.</strong>
 </p>
 <CodeBlock
     language="go"
     content={`
-        app.Dao().RunInTransaction(func(txDao *daos.Dao) error {
+        app.RunInTransaction(func(txApp core.App) error {
             // update a record
-            record, err := txDao.FindRecordById("articles", "RECORD_ID")
+            record, err := txApp.FindRecordById("articles", "RECORD_ID")
             if err != nil {
                 return err
             }
             record.Set("status", "active")
-            if err := txDao.SaveRecord(record); err != nil {
+            if err := txApp.Save(record); err != nil {
                 return err
             }
 
-            // run some custom raw query
+            // run a custom raw query (doesn't fire event hooks)
             rawQuery := "DELETE FROM articles WHERE status = 'pending'"
-            if _, err := txDao.DB().NewQuery(rawQuery).Execute(); err != nil {
+            if _, err := txApp.NonconcurrentDB().NewQuery(rawQuery).Execute(); err != nil {
                 return err
             }
 
             return nil
         })
-    `}
-/>
-
-<HeadingLink title="Dao without event hooks" />
-<p>
-    By default all Dao write operations (create, update, delete) trigger the <code>onModel*</code> event
-    hooks.
-    <br />
-    If you don't want this behavior, you can create a new Dao without hooks from an existing one by calling
-    <code>Dao.WithoutHooks()</code>
-    or instantiate a new one with
-    <code>daos.New(db)</code>/<code>daos.NewMultiDB(concurrentDB, nonconcurrentDB)</code>:
-</p>
-<CodeBlock
-    language="go"
-    content={`
-        record, _ := app.Dao().FindRecordById("articles", "RECORD_ID")
-
-        // the below WILL fire the OnModelBeforeUpdate and OnModelAfterUpdate hooks
-        app.Dao().SaveRecord(record)
-
-        // the below WILL NOT fire the OnModelBeforeUpdate and OnModelAfterUpdate hooks
-        dao := app.Dao().WithoutHooks()
-        dao.saveRecord(record)
     `}
 />

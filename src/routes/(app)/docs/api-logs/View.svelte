@@ -9,22 +9,21 @@
             code: 200,
             body: `
                 {
-                  "id": "twjnabervu5log8",
-                  "created": "2023-12-10 19:56:29.556Z",
-                  "updated": "2023-12-10 19:56:29.556Z",
+                  "id": "ai5z3aoed6809au",
+                  "created": "2024-10-27 09:28:19.524Z",
                   "data": {
-                    "auth": "guest",
-                    "execTime": 0.66452,
+                    "auth": "_superusers",
+                    "execTime": 2.392327,
                     "method": "GET",
-                    "referer": "http://localhost:8090/",
-                    "remoteIp": "127.0.0.1",
+                    "referer": "http://localhost:8090/_/",
+                    "remoteIP": "127.0.0.1",
                     "status": 200,
                     "type": "request",
-                    "url": "/api/collections/users/auth-methods",
-                    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
-                    "userIp": "127.0.0.1"
+                    "url": "/api/collections/_pbc_2287844090/records?page=1&perPage=1&filter=&fields=id",
+                    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+                    "userIP": "127.0.0.1"
                   },
-                  "message": "GET /api/collections/users/auth-methods",
+                  "message": "GET /api/collections/_pbc_2287844090/records?page=1&perPage=1&filter=&fields=id",
                   "level": 0
                 }
             `,
@@ -34,7 +33,7 @@
             body: `
                 {
                   "code": 401,
-                  "message": "The request requires admin authorization token to be set.",
+                  "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
             `,
@@ -44,7 +43,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "You are not allowed to perform this request.",
+                  "message": "The authorized record is not allowed to perform this action.",
                   "data": {}
                 }
             `,
@@ -67,7 +66,7 @@
 <Accordion single title="View log">
     <div class="content m-b-sm">
         <p>Returns a single log by its ID.</p>
-        <p>Only admins can perform this action.</p>
+        <p>Only superusers can perform this action.</p>
     </div>
 
     <CodeTabs
@@ -78,7 +77,7 @@
 
             ...
 
-            await pb.admins.authWithEmail('test@example.com', '123456');
+            await pb.collection("_superusers").authWithEmail('test@example.com', '123456');
 
             const log = await pb.logs.getOne('LOG_ID');
         `}
@@ -89,16 +88,17 @@
 
             ...
 
-            await pb.admins.authWithEmail('test@example.com', '123456');
+            await pb.collection("_superusers").authWithEmail('test@example.com', '123456');
 
             final log = await pb.logs.getOne('LOG_ID');
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
         <div class="content">/api/logs/<code>id</code></div>
-        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
+        <small class="txt-hint auth-header">Requires <code>Authorization:TOKEN</code></small>
     </div>
 
     <div class="section-title">Path parameters</div>
@@ -137,7 +137,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

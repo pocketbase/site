@@ -15,7 +15,7 @@
 
 <button
     type="button"
-    class="btn btn-circle btn-secondary scroll-to-top"
+    class="btn btn-lg btn-circle btn-secondary scroll-to-top"
     class:scroll-top-active={active}
     arial-label="Go to top"
     on:click={scrollToTop}
@@ -29,13 +29,16 @@
         z-index: 99;
         left: auto;
         top: auto;
-        bottom: var(--baseSpacing);
-        right: var(--baseSpacing);
+        bottom: var(--smSpacing);
+        right: var(--smSpacing);
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px);
-        transition: opacity var(--baseAnimationSpeed), visibility var(--baseAnimationSpeed),
-            transform var(--baseAnimationSpeed), background var(--baseAnimationSpeed);
+        transition:
+            opacity var(--baseAnimationSpeed),
+            visibility var(--baseAnimationSpeed),
+            transform var(--baseAnimationSpeed),
+            background var(--baseAnimationSpeed);
     }
     .scroll-top-active {
         opacity: 1;

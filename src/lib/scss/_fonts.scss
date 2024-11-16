@@ -1,12 +1,10 @@
 /* remixicon  */
 @font-face {
   font-family: 'remixicon';
-  src: url('/fonts/remixicon/remixicon.woff2?v=1') format('woff2'),
-       url('/fonts/remixicon/remixicon.woff?v=1') format('woff'),
-       url('/fonts/remixicon/remixicon.ttf?v=1') format('truetype'),
-       url('/fonts/remixicon/remixicon.svg?v=1#remixicon') format('svg'); /* iOS 4.1- */
+  src: url('/fonts/remixicon/remixicon.woff2?v=4') format('woff2');
   font-display: swap;
 }
+
 
 /* source-sans-pro-regular - latin_cyrillic */
 @font-face {

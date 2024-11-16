@@ -23,7 +23,7 @@
             <span class="txt">{item.title}</span>
             <slot name="after" {item} />
         </a>
-        {#if item.children?.length && hasCurrentChild}
+        {#if item.children?.length && (hasCurrentChild || isCurrentPath)}
             {#each item.children as child, i (child.href + child.title)}
                 {@const isCurrentChildPath = equalPaths(child.href, $page.url.pathname)}
                 <a
@@ -38,6 +38,9 @@
                             {i == item.children.length - 1 ? "└" : "├"}
                         </span>
                     </slot>
+                    {#if child.icon}
+                        <span class="icon"><i class={child.icon} /></span>
+                    {/if}
                     {child.title}
                     <slot name="childAfter" {child} />
                 </a>

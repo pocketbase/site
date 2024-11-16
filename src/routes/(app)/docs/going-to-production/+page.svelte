@@ -34,7 +34,8 @@
     </li>
     <li>
         <p>
-            Upload the binary and anything else related to your remote server, for example using
+            Upload the binary and anything else required by your application to your remote server, for
+            example using
             <strong>rsync</strong>:
         </p>
         <CodeBlock
@@ -77,7 +78,7 @@
         </blockquote>
     </li>
     <li>
-        <p>(Optional) systemd service</p>
+        <p>(Optional) Systemd service</p>
         <p>
             You can skip step 3 and create a <strong>Systemd service</strong>
             to allow your application to start/restart on its own.
@@ -97,8 +98,8 @@
                 LimitNOFILE    = 4096
                 Restart        = always
                 RestartSec     = 5s
-                StandardOutput = append:/root/pb/errors.log
-                StandardError  = append:/root/pb/errors.log
+                StandardOutput = append:/root/pb/std.log
+                StandardError  = append:/root/pb/std.log
                 ExecStart      = /root/pb/pocketbase serve yourdomain.com
 
                 [Install]
@@ -114,14 +115,32 @@
                 [root@dev ~]$ systemctl start pocketbase
             `}
         />
+        <blockquote>
+            <p>
+                You can find a link to the Web UI installer in the <code>/root/pb/std.log</code>, but
+                alternatively you can also create the first superuser explicitly via the
+                <code>superuser</code> PocketBase command:
+            </p>
+            <CodeBlock
+                content={`
+                    [root@dev ~]$ /root/pb/pocketbase superuser create EMAIL PASS
+                `}
+            />
+        </blockquote>
     </li>
 </ol>
 
 <HeadingLink title="Using reverse proxy" tag="h5" />
 <p>
-    If you plan hosting multiple applications on a single server or need finer network controls (rate limiter,
-    IPs whitelisting, etc.), you could always put PocketBase behind a reverse proxy such as
+    If you plan hosting multiple applications on a single server or need finer network controls, you can
+    always put PocketBase behind a reverse proxy such as
     <em>NGINX</em>, <em>Apache</em>, <em>Caddy</em>, etc.
+    <br />
+    <em>
+        Just note that when using a reverse proxy you may need to setup the "User IP proxy headers" in the
+        PocketBase settings so that the application can extract and log the actual visitor/client IP (the
+        headers are usually <code>X-Real-IP</code>, <code>X-Forwarded-For</code>).
+    </em>
 </p>
 <p>
     Here is a minimal <em>NGINX</em> example configuration:
@@ -173,8 +192,8 @@
 />
 <HeadingLink title="Using Docker" tag="h5" />
 <p>
-    Some hosts (eg. <a href="https://fly.io" target="_blank" rel="noopener noreferrer">fly.io</a>) use Docker
-    for deployments. PocketBase doesn't have an official Docker image yet, but you could use the below
+    Some hosts (e.g. <a href="https://fly.io" target="_blank" rel="noopener noreferrer">fly.io</a>) use Docker
+    for deployments. PocketBase doesn't have an official Docker image, but you could use the below minimal
     Dockerfile as an example:
 </p>
 <CodeBlock
@@ -208,7 +227,7 @@
         CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080"]
     `}
 />
-<p>
+<p class="txt-bold">
     To persist your data you need to mount a volume at <code>/pb/pb_data</code>.
 </p>
 <p class="txt-hint">
@@ -226,25 +245,47 @@
 </p>
 
 <HeadingLink title="Backup and Restore" />
-<p />
 <p>
-    PocketBase v0.16+ comes with built-in backups and restore APIs that could be accessed from the Admin UI (<em
-        >Settings</em
-    >
-    > <em>Backups</em>):
+    To backup/restore your application it is enough to manually copy/replace your <code>pb_data</code>
+    directory
+    <em>(for transactional safety make sure that the application is not running)</em>.
+</p>
+<p>
+    To make things slightly easier, PocketBase v0.16+ comes with built-in backups and restore APIs that could
+    be accessed from the Dashboard (
+    <em>Settings</em>
+    {`>`} <em>Backups</em>
+    ):
 </p>
 <img src="/images/screenshots/backups.png" alt="Backups settings screenshot" class="screenshot m-b-xs" />
 <p>
-    <strong>
-        Note that the application will be temporary set in read-only mode during the backup's ZIP generation.
-    </strong>
-    <br />
-    Backups can be stored locally (default) or in an external S3 storage.
+    Backups can be stored locally (default) or in an external S3 storage. The generated backup represent a
+    full snapshot as ZIP archive of your <code>pb_data</code> directory (including the locally stored uploaded
+    files but excluding any local backups or files uploaded to S3).
 </p>
-<p>
-    Alternatively, you can always manually copy your <code>pb_data</code> directory
-    <em>(for transactional safety make sure that the application is not running)</em>.
-</p>
+<div class="alert alert-warning m-b-xs">
+    <div class="icon">
+        <i class="ri-error-warning-line" />
+    </div>
+    <div class="content">
+        <p class="txt-bold">
+            During the backup's ZIP generation the application will be temporary set in read-only mode.
+        </p>
+        <p>
+            Depending on the size of your <code>pb_data</code> this could be a very slow operation and it is
+            advised in case of large <code>pb_data</code> (e.g. 2GB+) to consider a different backup strategy
+            <em class="txt-sm">
+                (see an example
+                <a
+                    href="https://github.com/pocketbase/pocketbase/discussions/4254#backups"
+                    target="_blank"
+                    rel="noopener noreferrer">backup.sh script</a
+                >
+                that combines <code>sqlite3 .backup</code> + <code>rsync</code>)
+            </em>.
+        </p>
+    </div>
+</div>
 
 <HeadingLink title="Recommendations" />
 
@@ -267,10 +308,36 @@
     <a href="https://aws.amazon.com/ses/" target="_blank" rel="noreferrer noopener">AWS SES</a>, etc.
 </p>
 <p>
-    Once you've decided on a mail service, you could configure the PocketBase SMTP settings from the Admin UI
-    (<em>Settings</em> > <em>Mail settings</em>):
+    Once you've decided on a mail service, you could configure the PocketBase SMTP settings from the
+    <em>
+        {`Dashboard > Settings > Mail settings`}
+    </em>:
 </p>
 <img src="/images/screenshots/smtp-settings.png" alt="SMTP settings screenshot" class="screenshot m-b-xs" />
+
+<header class="highlighted-title bg-danger-alt">
+    <span class="label label-primary">highly recommended</span>
+    <HeadingLink title="Enable rate limiter" tag="h5" />
+</header>
+<p>
+    To minimize the risk of API abuse (e.g. excessive auth or record create requests) it is recommended to
+    setup a rate limiter.
+</p>
+<p>
+    PocketBase v0.23.0+ comes with a simple builtin rate limiter that should cover most of the cases but you
+    are also free to use any external one via reverse proxy if you need more advanced options.
+</p>
+<p>
+    You can configure the builtin rate limiter from the
+    <em>
+        {`Dashboard > Settings > Application`}:
+    </em>
+</p>
+<img
+    src="/images/screenshots/rate-limit-settings.png"
+    alt="Rate limit settings screenshot"
+    class="screenshot m-b-xs"
+/>
 
 <header class="highlighted-title bg-warning-alt">
     <span class="label label-primary">optional</span>
@@ -300,13 +367,13 @@
 <p class="txt-bold txt-hint">It is fine to ignore the below if you are not sure whether you need it.</p>
 <p>
     By default, PocketBase stores the applications settings in the database as plain JSON text, including the
-    secret keys for the OAuth2 clients and the SMTP password.
+    SMTP password and S3 storage credentials.
 </p>
 <p>
     While this is not a security issue on its own (PocketBase applications live entirely on a single server
     and its expected only authorized users to have access to your server and application data), in some
     situations it may be a good idea to store the settings encrypted in case someone get their hands on your
-    database file (eg. from an external stored backup).
+    database file (e.g. from an external stored backup).
 </p>
 <p>To store your PocketBase settings encrypted:</p>
 <ol>
@@ -314,7 +381,7 @@
         Create a new environment variable and <strong>set a random 32 characters</strong> string as its value.
         <br />
         <span class="txt-hint">
-            eg. add
+            e.g. add
             <code>export PB_ENCRYPTION_KEY="{CommonHelper.randomString(32)}"</code>
             in your shell profile file
         </span>
@@ -323,7 +390,7 @@
         Start the application with <code>--encryptionEnv=YOUR_ENV_VAR</code> flag.
         <br />
         <span class="txt-hint">
-            eg. <code>pocketbase serve --encryptionEnv=PB_ENCRYPTION_KEY</code>
+            e.g. <code>pocketbase serve --encryptionEnv=PB_ENCRYPTION_KEY</code>
         </span>
     </li>
 </ol>

@@ -1,3 +1,4 @@
+@use "sass:color";
 @import 'mixins';
 
 .landing-hero {
@@ -26,12 +27,20 @@
         }
         .searchbar {
             input {
-                background: rgba(#fff, 0.5);
+                background: rgba(#fff, 0.25);
+            }
+            &:hover {
+                input {
+                    background: rgba(#fff, 0.4);
+                }
             }
             &:focus-within {
                 input {
                     background: rgba(#fff, 0.8);
                 }
+            }
+            .searchbar-dropdown {
+                border: 0;
             }
         }
     }
@@ -59,12 +68,12 @@
             position: absolute;
             z-index: 2;
             left: 50%;
-            top: 50%;
+            top: 51%;
             transform: translate(-50%, -50%);
         }
         .gopher-proximity-hover {
             position: absolute;
-            left: 10px;
+            left: 7px;
             top: -75px;
             z-index: 3;
             width: 90px;
@@ -87,7 +96,7 @@
         .gopher {
             position: absolute;
             z-index: 0;
-            left: 20px;
+            left: 18px;
             top: -30px;
             background: none;
             user-select: none;
@@ -357,7 +366,7 @@
             // states
             &:hover,
             &:focus-visible {
-                background: darken(#edf0f3, 2%);
+                background: color.adjust(#edf0f3, $lightness: -2%);
             }
             &:active,
             &.active {
@@ -388,6 +397,7 @@
         border-radius: var(--baseRadius);
         .code-wrapper {
             height: 100%;
+            margin: 0 !important;
         }
         code {
             min-height: 100%;

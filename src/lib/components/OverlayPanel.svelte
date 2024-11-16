@@ -195,10 +195,10 @@
             <div
                 class="overlay-panel {classes} {contentScrollClass}"
                 class:popup
-                in:fly|local={popup
+                in:fly={popup
                     ? { duration: transitionSpeed, y: -10 }
                     : { duration: transitionSpeed, x: 50 }}
-                out:fly|local={popup
+                out:fly={popup
                     ? { duration: transitionSpeed, y: 10 }
                     : { duration: transitionSpeed, x: 50 }}
             >

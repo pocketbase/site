@@ -9,7 +9,7 @@
 <p>
     <code>app.Logger()</code> provides access to a standard <code>slog.Logger</code> implementation that
     writes any logs into the database so that they can be later explored from the PocketBase
-    <em>Admin UI > Logs</em> section.
+    <em>Dashboard > Logs</em> section.
 </p>
 
 <LogsWriteAlert />

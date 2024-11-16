@@ -28,7 +28,7 @@
             body: `
                 {
                   "code": 401,
-                  "message": "The request requires admin authorization token to be set.",
+                  "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
             `,
@@ -41,7 +41,7 @@
 <Accordion single title="Send test email">
     <div class="content m-b-sm">
         <p>Sends a test user email.</p>
-        <p>Only admins can perform this action.</p>
+        <p>Only superusers can perform this action.</p>
     </div>
 
     <CodeTabs
@@ -52,7 +52,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             await pb.settings.testEmail("test@example.com", "verification");
         `}
@@ -63,16 +63,17 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             await pb.settings.testEmail("test@example.com", "verification");
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-success">
         <strong class="label label-primary">POST</strong>
         <div class="content">/api/settings/test/email</div>
-        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
+        <small class="txt-hint auth-header">Requires <code>Authorization:TOKEN</code></small>
     </div>
 
     <div class="section-title">Body Parameters</div>
@@ -85,6 +86,18 @@
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td>
+                    <div class="inline-flex">
+                        <span class="label label-warning">Optional</span>
+                        <span class="txt">collection</span>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">String</span>
+                </td>
+                <td>The name or id of the auth collection. Fallbacks to <em>_superusers</em> if not set.</td>
+            </tr>
             <tr>
                 <td>
                     <div class="inline-flex">
@@ -123,7 +136,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

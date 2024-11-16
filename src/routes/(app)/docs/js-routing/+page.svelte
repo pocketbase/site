@@ -6,8 +6,15 @@
 </script>
 
 <p>
-    You can register custom routes and middlewares by using the top-level <code>routerAdd()</code>
-    and <code>routerUse()</code> functions.
+    You can register custom routes and middlewares by using the top-level
+    <a href="/jsvm/functions/routerAdd.html" target="_blank" rel="noopener noreferrer">
+        <code>routerAdd()</code>
+    </a>
+    and
+    <a href="/jsvm/functions/routerUse.html" target="_blank" rel="noopener noreferrer">
+        <code>routerUse()</code>
+    </a>
+    functions.
 </p>
 
 <Toc />
@@ -15,92 +22,143 @@
 <HeadingLink title="Routes" />
 
 <HeadingLink title="Registering new routes" tag="h5" />
-<p>
-    Each route consists of at least a path and a handler function. For example, the below code registers
-    <code>GET /hello/:name</code> route that responds with a json body:
-</p>
+<p>Every route have a path, handler function and eventually middlewares attached to it. For example:</p>
 <CodeBlock
     language="javascript"
     content={`
-        routerAdd("GET", "/hello/:name", (c) => {
-            let name = c.pathParam("name")
+        // register "GET /hello/{name}" route (allowed for everyone)
+        routerAdd("GET", "/hello/{name}", (e) => {
+            let name = e.request.pathValue("name")
 
-            return c.json(200, { "message": "Hello " + name })
-        }, /* optional middlewares */)
+            return e.json(200, { "message": "Hello " + name })
+        })
+
+        // register "POST /api/myapp/settings" route (allowed only for authenticated users)
+        routerAdd("POST", "/api/myapp/settings", (e) => {
+            // do something ...
+            return e.json(http.StatusOK, {"success": true})
+        }, $apis.requireAuth())
     `}
 />
 
+<HeadingLink title="Path parameters and matching rules" tag="h5" />
+<p>
+    Because PocketBase routing is based on top of the Go standard router mux, we follow the same pattern
+    matching rules. Below you could find a short overfiew but for more details please refer to
+    <!-- prettier-ignore -->
+    <a href="https://pkg.go.dev/net/http#ServeMux" target="_blank" rel="noopener noreferrer"><code>net/http.ServeMux</code></a>.
+</p>
+<p>
+    In geneneral, a route pattern looks like <code>[METHOD ][HOST]/[PATH]</code>.
+</p>
+<p>
+    Route paths can include parameters in the format <code>{`{paramName}`}</code>.
+    <br />
+    You can also use <code>{`{paramName...}`}</code> format to specify a parameter that target more than one path
+    segment.
+</p>
+<p class="txt-bold">
+    A pattern ending with a trailing slash <code>/</code> acts as anonymous wildcard and matches any requests
+    that begins with the defined route. If you want to have a trailing slash but to indicate the end of the
+    URL then you need to end the path with the special
+    <code>{`{$}`}</code> parameter.
+</p>
 <div class="alert alert-info m-t-sm m-b-sm">
     <div class="icon">
         <i class="ri-information-line" />
     </div>
     <div class="content">
         <p>
-            To avoid collisions with future internal routes you should avoid using the <code>/api/...</code>
-            base path or consider combining it with a unique prefix like <code>/api/myapp/...</code>.
+            If your route path starts with <code>/api/</code>
+            consider combining it with your unique app name like <code>/api/myapp/...</code> to avoid collisions
+            with system routes.
         </p>
     </div>
 </div>
-
-<p>
-    Each handler function receives a <strong>request context</strong> argument (usually named <code>c</code>).
-    <br />
-    The request context is also accessible in the event request hooks under the <code>httpContext</code> key.
-    <br />
-    Below you can find common request context operations.
-</p>
-
-<HeadingLink title="Request context store" tag="h5" />
-<p>
-    The request context comes with a local store that you can use to share data related only to the current
-    request between routes and middlewares.
-</p>
+<p>Here are some examples:</p>
 <CodeBlock
     language="javascript"
     content={`
-        // store for the duration of the request
-        c.set("someKey", 123)
+        // match "GET example.com/index.html"
+       routerAdd("GET", "example.com/index.html", ...)
 
-        // retrieve later
-        const val = c.get("someKey") // 123
+        // match "GET /index.html" (for any host)
+       routerAdd("GET", "/index.html", ...)
+
+        // match "GET /static/", "GET /static/a/b/c", etc.
+       routerAdd("GET", "/static/", ...)
+
+        // match "GET /static/", "GET /static/a/b/c", etc.
+        // (similar to the above but with a named wildcard parameter)
+       routerAdd("GET", "/static/{path...}", ...)
+
+        // match only "GET /static/"
+       routerAdd("GET", "/static/{$}", ...)
+
+        // match "GET /customers/john", "GET /customer/jane", etc.
+       routerAdd("GET", "/customers/{name}", ...)
     `}
 />
+
+<hr />
+
+<center class="txt-hint">
+    <p>
+        In the following examples <code>e</code> is usually
+        <a href="/jsvm/interfaces/core.RequestEvent.html" target="_blank" rel="noopener noreferrer">
+            <code>core.RequestEvent</code>
+        </a> value.
+    </p>
+</center>
+
+<hr />
+
+<HeadingLink title="Reading path parameters" tag="h5" />
+<CodeBlock language="javascript" content={`let id = e.request.pathValue("id")`} />
 
 <HeadingLink title="Retrieving the current auth state" tag="h5" />
 <p>
-    We also use the store to manage the current auth state with the <code>admin</code> and
-    <code>authRecord</code> special keys.
+    The request auth state can be accessed (or set) via the <code>RequestEvent.auth</code> field.
 </p>
 <CodeBlock
     language="javascript"
     content={`
-        const admin  = c.get("admin")      // empty if not authenticated as admin
-        const record = c.get("authRecord") // empty if not authenticated as regular auth record
+        let authRecord = e.auth
 
-        // alternatively, you can also read the auth state from the cached request info
-        const info   = $apis.requestInfo(c);
-        const admin  = info.admin;      // empty if not authenticated as admin
-        const record = info.authRecord; // empty if not authenticated as regular auth record
+        let isGuest = !e.auth
 
-        const isGuest = !admin && !record
+        // the same as "e.auth?.isSuperuser()"
+        let isSuperuser = e.hasSuperuserAuth()
     `}
 />
-
-<HeadingLink title="Reading path parameters" tag="h5" />
 <p>
-    Path parameters are defined with <code>:paramName</code> placeholder and can be retrieved using
-    <code>c.pathParam("paramName")</code>.
+    Alternatively you could also access the request data from the summarized request info instance
+    <em>
+        (usually used in hooks like the <code>onRecordEnrich</code> where there is no direct access to the request)
+    </em>.
 </p>
-<CodeBlock language="javascript" content={`const id = c.pathParam("id")`} />
+<CodeBlock
+    language="javascript"
+    content={`
+        let info = e.requestInfo()
+
+        let authRecord = info.auth
+
+        let isGuest = !info.auth
+
+        // the same as "info.auth?.isSuperuser()"
+        let isSuperuser = info.hasSuperuserAuth()
+    `}
+/>
 
 <HeadingLink title="Reading query parameters" tag="h5" />
 <CodeBlock
     language="javascript"
     content={`
-        const search = c.queryParam("search")
+        let search = e.request.url.query().get("search")
 
-        // or via the cached request object
-        const search = $apis.requestInfo(c).query.search
+        // or via the parsed request info
+        search := e.requestInfo().query["search"]
     `}
 />
 
@@ -108,43 +166,56 @@
 <CodeBlock
     language="javascript"
     content={`
-    const token = c.request().header.get("Some-Header")
+    let token = e.request.header.get("Some-Header")
 
-    // or via the cached request object (the header value is always normalized)
-    const token = $apis.requestInfo(c).headers["some_header"]
+    // or via the parsed request info
+    // (the header value is always normalized per the @request.headers.* API rules format)
+    let token = e.requestInfo().headers["some_header"]
 `}
 />
 
 <HeadingLink title="Writing response headers" tag="h5" />
-<CodeBlock language="javascript" content={`c.response().header().set("Some-Header", "123")`} />
+<CodeBlock language="javascript" content={`e.response.header().set("Some-Header", "123")`} />
 
-<HeadingLink title="Reading request body" tag="h5" />
+<HeadingLink title="Retrieving uploaded files" tag="h5" />
 <CodeBlock
     language="javascript"
     content={`
-        // read the body via the cached request object
-        // (this method is commonly used in hook handlers because it allows reading the body more than once)
-        const data = $apis.requestInfo(c).data
-        console.log(data.title)
+        // retrieve the uploaded files and load the finded multipart data as ready to use []*filesystem.File
+        let files = e.findUploadedFiles("document")
+
+        // or retrieve the raw single multipart/form-data file and header
+        [mf, mh] := e.request.formFile("document")
+    `}
+/>
+
+<HeadingLink title="Reading request body" tag="h5" />
+<p>
+    Body parameters can be read either via
+    <a href="/jsvm/interfaces/core.RequestEvent.html#bindBody" target="_blank" rel="noopener noreferrer">
+        <code>e.bindBody</code>
+    </a>
+    OR through the parsed request info.
+</p>
+<CodeBlock
+    language="javascript"
+    content={`
+        // read the body via the parsed request object
+        let body = e.requestInfo().body
+        console.log(body.title)
 
         // read/scan the request body fields into a typed object
-        // (note that a body cannot be read twice with "bind" because it is a stream)
         const data = new DynamicModel({
             // describe the fields to read (used also as initial values)
             someTextField:   "",
-            someNumberField: 0,
+            someIntValue:    0,
+            someFloatValue:  -0,
             someBoolField:   false,
             someArrayField:  [],
             someObjectField: {}, // object props are accessible via .get(key)
         })
-        c.bind(data)
+        e.bindBody(data)
         console.log(data.sometextField)
-
-        // read single multipart/form-data field
-        const title = c.formValue("title")
-
-        // read single multipart/form-data file
-        const doc = c.formFile("document")
     `}
 />
 
@@ -153,101 +224,162 @@
     language="javascript"
     content={`
         // send response with json body
-        c.json(200, {"name": "John"})
+        e.json(200, {"name": "John"})
 
         // send response with string body
-        c.string(200, "Lorem ipsum...")
+        e.string(200, "Lorem ipsum...")
 
         // send response with html body
         // (check also the "Rendering templates" section)
-        c.html(200, "<h1>Hello!</h1>")
+        e.html(200, "<h1>Hello!</h1>")
 
         // redirect
-        c.redirect(307, "https://example.com")
+        e.redirect(307, "https://example.com")
 
         // send response with no body
-        c.noContent(204)
+        e.noContent(204)
+
+        // serve a single file
+        e.fileFS($os.dirFS("..."), "example.txt")
+    `}
+/>
+
+<HeadingLink title="Reading the client IP" tag="h5" />
+<!-- prettier-ignore -->
+<CodeBlock
+    language="javascript"
+    content={`
+        // The IP of the last client connecting to your server.
+        // The returned IP is safe and can be always trusted.
+        // When behind a reverse proxy (e.g. nginx) this method returns the IP of the proxy.
+        // (/jsvm/interfaces/core.RequestEvent.html#remoteIP)
+        let ip = e.remoteIP()
+
+        // The "real" IP of the client based on the configured Settings.trustedProxy header(s).
+        // If such headers are not set, it fallbacks to e.remoteIP().
+        // (/jsvm/interfaces/core.RequestEvent.html#realIP)
+        let ip = e.realIP()
+    `}
+/>
+
+<HeadingLink title="Request store" tag="h5" />
+<p>
+    The <code>core.RequestEvent</code> comes with a local store that you can use to share custom data between
+    <a href="#middlewares">middlewares</a> and the route action.
+</p>
+<CodeBlock
+    language="javascript"
+    content={`
+        // store for the duration of the request
+        e.set("someKey", 123)
+
+        // retrieve later
+        let val = e.get("someKey") // 123
     `}
 />
 
 <HeadingLink title="Middlewares" />
 <p>
-    Middlewares could be used to apply a shared behavior or to intercept and modify route requests.
+    Middlewares allow inspecting, intercepting and filtering route requests.
     <br />
     Middlewares can be registered both to a single route (by passing them after the handler) and globally usually
-    by using <code>routerUse(someMiddlereFunc)</code>.
+    by using <code>routerUse(middleware)</code>.
 </p>
+
+<HeadingLink title="Registering middlewares" tag="h5" />
+<p>Here is a minimal example of a what global middleware looks like:</p>
 <CodeBlock
     language="javascript"
     content={`
-        // attach a middleware globally to all routes
-        routerUse(someMiddlereFunc)
+        // register a global middleware
+        routerUse((e) => {
+            if (e.request.header.get("Something") == "") {
+                throw new BadRequestError("Something header value is missing!")
+            }
 
-        // attach multiple middlewares to a single route
-        // each route will execute their own middlewares + the global ones
-        routerAdd("GET", "/hello", (c) => {
-            return c.string(200, "Hello world!")
-        }, $apis.activityLogger($app), $apis.requireAdminAuth())
+            return e.next()
+        })
+    `}
+/>
+
+<p>
+    Middleware can be either registered as simple functions (<code>{`function(e){}`}</code> ) or if you want
+    to specify a custom priority and id - as a
+    <a href="/jsvm/classes/Middleware.html" target="_blank" rel="noopener noreferrer">
+        <code>Middleware</code>
+    </a>
+    class instance.
+</p>
+
+<p>Below is a slightly more advanced example showing all options and the execution sequence:</p>
+<CodeBlock
+    language="javascript"
+    content={`
+        // attach global middleware
+        routerUse((e) => {
+            console.log(1)
+            return e.next()
+        })
+
+        // attach global middleware with a custom priority
+        routerUse(new Middleware((e) => {
+          console.log(2)
+          return e.next()
+        }, -1))
+
+        // attach middleware to a single route
+        //
+        // "GET /hello" should print the sequence: 2,1,3,4
+        routerUse("GET", "/hello", (e) => {
+            console.log(4)
+            return e.string(200, "Hello!")
+        }, (e) => {
+            console.log(3)
+            return e.next()
+        })
     `}
 />
 
 <HeadingLink title="Builtin middlewares" tag="h5" />
+<p>
+    The global
+    <a href="/jsvm/modules/_apis.html" target="_blank" rel="noopener noreferrer">
+        <code>$apis.*</code>
+    </a>
+    object exposes several middlewares that you can use as part of your application.
+</p>
 <CodeBlock
     language="javascript"
     content={`
-        // logs the request in the Admin UI > Logs
-        $apis.activityLogger($app)
-
-        // requires the request client to be unauthenticated, aka. guest
+        // Require the request client to be unauthenticated (aka. guest).
         $apis.requireGuestOnly()
 
-        // requires the request client to be authenticated as an auth record
-        $apis.requireRecordAuth(optCollectionNames...)
+        // Require the request client to be authenticated
+        // (optionally specify a list of allowed auth collection names, default to any).
+        $apis.requireAuth(optCollectionNames...)
 
-        // require the request client to be authenticated as admin
-        $apis.requireAdminAuth()
+        // Require the request client to be authenticated as superuser
+        // (this is an alias for $apis.requireAuth("_superusers")).
+        $apis.requireSuperuserAuth()
 
-        // require the request client to be authenticated as admin OR auth record
-        $apis.requireAdminOrRecordAuth(optCollectionNames...)
+        // Require the request client to be authenticated as superuser OR
+        // regular auth record with id matching the specified route parameter (default to "id").
+        $apis.requireSuperuserOrOwnerAuth(ownerIdParam)
 
-        // require the request client to be authenticated as admin OR auth record
-        // that matches the ownerIdParam path parameter
-        $apis.requireAdminOrOwnerAuth(ownerIdParam = "id")
+        // Changes the global 32MB default request body size limit (set it to 0 for no limit).
+        // Note that system record routes have dynamic body size limit based on the collection field types.
+        $apis.bodyLimit(limitBytes)
 
-        // compresses HTTP response using gzip
+        // Compresses the HTTP response using Gzip compression scheme.
         $apis.gzip()
-
-        // sets the maximum allowed size (in bytes) for a request body
-        $apis.bodyLimit(bytes)
-    `}
-/>
-
-<HeadingLink title="Custom middlewares" tag="h5" />
-<CodeBlock
-    language="javascript"
-    content={`
-        function myCustomMiddleware(next) {
-            return (c) => {
-                // eg. inspect some header value before processing the request
-                const header = c.request().header.get("Some-Header")
-                if (!header) {
-                    // throw or return an error
-                    throw new BadRequestError("Invalid request")
-                }
-
-                return next(c) // proceed with the request chain
-            }
-        }
-
-        routerUse(myCustomMiddleware)
     `}
 />
 
 <HeadingLink title="Error response" />
 <p>
     PocketBase has a global error handler and every returned or thrown <code>Error</code> from a route or
-    middleware will be safely converted by default to a generic HTTP 400 error to avoid accidentally leaking
-    sensitive information (the original error will be visible only in the <em>Admin UI > Logs</em> or when in
+    middleware will be safely converted by default to a generic API error to avoid accidentally leaking
+    sensitive information (the original error will be visible only in the <em>Dashboard > Logs</em> or when in
     <code>--dev</code> mode).
 </p>
 <p>
@@ -266,47 +398,73 @@
         })
 
         // if message is empty string, a default one will be set
-        throw new BadRequestError(optMessage, optData)   // 400 ApiError
-        throw new UnauthorizedError(optMessage, optData) // 401 ApiError
-        throw new ForbiddenError(optMessage, optData)    // 403 ApiError
-        throw new NotFoundError(optMessage, optData)     // 404 ApiError
+        throw new BadRequestError(optMessage, optData)      // 400 ApiError
+        throw new UnauthorizedError(optMessage, optData)    // 401 ApiError
+        throw new ForbiddenError(optMessage, optData)       // 403 ApiError
+        throw new NotFoundError(optMessage, optData)        // 404 ApiError
+        throw new TooManyrequestsError(optMessage, optData) // 429 ApiError
+        throw new InternalServerError(optMessage, optData)  // 500 ApiError
     `}
 />
 
 <HeadingLink title="Helpers" />
+
+<HeadingLink title="Serving static directory" tag="h5" />
 <p>
-    The global <code>$apis</code> namespace expose several helpers you can use as part of your route hooks.
+    <a href="/jsvm/functions/_apis.static.html" target="_blank" rel="noopener noreferrer">
+        <code>$apis.static()</code>
+    </a>
+    serves static directory content from <code>fs.FS</code> instance.
 </p>
-<HeadingLink title="Auth response" tag="h5" />
-<p>
-    <code>$apis.recordAuthResponse()</code> writes standardised json record auth response (aka. token + record
-    data) into the specified request context. Could be used as a return result from a custom auth route.
-</p>
+<p>Expects the route to have a <code>{"{path...}"}</code> wildcard parameter.</p>
 <CodeBlock
     language="javascript"
     content={`
-        routerAdd("GET", "/phone-login", (c) => {
+        // serves static files from the provided dir (if exists)
+        routerAdd("GET", "/{path...}", $apis.static($os.dirFS("/path/to/public"), false))
+    `}
+/>
+
+<HeadingLink title="Auth response" tag="h5" />
+<p>
+    <a href="/jsvm/functions/_apis.recordAuthResponse.html" target="_blank" rel="noopener noreferrer">
+        <code>$apis.recordAuthResponse()</code>
+    </a>
+    writes standardised JSON record auth response (aka. token + record data) into the specified request body. Could
+    be used as a return result from a custom auth route.
+</p>
+<!-- prettier-ignore -->
+<CodeBlock
+    language="javascript"
+    content={`
+        routerAdd("POST", "/phone-login", (e) => {
             const data = new DynamicModel({
                 phone:    "",
                 password: "",
             })
+            e.bindBody(data)
 
-            c.bind(data)
-
-            const record = $app.dao().findFirstRecordByData("users", "phone", data.phone)
-
-            if (!record.validatePassword(data.password)) {
-                throw new BadRequestError("invalid credentials")
+            let record = e.app.findFirstRecordByData("users", "phone", data.phone)
+            if !record.validatePassword(data.password) {
+                // return generic 400 error as a basic enumeration protection
+                throw new BadRequestError("Invalid credentials")
             }
 
-            return $apis.recordAuthResponse($app, c, record)
-        }, $apis.activityLogger($app))
+            return $apis.recordAuthResponse(e, record, "phone")
+        })
     `}
 />
+
 <HeadingLink title="Enrich record(s)" tag="h5" />
 <p>
-    <code>$apis.enrichRecord()</code> and <code>$apis.enrichRecords()</code> helpers parses the request context
-    and enrich the provided record(s) by:
+    <a href="/jsvm/functions/_apis.enrichRecord.html" target="_blank" rel="noopener noreferrer">
+        <code>$apis.enrichRecord()</code>
+    </a>
+    and
+    <a href="/jsvm/functions/_apis.enrichRecords.html" target="_blank" rel="noopener noreferrer">
+        <code>$apis.enrichRecords()</code>
+    </a>
+    helpers parses the request context and enrich the provided record(s) by:
 </p>
 <ul>
     <li>
@@ -317,24 +475,18 @@
         current logged admin, record owner or record with manage access
     </li>
 </ul>
+<p>These helpers are also responsible for triggering the <code>onRecordEnrich</code> hook events.</p>
 <CodeBlock
     language="javascript"
     content={`
-        routerAdd("GET", "/custom-article", (c) => {
-            const records = $app.dao().findRecordsByFilter("article", "status = 'active'", '-created', 40)
+        routerAdd("GET", "/custom-article", (e) => {
+            let records = e.app.findRecordsByFilter("article", "status = 'active'", "-created", 40, 0)
 
             // enrich the records with the "categories" relation as default expand
-            $apis.enrichRecords(c, $app.dao(), records, "categories")
+            $apis.enrichRecords(e, records, "categories")
 
-            return c.json(200, records)
-        }, $apis.activityLogger($app))
-    `}
-/>
-<HeadingLink title="Serving static files" tag="h5" />
-<CodeBlock
-    language="javascript"
-    content={`
-        routerAdd("GET", "/*", $apis.staticDirectoryHandler("/path/to/public", false))
+            return e.JSON(http.StatusOK, records)
+        })
     `}
 />
 
@@ -350,7 +502,7 @@
         const pb = new PocketBase('http://127.0.0.1:8090');
 
         await pb.send("/hello", {
-            // for all possible options check
+            // for other options check
             // https://developer.mozilla.org/en-US/docs/Web/API/fetch#options
             query: { "abc": 123 },
         });

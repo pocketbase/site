@@ -8,82 +8,150 @@
     The most common task when using PocketBase as framework probably would be querying and working with your
     collection records.
 </p>
+<p>
+    You could find detailed documentation about all the supported Record model methods in
+    <a href="{import.meta.env.PB_GODOC_URL}/core#Record" target="_blank" rel="noopener noreferrer">
+        <code>core.Record</code>
+    </a>
+    but below are some examples with the most common ones.
+</p>
 
 <Toc />
 
-<HeadingLink title="Get/Set record fields" />
+<HeadingLink title="Set field value" />
+<CodeBlock
+    language="go"
+    content={`
+        // sets the value of a single record field
+        // (field type specific modifiers are also supported)
+        record.Set("title", "example")
+        record.Set("users+", "6jyr1y02438et52") // append to existing value
+
+        // populates a record from a data map
+        // (calls Set for each entry of the map)
+        record.Load(data)
+    `}
+/>
+
+<HeadingLink title="Get field value" />
+<CodeBlock
+    language="go"
+    content={`
+        // retrieve a single record field value
+        // (field specific modifiers are also supported)
+        record.Get("someField")            // -> any (without cast)
+        record.GetBool("someField")        // -> cast to bool
+        record.GetString("someField")      // -> cast to string
+        record.GetInt("someField")         // -> cast to int
+        record.GetFloat("someField")       // -> cast to float64
+        record.GetDateTime("someField")    // -> cast to types.DateTime
+        record.GetStringSlice("someField") // -> cast to []string
+
+        // retrieve the new uploaded files
+        // (e.g. for inspecting and modifying the file(s) before save)
+        record.GetUploadedFiles("someFileField")
+
+        // unmarshal a single "json" field value into the provided result
+        record.UnmarshalJSONField("someJSONField", &result)
+
+        // retrieve a single or multiple expanded data
+        record.ExpandedOne("author")     // -> nil|*core.Record
+        record.ExpandedAll("categories") // -> []*core.Record
+
+        // export all the public safe record fields as map[string]any
+        // (note: "json" type field values are exported as types.JSONRaw bytes slice)
+        record.PublicExport()
+    `}
+/>
+
+<HeadingLink title="Auth accessors" />
+<CodeBlock
+    language="go"
+    content={`
+        record.IsSuperuser() // alias for record.Collection().Name == "_superusers"
+
+        record.Email()         // alias for record.Get("email")
+        record.SetEmail(email) // alias for record.Set("email", email)
+
+        record.Verified()         // alias for record.Get("verified")
+        record.SetVerified(false) // alias for record.Set("verified", false)
+
+        record.TokenKey()        // alias for record.Get("tokenKey")
+        record.SetTokenKey(key)  // alias for record.Set("tokenKey", key)
+        record.RefreshTokenKey() // alias for record.Set("tokenKey:autogenerate", "")
+
+        record.SetPassword(pass) // alias for record.Set("password", pass)
+        record.ValidatePassword(pass)
+    `}
+/>
+
+<HeadingLink title="Copies" />
+<CodeBlock
+    language="go"
+    content={`
+        // returns a shallow copy of the current record model populated
+        // with its ORIGINAL db data state and everything else reset to the defaults
+        // (usually used for comparing old and new field values)
+        record.Original()
+
+        // returns a shallow copy of the current record model populated
+        // with its LATEST data state and everything else reset to the defaults
+        // (aka. no expand, no custom fields and with default visibility flags)
+        record.Fresh()
+
+        // returns a shallow copy of the current record model populated
+        // with its ALL collection and custom fields data, expand and visibility flags
+        record.Clone()
+    `}
+/>
+
+<HeadingLink title="Hide/Unhide fields" />
 <p>
-    All available <code>models.Record</code> getter and setters are listed in the
-    <a href="{import.meta.env.PB_GODOC_URL}/models#Record" target="_blank" rel="noopener noreferrer">
-        godoc of the model
-    </a>, but below you could find some examples:
+    Collection fields can be marked as "Hidden" from the Dashboard to prevent regular user access to the field
+    values.
+</p>
+<p>
+    Record models provide an option to further control the fields serialization visibility in addition to the
+    "Hidden" fields option using the
+    <a href="{import.meta.env.PB_GODOC_URL}/core#Record.Hide" target="_blank" rel="noopener noreferrer">
+        <code>record.Hide(fieldNames...)</code>
+    </a>
+    and
+    <a href="{import.meta.env.PB_GODOC_URL}/core#Record.Unhide" target="_blank" rel="noopener noreferrer">
+        <code>record.Unhide(fieldNames...)</code>
+    </a>
+    methods.
+</p>
+<p>
+    Often the <code>Hide/Unhide</code> methods are used in combination with the <code>OnRecordEnrich</code> hook
+    invoked on every record enriching (list, view, create, update, realtime change, etc.). For example:
 </p>
 <CodeBlock
     language="go"
     content={`
-        // export the public safe record fields as map[string]any
-        record.PublicExport()
+        app.OnRecordEnrich("articles").BindFunc(func(e *core.RecordEnrichEvent) error {
+            // dynamically show/hide a record field depending on whether the current
+            // authenticated user has a certain "role" (or any other field constraint)
+            if e.RequestInfo.Auth == nil ||
+                (!e.RequestInfo.Auth.IsSuperuser() && e.RequestInfo.Auth.GetString("role") != "staff") {
+                e.Record.Hide("someStaffOnlyField")
+            }
 
-        // returns a new model copy populated with the original/intial record data
-        // (could be useful if you want to compare old and new field values)
-        record.OriginalCopy()
-
-        // returns a copy of the current record model populated only
-        // with its latest data state and everything else reset to the defaults
-        record.CleanCopy()
-
-        // set the value of a single record field
-        record.Set("someField", 123)
-
-        // bulk set fields from a map
-        record.Load(data)
-
-        // retrieve a single record field value
-        record.Get("someField")            // -> as any
-        record.GetBool("someField")        // -> as bool
-        record.GetString("someField")      // -> as string
-        record.GetInt("someField")         // -> as int
-        record.GetFloat("someField")       // -> as float64
-        record.GetTime("someField")        // -> as time.Time
-        record.GetDateTime("someField")    // -> as types.DateTime
-        record.GetStringSlice("someField") // -> as []string
-
-        // unmarshal a single json field value into the provided result
-        record.UnmarshalJSONField("someJsonField", &result)
-
-        // retrieve a single or multiple expanded data
-        record.ExpandedOne("author")     // -> as nil|*models.Record
-        record.ExpandedAll("categories") // -> as []*models.Record
-
-        // auth records only
-        // ---
-        record.SetPassword("123456")
-        record.ValidatePassword("123456")
-        record.PasswordHash()
-        // ---
-        record.Username()
-        record.SetUsername("john.doe")
-        // ---
-        record.Email()
-        record.SetEmail("test@example.com")
-        // ---
-        record.EmailVisibility()
-        record.SetEmailVisibility(false)
-        // ---
-        record.Verified()
-        record.SetVerified(false)
-        // ---
-        record.TokenKey()
-        record.SetTokenKey("ABCD123")
-        record.RefreshTokenKey() // sets autogenerated TokenKey
-        // ---
-        record.LastResetSentAt()
-        record.SetLastResetSentAt(types.DateTime{})
-        // ---
-        record.LastVerificationSentAt()
-        record.SetLastVerificationSentAt(types.DateTime{})
+            return e.Next()
+        })
     `}
 />
+<div class="alert alert-info m-t-sm">
+    <div class="icon">
+        <i class="ri-information-line" />
+    </div>
+    <div class="content">
+        <p>
+            For custom fields, not part of the record collection schema, it is required to call explicitly
+            <code>record.WithCustomData(true)</code> to allow them in the public serialization.
+        </p>
+    </div>
+</div>
 
 <HeadingLink title="Fetch records" />
 
@@ -91,16 +159,17 @@
 <CodeBlock
     language="go"
     content={`
-        // retrieve a single "articles" collection record by its id
-        record, err := app.Dao().FindRecordById("articles", "RECORD_ID")
+        // retrieve a single "articles" record by its id
+        record, err := app.FindRecordById("articles", "RECORD_ID")
 
-        // retrieve a single "articles" collection record by a single key-value pair
-        record, err := app.Dao().FindFirstRecordByData("articles", "slug", "test")
+        // retrieve a single "articles" record by a single key-value pair
+        record, err := app.FindFirstRecordByData("articles", "slug", "test")
 
-        // retrieve a single "articles" collection record by a string filter expression
-        // (use "{:placeholder}" to safely bind untrusted user input parameters)
-        record, err := app.Dao().FindFirstRecordByFilter(
-            "articles", "status = 'public' && category = {:category}",
+        // retrieve a single "articles" record by a string filter expression
+        // (NB! use "{:placeholder}" to safely bind untrusted user input parameters)
+        record, err := app.FindFirstRecordByFilter(
+            "articles",
+            "status = 'public' && category = {:category}",
             dbx.Params{ "category": "news" },
         )
     `}
@@ -110,18 +179,21 @@
 <CodeBlock
     language="go"
     content={`
-        // retrieve multiple "articles" collection records by their ids
-        records, err := app.Dao().FindRecordsByIds("articles", []string{"RECORD_ID1", "RECORD_ID2"})
+        // retrieve multiple "articles" records by their ids
+        records, err := app.FindRecordsByIds("articles", []string{"RECORD_ID1", "RECORD_ID2"})
 
-        // retrieve multiple "articles" collection records by a custom dbx expression(s)
-        records, err := app.Dao().FindRecordsByExpr("articles",
+        // retrieve the total number of "articles" records in a collection with optional dbx expressions
+        totalPending, err := app.CountRecords("articles", dbx.HashExp{"status": "pending"})
+
+        // retrieve multiple "articles" records with optional dbx expressions
+        records, err := app.FindAllRecords("articles",
             dbx.NewExp("LOWER(username) = {:username}", dbx.Params{"username": "John.Doe"}),
             dbx.HashExp{"status": "pending"},
         )
 
-        // retrieve multiple "articles" collection records by a string filter expression
-        // (use "{:placeholder}" to safely bind untrusted user input parameters)
-        records, err := app.Dao().FindRecordsByFilter(
+        // retrieve multiple paginated "articles" records by a string filter expression
+        // (NB! use "{:placeholder}" to safely bind untrusted user input parameters)
+        records, err := app.FindRecordsByFilter(
             "articles",                                    // collection
             "status = 'public' && category = {:category}", // filter
             "-publised",                                   // sort
@@ -136,22 +208,22 @@
 <CodeBlock
     language="go"
     content={`
-        // retrieve a single auth collection record by its email
-        user, err := app.Dao().FindAuthRecordByEmail("users", "test@example.com")
+        // retrieve a single auth record by its email
+        user, err := app.FindAuthRecordByEmail("users", "test@example.com")
 
-        // retrieve a single auth collection record by its username (case insensitive)
-        user, err := app.Dao().FindAuthRecordByUsername("users", "John.Doe")
-
-        // retrieve a single auth collection record by its JWT (auth, password reset, etc.)
-        user, err := app.Dao().FindAuthRecordByToken("JWT_TOKEN", app.Settings().RecordAuthToken.Secret)
+        // retrieve a single auth record by JWT
+        // (you could also specify an optional list of accepted token types)
+        user, err := app.FindAuthRecordByToken("YOUR_TOKEN", core.TokenTypeAuth)
     `}
 />
 
 <HeadingLink title="Custom record query" tag="h5" />
 <p>
-    In addition to the above read and write helpers, you can also create custom Record model queries using
-    <code>Dao.RecordQuery(collection)</code>
-    method. It returns a DB builder that can be used with the same methods described in the
+    In addition to the above query helpers, you can also create custom Record queries using
+    <a href="{import.meta.env.PB_GODOC_URL}/core#RecordQuery" target="_blank" rel="noopener noreferrer">
+        <code>RecordQuery(collection)</code>
+    </a>
+    method. It returns a SELECT DB builder that can be used with the same methods described in the
     <a href="/docs/go-database">Database guide</a>.
 </p>
 <CodeBlock
@@ -159,20 +231,21 @@
     content={`
         import (
             "github.com/pocketbase/dbx"
-            "github.com/pocketbase/pocketbase/daos"
-            "github.com/pocketbase/pocketbase/models"
+            "github.com/pocketbase/pocketbase/core"
         )
 
         ...
 
-        func FindActiveArticles(dao *daos.Dao) ([]*models.Record, error) {
-            query := dao.RecordQuery("articles").
+        func FindActiveArticles(app core.App) ([]*core.Record, error) {
+            records := []*core.Record{}
+
+            err := app.RecordQuery("articles").
                 AndWhere(dbx.HashExp{"status": "active"}).
                 OrderBy("published DESC").
-                Limit(10)
+                Limit(10).
+                All(&records)
 
-            records := []*models.Record{}
-            if err := query.All(&records); err != nil {
+            if err != nil {
                 return nil, err
             }
 
@@ -183,187 +256,146 @@
 
 <HeadingLink title="Create new record" />
 
-<HeadingLink title="Create new record WITHOUT data validations" tag="h5" />
+<HeadingLink title="Create new record programmatically" tag="h5" />
 <CodeBlock
     language="go"
     content={`
         import (
-            "github.com/pocketbase/pocketbase/models"
+            "github.com/pocketbase/pocketbase/core"
+            "github.com/pocketbase/pocketbase/tools/filesystem"
         )
 
         ...
 
-        collection, err := app.Dao().FindCollectionByNameOrId("articles")
+        collection, err := app.FindCollectionByNameOrId("articles")
         if err != nil {
             return err
         }
 
-        record := models.NewRecord(collection)
+        record := core.NewRecord(collection)
 
-        // set individual fields
-        // or bulk load with record.Load(map[string]any{...})
         record.Set("title", "Lorem ipsum")
         record.Set("active", true)
-        record.Set("someOtherField", 123)
 
-        if err := app.Dao().SaveRecord(record); err != nil {
-            return err
-        }
-    `}
-/>
+        // field type specific modifiers can also be used
+        record.Set("slug:autogenerate", "post-")
 
-<HeadingLink title="Create new record WITH data validations" tag="h5" />
-<CodeBlock
-    language="go"
-    content={`
-        import (
-            "github.com/pocketbase/pocketbase/forms"
-            "github.com/pocketbase/pocketbase/models"
-        )
+        // new files must be one or a slice of *filesystem.File values
+        //
+        // note1: see all factories in ` +
+        import.meta.env.PB_GODOC_URL +
+        `/tools/filesystem#File
+        // note2: for reading files from a request event you can also use e.FindUploadedFiles("fileKey")
+        f1, _ := filesystem.NewFileFromPath("/local/path/to/file1.txt")
+        f2, _ := filesystem.NewFileFromBytes([]byte{"test content"}, "file2.txt")
+        f3, _ := filesystem.NewFileFromURL(context.Background(), "https://example.com/file3.pdf")
+        record.Set("documents", []*filesystem.File{f1, f2, f3})
 
-        ...
-
-        collection, err := app.Dao().FindCollectionByNameOrId("articles")
+        // validate and persist
+        // (use SaveNoValidate to skip fields validation)
+        err = app.Save(record);
         if err != nil {
             return err
         }
-
-        record := models.NewRecord(collection)
-
-        form := forms.NewRecordUpsert(app, record)
-
-        // or form.LoadRequest(r, "")
-        form.LoadData(map[string]any{
-            "title": "Lorem ipsum",
-            "active": true,
-            "someOtherField": 123,
-        })
-
-        // manually upload file(s)
-        f1, _ := filesystem.NewFileFromPath("/path/to/file1")
-        f2, _ := filesystem.NewFileFromPath("/path/to/file2")
-        form.AddFiles("yourFileField1", f1, f2)
-
-        // or mark file(s) for deletion
-        form.RemoveFiles("yourFileField2", "demo_xzihx0w.png")
-
-        // validate and submit (internally it calls app.Dao().SaveRecord(record) in a transaction)
-        if err := form.Submit(); err != nil {
-            return err
-        }
     `}
 />
 
-<HeadingLink title="Intercept record before create API hook" tag="h5" />
+<HeadingLink title="Intercept create request" tag="h5" />
 <CodeBlock
     language="go"
     content={`
         import (
-            "github.com/pocketbase/pocketbase/apis"
             "github.com/pocketbase/pocketbase/core"
         )
 
         ...
 
-        app.OnRecordBeforeCreateRequest("articles").Add(func(e *core.RecordCreateEvent) error {
-            admin, _ := e.HttpContext.Get(apis.ContextAdminKey).(*models.Admin)
-            if admin != nil {
-                return nil // ignore for admins
+        app.OnRecordCreateRequest("articles").BindFunc(func(e *core.RecordRequestEvent) error {
+            // ignore for superusers
+            if e.HasSuperuserAuth() {
+                return e.Next()
             }
 
-            // overwrite the submitted "active" field value to false
-            e.Record.Set("active", false)
+            // overwrite the submitted "status" field value
+            e.Record.Set("status", "pending")
 
-            // or you can also prevent the create event by returning an error, eg.:
-            if (e.Record.GetString("status") != "pending") {
-                return apis.NewBadRequestError("status must be pending", nil)
+            // or you can also prevent the create event by returning an error
+            status := e.Record.GetString("status")
+            if (status != "pending" &&
+                // guest or not an editor
+                (e.Auth == nil || e.Auth.GetString("role") != "editor")) {
+                return e.BadRequestError("Only editors can set a status different from pending", nil)
             }
 
-            return nil
+            return e.Next()
         })
     `}
 />
 
 <HeadingLink title="Update existing record" />
 
-<HeadingLink title="Update record WITHOUT data validations" tag="h5" />
+<HeadingLink title="Update existing record programmatically" tag="h5" />
 <CodeBlock
     language="go"
     content={`
-        record, err := app.Dao().FindRecordById("articles", "RECORD_ID")
+        record, err := app.FindRecordById("articles", "RECORD_ID")
         if err != nil {
             return err
         }
 
-        // set individual fields
-        // or bulk load with record.Load(map[string]any{...})
         record.Set("title", "Lorem ipsum")
-        record.Set("active", true)
-        record.Set("someOtherField", 123)
 
-        if err := app.Dao().SaveRecord(record); err != nil {
-            return err
-        }
-    `}
-/>
+        // delete existing record files by specifying their file names
+        record.Set("documents-", []string{"file1_abc123.txt", "file3_abc123.txt"})
 
-<HeadingLink title="Update record WITH data validations" tag="h5" />
-<CodeBlock
-    language="go"
-    content={`
-        import (
-            "github.com/pocketbase/pocketbase/forms"
-        )
+        // append one or more new files to the already uploaded list
+        //
+        // note1: see all factories in ` +
+        import.meta.env.PB_GODOC_URL +
+        `/tools/filesystem#File
+        // note2: for reading files from a request event you can also use e.FindUploadedFiles("fileKey")
+        f1, _ := filesystem.NewFileFromPath("/local/path/to/file1.txt")
+        f2, _ := filesystem.NewFileFromBytes([]byte{"test content"}, "file2.txt")
+        f3, _ := filesystem.NewFileFromURL(context.Background(), "https://example.com/file3.pdf")
+        record.Set("documents+", []*filesystem.File{f1, f2, f3})
 
-        ...
-
-        record, err := app.Dao().FindRecordById("articles", "RECORD_ID")
+        // validate and persist
+        // (use SaveNoValidate to skip fields validation)
+        err = app.Save(record);
         if err != nil {
             return err
         }
-
-        form := forms.NewRecordUpsert(app, record)
-
-        // or form.LoadRequest(r, "")
-        form.LoadData(map[string]any{
-            "title": "Lorem ipsum",
-            "active": true,
-            "someOtherField": 123,
-        })
-
-        // validate and submit (internally it calls app.Dao().SaveRecord(record) in a transaction)
-        if err := form.Submit(); err != nil {
-            return err
-        }
     `}
 />
 
-<HeadingLink title="Intercept record before update API hook" tag="h5" />
+<HeadingLink title="Intercept update request" tag="h5" />
 <CodeBlock
     language="go"
     content={`
         import (
-            "github.com/pocketbase/pocketbase/apis"
             "github.com/pocketbase/pocketbase/core"
         )
 
         ...
 
-        app.OnRecordBeforeUpdateRequest("articles").Add(func(e *core.RecordUpdateEvent) error {
-            admin, _ := e.HttpContext.Get(apis.ContextAdminKey).(*models.Admin)
-            if admin != nil {
-                return nil // ignore for admins
+        app.OnRecordUpdateRequest("articles").Add(func(e *core.RecordRequestEvent) error {
+            // ignore for superusers
+            if e.HasSuperuserAuth() {
+                return e.Next()
             }
 
-            // overwrite the submitted "active" field value to false
-            e.Record.Set("active", false)
+            // overwrite the submitted "status" field value
+            e.Record.Set("status", "pending")
 
-            // or you can also prevent the create event by returning an error, eg.:
-            if (e.Record.GetString("status") != "pending") {
-                return apis.NewBadRequestError("status must be pending.", nil)
+            // or you can also prevent the create event by returning an error
+            status := e.Record.GetString("status")
+            if (status != "pending" &&
+                // guest or not an editor
+                (e.Auth == nil || e.Auth.GetString("role") != "editor")) {
+                return e.BadRequestError("Only editors can set a status different from pending", nil)
             }
 
-            return nil
+            return e.Next()
         })
     `}
 />
@@ -372,12 +404,13 @@
 <CodeBlock
     language="go"
     content={`
-        record, err := app.Dao().FindRecordById("articles", "RECORD_ID")
+        record, err := app.FindRecordById("articles", "RECORD_ID")
         if err != nil {
             return err
         }
 
-        if err := app.Dao().DeleteRecord(record); err != nil {
+        err = app.Delete(record)
+        if err != nil {
             return err
         }
     `}
@@ -387,20 +420,26 @@
 <CodeBlock
     language="go"
     content={`
+        import (
+            "github.com/pocketbase/pocketbase/core"
+        )
+
+        ...
+
         titles := []string{"title1", "title2", "title3"}
 
-        collection, err := app.Dao().FindCollectionByNameOrId("articles")
+        collection, err := app.FindCollectionByNameOrId("articles")
         if err != nil {
             return err
         }
 
-        app.Dao().RunInTransaction(func(txDao *daos.Dao) error {
-            // create new record for each title
+        // create new record for each title
+        app.RunInTransaction(func(txApp core.App) error {
             for _, title := range titles {
-                record := models.NewRecord(collection)
+                record := core.NewRecord(collection)
                 record.Set("title", title)
 
-                if err := txDao.SaveRecord(record); err != nil {
+                if err := txApp.Save(record); err != nil {
                     return err
                 }
             }
@@ -412,27 +451,54 @@
 
 <HeadingLink title="Programmatically expanding relations" />
 <p>
-    To expand record relations programmatically you can use the
-    <code>app.Dao().ExpandRecord(record, expands, customFetchFunc)</code> or
-    <code>app.Dao().ExpandRecords(records, expands, customFetchFunc)</code>
-    methods.
+    To expand record relations programmatically you can use
+    <a
+        href="{import.meta.env.PB_GODOC_URL}/core#BaseApp.ExpandRecord"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <code>app.ExpandRecord(record, expands, optFetchFunc)</code>
+    </a>
+    for single or
+    <a
+        href="{import.meta.env.PB_GODOC_URL}/core#BaseApp.ExpandRecords"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <code>app.ExpandRecords(records, expands, optFetchFunc)</code>
+    </a>
+    for multiple records.
 </p>
 <p>
     Once loaded, you can access the expanded relations via
-    <code>record.ExpandedOne(relName)</code> or
-    <code>record.ExpandedAll(relName)</code> methods.
+    <a
+        href="{import.meta.env.PB_GODOC_URL}/core#Record.ExpandedOne"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <code>record.ExpandedOne(relName)</code>
+    </a>
+    or
+    <a
+        href="{import.meta.env.PB_GODOC_URL}/core#Record.ExpandedAll"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <code>record.ExpandedAll(relName)</code>
+    </a> .
 </p>
 <p>For example:</p>
 <CodeBlock
     language="go"
     content={`
-        record, err := app.Dao().FindFirstRecordByData("articles", "slug", "lorem-ipsum")
+        record, err := app.FindFirstRecordByData("articles", "slug", "lorem-ipsum")
         if err != nil {
             return err
         }
 
         // expand the "author" and "categories" relations
-        if errs := app.Dao().ExpandRecord(record, []string{"author", "categories"}, nil); len(errs) > 0 {
+        err := app.ExpandRecord(record, []string{"author", "categories"}, nil)
+        if len(errs) > 0 {
             return fmt.Errorf("failed to expand: %v", errs)
         }
 
@@ -445,9 +511,19 @@
 <HeadingLink title="Check if record can be accessed" />
 <p>
     To check whether a custom client request or user can access a single record, you can use the
-    <code>app.Dao().CanAccessRecord(record, requestInfo, rule)</code> method.
+    <a
+        href="{import.meta.env.PB_GODOC_URL}/core#BaseApp.CanAccessRecord"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <code>app.CanAccessRecord(record, requestInfo, rule)</code>
+    </a>
+    method.
 </p>
-<p>For example:</p>
+<p>
+    Below is an example of creating a custom route to retrieve a single article and checking the request
+    satisfy the View API rule of the record collection:
+</p>
 <CodeBlock
     language="go"
     content={`
@@ -457,40 +533,99 @@
             "log"
             "net/http"
 
-            "github.com/labstack/echo/v5"
             "github.com/pocketbase/pocketbase"
-            "github.com/pocketbase/pocketbase/apis"
             "github.com/pocketbase/pocketbase/core"
         )
 
         func main() {
             app := pocketbase.New()
 
-            app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
-                e.Router.Add("GET", "/articles/:slug", func(c echo.Context) error {
-                    info := apis.RequestInfo(c)
+            app.OnServe().BindFunc(func(se *core.ServeEvent) error {
+                se.Router.GET("/articles/{slug}", func(e *core.RequestEvent) error {
+                    slug := e.Request.PathValue("slug")
 
-                    slug := c.PathParam("slug")
-
-                    record, err := app.Dao().FindFirstRecordByData("articles", "slug", slug)
+                    record, err := e.App.FindFirstRecordByData("articles", "slug", slug)
                     if err != nil {
-                        return apis.NewNotFoundError("", err)
+                        return e.NotFoundError("Missing or invallid slug", err)
                     }
 
-                    canAccess, err := app.Dao().CanAccessRecord(record, info, record.Collection().ViewRule)
+                    info, err := e.RequestInfo()
+                    if err != nil {
+                        return e.BadRequestError("Failed to retrieve request info", err)
+                    }
+
+                    canAccess, err := e.App.CanAccessRecord(record, info, record.Collection().ViewRule)
                     if !canAccess {
-                        return apis.NewForbiddenError("", err)
+                        return e.ForbiddenError("", err)
                     }
 
-                    return c.JSON(http.StatusOK, record)
+                    return e.JSON(http.StatusOK, record)
                 })
 
-                return nil
+                return se.Next()
             })
 
             if err := app.Start(); err != nil {
                 log.Fatal(err)
             }
         }
+    `}
+/>
+
+<HeadingLink title="Generating and validating tokens" />
+<p>
+    PocketBase Web APIs are fully stateless (aka. there are no sessions in the traditional sense) and an auth
+    record is considered authenticated if the submitted request contains a valid
+    <code>Authorization: TOKEN</code>
+    header
+    <em>
+        (see also <a href="/docs/go-routing/#builtin-middlewares">Builtin auth middlewares</a> and
+        <a href="/docs/go-routing/#retrieving-the-current-auth-state">
+            Retrieving the current auth state from a route
+        </a>
+        )
+    </em>
+    .
+</p>
+<p>
+    If you want to issue and verify manually a record JWT (auth, verification, password reset, etc.), you
+    could do that using the record token type specific methods:
+</p>
+<CodeBlock
+    language="go"
+    content={`
+        token, err := record.NewAuthToken()
+
+        token, err := record.NewVerificationToken()
+
+        token, err := record.NewPasswordResetToken()
+
+        token, err := record.NewEmailChangeToken(newEmail)
+
+        token, err := record.NewFileToken() // for protected files
+
+        token, err := record.NewStaticAuthToken(optCustomDuration) // non-refreshable auth token
+    `}
+/>
+<p>
+    Each token type has its own secret and the token duration is managed via its type related collection auth
+    option (<em>the only exception is <code>NewStaticAuthToken</code></em>).
+</p>
+<p>
+    To validate a record token you can use the
+    <a
+        href="{import.meta.env.PB_GODOC_URL}/core#BaseApp.FindAuthRecordByToken"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <code>app.FindAuthRecordByToken</code>
+    </a>
+    method. The token related auth record is returned only if the token is not expired and its signature is valid.
+</p>
+<p>Here is an example how to validate an auth token:</p>
+<CodeBlock
+    language="go"
+    content={`
+        record, err := app.FindAuthRecordByToken("YOUR_TOKEN", core.TokenTypeAuth)
     `}
 />

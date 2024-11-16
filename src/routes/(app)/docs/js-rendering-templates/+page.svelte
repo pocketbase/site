@@ -39,7 +39,7 @@
 <p>
     By default the templates apply contextual (HTML, JS, CSS, URI) auto escaping so the generated template
     content should be injection-safe. To render raw/verbatim trusted content in the templates you can use the
-    builtin <code>raw</code> function (eg. <code>{`{{.content|raw}}`}</code>).
+    builtin <code>raw</code> function (e.g. <code>{`{{.content|raw}}`}</code>).
 </p>
 
 <div class="alert alert-info m-t-10 m-b-sm">
@@ -132,8 +132,8 @@
 <CodeBlock
     language="javascript"
     content={`
-        routerAdd("get", "/hello/:name", (c) => {
-            const name = c.pathParam("name")
+        routerAdd("get", "/hello/{name}", (e) => {
+            const name = e.request.pathValue("name")
 
             const html = $template.loadFiles(
                 ` + "`${__hooks}/views/layout.html`" + `,
@@ -142,7 +142,7 @@
                 "name": name,
             })
 
-            return c.html(200, html)
+            return e.html(200, html)
         })
     `}
 />

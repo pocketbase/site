@@ -9,53 +9,66 @@
             code: 200,
             body: `
                 {
-                  "id": "d2972397d45614e",
-                  "created": "2022-06-22 07:13:00.643Z",
-                  "updated": "2022-06-22 07:13:00.643Z",
+                  "id": "_pbc_2287844090",
+                  "listRule": null,
+                  "viewRule": null,
+                  "createRule": null,
+                  "updateRule": null,
+                  "deleteRule": null,
                   "name": "posts",
                   "type": "base",
-                  "schema": [
+                  "fields": [
                     {
-                      "system": false,
-                      "id": "njnkhxa2",
-                      "name": "title",
-                      "type": "text",
-                      "required": false,
-                      "unique": false,
-                      "options": {
-                        "min": null,
-                        "max": null,
-                        "pattern": ""
-                      }
+                      "autogeneratePattern": "[a-z0-9]{15}",
+                      "hidden": false,
+                      "id": "text3208210256",
+                      "max": 15,
+                      "min": 15,
+                      "name": "id",
+                      "pattern": "^[a-z0-9]+$",
+                      "presentable": false,
+                      "primaryKey": true,
+                      "required": true,
+                      "system": true,
+                      "type": "text"
                     },
                     {
-                      "system": false,
-                      "id": "9gvv0jkj",
-                      "name": "image",
-                      "type": "file",
+                      "autogeneratePattern": "",
+                      "hidden": false,
+                      "id": "text724990059",
+                      "max": 0,
+                      "min": 0,
+                      "name": "title",
+                      "pattern": "",
+                      "presentable": false,
+                      "primaryKey": false,
                       "required": false,
-                      "unique": false,
-                      "options": {
-                        "maxSelect": 1,
-                        "maxSize": 5242880,
-                        "mimeTypes": [
-                          "image/jpg",
-                          "image/jpeg",
-                          "image/png",
-                          "image/svg+xml",
-                          "image/gif"
-                        ],
-                        "thumbs": null
-                      }
+                      "system": false,
+                      "type": "text"
+                    },
+                    {
+                      "hidden": false,
+                      "id": "autodate2990389176",
+                      "name": "created",
+                      "onCreate": true,
+                      "onUpdate": false,
+                      "presentable": false,
+                      "system": false,
+                      "type": "autodate"
+                    },
+                    {
+                      "hidden": false,
+                      "id": "autodate3332085495",
+                      "name": "updated",
+                      "onCreate": true,
+                      "onUpdate": true,
+                      "presentable": false,
+                      "system": false,
+                      "type": "autodate"
                     }
                   ],
-                  "listRule": "id = @request.user.id",
-                  "viewRule": "id = @request.user.id",
-                  "createRule": "id = @request.user.id",
-                  "updateRule": "id = @request.user.id",
-                  "deleteRule": null,
-                  "options": {},
-                  "indexes": ["create index title_idx on posts (title)"]
+                  "indexes": [],
+                  "system": false
                 }
             `,
         },
@@ -64,7 +77,7 @@
             body: `
                 {
                   "code": 401,
-                  "message": "The request requires admin authorization token to be set.",
+                  "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
             `,
@@ -74,7 +87,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "You are not allowed to perform this request.",
+                  "message": "The authorized record is not allowed to perform this action.",
                   "data": {}
                 }
             `,
@@ -97,7 +110,7 @@
 <Accordion single title="View collection">
     <div class="content m-b-sm">
         <p>Returns a single Collection by its ID or name.</p>
-        <p>Only admins can perform this action.</p>
+        <p>Only superusers can perform this action.</p>
     </div>
 
     <CodeTabs
@@ -108,7 +121,7 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             const collection = await pb.collections.getOne('demo');
         `}
@@ -119,16 +132,17 @@
 
             ...
 
-            await pb.admins.authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
             final collection = await pb.collections.getOne('demo');
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
         <div class="content">/api/collections/<code>collectionIdOrName</code></div>
-        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small>
+        <small class="txt-hint auth-header">Requires <code>Authorization:TOKEN</code></small>
     </div>
 
     <div class="section-title">Path parameters</div>
@@ -167,7 +181,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

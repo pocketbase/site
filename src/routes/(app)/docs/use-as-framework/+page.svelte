@@ -41,18 +41,18 @@
         <CodeTabs
             group={extendGroup}
             go={`
-                app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
-                    e.Router.GET("/hello", func(c echo.Context) error {
-                        return c.String(http.StatusOK, "Hello world!")
-                    }, apis.ActivityLogger(app))
+                app.OnServe().BindFunc(func(se *core.ServeEvent) error {
+                    se.Router.GET("/hello", func(e *core.RequestEvent) error {
+                        return e.String(http.StatusOK, "Hello world!")
+                    })
 
-                    return nil
+                    return se.Next()
                 })
             `}
             js={`
-                routerAdd("GET", "/hello", (c) => {
-                    return c.string(200, "Hello world!")
-                }, $apis.activityLogger($app))
+                routerAdd("GET", "/hello", (e) => {
+                    return e.string(200, "Hello world!")
+                })
             `}
         />
     </li>
@@ -61,25 +61,23 @@
         <CodeTabs
             group={extendGroup}
             go={`
-                app.OnRecordBeforeCreateRequest("posts").Add(func(e *core.RecordCreateEvent) error {
-                    requestInfo := apis.RequestInfo(e.HttpContext)
-
-                    // if not an admin, overwrite the newly submitted "posts" record status to pending
-                    if requestInfo.Admin == nil {
+                app.OnRecordCreateRequest("posts").BindFunc(func(e *core.RecordRequestEvent) error {
+                    // if not superuser, overwrite the newly submitted "posts" record status to pending
+                    if !e.HasSuperuserAuth() {
                         e.Record.Set("status", "pending")
                     }
 
-                    return nil
+                    return e.Next()
                 })
             `}
             js={`
-                onRecordBeforeCreateRequest((e) => {
-                    let requestInfo = $apis.requestInfo(e.httpContext)
-
-                    // if not an admin, overwrite the newly submitted "posts" record status to pending
-                    if (!requestInfo.admin) {
+                onRecordCreateRequest((e) => {
+                    // if not superuser, overwrite the newly submitted "posts" record status to pending
+                    if (!e.hasSuperuserAuth()) {
                         e.record.set("status", "pending")
                     }
+
+                    e.next()
                 }, "posts")
             `}
         />

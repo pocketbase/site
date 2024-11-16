@@ -48,7 +48,10 @@
 
 <Accordion single title="Auth with password">
     <div class="content m-b-sm">
-        <p>Authenticate a single auth record by their username/email and password.</p>
+        <p>
+            Authenticate a single auth record by combination of a password and a unique identify field (e.g.
+            email).
+        </p>
     </div>
 
     <CodeTabs
@@ -94,6 +97,7 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-success">
         <strong class="label label-primary">POST</strong>
         <div class="content">/api/collections/<code>collectionIdOrName</code>/auth-with-password</div>
@@ -153,6 +157,18 @@
                 </td>
                 <td>Auth record password.</td>
             </tr>
+            <tr>
+                <td>
+                    <div class="inline-flex">
+                        <span class="label label-warning">Optional</span>
+                        <span class="txt">identityField</span>
+                    </div>
+                </td>
+                <td>
+                    <span class="label">String</span>
+                </td>
+                <td>A specific identity field to use (by default fallbacks to the first matching one).</td>
+            </tr>
         </tbody>
     </table>
     <small class="block txt-hint m-t-10 m-b-base">
@@ -177,7 +193,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"

@@ -23,7 +23,7 @@
             url:     "",
             method:  "GET",
             body:    "", // ex. JSON.stringify({"test": 123}) or new FormData()
-            headers: {"content-type": "application/json"},
+            headers: {}, // ex. {"content-type": "application/json"}
             timeout: 120, // in seconds
         })
 
@@ -49,6 +49,7 @@
             try {
                 const res = $http.send({
                     url: "https://openlibrary.org/isbn/" + isbn + ".json",
+                    headers: {"content-type": "application/json"}
                 })
 
                 if (res.statusCode == 200) {

@@ -100,7 +100,7 @@
         <p>
             If the connected client doesn't receive any new messages for 5 minutes, the server will send a
             disconnect signal (this is to prevent forgotten/leaked connections). The connection will be
-            automatically reestablished if the client is still active (eg. the browser tab is still open).
+            automatically reestablished if the client is still active (e.g. the browser tab is still open).
         </p>
     </Accordion>
 
@@ -160,7 +160,7 @@
                         <p>
                             You can also attach optional query and header parameters as serialized json to a
                             single topic using the <code>options</code>
-                            query parameter, eg.:
+                            query parameter, e.g.:
                             <CodeBlock
                                 content={`
                             COLLECTION_ID_OR_NAME/RECORD_ID?options={"query": {"abc": "123"}, "headers": {"x-token": "..."}}

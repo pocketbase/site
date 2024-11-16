@@ -4,15 +4,42 @@
 
 <div class="page-content">
     <nav class="breadcrumbs">
-        <div class="breadcrumb-item">FAQ</div>
+        <div class="breadcrumb-item" data-pagefind-meta="title">FAQ</div>
     </nav>
 
     <div class="alert p-sm m-b-10">
         <div class="content">
+            <h5>0. Why?</h5>
+            <p>
+                PocketBase was created to assist with the development of my other open source projects
+                (primarily
+                <a
+                    href="https://github.com/presentator/presentator/issues/183"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
+                    presentator#183
+                </a>
+                ) with the main goal to build self-contained applications that can run on a single server without
+                requiring to install anything in addition.
+                <br />
+                Please note that there is no paid team or company behind it. PocketBase is neither a startup, nor
+                a business. It is a personal open source project with intentially limited scope and developed entirely
+                on volunteer basis (you can explore the
+                <a
+                    href="https://github.com/orgs/pocketbase/projects/2/views/1"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                >
+                    Roadmap
+                </a>
+                to get a general idea where the project is headed but there are no fixed ETAs).
+            </p>
+
             <h5>1. Do you offer hosting?</h5>
             <p>
-                No. PocketBase is self-hosted only. If you are looking for <strong>free options</strong> for small
-                POC and hobby apps, you can check:
+                No. PocketBase is self-hosted only. If you are looking for free options for small POC and
+                hobby apps, you can check:
             </p>
             <ul>
                 <li>
@@ -36,19 +63,21 @@
                 </li>
             </ul>
             <p>
-                For a more traditional setup you can use any VPS provider that comes with a persistent
-                storage, like
-                <a href="https://www.hetzner.com/" target="_blank" rel="noreferrer noopener">Hetzner</a>,
-                <a href="https://www.vultr.com/" target="_blank" rel="noreferrer noopener">Vultr</a>,
-                <a href="https://upcloud.com/" target="_blank" rel="noreferrer noopener">UpCloud</a>,
-                <a href="https://www.linode.com/" target="_blank" rel="noreferrer noopener">Linode</a>,
-                <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer noopener"
-                    >DigitalOcean</a
-                >, etc.
+                <strong>
+                    For a more traditional setup you can use any VPS provider that comes with a persistent
+                    storage, like
+                    <a href="https://www.hetzner.com/" target="_blank" rel="noreferrer noopener">Hetzner</a>,
+                    <a href="https://www.vultr.com/" target="_blank" rel="noreferrer noopener">Vultr</a>,
+                    <a href="https://upcloud.com/" target="_blank" rel="noreferrer noopener">UpCloud</a>,
+                    <a href="https://www.linode.com/" target="_blank" rel="noreferrer noopener">Linode</a>,
+                    <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer noopener"
+                        >DigitalOcean</a
+                    >, etc.
+                </strong>
                 <br />
                 The
-                <a href="/docs/going-to-production/">Going to production</a> guide contains general information
-                how to deploy your PocketBase app and some config recommendations.
+                <a href="/docs/going-to-production/">Going to production</a> guide contains information how to
+                deploy your PocketBase app and some config recommendations.
             </p>
 
             <h5>2. Does it scale?</h5>
@@ -64,11 +93,14 @@
                     connections on a cheap $4 Hetzner CAX11 VPS (2vCPU, 4GB RAM).
                 </strong>
                 <br />
-                You can explore the official
+                You can find performance tests for various read&write operations in the official
                 <a href={import.meta.env.PB_BENCHMARKS_URL} target="_blank" rel="noreferrer noopener">
                     benchmarks repo
                 </a>
-                for more details.
+                .<br />
+                There is still room for improvements (<em>I haven't done extensive profiling yet</em>), but
+                the current performance is already good enough for the type of applications PocketBase is
+                intended for.
             </p>
 
             <h5>3. How to run custom code?</h5>
@@ -85,8 +117,8 @@
 
             <h5>4. Does it support Google or Facebook login?</h5>
             <p>
-                Yes, currently we support more than 15+ OAuth2 providers - Apple, Google, Facebook, Microsoft,
-                VK, GitHub, GitLab, and many more.
+                Yes, currently there is support more than 15+ OAuth2 providers - Apple, Google, Facebook,
+                Microsoft, VK, GitHub, GitLab, and many more.
             </p>
 
             <h5>5. Does it come with frontend UI for user login, register, etc. screens?</h5>
@@ -95,12 +127,13 @@
                 your own frontend.
                 <br />
                 For convenience, there are default user facing pages for the user email confirmation links (password
-                reset, verification, etc.) but you can also set your own by updating the urls in the Admin UI settings.
+                reset, verification, etc.) but you can also set your own by updating the urls in the email template
+                collection settings.
             </p>
 
             <h5>6. Can I use database X?</h5>
             <p>
-                PocketBase uses embedded SQLite (in WAL mode) and there are no plans for supporting other
+                No. PocketBase uses embedded SQLite (in WAL mode) and there are no plans for supporting other
                 databases.
                 <br />
                 <strong>
@@ -114,7 +147,7 @@
 
             <h5>7. Can I donate?</h5>
             <p>
-                No. In the past we accepted donations (I'm very grateful for everyone who contributed) but
+                No. In the past donations were welcomed (I'm very grateful for everyone who contributed) but
                 financial contributions from individuals usually comes with some "unspoken expectations" and
                 to avoid the mental burden and the sense of feeling guilty when not working on the
                 contributor's feature request, I've decided to stop accepting donations for PocketBase.

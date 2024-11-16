@@ -181,9 +181,13 @@
             methods are now part of the <code>$app</code> instance.
         </p>
         <p>
+            The app settings related to the OAuth2 and email templates are moved in the collection options to
+            allow more granular customizations.
+        </p>
+        <p>
             For more details about all new app fields and methods, please refer to the
             <code>$app.*</code> docs in the
-            <a href="/jsvm-rc/modules/_app.html" target="_blank">JSVM reference</a>.
+            <a href="/jsvm/modules/_app.html" target="_blank">JSVM reference</a>.
         </p>
     </div>
 </div>
@@ -584,51 +588,44 @@
 </p>
 <ul>
     <li>
-        <a href="/jsvm-rc/classes/NumberField.html" target="_blank"
-            ><code>{`new NumberField({ ... })`}</code></a
-        >
+        <a href="/jsvm/classes/NumberField.html" target="_blank"><code>{`new NumberField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/BoolField.html" target="_blank"><code>{`new BoolField({ ... })`}</code></a>
+        <a href="/jsvm/classes/BoolField.html" target="_blank"><code>{`new BoolField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/TextField.html" target="_blank"><code>{`new TextField({ ... })`}</code></a>
+        <a href="/jsvm/classes/TextField.html" target="_blank"><code>{`new TextField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/URLField.html" target="_blank"><code>{`new URLField({ ... })`}</code></a>
+        <a href="/jsvm/classes/URLField.html" target="_blank"><code>{`new URLField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/EmailField.html" target="_blank"><code>{`new EmailField({ ... })`}</code></a
-        >
+        <a href="/jsvm/classes/EmailField.html" target="_blank"><code>{`new EmailField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/EditorField.html" target="_blank"
-            ><code>{`new EditorField({ ... })`}</code></a
-        >
+        <a href="/jsvm/classes/EditorField.html" target="_blank"><code>{`new EditorField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/DateField.html" target="_blank"><code>{`new DateField({ ... })`}</code></a>
+        <a href="/jsvm/classes/DateField.html" target="_blank"><code>{`new DateField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/AutodateField.html" target="_blank">
+        <a href="/jsvm/classes/AutodateField.html" target="_blank">
             <code>{`new AutodateField({ ... })`}</code>
         </a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/JSONField.html" target="_blank"><code>{`new JSONField({ ... })`}</code></a>
+        <a href="/jsvm/classes/JSONField.html" target="_blank"><code>{`new JSONField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/RelationField.html" target="_blank">
+        <a href="/jsvm/classes/RelationField.html" target="_blank">
             <code>{`new RelationField({ ... })`}</code>
         </a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/SelectField.html" target="_blank"
-            ><code>{`new SelectField({ ... })`}</code></a
-        >
+        <a href="/jsvm/classes/SelectField.html" target="_blank"><code>{`new SelectField({ ... })`}</code></a>
     </li>
     <li>
-        <a href="/jsvm-rc/classes/FileField.html" target="_blank"><code>{`new FileField({ ... })`}</code></a>
+        <a href="/jsvm/classes/FileField.html" target="_blank"><code>{`new FileField({ ... })`}</code></a>
     </li>
 </ul>
 
@@ -638,6 +635,10 @@
 </p>
 <UpgradeTabs before={`collection.options.query = "..."`} after={`collection.viewQuery = "..."`} />
 <UpgradeTabs before={`collection.options.manageRule = "..."`} after={`collection.manageRule = "..."`} />
+<UpgradeTabs
+    before={`collection.options.onlyVerified = true`}
+    after={`collection.authRule = "verified = true"`}
+/>
 <UpgradeTabs
     before={`collection.options.onlyVerified = true`}
     after={`collection.authRule = "verified = true"`}
@@ -1156,7 +1157,7 @@
         <p>
             For more details about all new hooks and their event properties, please refer to the
             <code>on*</code> method docs in the
-            <a href="/jsvm-rc/index.html" target="_blank">JSVM reference</a>.
+            <a href="/jsvm/index.html" target="_blank">JSVM reference</a>.
         </p>
     </div>
 </div>
@@ -2776,5 +2777,26 @@
             // e.admin -> e.record
             // "e.httpContext" is no longer available because "e" is the request event itself ...
         }, "_superusers")
+    `}
+/>
+
+<HeadingLink title="Other minor changes" />
+
+<HeadingLink tag="h6" class="txt-mono" title="$http.send()" />
+<p>
+    <code>$http.send()</code> no longer sends a default <code>Content-Type: application/json</code> header with
+    the request.
+</p>
+<UpgradeTabs
+    before={`
+        const res = $http.send({
+            url: "https://example.com/data.json",
+        })
+    `}
+    after={`
+        const res = $http.send({
+            url: "https://example.com/data.json",
+            headers: { "content-type": "application/json"}
+        })
     `}
 />

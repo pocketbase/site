@@ -39,7 +39,7 @@
             body: `
                 {
                   "code": 403,
-                  "message": "Only admins can perform this action.",
+                  "message": "Only superusers can perform this action.",
                   "data": {}
                 }
             `,
@@ -67,7 +67,7 @@
             have been restricted.
         </p>
         <p class="txt-hint">
-            <em>You could find individual generated records API documentation from the admin UI.</em>
+            <em>You could find individual generated records API documentation from the Dashboard.</em>
         </p>
     </div>
 
@@ -96,6 +96,7 @@
         `}
     />
 
+    <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-warning">
         <strong class="label label-primary">PATCH</strong>
         <div class="content">
@@ -150,49 +151,7 @@
             </tr>
 
             <tr>
-                <td colspan="3" class="txt-hint">Auth record fields</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="inline-flex">
-                        <span class="label label-warning">Optional</span>
-                        <span>username</span>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The username of the auth record.</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="inline-flex">
-                        <span class="label label-warning">Optional</span>
-                        <span>email</span>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>
-                    The auth record email address.
-                    <br />
-                    This field can be updated only by admins or auth records with "Manage" access.
-                    <br />
-                    Regular accounts can update their email by calling "Request email change".
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="inline-flex">
-                        <span class="label label-warning">Optional</span>
-                        <span>emailVisibility</span>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Boolean</span>
-                </td>
-                <td>Whether to show/hide the auth record email when fetching the record data.</td>
+                <td colspan="3" class="txt-hint">Additional auth record fields</td>
             </tr>
             <tr>
                 <td>
@@ -235,22 +194,6 @@
                 </td>
                 <td>New auth record password confirmation.</td>
             </tr>
-            <tr>
-                <td>
-                    <div class="inline-flex">
-                        <span class="label label-warning">Optional</span>
-                        <span>verified</span>
-                    </div>
-                </td>
-                <td>
-                    <span class="label">Boolean</span>
-                </td>
-                <td>
-                    Indicates whether the auth record is verified or not.
-                    <br />
-                    This field can be set only by admins or auth records with "Manage" access.
-                </td>
-            </tr>
         </tbody>
     </table>
     <small class="block txt-hint m-t-10 m-b-base">
@@ -277,7 +220,7 @@
 
     <div class="section-title">Responses</div>
     <div class="tabs">
-        <div class="tabs-header compact left">
+        <div class="tabs-header compact combined left">
             {#each responses as response (response.code)}
                 <button
                     class="tab-item"
