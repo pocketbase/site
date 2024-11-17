@@ -138,8 +138,8 @@
 
             <h5>6. Can I use database X?</h5>
             <p>
-                No. PocketBase uses embedded SQLite (in WAL mode) and there are no plans for supporting other
-                databases.
+                No, at least not out of the box. PocketBase uses embedded SQLite (in WAL mode) and there are
+                no plans for supporting other databases.
                 <br />
                 <strong>
                     For majority of the queries SQLite (in WAL mode) outperforms traditional databases like
