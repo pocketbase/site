@@ -9,32 +9,39 @@
 
     <div class="alert p-sm m-b-10">
         <div class="content">
-            <h5>0. Why?</h5>
-            <p>
-                PocketBase was created to assist with the development of my other open source projects
-                (primarily
-                <a
-                    href="https://github.com/presentator/presentator/issues/183"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                >
-                    presentator#183
-                </a>
-                ) with the main goal to build self-contained applications that can run on a single server without
-                requiring to install anything in addition.
-                <br />
-                Please note that there is no paid team or company behind it. PocketBase is neither a startup, nor
-                a business. It is a personal open source project with intentially limited scope and developed entirely
-                on volunteer basis (you can explore the
-                <a
-                    href="https://github.com/orgs/pocketbase/projects/2/views/1"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                >
-                    Roadmap
-                </a>
-                to get a general idea where the project is headed but there are no fixed ETAs).
-            </p>
+            <div class="alert alert-danger m-0">
+                <div class="content">
+                    <h5>0. Why?</h5>
+                    <p>
+                        PocketBase was created to assist with the development of my other open source projects
+                        (primarily
+                        <a
+                            href="https://github.com/presentator/presentator/issues/183"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Presentator#183
+                        </a>
+                        ) with the main goal to build self-contained applications that can run on a single server
+                        without requiring to install anything in addition.
+                    </p>
+                    <p>
+                        Please note that there is no paid team or company behind it. PocketBase is neither a
+                        startup, nor a business. It is a personal open source project developed entirely on
+                        volunteer basis with intentially restricted scope and, while I try to be as responsive
+                        as possible, there are no promises for maintenance and support beyound what is already
+                        available (you can explore the
+                        <a
+                            href="https://github.com/orgs/pocketbase/projects/2/views/1"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                        >
+                            Roadmap
+                        </a>
+                        to get a general idea where the project is headed but there are no fixed ETAs).
+                    </p>
+                </div>
+            </div>
 
             <h5>1. Do you offer hosting?</h5>
             <p>
@@ -85,13 +92,11 @@
                 Only on a single server, aka. vertical. Most of the time, you may not need the complexity of
                 managing a fleet of machines and services just to run your backend.
                 <br />
-                PocketBase is a great choice for small and midsize applications - SaaS, mobile api backend, intranet,
-                etc.
+                <strong>PocketBase could be a great choice for small and midsize applications</strong> - SaaS,
+                mobile api backend, intranet, etc.
                 <br />
-                <strong>
-                    Even without optimizations, PocketBase can easily serve 10 000+ persistent realtime
-                    connections on a cheap $4 Hetzner CAX11 VPS (2vCPU, 4GB RAM).
-                </strong>
+                Even without optimizations, PocketBase can easily serve 10 000+ persistent realtime connections
+                on a cheap $4 Hetzner CAX11 VPS (2vCPU, 4GB RAM).
                 <br />
                 You can find performance tests for various read&write operations in the official
                 <a href={import.meta.env.PB_BENCHMARKS_URL} target="_blank" rel="noreferrer noopener">
@@ -163,7 +168,7 @@
                 <a href={import.meta.env.PB_DISCUSSIONS_URL} target="_blank" rel="noreferrer noopener"
                     >Discussions board</a
                 >,
-                <a href={import.meta.env.PB_REPO_URL}>open an issue or feature request</a>
+                <a href={import.meta.env.PB_REPO_URL}>open an issue</a>
                 or contact <em>support at pocketbase.io</em>.
             </p>
         </div>
