@@ -29,7 +29,7 @@
                         Please note that there is no paid team or company behind it. PocketBase is neither a
                         startup, nor a business. It is a personal open source project developed entirely on
                         volunteer basis with intentially restricted scope and, while I try to be as responsive
-                        as possible, there are no promises for maintenance and support beyound what is already
+                        as possible, there are no promises for maintenance and support beyond what is already
                         available (you can explore the
                         <a
                             href="https://github.com/orgs/pocketbase/projects/2/views/1"
