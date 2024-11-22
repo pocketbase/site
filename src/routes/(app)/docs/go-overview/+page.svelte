@@ -100,7 +100,10 @@
         <i class="ri-information-line" />
     </div>
     <div class="content">
-        <p><strong>The general recommendation is to use the builtin SQLite setup</strong> but if you need more advanced configuration or extensions like ICU, FTS5, etc. you'll have to specify a custom driver/build.</p>
+        <p>
+            <strong>The general recommendation is to use the builtin SQLite setup</strong> but if you need more
+            advanced configuration or extensions like ICU, FTS5, etc. you'll have to specify a custom driver/build.
+        </p>
         <p>
             Note that PocketBase by default doesn't require CGO because it uses the pure Go SQLite port
             <a href="https://pkg.go.dev/modernc.org/sqlite" target="_blank" rel="noreferrer noopener">
@@ -111,7 +114,7 @@
 </div>
 <p>
     PocketBase v0.23+ added supported for defining a <code>DBConnect</code> function as app configuration to
-    load custom SQLite builds and drivers compatible with the standard Go <code>database/sql</code> interfaces.
+    load custom SQLite builds and drivers compatible with the standard Go <code>database/sql</code>.
 </p>
 <p>
     <strong>The <code>DBConnect</code> function is called twice</strong> - once for
@@ -249,7 +252,11 @@
         <p>
             <em>
                 For all available options please refer to the
-                <a href="https://docs.turso.tech/sdk/go/quickstart#remote-only" target="_blank" rel="noopener noreferrer">
+                <a
+                    href="https://docs.turso.tech/sdk/go/quickstart#remote-only"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Turso Go docs
                 </a>
                 .

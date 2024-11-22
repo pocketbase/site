@@ -13,32 +13,36 @@
                 <div class="content">
                     <h5>0. Why?</h5>
                     <p>
-                        PocketBase was created to assist with the development of my other open source projects
-                        (primarily
-                        <a
-                            href="https://github.com/presentator/presentator/issues/183"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                        >
-                            Presentator#183
-                        </a>
-                        ) with the main goal to build self-contained applications that can run on a single server
-                        without requiring to install anything in addition.
+                        PocketBase was created to assist building self-contained applications that can run on
+                        a single server without requiring to install anything in addition (<em
+                            >see <a
+                                href="https://github.com/presentator/presentator/issues/183"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                Presentator#183
+                            </a></em
+                        >).
+                        <br />
+                        The basic idea is that the common functionality like crud, auth, files upload, auto TLS,
+                        etc. are handled out of the box, allowing you to focus on the UI and your actual app business
+                        requirements.
                     </p>
                     <p>
-                        Please note that there is no paid team or company behind it. PocketBase is neither a
-                        startup, nor a business. It is a personal open source project developed entirely on
-                        volunteer basis with intentially restricted scope and, while I try to be as responsive
-                        as possible, there are no promises for maintenance and support beyond what is already
-                        available (you can explore the
-                        <a
-                            href="https://github.com/orgs/pocketbase/projects/2/views/1"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                        >
-                            Roadmap
-                        </a>
-                        to get a general idea where the project is headed but there are no fixed ETAs).
+                        Please note that PocketBase is neither a startup, nor a business. There is no paid
+                        team or company behind it. It is a personal open source project with intentially
+                        limited scope and developed entirely on volunteer basis. There are no promises for
+                        maintenance and support beyond what is already available (<em
+                            >you can explore the
+                            <a
+                                href="https://github.com/orgs/pocketbase/projects/2/views/1"
+                                target="_blank"
+                                rel="noreferrer noopener"
+                            >
+                                Roadmap
+                            </a>
+                            to get a general idea where the project is headed but there are no fixed ETAs</em
+                        >).
                     </p>
                 </div>
             </div>

@@ -195,8 +195,8 @@
                         />
                         <p>
                             <strong>Supported record sort fields:</strong> <br />
-                            <code>@random</code>, <code>id</code>, <code>created</code>, <code>updated</code>,
-                            <strong>and any other field from the collection schema</strong>.
+                            <code>@random</code>, <code>@rowid</code>, <code>id</code>,
+                            <strong>and any other collection field</strong>.
                         </p>
                     </div>
                 </td>
@@ -219,8 +219,7 @@
                         />
                         <p>
                             <strong>Supported record filter fields:</strong> <br />
-                            <code>id</code>, <code>created</code>, <code>updated</code>,
-                            <strong>+ any field from the collection schema</strong>.
+                            <code>id</code>, <strong>+ any field from the collection schema</strong>.
                         </p>
                         <FilterSyntax />
                     </div>

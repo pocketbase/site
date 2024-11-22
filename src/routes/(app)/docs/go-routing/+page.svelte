@@ -387,9 +387,19 @@
 />
 
 <HeadingLink title="Middlewares" />
-<p>Middlewares allow inspecting, intercepting and filtering route requests.</p>
 
 <HeadingLink title="Registering middlewares" tag="h5" />
+<p>Middlewares allow inspecting, intercepting and filtering route requests.</p>
+<p>
+    All middleware functions share the same signature with the route actions (aka.
+    <code>{`func(e *core.RequestEvent) error`}</code>) but expect the user to call <code>e.Next()</code> if they
+    want to proceed with the execution chain.
+</p>
+<p>
+    Middlewares can be registered <em>globally</em>, on <em>group</em> and on <em>route</em> level using the
+    <code>Bind</code>
+    and <code>BindFunc</code> methods.
+</p>
 <p>Here is a minimal example of a what global middleware looks like:</p>
 <CodeBlock
     language="go"
@@ -407,15 +417,6 @@
         })
     `}
 />
-<p>
-    All middleware functions share the same signature with the route actions (aka.
-    <code>{`func(e *core.RequestEvent) error`}</code>) but expect the user to call <code>e.Next()</code> if they
-    want to proceed with the execution chain.
-</p>
-<p>
-    Middlewares can be registered globally, on group and on route level using the <code>Bind</code>
-    and <code>BindFunc</code> methods.
-</p>
 <p>
     <a
         href="{import.meta.env.PB_GODOC_URL}/tools/router#RouterGroup.Bind"
@@ -449,7 +450,7 @@
 </ul>
 <p>
     Often you don't need to specify the <code>Id</code> or <code>Priority</code> of the middleware and for
-    convenience you can use instead
+    convenience you can instead use directly
     <a
         href="{import.meta.env.PB_GODOC_URL}/tools/router#RouterGroup.BindFunc"
         target="_blank"
@@ -466,7 +467,11 @@
         <code>Route.BindFunc(funcs...)</code>
     </a> .
 </p>
-<p>Below is a slightly more advanced example showing all options and the execution sequence:</p>
+<p>
+    Below is a slightly more advanced example showing all options and the execution sequence (<em
+        >2,0,1,3,4</em
+    >):
+</p>
 <CodeBlock
     language="go"
     content={`
@@ -511,44 +516,7 @@
     `}
 />
 
-<HeadingLink title="Builtin middlewares" tag="h5" />
-<p>
-    The <code>apis</code> package exposes several middlewares that you can use as part of your application.
-</p>
-<CodeBlock
-    language="go"
-    content={`
-        // Require the request client to be unauthenticated (aka. guest).
-        // Example: Route.Bind(apis.RequireGuestOnly())
-        apis.RequireGuestOnly()
-
-        // Require the request client to be authenticated
-        // (optionally specify a list of allowed auth collection names, default to any).
-        // Example: Route.Bind(apis.RequireAuth())
-        apis.RequireAuth(optCollectionNames...)
-
-        // Require the request client to be authenticated as superuser
-        // (this is an alias for apis.RequireAuth(core.CollectionNameSuperusers)).
-        // Example: Route.Bind(apis.RequireSuperuserAuth())
-        apis.RequireSuperuserAuth()
-
-        // Require the request client to be authenticated as superuser OR
-        // regular auth record with id matching the specified route parameter (default to "id").
-        // Example: Route.Bind(apis.RequireSuperuserOrOwnerAuth(""))
-        apis.RequireSuperuserOrOwnerAuth(ownerIdParam)
-
-        // Changes the global 32MB default request body size limit (set it to 0 for no limit).
-        // Note that system record routes have dynamic body size limit based on the collection field types.
-        // Example: Route.Bind(apis.BodyLimit(10 << 20))
-        apis.BodyLimit(limitBytes)
-
-        // Compresses the HTTP response using Gzip compression scheme.
-        // Example: Route.Bind(apis.Gzip())
-        apis.Gzip()
-    `}
-/>
-
-<HeadingLink title="Removing registered middlewares" tag="h5" />
+<HeadingLink title="Removing middlewares" tag="h5" />
 <p>
     To remove a registered middleware from the execution chain for a specific group or route you can make use
     of the
@@ -582,6 +550,259 @@
         })
     `}
 />
+
+<HeadingLink title="Builtin middlewares" tag="h5" />
+<p>
+    The
+    <a href="{import.meta.env.PB_GODOC_URL}/apis" target="_blank" rel="noopener noreferrer">
+        <code>apis</code>
+    </a>
+    package exposes several middlewares that you can use as part of your application.
+</p>
+<CodeBlock
+    language="go"
+    content={`
+        // Require the request client to be unauthenticated (aka. guest).
+        // Example: Route.Bind(apis.RequireGuestOnly())
+        apis.RequireGuestOnly()
+
+        // Require the request client to be authenticated
+        // (optionally specify a list of allowed auth collection names, default to any).
+        // Example: Route.Bind(apis.RequireAuth())
+        apis.RequireAuth(optCollectionNames...)
+
+        // Require the request client to be authenticated as superuser
+        // (this is an alias for apis.RequireAuth(core.CollectionNameSuperusers)).
+        // Example: Route.Bind(apis.RequireSuperuserAuth())
+        apis.RequireSuperuserAuth()
+
+        // Require the request client to be authenticated as superuser OR
+        // regular auth record with id matching the specified route parameter (default to "id").
+        // Example: Route.Bind(apis.RequireSuperuserOrOwnerAuth(""))
+        apis.RequireSuperuserOrOwnerAuth(ownerIdParam)
+
+        // Changes the global 32MB default request body size limit (set it to 0 for no limit).
+        // Note that system record routes have dynamic body size limit based on their collection field types.
+        // Example: Route.Bind(apis.BodyLimit(10 << 20))
+        apis.BodyLimit(limitBytes)
+
+        // Compresses the HTTP response using Gzip compression scheme.
+        // Example: Route.Bind(apis.Gzip())
+        apis.Gzip()
+
+        // Instructs the activity logger to log only requests that have failed/returned an error.
+        // Example: Route.Bind(apis.SkipSuccessActivityLog())
+        apis.SkipSuccessActivityLog()
+    `}
+/>
+
+<HeadingLink title="Default globally registered middlewares" tag="h5" />
+<small class="txt-hint">
+    The below list is mostly useful for users that may want to plug their own custom middlewares before/after
+    the priority of the default global ones, for example: registering a custom auth loader before the rate
+    limiter with <code>apis.DefaultRateLimitMiddlewarePriority - 1</code> so that the rate limit can be applied
+    properly based on the loaded auth state.
+</small>
+<p>
+    All PocketBase applications have the below internal middlewares registered out of the box (<em
+        >sorted by their priority</em
+    >):
+    <br />
+</p>
+<ul>
+    <li>
+        <strong>WWW redirect</strong>
+        <small class="txt-hint">
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultWWWRedirectMiddlewareId</code>
+            </a>
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultWWWRedirectMiddlewarePriority</code>
+            </a>
+        </small>
+        <br />
+        <em>
+            Performs www -> non-www redirect(s) if the request host matches with one of the values in
+            certificate host policy.
+        </em>
+    </li>
+    <li>
+        <strong>CORS</strong>
+        <small class="txt-hint">
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultCorsMiddlewareId</code>
+            </a>
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultCorsMiddlewarePriority</code>
+            </a>
+        </small>
+        <br />
+        <em>
+            By default all origins are allowed (PocketBase is stateless and doesn't rely on cookies) and can
+            be configured with the <code>--origins</code>
+            flag but for more advanced customization it can be also replaced entirely by binding with
+            <code>apis.CORS(config)</code> middleware or registering your own custom one in its place.
+        </em>
+    </li>
+    <li>
+        <strong>Activity logger</strong>
+        <small class="txt-hint">
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultActivityLoggerMiddlewareId</code>
+            </a>
+
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultActivityLoggerMiddlewarePriority</code>
+            </a>
+        </small>
+        <br />
+        <em>Saves request information into the logs auxiliary database.</em>
+    </li>
+    <li>
+        <strong>Auto panic recover</strong>
+        <small class="txt-hint">
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultPanicRecoverMiddlewareId</code>
+            </a>
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultPanicRecoverMiddlewarePriority</code>
+            </a>
+        </small>
+        <br />
+        <em>Default panic-recover handler.</em>
+    </li>
+    <li>
+        <strong>Auth token loader</strong>
+        <small class="txt-hint">
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultLoadAuthTokenMiddlewareId</code>
+            </a>
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultLoadAuthTokenMiddlewarePriority</code>
+            </a>
+        </small>
+        <br />
+        <em>
+            Loads the auth token from the <code>Authorization</code> header and populates the related auth
+            record into the request event (aka. <code>e.Auth</code>).
+        </em>
+    </li>
+    <li>
+        <strong>Security response headers</strong>
+        <small class="txt-hint">
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultSecurityHeadersMiddlewareId</code>
+            </a>
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultSecurityHeadersMiddlewarePriority</code>
+            </a>
+        </small>
+        <br />
+        <em>
+            Adds default common security headers (<code>X-XSS-Protection</code>,
+            <code>X-Content-Type-Options</code>,
+            <code>X-Frame-Options</code>) to the response (can be overwritten by other middlewares or from
+            inside the route action).
+        </em>
+    </li>
+    <li>
+        <strong>Rate limit</strong>
+        <small class="txt-hint">
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultRateLimitMiddlewareId</code>
+            </a>
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultRateLimitMiddlewarePriority</code>
+            </a>
+        </small>
+        <br />
+        <em
+            >Rate limits client requests based on the configured app settings (it does nothing if the rate
+            limit option is not enabled).</em
+        >
+    </li>
+    <li>
+        <strong>Body limit</strong>
+        <small class="txt-hint">
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultBodyLimitMiddlewareId</code>
+            </a>
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultBodyLimitMiddlewarePriority</code>
+            </a>
+        </small>
+        <br />
+        <em>
+            Applies a default max ~32MB request body limit for all custom routes ( system record routes have
+            dynamic body size limit based on their collection field types). Can be overwritten on group/route
+            level by simply rebinding the <code>apis.BodyLimit(limitBytes)</code> middleware.
+        </em>
+    </li>
+</ul>
 
 <HeadingLink title="Error response" />
 <p>

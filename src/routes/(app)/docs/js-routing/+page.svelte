@@ -367,13 +367,100 @@
         $apis.requireSuperuserOrOwnerAuth(ownerIdParam)
 
         // Changes the global 32MB default request body size limit (set it to 0 for no limit).
-        // Note that system record routes have dynamic body size limit based on the collection field types.
+        // Note that system record routes have dynamic body size limit based on their collection field types.
         $apis.bodyLimit(limitBytes)
 
         // Compresses the HTTP response using Gzip compression scheme.
         $apis.gzip()
+
+        // Instructs the activity logger to log only requests that have failed/returned an error.
+        $apis.skipSuccessActivityLog()
     `}
 />
+
+<HeadingLink title="Default globally registered middlewares" tag="h5" />
+<small class="txt-hint">
+    The below list is mostly useful for users that may want to plug their own custom middlewares before/after
+    the priority of the default global ones, for example: registering a custom auth loader before the rate
+    limiter with <code>-1001</code> so that the rate limit can be applied properly based on the loaded auth state.
+</small>
+<p>
+    All PocketBase applications have the below internal middlewares registered out of the box (<em
+        >sorted by their priority</em
+    >):
+    <br />
+</p>
+<ul>
+    <li>
+        <strong>WWW redirect</strong>
+        <small class="txt-hint">(id: pbWWWRedirect, priority: -99999)</small>
+        <br />
+        <em>
+            Performs www -> non-www redirect(s) if the request host matches with one of the values in
+            certificate host policy.
+        </em>
+    </li>
+    <li>
+        <strong>CORS</strong>
+        <small class="txt-hint">(id: pbCors, priority: -1041)</small>
+        <br />
+        <em>
+            By default all origins are allowed (PocketBase is stateless and doesn't rely on cookies) but this
+            can be configured with the <code>--origins</code> flag.
+        </em>
+    </li>
+    <li>
+        <strong>Activity logger</strong>
+        <small class="txt-hint">(id: pbActivityLogger, priority: -1040)</small>
+        <br />
+        <em>Saves request information into the logs auxiliary database.</em>
+    </li>
+    <li>
+        <strong>Auto panic recover</strong>
+        <small class="txt-hint">(id: pbPanicRecover, priority: -1030)</small>
+        <br />
+        <em>Default panic-recover handler.</em>
+    </li>
+    <li>
+        <strong>Auth token loader</strong>
+        <small class="txt-hint">(id: pbLoadAuthToken, priority: -1020)</small>
+        <br />
+        <em>
+            Loads the auth token from the <code>Authorization</code> header and populates the related auth
+            record into the request event (aka. <code>e.Auth</code>).
+        </em>
+    </li>
+    <li>
+        <strong>Security response headers</strong>
+        <small class="txt-hint">(id: pbSecurityHeaders, priority: -1010)</small>
+        <br />
+        <em>
+            Adds default common security headers (<code>X-XSS-Protection</code>,
+            <code>X-Content-Type-Options</code>,
+            <code>X-Frame-Options</code>) to the response (can be overwritten by other middlewares or from
+            inside the route action).
+        </em>
+    </li>
+    <li>
+        <strong>Rate limit</strong>
+        <small class="txt-hint">(id: pbRateLimit, priority: -1000)</small>
+        <br />
+        <em
+            >Rate limits client requests based on the configured app settings (it does nothing if the rate
+            limit option is not enabled).</em
+        >
+    </li>
+    <li>
+        <strong>Body limit</strong>
+        <small class="txt-hint">(id: pbBodyLimit, priority: -990)</small>
+        <br />
+        <em>
+            Applies a default max ~32MB request body limit for all custom routes ( system record routes have
+            dynamic body size limit based on their collection field types). Can be overwritten on group/route
+            level by simply rebinding the <code>apis.BodyLimit(limitBytes)</code> middleware.
+        </em>
+    </li>
+</ul>
 
 <HeadingLink title="Error response" />
 <p>
