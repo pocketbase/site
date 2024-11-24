@@ -259,9 +259,10 @@
 </p>
 <img src="/images/screenshots/backups.png" alt="Backups settings screenshot" class="screenshot m-b-xs" />
 <p>
-    Backups can be stored locally (default) or in an external S3 storage. The generated backup represent a
-    full snapshot as ZIP archive of your <code>pb_data</code> directory (including the locally stored uploaded
-    files but excluding any local backups or files uploaded to S3).
+    Backups can be stored locally (default) or in a S3 compatible storage (<em
+        >it is recommended to use a separate bucket only for the backups</em
+    >). The generated backup represents a full snapshot as ZIP archive of your <code>pb_data</code> directory (including
+    the locally stored uploaded files but excluding any local backups or files uploaded to S3).
 </p>
 <div class="alert alert-warning m-b-xs">
     <div class="icon">
