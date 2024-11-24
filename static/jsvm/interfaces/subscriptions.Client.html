@@ -28,7 +28,7 @@
 <h4 class="tsd-before-signature">Indexable</h4>
 <div class="tsd-signature"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">any</span></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16806">types.d.ts:16806</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19827">types.d.ts:19827</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -57,24 +57,25 @@
 <li class="tsd-signature tsd-anchor-link" id="channel.channel-1"><span class="tsd-kind-call-signature">channel</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><a href="#channel.channel-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Channel returns the client&#39;s communication channel.</p>
+<p>NB! The channel shouldn&#39;t be used after calling Discard().</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16815">types.d.ts:16815</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19838">types.d.ts:19838</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="discard" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>discard</span><a href="#discard" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="discard.discard-1"><span class="tsd-kind-call-signature">discard</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#discard.discard-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Discard marks the client as &quot;discarded&quot;, meaning that it
-shouldn&#39;t be used anymore for sending new messages.</p>
+<div class="tsd-comment tsd-typography"><p>Discard marks the client as &quot;discarded&quot; (and closes its channel),
+meaning that it shouldn&#39;t be used anymore for sending new messages.</p>
 <p>It is safe to call Discard() multiple times.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16862">types.d.ts:16862</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19885">types.d.ts:19885</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="get" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>get</span><a href="#get" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -90,7 +91,7 @@ shouldn&#39;t be used anymore for sending new messages.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16855">types.d.ts:16855</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19878">types.d.ts:19878</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="hasSubscription" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>has<wbr/>Subscription</span><a href="#hasSubscription" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -106,7 +107,7 @@ shouldn&#39;t be used anymore for sending new messages.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16843">types.d.ts:16843</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19866">types.d.ts:19866</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="id" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>id</span><a href="#id" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -117,7 +118,7 @@ shouldn&#39;t be used anymore for sending new messages.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16811">types.d.ts:16811</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19832">types.d.ts:19832</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="isDiscarded" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>is<wbr/>Discarded</span><a href="#isDiscarded" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -129,7 +130,7 @@ and should no longer be used.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16867">types.d.ts:16867</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19890">types.d.ts:19890</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="send" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>send</span><a href="#send" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -145,7 +146,7 @@ and should no longer be used.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16871">types.d.ts:16871</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19894">types.d.ts:19894</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="set" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>set</span><a href="#set" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -163,7 +164,7 @@ and should no longer be used.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16847">types.d.ts:16847</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19870">types.d.ts:19870</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="subscribe" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>subscribe</span><a href="#subscribe" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -183,7 +184,7 @@ and should no longer be used.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16835">types.d.ts:16835</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19858">types.d.ts:19858</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="subscriptions" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>subscriptions</span><a href="#subscriptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -200,7 +201,7 @@ If no prefix is specified, returns all subscriptions.</p>
 <h4 class="tsd-returns-title">Returns <a href="../types/_TygojaDict.html" class="tsd-signature-type tsd-kind-type-alias">_TygojaDict</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16820">types.d.ts:16820</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19843">types.d.ts:19843</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unset" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unset</span><a href="#unset" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -216,7 +217,7 @@ If no prefix is specified, returns all subscriptions.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16851">types.d.ts:16851</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19874">types.d.ts:19874</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unsubscribe" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unsubscribe</span><a href="#unsubscribe" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -232,7 +233,7 @@ If no prefix is specified, returns all subscriptions.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/1d4aa6789/jsvm/types.d.ts#L16839">types.d.ts:16839</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/2157f4cc9/jsvm/types.d.ts#L19862">types.d.ts:19862</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
