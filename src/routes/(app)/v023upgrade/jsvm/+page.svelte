@@ -105,10 +105,13 @@
     <li>
         Apply the necessary <code>pb_hooks</code> code changes based on the notes listed below in this document.
     </li>
-    <li>Start PocketBase v0.23.0 as usual and test your local changes.</li>
     <li>
-        If everything is working fine,
-        <strong>create another more recent production backup for just in case</strong>.
+        Start PocketBase v0.23.0 as usual and test your local changes (<strong
+            >including a test against no existing pb_data</strong
+        >).
+    </li>
+    <li>
+        If everything is working fine, create another more recent production backup for just in case.
         <br />
         After that you can deploy your PocketBase v0.23.0 executable, together with the upgraded client-side code,
         <code>pb_hooks</code>

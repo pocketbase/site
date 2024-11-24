@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../_app/immutable/assets/2.0975cac3.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/3.9c47a874.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/5.f8747f5c.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.7231d4f7.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/PageFooter.476871d4.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/tooltip.f1d7ab7e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CommonHelper.7329e1a7.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/3.7d3ee590.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/stores.d888f6de.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/preferences.0fc33f39.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/5.32dbbb59.js"><title>Introduction - Docs - PocketBase</title><!-- HEAD_svelte-q27gla_START --><!-- HEAD_svelte-q27gla_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+<header class="page-header"><div class="wrapper wrapper-lg"><a href="/" class="logo logo-sm"><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40">
+            <span class="txt">Pocket<strong>Base</strong></span>
+            <span class="version">v0.22.27</span></a>
+
+        <div class="flex-fill"></div>
+
+        
+        
+
+        
+
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span>
+            <i class="ri-menu-3-fill"></i>
+            
+
+<div class="toggler-container"></div></button>
+
+        <nav class="main-menu"><a href="/faq" class="btn btn-secondary">FAQ</a>
+            <a href="https://github.com/pocketbase/pocketbase/discussions" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Discussions
+            </a>
+            <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a>
+            <a href="/docs" class="btn btn-outline btn-expanded"><span class="txt">Documentation</span></a></nav></div></header>
+
+<main class="wrapper wrapper-lg page-content-wrapper">
+
+<aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-1izh69t"><div class="absolute-wrapper svelte-1izh69t"><div class="sidebar-content svelte-1izh69t"><nav class="sidebar-list">
+        
+        <a href="/docs" class="list-item active">
+            <span class="icon"><i class="ri-home-2-line"></i></span>
+            <span class="txt">Introduction</span>
+            </a>
+        
+        
+        <a href="/docs/collections" class="list-item">
+            <span class="icon"><i class="ri-database-2-line"></i></span>
+            <span class="txt">Collections</span>
+            </a>
+        
+        
+        <a href="/docs/api-rules-and-filters" class="list-item">
+            <span class="icon"><i class="ri-shield-check-line"></i></span>
+            <span class="txt">API rules and filters</span>
+            </a>
+        
+        
+        <a href="/docs/client-side-sdks" class="list-item">
+            <span class="icon"><i class="ri-tools-line"></i></span>
+            <span class="txt">Client-side SDKs</span>
+            </a>
+        
+        
+        <a href="/docs/authentication" class="list-item">
+            <span class="icon"><i class="ri-group-line"></i></span>
+            <span class="txt">Authentication</span>
+            </a>
+        
+        
+        <a href="/docs/files-handling" class="list-item">
+            <span class="icon"><i class="ri-upload-cloud-line"></i></span>
+            <span class="txt">Files upload and handling</span>
+            </a>
+        
+        
+        <a href="/docs/working-with-relations" class="list-item">
+            <span class="icon"><i class="ri-mind-map"></i></span>
+            <span class="txt">Working with relations</span>
+            </a>
+        
+        
+        <a href="/docs/use-as-framework" class="list-item">
+            <span class="icon"><i class="ri-code-s-slash-line"></i></span>
+            <span class="txt">Use as framework</span>
+            </a>
+        
+        
+        <a href="/docs/api-records" class="list-item">
+            <span class="icon"><i class="ri-file-list-2-line"></i></span>
+            <span class="txt">Web APIs reference</span>
+            </a>
+        
+        
+        <a href="/docs/going-to-production" class="list-item">
+            <span class="icon"><i class="ri-check-double-line"></i></span>
+            <span class="txt">Going to production</span>
+            </a>
+        </nav>
+
+                <div class="clearfix m-t-base"></div>
+
+                <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item active" href="/docs/go-overview"><div class="block">Extend with
+                                <br>
+                                <strong>Go</strong></div></a>
+                        <a class="tab-item" href="/docs/js-overview"><div class="block">Extend with
+                                <br>
+                                <strong>JavaScript</strong></div></a></div>
+                    <div class="tabs-content"><div class="tab-item active"><nav class="sidebar-list">
+        
+        <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/go-records" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Testing</span>
+            </a>
+        
+        
+        <a href="/docs/go-custom-models" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Custom models</span>
+            </a>
+        </nav></div>
+                        <div class="tab-item"><nav class="sidebar-list">
+        
+        <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/js-routing" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/js-database" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending HTTP requests</span>
+            </a>
+        
+        
+        <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Types reference</span>
+            </a>
+        </nav></div></div></div></div></div></div>
+</aside>
+
+<div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Introduction</div></nav>
+
+    <div class="content"><div class="alert alert-danger m-b-sm"><div class="icon"><i class="ri-alert-line"></i></div>
+    <div class="content"><p>Please keep in mind that PocketBase is still under active development and full backward
+            compatibility is not guaranteed before reaching v1.0.0. PocketBase is not recommended for
+            production critical applications yet, unless you are fine with reading the
+            <a href="https://github.com/pocketbase/pocketbase/blob/master/CHANGELOG.md" target="_blank" rel="noopener noreferrer">changelog
+            </a>
+            and applying some manual migration steps from time to time.
+        </p></div></div>
+
+<p>PocketBase is an open source backend consisting of embedded database (SQLite) with realtime subscriptions,
+    built-in auth management, convenient dashboard UI and simple REST-ish API.
+</p>
+
+<p>The easiest way to get started is to download the prebuilt minimal PocketBase app:</p>
+<div class="tabs compact tabs-architecture m-b-sm svelte-q6wypr"><div class="tabs-header left"><button type="button" class="tab-item svelte-q6wypr active">x64
+        </button>
+        <button type="button" class="tab-item svelte-q6wypr">ARM64
+        </button></div>
+    <div class="tabs-content"><div class="tab-item svelte-q6wypr active"><ul><li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.22.27/pocketbase_0.22.27_linux_amd64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-qq-fill"></i>
+                            <span class="txt">Download v0.22.27 for Linux x64</span></a>
+                        <small class="txt-hint">(~14MB zip)</small></div></li>
+                <li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.22.27/pocketbase_0.22.27_windows_amd64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-windows-fill"></i>
+                            <span class="txt">Download v0.22.27 for Windows x64</span></a>
+                        <small class="txt-hint">(~14MB zip)</small></div></li>
+                <li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.22.27/pocketbase_0.22.27_darwin_amd64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-apple-fill"></i>
+                            <span class="txt">Download v0.22.27 for macOS x64</span></a>
+                        <small class="txt-hint">(~14MB zip)</small></div></li></ul></div>
+        <div class="tab-item svelte-q6wypr"><ul><li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.22.27/pocketbase_0.22.27_linux_arm64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-qq-fill"></i>
+                            <span class="txt">Download v0.22.27 for Linux ARM64</span></a>
+                        <small class="txt-hint">(~13MB zip)</small></div></li>
+                <li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.22.27/pocketbase_0.22.27_windows_arm64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-windows-fill"></i>
+                            <span class="txt">Download v0.22.27 for Windows ARM64</span></a>
+                        <small class="txt-hint">(~13MB zip)</small></div></li>
+                <li><div class="inline-flex flex-gap-5"><a href="https://github.com/pocketbase/pocketbase/releases/download/v0.22.27/pocketbase_0.22.27_darwin_arm64.zip" class="inline-flex flex-gap-5 txt-bold" target="_blank" rel="noreferrer noopener"><i class="ri-apple-fill"></i>
+                            <span class="txt">Download v0.22.27 for macOS ARM64</span></a>
+                        <small class="txt-hint">(~13MB zip)</small></div></li></ul></div></div></div>
+
+<p class="txt-sm txt-hint">See the
+    <a href="https://github.com/pocketbase/pocketbase/releases" target="_blank" rel="noreferrer noopener">GitHub Releases page
+    </a>
+    for other platforms and more details.
+</p>
+
+<hr>
+
+<p>Once you&#39;ve extracted the archive, you could start the application by running
+    <code><strong>./pocketbase serve</strong></code> in the extracted directory.
+</p>
+<p><strong>And that&#39;s it!</strong> A web server will be started with the following routes:
+</p>
+<div class="alert m-t-10 m-b-xs"><div class="content"><ul><li class="m-b-5">
+                <a href="http://127.0.0.1:8090" target="_blank"><code>http://127.0.0.1:8090</code></a>
+                - if <code>pb_public</code> directory exists, serves the static content from it (html, css, images,
+                etc.)
+            </li>
+            <li class="m-b-5">
+                <a href="http://127.0.0.1:8090/_/" target="_blank"><code>http://127.0.0.1:8090/_/</code></a>
+                - Admin dashboard UI
+            </li>
+            <li>
+                <a href="http://127.0.0.1:8090/api/" target="_blank"><code>http://127.0.0.1:8090/api/</code></a>
+                - REST API
+            </li></ul></div></div>
+<p>The first time, when you access the Admin dashboard UI, it will prompt you to create your first admin
+    account (email and pass).
+</p>
+<p>The prebuilt PocketBase executable will automatically create and manage 2 new directories alongside the
+    executable:
+</p>
+<ul><li><code>pb_data</code> - stores your application data, uploaded files, etc. (usually should be added in
+        <code>.gitignore</code>).
+    </li>
+    <li><code>pb_migrations</code> - contains JS migration files with your collection changes (can be safely
+        committed in your repository).
+        <br>
+        <div class="txt-hint m-b-xs">You can even write custom migration scripts. For more info check the
+            <a href="/docs/js-migrations">JS migrations docs</a>.
+        </div></li></ul>
+<p>You could find all available commands and their options by running
+    <code>./pocketbase --help</code> or
+    <code>./pocketbase [command] --help</code>
+</p></div>
+
+    <hr>
+
+<div class="docs-footer svelte-1dbn67j">
+
+    <a href="/docs/collections" class="btn btn-outline btn-expanded btn-next svelte-1dbn67j"><span class="txt">Next: Collections</span>
+            <i class="ri-arrow-right-line"></i></a>
+</div></div></main>
+
+<footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links"><a href="/faq" class="link-item">FAQ</a>
+                <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions
+                </a>
+                <a href="/docs" class="link-item">Documentation</a></nav>
+
+            <nav class="footer-col links"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK
+                </a>
+                <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK
+                </a></nav>
+
+            <div class="footer-col socials"><div class="watermark-logo">Pocket<strong>Base</strong></div>
+                <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a>
+                <a href="https://twitter.com/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to Twitter"><i class="ri-twitter-line"></i></a>
+                <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub"><i class="ri-github-line"></i></a></div></div>
+        <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2024 Pocket<strong>Base</strong></span>
+                <span class="gopher-credit">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers
+                    </a></span></div>
+            <div class="flex-fill"></div>
+            <div class="credit">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>
+
+
+
+<button type="button" class="btn btn-circle btn-secondary scroll-to-top svelte-h1x6u4" arial-label="Go to top"><i class="ri-arrow-up-line"></i>
+</button>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../_app/immutable/entry/start.b8d67116.js"),
+						import("../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 5],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

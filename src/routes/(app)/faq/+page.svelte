@@ -96,8 +96,8 @@
                 Only on a single server, aka. vertical. Most of the time, you may not need the complexity of
                 managing a fleet of machines and services just to run your backend.
                 <br />
-                <strong>PocketBase could be a great choice for small and midsize applications</strong> - SaaS,
-                mobile api backend, intranet, etc.
+                <strong>PocketBase could be a great choice for small and midsize applications</strong>
+                - SaaS, mobile api backend, intranet, etc.
                 <br />
                 Even without optimizations, PocketBase can easily serve 10 000+ persistent realtime connections
                 on a cheap $4 Hetzner CAX11 VPS (2vCPU, 4GB RAM).

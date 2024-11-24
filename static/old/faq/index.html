@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../_app/immutable/assets/2.0975cac3.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.7231d4f7.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/PageFooter.476871d4.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/tooltip.f1d7ab7e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CommonHelper.7329e1a7.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/50.a86b584f.js"><title>FAQ - PocketBase</title><!-- HEAD_svelte-zdwnv7_START --><!-- HEAD_svelte-zdwnv7_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+<header class="page-header"><div class="wrapper wrapper-lg"><a href="/" class="logo logo-sm"><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40">
+            <span class="txt">Pocket<strong>Base</strong></span>
+            <span class="version">v0.22.27</span></a>
+
+        <div class="flex-fill"></div>
+
+        
+        
+
+        
+
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span>
+            <i class="ri-menu-3-fill"></i>
+            
+
+<div class="toggler-container"></div></button>
+
+        <nav class="main-menu"><a href="/faq" class="btn btn-secondary">FAQ</a>
+            <a href="https://github.com/pocketbase/pocketbase/discussions" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Discussions
+            </a>
+            <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a>
+            <a href="/docs" class="btn btn-outline btn-expanded"><span class="txt">Documentation</span></a></nav></div></header>
+
+<main class="wrapper wrapper-lg page-content-wrapper">
+
+<div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">FAQ</div></nav>
+
+    <div class="alert p-sm m-b-10"><div class="content"><h5>1. Do you offer hosting?</h5>
+            <p>No. PocketBase is self-hosted only. If you are looking for <strong>free options</strong> for small
+                POC and hobby apps, you can check:
+            </p>
+            <ul><li><a href="https://fly.io/" target="_blank" rel="noreferrer noopener">Fly.io</a> - see also
+                    <a href="https://github.com/pocketbase/pocketbase/discussions/537" target="_blank" rel="noreferrer noopener"><strong>Host for free on Fly.io</strong></a>
+                    guide (<em>the free tier comes with 1vCPU, 256MB RAM and 1GB disk storage /up to 3GB but
+                        requires card details/</em>)
+                </li>
+                
+                <li><a href="https://pockethost.io/" target="_blank" rel="noreferrer noopener">PocketHost.io</a>
+                    (<em>shared single VM instance, maintained and provided by <a href="https://github.com/benallfree" target="_blank" rel="noreferrer noopener">benallfree</a></em>)
+                </li></ul>
+            <p>For a more traditional setup you can use any VPS provider that comes with a persistent
+                storage, like
+                <a href="https://www.hetzner.com/" target="_blank" rel="noreferrer noopener">Hetzner</a>,
+                <a href="https://www.vultr.com/" target="_blank" rel="noreferrer noopener">Vultr</a>,
+                <a href="https://upcloud.com/" target="_blank" rel="noreferrer noopener">UpCloud</a>,
+                <a href="https://www.linode.com/" target="_blank" rel="noreferrer noopener">Linode</a>,
+                <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer noopener">DigitalOcean</a>, etc.
+                <br>
+                The
+                <a href="/docs/going-to-production/">Going to production</a> guide contains general information
+                how to deploy your PocketBase app and some config recommendations.
+            </p>
+
+            <h5>2. Does it scale?</h5>
+            <p>Only on a single server, aka. vertical. Most of the time, you may not need the complexity of
+                managing a fleet of machines and services just to run your backend.
+                <br>
+                PocketBase is a great choice for small and midsize applications - SaaS, mobile api backend, intranet,
+                etc.
+                <br>
+                <strong>Even without optimizations, PocketBase can easily serve 10 000+ persistent realtime
+                    connections on a cheap $4 Hetzner CAX11 VPS (2vCPU, 4GB RAM).
+                </strong>
+                <br>
+                You can explore the official
+                <a href="https://github.com/pocketbase/benchmarks" target="_blank" rel="noreferrer noopener">benchmarks repo
+                </a>
+                for more details.
+            </p>
+
+            <h5>3. How to run custom code?</h5>
+            <p>PocketBase differs from the other similar backend solutions like Firebase, Supabase, Nhost,
+                etc. and doesn&#39;t support running cloud functions.
+                <br>
+                <strong>Instead, PocketBase could be used as a Go or JS framework that enables you to build your
+                    own custom app specific business logic and still have a portable backend at the end
+                </strong>
+                (check <a href="/docs/use-as-framework">Use as framework</a> guide).
+            </p>
+
+            <h5>4. Does it support Google or Facebook login?</h5>
+            <p>Yes, currently we support more than 15+ OAuth2 providers - Apple, Google, Facebook, Microsoft,
+                VK, GitHub, GitLab, and many more.
+            </p>
+
+            <h5>5. Does it come with frontend UI for user login, register, etc. screens?</h5>
+            <p>No. PocketBase provides only SDKs for client-side integration and you are free to implement
+                your own frontend.
+                <br>
+                For convenience, there are default user facing pages for the user email confirmation links (password
+                reset, verification, etc.) but you can also set your own by updating the urls in the Admin UI settings.
+            </p>
+
+            <h5>6. Can I use database X?</h5>
+            <p>PocketBase uses embedded SQLite (in WAL mode) and there are no plans for supporting other
+                databases.
+                <br>
+                <strong>For majority of the queries SQLite (in WAL mode) outperforms traditional databases like
+                    MySQL, MariaDB or PostgreSQL (especially for read operations).
+                </strong>
+                <br>
+                If you need replication and disaster recovery, a great companion app could be
+                <a href="https://litestream.io/" target="_blank" rel="noreferrer noopener">Litestream</a>.
+            </p>
+
+            <h5>7. Can I donate?</h5>
+            <p>No. In the past we accepted donations (I&#39;m very grateful for everyone who contributed) but
+                financial contributions from individuals usually comes with some &quot;unspoken expectations&quot; and
+                to avoid the mental burden and the sense of feeling guilty when not working on the
+                contributor&#39;s feature request, I&#39;ve decided to stop accepting donations for PocketBase.
+                <br>
+                If you are part of an organization that offers sponsorships or grants and want to support the project
+                development financially, feel free to reach out to
+                <em>support at pocketbase.io</em> but only if there are no strings attached.
+            </p>
+
+            <h5>8. Where can I find help for my PocketBase application?</h5>
+            <p>You could always look for help in our public
+                <a href="https://github.com/pocketbase/pocketbase/discussions" target="_blank" rel="noreferrer noopener">Discussions board</a>,
+                <a href="https://github.com/pocketbase/pocketbase">open an issue or feature request</a>
+                or contact <em>support at pocketbase.io</em>.
+            </p></div></div></div></main>
+
+<footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links"><a href="/faq" class="link-item">FAQ</a>
+                <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions
+                </a>
+                <a href="/docs" class="link-item">Documentation</a></nav>
+
+            <nav class="footer-col links"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK
+                </a>
+                <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK
+                </a></nav>
+
+            <div class="footer-col socials"><div class="watermark-logo">Pocket<strong>Base</strong></div>
+                <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a>
+                <a href="https://twitter.com/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to Twitter"><i class="ri-twitter-line"></i></a>
+                <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub"><i class="ri-github-line"></i></a></div></div>
+        <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2024 Pocket<strong>Base</strong></span>
+                <span class="gopher-credit">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers
+                    </a></span></div>
+            <div class="flex-fill"></div>
+            <div class="credit">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>
+
+
+
+<button type="button" class="btn btn-circle btn-secondary scroll-to-top svelte-h1x6u4" arial-label="Go to top"><i class="ri-arrow-up-line"></i>
+</button>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null];
+
+					Promise.all([
+						import("../_app/immutable/entry/start.b8d67116.js"),
+						import("../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 50],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

@@ -144,7 +144,7 @@
                 <code>@request.body.title != ""</code>)
                 <br />
                 <small class="txt-hint">
-                    Note: Uploaded files are not part of the <code class="txt-sm">@request.data</code>
+                    Note: Uploaded files are not part of the <code class="txt-sm">@request.body</code>
                     because they are evaluated separately (<em>this behavior may change in the future</em>).
                 </small>
             </li>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/52.cc07a1cc.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/4.0fd269a3.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/52.a0c27624.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CommonHelper.7329e1a7.js"><title>Dashboard demo - PocketBase</title><!-- HEAD_svelte-18da5g6_START --><!-- HEAD_svelte-18da5g6_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+
+
+<div class="iframe-wrapper svelte-1fdn4qb"><div class="alert svelte-1fdn4qb">
+            <div class="content txt-center">This is a demo of <a href="/">PocketBase</a> admin dashboard. The database resets every hour.
+                Realtime data and file upload are disabled.
+                <br>
+                To login, use
+                <div class="inline-flex flex-gap-0">Email: <strong>test@example.com</strong>
+                    <i class="link-hint txt-base ri-file-copy-line" title="Copy to clipboard"></i></div>
+                and
+                <div class="inline-flex flex-gap-0">Password: <strong>123456</strong>
+                    <i class="link-hint txt-base ri-file-copy-line" title="Copy to clipboard"></i></div></div></div>
+
+    <iframe src="https://pocketbase.io/_/#/login?demoEmail=test@example.com&demoPassword=123456" title="Demo dashboard" frameborder="0" class="svelte-1fdn4qb"></iframe>
+</div>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null];
+
+					Promise.all([
+						import("../_app/immutable/entry/start.b8d67116.js"),
+						import("../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4, 52],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

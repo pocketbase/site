@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../../_app/immutable/assets/2.0975cac3.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.9c47a874.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CodeBlock.d22afb3e.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/FilterSyntax.68f52edd.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/2.7231d4f7.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/PageFooter.476871d4.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/tooltip.f1d7ab7e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CommonHelper.7329e1a7.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.7d3ee590.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.d888f6de.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/preferences.0fc33f39.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/11.52fd5296.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Accordion.71344b00.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/HeadingLink.20322812.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeBlock.a090ee9b.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeTabs.3c6448ff.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/FilterSyntax.3a84ec87.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/FieldsQueryParam.61e1061c.js"><title>Web APIs reference - API Logs - Docs - PocketBase</title><!-- HEAD_svelte-q27gla_START --><!-- HEAD_svelte-q27gla_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+<header class="page-header"><div class="wrapper wrapper-lg"><a href="/" class="logo logo-sm"><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40">
+            <span class="txt">Pocket<strong>Base</strong></span>
+            <span class="version">v0.22.27</span></a>
+
+        <div class="flex-fill"></div>
+
+        
+        
+
+        
+
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span>
+            <i class="ri-menu-3-fill"></i>
+            
+
+<div class="toggler-container"></div></button>
+
+        <nav class="main-menu"><a href="/faq" class="btn btn-secondary">FAQ</a>
+            <a href="https://github.com/pocketbase/pocketbase/discussions" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Discussions
+            </a>
+            <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a>
+            <a href="/docs" class="btn btn-outline btn-expanded"><span class="txt">Documentation</span></a></nav></div></header>
+
+<main class="wrapper wrapper-lg page-content-wrapper">
+
+<aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-1izh69t"><div class="absolute-wrapper svelte-1izh69t"><div class="sidebar-content svelte-1izh69t"><nav class="sidebar-list">
+        
+        <a href="/docs" class="list-item">
+            <span class="icon"><i class="ri-home-2-line"></i></span>
+            <span class="txt">Introduction</span>
+            </a>
+        
+        
+        <a href="/docs/collections" class="list-item">
+            <span class="icon"><i class="ri-database-2-line"></i></span>
+            <span class="txt">Collections</span>
+            </a>
+        
+        
+        <a href="/docs/api-rules-and-filters" class="list-item">
+            <span class="icon"><i class="ri-shield-check-line"></i></span>
+            <span class="txt">API rules and filters</span>
+            </a>
+        
+        
+        <a href="/docs/client-side-sdks" class="list-item">
+            <span class="icon"><i class="ri-tools-line"></i></span>
+            <span class="txt">Client-side SDKs</span>
+            </a>
+        
+        
+        <a href="/docs/authentication" class="list-item">
+            <span class="icon"><i class="ri-group-line"></i></span>
+            <span class="txt">Authentication</span>
+            </a>
+        
+        
+        <a href="/docs/files-handling" class="list-item">
+            <span class="icon"><i class="ri-upload-cloud-line"></i></span>
+            <span class="txt">Files upload and handling</span>
+            </a>
+        
+        
+        <a href="/docs/working-with-relations" class="list-item">
+            <span class="icon"><i class="ri-mind-map"></i></span>
+            <span class="txt">Working with relations</span>
+            </a>
+        
+        
+        <a href="/docs/use-as-framework" class="list-item">
+            <span class="icon"><i class="ri-code-s-slash-line"></i></span>
+            <span class="txt">Use as framework</span>
+            </a>
+        
+        
+        <a href="/docs/api-records" class="list-item active">
+            <span class="icon"><i class="ri-file-list-2-line"></i></span>
+            <span class="txt">Web APIs reference</span>
+            </a>
+        
+                <a href="/docs/api-records" class="sub-list-item">
+                        <span class="tree-node">├</span>
+                    
+                    API Records
+                    
+                </a>
+                <a href="/docs/api-realtime" class="sub-list-item">
+                        <span class="tree-node">├</span>
+                    
+                    API Realtime
+                    
+                </a>
+                <a href="/docs/api-files" class="sub-list-item">
+                        <span class="tree-node">├</span>
+                    
+                    API Files
+                    
+                </a>
+                <a href="/docs/api-admins" class="sub-list-item">
+                        <span class="tree-node">├</span>
+                    
+                    API Admins
+                    
+                </a>
+                <a href="/docs/api-collections" class="sub-list-item">
+                        <span class="tree-node">├</span>
+                    
+                    API Collections
+                    
+                </a>
+                <a href="/docs/api-settings" class="sub-list-item">
+                        <span class="tree-node">├</span>
+                    
+                    API Settings
+                    
+                </a>
+                <a href="/docs/api-logs" class="sub-list-item active">
+                        <span class="tree-node">├</span>
+                    
+                    API Logs
+                    
+                </a>
+                <a href="/docs/api-backups" class="sub-list-item">
+                        <span class="tree-node">├</span>
+                    
+                    API Backups
+                    
+                </a>
+                <a href="/docs/api-health" class="sub-list-item">
+                        <span class="tree-node">└</span>
+                    
+                    API Health
+                    
+                </a>
+        
+        <a href="/docs/going-to-production" class="list-item">
+            <span class="icon"><i class="ri-check-double-line"></i></span>
+            <span class="txt">Going to production</span>
+            </a>
+        </nav>
+
+                <div class="clearfix m-t-base"></div>
+
+                <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item active" href="/docs/go-overview"><div class="block">Extend with
+                                <br>
+                                <strong>Go</strong></div></a>
+                        <a class="tab-item" href="/docs/js-overview"><div class="block">Extend with
+                                <br>
+                                <strong>JavaScript</strong></div></a></div>
+                    <div class="tabs-content"><div class="tab-item active"><nav class="sidebar-list">
+        
+        <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/go-records" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Testing</span>
+            </a>
+        
+        
+        <a href="/docs/go-custom-models" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Custom models</span>
+            </a>
+        </nav></div>
+                        <div class="tab-item"><nav class="sidebar-list">
+        
+        <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/js-routing" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/js-database" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending HTTP requests</span>
+            </a>
+        
+        
+        <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Types reference</span>
+            </a>
+        </nav></div></div></div></div></div></div>
+</aside>
+
+<div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Web APIs reference - API Logs</div></nav>
+
+    <div class="content"><div class="accordions">
+<div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive">
+            <strong id="list-logs" class="heading-link "><a href="#list-logs" class="link-primary">
+        List logs
+        </a></strong>
+        </button>
+
+    
+    <div class="accordion-content hidden"><div class="content m-b-sm"><p>Returns a paginated logs list.</p>
+        <p>Only admins can perform this action.</p></div>
+
+    <div class="tabs code-tabs m-t-10 m-b-base"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span>admins<span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">,</span> <span class="token string">'1234567890'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pageResult <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>logs<span class="token punctuation">.</span><span class="token function">getList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">filter</span><span class="token operator">:</span> <span class="token string">'data.status >= 400'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'http://127.0.0.1:8090'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span>admins<span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'test@example.com'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'1234567890'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pageResult <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>logs<span class="token punctuation">.</span><span class="token function">getList</span><span class="token punctuation">(</span>
+    page<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    perPage<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    filter<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">'data.status >= 400'</span></span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div>
+
+    <div class="api-route alert alert-info"><strong class="label label-primary">GET</strong>
+        <div class="content">/api/logs</div>
+        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small></div>
+
+    <div class="section-title">Query parameters</div>
+    <table class="table-compact table-border m-b-base"><thead><tr><th>Param</th>
+                <th>Type</th>
+                <th width="50%">Description</th></tr></thead>
+        <tbody><tr><td id="query-page">page</td>
+                <td><span class="label">Number</span></td>
+                <td>The page (aka. offset) of the paginated list (<em>default to 1</em>).</td></tr>
+            <tr><td id="query-perPage">perPage</td>
+                <td><span class="label">Number</span></td>
+                <td>The max returned logs per page (<em>default to 30</em>).</td></tr>
+            <tr><td id="query-sort">sort</td>
+                <td><span class="label">String</span></td>
+                <td><div class="content"><p>Specify the <em>ORDER BY</em> fields.</p>
+                        <p>Add <code>-</code> / <code>+</code> (default) in front of the attribute for DESC /
+                            ASC order, eg.:
+                        </p>
+                        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// DESC by the insertion rowid and ASC by level</span>
+<span class="token operator">?</span>sort<span class="token operator">=</span><span class="token operator">-</span>rowid<span class="token punctuation">,</span>level<!-- HTML_TAG_END --></code>
+</div>
+                        <p><strong>Supported log sort fields:</strong> <br>
+                            <code>@random</code>, <code>rowid</code>, <code>id</code>, <code>created</code>,
+                            <code>updated</code>, <code>level</code>, <code>message</code> and any
+                            <code>data.*</code> attribute.
+                        </p></div></td></tr>
+            <tr><td id="query-filter">filter</td>
+                <td><span class="label">String</span></td>
+                <td><div class="content"><p>Filter expression to filter/search the returned logs list, eg.:</p>
+                        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token operator">?</span>filter<span class="token operator">=</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>url<span class="token operator">~</span><span class="token string">'test.com'</span> <span class="token operator">&amp;&amp;</span> level<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+                        <p><strong>Supported log filter fields:</strong> <br>
+                            <code>id</code>, <code>created</code>, <code>updated</code>,
+                            <code>level</code>, <code>message</code> and any <code>data.*</code> attribute.
+                        </p>
+                        <p>The syntax basically follows the format
+    <code><span class="txt-success">OPERAND</span>
+        <span class="txt-danger">OPERATOR</span>
+        <span class="txt-success">OPERAND</span></code>, where:
+</p>
+<ul><li><code class="txt-success">OPERAND</code> - could be any of the above field literal, string (single or double
+        quoted), number, null, true, false
+    </li>
+    <li><code class="txt-danger">OPERATOR</code> - is one of:
+        <br>
+        <ul><li><code class="filter-op svelte-1w7s5nw">=</code>
+                <span class="txt">Equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">!=</code>
+                <span class="txt">NOT equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">></code>
+                <span class="txt">Greater than</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">>=</code>
+                <span class="txt">Greater than or equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">&lt;</code>
+                <span class="txt">Less than</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">&lt;=</code>
+                <span class="txt">Less than or equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">~</code>
+                <span class="txt">Like/Contains (if not specified auto wraps the right string OPERAND in a &quot;%&quot; for wildcard
+                    match)
+                </span></li>
+            <li><code class="filter-op svelte-1w7s5nw">!~</code>
+                <span class="txt">NOT Like/Contains (if not specified auto wraps the right string OPERAND in a &quot;%&quot; for
+                    wildcard match)
+                </span></li>
+
+            <li><code class="filter-op svelte-1w7s5nw">?=</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?!=</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">NOT equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?></code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Greater than</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?>=</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Greater than or equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?&lt;</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Less than</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?&lt;=</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Less than or equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?~</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Like/Contains (if not specified auto wraps the right string OPERAND in a &quot;%&quot; for wildcard
+                    match)
+                </span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?!~</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">NOT Like/Contains (if not specified auto wraps the right string OPERAND in a &quot;%&quot; for
+                    wildcard match)
+                </span></li></ul></li></ul>
+
+<p class="txt-bold">To group and combine several expressions you could use parenthesis
+    <code>(...)</code>, <code>&amp;&amp;</code> (AND) and <code>||</code> (OR) tokens.
+</p>
+
+<p>Single line comments are also supported: <code>// Example comment</code>.</p></div></td></tr>
+            <tr><td id="query-page">fields</td>
+    <td><span class="label">String</span></td>
+    <td><p>Comma separated string of the fields to return in the JSON response
+            <em>(by default returns all fields)</em>. Ex.:
+            <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token operator">?</span>fields<span class="token operator">=</span><span class="token operator">*</span><span class="token punctuation">,</span>expand<span class="token punctuation">.</span>relField<span class="token punctuation">.</span>name<!-- HTML_TAG_END --></code>
+</div></p>
+        <p><code>*</code> targets all keys from the specific depth level.
+        </p>
+        <p>In addition, the following field modifiers are also supported:</p>
+        <ul><li><code>:excerpt(maxLength, withEllipsis?)</code>
+                <br>
+                Returns a short plain text version of the field string value.
+                <br>
+                Ex.:
+                <code>?fields=*,description:excerpt(200,true)</code></li></ul></td></tr></tbody></table>
+
+    <div class="section-title">Responses</div>
+    <div class="tabs"><div class="tabs-header compact left"><button class="tab-item active">200
+                </button><button class="tab-item">400
+                </button><button class="tab-item">401
+                </button><button class="tab-item">403
+                </button></div>
+        <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"page"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"perPage"</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"totalItems"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"items"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token string">"9ajmzgd99r039k9"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"created"</span><span class="token operator">:</span> <span class="token string">"2023-12-12 04:41:59.973Z"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"updated"</span><span class="token operator">:</span> <span class="token string">"2023-12-12 04:41:59.973Z"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string-property property">"auth"</span><span class="token operator">:</span> <span class="token string">"authRecord"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"execTime"</span><span class="token operator">:</span> <span class="token number">364.961387</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"method"</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"referer"</span><span class="token operator">:</span> <span class="token string">"http://localhost:8090/"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"remoteIp"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"status"</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"type"</span><span class="token operator">:</span> <span class="token string">"request"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"url"</span><span class="token operator">:</span> <span class="token string">"/api/collections/users/auth-with-password"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"userAgent"</span><span class="token operator">:</span> <span class="token string">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"userIp"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"POST /api/collections/users/auth-with-password"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"level"</span><span class="token operator">:</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token string">"26apis4s3sm9yqm"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"created"</span><span class="token operator">:</span> <span class="token string">"2023-12-12 04:27:21.583Z"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"updated"</span><span class="token operator">:</span> <span class="token string">"2023-12-12 04:27:21.583Z"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string-property property">"auth"</span><span class="token operator">:</span> <span class="token string">"authRecord"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"execTime"</span><span class="token operator">:</span> <span class="token number">403.664712</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"method"</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"referer"</span><span class="token operator">:</span> <span class="token string">"http://localhost:8090/"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"remoteIp"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"status"</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"type"</span><span class="token operator">:</span> <span class="token string">"request"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"url"</span><span class="token operator">:</span> <span class="token string">"/api/collections/users/auth-with-password?expand=rel&amp;fields=*%2Crecord.*%2Crecord.expand.rel.id"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"userAgent"</span><span class="token operator">:</span> <span class="token string">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"userIp"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"POST /api/collections/users/auth-with-password?expand=rel&amp;fields=*%2Crecord.*%2Crecord.expand.rel.id"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"level"</span><span class="token operator">:</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"code"</span><span class="token operator">:</span> <span class="token number">400</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"Something went wrong while processing your request. Invalid filter."</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"code"</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"The request requires admin authorization token to be set."</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"code"</span><span class="token operator">:</span> <span class="token number">403</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"You are not allowed to perform this request."</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div></div></div></div></div>
+    
+<div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive">
+            <strong id="view-log" class="heading-link "><a href="#view-log" class="link-primary">
+        View log
+        </a></strong>
+        </button>
+
+    
+    <div class="accordion-content hidden"><div class="content m-b-sm"><p>Returns a single log by its ID.</p>
+        <p>Only admins can perform this action.</p></div>
+
+    <div class="tabs code-tabs m-t-10 m-b-base"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span>admins<span class="token punctuation">.</span><span class="token function">authWithEmail</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">,</span> <span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> log <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>logs<span class="token punctuation">.</span><span class="token function">getOne</span><span class="token punctuation">(</span><span class="token string">'LOG_ID'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'http://127.0.0.1:8090'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span>admins<span class="token punctuation">.</span><span class="token function">authWithEmail</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'test@example.com'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'123456'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> log <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>logs<span class="token punctuation">.</span><span class="token function">getOne</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'LOG_ID'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div>
+
+    <div class="api-route alert alert-info"><strong class="label label-primary">GET</strong>
+        <div class="content">/api/logs/<code>id</code></div>
+        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small></div>
+
+    <div class="section-title">Path parameters</div>
+    <table class="table-compact table-border m-b-base"><thead><tr><th>Param</th>
+                <th>Type</th>
+                <th width="50%">Description</th></tr></thead>
+        <tbody><tr><td>id</td>
+                <td><span class="label">String</span></td>
+                <td>ID of the log to view.</td></tr></tbody></table>
+
+    <div class="section-title">Query parameters</div>
+    <table class="table-compact table-border m-b-base"><thead><tr><th>Param</th>
+                <th>Type</th>
+                <th width="50%">Description</th></tr></thead>
+        <tbody><tr><td id="query-page">fields</td>
+    <td><span class="label">String</span></td>
+    <td><p>Comma separated string of the fields to return in the JSON response
+            <em>(by default returns all fields)</em>. Ex.:
+            <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token operator">?</span>fields<span class="token operator">=</span><span class="token operator">*</span><span class="token punctuation">,</span>expand<span class="token punctuation">.</span>relField<span class="token punctuation">.</span>name<!-- HTML_TAG_END --></code>
+</div></p>
+        <p><code>*</code> targets all keys from the specific depth level.
+        </p>
+        <p>In addition, the following field modifiers are also supported:</p>
+        <ul><li><code>:excerpt(maxLength, withEllipsis?)</code>
+                <br>
+                Returns a short plain text version of the field string value.
+                <br>
+                Ex.:
+                <code>?fields=*,description:excerpt(200,true)</code></li></ul></td></tr></tbody></table>
+
+    <div class="section-title">Responses</div>
+    <div class="tabs"><div class="tabs-header compact left"><button class="tab-item active">200
+                </button><button class="tab-item">401
+                </button><button class="tab-item">403
+                </button><button class="tab-item">404
+                </button></div>
+        <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token string">"twjnabervu5log8"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"created"</span><span class="token operator">:</span> <span class="token string">"2023-12-10 19:56:29.556Z"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"updated"</span><span class="token operator">:</span> <span class="token string">"2023-12-10 19:56:29.556Z"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"auth"</span><span class="token operator">:</span> <span class="token string">"guest"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"execTime"</span><span class="token operator">:</span> <span class="token number">0.66452</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"method"</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"referer"</span><span class="token operator">:</span> <span class="token string">"http://localhost:8090/"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"remoteIp"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"status"</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"type"</span><span class="token operator">:</span> <span class="token string">"request"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"url"</span><span class="token operator">:</span> <span class="token string">"/api/collections/users/auth-methods"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"userAgent"</span><span class="token operator">:</span> <span class="token string">"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"userIp"</span><span class="token operator">:</span> <span class="token string">"127.0.0.1"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"GET /api/collections/users/auth-methods"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"level"</span><span class="token operator">:</span> <span class="token number">0</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"code"</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"The request requires admin authorization token to be set."</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"code"</span><span class="token operator">:</span> <span class="token number">403</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"You are not allowed to perform this request."</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"code"</span><span class="token operator">:</span> <span class="token number">404</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"The requested resource wasn't found."</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div></div></div></div></div>
+    
+<div tabindex="0" class="accordion"><button type="button" class="accordion-header interactive">
+            <strong id="logs-statistics" class="heading-link "><a href="#logs-statistics" class="link-primary">
+        Logs statistics
+        </a></strong>
+        </button>
+
+    
+    <div class="accordion-content hidden"><div class="content m-b-sm"><p>Returns hourly aggregated logs statistics.</p>
+        <p>Only admins can perform this action.</p></div>
+
+    <div class="tabs code-tabs m-t-10 m-b-base"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span>admins<span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">,</span> <span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> stats <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>logs<span class="token punctuation">.</span><span class="token function">getStats</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">filter</span><span class="token operator">:</span> <span class="token string">'data.status >= 400'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'http://127.0.0.1:8090'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span>admins<span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'test@example.com'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'123456'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> stats <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>logs<span class="token punctuation">.</span><span class="token function">getStats</span><span class="token punctuation">(</span>
+    filter<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">'data.status >= 400'</span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div>
+
+    <div class="api-route alert alert-info"><strong class="label label-primary">GET</strong>
+        <div class="content">/api/logs/stats</div>
+        <small class="txt-hint auth-header">Requires <code>Authorization: TOKEN</code></small></div>
+
+    <div class="section-title">Query parameters</div>
+    <table class="table-compact table-border m-b-base"><thead><tr><th>Param</th>
+                <th>Type</th>
+                <th width="50%">Description</th></tr></thead>
+        <tbody><tr><td id="query-filter">filter</td>
+                <td><span class="label">String</span></td>
+                <td><div class="content"><p>Filter expression to filter/search the logs, eg.:</p>
+                        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token operator">?</span>filter<span class="token operator">=</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>url<span class="token operator">~</span><span class="token string">'test.com'</span> <span class="token operator">&amp;&amp;</span> level<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+                        <p><strong>Supported log filter fields:</strong> <br>
+                            <code>rowid</code>, <code>id</code>, <code>created</code>,
+                            <code>updated</code>, <code>level</code>, <code>message</code> and any
+                            <code>data.*</code> attribute.
+                        </p>
+                        <p>The syntax basically follows the format
+    <code><span class="txt-success">OPERAND</span>
+        <span class="txt-danger">OPERATOR</span>
+        <span class="txt-success">OPERAND</span></code>, where:
+</p>
+<ul><li><code class="txt-success">OPERAND</code> - could be any of the above field literal, string (single or double
+        quoted), number, null, true, false
+    </li>
+    <li><code class="txt-danger">OPERATOR</code> - is one of:
+        <br>
+        <ul><li><code class="filter-op svelte-1w7s5nw">=</code>
+                <span class="txt">Equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">!=</code>
+                <span class="txt">NOT equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">></code>
+                <span class="txt">Greater than</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">>=</code>
+                <span class="txt">Greater than or equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">&lt;</code>
+                <span class="txt">Less than</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">&lt;=</code>
+                <span class="txt">Less than or equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">~</code>
+                <span class="txt">Like/Contains (if not specified auto wraps the right string OPERAND in a &quot;%&quot; for wildcard
+                    match)
+                </span></li>
+            <li><code class="filter-op svelte-1w7s5nw">!~</code>
+                <span class="txt">NOT Like/Contains (if not specified auto wraps the right string OPERAND in a &quot;%&quot; for
+                    wildcard match)
+                </span></li>
+
+            <li><code class="filter-op svelte-1w7s5nw">?=</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?!=</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">NOT equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?></code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Greater than</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?>=</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Greater than or equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?&lt;</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Less than</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?&lt;=</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Less than or equal</span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?~</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">Like/Contains (if not specified auto wraps the right string OPERAND in a &quot;%&quot; for wildcard
+                    match)
+                </span></li>
+            <li><code class="filter-op svelte-1w7s5nw">?!~</code>
+                <em class="txt-hint">Any/At least one of</em>
+                <span class="txt">NOT Like/Contains (if not specified auto wraps the right string OPERAND in a &quot;%&quot; for
+                    wildcard match)
+                </span></li></ul></li></ul>
+
+<p class="txt-bold">To group and combine several expressions you could use parenthesis
+    <code>(...)</code>, <code>&amp;&amp;</code> (AND) and <code>||</code> (OR) tokens.
+</p>
+
+<p>Single line comments are also supported: <code>// Example comment</code>.</p></div></td></tr>
+            <tr><td id="query-page">fields</td>
+    <td><span class="label">String</span></td>
+    <td><p>Comma separated string of the fields to return in the JSON response
+            <em>(by default returns all fields)</em>. Ex.:
+            <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token operator">?</span>fields<span class="token operator">=</span><span class="token operator">*</span><span class="token punctuation">,</span>expand<span class="token punctuation">.</span>relField<span class="token punctuation">.</span>name<!-- HTML_TAG_END --></code>
+</div></p>
+        <p><code>*</code> targets all keys from the specific depth level.
+        </p>
+        <p>In addition, the following field modifiers are also supported:</p>
+        <ul><li><code>:excerpt(maxLength, withEllipsis?)</code>
+                <br>
+                Returns a short plain text version of the field string value.
+                <br>
+                Ex.:
+                <code>?fields=*,description:excerpt(200,true)</code></li></ul></td></tr></tbody></table>
+
+    <div class="section-title">Responses</div>
+    <div class="tabs"><div class="tabs-header compact left"><button class="tab-item active">200
+                </button><button class="tab-item">400
+                </button><button class="tab-item">401
+                </button><button class="tab-item">403
+                </button></div>
+        <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    <span class="token string-property property">"total"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"date"</span><span class="token operator">:</span> <span class="token string">"2022-06-01 19:00:00.000"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token string-property property">"total"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"date"</span><span class="token operator">:</span> <span class="token string">"2022-06-02 12:00:00.000"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    <span class="token string-property property">"total"</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"date"</span><span class="token operator">:</span> <span class="token string">"2022-06-02 13:00:00.000"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><!-- HTML_TAG_END --></code>
+</div>
+                </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"code"</span><span class="token operator">:</span> <span class="token number">400</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"Something went wrong while processing your request. Invalid filter."</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"code"</span><span class="token operator">:</span> <span class="token number">401</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"The request requires admin authorization token to be set."</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token punctuation">{</span>
+  <span class="token string-property property">"code"</span><span class="token operator">:</span> <span class="token number">403</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"You are not allowed to perform this request."</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+                </div></div></div></div></div></div></div>
+
+    
+
+<div class="docs-footer svelte-1dbn67j">
+
+    
+</div></div></main>
+
+<footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links"><a href="/faq" class="link-item">FAQ</a>
+                <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions
+                </a>
+                <a href="/docs" class="link-item">Documentation</a></nav>
+
+            <nav class="footer-col links"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK
+                </a>
+                <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK
+                </a></nav>
+
+            <div class="footer-col socials"><div class="watermark-logo">Pocket<strong>Base</strong></div>
+                <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a>
+                <a href="https://twitter.com/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to Twitter"><i class="ri-twitter-line"></i></a>
+                <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub"><i class="ri-github-line"></i></a></div></div>
+        <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2024 Pocket<strong>Base</strong></span>
+                <span class="gopher-credit">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers
+                    </a></span></div>
+            <div class="flex-fill"></div>
+            <div class="credit">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>
+
+
+
+<button type="button" class="btn btn-circle btn-secondary scroll-to-top svelte-h1x6u4" arial-label="Go to top"><i class="ri-arrow-up-line"></i>
+</button>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.b8d67116.js"),
+						import("../../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 11],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

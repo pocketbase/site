@@ -107,10 +107,13 @@
         </em>
     </li>
     <li>Uncomment the <code>migrations</code> import statement.</li>
-    <li>Build your Go executable and test run your local changes.</li>
     <li>
-        If everything is working fine,
-        <strong>create another more recent production backup for just in case</strong>.
+        Build your Go executable and test run your local changes (<strong
+            >including a test against no existing pb_data</strong
+        >).
+    </li>
+    <li>
+        If everything is working fine, create another more recent production backup for just in case.
         <br />
         After that deploy your app executable to the production server and restart the app service (e.g.
         <code>systemctl restart pocketbase</code>).
@@ -181,7 +184,10 @@
             The <code>Dao</code> abstraction has been removed and most of the old <code>Dao</code>
             methods are now part of the <code>core.App</code> instance.
         </p>
-        <p>The app settings related to the OAuth2 and email templates are moved in the collection options to allow more granular customizations.</p>
+        <p>
+            The app settings related to the OAuth2 and email templates are moved in the collection options to
+            allow more granular customizations.
+        </p>
         <p>
             For more details about all new app fields and methods, please refer to the
             <a

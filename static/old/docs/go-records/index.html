@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../../_app/immutable/assets/2.0975cac3.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.9c47a874.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CodeBlock.d22afb3e.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/2.7231d4f7.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/PageFooter.476871d4.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/tooltip.f1d7ab7e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CommonHelper.7329e1a7.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.7d3ee590.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.d888f6de.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/preferences.0fc33f39.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/29.9922c00f.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/HeadingLink.20322812.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeBlock.a090ee9b.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Toc.c31a36b6.js"><title>Extend with Go - Record operations - Docs - PocketBase</title><!-- HEAD_svelte-q27gla_START --><!-- HEAD_svelte-q27gla_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+<header class="page-header"><div class="wrapper wrapper-lg"><a href="/" class="logo logo-sm"><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40">
+            <span class="txt">Pocket<strong>Base</strong></span>
+            <span class="version">v0.22.27</span></a>
+
+        <div class="flex-fill"></div>
+
+        
+        
+
+        
+
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span>
+            <i class="ri-menu-3-fill"></i>
+            
+
+<div class="toggler-container"></div></button>
+
+        <nav class="main-menu"><a href="/faq" class="btn btn-secondary">FAQ</a>
+            <a href="https://github.com/pocketbase/pocketbase/discussions" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Discussions
+            </a>
+            <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a>
+            <a href="/docs" class="btn btn-outline btn-expanded"><span class="txt">Documentation</span></a></nav></div></header>
+
+<main class="wrapper wrapper-lg page-content-wrapper">
+
+<aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-1izh69t"><div class="absolute-wrapper svelte-1izh69t"><div class="sidebar-content svelte-1izh69t"><nav class="sidebar-list">
+        
+        <a href="/docs" class="list-item">
+            <span class="icon"><i class="ri-home-2-line"></i></span>
+            <span class="txt">Introduction</span>
+            </a>
+        
+        
+        <a href="/docs/collections" class="list-item">
+            <span class="icon"><i class="ri-database-2-line"></i></span>
+            <span class="txt">Collections</span>
+            </a>
+        
+        
+        <a href="/docs/api-rules-and-filters" class="list-item">
+            <span class="icon"><i class="ri-shield-check-line"></i></span>
+            <span class="txt">API rules and filters</span>
+            </a>
+        
+        
+        <a href="/docs/client-side-sdks" class="list-item">
+            <span class="icon"><i class="ri-tools-line"></i></span>
+            <span class="txt">Client-side SDKs</span>
+            </a>
+        
+        
+        <a href="/docs/authentication" class="list-item">
+            <span class="icon"><i class="ri-group-line"></i></span>
+            <span class="txt">Authentication</span>
+            </a>
+        
+        
+        <a href="/docs/files-handling" class="list-item">
+            <span class="icon"><i class="ri-upload-cloud-line"></i></span>
+            <span class="txt">Files upload and handling</span>
+            </a>
+        
+        
+        <a href="/docs/working-with-relations" class="list-item">
+            <span class="icon"><i class="ri-mind-map"></i></span>
+            <span class="txt">Working with relations</span>
+            </a>
+        
+        
+        <a href="/docs/use-as-framework" class="list-item">
+            <span class="icon"><i class="ri-code-s-slash-line"></i></span>
+            <span class="txt">Use as framework</span>
+            </a>
+        
+        
+        <a href="/docs/api-records" class="list-item">
+            <span class="icon"><i class="ri-file-list-2-line"></i></span>
+            <span class="txt">Web APIs reference</span>
+            </a>
+        
+        
+        <a href="/docs/going-to-production" class="list-item">
+            <span class="icon"><i class="ri-check-double-line"></i></span>
+            <span class="txt">Going to production</span>
+            </a>
+        </nav>
+
+                <div class="clearfix m-t-base"></div>
+
+                <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item active" href="/docs/go-overview"><div class="block">Extend with
+                                <br>
+                                <strong>Go</strong></div></a>
+                        <a class="tab-item" href="/docs/js-overview"><div class="block">Extend with
+                                <br>
+                                <strong>JavaScript</strong></div></a></div>
+                    <div class="tabs-content"><div class="tab-item active"><nav class="sidebar-list">
+        
+        <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/go-records" class="list-item active"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Testing</span>
+            </a>
+        
+        
+        <a href="/docs/go-custom-models" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Custom models</span>
+            </a>
+        </nav></div>
+                        <div class="tab-item"><nav class="sidebar-list">
+        
+        <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/js-routing" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/js-database" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending HTTP requests</span>
+            </a>
+        
+        
+        <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Types reference</span>
+            </a>
+        </nav></div></div></div></div></div></div>
+</aside>
+
+<div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Extend with Go - Record operations</div></nav>
+
+    <div class="content"><p>The most common task when using PocketBase as framework probably would be querying and working with your
+    collection records.
+</p>
+
+<div class="toc"><ul class="toc-list-1"></ul></div>
+
+<h3 id="getset-record-fields" class="heading-link "><a href="#getset-record-fields" class="link-primary">
+        Get/Set record fields
+        </a></h3>
+<p>All available <code>models.Record</code> getter and setters are listed in the
+    <a href="https://pkg.go.dev/github.com/pocketbase/pocketbase/models#Record" target="_blank" rel="noopener noreferrer">godoc of the model
+    </a>, but below you could find some examples:
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// export the public safe record fields as map[string]any</span>
+record<span class="token punctuation">.</span><span class="token function">PublicExport</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// returns a new model copy populated with the original/intial record data</span>
+<span class="token comment">// (could be useful if you want to compare old and new field values)</span>
+record<span class="token punctuation">.</span><span class="token function">OriginalCopy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// returns a copy of the current record model populated only</span>
+<span class="token comment">// with its latest data state and everything else reset to the defaults</span>
+record<span class="token punctuation">.</span><span class="token function">CleanCopy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// set the value of a single record field</span>
+record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"someField"</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">)</span>
+
+<span class="token comment">// bulk set fields from a map</span>
+record<span class="token punctuation">.</span><span class="token function">Load</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+
+<span class="token comment">// retrieve a single record field value</span>
+record<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">"someField"</span><span class="token punctuation">)</span>            <span class="token comment">// -> as any</span>
+record<span class="token punctuation">.</span><span class="token function">GetBool</span><span class="token punctuation">(</span><span class="token string">"someField"</span><span class="token punctuation">)</span>        <span class="token comment">// -> as bool</span>
+record<span class="token punctuation">.</span><span class="token function">GetString</span><span class="token punctuation">(</span><span class="token string">"someField"</span><span class="token punctuation">)</span>      <span class="token comment">// -> as string</span>
+record<span class="token punctuation">.</span><span class="token function">GetInt</span><span class="token punctuation">(</span><span class="token string">"someField"</span><span class="token punctuation">)</span>         <span class="token comment">// -> as int</span>
+record<span class="token punctuation">.</span><span class="token function">GetFloat</span><span class="token punctuation">(</span><span class="token string">"someField"</span><span class="token punctuation">)</span>       <span class="token comment">// -> as float64</span>
+record<span class="token punctuation">.</span><span class="token function">GetTime</span><span class="token punctuation">(</span><span class="token string">"someField"</span><span class="token punctuation">)</span>        <span class="token comment">// -> as time.Time</span>
+record<span class="token punctuation">.</span><span class="token function">GetDateTime</span><span class="token punctuation">(</span><span class="token string">"someField"</span><span class="token punctuation">)</span>    <span class="token comment">// -> as types.DateTime</span>
+record<span class="token punctuation">.</span><span class="token function">GetStringSlice</span><span class="token punctuation">(</span><span class="token string">"someField"</span><span class="token punctuation">)</span> <span class="token comment">// -> as []string</span>
+
+<span class="token comment">// unmarshal a single json field value into the provided result</span>
+record<span class="token punctuation">.</span><span class="token function">UnmarshalJSONField</span><span class="token punctuation">(</span><span class="token string">"someJsonField"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>result<span class="token punctuation">)</span>
+
+<span class="token comment">// retrieve a single or multiple expanded data</span>
+record<span class="token punctuation">.</span><span class="token function">ExpandedOne</span><span class="token punctuation">(</span><span class="token string">"author"</span><span class="token punctuation">)</span>     <span class="token comment">// -> as nil|*models.Record</span>
+record<span class="token punctuation">.</span><span class="token function">ExpandedAll</span><span class="token punctuation">(</span><span class="token string">"categories"</span><span class="token punctuation">)</span> <span class="token comment">// -> as []*models.Record</span>
+
+<span class="token comment">// auth records only</span>
+<span class="token comment">// ---</span>
+record<span class="token punctuation">.</span><span class="token function">SetPassword</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">ValidatePassword</span><span class="token punctuation">(</span><span class="token string">"123456"</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">PasswordHash</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// ---</span>
+record<span class="token punctuation">.</span><span class="token function">Username</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">SetUsername</span><span class="token punctuation">(</span><span class="token string">"john.doe"</span><span class="token punctuation">)</span>
+<span class="token comment">// ---</span>
+record<span class="token punctuation">.</span><span class="token function">Email</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">SetEmail</span><span class="token punctuation">(</span><span class="token string">"test@example.com"</span><span class="token punctuation">)</span>
+<span class="token comment">// ---</span>
+record<span class="token punctuation">.</span><span class="token function">EmailVisibility</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">SetEmailVisibility</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token comment">// ---</span>
+record<span class="token punctuation">.</span><span class="token function">Verified</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">SetVerified</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token comment">// ---</span>
+record<span class="token punctuation">.</span><span class="token function">TokenKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">SetTokenKey</span><span class="token punctuation">(</span><span class="token string">"ABCD123"</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">RefreshTokenKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// sets autogenerated TokenKey</span>
+<span class="token comment">// ---</span>
+record<span class="token punctuation">.</span><span class="token function">LastResetSentAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">SetLastResetSentAt</span><span class="token punctuation">(</span>types<span class="token punctuation">.</span>DateTime<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// ---</span>
+record<span class="token punctuation">.</span><span class="token function">LastVerificationSentAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">SetLastVerificationSentAt</span><span class="token punctuation">(</span>types<span class="token punctuation">.</span>DateTime<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="fetch-records" class="heading-link "><a href="#fetch-records" class="link-primary">
+        Fetch records
+        </a></h3>
+
+<h5 id="fetch-single-record" class="heading-link "><a href="#fetch-single-record" class="link-primary">
+        Fetch single record
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// retrieve a single "articles" collection record by its id</span>
+record<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindRecordById</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"RECORD_ID"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// retrieve a single "articles" collection record by a single key-value pair</span>
+record<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindFirstRecordByData</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"slug"</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// retrieve a single "articles" collection record by a string filter expression</span>
+<span class="token comment">// (use "{:placeholder}" to safely bind untrusted user input parameters)</span>
+record<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindFirstRecordByFilter</span><span class="token punctuation">(</span>
+    <span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"status = 'public' &amp;&amp; category = {:category}"</span><span class="token punctuation">,</span>
+    dbx<span class="token punctuation">.</span>Params<span class="token punctuation">{</span> <span class="token string">"category"</span><span class="token punctuation">:</span> <span class="token string">"news"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="fetch-multiple-records" class="heading-link "><a href="#fetch-multiple-records" class="link-primary">
+        Fetch multiple records
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// retrieve multiple "articles" collection records by their ids</span>
+records<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindRecordsByIds</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"RECORD_ID1"</span><span class="token punctuation">,</span> <span class="token string">"RECORD_ID2"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// retrieve multiple "articles" collection records by a custom dbx expression(s)</span>
+records<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindRecordsByExpr</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span>
+    dbx<span class="token punctuation">.</span><span class="token function">NewExp</span><span class="token punctuation">(</span><span class="token string">"LOWER(username) = {:username}"</span><span class="token punctuation">,</span> dbx<span class="token punctuation">.</span>Params<span class="token punctuation">{</span><span class="token string">"username"</span><span class="token punctuation">:</span> <span class="token string">"John.Doe"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    dbx<span class="token punctuation">.</span>HashExp<span class="token punctuation">{</span><span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token string">"pending"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment">// retrieve multiple "articles" collection records by a string filter expression</span>
+<span class="token comment">// (use "{:placeholder}" to safely bind untrusted user input parameters)</span>
+records<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindRecordsByFilter</span><span class="token punctuation">(</span>
+    <span class="token string">"articles"</span><span class="token punctuation">,</span>                                    <span class="token comment">// collection</span>
+    <span class="token string">"status = 'public' &amp;&amp; category = {:category}"</span><span class="token punctuation">,</span> <span class="token comment">// filter</span>
+    <span class="token string">"-publised"</span><span class="token punctuation">,</span>                                   <span class="token comment">// sort</span>
+    <span class="token number">10</span><span class="token punctuation">,</span>                                            <span class="token comment">// limit</span>
+    <span class="token number">0</span><span class="token punctuation">,</span>                                             <span class="token comment">// offset</span>
+    dbx<span class="token punctuation">.</span>Params<span class="token punctuation">{</span> <span class="token string">"category"</span><span class="token punctuation">:</span> <span class="token string">"news"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>              <span class="token comment">// optional filter params</span>
+<span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="fetch-auth-records" class="heading-link "><a href="#fetch-auth-records" class="link-primary">
+        Fetch auth records
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// retrieve a single auth collection record by its email</span>
+user<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindAuthRecordByEmail</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">,</span> <span class="token string">"test@example.com"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// retrieve a single auth collection record by its username (case insensitive)</span>
+user<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindAuthRecordByUsername</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">,</span> <span class="token string">"John.Doe"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// retrieve a single auth collection record by its JWT (auth, password reset, etc.)</span>
+user<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindAuthRecordByToken</span><span class="token punctuation">(</span><span class="token string">"JWT_TOKEN"</span><span class="token punctuation">,</span> app<span class="token punctuation">.</span><span class="token function">Settings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>RecordAuthToken<span class="token punctuation">.</span>Secret<span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="custom-record-query" class="heading-link "><a href="#custom-record-query" class="link-primary">
+        Custom record query
+        </a></h5>
+<p>In addition to the above read and write helpers, you can also create custom Record model queries using
+    <code>Dao.RecordQuery(collection)</code>
+    method. It returns a DB builder that can be used with the same methods described in the
+    <a href="/docs/go-database">Database guide</a>.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"github.com/pocketbase/dbx"</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/daos"</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/models"</span>
+<span class="token punctuation">)</span>
+
+<span class="token operator">...</span>
+
+<span class="token keyword">func</span> <span class="token function">FindActiveArticles</span><span class="token punctuation">(</span>dao <span class="token operator">*</span>daos<span class="token punctuation">.</span>Dao<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>models<span class="token punctuation">.</span>Record<span class="token punctuation">,</span> <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    query <span class="token operator">:=</span> dao<span class="token punctuation">.</span><span class="token function">RecordQuery</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">AndWhere</span><span class="token punctuation">(</span>dbx<span class="token punctuation">.</span>HashExp<span class="token punctuation">{</span><span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token string">"active"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">OrderBy</span><span class="token punctuation">(</span><span class="token string">"published DESC"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>
+        <span class="token function">Limit</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+
+    records <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">*</span>models<span class="token punctuation">.</span>Record<span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">if</span> err <span class="token operator">:=</span> query<span class="token punctuation">.</span><span class="token function">All</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>records<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span><span class="token punctuation">,</span> err
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> records<span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="create-new-record" class="heading-link "><a href="#create-new-record" class="link-primary">
+        Create new record
+        </a></h3>
+
+<h5 id="create-new-record-without-data-validations" class="heading-link "><a href="#create-new-record-without-data-validations" class="link-primary">
+        Create new record WITHOUT data validations
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/models"</span>
+<span class="token punctuation">)</span>
+
+<span class="token operator">...</span>
+
+collection<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindCollectionByNameOrId</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span>
+
+record <span class="token operator">:=</span> models<span class="token punctuation">.</span><span class="token function">NewRecord</span><span class="token punctuation">(</span>collection<span class="token punctuation">)</span>
+
+<span class="token comment">// set individual fields</span>
+<span class="token comment">// or bulk load with record.Load(map[string]any{...})</span>
+record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"title"</span><span class="token punctuation">,</span> <span class="token string">"Lorem ipsum"</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"active"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"someOtherField"</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SaveRecord</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="create-new-record-with-data-validations" class="heading-link "><a href="#create-new-record-with-data-validations" class="link-primary">
+        Create new record WITH data validations
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/forms"</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/models"</span>
+<span class="token punctuation">)</span>
+
+<span class="token operator">...</span>
+
+collection<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindCollectionByNameOrId</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span>
+
+record <span class="token operator">:=</span> models<span class="token punctuation">.</span><span class="token function">NewRecord</span><span class="token punctuation">(</span>collection<span class="token punctuation">)</span>
+
+form <span class="token operator">:=</span> forms<span class="token punctuation">.</span><span class="token function">NewRecordUpsert</span><span class="token punctuation">(</span>app<span class="token punctuation">,</span> record<span class="token punctuation">)</span>
+
+<span class="token comment">// or form.LoadRequest(r, "")</span>
+form<span class="token punctuation">.</span><span class="token function">LoadData</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>any<span class="token punctuation">{</span>
+    <span class="token string">"title"</span><span class="token punctuation">:</span> <span class="token string">"Lorem ipsum"</span><span class="token punctuation">,</span>
+    <span class="token string">"active"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">"someOtherField"</span><span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// manually upload file(s)</span>
+f1<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> filesystem<span class="token punctuation">.</span><span class="token function">NewFileFromPath</span><span class="token punctuation">(</span><span class="token string">"/path/to/file1"</span><span class="token punctuation">)</span>
+f2<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> filesystem<span class="token punctuation">.</span><span class="token function">NewFileFromPath</span><span class="token punctuation">(</span><span class="token string">"/path/to/file2"</span><span class="token punctuation">)</span>
+form<span class="token punctuation">.</span><span class="token function">AddFiles</span><span class="token punctuation">(</span><span class="token string">"yourFileField1"</span><span class="token punctuation">,</span> f1<span class="token punctuation">,</span> f2<span class="token punctuation">)</span>
+
+<span class="token comment">// or mark file(s) for deletion</span>
+form<span class="token punctuation">.</span><span class="token function">RemoveFiles</span><span class="token punctuation">(</span><span class="token string">"yourFileField2"</span><span class="token punctuation">,</span> <span class="token string">"demo_xzihx0w.png"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// validate and submit (internally it calls app.Dao().SaveRecord(record) in a transaction)</span>
+<span class="token keyword">if</span> err <span class="token operator">:=</span> form<span class="token punctuation">.</span><span class="token function">Submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="intercept-record-before-create-api-hook" class="heading-link "><a href="#intercept-record-before-create-api-hook" class="link-primary">
+        Intercept record before create API hook
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/apis"</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/core"</span>
+<span class="token punctuation">)</span>
+
+<span class="token operator">...</span>
+
+app<span class="token punctuation">.</span><span class="token function">OnRecordBeforeCreateRequest</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>e <span class="token operator">*</span>core<span class="token punctuation">.</span>RecordCreateEvent<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    admin<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> e<span class="token punctuation">.</span>HttpContext<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>apis<span class="token punctuation">.</span>ContextAdminKey<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>models<span class="token punctuation">.</span>Admin<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> admin <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span> <span class="token comment">// ignore for admins</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// overwrite the submitted "active" field value to false</span>
+    e<span class="token punctuation">.</span>Record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"active"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// or you can also prevent the create event by returning an error, eg.:</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>Record<span class="token punctuation">.</span><span class="token function">GetString</span><span class="token punctuation">(</span><span class="token string">"status"</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token string">"pending"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> apis<span class="token punctuation">.</span><span class="token function">NewBadRequestError</span><span class="token punctuation">(</span><span class="token string">"status must be pending"</span><span class="token punctuation">,</span> <span class="token boolean">nil</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="update-existing-record" class="heading-link "><a href="#update-existing-record" class="link-primary">
+        Update existing record
+        </a></h3>
+
+<h5 id="update-record-without-data-validations" class="heading-link "><a href="#update-record-without-data-validations" class="link-primary">
+        Update record WITHOUT data validations
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->record<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindRecordById</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"RECORD_ID"</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span>
+
+<span class="token comment">// set individual fields</span>
+<span class="token comment">// or bulk load with record.Load(map[string]any{...})</span>
+record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"title"</span><span class="token punctuation">,</span> <span class="token string">"Lorem ipsum"</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"active"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"someOtherField"</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">SaveRecord</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="update-record-with-data-validations" class="heading-link "><a href="#update-record-with-data-validations" class="link-primary">
+        Update record WITH data validations
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/forms"</span>
+<span class="token punctuation">)</span>
+
+<span class="token operator">...</span>
+
+record<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindRecordById</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"RECORD_ID"</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span>
+
+form <span class="token operator">:=</span> forms<span class="token punctuation">.</span><span class="token function">NewRecordUpsert</span><span class="token punctuation">(</span>app<span class="token punctuation">,</span> record<span class="token punctuation">)</span>
+
+<span class="token comment">// or form.LoadRequest(r, "")</span>
+form<span class="token punctuation">.</span><span class="token function">LoadData</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span>any<span class="token punctuation">{</span>
+    <span class="token string">"title"</span><span class="token punctuation">:</span> <span class="token string">"Lorem ipsum"</span><span class="token punctuation">,</span>
+    <span class="token string">"active"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">"someOtherField"</span><span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// validate and submit (internally it calls app.Dao().SaveRecord(record) in a transaction)</span>
+<span class="token keyword">if</span> err <span class="token operator">:=</span> form<span class="token punctuation">.</span><span class="token function">Submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="intercept-record-before-update-api-hook" class="heading-link "><a href="#intercept-record-before-update-api-hook" class="link-primary">
+        Intercept record before update API hook
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/apis"</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/core"</span>
+<span class="token punctuation">)</span>
+
+<span class="token operator">...</span>
+
+app<span class="token punctuation">.</span><span class="token function">OnRecordBeforeUpdateRequest</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>e <span class="token operator">*</span>core<span class="token punctuation">.</span>RecordUpdateEvent<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    admin<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> e<span class="token punctuation">.</span>HttpContext<span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span>apis<span class="token punctuation">.</span>ContextAdminKey<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>models<span class="token punctuation">.</span>Admin<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> admin <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">nil</span> <span class="token comment">// ignore for admins</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// overwrite the submitted "active" field value to false</span>
+    e<span class="token punctuation">.</span>Record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"active"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// or you can also prevent the create event by returning an error, eg.:</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>Record<span class="token punctuation">.</span><span class="token function">GetString</span><span class="token punctuation">(</span><span class="token string">"status"</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token string">"pending"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> apis<span class="token punctuation">.</span><span class="token function">NewBadRequestError</span><span class="token punctuation">(</span><span class="token string">"status must be pending."</span><span class="token punctuation">,</span> <span class="token boolean">nil</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="delete-record" class="heading-link "><a href="#delete-record" class="link-primary">
+        Delete record
+        </a></h3>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->record<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindRecordById</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"RECORD_ID"</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span>
+
+<span class="token keyword">if</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">DeleteRecord</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="transaction" class="heading-link "><a href="#transaction" class="link-primary">
+        Transaction
+        </a></h3>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->titles <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"title1"</span><span class="token punctuation">,</span> <span class="token string">"title2"</span><span class="token punctuation">,</span> <span class="token string">"title3"</span><span class="token punctuation">}</span>
+
+collection<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindCollectionByNameOrId</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">RunInTransaction</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>txDao <span class="token operator">*</span>daos<span class="token punctuation">.</span>Dao<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+    <span class="token comment">// create new record for each title</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> title <span class="token operator">:=</span> <span class="token keyword">range</span> titles <span class="token punctuation">{</span>
+        record <span class="token operator">:=</span> models<span class="token punctuation">.</span><span class="token function">NewRecord</span><span class="token punctuation">(</span>collection<span class="token punctuation">)</span>
+        record<span class="token punctuation">.</span><span class="token function">Set</span><span class="token punctuation">(</span><span class="token string">"title"</span><span class="token punctuation">,</span> title<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> err <span class="token operator">:=</span> txDao<span class="token punctuation">.</span><span class="token function">SaveRecord</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> err
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="programmatically-expanding-relations" class="heading-link "><a href="#programmatically-expanding-relations" class="link-primary">
+        Programmatically expanding relations
+        </a></h3>
+<p>To expand record relations programmatically you can use the
+    <code>app.Dao().ExpandRecord(record, expands, customFetchFunc)</code> or
+    <code>app.Dao().ExpandRecords(records, expands, customFetchFunc)</code>
+    methods.
+</p>
+<p>Once loaded, you can access the expanded relations via
+    <code>record.ExpandedOne(relName)</code> or
+    <code>record.ExpandedAll(relName)</code> methods.
+</p>
+<p>For example:</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->record<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindFirstRecordByData</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"slug"</span><span class="token punctuation">,</span> <span class="token string">"lorem-ipsum"</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> err
+<span class="token punctuation">}</span>
+
+<span class="token comment">// expand the "author" and "categories" relations</span>
+<span class="token keyword">if</span> errs <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ExpandRecord</span><span class="token punctuation">(</span>record<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span><span class="token string">"author"</span><span class="token punctuation">,</span> <span class="token string">"categories"</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">nil</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">len</span><span class="token punctuation">(</span>errs<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> fmt<span class="token punctuation">.</span><span class="token function">Errorf</span><span class="token punctuation">(</span><span class="token string">"failed to expand: %v"</span><span class="token punctuation">,</span> errs<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// print the expanded records</span>
+log<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>record<span class="token punctuation">.</span><span class="token function">ExpandedOne</span><span class="token punctuation">(</span><span class="token string">"author"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+log<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>record<span class="token punctuation">.</span><span class="token function">ExpandedAll</span><span class="token punctuation">(</span><span class="token string">"categories"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="check-if-record-can-be-accessed" class="heading-link "><a href="#check-if-record-can-be-accessed" class="link-primary">
+        Check if record can be accessed
+        </a></h3>
+<p>To check whether a custom client request or user can access a single record, you can use the
+    <code>app.Dao().CanAccessRecord(record, requestInfo, rule)</code> method.
+</p>
+<p>For example:</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"log"</span>
+    <span class="token string">"net/http"</span>
+
+    <span class="token string">"github.com/labstack/echo/v5"</span>
+    <span class="token string">"github.com/pocketbase/pocketbase"</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/apis"</span>
+    <span class="token string">"github.com/pocketbase/pocketbase/core"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    app <span class="token operator">:=</span> pocketbase<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    app<span class="token punctuation">.</span><span class="token function">OnBeforeServe</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">func</span><span class="token punctuation">(</span>e <span class="token operator">*</span>core<span class="token punctuation">.</span>ServeEvent<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+        e<span class="token punctuation">.</span>Router<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/articles/:slug"</span><span class="token punctuation">,</span> <span class="token keyword">func</span><span class="token punctuation">(</span>c echo<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+            info <span class="token operator">:=</span> apis<span class="token punctuation">.</span><span class="token function">RequestInfo</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+
+            slug <span class="token operator">:=</span> c<span class="token punctuation">.</span><span class="token function">PathParam</span><span class="token punctuation">(</span><span class="token string">"slug"</span><span class="token punctuation">)</span>
+
+            record<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">FindFirstRecordByData</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"slug"</span><span class="token punctuation">,</span> slug<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> apis<span class="token punctuation">.</span><span class="token function">NewNotFoundError</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+
+            canAccess<span class="token punctuation">,</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">CanAccessRecord</span><span class="token punctuation">(</span>record<span class="token punctuation">,</span> info<span class="token punctuation">,</span> record<span class="token punctuation">.</span><span class="token function">Collection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>ViewRule<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token operator">!</span>canAccess <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> apis<span class="token punctuation">.</span><span class="token function">NewForbiddenError</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">JSON</span><span class="token punctuation">(</span>http<span class="token punctuation">.</span>StatusOK<span class="token punctuation">,</span> record<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> err <span class="token operator">:=</span> app<span class="token punctuation">.</span><span class="token function">Start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div></div>
+
+    <hr>
+
+<div class="docs-footer svelte-1dbn67j"><a href="/docs/go-database" class="btn btn-secondary btn-prev svelte-1dbn67j"><i class="ri-arrow-left-line"></i>
+            <span class="txt">Prev: Database</span></a>
+
+    <a href="/docs/go-collections" class="btn btn-outline btn-expanded btn-next svelte-1dbn67j"><span class="txt">Next: Collection operations</span>
+            <i class="ri-arrow-right-line"></i></a>
+</div></div></main>
+
+<footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links"><a href="/faq" class="link-item">FAQ</a>
+                <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions
+                </a>
+                <a href="/docs" class="link-item">Documentation</a></nav>
+
+            <nav class="footer-col links"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK
+                </a>
+                <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK
+                </a></nav>
+
+            <div class="footer-col socials"><div class="watermark-logo">Pocket<strong>Base</strong></div>
+                <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a>
+                <a href="https://twitter.com/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to Twitter"><i class="ri-twitter-line"></i></a>
+                <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub"><i class="ri-github-line"></i></a></div></div>
+        <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2024 Pocket<strong>Base</strong></span>
+                <span class="gopher-credit">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers
+                    </a></span></div>
+            <div class="flex-fill"></div>
+            <div class="credit">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>
+
+
+
+<button type="button" class="btn btn-circle btn-secondary scroll-to-top svelte-h1x6u4" arial-label="Go to top"><i class="ri-arrow-up-line"></i>
+</button>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.b8d67116.js"),
+						import("../../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 29],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

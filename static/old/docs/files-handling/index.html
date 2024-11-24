@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../../_app/immutable/assets/2.0975cac3.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.9c47a874.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CodeBlock.d22afb3e.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/2.7231d4f7.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/PageFooter.476871d4.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/tooltip.f1d7ab7e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CommonHelper.7329e1a7.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.7d3ee590.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.d888f6de.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/preferences.0fc33f39.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/19.b1d8e0dd.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/HeadingLink.20322812.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/ThumbFormats.e63d1815.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeTabs.3c6448ff.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeBlock.a090ee9b.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Toc.c31a36b6.js"><title>Files upload and handling - Docs - PocketBase</title><!-- HEAD_svelte-q27gla_START --><!-- HEAD_svelte-q27gla_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+<header class="page-header"><div class="wrapper wrapper-lg"><a href="/" class="logo logo-sm"><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40">
+            <span class="txt">Pocket<strong>Base</strong></span>
+            <span class="version">v0.22.27</span></a>
+
+        <div class="flex-fill"></div>
+
+        
+        
+
+        
+
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span>
+            <i class="ri-menu-3-fill"></i>
+            
+
+<div class="toggler-container"></div></button>
+
+        <nav class="main-menu"><a href="/faq" class="btn btn-secondary">FAQ</a>
+            <a href="https://github.com/pocketbase/pocketbase/discussions" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Discussions
+            </a>
+            <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a>
+            <a href="/docs" class="btn btn-outline btn-expanded"><span class="txt">Documentation</span></a></nav></div></header>
+
+<main class="wrapper wrapper-lg page-content-wrapper">
+
+<aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-1izh69t"><div class="absolute-wrapper svelte-1izh69t"><div class="sidebar-content svelte-1izh69t"><nav class="sidebar-list">
+        
+        <a href="/docs" class="list-item">
+            <span class="icon"><i class="ri-home-2-line"></i></span>
+            <span class="txt">Introduction</span>
+            </a>
+        
+        
+        <a href="/docs/collections" class="list-item">
+            <span class="icon"><i class="ri-database-2-line"></i></span>
+            <span class="txt">Collections</span>
+            </a>
+        
+        
+        <a href="/docs/api-rules-and-filters" class="list-item">
+            <span class="icon"><i class="ri-shield-check-line"></i></span>
+            <span class="txt">API rules and filters</span>
+            </a>
+        
+        
+        <a href="/docs/client-side-sdks" class="list-item">
+            <span class="icon"><i class="ri-tools-line"></i></span>
+            <span class="txt">Client-side SDKs</span>
+            </a>
+        
+        
+        <a href="/docs/authentication" class="list-item">
+            <span class="icon"><i class="ri-group-line"></i></span>
+            <span class="txt">Authentication</span>
+            </a>
+        
+        
+        <a href="/docs/files-handling" class="list-item active">
+            <span class="icon"><i class="ri-upload-cloud-line"></i></span>
+            <span class="txt">Files upload and handling</span>
+            </a>
+        
+        
+        <a href="/docs/working-with-relations" class="list-item">
+            <span class="icon"><i class="ri-mind-map"></i></span>
+            <span class="txt">Working with relations</span>
+            </a>
+        
+        
+        <a href="/docs/use-as-framework" class="list-item">
+            <span class="icon"><i class="ri-code-s-slash-line"></i></span>
+            <span class="txt">Use as framework</span>
+            </a>
+        
+        
+        <a href="/docs/api-records" class="list-item">
+            <span class="icon"><i class="ri-file-list-2-line"></i></span>
+            <span class="txt">Web APIs reference</span>
+            </a>
+        
+        
+        <a href="/docs/going-to-production" class="list-item">
+            <span class="icon"><i class="ri-check-double-line"></i></span>
+            <span class="txt">Going to production</span>
+            </a>
+        </nav>
+
+                <div class="clearfix m-t-base"></div>
+
+                <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item active" href="/docs/go-overview"><div class="block">Extend with
+                                <br>
+                                <strong>Go</strong></div></a>
+                        <a class="tab-item" href="/docs/js-overview"><div class="block">Extend with
+                                <br>
+                                <strong>JavaScript</strong></div></a></div>
+                    <div class="tabs-content"><div class="tab-item active"><nav class="sidebar-list">
+        
+        <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/go-records" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Testing</span>
+            </a>
+        
+        
+        <a href="/docs/go-custom-models" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Custom models</span>
+            </a>
+        </nav></div>
+                        <div class="tab-item"><nav class="sidebar-list">
+        
+        <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/js-routing" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/js-database" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending HTTP requests</span>
+            </a>
+        
+        
+        <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Types reference</span>
+            </a>
+        </nav></div></div></div></div></div></div>
+</aside>
+
+<div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Files upload and handling</div></nav>
+
+    <div class="content"><div class="toc"><ul class="toc-list-1"></ul></div>
+
+<h3 id="uploading-files" class="heading-link "><a href="#uploading-files" class="link-primary">
+        Uploading files
+        </a></h3>
+<p>To upload files, you must first add a <code>file</code> field to your collection:
+</p>
+<img src="/images/screenshots/file-field.png" alt="File field screenshot" width="465" class="screenshot">
+<p>Once added, you could create/update a Record and upload &quot;documents&quot; files by sending a
+    <code>multipart/form-data</code> request using the <em>Records create/update APIs</em>.
+</p>
+<p>The client SDK makes things a little easier and auto detect the request content type based on the
+    parameters that you provide. Here is an example how to create a new Record and upload multiple files to
+    the example file field &quot;documents&quot; using the SDKs:
+</p>
+
+<div class="tabs code-tabs m-t-10 m-b-base"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// Example HTML:</span>
+<span class="token comment">// &lt;input type="file" id="fileInput" /></span>
+
+<span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token keyword">const</span> formData <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> fileInput <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'fileInput'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// listen to file input changes and add the selected files to the form data</span>
+fileInput<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'change'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> file <span class="token keyword">of</span> fileInput<span class="token punctuation">.</span>files<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        formData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'documents'</span><span class="token punctuation">,</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// set some other regular text field value</span>
+formData<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'Hello world!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token comment">// upload and create new record</span>
+<span class="token keyword">const</span> createdRecord <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'example'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>formData<span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:http/http.dart'</span></span> <span class="token operator">as</span> http<span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'http://127.0.0.1:8090'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment">// create a new record and upload multiple files</span>
+<span class="token keyword">final</span> record <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'example'</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+    body<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        <span class="token string-literal"><span class="token string">'title'</span></span><span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">'Hello world!'</span></span><span class="token punctuation">,</span> <span class="token comment">// some regular text field</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    files<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token class-name"><span class="token namespace">http<span class="token punctuation">.</span></span>MultipartFile</span><span class="token punctuation">.</span><span class="token function">fromString</span><span class="token punctuation">(</span>
+            <span class="token string-literal"><span class="token string">'document'</span></span><span class="token punctuation">,</span>
+            <span class="token string-literal"><span class="token string">'example content 1...'</span></span><span class="token punctuation">,</span>
+            filename<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">'file1.txt'</span></span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token class-name"><span class="token namespace">http<span class="token punctuation">.</span></span>MultipartFile</span><span class="token punctuation">.</span><span class="token function">fromString</span><span class="token punctuation">(</span>
+            <span class="token string-literal"><span class="token string">'document'</span></span><span class="token punctuation">,</span>
+            <span class="token string-literal"><span class="token string">'example content 2...'</span></span><span class="token punctuation">,</span>
+            filename<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">'file2.txt'</span></span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div>
+
+<div class="alert alert-info m-t-10 m-b-10"><div class="icon"><i class="ri-information-line"></i></div>
+    <div class="content"><p>Each uploaded file will be stored with the original filename (sanitized) and suffixed with a
+            random (10 chars) part (eg. <code>test_52iWbGinWd.png</code>).
+        </p>
+        <p>When you upload a new file to a <strong>single file upload field</strong> (aka.
+            <strong>Max Files option is 1</strong>) PocketBase will automatically delete the previous uploaded
+            file (if any) and upload the new one in its place.
+        </p>
+        <p>When you upload a new file to a <strong>multiple file upload field</strong> (aka.
+            <strong>Max Files option is &gt; 1</strong>) the new file will be appended to the existing field
+            values (as long as the <strong>Max Files</strong> limit is not reached, otherwise an error will be
+            thrown).
+        </p></div></div>
+
+<h3 id="deleting-files" class="heading-link "><a href="#deleting-files" class="link-primary">
+        Deleting files
+        </a></h3>
+<p>To delete uploaded file(s), you could either edit the Record from the admin UI, or use the API and set the
+    file field to a zero-value <br> (<code>null</code>, <code>[]</code>, empty string, etc.).
+</p>
+<p>If you want to <strong>delete individual file(s) from a multiple file upload field</strong>, you could
+    suffix the field name with <code>-</code> and specify the filename(s) you want to delete. Here are some examples
+    using the SDKs:
+</p>
+
+<div class="tabs code-tabs m-t-10 m-b-base"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token comment">// delete all "documents" files</span>
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'example'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token string">'RECORD_ID'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">'documents'</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// delete individual files</span>
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'example'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token string">'RECORD_ID'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">'documents-'</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"file1.pdf"</span><span class="token punctuation">,</span> <span class="token string">"file2.txt"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'http://127.0.0.1:8090'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment">// delete all "documents" files</span>
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'example'</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'RECORD_ID'</span></span><span class="token punctuation">,</span> body<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string-literal"><span class="token string">'documents'</span></span><span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// delete individual files</span>
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'example'</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'RECORD_ID'</span></span><span class="token punctuation">,</span> body<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string-literal"><span class="token string">'documents-'</span></span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">"file1.pdf"</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">"file2.txt"</span></span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div>
+
+<p>The above examples use the JSON object data format, but you could also use <code>FormData</code> instance
+    for <em>multipart/form-data</em> requests. If using
+    <code>FormData</code> set the file field to an empty string.
+</p>
+
+<h3 id="file-url" class="heading-link "><a href="#file-url" class="link-primary">
+        File URL
+        </a></h3>
+<p>Each uploaded file could be accessed by requesting its file url:
+    <br>
+    
+    <code class="txt-bold">http://127.0.0.1:8090/api/files/<span class="txt-danger">COLLECTION_ID_OR_NAME</span>/<span class="txt-info">RECORD_ID</span>/<span class="txt-success">FILENAME</span></code></p>
+<p>If your file field has the <strong>Thumb sizes</strong> option, you can get a thumb of the image file
+    (currently limited to jpg, png, and partially gif – its first frame) by adding the <code>thumb</code>
+    query parameter to the url like this:
+    
+    <code>http://127.0.0.1:8090/api/files/<span class="txt-danger">COLLECTION_ID_OR_NAME</span>/<span class="txt-info">RECORD_ID</span>/<span class="txt-success">FILENAME</span><strong>?thumb=100x300</strong></code></p>
+
+<p>The following thumb formats are currently supported:</p>
+<ul><li><strong>WxH</strong>
+        (eg. 100x300) - crop to WxH viewbox (from center)
+    </li>
+    <li><strong>WxHt</strong>
+        (eg. 100x300t) - crop to WxH viewbox (from top)
+    </li>
+    <li><strong>WxHb</strong>
+        (eg. 100x300b) - crop to WxH viewbox (from bottom)
+    </li>
+    <li><strong>WxHf</strong>
+        (eg. 100x300f) - fit inside a WxH viewbox (without cropping)
+    </li>
+    <li><strong>0xH</strong>
+        (eg. 0x300) - resize to H height preserving the aspect ratio
+    </li>
+    <li><strong>Wx0</strong>
+        (eg. 100x0) - resize to W width preserving the aspect ratio
+    </li></ul>
+<p class="txt-hint">The original file would be returned, if the requested thumb size is not found or the file is not an image!
+</p>
+
+<p>If you already have a Record model instance, the SDKs provide a convenient method to generate a file url
+    by its name.
+</p>
+
+
+<div class="tabs code-tabs m-t-10 m-b-xs"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token keyword">const</span> record <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'example'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getOne</span><span class="token punctuation">(</span><span class="token string">'RECORD_ID'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// get only the first filename from "documents"</span>
+<span class="token comment">//</span>
+<span class="token comment">// note:</span>
+<span class="token comment">// "documents" is an array of filenames because</span>
+<span class="token comment">// the "documents" field was created with "Max Files" option > 1;</span>
+<span class="token comment">// if "Max Files" was 1, then the result property would be just a string</span>
+<span class="token keyword">const</span> firstFilename <span class="token operator">=</span> record<span class="token punctuation">.</span>documents<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// returns something like:</span>
+<span class="token comment">// http://127.0.0.1:8090/api/files/example/kfzjt5oy8r34hvn/test_52iWbGinWd.png?thumb=100x250</span>
+<span class="token keyword">const</span> url <span class="token operator">=</span> pb<span class="token punctuation">.</span>files<span class="token punctuation">.</span><span class="token function">getUrl</span><span class="token punctuation">(</span>record<span class="token punctuation">,</span> firstFilename<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string-property property">'thumb'</span><span class="token operator">:</span> <span class="token string">'100x250'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'http://127.0.0.1:8090'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token keyword">final</span> record <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'example'</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getOne</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'RECORD_ID'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// get only the first filename from "documents"</span>
+<span class="token comment">//</span>
+<span class="token comment">// note:</span>
+<span class="token comment">// "documents" is an array of filenames because</span>
+<span class="token comment">// the "documents" field was created with "Max Files" option > 1;</span>
+<span class="token comment">// if "Max Files" was 1, then the result property would be just a string</span>
+<span class="token keyword">final</span> firstFilename <span class="token operator">=</span> record<span class="token punctuation">.</span>getListValue<span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'documents'</span></span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// returns something like:</span>
+<span class="token comment">// http://127.0.0.1:8090/api/files/example/kfzjt5oy8r34hvn/test_52iWbGinWd.png?thumb=100x250</span>
+<span class="token keyword">final</span> url <span class="token operator">=</span> pb<span class="token punctuation">.</span>files<span class="token punctuation">.</span><span class="token function">getUrl</span><span class="token punctuation">(</span>record<span class="token punctuation">,</span> firstFilename<span class="token punctuation">,</span> thumb<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">'100x250'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div>
+<p><em>Additionally, to instruct the browser to always download the file instead of showing a preview when
+        accessed directly, you can append the <code>?download=1</code> query parameter to the file url.
+    </em></p>
+
+<h3 id="protected-files" class="heading-link "><a href="#protected-files" class="link-primary">
+        Protected files
+        </a></h3>
+<p>By default all files are public accessible if you know their full url.</p>
+<p>For most applications this is fine since all files have a random part, but in some cases you may want an
+    extra security to prevent unauthorized access to sensitive files like ID card or Passport copies,
+    contracts, etc.
+</p>
+<p>To do this you can mark the <code>file</code> field as <em>Protected</em> and then request the file with a
+    special <strong>short-lived file token</strong>.
+</p>
+<div class="alert alert-info m-t-sm m-b-sm"><div class="icon"><i class="ri-information-line"></i></div>
+    <div class="content"><p>Only requests that satisfy the <strong>View API rule</strong> of the record collection will be able
+            to access or download the protected file(s).
+        </p></div></div>
+<img src="/images/screenshots/file-options.png" alt="File options panel" class="screenshot">
+<div class="clearfix m-b-sm"></div>
+
+<div class="tabs code-tabs m-t-10 m-b-base"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token comment">// authenticate</span>
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">,</span> <span class="token string">'1234567890'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// generate a file token</span>
+<span class="token keyword">const</span> fileToken <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>files<span class="token punctuation">.</span><span class="token function">getToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// retrieve an example protected file url (will be valid ~2min)</span>
+<span class="token keyword">const</span> record <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'example'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getOne</span><span class="token punctuation">(</span><span class="token string">'RECORD_ID'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> url <span class="token operator">=</span> pb<span class="token punctuation">.</span>files<span class="token punctuation">.</span><span class="token function">getUrl</span><span class="token punctuation">(</span>record<span class="token punctuation">,</span> record<span class="token punctuation">.</span>myPrivateFile<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string-property property">'token'</span><span class="token operator">:</span> fileToken<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'http://127.0.0.1:8090'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment">// authenticate</span>
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'users'</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'test@example.com'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'1234567890'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// generate a file token</span>
+<span class="token keyword">final</span> fileToken <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>files<span class="token punctuation">.</span><span class="token function">getToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// retrieve an example protected file url (will be valid ~2min)</span>
+<span class="token keyword">final</span> record <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'example'</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getOne</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'RECORD_ID'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> url <span class="token operator">=</span> pb<span class="token punctuation">.</span>files<span class="token punctuation">.</span><span class="token function">getUrl</span><span class="token punctuation">(</span>record<span class="token punctuation">,</span> record<span class="token punctuation">.</span><span class="token function">getStringValue</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'myPrivateFile'</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> token<span class="token punctuation">:</span> fileToken<span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div>
+
+<h3 id="storage-options" class="heading-link "><a href="#storage-options" class="link-primary">
+        Storage options
+        </a></h3>
+<p>By default PocketBase uses the local file system to store uploaded files (in the
+    <code>pb_data/storage</code> directory).
+</p>
+<p>If you have limited disk space, you could use a S3 compatible storage (AWS S3, MinIO, Wasabi, DigitalOcean
+    Spaces, Vultr Object Storage, etc.). The easiest way to setup the connection settings is from the admin UI
+    (<em>Settings</em> &gt; <em>Files storage</em>):
+</p>
+<img src="/images/screenshots/files-storage.png" alt="Files storage settings screenshot" class="screenshot"></div>
+
+    <hr>
+
+<div class="docs-footer svelte-1dbn67j"><a href="/docs/authentication" class="btn btn-secondary btn-prev svelte-1dbn67j"><i class="ri-arrow-left-line"></i>
+            <span class="txt">Prev: Authentication</span></a>
+
+    <a href="/docs/working-with-relations" class="btn btn-outline btn-expanded btn-next svelte-1dbn67j"><span class="txt">Next: Working with relations</span>
+            <i class="ri-arrow-right-line"></i></a>
+</div></div></main>
+
+<footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links"><a href="/faq" class="link-item">FAQ</a>
+                <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions
+                </a>
+                <a href="/docs" class="link-item">Documentation</a></nav>
+
+            <nav class="footer-col links"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK
+                </a>
+                <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK
+                </a></nav>
+
+            <div class="footer-col socials"><div class="watermark-logo">Pocket<strong>Base</strong></div>
+                <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a>
+                <a href="https://twitter.com/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to Twitter"><i class="ri-twitter-line"></i></a>
+                <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub"><i class="ri-github-line"></i></a></div></div>
+        <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2024 Pocket<strong>Base</strong></span>
+                <span class="gopher-credit">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers
+                    </a></span></div>
+            <div class="flex-fill"></div>
+            <div class="credit">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>
+
+
+
+<button type="button" class="btn btn-circle btn-secondary scroll-to-top svelte-h1x6u4" arial-label="Go to top"><i class="ri-arrow-up-line"></i>
+</button>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.b8d67116.js"),
+						import("../../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 19],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

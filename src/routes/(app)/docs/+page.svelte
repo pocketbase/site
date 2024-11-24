@@ -167,7 +167,7 @@
     <a href={import.meta.env.PB_GITHUB_RELEASES_URL} target="_blank" rel="noreferrer noopener">
         GitHub Releases page
     </a>
-    for other platforms and more details.
+    for other platforms and more details..
 </p>
 
 <hr />

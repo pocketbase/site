@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../../_app/immutable/assets/2.0975cac3.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.9c47a874.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CodeBlock.d22afb3e.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/2.7231d4f7.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/PageFooter.476871d4.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/tooltip.f1d7ab7e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CommonHelper.7329e1a7.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.7d3ee590.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.d888f6de.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/preferences.0fc33f39.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/45.1a5541d4.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeBlock.a090ee9b.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeTabs.3c6448ff.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/HeadingLink.20322812.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Toc.c31a36b6.js"><title>Extend with JavaScript - Routing - Docs - PocketBase</title><!-- HEAD_svelte-q27gla_START --><!-- HEAD_svelte-q27gla_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+<header class="page-header"><div class="wrapper wrapper-lg"><a href="/" class="logo logo-sm"><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40">
+            <span class="txt">Pocket<strong>Base</strong></span>
+            <span class="version">v0.22.27</span></a>
+
+        <div class="flex-fill"></div>
+
+        
+        
+
+        
+
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span>
+            <i class="ri-menu-3-fill"></i>
+            
+
+<div class="toggler-container"></div></button>
+
+        <nav class="main-menu"><a href="/faq" class="btn btn-secondary">FAQ</a>
+            <a href="https://github.com/pocketbase/pocketbase/discussions" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Discussions
+            </a>
+            <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a>
+            <a href="/docs" class="btn btn-outline btn-expanded"><span class="txt">Documentation</span></a></nav></div></header>
+
+<main class="wrapper wrapper-lg page-content-wrapper">
+
+<aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-1izh69t"><div class="absolute-wrapper svelte-1izh69t"><div class="sidebar-content svelte-1izh69t"><nav class="sidebar-list">
+        
+        <a href="/docs" class="list-item">
+            <span class="icon"><i class="ri-home-2-line"></i></span>
+            <span class="txt">Introduction</span>
+            </a>
+        
+        
+        <a href="/docs/collections" class="list-item">
+            <span class="icon"><i class="ri-database-2-line"></i></span>
+            <span class="txt">Collections</span>
+            </a>
+        
+        
+        <a href="/docs/api-rules-and-filters" class="list-item">
+            <span class="icon"><i class="ri-shield-check-line"></i></span>
+            <span class="txt">API rules and filters</span>
+            </a>
+        
+        
+        <a href="/docs/client-side-sdks" class="list-item">
+            <span class="icon"><i class="ri-tools-line"></i></span>
+            <span class="txt">Client-side SDKs</span>
+            </a>
+        
+        
+        <a href="/docs/authentication" class="list-item">
+            <span class="icon"><i class="ri-group-line"></i></span>
+            <span class="txt">Authentication</span>
+            </a>
+        
+        
+        <a href="/docs/files-handling" class="list-item">
+            <span class="icon"><i class="ri-upload-cloud-line"></i></span>
+            <span class="txt">Files upload and handling</span>
+            </a>
+        
+        
+        <a href="/docs/working-with-relations" class="list-item">
+            <span class="icon"><i class="ri-mind-map"></i></span>
+            <span class="txt">Working with relations</span>
+            </a>
+        
+        
+        <a href="/docs/use-as-framework" class="list-item">
+            <span class="icon"><i class="ri-code-s-slash-line"></i></span>
+            <span class="txt">Use as framework</span>
+            </a>
+        
+        
+        <a href="/docs/api-records" class="list-item">
+            <span class="icon"><i class="ri-file-list-2-line"></i></span>
+            <span class="txt">Web APIs reference</span>
+            </a>
+        
+        
+        <a href="/docs/going-to-production" class="list-item">
+            <span class="icon"><i class="ri-check-double-line"></i></span>
+            <span class="txt">Going to production</span>
+            </a>
+        </nav>
+
+                <div class="clearfix m-t-base"></div>
+
+                <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item" href="/docs/go-overview"><div class="block">Extend with
+                                <br>
+                                <strong>Go</strong></div></a>
+                        <a class="tab-item active" href="/docs/js-overview"><div class="block">Extend with
+                                <br>
+                                <strong>JavaScript</strong></div></a></div>
+                    <div class="tabs-content"><div class="tab-item"><nav class="sidebar-list">
+        
+        <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/go-records" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Testing</span>
+            </a>
+        
+        
+        <a href="/docs/go-custom-models" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Custom models</span>
+            </a>
+        </nav></div>
+                        <div class="tab-item active"><nav class="sidebar-list">
+        
+        <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/js-routing" class="list-item active"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/js-database" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending HTTP requests</span>
+            </a>
+        
+        
+        <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Types reference</span>
+            </a>
+        </nav></div></div></div></div></div></div>
+</aside>
+
+<div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Extend with JavaScript - Routing</div></nav>
+
+    <div class="content"><p>You can register custom routes and middlewares by using the top-level <code>routerAdd()</code>
+    and <code>routerUse()</code> functions.
+</p>
+
+<div class="toc"><ul class="toc-list-1"></ul></div>
+
+<h3 id="routes" class="heading-link "><a href="#routes" class="link-primary">
+        Routes
+        </a></h3>
+
+<h5 id="registering-new-routes" class="heading-link "><a href="#registering-new-routes" class="link-primary">
+        Registering new routes
+        </a></h5>
+<p>Each route consists of at least a path and a handler function. For example, the below code registers
+    <code>GET /hello/:name</code> route that responds with a json body:
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token function">routerAdd</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/hello/:name"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> name <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">pathParam</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string-property property">"message"</span><span class="token operator">:</span> <span class="token string">"Hello "</span> <span class="token operator">+</span> name <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">/* optional middlewares */</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<div class="alert alert-info m-t-sm m-b-sm"><div class="icon"><i class="ri-information-line"></i></div>
+    <div class="content"><p>To avoid collisions with future internal routes you should avoid using the <code>/api/...</code>
+            base path or consider combining it with a unique prefix like <code>/api/myapp/...</code>.
+        </p></div></div>
+
+<p>Each handler function receives a <strong>request context</strong> argument (usually named <code>c</code>).
+    <br>
+    The request context is also accessible in the event request hooks under the <code>httpContext</code> key.
+    <br>
+    Below you can find common request context operations.
+</p>
+
+<h5 id="request-context-store" class="heading-link "><a href="#request-context-store" class="link-primary">
+        Request context store
+        </a></h5>
+<p>The request context comes with a local store that you can use to share data related only to the current
+    request between routes and middlewares.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// store for the duration of the request</span>
+c<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"someKey"</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">)</span>
+
+<span class="token comment">// retrieve later</span>
+<span class="token keyword">const</span> val <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"someKey"</span><span class="token punctuation">)</span> <span class="token comment">// 123</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="retrieving-the-current-auth-state" class="heading-link "><a href="#retrieving-the-current-auth-state" class="link-primary">
+        Retrieving the current auth state
+        </a></h5>
+<p>We also use the store to manage the current auth state with the <code>admin</code> and
+    <code>authRecord</code> special keys.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">const</span> admin  <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span>      <span class="token comment">// empty if not authenticated as admin</span>
+<span class="token keyword">const</span> record <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"authRecord"</span><span class="token punctuation">)</span> <span class="token comment">// empty if not authenticated as regular auth record</span>
+
+<span class="token comment">// alternatively, you can also read the auth state from the cached request info</span>
+<span class="token keyword">const</span> info   <span class="token operator">=</span> $apis<span class="token punctuation">.</span><span class="token function">requestInfo</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> admin  <span class="token operator">=</span> info<span class="token punctuation">.</span>admin<span class="token punctuation">;</span>      <span class="token comment">// empty if not authenticated as admin</span>
+<span class="token keyword">const</span> record <span class="token operator">=</span> info<span class="token punctuation">.</span>authRecord<span class="token punctuation">;</span> <span class="token comment">// empty if not authenticated as regular auth record</span>
+
+<span class="token keyword">const</span> isGuest <span class="token operator">=</span> <span class="token operator">!</span>admin <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>record<!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="reading-path-parameters" class="heading-link "><a href="#reading-path-parameters" class="link-primary">
+        Reading path parameters
+        </a></h5>
+<p>Path parameters are defined with <code>:paramName</code> placeholder and can be retrieved using
+    <code>c.pathParam(&quot;paramName&quot;)</code>.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">const</span> id <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">pathParam</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="reading-query-parameters" class="heading-link "><a href="#reading-query-parameters" class="link-primary">
+        Reading query parameters
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">const</span> search <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">queryParam</span><span class="token punctuation">(</span><span class="token string">"search"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// or via the cached request object</span>
+<span class="token keyword">const</span> search <span class="token operator">=</span> $apis<span class="token punctuation">.</span><span class="token function">requestInfo</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">.</span>query<span class="token punctuation">.</span>search<!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="reading-request-headers" class="heading-link "><a href="#reading-request-headers" class="link-primary">
+        Reading request headers
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">const</span> token <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>header<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"Some-Header"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// or via the cached request object (the header value is always normalized)</span>
+<span class="token keyword">const</span> token <span class="token operator">=</span> $apis<span class="token punctuation">.</span><span class="token function">requestInfo</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">"some_header"</span><span class="token punctuation">]</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="writing-response-headers" class="heading-link "><a href="#writing-response-headers" class="link-primary">
+        Writing response headers
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->c<span class="token punctuation">.</span><span class="token function">response</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">header</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"Some-Header"</span><span class="token punctuation">,</span> <span class="token string">"123"</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="reading-request-body" class="heading-link "><a href="#reading-request-body" class="link-primary">
+        Reading request body
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// read the body via the cached request object</span>
+<span class="token comment">// (this method is commonly used in hook handlers because it allows reading the body more than once)</span>
+<span class="token keyword">const</span> data <span class="token operator">=</span> $apis<span class="token punctuation">.</span><span class="token function">requestInfo</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">.</span>data
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>title<span class="token punctuation">)</span>
+
+<span class="token comment">// read/scan the request body fields into a typed object</span>
+<span class="token comment">// (note that a body cannot be read twice with "bind" because it is a stream)</span>
+<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DynamicModel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// describe the fields to read (used also as initial values)</span>
+    <span class="token literal-property property">someTextField</span><span class="token operator">:</span>   <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">someNumberField</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">someBoolField</span><span class="token operator">:</span>   <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">someArrayField</span><span class="token operator">:</span>  <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">someObjectField</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// object props are accessible via .get(key)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token function">c</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>sometextField<span class="token punctuation">)</span>
+
+<span class="token comment">// read single multipart/form-data field</span>
+<span class="token keyword">const</span> title <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">formValue</span><span class="token punctuation">(</span><span class="token string">"title"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// read single multipart/form-data file</span>
+<span class="token keyword">const</span> doc <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">formFile</span><span class="token punctuation">(</span><span class="token string">"document"</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="writing-response-body" class="heading-link "><a href="#writing-response-body" class="link-primary">
+        Writing response body
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// send response with json body</span>
+c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"John"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// send response with string body</span>
+c<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"Lorem ipsum..."</span><span class="token punctuation">)</span>
+
+<span class="token comment">// send response with html body</span>
+<span class="token comment">// (check also the "Rendering templates" section)</span>
+c<span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"&lt;h1>Hello!&lt;/h1>"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// redirect</span>
+c<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token number">307</span><span class="token punctuation">,</span> <span class="token string">"https://example.com"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// send response with no body</span>
+c<span class="token punctuation">.</span><span class="token function">noContent</span><span class="token punctuation">(</span><span class="token number">204</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="middlewares" class="heading-link "><a href="#middlewares" class="link-primary">
+        Middlewares
+        </a></h3>
+<p>Middlewares could be used to apply a shared behavior or to intercept and modify route requests.
+    <br>
+    Middlewares can be registered both to a single route (by passing them after the handler) and globally usually
+    by using <code>routerUse(someMiddlereFunc)</code>.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// attach a middleware globally to all routes</span>
+<span class="token function">routerUse</span><span class="token punctuation">(</span>someMiddlereFunc<span class="token punctuation">)</span>
+
+<span class="token comment">// attach multiple middlewares to a single route</span>
+<span class="token comment">// each route will execute their own middlewares + the global ones</span>
+<span class="token function">routerAdd</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/hello"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"Hello world!"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> $apis<span class="token punctuation">.</span><span class="token function">activityLogger</span><span class="token punctuation">(</span>$app<span class="token punctuation">)</span><span class="token punctuation">,</span> $apis<span class="token punctuation">.</span><span class="token function">requireAdminAuth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="builtin-middlewares" class="heading-link "><a href="#builtin-middlewares" class="link-primary">
+        Builtin middlewares
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// logs the request in the Admin UI > Logs</span>
+$apis<span class="token punctuation">.</span><span class="token function">activityLogger</span><span class="token punctuation">(</span>$app<span class="token punctuation">)</span>
+
+<span class="token comment">// requires the request client to be unauthenticated, aka. guest</span>
+$apis<span class="token punctuation">.</span><span class="token function">requireGuestOnly</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// requires the request client to be authenticated as an auth record</span>
+$apis<span class="token punctuation">.</span><span class="token function">requireRecordAuth</span><span class="token punctuation">(</span>optCollectionNames<span class="token operator">...</span><span class="token punctuation">)</span>
+
+<span class="token comment">// require the request client to be authenticated as admin</span>
+$apis<span class="token punctuation">.</span><span class="token function">requireAdminAuth</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// require the request client to be authenticated as admin OR auth record</span>
+$apis<span class="token punctuation">.</span><span class="token function">requireAdminOrRecordAuth</span><span class="token punctuation">(</span>optCollectionNames<span class="token operator">...</span><span class="token punctuation">)</span>
+
+<span class="token comment">// require the request client to be authenticated as admin OR auth record</span>
+<span class="token comment">// that matches the ownerIdParam path parameter</span>
+$apis<span class="token punctuation">.</span><span class="token function">requireAdminOrOwnerAuth</span><span class="token punctuation">(</span>ownerIdParam <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// compresses HTTP response using gzip</span>
+$apis<span class="token punctuation">.</span><span class="token function">gzip</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// sets the maximum allowed size (in bytes) for a request body</span>
+$apis<span class="token punctuation">.</span><span class="token function">bodyLimit</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="custom-middlewares" class="heading-link "><a href="#custom-middlewares" class="link-primary">
+        Custom middlewares
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">function</span> <span class="token function">myCustomMiddleware</span><span class="token punctuation">(</span><span class="token parameter">next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token comment">// eg. inspect some header value before processing the request</span>
+        <span class="token keyword">const</span> header <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>header<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"Some-Header"</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>header<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// throw or return an error</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestError</span><span class="token punctuation">(</span><span class="token string">"Invalid request"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token comment">// proceed with the request chain</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">routerUse</span><span class="token punctuation">(</span>myCustomMiddleware<span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="error-response" class="heading-link "><a href="#error-response" class="link-primary">
+        Error response
+        </a></h3>
+<p>PocketBase has a global error handler and every returned or thrown <code>Error</code> from a route or
+    middleware will be safely converted by default to a generic HTTP 400 error to avoid accidentally leaking
+    sensitive information (the original error will be visible only in the <em>Admin UI &gt; Logs</em> or when in
+    <code>--dev</code> mode).
+</p>
+<p>To make it easier returning formatted json error responses, PocketBase provides
+    <code>ApiError</code> constructor that can be instantiated directly or using the builtin factories.
+    <br>
+    <code>ApiError.data</code> will be returned in the response only if it is a map of
+    <code>ValidationError</code> items.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// construct ApiError with custom status code and validation data error</span>
+<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ApiError</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token string">"something went wrong"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"title"</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">ValidationError</span><span class="token punctuation">(</span><span class="token string">"invalid_title"</span><span class="token punctuation">,</span> <span class="token string">"Invalid or missing title"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// if message is empty string, a default one will be set</span>
+<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestError</span><span class="token punctuation">(</span>optMessage<span class="token punctuation">,</span> optData<span class="token punctuation">)</span>   <span class="token comment">// 400 ApiError</span>
+<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">UnauthorizedError</span><span class="token punctuation">(</span>optMessage<span class="token punctuation">,</span> optData<span class="token punctuation">)</span> <span class="token comment">// 401 ApiError</span>
+<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ForbiddenError</span><span class="token punctuation">(</span>optMessage<span class="token punctuation">,</span> optData<span class="token punctuation">)</span>    <span class="token comment">// 403 ApiError</span>
+<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NotFoundError</span><span class="token punctuation">(</span>optMessage<span class="token punctuation">,</span> optData<span class="token punctuation">)</span>     <span class="token comment">// 404 ApiError</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="helpers" class="heading-link "><a href="#helpers" class="link-primary">
+        Helpers
+        </a></h3>
+<p>The global <code>$apis</code> namespace expose several helpers you can use as part of your route hooks.
+</p>
+<h5 id="auth-response" class="heading-link "><a href="#auth-response" class="link-primary">
+        Auth response
+        </a></h5>
+<p><code>$apis.recordAuthResponse()</code> writes standardised json record auth response (aka. token + record
+    data) into the specified request context. Could be used as a return result from a custom auth route.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token function">routerAdd</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/phone-login"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DynamicModel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">phone</span><span class="token operator">:</span>    <span class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token function">c</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> record <span class="token operator">=</span> $app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">findFirstRecordByData</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">,</span> <span class="token string">"phone"</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>phone<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>record<span class="token punctuation">.</span><span class="token function">validatePassword</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">BadRequestError</span><span class="token punctuation">(</span><span class="token string">"invalid credentials"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> $apis<span class="token punctuation">.</span><span class="token function">recordAuthResponse</span><span class="token punctuation">(</span>$app<span class="token punctuation">,</span> c<span class="token punctuation">,</span> record<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> $apis<span class="token punctuation">.</span><span class="token function">activityLogger</span><span class="token punctuation">(</span>$app<span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+<h5 id="enrich-records" class="heading-link "><a href="#enrich-records" class="link-primary">
+        Enrich record(s)
+        </a></h5>
+<p><code>$apis.enrichRecord()</code> and <code>$apis.enrichRecords()</code> helpers parses the request context
+    and enrich the provided record(s) by:
+</p>
+<ul><li>expands relations (if <code>defaultExpands</code> and/or <code>?expand</code> query parameter is set)
+    </li>
+    <li>ensures that the emails of the auth record and its expanded auth relations are visible only for the
+        current logged admin, record owner or record with manage access
+    </li></ul>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token function">routerAdd</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/custom-article"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> records <span class="token operator">=</span> $app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">findRecordsByFilter</span><span class="token punctuation">(</span><span class="token string">"article"</span><span class="token punctuation">,</span> <span class="token string">"status = 'active'"</span><span class="token punctuation">,</span> <span class="token string">'-created'</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// enrich the records with the "categories" relation as default expand</span>
+    $apis<span class="token punctuation">.</span><span class="token function">enrichRecords</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> $app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> records<span class="token punctuation">,</span> <span class="token string">"categories"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> c<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> records<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> $apis<span class="token punctuation">.</span><span class="token function">activityLogger</span><span class="token punctuation">(</span>$app<span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+<h5 id="serving-static-files" class="heading-link "><a href="#serving-static-files" class="link-primary">
+        Serving static files
+        </a></h5>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token function">routerAdd</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"/*"</span><span class="token punctuation">,</span> $apis<span class="token punctuation">.</span><span class="token function">staticDirectoryHandler</span><span class="token punctuation">(</span><span class="token string">"/path/to/public"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="sending-request-to-custom-routes-using-the-sdks" class="heading-link "><a href="#sending-request-to-custom-routes-using-the-sdks" class="link-primary">
+        Sending request to custom routes using the SDKs
+        </a></h3>
+<p>The official PocketBase SDKs expose the internal <code>send()</code> method that could be used to send requests
+    to your custom route(s).
+</p>
+<div class="tabs code-tabs m-t-10 m-b-base"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"/hello"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token comment">// for all possible options check</span>
+    <span class="token comment">// https://developer.mozilla.org/en-US/docs/Web/API/fetch#options</span>
+    <span class="token literal-property property">query</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string-property property">"abc"</span><span class="token operator">:</span> <span class="token number">123</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'http://127.0.0.1:8090'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"/hello"</span></span><span class="token punctuation">,</span> query<span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token string-literal"><span class="token string">"abc"</span></span><span class="token punctuation">:</span> <span class="token number">123</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div></div>
+
+    <hr>
+
+<div class="docs-footer svelte-1dbn67j"><a href="/docs/js-event-hooks" class="btn btn-secondary btn-prev svelte-1dbn67j"><i class="ri-arrow-left-line"></i>
+            <span class="txt">Prev: Event hooks</span></a>
+
+    <a href="/docs/js-database" class="btn btn-outline btn-expanded btn-next svelte-1dbn67j"><span class="txt">Next: Database</span>
+            <i class="ri-arrow-right-line"></i></a>
+</div></div></main>
+
+<footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links"><a href="/faq" class="link-item">FAQ</a>
+                <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions
+                </a>
+                <a href="/docs" class="link-item">Documentation</a></nav>
+
+            <nav class="footer-col links"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK
+                </a>
+                <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK
+                </a></nav>
+
+            <div class="footer-col socials"><div class="watermark-logo">Pocket<strong>Base</strong></div>
+                <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a>
+                <a href="https://twitter.com/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to Twitter"><i class="ri-twitter-line"></i></a>
+                <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub"><i class="ri-github-line"></i></a></div></div>
+        <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2024 Pocket<strong>Base</strong></span>
+                <span class="gopher-credit">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers
+                    </a></span></div>
+            <div class="flex-fill"></div>
+            <div class="credit">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>
+
+
+
+<button type="button" class="btn btn-circle btn-secondary scroll-to-top svelte-h1x6u4" arial-label="Go to top"><i class="ri-arrow-up-line"></i>
+</button>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.b8d67116.js"),
+						import("../../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 45],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

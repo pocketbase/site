@@ -105,9 +105,12 @@
         <div
             id={uniqueId}
             on:click={(e) => {
-                // workaround for loosing focus since the load button is removed after click
                 if (e.target.classList.contains("pagefind-ui__button")) {
+                    // workaround for loosing focus since the load button is removed after click
                     searchInput?.focus();
+                } else if (e.target.classList.contains("pagefind-ui__result-link")) {
+                    // workaround because some browsers may keep the link focus if there is no change in the url
+                    document.activeElement?.blur();
                 }
             }}
         ></div>

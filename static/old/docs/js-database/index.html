@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../../_app/immutable/assets/2.0975cac3.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.9c47a874.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CodeBlock.d22afb3e.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/2.7231d4f7.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/PageFooter.476871d4.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/tooltip.f1d7ab7e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CommonHelper.7329e1a7.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.7d3ee590.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.d888f6de.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/preferences.0fc33f39.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/37.0f12fb0c.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/HeadingLink.20322812.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeBlock.a090ee9b.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Toc.c31a36b6.js"><title>Extend with JavaScript - Database - Docs - PocketBase</title><!-- HEAD_svelte-q27gla_START --><!-- HEAD_svelte-q27gla_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+<header class="page-header"><div class="wrapper wrapper-lg"><a href="/" class="logo logo-sm"><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40">
+            <span class="txt">Pocket<strong>Base</strong></span>
+            <span class="version">v0.22.27</span></a>
+
+        <div class="flex-fill"></div>
+
+        
+        
+
+        
+
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span>
+            <i class="ri-menu-3-fill"></i>
+            
+
+<div class="toggler-container"></div></button>
+
+        <nav class="main-menu"><a href="/faq" class="btn btn-secondary">FAQ</a>
+            <a href="https://github.com/pocketbase/pocketbase/discussions" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Discussions
+            </a>
+            <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a>
+            <a href="/docs" class="btn btn-outline btn-expanded"><span class="txt">Documentation</span></a></nav></div></header>
+
+<main class="wrapper wrapper-lg page-content-wrapper">
+
+<aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-1izh69t"><div class="absolute-wrapper svelte-1izh69t"><div class="sidebar-content svelte-1izh69t"><nav class="sidebar-list">
+        
+        <a href="/docs" class="list-item">
+            <span class="icon"><i class="ri-home-2-line"></i></span>
+            <span class="txt">Introduction</span>
+            </a>
+        
+        
+        <a href="/docs/collections" class="list-item">
+            <span class="icon"><i class="ri-database-2-line"></i></span>
+            <span class="txt">Collections</span>
+            </a>
+        
+        
+        <a href="/docs/api-rules-and-filters" class="list-item">
+            <span class="icon"><i class="ri-shield-check-line"></i></span>
+            <span class="txt">API rules and filters</span>
+            </a>
+        
+        
+        <a href="/docs/client-side-sdks" class="list-item">
+            <span class="icon"><i class="ri-tools-line"></i></span>
+            <span class="txt">Client-side SDKs</span>
+            </a>
+        
+        
+        <a href="/docs/authentication" class="list-item">
+            <span class="icon"><i class="ri-group-line"></i></span>
+            <span class="txt">Authentication</span>
+            </a>
+        
+        
+        <a href="/docs/files-handling" class="list-item">
+            <span class="icon"><i class="ri-upload-cloud-line"></i></span>
+            <span class="txt">Files upload and handling</span>
+            </a>
+        
+        
+        <a href="/docs/working-with-relations" class="list-item">
+            <span class="icon"><i class="ri-mind-map"></i></span>
+            <span class="txt">Working with relations</span>
+            </a>
+        
+        
+        <a href="/docs/use-as-framework" class="list-item">
+            <span class="icon"><i class="ri-code-s-slash-line"></i></span>
+            <span class="txt">Use as framework</span>
+            </a>
+        
+        
+        <a href="/docs/api-records" class="list-item">
+            <span class="icon"><i class="ri-file-list-2-line"></i></span>
+            <span class="txt">Web APIs reference</span>
+            </a>
+        
+        
+        <a href="/docs/going-to-production" class="list-item">
+            <span class="icon"><i class="ri-check-double-line"></i></span>
+            <span class="txt">Going to production</span>
+            </a>
+        </nav>
+
+                <div class="clearfix m-t-base"></div>
+
+                <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item" href="/docs/go-overview"><div class="block">Extend with
+                                <br>
+                                <strong>Go</strong></div></a>
+                        <a class="tab-item active" href="/docs/js-overview"><div class="block">Extend with
+                                <br>
+                                <strong>JavaScript</strong></div></a></div>
+                    <div class="tabs-content"><div class="tab-item"><nav class="sidebar-list">
+        
+        <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/go-records" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Testing</span>
+            </a>
+        
+        
+        <a href="/docs/go-custom-models" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Custom models</span>
+            </a>
+        </nav></div>
+                        <div class="tab-item active"><nav class="sidebar-list">
+        
+        <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/js-routing" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/js-database" class="list-item active"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending HTTP requests</span>
+            </a>
+        
+        
+        <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Types reference</span>
+            </a>
+        </nav></div></div></div></div></div></div>
+</aside>
+
+<div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Extend with JavaScript - Database</div></nav>
+
+    <div class="content"><p>The main interface to interact with your application database is via <code>$app.dao()</code>.
+</p>
+<p><code>$app.dao()</code>
+    provides read and write helpers (see <a href="/docs/js-collections">Collection operations</a>
+    and <a href="/docs/js-records">Record operations</a>) and it is responsible for triggering the
+    <code>onModel*</code> event hooks.
+</p>
+<p>It also exposes <code>$app.dao().db()</code> builder that allows executing various SQL statements (including
+    raw queries).
+</p>
+
+<div class="toc"><ul class="toc-list-1"></ul></div>
+
+<h3 id="executing-queries" class="heading-link "><a href="#executing-queries" class="link-primary">
+        Executing queries
+        </a></h3>
+<p>To execute DB queries you can start with the <code>newQuery(&quot;...&quot;)</code> statement and then call one of:
+</p>
+<ul><li><p><code id="execute" class="heading-link "><a href="#execute" class="link-primary">
+        execute()
+        </a></code>
+            - for any query statement that is not meant to retrieve data:
+        </p>
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">newQuery</span><span class="token punctuation">(</span><span class="token string">"CREATE INDEX name_idx ON users (name)"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// throw an error on db failure</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li><p><code id="execute-one" class="heading-link "><a href="#execute-one" class="link-primary">
+        one()
+        </a></code>
+            - to populate a single row into <code>DynamicModel</code> object:
+        </p>
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DynamicModel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// describe the shape of the data (used also as initial values)</span>
+    <span class="token string-property property">"id"</span><span class="token operator">:</span>     <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"status"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"age"</span><span class="token operator">:</span>    <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"roles"</span><span class="token operator">:</span>  <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// serialized json db arrays are decoded as plain arrays</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">newQuery</span><span class="token punctuation">(</span><span class="token string">"SELECT id, status, age, roles FROM users WHERE id=1"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">one</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token comment">// throw an error on db failure or missing row</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>id<span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li><p><code id="execute-all" class="heading-link "><a href="#execute-all" class="link-primary">
+        all()
+        </a></code>
+            - to populate multiple rows into an array of objects (note that the array must be created with
+            <code>arrayOf</code>):
+        </p>
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">arrayOf</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DynamicModel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// describe the shape of the data (used also as initial values)</span>
+    <span class="token string-property property">"id"</span><span class="token operator">:</span>     <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"status"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"age"</span><span class="token operator">:</span>    <span class="token number">0</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"roles"</span><span class="token operator">:</span>  <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// serialized json db arrays are decoded as plain arrays</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">newQuery</span><span class="token punctuation">(</span><span class="token string">"SELECT id, status, age, roles FROM users LIMIT 100"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token comment">// throw an error on db failure</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><!-- HTML_TAG_END --></code>
+</div></li></ul>
+
+<h3 id="binding-parameters" class="heading-link "><a href="#binding-parameters" class="link-primary">
+        Binding parameters
+        </a></h3>
+<p>To prevent SQL injection attacks, you should use named parameters for any expression value that comes from
+    user input. This could be done using the named <code>{:paramName}</code>
+    placeholders in your SQL statement and then define the parameter values for the query with
+    <code>bind(params)</code>. For example:
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">arrayOf</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DynamicModel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token string-property property">"name"</span><span class="token operator">:</span>    <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"created"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">newQuery</span><span class="token punctuation">(</span><span class="token string">"SELECT name, created FROM posts WHERE created >= {:from} and created &lt;= {:to}"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token string-property property">"from"</span><span class="token operator">:</span> <span class="token string">"2023-06-25 00:00:00.000Z"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"to"</span><span class="token operator">:</span>   <span class="token string">"2023-06-28 23:59:59.999Z"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">.</span>length<span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="query-builder" class="heading-link "><a href="#query-builder" class="link-primary">
+        Query builder
+        </a></h3>
+<p>Instead of writting plain SQLs, you can also compose SQL statements programmatically using the db query
+    builder.
+    <br>
+    Every SQL keyword has a corresponding query building method. For example, <code>SELECT</code> corresponds
+    to <code>select()</code>, <code>FROM</code> corresponds to <code>from()</code>,
+    <code>WHERE</code> corresponds to <code>where()</code>, and so on.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token function">arrayOf</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">DynamicModel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token string-property property">"id"</span><span class="token operator">:</span>    <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"email"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"email"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">andWhere</span><span class="token punctuation">(</span>$dbx<span class="token punctuation">.</span><span class="token function">like</span><span class="token punctuation">(</span><span class="token string">"email"</span><span class="token punctuation">,</span> <span class="token string">"example.com"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">orderBy</span><span class="token punctuation">(</span><span class="token string">"created ASC"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="select-andselect-distinct" class="heading-link "><a href="#select-andselect-distinct" class="link-primary">
+        select(), andSelect(), distinct()
+        </a></h5>
+<p>The <code>select(...cols)</code> method initializes a <code>SELECT</code> query builder. It accepts a list
+    of the column names to be selected.
+    <br>
+    To add additional columns to an existing select query, you can call <code>andSelect()</code>.
+    <br>
+    To select distinct rows, you can call <code>distinct()</code>.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"avatar as image"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">andSelect</span><span class="token punctuation">(</span><span class="token string">"(firstName || ' ' || lastName) as fullName"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">distinct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="from" class="heading-link "><a href="#from" class="link-primary">
+        from()
+        </a></h5>
+<p>The <code>from(...tables)</code> method specifies which tables to select from (plain table names are automatically
+    quoted).
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"table1.id"</span><span class="token punctuation">,</span> <span class="token string">"table2.name"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"table1"</span><span class="token punctuation">,</span> <span class="token string">"table2"</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="join" class="heading-link "><a href="#join" class="link-primary">
+        join()
+        </a></h5>
+<p>The <code>join(type, table, on)</code> method specifies a <code>JOIN</code> clause. It takes 3 parameters:
+</p>
+<ul><li><code>type</code> - join type string like <code>INNER JOIN</code>, <code>LEFT JOIN</code>, etc.</li>
+    <li><code>table</code> - the name of the table to be joined</li>
+    <li><code>on</code> - optional <code>dbx.Expression</code> as an <code>ON</code> clause</li></ul>
+<p>For convenience, you can also use the shortcuts <code>innerJoin(table, on)</code>,
+    <code>leftJoin(table, on)</code>,
+    <code>rightJoin(table, on)</code> to specify <code>INNER JOIN</code>, <code>LEFT JOIN</code> and
+    <code>RIGHT JOIN</code>, respectively.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"users.*"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">innerJoin</span><span class="token punctuation">(</span><span class="token string">"profiles"</span><span class="token punctuation">,</span> $dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"profiles.user_id = users.id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"FULL OUTER JOIN"</span><span class="token punctuation">,</span> <span class="token string">"department"</span><span class="token punctuation">,</span> $dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"department.id = {:id}"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">"someId"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="where-andwhere-orwhere" class="heading-link "><a href="#where-andwhere-orwhere" class="link-primary">
+        where(), andWhere(), orWhere()
+        </a></h5>
+<p>The <code>where(exp)</code> method specifies the <code>WHERE</code> condition of the query.
+    <br>
+    You can also use <code>andWhere(exp)</code> or <code>orWhere(exp)</code> to append additional one or more
+    conditions to an existing <code>WHERE</code> clause.
+    <br>
+    Each where condition accepts a single <code>dbx.Expression</code> (see below for full list).
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">/*
+SELECT users.*
+FROM users
+WHERE id = "someId" AND
+    status = "public" AND
+    name like "%john%" OR
+    (
+        role = "manager" AND
+        fullTime IS TRUE AND
+        experience > 10
+    )
+*/</span>
+$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"users.*"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">where</span><span class="token punctuation">(</span>$dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"id = {:id}"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">"someId"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">andWhere</span><span class="token punctuation">(</span>$dbx<span class="token punctuation">.</span><span class="token function">hashExp</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">status</span><span class="token operator">:</span> <span class="token string">"public"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">andWhere</span><span class="token punctuation">(</span>$dbx<span class="token punctuation">.</span><span class="token function">like</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"john"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">orWhere</span><span class="token punctuation">(</span>$dbx<span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span>
+        $dbx<span class="token punctuation">.</span><span class="token function">hashExp</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">role</span><span class="token operator">:</span>     <span class="token string">"manager"</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">fullTime</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        $dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"experience > {:exp}"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">exp</span><span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span><!-- HTML_TAG_END --></code>
+</div>
+
+<p>The following <code>dbx.Expression</code> methods are available:
+</p>
+<ul><li class="m-b-xs"><code id="dbx-expraw-optparams" class="heading-link "><a href="#dbx-expraw-optparams" class="link-primary">
+        $dbx.exp(raw, optParams)
+        </a></code>
+        <br>
+        Generates an expression with the specified raw query fragment. Use the <code>optParams</code> to bind
+        parameters to the expression.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"status = 'public'"</span><span class="token punctuation">)</span>
+$dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"total > {:min} AND total &lt; {:max}"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">min</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token literal-property property">max</span><span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-hashexppairs" class="heading-link "><a href="#dbx-hashexppairs" class="link-primary">
+        $dbx.hashExp(pairs)
+        </a></code>
+        <br>
+        Generates a hash expression from a map whose keys are DB column names which need to be filtered according
+        to the corresponding values.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// slug = "example" AND active IS TRUE AND tags in ("tag1", "tag2", "tag3") AND parent IS NULL</span>
+$dbx<span class="token punctuation">.</span><span class="token function">hashExp</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">slug</span><span class="token operator">:</span>   <span class="token string">"example"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">active</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">tags</span><span class="token operator">:</span>   <span class="token punctuation">[</span><span class="token string">"tag1"</span><span class="token punctuation">,</span> <span class="token string">"tag2"</span><span class="token punctuation">,</span> <span class="token string">"tag3"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">parent</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-notexp" class="heading-link "><a href="#dbx-notexp" class="link-primary">
+        $dbx.not(exp)
+        </a></code>
+        <br>
+        Negates a single expression by wrapping it with <code>NOT()</code>.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// NOT(status = 1)</span>
+$dbx<span class="token punctuation">.</span><span class="token function">not</span><span class="token punctuation">(</span>$dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"status = 1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-and-exps" class="heading-link "><a href="#dbx-and-exps" class="link-primary">
+        $dbx.and(...exps)
+        </a></code>
+        <br>
+        Creates a new expression by concatenating the specified ones with <code>AND</code>.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// (status = 1 AND username like "%john%")</span>
+$dbx<span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span>$dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"status = 1"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> $dbx<span class="token punctuation">.</span><span class="token function">like</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">,</span> <span class="token string">"john"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-or-exps" class="heading-link "><a href="#dbx-or-exps" class="link-primary">
+        $dbx.or(...exps)
+        </a></code>
+        <br>
+        Creates a new expression by concatenating the specified ones with <code>OR</code>.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// (status = 1 OR username like "%john%")</span>
+$dbx<span class="token punctuation">.</span><span class="token function">or</span><span class="token punctuation">(</span>$dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"status = 1"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> $dbx<span class="token punctuation">.</span><span class="token function">like</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">,</span> <span class="token string">"john"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-incol-values" class="heading-link "><a href="#dbx-incol-values" class="link-primary">
+        $dbx.in(col, ...values)
+        </a></code>
+        <br>
+        Generates an <code>IN</code> expression for the specified column and the list of allowed values.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// status IN ("public", "reviewed")</span>
+$dbx<span class="token punctuation">.</span><span class="token function">in</span><span class="token punctuation">(</span><span class="token string">"status"</span><span class="token punctuation">,</span> <span class="token string">"public"</span><span class="token punctuation">,</span> <span class="token string">"reviewed"</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-notincol-values" class="heading-link "><a href="#dbx-notincol-values" class="link-primary">
+        $dbx.notIn(col, ...values)
+        </a></code>
+        <br>
+        Generates an <code>NOT IN</code> expression for the specified column and the list of allowed values.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// status NOT IN ("public", "reviewed")</span>
+$dbx<span class="token punctuation">.</span><span class="token function">notIn</span><span class="token punctuation">(</span><span class="token string">"status"</span><span class="token punctuation">,</span> <span class="token string">"public"</span><span class="token punctuation">,</span> <span class="token string">"reviewed"</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-likecol-values" class="heading-link "><a href="#dbx-likecol-values" class="link-primary">
+        $dbx.like(col, ...values)
+        </a></code>
+        <br>
+        Generates a <code>LIKE</code> expression for the specified column and the possible strings that the
+        column should be like. If multiple values are present, the column should be like
+        <strong>all</strong> of them.
+        <br>
+        By default, each value will be surrounded by <em>&quot;%&quot;</em> to enable partial matching. Special
+        characters like <em>&quot;%&quot;</em>, <em>&quot;\&quot;</em>, <em>&quot;_&quot;</em> will also be properly escaped. You may call
+        <code>escape(...pairs)</code> and/or <code>match(left, right)</code> to change the default behavior.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// name LIKE "%test1%" AND name LIKE "%test2%"</span>
+$dbx<span class="token punctuation">.</span><span class="token function">like</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">,</span> <span class="token string">"test2"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// name LIKE "test1%"</span>
+$dbx<span class="token punctuation">.</span><span class="token function">like</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-notlikecol-values" class="heading-link "><a href="#dbx-notlikecol-values" class="link-primary">
+        $dbx.notLike(col, ...values)
+        </a></code>
+        <br>
+        Generates a <code>NOT LIKE</code> expression in similar manner as <code>like()</code>.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// name NOT LIKE "%test1%" AND name NOT LIKE "%test2%"</span>
+$dbx<span class="token punctuation">.</span><span class="token function">notLike</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">,</span> <span class="token string">"test2"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// name NOT LIKE "test1%"</span>
+$dbx<span class="token punctuation">.</span><span class="token function">notLike</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-orlikecol-values" class="heading-link "><a href="#dbx-orlikecol-values" class="link-primary">
+        $dbx.orLike(col, ...values)
+        </a></code>
+        <br>
+        This is similar to <code>like()</code> except that the column must be one of the provided values, aka.
+        multiple values are concatenated with <code>OR</code> instead of <code>AND</code>.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// name LIKE "%test1%" OR name LIKE "%test2%"</span>
+$dbx<span class="token punctuation">.</span><span class="token function">orLike</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">,</span> <span class="token string">"test2"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// name LIKE "test1%" OR name LIKE "test2%"</span>
+$dbx<span class="token punctuation">.</span><span class="token function">orLike</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">,</span> <span class="token string">"test2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-ornotlikecol-values" class="heading-link "><a href="#dbx-ornotlikecol-values" class="link-primary">
+        $dbx.orNotLike(col, ...values)
+        </a></code>
+        <br>
+        This is similar to <code>notLike()</code> except that the column must not be one of the provided
+        values, aka. multiple values are concatenated with <code>OR</code> instead of <code>AND</code>.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// name NOT LIKE "%test1%" OR name NOT LIKE "%test2%"</span>
+$dbx<span class="token punctuation">.</span><span class="token function">orNotLike</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">,</span> <span class="token string">"test2"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// name NOT LIKE "test1%" OR name NOT LIKE "test2%"</span>
+$dbx<span class="token punctuation">.</span><span class="token function">orNotLike</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"test1"</span><span class="token punctuation">,</span> <span class="token string">"test2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-existsexp" class="heading-link "><a href="#dbx-existsexp" class="link-primary">
+        $dbx.exists(exp)
+        </a></code>
+        <br>
+        Prefix with <code>EXISTS</code> the specified expression (usually a subquery).
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// EXISTS (SELECT 1 FROM users WHERE status = 'active')</span>
+$dbx<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span>dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"SELECT 1 FROM users WHERE status = 'active'"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-notexistsexp" class="heading-link "><a href="#dbx-notexistsexp" class="link-primary">
+        $dbx.notExists(exp)
+        </a></code>
+        <br>
+        Prefix with <code>NOT EXISTS</code> the specified expression (usually a subquery).
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// NOT EXISTS (SELECT 1 FROM users WHERE status = 'active')</span>
+$dbx<span class="token punctuation">.</span><span class="token function">notExists</span><span class="token punctuation">(</span>dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"SELECT 1 FROM users WHERE status = 'active'"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-betweencol-from-to" class="heading-link "><a href="#dbx-betweencol-from-to" class="link-primary">
+        $dbx.between(col, from, to)
+        </a></code>
+        <br>
+        Generates a <code>BETWEEN</code> expression with the specified range.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// age BETWEEN 3 and 99</span>
+$dbx<span class="token punctuation">.</span><span class="token function">between</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li>
+    <li class="m-b-xs"><code id="dbx-notbetweencol-from-to" class="heading-link "><a href="#dbx-notbetweencol-from-to" class="link-primary">
+        $dbx.notBetween(col, from, to)
+        </a></code>
+        <br>
+        Generates a <code>NOT BETWEEN</code> expression with the specified range.
+        <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token comment">// age NOT BETWEEN 3 and 99</span>
+$dbx<span class="token punctuation">.</span><span class="token function">notBetween</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></li></ul>
+
+<h5 id="orderby-andorderby" class="heading-link "><a href="#orderby-andorderby" class="link-primary">
+        orderBy(), andOrderBy()
+        </a></h5>
+<p>The <code>orderBy(...cols)</code> specifies the <code>ORDER BY</code> clause of the query.
+    <br>
+    A column name can contain <em>&quot;ASC&quot;</em> or <em>&quot;DESC&quot;</em> to indicate its ordering direction.
+    <br>
+    You can also use <code>andOrderBy(...cols)</code> to append additional columns to an existing
+    <code>ORDER BY</code> clause.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"users.*"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">orderBy</span><span class="token punctuation">(</span><span class="token string">"created ASC"</span><span class="token punctuation">,</span> <span class="token string">"updated DESC"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">andOrderBy</span><span class="token punctuation">(</span><span class="token string">"title ASC"</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="groupby-andgroupby" class="heading-link "><a href="#groupby-andgroupby" class="link-primary">
+        groupBy(), andGroupBy()
+        </a></h5>
+<p>The <code>groupBy(...cols)</code> specifies the <code>GROUP BY</code> clause of the query.
+    <br>
+    You can also use <code>andGroupBy(...cols)</code> to append additional columns to an existing
+    <code>GROUP BY</code> clause.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"users.*"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">groupBy</span><span class="token punctuation">(</span><span class="token string">"department"</span><span class="token punctuation">,</span> <span class="token string">"level"</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="having-andhaving-orhaving" class="heading-link "><a href="#having-andhaving-orhaving" class="link-primary">
+        having(), andHaving(), orHaving()
+        </a></h5>
+<p>The <code>having(exp)</code> specifies the <code>HAVING</code> clause of the query.
+    <br>
+    Similarly to
+    <code>where(exp)</code>, it accept a single <code>dbx.Expression</code> (see all available expressions
+    listed above).
+    <br>
+    You can also use <code>andHaving(exp)</code> or <code>orHaving(exp)</code> to append additional one or
+    more conditions to an existing <code>HAVING</code> clause.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"users.*"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">groupBy</span><span class="token punctuation">(</span><span class="token string">"department"</span><span class="token punctuation">,</span> <span class="token string">"level"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">having</span><span class="token punctuation">(</span>$dbx<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token string">"sum(level) > {:sum}"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">sum</span><span class="token operator">:</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="limit" class="heading-link "><a href="#limit" class="link-primary">
+        limit()
+        </a></h5>
+<p>The <code>limit(number)</code> method specifies the <code>LIMIT</code> clause of the query.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"users.*"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h5 id="offset" class="heading-link "><a href="#offset" class="link-primary">
+        offset()
+        </a></h5>
+<p>The <code>offset(number)</code> method specifies the <code>OFFSET</code> clause of the query. Usually used
+    together with <code>limit(number)</code>.
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token string">"users.*"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"users"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">offset</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span>
+    <span class="token operator">...</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="transaction" class="heading-link "><a href="#transaction" class="link-primary">
+        Transaction
+        </a></h3>
+<p>To execute multiple queries in a transaction you can use <code>$app.dao().runInTransaction()</code></p>
+<p>You can nest <code>Dao.runInTransaction()</code> as many times as you want.
+</p>
+<p><strong>The transaction will be committed only if there are no errors.</strong></p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START -->$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">runInTransaction</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">txDao</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// update a record</span>
+    <span class="token keyword">const</span> record <span class="token operator">=</span> txDao<span class="token punctuation">.</span><span class="token function">findRecordById</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"RECORD_ID"</span><span class="token punctuation">)</span>
+    record<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"status"</span><span class="token punctuation">,</span> <span class="token string">"active"</span><span class="token punctuation">)</span>
+    txDao<span class="token punctuation">.</span><span class="token function">saveRecord</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span>
+
+    <span class="token comment">// run some custom raw query</span>
+    txDao<span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newQuery</span><span class="token punctuation">(</span><span class="token string">"DELETE FROM articles WHERE status = 'pending'"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div>
+
+<h3 id="dao-without-event-hooks" class="heading-link "><a href="#dao-without-event-hooks" class="link-primary">
+        Dao without event hooks
+        </a></h3>
+<p>By default all Dao write operations (create, update, delete) trigger the <code>onModel*</code> event
+    hooks.
+    <br>
+    If you don&#39;t want this behavior, you can create a new Dao without hooks from an existing one by calling
+    <code>Dao.withoutHooks()</code>
+    or instantiate a new one with <code>new Dao(db, [nonconcurrentDB])</code>:
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">const</span> record <span class="token operator">=</span> $app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">findRecordById</span><span class="token punctuation">(</span><span class="token string">"articles"</span><span class="token punctuation">,</span> <span class="token string">"RECORD_ID"</span><span class="token punctuation">)</span>
+
+<span class="token comment">// the below WILL fire the onModelBeforeUpdate and onModelAfterUpdate hooks</span>
+$app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">saveRecord</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span>
+
+<span class="token comment">// the below WILL NOT fire the onModelBeforeUpdate and onModelAfterUpdate hooks</span>
+<span class="token keyword">const</span> dao <span class="token operator">=</span> $app<span class="token punctuation">.</span><span class="token function">dao</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">withoutHooks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// or new Dao($app.dao().db())</span>
+dao<span class="token punctuation">.</span><span class="token function">saveRecord</span><span class="token punctuation">(</span>record<span class="token punctuation">)</span><!-- HTML_TAG_END --></code>
+</div></div>
+
+    <hr>
+
+<div class="docs-footer svelte-1dbn67j"><a href="/docs/js-routing" class="btn btn-secondary btn-prev svelte-1dbn67j"><i class="ri-arrow-left-line"></i>
+            <span class="txt">Prev: Routing</span></a>
+
+    <a href="/docs/js-records" class="btn btn-outline btn-expanded btn-next svelte-1dbn67j"><span class="txt">Next: Record operations</span>
+            <i class="ri-arrow-right-line"></i></a>
+</div></div></main>
+
+<footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links"><a href="/faq" class="link-item">FAQ</a>
+                <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions
+                </a>
+                <a href="/docs" class="link-item">Documentation</a></nav>
+
+            <nav class="footer-col links"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK
+                </a>
+                <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK
+                </a></nav>
+
+            <div class="footer-col socials"><div class="watermark-logo">Pocket<strong>Base</strong></div>
+                <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a>
+                <a href="https://twitter.com/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to Twitter"><i class="ri-twitter-line"></i></a>
+                <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub"><i class="ri-github-line"></i></a></div></div>
+        <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2024 Pocket<strong>Base</strong></span>
+                <span class="gopher-credit">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers
+                    </a></span></div>
+            <div class="flex-fill"></div>
+            <div class="credit">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>
+
+
+
+<button type="button" class="btn btn-circle btn-secondary scroll-to-top svelte-h1x6u4" arial-label="Go to top"><i class="ri-arrow-up-line"></i>
+</button>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.b8d67116.js"),
+						import("../../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 37],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

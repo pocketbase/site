@@ -1,0 +1,18 @@
+import{S as ve,i as _e,s as ye,k as s,q as l,a as h,y as be,l as a,m as i,r,h as o,c as v,z as Ee,n as xe,b as p,G as t,A as je,U as ke,H as we,g as $e,d as Ce,B as Pe}from"../chunks/index.a7566c1a.js";import{t as Ae}from"../chunks/tooltip.f1d7ab7e.js";import{C as He}from"../chunks/CodeBlock.a090ee9b.js";function Ie(he){let c,T,k,U,g,H,u,z,w,G,M,I,d,$,N,F,m,J,C,K,Q,_,V,y,W,X,Y,Z,P,ee,D,E,te,L,b,O,f,oe,A,le,re,S,ne,se;return b=new He({props:{language:"javascript",content:`
+        // prints "Hello!" every 2 minutes
+        cronAdd("hello", "*/2 * * * *", () => {
+            console.log("Hello!")
+        })
+    `}}),{c(){c=s("p"),T=l(`If you have tasks that need to be performed periodically, you could setup crontab-like jobs with
+    `),k=s("code"),U=l("cronAdd(name, expr, handler)"),g=l("."),H=h(),u=s("p"),z=l("Each scheduled job runs in its own goroutine as part of the "),w=s("code"),G=l("serve"),M=l(" command process and must have:"),I=h(),d=s("ul"),$=s("li"),N=l("name - identifier for the scheduled job; could be used to replace or remove an existing job"),F=h(),m=s("li"),J=l("cron expression like "),C=s("code"),K=l("0 0 * * *"),Q=l(` (
+        `),_=s("em"),V=l(`supports numeric list, steps, ranges or
+            `),y=s("span"),W=l("macros"),X=h(),Y=l(")"),Z=h(),P=s("li"),ee=l("handler - the function that will be executed everytime when the job runs"),D=h(),E=s("p"),te=l("Here is an example:"),L=h(),be(b.$$.fragment),O=h(),f=s("p"),oe=l("To remove a single registered cron job you can call "),A=s("code"),le=l("cronRemove(name)"),re=l("."),this.h()},l(e){c=a(e,"P",{});var n=i(c);T=r(n,`If you have tasks that need to be performed periodically, you could setup crontab-like jobs with
+    `),k=a(n,"CODE",{});var ae=i(k);U=r(ae,"cronAdd(name, expr, handler)"),ae.forEach(o),g=r(n,"."),n.forEach(o),H=v(e),u=a(e,"P",{});var q=i(u);z=r(q,"Each scheduled job runs in its own goroutine as part of the "),w=a(q,"CODE",{});var ie=i(w);G=r(ie,"serve"),ie.forEach(o),M=r(q," command process and must have:"),q.forEach(o),I=v(e),d=a(e,"UL",{});var x=i(d);$=a(x,"LI",{});var ce=i($);N=r(ce,"name - identifier for the scheduled job; could be used to replace or remove an existing job"),ce.forEach(o),F=v(x),m=a(x,"LI",{});var j=i(m);J=r(j,"cron expression like "),C=a(j,"CODE",{});var de=i(C);K=r(de,"0 0 * * *"),de.forEach(o),Q=r(j,` (
+        `),_=a(j,"EM",{});var B=i(_);V=r(B,`supports numeric list, steps, ranges or
+            `),y=a(B,"SPAN",{class:!0});var pe=i(y);W=r(pe,"macros"),pe.forEach(o),X=v(B),B.forEach(o),Y=r(j,")"),j.forEach(o),Z=v(x),P=a(x,"LI",{});var me=i(P);ee=r(me,"handler - the function that will be executed everytime when the job runs"),me.forEach(o),x.forEach(o),D=v(e),E=a(e,"P",{});var ue=i(E);te=r(ue,"Here is an example:"),ue.forEach(o),L=v(e),Ee(b.$$.fragment,e),O=v(e),f=a(e,"P",{});var R=i(f);oe=r(R,"To remove a single registered cron job you can call "),A=a(R,"CODE",{});var fe=i(A);le=r(fe,"cronRemove(name)"),fe.forEach(o),re=r(R,"."),R.forEach(o),this.h()},h(){xe(y,"class","link-hint")},m(e,n){p(e,c,n),t(c,T),t(c,k),t(k,U),t(c,g),p(e,H,n),p(e,u,n),t(u,z),t(u,w),t(w,G),t(u,M),p(e,I,n),p(e,d,n),t(d,$),t($,N),t(d,F),t(d,m),t(m,J),t(m,C),t(C,K),t(m,Q),t(m,_),t(_,V),t(_,y),t(y,W),t(_,X),t(m,Y),t(d,Z),t(d,P),t(P,ee),p(e,D,n),p(e,E,n),t(E,te),p(e,L,n),je(b,e,n),p(e,O,n),p(e,f,n),t(f,oe),t(f,A),t(A,le),t(f,re),S=!0,ne||(se=ke(Ae.call(null,y,`@yearly
+@annually
+@monthly
+@weekly
+@daily
+@midnight
+@hourly`)),ne=!0)},p:we,i(e){S||($e(b.$$.fragment,e),S=!0)},o(e){Ce(b.$$.fragment,e),S=!1},d(e){e&&o(c),e&&o(H),e&&o(u),e&&o(I),e&&o(d),e&&o(D),e&&o(E),e&&o(L),Pe(b,e),e&&o(O),e&&o(f),ne=!1,se()}}}class Se extends ve{constructor(c){super(),_e(this,c,null,Ie,ye,{})}}export{Se as component};

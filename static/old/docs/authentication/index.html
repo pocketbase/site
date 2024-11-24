@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../../_app/immutable/assets/2.0975cac3.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.9c47a874.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CodeBlock.d22afb3e.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/2.7231d4f7.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/PageFooter.476871d4.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/tooltip.f1d7ab7e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CommonHelper.7329e1a7.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.7d3ee590.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.d888f6de.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/preferences.0fc33f39.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/16.fd099a99.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/HeadingLink.20322812.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeTabs.3c6448ff.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeBlock.a090ee9b.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Toc.c31a36b6.js"><title>Authentication - Docs - PocketBase</title><!-- HEAD_svelte-q27gla_START --><!-- HEAD_svelte-q27gla_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+<header class="page-header"><div class="wrapper wrapper-lg"><a href="/" class="logo logo-sm"><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40">
+            <span class="txt">Pocket<strong>Base</strong></span>
+            <span class="version">v0.22.27</span></a>
+
+        <div class="flex-fill"></div>
+
+        
+        
+
+        
+
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span>
+            <i class="ri-menu-3-fill"></i>
+            
+
+<div class="toggler-container"></div></button>
+
+        <nav class="main-menu"><a href="/faq" class="btn btn-secondary">FAQ</a>
+            <a href="https://github.com/pocketbase/pocketbase/discussions" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Discussions
+            </a>
+            <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a>
+            <a href="/docs" class="btn btn-outline btn-expanded"><span class="txt">Documentation</span></a></nav></div></header>
+
+<main class="wrapper wrapper-lg page-content-wrapper">
+
+<aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-1izh69t"><div class="absolute-wrapper svelte-1izh69t"><div class="sidebar-content svelte-1izh69t"><nav class="sidebar-list">
+        
+        <a href="/docs" class="list-item">
+            <span class="icon"><i class="ri-home-2-line"></i></span>
+            <span class="txt">Introduction</span>
+            </a>
+        
+        
+        <a href="/docs/collections" class="list-item">
+            <span class="icon"><i class="ri-database-2-line"></i></span>
+            <span class="txt">Collections</span>
+            </a>
+        
+        
+        <a href="/docs/api-rules-and-filters" class="list-item">
+            <span class="icon"><i class="ri-shield-check-line"></i></span>
+            <span class="txt">API rules and filters</span>
+            </a>
+        
+        
+        <a href="/docs/client-side-sdks" class="list-item">
+            <span class="icon"><i class="ri-tools-line"></i></span>
+            <span class="txt">Client-side SDKs</span>
+            </a>
+        
+        
+        <a href="/docs/authentication" class="list-item active">
+            <span class="icon"><i class="ri-group-line"></i></span>
+            <span class="txt">Authentication</span>
+            </a>
+        
+        
+        <a href="/docs/files-handling" class="list-item">
+            <span class="icon"><i class="ri-upload-cloud-line"></i></span>
+            <span class="txt">Files upload and handling</span>
+            </a>
+        
+        
+        <a href="/docs/working-with-relations" class="list-item">
+            <span class="icon"><i class="ri-mind-map"></i></span>
+            <span class="txt">Working with relations</span>
+            </a>
+        
+        
+        <a href="/docs/use-as-framework" class="list-item">
+            <span class="icon"><i class="ri-code-s-slash-line"></i></span>
+            <span class="txt">Use as framework</span>
+            </a>
+        
+        
+        <a href="/docs/api-records" class="list-item">
+            <span class="icon"><i class="ri-file-list-2-line"></i></span>
+            <span class="txt">Web APIs reference</span>
+            </a>
+        
+        
+        <a href="/docs/going-to-production" class="list-item">
+            <span class="icon"><i class="ri-check-double-line"></i></span>
+            <span class="txt">Going to production</span>
+            </a>
+        </nav>
+
+                <div class="clearfix m-t-base"></div>
+
+                <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item active" href="/docs/go-overview"><div class="block">Extend with
+                                <br>
+                                <strong>Go</strong></div></a>
+                        <a class="tab-item" href="/docs/js-overview"><div class="block">Extend with
+                                <br>
+                                <strong>JavaScript</strong></div></a></div>
+                    <div class="tabs-content"><div class="tab-item active"><nav class="sidebar-list">
+        
+        <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/go-records" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Testing</span>
+            </a>
+        
+        
+        <a href="/docs/go-custom-models" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Custom models</span>
+            </a>
+        </nav></div>
+                        <div class="tab-item"><nav class="sidebar-list">
+        
+        <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/js-routing" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/js-database" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending HTTP requests</span>
+            </a>
+        
+        
+        <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Types reference</span>
+            </a>
+        </nav></div></div></div></div></div></div>
+</aside>
+
+<div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Authentication</div></nav>
+
+    <div class="content"><p>The PocketBase API uses JWT for authentication via the <code>Authorization</code> HTTP header:
+    <code>Authorization: TOKEN</code>.
+    <br>
+    You can also use the dedicated auth SDK helpers as shown in the examples below.
+</p>
+
+<div class="toc"><ul class="toc-list-1"></ul></div>
+
+<h3 id="authenticate-as-admin" class="heading-link "><a href="#authenticate-as-admin" class="link-primary">
+        Authenticate as admin
+        </a></h3>
+<p>You can authenticate as admin using an email and password.
+    <strong>Admins can access everything and API rules don&#39;t apply to them.</strong></p>
+
+<div class="tabs code-tabs m-b-sm"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token keyword">const</span> authData <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>admins<span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">,</span> <span class="token string">'1234567890'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// after the above you can also access the auth data from the authStore</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>isValid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>model<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// "logout" the last authenticated account</span>
+pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'http://127.0.0.1:8090'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token keyword">final</span> authData <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span>admins<span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'test@example.com'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'1234567890'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// after the above you can also access the auth data from the authStore</span>
+<span class="token function">print</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>isValid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>model<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// "logout" the last authenticated account</span>
+pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div>
+
+<h3 id="authenticate-as-app-user" class="heading-link "><a href="#authenticate-as-app-user" class="link-primary">
+        Authenticate as app user
+        </a></h3>
+<p>The easiest way to authenticate your app users is with their username/email and password.
+    <br>
+    <em class="txt-hint">You can customize the supported authentication options from your Auth collection configuration
+        (including disabling all auth options).
+    </em></p>
+
+<div class="tabs code-tabs m-b-sm"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'https://pocketbase.io'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token keyword">const</span> authData <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string">'YOUR_USERNAME_OR_EMAIL'</span><span class="token punctuation">,</span> <span class="token string">'1234567890'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// after the above you can also access the auth data from the authStore</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>isValid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>model<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// "logout" the last authenticated model</span>
+pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'https://pocketbase.io'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token keyword">final</span> authData <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'users'</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authWithPassword</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'YOUR_USERNAME_OR_EMAIL'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'1234567890'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// after the above you can also access the auth data from the authStore</span>
+<span class="token function">print</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>isValid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>model<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// "logout" the last authenticated model</span>
+pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div>
+
+<p>You can also authenticate your users with an OAuth2 provider (Google, GitHub, Microsoft, etc.). See the
+    section below for an example OAuth2 web integration.
+</p>
+
+<h3 id="oauth2-integration" class="heading-link "><a href="#oauth2-integration" class="link-primary">
+        OAuth2 integration
+        </a></h3>
+<div class="alert alert-info m-t-10 m-b-10"><div class="icon"><i class="ri-information-line"></i></div>
+    <div class="content"><p>Before starting, you&#39;ll need to create an OAuth2 app in the provider&#39;s dashboard in order to get a
+            <strong>Client Id</strong> and <strong>Client Secret</strong>, and register a redirect URL
+            <i class="ri-question-line link-hint"></i>.
+        </p>
+        <p>Once you have obtained the <strong>Client Id</strong> and <strong>Client Secret</strong>, you can
+            enable and configure the provider from your PocketBase admin settings page.
+        </p></div></div>
+
+<div class="tabs"><div class="tabs-header compact left"><button class="tab-item active active">All in one (<em>recommended</em>)
+        </button>
+        <button class="tab-item active">Manual code exchange
+        </button></div>
+    <div class="tabs-content"><div class="tab-item active"><p>This method handles everything within a single call without having to define custom redirects,
+                deeplinks or even page reload.
+            </p>
+            <p><strong>When creating your OAuth2 app, for a callback/redirect URL you have to use the
+                    <code class="txt-bold">https://yourdomain.com/api/oauth2-redirect</code></strong>
+                (<em>or when testing locally - <code>http://127.0.0.1:8090/api/oauth2-redirect</code>
+                </em>).
+            </p>
+
+            <div class="clearfix m-b-xs"></div>
+            
+            <div class="tabs code-tabs m-t-10 m-b-base"><div class="tabs-header compact left"><button class="tab-item active"><div class="txt">JavaScript</div>
+            </button><button class="tab-item"><div class="txt">Dart</div>
+            </button></div>
+    <div class="tabs-content"><div class="tab-item active"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> PocketBase <span class="token keyword">from</span> <span class="token string">'pocketbase'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'https://pocketbase.io'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token operator">...</span>
+
+<span class="token comment">// This method initializes a one-off realtime subscription and will</span>
+<span class="token comment">// open a popup window with the OAuth2 vendor page to authenticate.</span>
+<span class="token comment">//</span>
+<span class="token comment">// Once the external OAuth2 sign-in/sign-up flow is completed, the popup</span>
+<span class="token comment">// window will be automatically closed and the OAuth2 data sent back</span>
+<span class="token comment">// to the user through the previously established realtime connection.</span>
+<span class="token comment">//</span>
+<span class="token comment">// If the popup is being blocked on Safari, you can try the suggestion from:</span>
+<span class="token comment">// https://github.com/pocketbase/pocketbase/discussions/2429#discussioncomment-5943061.</span>
+<span class="token keyword">const</span> authData <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authWithOAuth2</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">provider</span><span class="token operator">:</span> <span class="token string">'google'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// after the above you can also access the auth data from the authStore</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>isValid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>model<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// "logout" the last authenticated model</span>
+pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div><div class="tab-item"><div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:pocketbase/pocketbase.dart'</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string-literal"><span class="token string">'package:url_launcher/url_launcher.dart'</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">final</span> pb <span class="token operator">=</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'https://pocketbase.io'</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment">// This method initializes a one-off realtime subscription and will</span>
+<span class="token comment">// call the provided urlCallback with the OAuth2 vendor url to authenticate.</span>
+<span class="token comment">//</span>
+<span class="token comment">// Once the external OAuth2 sign-in/sign-up flow is completed, the browser</span>
+<span class="token comment">// window will be automatically closed and the OAuth2 data sent back</span>
+<span class="token comment">// to the user through the previously established realtime connection.</span>
+<span class="token keyword">final</span> authData <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'users'</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authWithOAuth2</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">'google'</span></span><span class="token punctuation">,</span> <span class="token punctuation">(</span>url<span class="token punctuation">)</span> <span class="token keyword">async</span> <span class="token punctuation">{</span>
+  <span class="token comment">// or use something like flutter_custom_tabs to make the transitions between native and web content more seamless</span>
+  <span class="token keyword">await</span> <span class="token function">launchUrl</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// after the above you can also access the auth data from the authStore</span>
+<span class="token function">print</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>isValid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print</span><span class="token punctuation">(</span>pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span>model<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// "logout" the last authenticated model</span>
+pb<span class="token punctuation">.</span>authStore<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><!-- HTML_TAG_END --></code>
+</div>
+            </div></div></div></div>
+        <div class="tab-item"><p>When authenticating manually with OAuth2 code you&#39;ll need 2 endpoints:</p>
+            <ul><li>somewhere to show the &quot;Login with ...&quot; links</li>
+                <li>somewhere to handle the provider&#39;s redirect in order to exchange the auth code for token
+                </li></ul>
+            <p>Here is a simple web example:</p>
+            <ol><li class="m-b-xs"><p><strong>Links page</strong>
+                        (eg. https://127.0.0.1:8090 serving <code>pb_public/index.html</code>):
+                    </p>
+                    <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>OAuth2 links page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://code.jquery.com/jquery-3.6.0.slim.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Loading OAuth2 providers...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.umd.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+        <span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8090'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> redirectUrl <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:8090/redirect.html'</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">loadLinks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> authMethods <span class="token operator">=</span> <span class="token keyword">await</span> pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listAuthMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">const</span> listItems <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> provider <span class="token keyword">of</span> authMethods<span class="token punctuation">.</span>authProviders<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">const</span> $li <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;li>&lt;a>Login with </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>provider<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/a>&lt;/li></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                $li<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'href'</span><span class="token punctuation">,</span> provider<span class="token punctuation">.</span>authUrl <span class="token operator">+</span> redirectUrl<span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token string">'provider'</span><span class="token punctuation">,</span> provider<span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token comment">// store provider's data on click for verification in the redirect page</span>
+                        localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'provider'</span><span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span><span class="token string">'provider'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                listItems<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>$li<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#list'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span>listItems<span class="token punctuation">.</span>length <span class="token operator">?</span> listItems <span class="token operator">:</span> <span class="token string">'&lt;li>No OAuth2 providers.&lt;/li>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token function">loadLinks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><!-- HTML_TAG_END --></code>
+</div></li>
+                <li class="m-b-xs"><p><strong>Redirect handler page</strong>
+                        (eg. https://127.0.0.1:8090/redirect.html serving
+                        <code>pb_public/redirect.html</code>):
+                    </p>
+                    <div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>OAuth2 redirect page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Authenticating...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pre</span><span class="token punctuation">></span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.umd.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+        <span class="token keyword">const</span> pb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PocketBase</span><span class="token punctuation">(</span><span class="token string">"http://127.0.0.1:8090"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> redirectUrl <span class="token operator">=</span> <span class="token string">'http://127.0.0.1:8090/redirect.html'</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// parse the query parameters from the redirected url</span>
+        <span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>searchParams<span class="token punctuation">;</span>
+
+        <span class="token comment">// load the previously stored provider's data</span>
+        <span class="token keyword">const</span> provider <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'provider'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token comment">// compare the redirect's state param and the stored provider's one</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>provider<span class="token punctuation">.</span>state <span class="token operator">!==</span> params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'state'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token string">"State parameters don't match."</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// authenticate</span>
+        pb<span class="token punctuation">.</span><span class="token function">collection</span><span class="token punctuation">(</span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authWithOAuth2Code</span><span class="token punctuation">(</span>
+            provider<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+            params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'code'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            provider<span class="token punctuation">.</span>codeVerifier<span class="token punctuation">,</span>
+            redirectUrl<span class="token punctuation">,</span>
+            <span class="token comment">// pass optional user create data</span>
+            <span class="token punctuation">{</span>
+                <span class="token literal-property property">emailVisibility</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">authData</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'content'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerText <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>authData<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'content'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerText <span class="token operator">=</span> <span class="token string">"Failed to exchange code.\n"</span> <span class="token operator">+</span> err<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><!-- HTML_TAG_END --></code>
+</div></li></ol>
+
+            <div class="alert alert-info m-t-xs"><div class="icon"><i class="ri-information-line"></i></div>
+                <div class="content"><p>When using the &quot;Manual code exchange&quot; flow for sign-in with Apple your redirect
+                        handler must accept <code>POST</code> requests in order to receive the name and the
+                        email of the Apple user. If you just need the Apple user id, you can keep the redirect
+                        hanldler <code>GET</code> but you&#39;ll need to replace in the Apple authorization url
+                        <code>response_mode=form_post</code> with <code>response_mode=query</code>.
+                    </p></div></div></div></div></div></div>
+
+    <hr>
+
+<div class="docs-footer svelte-1dbn67j"><a href="/docs/client-side-sdks" class="btn btn-secondary btn-prev svelte-1dbn67j"><i class="ri-arrow-left-line"></i>
+            <span class="txt">Prev: Client-side SDKs</span></a>
+
+    <a href="/docs/files-handling" class="btn btn-outline btn-expanded btn-next svelte-1dbn67j"><span class="txt">Next: Files upload and handling</span>
+            <i class="ri-arrow-right-line"></i></a>
+</div></div></main>
+
+<footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links"><a href="/faq" class="link-item">FAQ</a>
+                <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions
+                </a>
+                <a href="/docs" class="link-item">Documentation</a></nav>
+
+            <nav class="footer-col links"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK
+                </a>
+                <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK
+                </a></nav>
+
+            <div class="footer-col socials"><div class="watermark-logo">Pocket<strong>Base</strong></div>
+                <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a>
+                <a href="https://twitter.com/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to Twitter"><i class="ri-twitter-line"></i></a>
+                <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub"><i class="ri-github-line"></i></a></div></div>
+        <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2024 Pocket<strong>Base</strong></span>
+                <span class="gopher-credit">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers
+                    </a></span></div>
+            <div class="flex-fill"></div>
+            <div class="credit">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>
+
+
+
+<button type="button" class="btn btn-circle btn-secondary scroll-to-top svelte-h1x6u4" arial-label="Go to top"><i class="ri-arrow-up-line"></i>
+</button>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.b8d67116.js"),
+						import("../../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 16],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>

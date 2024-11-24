@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <meta name="description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="og:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="og:image" content="/images/og.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="PocketBase - Open Source backend in 1 file">
+    <meta property="twitter:description" content="Open Source backend in 1 file with realtime database, authentication, file storage and admin dashboard">
+    <meta property="twitter:image" content="/images/og.png">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/images/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- preload -->
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-600.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/source-sans-pro/source-sans-pro-v18-latin_cyrillic-italic.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/ubuntu-mono/ubuntu-mono-v17-cyrillic_latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+    <script>
+        // CSS3 animations support check
+        (function () {
+            if (typeof document === "undefined") {
+                return; // serverside rendering
+            }
+
+            let elem = document.createElement("div");
+            let hasAnimation = elem.style.animationName !== undefined;
+
+            if (!hasAnimation) {
+                document.documentElement.classList.add("no-animations");
+            }
+        })();
+    </script>
+
+    <script>
+        // silent svelte console errors
+        if (typeof window === "undefined") {
+            window = {};
+        }
+        window.Prism = window.Prism || {};
+        window.Prism.manual = true;
+
+        if (typeof navigator !== "undefined" && navigator.userAgentData) {
+            navigator.userAgentData.getHighEntropyValues([
+                "architecture",
+            ]).then((ua) => {
+                window.UA_ARCHITECTURE = ua.architecture
+            });
+        }
+    </script>
+
+    
+		<link href="../../_app/immutable/assets/2.0975cac3.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/main.c922e272.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/3.9c47a874.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CodeBlock.d22afb3e.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.b8d67116.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.a7566c1a.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/singletons.5311a548.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/index.f5b995db.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.9b449d5b.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.1674d90f.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/2.7231d4f7.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/PageFooter.476871d4.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/tooltip.f1d7ab7e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CommonHelper.7329e1a7.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/3.7d3ee590.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/stores.d888f6de.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/preferences.0fc33f39.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/18.c54063be.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/HeadingLink.20322812.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Toc.c31a36b6.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CodeBlock.a090ee9b.js"><title>Collections - Docs - PocketBase</title><!-- HEAD_svelte-q27gla_START --><!-- HEAD_svelte-q27gla_END -->
+</head>
+<body>
+    <div class="page-body">
+
+
+
+<header class="page-header"><div class="wrapper wrapper-lg"><a href="/" class="logo logo-sm"><img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40">
+            <span class="txt">Pocket<strong>Base</strong></span>
+            <span class="version">v0.22.27</span></a>
+
+        <div class="flex-fill"></div>
+
+        
+        
+
+        
+
+        <button type="button" class="btn btn-circle btn-secondary responsive-menu-btn" title="Menu"><span></span>
+            <i class="ri-menu-3-fill"></i>
+            
+
+<div class="toggler-container"></div></button>
+
+        <nav class="main-menu"><a href="/faq" class="btn btn-secondary">FAQ</a>
+            <a href="https://github.com/pocketbase/pocketbase/discussions" class="btn btn-secondary" target="_blank" rel="noreferrer noopener">Discussions
+            </a>
+            <a href="https://github.com/pocketbase/pocketbase" class="btn btn-circle btn-secondary" target="_blank" rel="noreferrer noopener" title="GitHub Repo"><i class="ri-github-line"></i></a>
+            <a href="/docs" class="btn btn-outline btn-expanded"><span class="txt">Documentation</span></a></nav></div></header>
+
+<main class="wrapper wrapper-lg page-content-wrapper">
+
+<aside class="page-sidebar highlight docs-sidebar"><div class="sticky-wrapper svelte-1izh69t"><div class="absolute-wrapper svelte-1izh69t"><div class="sidebar-content svelte-1izh69t"><nav class="sidebar-list">
+        
+        <a href="/docs" class="list-item">
+            <span class="icon"><i class="ri-home-2-line"></i></span>
+            <span class="txt">Introduction</span>
+            </a>
+        
+        
+        <a href="/docs/collections" class="list-item active">
+            <span class="icon"><i class="ri-database-2-line"></i></span>
+            <span class="txt">Collections</span>
+            </a>
+        
+        
+        <a href="/docs/api-rules-and-filters" class="list-item">
+            <span class="icon"><i class="ri-shield-check-line"></i></span>
+            <span class="txt">API rules and filters</span>
+            </a>
+        
+        
+        <a href="/docs/client-side-sdks" class="list-item">
+            <span class="icon"><i class="ri-tools-line"></i></span>
+            <span class="txt">Client-side SDKs</span>
+            </a>
+        
+        
+        <a href="/docs/authentication" class="list-item">
+            <span class="icon"><i class="ri-group-line"></i></span>
+            <span class="txt">Authentication</span>
+            </a>
+        
+        
+        <a href="/docs/files-handling" class="list-item">
+            <span class="icon"><i class="ri-upload-cloud-line"></i></span>
+            <span class="txt">Files upload and handling</span>
+            </a>
+        
+        
+        <a href="/docs/working-with-relations" class="list-item">
+            <span class="icon"><i class="ri-mind-map"></i></span>
+            <span class="txt">Working with relations</span>
+            </a>
+        
+        
+        <a href="/docs/use-as-framework" class="list-item">
+            <span class="icon"><i class="ri-code-s-slash-line"></i></span>
+            <span class="txt">Use as framework</span>
+            </a>
+        
+        
+        <a href="/docs/api-records" class="list-item">
+            <span class="icon"><i class="ri-file-list-2-line"></i></span>
+            <span class="txt">Web APIs reference</span>
+            </a>
+        
+        
+        <a href="/docs/going-to-production" class="list-item">
+            <span class="icon"><i class="ri-check-double-line"></i></span>
+            <span class="txt">Going to production</span>
+            </a>
+        </nav>
+
+                <div class="clearfix m-t-base"></div>
+
+                <div class="sidebar-bg-section"><div class="tabs-header stretched compact"><a class="tab-item active" href="/docs/go-overview"><div class="block">Extend with
+                                <br>
+                                <strong>Go</strong></div></a>
+                        <a class="tab-item" href="/docs/js-overview"><div class="block">Extend with
+                                <br>
+                                <strong>JavaScript</strong></div></a></div>
+                    <div class="tabs-content"><div class="tab-item active"><nav class="sidebar-list">
+        
+        <a href="/docs/go-overview" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/go-event-hooks" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/go-routing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/go-database" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/go-records" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-collections" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/go-migrations" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/go-jobs-scheduling" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/go-console-commands" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/go-sending-emails" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/go-rendering-templates" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/go-logging" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/docs/go-testing" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Testing</span>
+            </a>
+        
+        
+        <a href="/docs/go-custom-models" class="list-item"><span class="label label-sm label-info svelte-1izh69t">Go</span>
+            
+            <span class="txt">Custom models</span>
+            </a>
+        </nav></div>
+                        <div class="tab-item"><nav class="sidebar-list">
+        
+        <a href="/docs/js-overview" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Overview</span>
+            </a>
+        
+        
+        <a href="/docs/js-event-hooks" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Event hooks</span>
+            </a>
+        
+        
+        <a href="/docs/js-routing" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Routing</span>
+            </a>
+        
+        
+        <a href="/docs/js-database" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Database</span>
+            </a>
+        
+        
+        <a href="/docs/js-records" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Record operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-collections" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Collection operations</span>
+            </a>
+        
+        
+        <a href="/docs/js-migrations" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Migrations</span>
+            </a>
+        
+        
+        <a href="/docs/js-jobs-scheduling" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Jobs scheduling</span>
+            </a>
+        
+        
+        <a href="/docs/js-console-commands" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Console commands</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-emails" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending emails</span>
+            </a>
+        
+        
+        <a href="/docs/js-sending-http-requests" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Sending HTTP requests</span>
+            </a>
+        
+        
+        <a href="/docs/js-rendering-templates" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Rendering templates</span>
+            </a>
+        
+        
+        <a href="/docs/js-logging" class="list-item"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Logging</span>
+            </a>
+        
+        
+        <a href="/jsvm/index.html" class="list-item" target="_blank" rel="noopener noreferrer"><span class="label label-sm label-warning svelte-1izh69t">JS</span>
+            
+            <span class="txt">Types reference</span>
+            </a>
+        </nav></div></div></div></div></div></div>
+</aside>
+
+<div class="page-content"><nav class="breadcrumbs"><div class="breadcrumb-item">Collections</div></nav>
+
+    <div class="content"><div class="toc"><ul class="toc-list-1"></ul></div>
+
+<h3 id="overview" class="heading-link "><a href="#overview" class="link-primary">
+        Overview
+        </a></h3>
+<p><strong>Collections</strong> represents your application data.
+    <br>
+    Under the hood they are plain SQLite tables that are generated automatically with the collection
+    <strong>name</strong>
+    and
+    <strong>fields</strong> (aka. columns).
+</p>
+<p>Single entry of a collection is called
+    <strong>record</strong> - aka. a single row in the SQL table.
+</p>
+<p>PocketBase comes with all sort of <strong>fields</strong> that you could use:</p>
+<table class="table-compact table-border"><thead><tr><th>Field</th>
+            <th>Example values</th>
+            <th>Supported modifiers</th></tr></thead>
+    <tbody><tr><td><code>text</code></td>
+            <td><code>&quot;&quot;</code>, <code>&quot;example&quot;</code></td>
+            <td></td></tr>
+        <tr><td><code>editor</code></td>
+            <td><code>&quot;&quot;</code>, <code>&quot;&lt;p>example&lt;/p>&quot;</code></td>
+            <td></td></tr>
+        <tr><td><code>number</code></td>
+            <td><code>0</code>, <code>-1</code>, <code>1</code>, <code>1.5</code></td>
+            <td><code>+</code> (<em>add</em>), <code>-</code> (<em>subtract</em>)</td></tr>
+        <tr><td><code>bool</code></td>
+            <td><code>false</code>, <code>true</code></td>
+            <td></td></tr>
+        <tr><td><code>email</code></td>
+            <td><code>&quot;&quot;</code>, <code>&quot;test@example.com&quot;</code></td>
+            <td></td></tr>
+        <tr><td><code>url</code></td>
+            <td><code>&quot;&quot;</code>, <code>&quot;https://example.com&quot;</code></td>
+            <td></td></tr>
+        <tr><td><code>date</code></td>
+            <td><code>&quot;&quot;</code>, <code>&quot;2022-01-01 00:00:00.000Z&quot;</code></td>
+            <td></td></tr>
+        <tr><td><code>select</code> (<em>single</em>)</td>
+            <td><code>&quot;&quot;</code>, <code>&quot;optionA&quot;</code></td>
+            <td></td></tr>
+        <tr><td><code>select</code> (<em>multiple</em>)</td>
+            <td><code>[]</code>, <code>[&quot;optionA&quot;, &quot;optionB&quot;]</code></td>
+            <td><code>+</code> (<em>append</em>), <code>-</code> (<em>remove</em>)</td></tr>
+        <tr><td><code>relation</code> (<em>single</em>)</td>
+            <td><code>&quot;&quot;</code>, <code>&quot;JJ2YRU30FBG8MqX&quot;</code></td>
+            <td></td></tr>
+        <tr><td><code>relation</code> (<em>multiple</em>)</td>
+            <td><code>[]</code>, <code>[&quot;JJ2YRU30FBG8MqX&quot;, &quot;eP2jCr1h3NGtsbz&quot;]</code></td>
+            <td><code>+</code> (<em>append</em>), <code>-</code> (<em>remove</em>)</td></tr>
+        <tr><td><code>file</code> (<em>single</em>)</td>
+            <td><code>&quot;&quot;</code>, <code>&quot;example123_Ab24ZjL.png&quot;</code></td>
+            <td></td></tr>
+        <tr><td><code>file</code> (<em>multiple</em>)</td>
+            <td><code>[]</code>,
+                <code>[&quot;file1_Ab24ZjL.png&quot;, &quot;file2_Frq24ZjL.txt&quot;]</code></td>
+            <td><code>-</code> (<em>remove</em>)</td></tr>
+        <tr><td><code>json</code></td>
+            <td><em>any json value</em></td></tr></tbody></table>
+<p>You could create <strong>collections</strong> and <strong>records</strong> from the Admin UI or the
+    <a href="/docs/api-collections">Web API</a>.
+    <br>
+    <span class="txt-hint">Usually you&#39;ll create your collections from the Admin UI and manage your records with the API using
+        the
+        <a href="/docs/client-side-sdks">client-side SDKs</a>.
+    </span></p>
+<p>Here is what the collection panel looks like:</p>
+<img src="/images/screenshots/collection-panel.png" alt="Collection panel screenshot" class="screenshot">
+<p>Currently there are 3 collection types: <strong>Base</strong>, <strong>View</strong> and
+    <strong>Auth</strong>.
+</p>
+
+<h3 id="base-collection" class="heading-link "><a href="#base-collection" class="link-primary">
+        Base collection
+        </a></h3>
+<p><strong>Base collection</strong> is the default collection type and it could be used to store any application
+    data (eg. articles, products, posts, etc.).
+</p>
+<p>It comes with 3 default system fields that are always available and automatically populated:
+    <code>id</code>, <code>created</code>, <code>updated</code>.
+    <br>
+    Only the <code>id</code> can be explicitly set (<em>15 characters string</em>).
+</p>
+
+<h3 id="view-collection" class="heading-link "><a href="#view-collection" class="link-primary">
+        View collection
+        </a></h3>
+<p><strong>View collection</strong> is a read-only collection type where the data is populated from a plain
+    SQL <code>SELECT</code> statement, allowing users to perform aggregations or any other custom queries in
+    general.
+    <br>
+    For example, the following query will create a read-only collection with 3 <em>posts</em>
+    fields - <em>id</em>, <em>name</em> and <em>totalComments</em>:
+</p>
+<div class="code-wrapper prism-light svelte-1qrji6i"><code class="svelte-1qrji6i"><!-- HTML_TAG_START --><span class="token constant">SELECT</span>
+    posts<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+    posts<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+    <span class="token function">count</span><span class="token punctuation">(</span>comments<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token keyword">as</span> totalComments
+<span class="token constant">FROM</span> posts
+<span class="token constant">LEFT</span> <span class="token constant">JOIN</span> comments on comments<span class="token punctuation">.</span>postId <span class="token operator">=</span> posts<span class="token punctuation">.</span>id
+<span class="token constant">GROUP</span> <span class="token constant">BY</span> posts<span class="token punctuation">.</span>id<!-- HTML_TAG_END --></code>
+</div>
+<div class="alert alert-info m-t-sm"><div class="icon"><i class="ri-information-line"></i></div>
+    <div class="content">View collections don&#39;t receive realtime events because they don&#39;t have create/update/delete
+        operations.
+    </div></div>
+
+<h3 id="auth-collection" class="heading-link "><a href="#auth-collection" class="link-primary">
+        Auth collection
+        </a></h3>
+<p><strong>Auth collection</strong> has everything from the <strong>Base collection</strong> but with some additional
+    special fields to help you manage your app users providing various authentication options.
+</p>
+<p>Each Auth collection comes with the following system fields:
+    <code>id</code>, <code>created</code>, <code>updated</code>,
+    <code>username</code>, <code>email</code>, <code>emailVisibility</code>, <code>verified</code>.
+</p>
+<p>You can have as many Auth collections as you want (eg. users, managers, staffs, members, clients, etc.)
+    each with their own set of fields, separate login (email/username + password or OAuth2) and models
+    managing endpoints.
+</p>
+<p>You can create all sort of different access controls:</p>
+<ul><li><strong>Role (Group)</strong>
+        <br>
+        <em>For example, you could attach a &quot;role&quot; <code>select</code> field to your Auth collection with the
+            following options: &quot;regularUser&quot; and &quot;superUser&quot;. And then in some of your other collections you
+            could define the following rule to allow only &quot;superUsers&quot;:
+            <br>
+            <code>@request.auth.role = &quot;superUser&quot;</code></em></li>
+    <li><strong>Relation (Ownership)</strong>
+        <br>
+        <em>Let&#39;s say that you have 2 collections - &quot;posts&quot; base collection and &quot;users&quot; auth collection. In
+            your &quot;posts&quot; collection you can create &quot;author&quot;
+            <code>relation</code> field pointing to the &quot;users&quot; collection. To allow access to only the
+            &quot;author&quot; of the record(s), you could use a rule like:
+            <code>@request.auth.id != &quot;&quot; &amp;&amp; author = @request.auth.id</code>
+            <br>
+            Nested relation fields look ups are also supported, eg:
+            <code>someRelField.anotherRelField.author = @request.auth.id</code></em></li>
+    <li><strong>Managed</strong>
+        <br>
+        <em>In addition to the default &quot;List&quot;, &quot;View&quot;, &quot;Create&quot;, &quot;Update&quot;, &quot;Delete&quot; API rules, Auth
+            collections have also a special &quot;Manage&quot; API rule that could be used to allow one user (it could
+            be even from a different collection) to be able to fully manage the data of another user (eg.
+            changing their email, password, etc.).
+        </em></li>
+    <li><strong>Mixed</strong>
+        <br>
+        <em>You can build a mixed approach based on your unique use-case. Multiple rules can be grouped with
+            parenthesis <code>()</code> and combined with <code>&amp;&amp;</code>
+            (AND) and <code>||</code> (OR) operators:
+            <br>
+            <code>@request.auth.id != &quot;&quot; &amp;&amp; (@request.auth.role = &quot;superUser&quot; || author = @request.auth.id)
+            </code></em></li></ul></div>
+
+    <hr>
+
+<div class="docs-footer svelte-1dbn67j"><a href="/docs" class="btn btn-secondary btn-prev svelte-1dbn67j"><i class="ri-arrow-left-line"></i>
+            <span class="txt">Prev: Introduction</span></a>
+
+    <a href="/docs/api-rules-and-filters" class="btn btn-outline btn-expanded btn-next svelte-1dbn67j"><span class="txt">Next: API rules and filters</span>
+            <i class="ri-arrow-right-line"></i></a>
+</div></div></main>
+
+<footer class="page-footer"><div class="wrapper wrapper-lg"><div class="primary-bar"><nav class="footer-col links"><a href="/faq" class="link-item">FAQ</a>
+                <a href="https://github.com/pocketbase/pocketbase/discussions" class="link-item" target="_blank" rel="noopener noreferrer">Discussions
+                </a>
+                <a href="/docs" class="link-item">Documentation</a></nav>
+
+            <nav class="footer-col links"><a href="https://github.com/pocketbase/js-sdk" class="link-item" target="_blank" rel="noopener noreferrer">JavaScript SDK
+                </a>
+                <a href="https://github.com/pocketbase/dart-sdk" class="link-item" target="_blank" rel="noopener noreferrer">Dart SDK
+                </a></nav>
+
+            <div class="footer-col socials"><div class="watermark-logo">Pocket<strong>Base</strong></div>
+                <a href="mailto:support" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Contact support"><i class="ri-mail-line"></i></a>
+                <a href="https://twitter.com/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to Twitter"><i class="ri-twitter-line"></i></a>
+                <a href="https://github.com/pocketbase/pocketbase" rel="noopener noreferrer" target="_blank" class="btn btn-secondary btn-circle btn-hint social-item" aria-label="Go to GitHub"><i class="ri-github-line"></i></a></div></div>
+        <div class="secondary-bar"><div class="terms"><span class="txt">© 2023-2024 Pocket<strong>Base</strong></span>
+                <span class="gopher-credit">The Gopher artwork is from
+                    <a href="https://github.com/marcusolsson/gophers" target="_blank" rel="noreferrer noopener">marcusolsson/gophers
+                    </a></span></div>
+            <div class="flex-fill"></div>
+            <div class="credit">Crafted by <a href="https://gani.bg" target="_blank" rel="noopener noreferrer" class="link-hint"><strong>Gani</strong></a></div></div></div></footer>
+
+
+
+<button type="button" class="btn btn-circle btn-secondary scroll-to-top svelte-h1x6u4" arial-label="Go to top"><i class="ri-arrow-up-line"></i>
+</button>
+
+
+			
+			<script>
+				{
+					__sveltekit_v27nvd = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null,null];
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.b8d67116.js"),
+						import("../../_app/immutable/entry/app.9b449d5b.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 3, 18],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+</body>
+</html>
