@@ -585,7 +585,7 @@
         <p>
             For all changes please refer to the
             <a
-                href="https://github.com/pocketbase/pocketbase/blob/develop/core/record_model.go#L492"
+                href="https://github.com/pocketbase/pocketbase/blob/master/core/record_model.go"
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -723,7 +723,7 @@
         <p>
             For all changes please refer to the
             <a
-                href="https://github.com/pocketbase/pocketbase/blob/develop/core/collection_model.go#L308"
+                href="https://github.com/pocketbase/pocketbase/blob/master/core/collection_model.go#L308"
                 target="_blank"
                 rel="noopener noreferrer"
             >

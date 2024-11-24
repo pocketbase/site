@@ -59,7 +59,7 @@
         Ensure that you are already using PocketBase v0.22.x (you can find the version number in the
         bottom-right corner in the UI). If you are using an older version, please upgrade first to
         <a
-            href="https://github.com/pocketbase/pocketbase/releases/tag/v0.22.21"
+            href="https://github.com/pocketbase/pocketbase/releases/tag/v0.22.27"
             target="_blank"
             rel="noopener noreferrer"
         >

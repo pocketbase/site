@@ -8,7 +8,7 @@
 <header class="page-header">
     <div class="wrapper wrapper-lg">
         <div class="header-section left">
-            <a href="/" class="logo" class:logo-sm={compact}>
+            <a href="/" class="logo" class:logo-sm={compact} data-sveltekit-preload-data>
                 <img src="/images/logo.svg" alt="PocketBase logo" width="40" height="40" />
                 <span class="txt">Pocket<strong>Base</strong></span>
                 <span class="version">{import.meta.env.PB_VERSION}</span>
@@ -24,7 +24,7 @@
                 <span />
                 <i class="ri-menu-3-fill" />
                 <Toggler class="dropdown dropdown-lg dropdown-right dropdown-nowrap responsive-menu-dropdown">
-                    <a href="/faq" class="dropdown-item">FAQ</a>
+                    <a href="/faq" class="dropdown-item" data-sveltekit-preload-data>FAQ</a>
                     <a
                         href={import.meta.env.PB_DISCUSSIONS_URL}
                         class="dropdown-item"
@@ -34,14 +34,14 @@
                         Discussions
                     </a>
                     <hr />
-                    <a href="/docs" class="dropdown-item">
+                    <a href="/docs" class="dropdown-item" data-sveltekit-preload-data>
                         <span class="txt">Documentation</span>
                     </a>
                 </Toggler>
             </button>
 
             <nav class="main-menu">
-                <a href="/faq" class="btn btn-secondary">FAQ</a>
+                <a href="/faq" class="btn btn-secondary" data-sveltekit-preload-data>FAQ</a>
                 <a
                     href={import.meta.env.PB_REPO_URL}
                     class="btn btn-circle btn-secondary"
@@ -51,7 +51,7 @@
                 >
                     <i class="ri-github-line" />
                 </a>
-                <a href="/docs" class="btn btn-outline">
+                <a href="/docs" class="btn btn-outline" data-sveltekit-preload-data>
                     <span class="txt">Documentation</span>
                 </a>
             </nav>
