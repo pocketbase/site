@@ -60,7 +60,7 @@
         let collections = arrayOf(new Collection)
 
         $app.collectionQuery().
-            andWhere($dbx.hashExp({"viewRule": null}).
+            andWhere($dbx.hashExp({"viewRule": null})).
             orderBy("created DESC").
             all(collections)
     `}
