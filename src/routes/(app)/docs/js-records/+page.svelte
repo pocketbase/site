@@ -13,7 +13,7 @@
     <a href="/jsvm/interfaces/core.Record.html" target="_blank" rel="noopener noreferrer">
         <code>core.Record</code>
     </a>
-    but below are some examples with the most common ones.
+    type interface but below are some examples with the most common ones.
 </p>
 
 <Toc />
@@ -284,7 +284,7 @@
     content={`
         let collection = $app.findCollectionByNameOrId("articles")
 
-        let record = core.NewRecord(collection)
+        let record = new Record(collection)
 
         record.set("title", "Lorem ipsum")
         record.set("active", true)

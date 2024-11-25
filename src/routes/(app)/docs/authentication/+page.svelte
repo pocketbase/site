@@ -17,7 +17,7 @@
     tokens are not stored in the database).
 </p>
 <p>
-    Because there no sessions and we don't store the tokens on the server there is also no logout endpoint. To
+    Because there are no sessions and we don't store the tokens on the server there is also no logout endpoint. To
     "logout" a user you can simply disregard the token from your local state (aka.
     <code>pb.authStore.clear()</code> if you use the SDKs).
 </p>

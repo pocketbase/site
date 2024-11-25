@@ -43,6 +43,14 @@
 />
 
 <HeadingLink title="Custom collection query" tag="h5" />
+<p>
+    In addition to the above query helpers, you can also create custom Collection queries using
+    <a href="{import.meta.env.PB_GODOC_URL}/core#CollectionQuery" target="_blank" rel="noopener noreferrer">
+        <code>CollectionQuery()</code>
+    </a>
+    method. It returns a SELECT DB builder that can be used with the same methods described in the
+    <a href="/docs/go-database">Database guide</a>.
+</p>
 <CodeBlock
     language="go"
     content={`

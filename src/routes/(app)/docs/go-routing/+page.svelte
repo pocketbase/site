@@ -349,6 +349,12 @@
 
         // serve a single file
         e.FileFS(os.DirFS("..."), "example.txt")
+
+        // stream the specified reader
+        e.Stream(http.StatusOK, "application/octet-stream", reader)
+
+        // send response with blob (bytes slice) body
+        e.Blob(http.StatusOK, "application/octet-stream", []byte{ ... })
     `}
 />
 

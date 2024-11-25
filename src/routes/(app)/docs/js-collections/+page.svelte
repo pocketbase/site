@@ -25,6 +25,7 @@
 <HeadingLink title="Fetch collections" />
 
 <HeadingLink title="Fetch single collection" tag="h5" />
+<p>All single collection retrieval methods throws an error if no collection is found.</p>
 <CodeBlock
     language="javascript"
     content={`
@@ -33,6 +34,7 @@
 />
 
 <HeadingLink title="Fetch multiple collections" tag="h5" />
+<p>All multiple collections retrieval methods returns an empty array if no collections are found.</p>
 <CodeBlock
     language="javascript"
     content={`
@@ -44,6 +46,14 @@
 />
 
 <HeadingLink title="Custom collection query" tag="h5" />
+<p>
+    In addition to the above query helpers, you can also create custom Collection queries using
+    <a href="/jsvm/functions/_app.collectionQuery.html" target="_blank" rel="noopener noreferrer">
+        <code>$app.collectionQuery()</code>
+    </a>
+    method. It returns a SELECT DB builder that can be used with the same methods described in the
+    <a href="/docs/js-database">Database guide</a>.
+</p>
 <CodeBlock
     language="javascript"
     content={`

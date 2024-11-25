@@ -158,7 +158,7 @@
         let search = e.request.url.query().get("search")
 
         // or via the parsed request info
-        search := e.requestInfo().query["search"]
+        let search = e.requestInfo().query["search"]
     `}
 />
 
@@ -185,7 +185,7 @@
         let files = e.findUploadedFiles("document")
 
         // or retrieve the raw single multipart/form-data file and header
-        [mf, mh] := e.request.formFile("document")
+        let [mf, mh] = e.request.formFile("document")
     `}
 />
 
@@ -223,13 +223,13 @@
 <CodeBlock
     language="javascript"
     content={`
-        // send response with json body
+        // send response with JSON body
         e.json(200, {"name": "John"})
 
         // send response with string body
         e.string(200, "Lorem ipsum...")
 
-        // send response with html body
+        // send response with HTML body
         // (check also the "Rendering templates" section)
         e.html(200, "<h1>Hello!</h1>")
 
@@ -241,6 +241,12 @@
 
         // serve a single file
         e.fileFS($os.dirFS("..."), "example.txt")
+
+        // stream the specified reader
+        e.stream(200, "application/octet-stream", reader)
+
+        // send response with blob (bytes array) body
+        e.blob(200, "application/octet-stream", [ ... ])
     `}
 />
 
