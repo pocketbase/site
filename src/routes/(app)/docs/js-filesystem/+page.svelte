@@ -124,10 +124,10 @@
         let record = $app.findRecordById("articles", "RECORD_ID")
 
         // Other available File factories
-        // - $filesystem.NewFileFromBytes(content, name)
-        // - $filesystem.NewFileFromURL(url)
-        // - $filesystem.NewFileFromMultipart(mfh)
-        let file = $filesystem.NewFileFromPath("/local/path/to/file")
+        // - $filesystem.fileFromBytes(content, name)
+        // - $filesystem.fileFromURL(url)
+        // - $filesystem.fileFromMultipart(mfh)
+        let file = $filesystem.fileFromPath("/local/path/to/file")
 
         // set new file (can be single or array of File values)
         // (if the record has an old file it is automatically deleted on successful save)
