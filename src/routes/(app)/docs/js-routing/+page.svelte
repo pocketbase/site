@@ -185,7 +185,7 @@
         let files = e.findUploadedFiles("document")
 
         // or retrieve the raw single multipart/form-data file and header
-        [mf, mh] := e.request.formFile("document")
+        [mf, mh] = e.request.formFile("document")
     `}
 />
 

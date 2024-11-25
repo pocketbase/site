@@ -284,7 +284,7 @@
     content={`
         let collection = $app.findCollectionByNameOrId("articles")
 
-        let record = core.NewRecord(collection)
+        let record = core.newRecord(collection)
 
         record.set("title", "Lorem ipsum")
         record.set("active", true)
