@@ -34,7 +34,7 @@
 />
 
 <HeadingLink title="Fetch multiple collections" tag="h5" />
-<p>Multiple records retrieval method returns an empty array if no records are found.</p>
+<p>Multiple collections retrieval method returns an empty array if no records are found.</p>
 <CodeBlock
     language="javascript"
     content={`
