@@ -85,7 +85,7 @@
     <code>email</code>, <code>emailVisibility</code>, <code>verified</code>,
     <code>password</code> and <code>tokenKey</code>.
     <br />
-    They cannot be renamed or delated but can be configured using their specific field options. For example you
+    They cannot be renamed or deleted but can be configured using their specific field options. For example you
     can make the user email required or optional.
 </p>
 <p>
