@@ -15,6 +15,10 @@
 <Accordion single title="Email change">
     <div class="content m-b-sm">
         <p>Sends auth record email change request.</p>
+        <p>
+            On successful email change all previously issued auth tokens for the specific record will be
+            automatically invalidated.
+        </p>
     </div>
     <CodeTabs
         js={`
