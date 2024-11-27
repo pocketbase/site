@@ -35,7 +35,7 @@
     </li>
     <li class="m-b-xs">
         <a
-            href="{import.meta.env.PB_GODOC_URL}/tools/hook#Hook.Bind"
+            href="{import.meta.env.PB_GODOC_URL}/tools/hook#Hook.BindFunc"
             target="_blank"
             rel="noopener noreferrer"
         >
