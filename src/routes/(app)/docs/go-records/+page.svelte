@@ -156,6 +156,10 @@
 <HeadingLink title="Fetch records" />
 
 <HeadingLink title="Fetch single record" tag="h5" />
+<p class="txt-hint">
+    All single record retrieval methods return <code>nil</code> and <code>sql.ErrNoRows</code> error if no record
+    is found.
+</p>
 <CodeBlock
     language="go"
     content={`
@@ -176,6 +180,9 @@
 />
 
 <HeadingLink title="Fetch multiple records" tag="h5" />
+<p class="txt-hint">
+    All multiple records retrieval methods return empty slice and <code>nil</code> error if no records are found.
+</p>
 <CodeBlock
     language="go"
     content={`

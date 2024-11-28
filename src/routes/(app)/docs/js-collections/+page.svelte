@@ -25,7 +25,7 @@
 <HeadingLink title="Fetch collections" />
 
 <HeadingLink title="Fetch single collection" tag="h5" />
-<p>All single collection retrieval methods throws an error if no collection is found.</p>
+<p class="txt-hint">All single collection retrieval methods throw an error if no collection is found.</p>
 <CodeBlock
     language="javascript"
     content={`
@@ -34,7 +34,9 @@
 />
 
 <HeadingLink title="Fetch multiple collections" tag="h5" />
-<p>All multiple collections retrieval methods returns an empty array if no collections are found.</p>
+<p class="txt-hint">
+    All multiple collections retrieval methods return an empty array if no collections are found.
+</p>
 <CodeBlock
     language="javascript"
     content={`

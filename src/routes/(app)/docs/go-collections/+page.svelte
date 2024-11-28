@@ -25,6 +25,10 @@
 <HeadingLink title="Fetch collections" />
 
 <HeadingLink title="Fetch single collection" tag="h5" />
+<p class="txt-hint">
+    All single collection retrieval methods return <code>nil</code> and <code>sql.ErrNoRows</code> error if no
+    collection is found.
+</p>
 <CodeBlock
     language="go"
     content={`
@@ -33,6 +37,10 @@
 />
 
 <HeadingLink title="Fetch multiple collections" tag="h5" />
+<p class="txt-hint">
+    All multiple collections retrieval methods return empty slice and <code>nil</code> error if no collections
+    are found.
+</p>
 <CodeBlock
     language="go"
     content={`

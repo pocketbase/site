@@ -159,7 +159,7 @@
 <HeadingLink title="Fetch records" />
 
 <HeadingLink title="Fetch single record" tag="h5" />
-<p>All single record retrieval methods throws an error if no record is found.</p>
+<p class="txt-hint">All single record retrieval methods throw an error if no record is found.</p>
 <CodeBlock
     language="javascript"
     content={`
@@ -180,7 +180,7 @@
 />
 
 <HeadingLink title="Fetch multiple records" tag="h5" />
-<p>All multiple records retrieval methods returns an empty array if no records are found.</p>
+<p class="txt-hint">All multiple records retrieval methods return an empty array if no records are found.</p>
 <CodeBlock
     language="javascript"
     content={`
