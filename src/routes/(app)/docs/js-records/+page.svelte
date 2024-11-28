@@ -479,7 +479,7 @@
 
             let record = e.app.findFirstRecordByData("articles", "slug", slug)
 
-            let canAccess = e.App.CanAccessRecord(record, e.requestInfo(), record.collection().viewRule)
+            let canAccess = e.app.canAccessRecord(record, e.requestInfo(), record.collection().viewRule)
             if (!canAccess) {
                 throw new ForbiddenError()
             }
