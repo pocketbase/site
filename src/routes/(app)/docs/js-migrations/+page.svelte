@@ -156,7 +156,7 @@
         migrate((app) => {
             let superusers = app.findCollectionByNameOrId("_superusers")
 
-            let record = core.NewRecord(superusers)
+            let record = new Record(superusers)
 
             // note: the values can be eventually loaded via $os.getenv(key)
             // or from a special local config file
