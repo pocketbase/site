@@ -2,6 +2,7 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import Toc from "@/components/Toc.svelte";
+    import TransactionInfoGo from "../TransactionInfoGo.svelte";
 </script>
 
 <p>
@@ -424,6 +425,7 @@
 />
 
 <HeadingLink title="Transaction" />
+<TransactionInfoGo />
 <CodeBlock
     language="go"
     content={`

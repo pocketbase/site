@@ -2,6 +2,7 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import Toc from "@/components/Toc.svelte";
+    import TransactionInfoJS from "../TransactionInfoJS.svelte";
 </script>
 
 <p>
@@ -567,20 +568,7 @@
 />
 
 <HeadingLink title="Transaction" />
-<p>
-    To execute multiple queries in a transaction you can use
-    <a href="/jsvm/functions/_app.runInTransaction.html" target="_blank">
-        <code>$app.runInTransaction()</code>
-    </a>
-    .
-</p>
-<p>
-    It is safe to nest <code>runInTransaction</code> calls as long as you use the callback's
-    <code>txApp</code>.
-</p>
-<p>
-    <strong>The transaction is committed only if it completes without errors.</strong>
-</p>
+<TransactionInfoJS />
 <CodeBlock
     language="javascript"
     content={`

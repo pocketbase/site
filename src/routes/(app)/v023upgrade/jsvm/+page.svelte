@@ -1082,14 +1082,6 @@
 />
 <UpgradeTabs
     before={`
-        $apis.requireSameContextRecordAuth()
-    `}
-    after={`
-        $apis.requireSameCollectionContextAuth("")
-    `}
-/>
-<UpgradeTabs
-    before={`
         $apis.requireAdminAuth()
     `}
     after={`

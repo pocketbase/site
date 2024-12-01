@@ -2,6 +2,7 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import Toc from "@/components/Toc.svelte";
+    import TransactionInfoJS from "../TransactionInfoJS.svelte";
 </script>
 
 <p>
@@ -402,6 +403,7 @@
 />
 
 <HeadingLink title="Transaction" />
+<TransactionInfoJS />
 <CodeBlock
     language="javascript"
     content={`

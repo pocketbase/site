@@ -2,6 +2,7 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import Toc from "@/components/Toc.svelte";
+    import TransactionInfoGo from "../TransactionInfoGo.svelte";
 </script>
 
 <p>
@@ -578,28 +579,11 @@
 />
 
 <HeadingLink title="Transaction" />
-<p>
-    To execute multiple queries in a transaction you can use
-    <a
-        href="{import.meta.env.PB_GODOC_URL}/core#BaseApp.RunInTransaction"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        <code>app.RunInTransaction()</code>
-    </a>
-    .
-</p>
-<p>
-    It is safe to nest <code>RunInTransaction</code> calls as long as you use the callback's
-    <code>txApp</code>.
-</p>
-<p>
-    <strong>The transaction is committed only if it returns <code>nil</code>.</strong>
-</p>
+<TransactionInfoGo />
 <CodeBlock
     language="go"
     content={`
-        app.RunInTransaction(func(txApp core.App) error {
+        err := app.RunInTransaction(func(txApp core.App) error {
             // update a record
             record, err := txApp.FindRecordById("articles", "RECORD_ID")
             if err != nil {
