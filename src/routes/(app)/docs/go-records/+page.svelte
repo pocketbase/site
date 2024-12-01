@@ -424,6 +424,17 @@
 />
 
 <HeadingLink title="Transaction" />
+<p>
+    To ensure that multiple database operations either all succeed together or fail without partial changes, 
+    you can use 
+    <a href="https://pkg.go.dev/github.com/pocketbase/pocketbase/core#BaseApp.RunInTransaction" target="_blank" rel="noopener noreferrer">
+        <code>app.RunInTransaction(fn)</code>
+    </a>. We recommand to avoid mixed read&write transactions as they could cause a performance bottleneck.
+</p>
+<p>
+    Inside the transaction function, always use the callback's <code>txApp</code> instead of the regular 
+    <code>app</code> otherwise a deadlock will happen.
+</p>
 <CodeBlock
     language="go"
     content={`
