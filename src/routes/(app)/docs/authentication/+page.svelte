@@ -17,8 +17,8 @@
     tokens are not stored in the database).
 </p>
 <p>
-    Because there are no sessions and we don't store the tokens on the server there is also no logout endpoint. To
-    "logout" a user you can simply disregard the token from your local state (aka.
+    Because there are no sessions and we don't store the tokens on the server there is also no logout
+    endpoint. To "logout" a user you can simply disregard the token from your local state (aka.
     <code>pb.authStore.clear()</code> if you use the SDKs).
 </p>
 <p>
@@ -296,7 +296,7 @@
 
         // impersonate
         // (the custom token duration is in seconds and it is optional)
-        const impersonateClient = pb.collection("users").impersonate("USER_RECORD_ID", 3600)
+        const impersonateClient = await pb.collection("users").impersonate("USER_RECORD_ID", 3600)
 
         // log the impersonate token and user data
         console.log(impersonateClient.authStore.token);
@@ -317,7 +317,7 @@
 
         // impersonate
         // (the custom token duration is in seconds and it is optional)
-        final impersonateClient = pb.collection("users").impersonate("USER_RECORD_ID", 3600)
+        final impersonateClient = await pb.collection("users").impersonate("USER_RECORD_ID", 3600)
 
         // log the impersonate token and user data
         print(impersonateClient.authStore.token);
