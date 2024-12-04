@@ -303,7 +303,7 @@
         console.log(impersonateClient.authStore.record);
 
         // send requests as the impersonated user
-        impersonateClient.collection("example").getFullList();
+        const items = await impersonateClient.collection("example").getFullList();
     `}
     dart={`
         import 'package:pocketbase/pocketbase.dart';
@@ -324,7 +324,7 @@
         print(impersonateClient.authStore.record);
 
         // send requests as the impersonated user
-        impersonateClient.collection("example").getFullList();
+        final items = await impersonateClient.collection("example").getFullList();
     `}
 />
 
