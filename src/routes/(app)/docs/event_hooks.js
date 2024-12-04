@@ -633,8 +633,11 @@ export default [
         hooks: {
             OnBootstrap: {
                 html: `
-                    <code>OnBootstrap</code> hook is triggered when initializing the main
-                    application resources (db, app settings, etc).
+                    <p>
+                        <code>OnBootstrap</code> hook is triggered when initializing the main
+                        application resources (db, app settings, etc).
+                    </p>
+                    <p>Note that attempting to access the database before the <code>e.Next()</code> call will result in an error.</p>
                 `,
                 js: `
                     onBootstrap((e) => {
