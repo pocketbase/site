@@ -9,7 +9,7 @@
 
 <HeadingLink title="Overview" />
 <p>
-    <strong>Collections</strong> represents your application data. Under the hood they are backed by plain
+    <strong>Collections</strong> represent your application data. Under the hood they are backed by plain
     SQLite tables that are generated automatically with the collection
     <strong>name</strong> and <strong>fields</strong> (columns).
 </p>
