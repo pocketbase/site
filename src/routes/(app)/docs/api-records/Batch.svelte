@@ -9,8 +9,8 @@
             body: `
               [
                 {
-                  status: 200,
-                  result: {
+                  "status": 200,
+                  "result": {
                     "@collectionId": "a98f514eb05f454",
                     "@collectionName": "demo",
                     "id": "ae40239d2bc4477",
@@ -21,8 +21,8 @@
                   }
                 },
                 {
-                  status: 200,
-                  result: {
+                  "status": 200,
+                  "result": {
                     "@collectionId": "a98f514eb05f454",
                     "@collectionName": "demo",
                     "id": "31y1gc447bc9602",
@@ -31,7 +31,7 @@
                     "title": "test2",
                     "document": "file_f514eb0.txt"
                   }
-                },
+                }
               ]
             `,
         },

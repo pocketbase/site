@@ -11,11 +11,12 @@
                 {
                   "smtp": {
                     "enabled": false,
-                    "port": 587,
                     "host": "smtp.example.com",
+                    "port": 587,
                     "username": "",
+                    "password": "",
+                    "tls": true,
                     "authMethod": "",
-                    "tls": false,
                     "localName": ""
                   },
                   "backups": {
@@ -27,6 +28,7 @@
                       "region": "",
                       "endpoint": "",
                       "accessKey": "",
+                      "secret": "",
                       "forcePathStyle": false
                     }
                   },
@@ -36,6 +38,7 @@
                     "region": "",
                     "endpoint": "",
                     "accessKey": "",
+                    "secret": "",
                     "forcePathStyle": false
                   },
                   "meta": {

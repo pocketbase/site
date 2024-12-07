@@ -43,12 +43,10 @@
     ];
 </script>
 
-<div class="alert alert-success">
+<div class="api-route alert alert-success">
     <strong class="label label-primary">POST</strong>
     <div class="content">
-        <p>
-            /api/collections/<code>collectionIdOrName</code>/auth-with-otp
-        </p>
+        /api/collections/<code>collectionIdOrName</code>/auth-with-otp
     </div>
 </div>
 

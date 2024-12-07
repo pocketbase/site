@@ -11,16 +11,16 @@
                 {
                   "meta": {
                     "appName": "Acme",
-                    "appUrl": "http://127.0.0.1:8090",
-                    "hideControls": false,
+                    "appURL": "https://example.com",
                     "senderName": "Support",
                     "senderAddress": "support@example.com",
-                    "verificationTemplate": { ... },
-                    "resetPasswordTemplate": { ... },
-                    "confirmEmailChangeTemplate": { ... }
+                    "hideControls": false
                   },
                   "logs": {
-                    "maxDays": 7
+                    "maxDays": 5,
+                    "minLevel": 0,
+                    "logIP": true,
+                    "logAuthId": false
                   },
                   "backups": {
                     "cron": "0 0 * * *",

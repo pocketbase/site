@@ -166,6 +166,17 @@
                         }
                       },
                       "oauth2": {
+                        "providers": [
+                          {
+                            "name": "github",
+                            "displayName": "GitHub",
+                            "state": "nT7SLxzXKAVMeRQJtxSYj9kvnJAvGk",
+                            "authURL": "https://github.com/login/oauth/authorize?client_id=test&code_challenge=fcf8WAhNI6uCLJYgJubLyWXHvfs8xghoLe3zksBvxjE&code_challenge_method=S256&response_type=code&scope=read%3Auser+user%3Aemail&state=nT7SLxzXKAVMeRQJtxSYj9kvnJAvGk&redirect_uri=",
+                            "codeVerifier": "PwBG5OKR2IyQ7siLrrcgWHFwLLLAeUrz7PS1nY4AneG",
+                            "codeChallenge": "fcf8WAhNI6uCLJYgJubLyWXHvfs8xghoLe3zksBvxjE",
+                            "codeChallengeMethod": "S256"
+                          }
+                        ],
                         "mappedFields": {
                           "id": "",
                           "name": "name",

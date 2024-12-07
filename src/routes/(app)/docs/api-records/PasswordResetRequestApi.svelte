@@ -27,12 +27,10 @@
     ];
 </script>
 
-<div class="alert alert-success">
+<div class="api-route alert alert-success">
     <strong class="label label-primary">POST</strong>
     <div class="content">
-        <p>
-            /api/collections/<code>collectionIdOrName</code>/request-password-reset
-        </p>
+        /api/collections/<code>collectionIdOrName</code>/request-password-reset
     </div>
 </div>
 
