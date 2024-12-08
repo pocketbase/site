@@ -9,41 +9,26 @@
             code: 200,
             body: `
                 {
-                  "meta": {
-                    "appName": "Acme",
-                    "appUrl": "http://127.0.0.1:8090",
-                    "hideControls": false,
-                    "senderName": "Support",
-                    "senderAddress": "support@example.com",
-                    "verificationTemplate": { ... },
-                    "resetPasswordTemplate": { ... },
-                    "confirmEmailChangeTemplate": { ... }
-                  },
-                  "logs": {
-                    "maxDays": 7
+                  "smtp": {
+                    "enabled": false,
+                    "port": 587,
+                    "host": "smtp.example.com",
+                    "username": "",
+                    "authMethod": "",
+                    "tls": true,
+                    "localName": ""
                   },
                   "backups": {
                     "cron": "0 0 * * *",
-                    "cronMaxKeep": 1,
+                    "cronMaxKeep": 3,
                     "s3": {
                       "enabled": false,
                       "bucket": "",
                       "region": "",
                       "endpoint": "",
                       "accessKey": "",
-                      "secret": "",
                       "forcePathStyle": false
                     }
-                  },
-                  "smtp": {
-                    "enabled": false,
-                    "host": "smtp.example.com",
-                    "port": 587,
-                    "username": "",
-                    "password": "",
-                    "tls": true,
-                    "authMethod": "",
-                    "localName": ""
                   },
                   "s3": {
                     "enabled": false,
@@ -51,71 +36,59 @@
                     "region": "",
                     "endpoint": "",
                     "accessKey": "",
-                    "secret": "",
                     "forcePathStyle": false
                   },
-                  "adminAuthToken": {
-                    "secret": "******",
-                    "duration": 1209600
+                  "meta": {
+                    "appName": "Acme",
+                    "appURL": "https://example.com",
+                    "senderName": "Support",
+                    "senderAddress": "support@example.com",
+                    "hideControls": false
                   },
-                  "adminPasswordResetToken": {
-                    "secret": "******",
-                    "duration": 1800
+                  "rateLimits": {
+                    "rules": [
+                      {
+                        "label": "*:auth",
+                        "audience": "",
+                        "duration": 3,
+                        "maxRequests": 2
+                      },
+                      {
+                        "label": "*:create",
+                        "audience": "",
+                        "duration": 5,
+                        "maxRequests": 20
+                      },
+                      {
+                        "label": "/api/batch",
+                        "audience": "",
+                        "duration": 1,
+                        "maxRequests": 3
+                      },
+                      {
+                        "label": "/api/",
+                        "audience": "",
+                        "duration": 10,
+                        "maxRequests": 300
+                      }
+                    ],
+                    "enabled": false
                   },
-                  "recordAuthToken": {
-                    "secret": "******",
-                    "duration": 1209600
+                  "trustedProxy": {
+                    "headers": [],
+                    "useLeftmostIP": false
                   },
-                  "recordPasswordResetToken": {
-                    "secret": "******",
-                    "duration": 1800
-                  },
-                  "recordEmailChangeToken": {
-                    "secret": "******",
-                    "duration": 1800
-                  },
-                  "recordVerificationToken": {
-                    "secret": "******",
-                    "duration": 604800
-                  },
-                  "googleAuth": {
+                  "batch": {
                     "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
+                    "maxRequests": 50,
+                    "timeout": 3,
+                    "maxBodySize": 0
                   },
-                  "facebookAuth": {
-                    "enabled": false,
-                    "allowRegistrations": false
-                  },
-                  "githubAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "gitlabAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "discordAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "twitterAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "microsoftAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
-                  },
-                  "spotifyAuth": {
-                    "enabled": true,
-                    "clientId": "demo",
-                    "clientSecret": "******"
+                  "logs": {
+                    "maxDays": 7,
+                    "minLevel": 0,
+                    "logIP": true,
+                    "logAuthId": false
                   }
                 }
             `,

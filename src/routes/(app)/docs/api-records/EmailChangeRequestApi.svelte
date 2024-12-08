@@ -47,12 +47,10 @@
     ];
 </script>
 
-<div class="alert alert-success">
+<div class="api-route alert alert-success">
     <strong class="label label-primary">POST</strong>
     <div class="content">
-        <p>
-            /api/collections/<code>collectionIdOrName</code>/request-email-change
-        </p>
+        /api/collections/<code>collectionIdOrName</code>/request-email-change
     </div>
     <p class="txt-hint txt-sm txt-right">Requires <code>Authorization:TOKEN</code></p>
 </div>

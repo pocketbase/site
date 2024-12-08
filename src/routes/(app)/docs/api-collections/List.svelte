@@ -166,13 +166,25 @@
                         }
                       },
                       "oauth2": {
+                        "enabled": false,
                         "mappedFields": {
                           "id": "",
                           "name": "name",
                           "username": "",
                           "avatarURL": "avatar"
                         },
-                        "enabled": false
+                        "providers": [
+                            {
+                                "pkce": null,
+                                "name": "google",
+                                "clientId": "abc",
+                                "authURL": "",
+                                "tokenURL": "",
+                                "userInfoURL": "",
+                                "displayName": "",
+                                "extra": null
+                            }
+                        ]
                       },
                       "passwordAuth": {
                         "enabled": true,

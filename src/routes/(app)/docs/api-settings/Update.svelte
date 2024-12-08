@@ -15,11 +15,11 @@
                     "host": "smtp.example.com",
                     "username": "",
                     "authMethod": "",
-                    "tls": false,
+                    "tls": true,
                     "localName": ""
                   },
                   "backups": {
-                    "cron": "",
+                    "cron": "0 0 * * *",
                     "cronMaxKeep": 3,
                     "s3": {
                       "enabled": false,
@@ -45,39 +45,31 @@
                     "senderAddress": "support@example.com",
                     "hideControls": false
                   },
-                  "logs": {
-                    "maxDays": 5,
-                    "minLevel": 0,
-                    "logIP": true,
-                    "logAuthId": false
-                  },
-                  "batch": {
-                    "enabled": false,
-                    "maxRequests": 50,
-                    "timeout": 3,
-                    "maxBodySize": 0
-                  },
                   "rateLimits": {
                     "rules": [
                       {
                         "label": "*:auth",
-                        "maxRequests": 2,
-                        "duration": 3
+                        "audience": "",
+                        "duration": 3,
+                        "maxRequests": 2
                       },
                       {
                         "label": "*:create",
-                        "maxRequests": 20,
-                        "duration": 5
+                        "audience": "",
+                        "duration": 5,
+                        "maxRequests": 20
                       },
                       {
                         "label": "/api/batch",
-                        "maxRequests": 3,
-                        "duration": 1
+                        "audience": "",
+                        "duration": 1,
+                        "maxRequests": 3
                       },
                       {
                         "label": "/api/",
-                        "maxRequests": 300,
-                        "duration": 10
+                        "audience": "",
+                        "duration": 10,
+                        "maxRequests": 300
                       }
                     ],
                     "enabled": false
@@ -85,6 +77,18 @@
                   "trustedProxy": {
                     "headers": [],
                     "useLeftmostIP": false
+                  },
+                  "batch": {
+                    "enabled": true,
+                    "maxRequests": 50,
+                    "timeout": 3,
+                    "maxBodySize": 0
+                  },
+                  "logs": {
+                    "maxDays": 7,
+                    "minLevel": 0,
+                    "logIP": true,
+                    "logAuthId": false
                   }
                 }
             `,
