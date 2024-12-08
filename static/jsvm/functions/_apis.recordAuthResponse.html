@@ -18,14 +18,14 @@
 <h1>Function recordAuthResponse</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="recordAuthResponse"><span class="tsd-kind-call-signature">record<wbr/>Auth<wbr/>Response</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">e</span>, <span class="tsd-kind-parameter">authRecord</span>, <span class="tsd-kind-parameter">authMethod</span>, <span class="tsd-kind-parameter">meta</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#recordAuthResponse" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="recordAuthResponse"><span class="tsd-kind-call-signature">record<wbr/>Auth<wbr/>Response</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">e</span>, <span class="tsd-kind-parameter">authRecord</span>, <span class="tsd-kind-parameter">authMethod</span>, <span class="tsd-kind-parameter">meta</span><span class="tsd-signature-symbol">?</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#recordAuthResponse" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>RecordAuthResponse writes standardized json record auth response
-into the specified request context.</p>
+into the specified request event.</p>
 <p>The authMethod argument specify the name of the current authentication method (eg. password, oauth2, etc.)
 that it is used primarily as an auth identifier during MFA and for login alerts.</p>
 <p>Set authMethod to empty string if you want to ignore the MFA checks and the login alerts
-(can be also adjusted additionally via the OnRecordAuthRequest hook).</p>
+(can be also adjusted additionally via the onRecordAuthRequest hook).</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -37,11 +37,11 @@ that it is used primarily as an auth identifier during MFA and for login alerts.
 <li>
 <h5><span class="tsd-kind-parameter">authMethod</span>: <span class="tsd-signature-type">string</span></h5></li>
 <li>
-<h5><span class="tsd-kind-parameter">meta</span>: <span class="tsd-signature-type">any</span></h5></li></ul></div>
+<h5><code class="tsd-tag ts-flagOptional">Optional</code> <span class="tsd-kind-parameter">meta</span>: <span class="tsd-signature-type">any</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/528d68d7b/jsvm/types.d.ts#L13594">types.d.ts:13594</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/094b64900/jsvm/types.d.ts#L1002">types.d.ts:1002</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
