@@ -30,7 +30,7 @@
                     </p>
                     <p>
                         Please note that PocketBase is neither a startup, nor a business. There is no paid
-                        team or company behind it. It is a personal open source project with intentially
+                        team or company behind it. It is a personal open source project with intentionally
                         limited scope and developed entirely on volunteer basis. There are no promises for
                         maintenance and support beyond what is already available (<em
                             >you can explore the
