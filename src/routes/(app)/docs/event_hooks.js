@@ -1350,7 +1350,7 @@ export default [
                     <i class="ri-information-line"></i>
                 </div>
                 <div class="content">
-                    <p>These are lower level Record model hooks and could be triggered from anywere (custom console command, scheduled cron job, when calling <code>e.Save(record)</code>, etc.) and therefore they have no access to the request context!</p>
+                    <p>These are lower level Record model hooks and could be triggered from anywhere (custom console command, scheduled cron job, when calling <code>e.Save(record)</code>, etc.) and therefore they have no access to the request context!</p>
                     <p>If you want to intercept the builtin Web APIs and to access their request body, query parameters, headers or the request auth state, then please use the designated
                         <a href="#request-hooks">Record <code>*Request</code> hooks</a>
                     .</p>
@@ -1577,7 +1577,7 @@ export default [
                     <i class="ri-information-line"></i>
                 </div>
                 <div class="content">
-                    <p>These are lower level Collection model hooks and could be triggered from anywere (custom console command, scheduled cron job, when calling <code>e.Save(collection)</code>, etc.) and therefore they have no access to the request context!</p>
+                    <p>These are lower level Collection model hooks and could be triggered from anywhere (custom console command, scheduled cron job, when calling <code>e.Save(collection)</code>, etc.) and therefore they have no access to the request context!</p>
                     <p>If you want to intercept the builtin Web APIs and to access their request body, query parameters, headers or the request auth state, then please use the designated
                         <a href="#collection-request-hooks">Collection <code>*Request</code> hooks</a>
                     .</p>
