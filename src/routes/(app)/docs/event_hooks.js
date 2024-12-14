@@ -1344,6 +1344,19 @@ export default [
 
     {
         title: "Record model hooks",
+        description: `
+            <div class="alert alert-info">
+                <div class="icon">
+                    <i class="ri-information-line"></i>
+                </div>
+                <div class="content">
+                    <p>These are lower level Record model hooks and could be triggered from anywere (custom console command, scheduled cron job, when calling <code>e.Save(record)</code>, etc.) and therefore they have no access to the request context!</p>
+                    <p>If you want to intercept the builtin Web APIs and to access their request body, query parameters, headers or the request auth state, then please use the designated
+                        <a href="#request-hooks">Record <code>*Request</code> hooks</a>
+                    .</p>
+                </div>
+            </div>
+        `,
         hooks: {
             OnRecordEnrich: {
                 html: `
@@ -1558,6 +1571,19 @@ export default [
 
     {
         title: "Collection model hooks",
+        description: `
+            <div class="alert alert-info">
+                <div class="icon">
+                    <i class="ri-information-line"></i>
+                </div>
+                <div class="content">
+                    <p>These are lower level Collection model hooks and could be triggered from anywere (custom console command, scheduled cron job, when calling <code>e.Save(collection)</code>, etc.) and therefore they have no access to the request context!</p>
+                    <p>If you want to intercept the builtin Web APIs and to access their request body, query parameters, headers or the request auth state, then please use the designated
+                        <a href="#collection-request-hooks">Collection <code>*Request</code> hooks</a>
+                    .</p>
+                </div>
+            </div>
+        `,
         hooks: {
             OnCollectionValidate: {
                 html: `
@@ -3541,10 +3567,14 @@ export default [
                     <i class="ri-information-line"></i>
                 </div>
                 <div class="content">
-                    <p>The Model hooks are fired for all PocketBase structs that implements the Model interface - Record, Collection, Log, etc.</p>
+                    <p>The Model hooks are fired for all PocketBase structs that implements the Model DB interface - Record, Collection, Log, etc.</p>
                     <p>
-                        For convenience, if you want to listen to only the Record or Collection models
-                        events without doing manual type assertion, you can use the <code>OnRecord*</code> and <code>OnCollection*</code> proxy hooks above.
+                        For convenience, if you want to listen to only the Record or Collection DB model
+                        events without doing manual type assertion, you can use the
+                        <a href="#record-model-hooks"><code>OnRecord*</code></a>
+                        and
+                        <a href="#collection-model-hooks"><code>OnCollection*</code></a>
+                        proxy hooks above.
                     </p>
                 </div>
             </div>

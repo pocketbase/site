@@ -30,7 +30,7 @@ export const introductionLinks = [
             },
             {
                 href: "/docs/use-as-framework",
-                title: "Use as framework",
+                title: "Extending PocketBase",
             },
         ]
     },
