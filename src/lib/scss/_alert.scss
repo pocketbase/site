@@ -66,6 +66,9 @@
     hr {
         background: var(--overlayColor);
     }
+    a:hover code {
+        background: var(--shadowColor);
+    }
 
     // styles
     &.alert-info {
