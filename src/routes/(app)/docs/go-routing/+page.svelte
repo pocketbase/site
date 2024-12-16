@@ -893,9 +893,9 @@
 <CodeBlock
     language="go"
     content={`
-        app.OnServe().Add(func(se *core.ServeEvent) error {
+        app.OnServe().BindFunc(func(se *core.ServeEvent) error {
             // serves static files from the provided dir (if exists)
-            e.Router.GET("/{path...}", apis.Static(os.DirFS("/path/to/public"), false))
+            se.Router.GET("/{path...}", apis.Static(os.DirFS("/path/to/public"), false))
 
             return se.Next()
         })
