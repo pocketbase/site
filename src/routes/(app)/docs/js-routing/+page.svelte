@@ -92,7 +92,7 @@
         // (similar to the above but with a named wildcard parameter)
        routerAdd("GET", "/static/{path...}", ...)
 
-        // match only "GET /static/"
+        // match only "GET /static/" (if no "/static" is registered, it is 301 redirected)
        routerAdd("GET", "/static/{$}", ...)
 
         // match "GET /customers/john", "GET /customer/jane", etc.
