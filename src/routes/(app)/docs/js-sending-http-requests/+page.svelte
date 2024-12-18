@@ -97,3 +97,13 @@
         console.log(res.statusCode)
     `}
 />
+
+<HeadingLink title="Limitations" />
+<p>
+    As of now there is no support for streamed responses or server-sent events (SSE). The
+    <code>$http.send</code> call blocks and returns the entire response body at once.
+</p>
+<p>
+    For this and other more advanced use cases you'll have to
+    <a href="/docs/go-overview/">extend PocketBase with Go</a>.
+</p>
