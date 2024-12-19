@@ -53,9 +53,13 @@
 <p class="txt-bold">New migrations are applied automatically on <code>serve</code>.</p>
 <p>
     Optionally, you could apply new migrations manually by running <code>migrate up</code>.
-</p>
-<p>
+    <br />
     To revert the last applied migration(s), you could run <code>migrate down [number]</code>.
+    <br />
+    <small class="txt-hint">
+        When manually applying or reverting migrations, the <code>serve</code> process needs to be restarted so
+        that it can refresh its cached collections state.
+    </small>
 </p>
 
 <HeadingLink title="Migration file" tag="h5" />

@@ -157,9 +157,13 @@
 </p>
 <p>
     Alternatively, you can also apply new migrations manually by running <code>migrate up</code>.
-</p>
-<p>
+    <br />
     To revert the last applied migration(s), you can run <code>migrate down [number]</code>.
+    <br />
+    <small class="txt-hint">
+        When manually applying or reverting migrations, the <code>serve</code> process needs to be restarted so
+        that it can refresh its cached collections state.
+    </small>
 </p>
 
 <HeadingLink title="Collections snapshot" />

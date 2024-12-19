@@ -27,7 +27,12 @@
         </p>
         <p>
             Once you have obtained the <strong>Client Id</strong> and <strong>Client Secret</strong>, you can
-            enable and configure the provider from your PocketBase admin settings page.
+            enable and configure the provider from your PocketBase auth collection options (<em class="txt-sm"
+                >PocketBase {">"} Collections {">"}
+                {"{YOUR_COLLECTION}"}
+                {">"} Edit collection (settings cogwheel) {">"} Options
+                {">"} OAuth2</em
+            >).
         </p>
     </div>
 </div>

@@ -397,9 +397,6 @@
     <div class="wrapper wrapper-lg">
         <div class="hero-content">
             <div class="content-row">Open Source backend</div>
-            <div class="content-row responsive-hide">
-                for your next <strong>SaaS</strong> and <strong>Mobile app</strong>
-            </div>
             <div class="content-row highlight">
                 <strong>in 1 file</strong>
             </div>
@@ -523,7 +520,7 @@
                     </h4>
                     <div class="content">
                         <p>
-                            Sanely store files locally or in a S3 storage. Easily attach media to your
+                            Safely store files locally or in a S3 storage. Easily attach media to your
                             database records and generate thumbs on the fly.
                         </p>
                     </div>
