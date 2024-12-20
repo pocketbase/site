@@ -5,40 +5,38 @@ export const indexExample = `
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>OAuth2 links page</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
 </head>
 <body>
     <ul id="list">
         <li>Loading OAuth2 providers...</li>
     </ul>
 
-    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.umd.js"></script>
-    <script type="text/javascript">
-        const pb = new PocketBase('http://127.0.0.1:8090');
-        const redirectUrl = 'http://127.0.0.1:8090/redirect.html';
+    <script type="module">
+        import PocketBase from "https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.es.mjs"
 
-        async function loadLinks() {
-            const authMethods = await pb.collection('users').listAuthMethods();
-            const listItems = [];
+        const pb          = new PocketBase("http://127.0.0.1:8090");
+        const redirectUrl = "http://127.0.0.1:8090/redirect.html";
 
-            for (const provider of authMethods.authProviders) {
-                const $li = $(\`<li><a>Login with \${provider.name}</a></li>\`);
+        const authMethods = await pb.collection("users").listAuthMethods();
+        const providers   = authMethods.oauth2?.providers || [];
+        const listItems   = [];
 
-                $li.find('a')
-                    .attr('href', provider.authUrl + redirectUrl)
-                    .data('provider', provider)
-                    .click(function () {
-                        // store provider's data on click for verification in the redirect page
-                        localStorage.setItem('provider', JSON.stringify($(this).data('provider')));
-                    });
+        for (const provider of providers) {
+            const $li = $(\`<li><a>Login with \${provider.name}</a></li>\`);
 
-                listItems.push($li);
-            }
+            $li.find("a")
+                .attr("href", provider.authUrl + redirectUrl)
+                .data("provider", provider)
+                .click(function () {
+                    // store provider's data on click for verification in the redirect page
+                    localStorage.setItem("provider", JSON.stringify($(this).data("provider")));
+                });
 
-            $('#list').html(listItems.length ? listItems : '<li>No OAuth2 providers.</li>');
+            listItems.push($li);
         }
 
-        loadLinks();
+        $("#list").html(listItems.length ? listItems : "<li>No OAuth2 providers.</li>");
     </script>
 </body>
 </html>
@@ -54,37 +52,39 @@ export const redirectExample = `
 <body>
     <pre id="content">Authenticating...</pre>
 
-    <script src="https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.umd.js"></script>
-    <script type="text/javascript">
-        const pb = new PocketBase("http://127.0.0.1:8090");
-        const redirectUrl = 'http://127.0.0.1:8090/redirect.html';
+    <script type="module">
+        import PocketBase from "https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.es.mjs"
+
+        const pb          = new PocketBase("http://127.0.0.1:8090");
+        const redirectURL = "http://127.0.0.1:8090/redirect.html";
+        const contentEl   = document.getElementById("content");
 
         // parse the query parameters from the redirected url
         const params = (new URL(window.location)).searchParams;
 
         // load the previously stored provider's data
-        const provider = JSON.parse(localStorage.getItem('provider'))
+        const provider = JSON.parse(localStorage.getItem("provider"))
 
         // compare the redirect's state param and the stored provider's one
-        if (provider.state !== params.get('state')) {
-            throw "State parameters don't match.";
+        if (provider.state !== params.get("state")) {
+            contentEl.innerText = "State parameters don't match.";
+        } else {
+            // authenticate
+            pb.collection("users").authWithOAuth2Code(
+                provider.name,
+                params.get("code"),
+                provider.codeVerifier,
+                redirectURL,
+                // pass any optional user create data
+                {
+                    emailVisibility: false,
+                }
+            ).then((authData) => {
+                contentEl.innerText = JSON.stringify(authData, null, 2);
+            }).catch((err) => {
+                contentEl.innerText = "Failed to exchange code.\\n" + err;
+            });
         }
-
-        // authenticate
-        pb.collection('users').authWithOAuth2Code(
-            provider.name,
-            params.get('code'),
-            provider.codeVerifier,
-            redirectUrl,
-            // pass optional user create data
-            {
-                emailVisibility: false,
-            }
-        ).then((authData) => {
-            document.getElementById('content').innerText = JSON.stringify(authData, null, 2);
-        }).catch((err) => {
-            document.getElementById('content').innerText = "Failed to exchange code.\\n" + err;
-        });
     </script>
 </body>
 </html>
