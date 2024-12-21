@@ -22,7 +22,7 @@
     <code>pb.authStore.clear()</code> if you use the SDKs).
 </p>
 <p>
-    The auth token could be generated either through the specific auth colletion Web APIs or programmatically
+    The auth token could be generated either through the specific auth collection Web APIs or programmatically
     via Go/JS.
 </p>
 <p>
@@ -135,9 +135,9 @@
     </div>
     <div class="content">
         <p>
-            Keep in mind that OTP as standalone authentication method could be less secure compared to the
+            Keep in mind that OTP as a standalone authentication method could be less secure compared to the
             other methods because the generated password is usually 0-9 digits and there is a risk of it being
-            guessed or enumarated (especially when a longer duration time is configured).
+            guessed or enumerated (especially when a longer duration time is configured).
         </p>
         <p>
             For security critical applications OTP is recommended to be used in combination with the other
@@ -214,7 +214,7 @@
         <li>User authenticates with "Auth method A".</li>
         <li>
             On success, a 401 response is sent with <code>{`{"mfaId": "..."}`}</code> as JSON body (the MFA
-            "session" is stored in the <code>_mfas</code> system colletion).
+            "session" is stored in the <code>_mfas</code> system collection).
         </li>
         <li>
             User authenticates with "Auth method B" as usual
@@ -277,7 +277,7 @@
         <a href="/docs/api-records#impersonate">Impersonate endpoint</a>
         .
     </p>
-    <p>The generated impersonate auth tokens can have cusom duration but are not refreshable!</p>
+    <p>The generated impersonate auth tokens can have custom duration but are not refreshable!</p>
     <p>
         For convenience the official SDKs creates and returns a standalone client that keeps the token state
         in memory, aka. only for the duration of the impersonate client instance.
@@ -333,7 +333,7 @@
     <p>
         While PocketBase doesn't have "API keys" in the traditional sense, as a side effect of the support for
         users impersonation, for such cases you can use instead the generated non-refreshable
-        <code>_superusers</code> impersontate auth token.
+        <code>_superusers</code> impersonate auth token.
         <br />
         You can generate such token via the above impersonate API or from the
         <em>Dashboard > Collections > _superusers > {`{select superuser}`} > "Impersonate" dropdown option</em
@@ -366,7 +366,7 @@
 <HeadingLink title="Auth token verification" />
 <p>
     PocketBase doesn't have a dedicated token verification endpoint, but if you want to verify an existing
-    auth token from a 3rd party app you can send
+    auth token from a 3rd party app you can send an
     <a href="/docs/api-records/#auth-refresh">Auth refresh</a>
     call, aka. <code>pb.collection("users").authRefresh()</code>.
 </p>
