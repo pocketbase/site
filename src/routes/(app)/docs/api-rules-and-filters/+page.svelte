@@ -41,13 +41,13 @@
 <ul>
     <li>
         <strong>"locked"</strong> - aka. <code>null</code>, which means that the action could be performed
-        only by an authorized admin
+        only by an authorized superuser
         <!--  -->
         (<strong>this is the default</strong>)
     </li>
     <li>
-        <strong>Empty string</strong> - anyone will be able to perform the action (admins, authorized users and
-        guests)
+        <strong>Empty string</strong> - anyone will be able to perform the action (superusers, authorized users
+        and guests)
     </li>
     <li>
         <strong>Non-empty string</strong> - only users (authorized or not) that satisfy the rule filter expression
@@ -73,12 +73,12 @@
             satisfy a <code>listRule</code>, 400 for unsatisfied <code>createRule</code> and 404 for
             unsatisfied <code>viewRule</code>, <code>updateRule</code> and <code>deleteRule</code>.
             <br />
-            All rules will return 403 in case they were "locked" (aka. admin only) and the request client is not
-            an admin.
+            All rules will return 403 in case they were "locked" (aka. superuser only) and the request client is
+            not a superuser.
         </p>
         <p>
-            The API Rules are ignored when the action is performed by an authorized admin (<strong
-                >admins can access everything</strong
+            The API Rules are ignored when the action is performed by an authorized superuser (<strong
+                >superusers can access everything</strong
             >)!
         </p>
     </div>
