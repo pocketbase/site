@@ -59,7 +59,7 @@
         </em>.
     </p>
     <p>
-        The default identify field is the <code>email</code> but you can configure any other unique field like
+        The default identity field is the <code>email</code> but you can configure any other unique field like
         "username" (it must have a UNIQUE index).
     </p>
 </div>

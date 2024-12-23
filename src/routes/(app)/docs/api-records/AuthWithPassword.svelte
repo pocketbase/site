@@ -49,7 +49,7 @@
 <Accordion single title="Auth with password">
     <div class="content m-b-sm">
         <p>
-            Authenticate a single auth record by combination of a password and a unique identify field (e.g.
+            Authenticate a single auth record by combination of a password and a unique identity field (e.g.
             email).
         </p>
     </div>
