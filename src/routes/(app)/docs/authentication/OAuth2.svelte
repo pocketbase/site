@@ -96,7 +96,7 @@
                     console.log(pb.authStore.token);
                     console.log(pb.authStore.record.id);
 
-                    // "logout" the last authenticated model
+                    // "logout" the last authenticated account
                     pb.authStore.clear();
                 `}
                 dart={`
@@ -123,7 +123,7 @@
                     print(pb.authStore.token);
                     print(pb.authStore.record.id);
 
-                    // "logout" the last authenticated model
+                    // "logout" the last authenticated account
                     pb.authStore.clear();
                 `}
             />

@@ -70,7 +70,7 @@
             // after the above you can also access the auth data from the authStore
             console.log(pb.authStore.isValid);
             console.log(pb.authStore.token);
-            console.log(pb.authStore.model.id);
+            console.log(pb.authStore.record.id);
 
             // "logout" the last authenticated account
             pb.authStore.clear();
@@ -90,7 +90,7 @@
             // after the above you can also access the auth data from the authStore
             print(pb.authStore.isValid);
             print(pb.authStore.token);
-            print(pb.authStore.model.id);
+            print(pb.authStore.record.id);
 
             // "logout" the last authenticated account
             pb.authStore.clear();
