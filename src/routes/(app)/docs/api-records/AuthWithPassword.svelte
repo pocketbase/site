@@ -72,7 +72,7 @@
             console.log(pb.authStore.token);
             console.log(pb.authStore.record.id);
 
-            // "logout" the last authenticated account
+            // "logout" the last authenticated record
             pb.authStore.clear();
         `}
         dart={`
@@ -92,7 +92,7 @@
             print(pb.authStore.token);
             print(pb.authStore.record.id);
 
-            // "logout" the last authenticated account
+            // "logout" the last authenticated record
             pb.authStore.clear();
         `}
     />
