@@ -18,7 +18,7 @@
     The jobs scheduler is started automatically on app <code>serve</code>, so all you have to do is register a
     handler with
     <a href="{import.meta.env.PB_GODOC_URL}/tools/cron#Cron.Add" target="_blank" rel="noopener noreferrer">
-        <code>app.Cron().Add(name, cronExpr, handler)</code>
+        <code>app.Cron().Add(id, cronExpr, handler)</code>
     </a>
     or
     <a
@@ -26,16 +26,19 @@
         target="_blank"
         rel="noopener noreferrer"
     >
-        <code>app.Cron().MustAdd(name, cronExpr, handler)</code>
+        <code>app.Cron().MustAdd(id, cronExpr, handler)</code>
     </a>
     (<em>the latter panic if the cron expression is not valid</em>).
 </p>
 
 <p>Each scheduled job runs in its own goroutine and must have:</p>
 <ul>
-    <li>name - identifier for the scheduled job; could be used to replace or remove an existing job</li>
-    <li>
-        cron expression like <code>0 0 * * *</code> (
+    <li class="m-0">
+        <strong>id</strong> - identifier for the scheduled job; could be used to replace or remove an existing
+        job
+    </li>
+    <li class="m-0">
+        <strong>cron expression</strong> - e.g. <code>0 0 * * *</code> (
         <em>
             supports numeric list, steps, ranges or
             <span
@@ -49,15 +52,10 @@
             </span>
         </em>)
     </li>
-    <li>handler - the function that will be executed everytime when the job runs</li>
+    <li class="m-0">
+        <strong>handler</strong> - the function that will be executed everytime when the job runs
+    </li>
 </ul>
-
-<p>
-    To remove already registered cron job you can call
-    <a href="{import.meta.env.PB_GODOC_URL}/tools/cron#Cron.Remove" target="_blank" rel="noopener noreferrer">
-        <code>app.Cron().Remove(name)</code>
-    </a>
-</p>
 
 <p>Here is one minimal example:</p>
 <CodeBlock
@@ -86,3 +84,33 @@
         }
     `}
 />
+
+<p>
+    To remove already registered cron job you can call
+    <a href="{import.meta.env.PB_GODOC_URL}/tools/cron#Cron.Remove" target="_blank" rel="noopener noreferrer">
+        <code>app.Cron().Remove(id)</code>
+    </a>
+</p>
+
+<p>
+    All registered app level cron jobs can be also previewed and triggered from the
+    <em>{"Dashboard > Settings > Crons"}</em> section.
+</p>
+
+<div class="alert alert-warning">
+    <div class="icon">
+        <i class="ri-error-warning-line" />
+    </div>
+    <div class="content">
+        <p>
+            Keep in mind that the <code>app.Cron()</code> is also used for running the system scheduled jobs
+            like the logs cleanup or auto backups (the jobs id is in the format <code>__pb*__</code>) and
+            replacing these system jobs or calling <code>RemoveAll()</code>/<code>Stop()</code> could have unintended
+            side-effects.
+        </p>
+        <p>
+            If you want more advanced control you can initialize your own cron instance independent from the
+            application via <code>cron.New()</code>.
+        </p>
+    </div>
+</div>

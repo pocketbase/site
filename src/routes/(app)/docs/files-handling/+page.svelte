@@ -26,6 +26,11 @@
             Each uploaded file will be stored with the original filename (sanitized) and suffixed with a
             random part (usually 10 chararacters). For example <code>test_52iwbgds7l.png</code>.
         </p>
+        <p>
+            The max allowed size of a single file currenty is limited to ~8GB (<small
+                >2<sup>53</sup>-1 bytes</small
+            >).
+        </p>
     </div>
 </div>
 

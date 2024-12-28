@@ -185,6 +185,7 @@
 <HeadingLink title="@ macros" tag="h5" />
 <p>The following datetime macros are available and can be used as part of the filter expression:</p>
 <CodeBlock
+    class="m-b-0"
     language="html"
     content={`
         // all macros are UTC based
@@ -196,6 +197,8 @@
         @day        - @now day number
         @month      - @now month number
         @year       - @now year number
+        @yesterday  - the yesterday datetime relative to @now as string
+        @tomorrow   - the tomorrow datetime relative to @now as string
         @todayStart - beginning of the current day as datetime string
         @todayEnd   - end of the current day as datetime string
         @monthStart - beginning of the current month as datetime string
@@ -214,6 +217,7 @@
     disallows changing a "role" field:
 </p>
 <CodeBlock
+    class="m-b-0"
     content={`
         @request.body.role:isset = false
     `}
@@ -235,6 +239,7 @@
     Could be used with both the collection schema fields and the <code>@request.body.*</code> fields. For example:
 </p>
 <CodeBlock
+    class="m-b-0"
     content={`
         // check example submitted data: {"someSelectField": ["val1", "val2"]}
         @request.body.someSelectField:length > 1
@@ -259,6 +264,7 @@
     type fields. It could be used to apply a condition on each item from the field array. For example:
 </p>
 <CodeBlock
+    class="m-b-0"
     content={`
         // check if all submitted select options contain the "create" text
         @request.body.someSelectField:each ~ "create"
@@ -273,6 +279,30 @@
         new uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
+    </small>
+</p>
+
+<HeadingLink title=":lower modifier" tag="h5" />
+<p>
+    The <code>:lower</code> field modifier could be used to perform lower-case string comparisons. For example:
+</p>
+<CodeBlock
+    class="m-b-0"
+    content={`
+        // check if the submitted lower-cased body "title" field is equal to "test" ("Test", "tEsT", etc.)
+        @request.body.title:lower = "test"
+
+        // match existing records with lower-cased "title" equal to "test" ("Test", "tEsT", etc.)
+        title:lower ~ "test"
+    `}
+/>
+<p>
+    <small class="txt-hint">
+        Under the hood it uses the
+        <a href="https://www.sqlite.org/lang_corefunc.html#lower" target="_blank" rel="noopener noreferrer">
+            SQLite <code>LOWER</code> scalar function
+        </a>
+        and by default works only for ASCII characters, unless the ICU extension is loaded.
     </small>
 </p>
 

@@ -82,8 +82,9 @@
         record.setTokenKey(key)  // alias for record.set("tokenKey", key)
         record.refreshTokenKey() // alias for record.set("tokenKey:autogenerate", "")
 
-        record.setPassword(pass) // alias for record.set("password", pass)
         record.validatePassword(pass)
+        record.setPassword(pass)   // alias for record.set("password", pass)
+        record.setRandomPassword() // sets cryptographically random 30 characters string as password
     `}
 />
 

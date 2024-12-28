@@ -5,7 +5,7 @@
 
 <p>
     If you have tasks that need to be performed periodically, you could setup crontab-like jobs with
-    <code>cronAdd(name, expr, handler)</code>.
+    <code>cronAdd(id, expr, handler)</code>.
 </p>
 
 <p>
@@ -13,9 +13,12 @@
 </p>
 
 <ul>
-    <li>name - identifier for the scheduled job; could be used to replace or remove an existing job</li>
-    <li>
-        cron expression like <code>0 0 * * *</code> (
+    <li class="m-0">
+        <strong>id</strong> - identifier for the scheduled job; could be used to replace or remove an existing
+        job
+    </li>
+    <li class="m-0">
+        <strong>cron expression</strong> - e.g. <code>0 0 * * *</code> (
         <em>
             supports numeric list, steps, ranges or
             <span
@@ -24,7 +27,9 @@
             >
         </em>)
     </li>
-    <li>handler - the function that will be executed everytime when the job runs</li>
+    <li class="m-0">
+        <strong>handler</strong> - the function that will be executed everytime when the job runs
+    </li>
 </ul>
 
 <p>Here is an example:</p>
@@ -38,4 +43,9 @@
     `}
 />
 
-<p>To remove a single registered cron job you can call <code>cronRemove(name)</code>.</p>
+<p>To remove a single registered cron job you can call <code>cronRemove(id)</code>.</p>
+
+<p>
+    All registered app level cron jobs can be also previewed and triggered from the
+    <em>{"Dashboard > Settings > Crons"}</em> section.
+</p>

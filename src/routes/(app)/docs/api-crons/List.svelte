@@ -10,14 +10,20 @@
             body: `
               [
                 {
-                  "key": "pb_backup_20230519162514.zip",
-                  "modified": "2023-05-19 16:25:57.542Z",
-                  "size": 251316185
+                  "id": "__pbDBOptimize__",
+                  "expression": "0 0 * * *"
                 },
                 {
-                  "key": "pb_backup_20230518162514.zip",
-                  "modified": "2023-05-18 16:25:57.542Z",
-                  "size": 251314010
+                  "id": "__pbMFACleanup__",
+                  "expression": "0 * * * *"
+                },
+                {
+                  "id": "__pbOTPCleanup__",
+                  "expression": "0 * * * *"
+                },
+                {
+                  "id": "__pbLogsCleanup__",
+                  "expression": "0 */6 * * *"
                 }
               ]
             `,
@@ -57,9 +63,9 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single title="List backups">
+<Accordion single title="List cron jobs">
     <div class="content m-b-sm">
-        <p>Returns list with all available backup files.</p>
+        <p>Returns list with all registered app level cron jobs.</p>
         <p>Only superusers can perform this action.</p>
     </div>
 
@@ -73,7 +79,7 @@
 
             await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
-            const backups = await pb.backups.getFullList();
+            const jobs = await pb.crons.getFullList();
         `}
         dart={`
             import 'package:pocketbase/pocketbase.dart';
@@ -84,14 +90,14 @@
 
             await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
-            final backups = await pb.backups.getFullList();
+            final jobs = await pb.crons.getFullList();
         `}
     />
 
     <h6 class="m-b-xs">API details</h6>
     <div class="api-route alert alert-info">
         <strong class="label label-primary">GET</strong>
-        <div class="content">/api/backups</div>
+        <div class="content">/api/crons</div>
     </div>
 
     <div class="section-title">Query parameters</div>

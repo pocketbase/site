@@ -81,8 +81,9 @@
         record.SetTokenKey(key)  // alias for record.Set("tokenKey", key)
         record.RefreshTokenKey() // alias for record.Set("tokenKey:autogenerate", "")
 
-        record.SetPassword(pass) // alias for record.Set("password", pass)
         record.ValidatePassword(pass)
+        record.SetPassword(pass)   // alias for record.Set("password", pass)
+        record.SetRandomPassword() // sets cryptographically random 30 characters string as password
     `}
 />
 

@@ -67,6 +67,10 @@ export const webApiLinks = [
                 title: "API Logs",
             },
             {
+                href: "/docs/api-crons",
+                title: "API Crons",
+            },
+            {
                 href: "/docs/api-backups",
                 title: "API Backups",
             },

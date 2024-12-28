@@ -2,35 +2,11 @@
     import Accordion from "@/components/Accordion.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import CodeTabs from "@/components/CodeTabs.svelte";
-    import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     const responses = [
         {
-            code: 200,
-            body: `
-              [
-                {
-                  "key": "pb_backup_20230519162514.zip",
-                  "modified": "2023-05-19 16:25:57.542Z",
-                  "size": 251316185
-                },
-                {
-                  "key": "pb_backup_20230518162514.zip",
-                  "modified": "2023-05-18 16:25:57.542Z",
-                  "size": 251314010
-                }
-              ]
-            `,
-        },
-        {
-            code: 400,
-            body: `
-                {
-                  "code": 400,
-                  "message": "Failed to load backups filesystem.",
-                  "data": {}
-                }
-            `,
+            code: 204,
+            body: `null`,
         },
         {
             code: 401,
@@ -47,7 +23,17 @@
             body: `
                 {
                   "code": 403,
-                  "message": "Only superusers can perform this action.",
+                  "message": "The authorized record is not allowed to perform this action.",
+                  "data": {}
+                }
+            `,
+        },
+        {
+            code: 404,
+            body: `
+                {
+                  "code": 404,
+                  "message": "Missing or invalid cron job.",
                   "data": {}
                 }
             `,
@@ -57,9 +43,9 @@
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single title="List backups">
+<Accordion single title="Run cron job">
     <div class="content m-b-sm">
-        <p>Returns list with all available backup files.</p>
+        <p>Triggers a single cron job by its id.</p>
         <p>Only superusers can perform this action.</p>
     </div>
 
@@ -73,7 +59,7 @@
 
             await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
-            const backups = await pb.backups.getFullList();
+            await pb.crons.run('__pbLogsCleanup__');
         `}
         dart={`
             import 'package:pocketbase/pocketbase.dart';
@@ -84,17 +70,18 @@
 
             await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
-            final backups = await pb.backups.getFullList();
+            await pb.crons.run('__pbLogsCleanup__');
         `}
     />
 
     <h6 class="m-b-xs">API details</h6>
-    <div class="api-route alert alert-info">
-        <strong class="label label-primary">GET</strong>
-        <div class="content">/api/backups</div>
+    <div class="api-route alert alert-success">
+        <strong class="label label-primary">POST</strong>
+        <div class="content">/api/crons/<code>jobId</code></div>
+        <small class="txt-hint auth-header">Requires <code>Authorization:TOKEN</code></small>
     </div>
 
-    <div class="section-title">Query parameters</div>
+    <div class="section-title">Path parameters</div>
     <table class="table-compact table-border m-b-base">
         <thead>
             <tr>
@@ -104,7 +91,13 @@
             </tr>
         </thead>
         <tbody>
-            <FieldsQueryParam />
+            <tr>
+                <td>jobId</td>
+                <td>
+                    <span class="label">String</span>
+                </td>
+                <td>The identifier of the cron job to run.</td>
+            </tr>
         </tbody>
     </table>
 
