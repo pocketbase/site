@@ -331,6 +331,8 @@
 
         import (
             "github.com/pocketbase/pocketbase/core"
+            "github.com/pocketbase/pocketbase/tools/types"
+
             m "github.com/pocketbase/pocketbase/migrations"
         )
 
@@ -350,7 +352,7 @@
                         Required: true,
                         Max:      100,
                     },
-                    &core.UrlField{
+                    &core.URLField{
                         Name:        "website",
                         Presentable: true,
                     },
