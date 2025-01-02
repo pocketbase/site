@@ -52,7 +52,7 @@
         <p>
             If you want more advanced control you can initialize your own store independent from the
             application instance via
-            <code>store.New[T](nil)</code>.
+            <code>store.New[K, T](nil)</code>.
         </p>
     </div>
 </div>

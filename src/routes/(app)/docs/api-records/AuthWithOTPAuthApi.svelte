@@ -1,5 +1,7 @@
 <script>
     import CodeBlock from "@/components/CodeBlock.svelte";
+    import ExpandQueryParam from "@/components/ExpandQueryParam.svelte";
+    import FieldsQueryParam from "@/components/FieldsQueryParam.svelte";
 
     let responseTab = 200;
     let responses = [];
@@ -50,6 +52,26 @@
     </div>
 </div>
 
+<div class="section-title">Path parameters</div>
+<table class="table-compact table-border m-b-base">
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th width="50%">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>collectionIdOrName</td>
+            <td>
+                <span class="label">String</span>
+            </td>
+            <td>ID or name of the auth collection.</td>
+        </tr>
+    </tbody>
+</table>
+
 <div class="section-title">Body Parameters</div>
 <table class="table-compact table-border m-b-base">
     <thead>
@@ -84,6 +106,21 @@
             </td>
             <td>The one-time password.</td>
         </tr>
+    </tbody>
+</table>
+
+<div class="section-title">Query parameters</div>
+<table class="table-compact table-border m-b-base">
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th width="60%">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ExpandQueryParam />
+        <FieldsQueryParam prefix="record." />
     </tbody>
 </table>
 

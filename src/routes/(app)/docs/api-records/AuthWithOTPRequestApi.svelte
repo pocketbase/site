@@ -51,6 +51,26 @@
     </div>
 </div>
 
+<div class="section-title">Path parameters</div>
+<table class="table-compact table-border m-b-base">
+    <thead>
+        <tr>
+            <th>Param</th>
+            <th>Type</th>
+            <th width="50%">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>collectionIdOrName</td>
+            <td>
+                <span class="label">String</span>
+            </td>
+            <td>ID or name of the auth collection.</td>
+        </tr>
+    </tbody>
+</table>
+
 <div class="section-title">Body Parameters</div>
 <table class="table-compact table-border m-b-base">
     <thead>
