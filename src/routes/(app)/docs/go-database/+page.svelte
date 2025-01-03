@@ -169,7 +169,7 @@
     <br />
     To add additional columns to an existing select query, you can call <code>AndSelect()</code>.
     <br />
-    To select distinct rows, you can call <code>Distinct()</code>.
+    To select distinct rows, you can call <code>Distinct(true)</code>.
 </p>
 <CodeBlock
     language="go"
@@ -177,7 +177,7 @@
         app.DB().
             Select("id", "avatar as image").
             AndSelect("(firstName || ' ' || lastName) as fullName").
-            Distinct()
+            Distinct(true)
             ...
     `}
 />

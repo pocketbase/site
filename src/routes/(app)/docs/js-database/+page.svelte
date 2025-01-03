@@ -164,7 +164,7 @@
     <br />
     To add additional columns to an existing select query, you can call <code>andSelect()</code>.
     <br />
-    To select distinct rows, you can call <code>distinct()</code>.
+    To select distinct rows, you can call <code>distinct(true)</code>.
 </p>
 <CodeBlock
     language="javascript"
@@ -172,7 +172,7 @@
         $app.db()
             .select("id", "avatar as image")
             .andSelect("(firstName || ' ' || lastName) as fullName")
-            .distinct()
+            .distinct(true)
             ...
     `}
 />
