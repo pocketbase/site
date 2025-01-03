@@ -363,6 +363,26 @@
 
 <header class="highlighted-title bg-warning-alt">
     <span class="label label-primary">optional</span>
+    <HeadingLink title="Set GOMEMLIMIT" tag="h5" />
+</header>
+<p>
+    If you are running in a memory constrained environment, defining the
+    <a href="https://pkg.go.dev/runtime#hdr-Environment_Variables" target="_blank" rel="noopener">
+        <code>GOMEMLIMIT</code>
+    </a>
+    environment variable could help preventing out-of-memory (OOM) termination of your process. It is a "soft limit"
+    meaning that the memory usage could still exceed it in some situations, but it will intructs the GC to be more
+    "aggressive" and run more often if needed. For example: <code>GOMEMLIMIT=512MiB</code>.
+</p>
+<p>
+    If after <code>GOMEMLIMIT</code> you are still experiencing OOM errors, you can try to enable swap
+    partionining (if not already) or open a
+    <a href={import.meta.env.PB_DISCUSSIONS_URL} target="_blank" rel="noopener">Q&A discussion</a>
+    with some steps to reproduce the error in case it is something that we can improve in PocketBase.
+</p>
+
+<header class="highlighted-title bg-warning-alt">
+    <span class="label label-primary">optional</span>
     <HeadingLink title="Enable settings encryption" tag="h5" />
 </header>
 <p class="txt-bold txt-hint">It is fine to ignore the below if you are not sure whether you need it.</p>
