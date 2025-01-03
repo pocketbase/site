@@ -371,12 +371,12 @@
         <code>GOMEMLIMIT</code>
     </a>
     environment variable could help preventing out-of-memory (OOM) termination of your process. It is a "soft limit"
-    meaning that the memory usage could still exceed it in some situations, but it will intructs the GC to be more
+    meaning that the memory usage could still exceed it in some situations, but it instructs the GC to be more
     "aggressive" and run more often if needed. For example: <code>GOMEMLIMIT=512MiB</code>.
 </p>
 <p>
     If after <code>GOMEMLIMIT</code> you are still experiencing OOM errors, you can try to enable swap
-    partionining (if not already) or open a
+    partitioning (if not already) or open a
     <a href={import.meta.env.PB_DISCUSSIONS_URL} target="_blank" rel="noopener">Q&A discussion</a>
     with some steps to reproduce the error in case it is something that we can improve in PocketBase.
 </p>
