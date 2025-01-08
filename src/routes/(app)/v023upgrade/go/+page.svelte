@@ -2228,7 +2228,7 @@
 <UpgradeTabs
     language="go"
     before={`
-        app.OnRecordBeforeDeleteRequest().Add(func(e *core.RecordDeleteEvent) error {
+        app.OnRecordAfterDeleteRequest().Add(func(e *core.RecordDeleteEvent) error {
             // ...
 
             return nil
