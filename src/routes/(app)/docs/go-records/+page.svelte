@@ -507,7 +507,7 @@
         }
 
         // expand the "author" and "categories" relations
-        err := app.ExpandRecord(record, []string{"author", "categories"}, nil)
+        errs := app.ExpandRecord(record, []string{"author", "categories"}, nil)
         if len(errs) > 0 {
             return fmt.Errorf("failed to expand: %v", errs)
         }
