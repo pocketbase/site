@@ -128,7 +128,7 @@
 
         ...
 
-        const createdRecord = await pb.collection('example').update('RECORD_ID'{
+        const createdRecord = await pb.collection('example').update('RECORD_ID', {
             "documents+": new File(["content 3..."], "file3.txt")
         });
     `}
