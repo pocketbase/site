@@ -1,9 +1,7 @@
 <script>
-    import HeadingLink from "@/components/HeadingLink.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
     import CodeTabs from "@/components/CodeTabs.svelte";
     import Accordion from "@/components/Accordion.svelte";
-    import Toc from "@/components/Toc.svelte";
 </script>
 
 <p>
@@ -15,7 +13,7 @@
     JSON APIs for listing, pagination, sorting, filtering, etc.
 </p>
 <p>
-    The access and filter controls to your data is usually done through the
+    The access and filter controls for your data is usually done through the
     <a href="/docs/api-rules-and-filters/">collection API rules</a>
     .
 </p>
@@ -186,9 +184,8 @@
         <p>
             In the future we could eventually provide official SSR support in terms of guides and middlewares
             for this use case but again - PocketBase wasn't designed with this in mind and you may want to
-            reevaluate the tech stack of your application and switch to a <a href="#web-apps-recommendation"
-                >traditional client-side SPA as mentioned earlier</a
-            > or use a different backend solution that might fit better with your use case.
+            reevaluate the tech stack of your application and switch to a traditional client-side SPA as
+            mentioned earlier or use a different backend solution that might fit better with your use case.
         </p>
     </Accordion>
 
