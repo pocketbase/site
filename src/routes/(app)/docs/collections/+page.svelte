@@ -18,14 +18,14 @@
 </p>
 <p>
     You can manage your <strong>collections</strong> from the Dashboard, with the Web APIs using the
-    <a href="/docs/client-side-sdks/">client-side SDKs</a>
+    <a href="/docs/how-to-use/">client-side SDKs</a>
     (<em>superusers only</em>) or programmatically via the
     <a href="/docs/go-migrations/">Go</a>/<a href="/docs/js-migrations/">JavaScript</a>
     migrations.
 </p>
 <p>
     Similarly, you can manage your <strong>records</strong> from the Dashboard, with the Web APIs using the
-    <a href="/docs/client-side-sdks/">client-side SDKs</a>
+    <a href="/docs/how-to-use/">client-side SDKs</a>
     or programmatically via the
     <a href="/docs/go-records/">Go</a>/<a href="/docs/js-records/">JavaScript</a>
     Record operations.

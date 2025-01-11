@@ -5,16 +5,16 @@ export const introductionLinks = [
         icon: "ri-home-2-line",
         children: [
             {
+                href: "/docs/how-to-use",
+                title: "How to use PocketBase",
+            },
+            {
                 href: "/docs/collections",
                 title: "Collections",
             },
             {
                 href: "/docs/api-rules-and-filters",
                 title: "API rules and filters",
-            },
-            {
-                href: "/docs/client-side-sdks",
-                title: "Client-side SDKs",
             },
             {
                 href: "/docs/authentication",
