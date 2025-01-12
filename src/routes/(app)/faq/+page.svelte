@@ -140,7 +140,20 @@
                 collection settings.
             </p>
 
-            <h5>6. Can I use database X?</h5>
+            <h5>6. How to import and export CSV or JSON?</h5>
+            <p>
+              PocketBase doesn't currently offer a built-in import/export endpoint or UI.
+              Programmatic handling using Go or JS is recommended.
+              A client-side UI option for exports is planned but is a low priority.
+              See <a href="https://github.com/pocketbase/pocketbase/issues/48" target="_blank"
+              rel="noreferrer noopener">#48</a> for more.
+              <br />
+              For CSV and JSON import functionality, consider the community-developed tool,
+              <a href="https://github.com/michal-kapala/pocketbase-import" target="_blank" rel="noreferrer
+              noopener">pocketbase-import</a>.
+            </p>
+
+            <h5>7. Can I use database X?</h5>
             <p>
                 No, at least not out of the box. PocketBase uses embedded SQLite (in WAL mode) and there are
                 no plans for supporting other databases.
@@ -154,7 +167,7 @@
                 <a href="https://litestream.io/" target="_blank" rel="noreferrer noopener">Litestream</a>.
             </p>
 
-            <h5>7. Can I donate?</h5>
+            <h5>8. Can I donate?</h5>
             <p>
                 No. In the past donations were welcomed (I'm very grateful for everyone who contributed) but
                 financial contributions from individuals usually comes with some "unspoken expectations" and
@@ -166,7 +179,7 @@
                 <em>support at pocketbase.io</em> but only if there are no strings attached.
             </p>
 
-            <h5>8. Where can I find help for my PocketBase application?</h5>
+            <h5>9. Where can I find help for my PocketBase application?</h5>
             <p>
                 You could always look for help in our public
                 <a href={import.meta.env.PB_DISCUSSIONS_URL} target="_blank" rel="noreferrer noopener"
