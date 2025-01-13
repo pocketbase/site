@@ -154,7 +154,19 @@
                 <a href="https://litestream.io/" target="_blank" rel="noreferrer noopener">Litestream</a>.
             </p>
 
-            <h5>7. Can I donate?</h5>
+            <h5>7. How to import/export my data in/from PocketBase?</h5>
+            <p>
+                We don't have builtin data import/export helpers at the moment but you can explore some of the
+                suggestions mentioned in
+                <a
+                    class="txt-bold"
+                    href="https://github.com/pocketbase/pocketbase/discussions/6287"
+                    target="_blank"
+                    rel="noopener noreferrer">discussions#6287</a
+                >.
+            </p>
+
+            <h5>8. Can I donate?</h5>
             <p>
                 No. In the past donations were welcomed (I'm very grateful for everyone who contributed) but
                 financial contributions from individuals usually comes with some "unspoken expectations" and
@@ -166,7 +178,7 @@
                 <em>support at pocketbase.io</em> but only if there are no strings attached.
             </p>
 
-            <h5>8. Where can I find help for my PocketBase application?</h5>
+            <h5>9. Where can I find help for my PocketBase application?</h5>
             <p>
                 You could always look for help in our public
                 <a href={import.meta.env.PB_DISCUSSIONS_URL} target="_blank" rel="noreferrer noopener"
