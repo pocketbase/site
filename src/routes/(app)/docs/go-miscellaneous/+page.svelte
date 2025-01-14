@@ -101,6 +101,6 @@
             return err
         }
 
-        decrypted := security.Descrypt(encrypted, key) // []byte("test")
+        decrypted := security.Decrypt(encrypted, key) // []byte("test")
     `}
 />
