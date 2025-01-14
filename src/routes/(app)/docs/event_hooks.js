@@ -945,6 +945,7 @@ export default [
                         // e.app
                         // e.mailer
                         // e.message
+                        // e.record
                         // e.meta
 
                         // ex. change the mail subject
@@ -970,6 +971,7 @@ export default [
                             // e.App
                             // e.Mailer
                             // e.Message
+                            // e.Record
                             // e.Meta
 
                             // ex. change the mail subject
@@ -998,6 +1000,7 @@ export default [
                         // e.app
                         // e.mailer
                         // e.message
+                        // e.record
                         // e.meta
 
                         // ex. change the mail subject
@@ -1023,6 +1026,7 @@ export default [
                             // e.App
                             // e.Mailer
                             // e.Message
+                            // e.Record
                             // e.Meta
 
                             // ex. change the mail subject
@@ -1051,6 +1055,7 @@ export default [
                         // e.app
                         // e.mailer
                         // e.message
+                        // e.record
                         // e.meta
 
                         // ex. change the mail subject
@@ -1076,6 +1081,7 @@ export default [
                             // e.App
                             // e.Mailer
                             // e.Message
+                            // e.Record
                             // e.Meta
 
                             // ex. change the mail subject
@@ -1104,6 +1110,7 @@ export default [
                         // e.app
                         // e.mailer
                         // e.message
+                        // e.record
                         // e.meta
 
                         // ex. change the mail subject
@@ -1129,6 +1136,7 @@ export default [
                             // e.App
                             // e.Mailer
                             // e.Message
+                            // e.Record
                             // e.Meta
 
                             // ex. change the mail subject
@@ -1157,6 +1165,7 @@ export default [
                         // e.app
                         // e.mailer
                         // e.message
+                        // e.record
                         // e.meta
 
                         // ex. change the mail subject
@@ -1182,6 +1191,7 @@ export default [
                             // e.App
                             // e.Mailer
                             // e.Message
+                            // e.Record
                             // e.Meta
 
                             // ex. change the mail subject
