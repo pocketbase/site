@@ -996,7 +996,7 @@ export default [
                     ${taggedHook()}
                 `,
                 js: `
-                    onMailerBeforeRecordResetPasswordSend((e) => {
+                    onMailerRecordPasswordResetSend((e) => {
                         // e.app
                         // e.mailer
                         // e.message
