@@ -272,7 +272,7 @@
                 {
                   uri: "...",
                   type: "...",
-                  name: "...",
+                  name: "..."
                 }
             `}
         />
@@ -301,7 +301,7 @@
 
                 ...
 
-                await pb.collection(example).create(data)
+                await pb.collection('example').create(data)
             `}
         />
     </Accordion>
