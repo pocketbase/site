@@ -104,7 +104,7 @@
     <a
         href="https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html#-reference-path-"
         target="_blank"
-        rel="noopener">reference tripple-slash directive</a
+        rel="noopener">reference triple-slash directive</a
     >
     at the top of your JS file:
 </p>

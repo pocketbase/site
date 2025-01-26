@@ -297,7 +297,7 @@
                 </li>
                 <li>
                     <code>fieldName<strong>-</strong></code>
-                    substracts/removes one or more values from the existing one.
+                    subtracts/removes one or more values from the existing one.
                 </li>
             </ul>
             <p>For example: <code>{`{"permissions+": "optionA", "roles-": ["staff", "editor"]}`}</code></p>
@@ -381,7 +381,7 @@
                 </li>
                 <li>
                     <code>fieldName<strong>-</strong></code>
-                    substracts/removes one or more ids from the existing one.
+                    subtracts/removes one or more ids from the existing one.
                 </li>
             </ul>
             <p>For example: <code>{`{"users+": "USER_ID", "categories-": ["CAT_ID1", "CAT_ID2"]}`}</code></p>

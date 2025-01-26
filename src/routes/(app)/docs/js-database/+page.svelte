@@ -132,7 +132,7 @@
 
 <HeadingLink title="Query builder" />
 <p>
-    Instead of writting plain SQLs, you can also compose SQL statements programmatically using the db query
+    Instead of writing plain SQLs, you can also compose SQL statements programmatically using the db query
     builder.
     <br />
     Every SQL keyword has a corresponding query building method. For example, <code>SELECT</code> corresponds

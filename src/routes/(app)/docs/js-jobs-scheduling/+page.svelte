@@ -28,7 +28,7 @@
         </em>)
     </li>
     <li class="m-0">
-        <strong>handler</strong> - the function that will be executed everytime when the job runs
+        <strong>handler</strong> - the function that will be executed every time when the job runs
     </li>
 </ul>
 
