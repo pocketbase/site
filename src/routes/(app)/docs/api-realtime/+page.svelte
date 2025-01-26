@@ -14,7 +14,7 @@
             code: 400,
             body: `
                 {
-                  "code": 400,
+                  "status": 400,
                   "message": "Something went wrong while processing your request.",
                   "data": {
                     "clientId": {
@@ -29,7 +29,7 @@
             code: 403,
             body: `
                 {
-                  "code": 403,
+                  "status": 403,
                   "message": "The current and the previous request authorization don't match.",
                   "data": {}
                 }
@@ -39,7 +39,7 @@
             code: 404,
             body: `
                 {
-                  "code": 404,
+                  "status": 404,
                   "message": "Missing or invalid client id.",
                   "data": {}
                 }

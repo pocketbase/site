@@ -18,7 +18,7 @@
             code: 400,
             body: `
                 {
-                  "code": 400,
+                  "status": 400,
                   "message": "Failed to generate file token.",
                   "data": {}
                 }

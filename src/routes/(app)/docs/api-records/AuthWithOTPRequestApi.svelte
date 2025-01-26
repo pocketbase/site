@@ -20,7 +20,7 @@
             code: 400,
             body: `
                 {
-                  "code": 400,
+                  "status": 400,
                   "message": "An error occurred while validating the submitted data.",
                   "data": {
                     "email": {
@@ -35,7 +35,7 @@
             code: 429,
             body: `
                 {
-                  "code": 429,
+                  "status": 429,
                   "message": "You've send too many OTP requests, please try again later.",
                   "data": {}
                 }

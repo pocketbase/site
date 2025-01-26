@@ -30,7 +30,7 @@
             code: 400,
             body: `
                 {
-                  "code": 400,
+                  "status": 400,
                   "message": "The request requires valid record authorization token to be set.",
                   "data": {
                     "duration": {
@@ -45,7 +45,7 @@
             code: 401,
             body: `
                 {
-                  "code": 401,
+                  "status": 401,
                   "message": "An error occurred while validating the submitted data.",
                   "data": {}
                 }
@@ -55,7 +55,7 @@
             code: 403,
             body: `
                 {
-                  "code": 403,
+                  "status": 403,
                   "message": "The authorized record model is not allowed to perform this action.",
                   "data": {}
                 }
@@ -65,7 +65,7 @@
             code: 404,
             body: `
                 {
-                  "code": 404,
+                  "status": 404,
                   "message": "The requested resource wasn't found.",
                   "data": {}
                 }

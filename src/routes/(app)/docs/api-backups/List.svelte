@@ -26,7 +26,7 @@
             code: 400,
             body: `
                 {
-                  "code": 400,
+                  "status": 400,
                   "message": "Failed to load backups filesystem.",
                   "data": {}
                 }
@@ -36,7 +36,7 @@
             code: 401,
             body: `
                 {
-                  "code": 401,
+                  "status": 401,
                   "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
@@ -46,7 +46,7 @@
             code: 403,
             body: `
                 {
-                  "code": 403,
+                  "status": 403,
                   "message": "Only superusers can perform this action.",
                   "data": {}
                 }

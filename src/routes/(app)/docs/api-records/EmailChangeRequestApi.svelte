@@ -13,7 +13,7 @@
             code: 400,
             body: `
                 {
-                  "code": 400,
+                  "status": 400,
                   "message": "An error occurred while validating the submitted data.",
                   "data": {
                     "newEmail": {
@@ -28,7 +28,7 @@
             code: 401,
             body: `
                 {
-                  "code": 401,
+                  "status": 401,
                   "message": "The request requires valid record authorization token to be set.",
                   "data": {}
                 }
@@ -38,7 +38,7 @@
             code: 403,
             body: `
                 {
-                  "code": 403,
+                  "status": 403,
                   "message": "The authorized record model is not allowed to perform this action.",
                   "data": {}
                 }

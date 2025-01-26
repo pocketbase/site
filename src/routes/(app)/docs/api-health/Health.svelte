@@ -8,7 +8,7 @@
             code: 200,
             body: `
                 {
-                  "code": 200,
+                  "status": 200,
                   "message": "API is healthy.",
                   "data": {
                     "canBackup": false

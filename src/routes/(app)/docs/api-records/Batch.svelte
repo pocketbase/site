@@ -67,7 +67,7 @@
             code: 403,
             body: `
                 {
-                  "code": 403,
+                  "status": 403,
                   "message": "Batch requests are not allowed.",
                   "data": {}
                 }

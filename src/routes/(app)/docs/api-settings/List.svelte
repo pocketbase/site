@@ -97,7 +97,7 @@
             code: 401,
             body: `
                 {
-                  "code": 401,
+                  "status": 401,
                   "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
@@ -107,7 +107,7 @@
             code: 403,
             body: `
                 {
-                  "code": 403,
+                  "status": 403,
                   "message": "The authorized record is not allowed to perform this action.",
                   "data": {}
                 }

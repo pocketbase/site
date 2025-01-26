@@ -12,7 +12,7 @@
             code: 400,
             body: `
             {
-              "code": 400,
+              "status": 400,
               "message": "Failed to initialize the S3 storage. Raw error:...",
               "data": {}
             }
@@ -22,7 +22,7 @@
             code: 401,
             body: `
                 {
-                  "code": 401,
+                  "status": 401,
                   "message": "The request requires valid record authorization token.",
                   "data": {}
                 }
