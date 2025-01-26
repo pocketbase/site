@@ -40,15 +40,15 @@
         func main() {
             app := pocketbase.New()
 
-            app.OnRecordCreateRequest("users").BindFunc(func(e *core.RecordCreateEvent) error {
+            app.OnRecordCreateRequest("users").BindFunc(func(e *core.RecordRequestEvent) error {
                 if err := e.Next(); err != nil {
                     return err
                 }
 
                 message := &mailer.Message{
                     From: mail.Address{
-                        Address: app.Settings().Meta.SenderAddress,
-                        Name:    app.Settings().Meta.SenderName,
+                        Address: e.App.Settings().Meta.SenderAddress,
+                        Name:    e.App.Settings().Meta.SenderName,
                     },
                     To:      []mail.Address{{Address: e.Record.Email()}},
                     Subject: "YOUR_SUBJECT...",
@@ -56,7 +56,7 @@
                     // bcc, cc, attachments and custom headers are also supported...
                 }
 
-                return app.NewMailClient().Send(message)
+                return e.App.NewMailClient().Send(message)
             })
 
             if err := app.Start(); err != nil {
