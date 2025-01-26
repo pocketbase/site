@@ -44,12 +44,12 @@
 <HeadingLink title="Path parameters and matching rules" tag="h5" />
 <p>
     Because PocketBase routing is based on top of the Go standard router mux, we follow the same pattern
-    matching rules. Below you could find a short overfiew but for more details please refer to
+    matching rules. Below you could find a short overview but for more details please refer to
     <!-- prettier-ignore -->
     <a href="https://pkg.go.dev/net/http#ServeMux" target="_blank" rel="noopener noreferrer"><code>net/http.ServeMux</code></a>.
 </p>
 <p>
-    In geneneral, a route pattern looks like <code>[METHOD ][HOST]/[PATH]</code>.
+    In general, a route pattern looks like <code>[METHOD ][HOST]/[PATH]</code>.
 </p>
 <p>
     Route paths can include parameters in the format <code>{`{paramName}`}</code>.
@@ -181,7 +181,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        // retrieve the uploaded files and load the finded multipart data as ready to use []*filesystem.File
+        // retrieve the uploaded files and parse the found multipart data into a ready-to-use []*filesystem.File
         let files = e.findUploadedFiles("document")
 
         // or retrieve the raw single multipart/form-data file and header
@@ -523,7 +523,7 @@
     <a href="/jsvm/functions/_apis.recordAuthResponse.html" target="_blank" rel="noopener noreferrer">
         <code>$apis.recordAuthResponse()</code>
     </a>
-    writes standardised JSON record auth response (aka. token + record data) into the specified request body. Could
+    writes standardized JSON record auth response (aka. token + record data) into the specified request body. Could
     be used as a return result from a custom auth route.
 </p>
 <!-- prettier-ignore -->

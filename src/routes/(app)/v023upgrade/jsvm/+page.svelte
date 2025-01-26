@@ -293,9 +293,9 @@
 />
 
 <UpgradeTabs
-    before={`$app.dao().suggestUniqueAuthRecordUsername(ollectionNameOrId, baseUsername, [excludeIds...])`}
+    before={`$app.dao().suggestUniqueAuthRecordUsername(collectionNameOrId, baseUsername, [excludeIds...])`}
     after={`
-        // The "username" field is no longer required and has no special meaning. As a workaound you can use something like:
+        // The "username" field is no longer required and has no special meaning. As a workaround you can use something like:
         function suggestUniqueAuthRecordUsername(
           collectionModelOrIdentifier,
           baseUsername,
@@ -807,7 +807,7 @@
 <HeadingLink title="Routing changes" />
 
 <p>
-    PocketBase v0.23.0 ships with a new router built on top of the standarad
+    PocketBase v0.23.0 ships with a new router built on top of the standard
     <a href="https://go.dev/blog/routing-enhancements" target="_blank" rel="noopener noreferrer">
         Go 1.22 mux enhancements
     </a>.
@@ -849,7 +849,7 @@
     </li>
 </ul>
 
-<p class="txt-bold">Below you can find a short comparision table with the new routing interface:</p>
+<p class="txt-bold">Below you can find a short comparison table with the new routing interface:</p>
 
 <HeadingLink tag="h6" title="Route registration" />
 <UpgradeTabs
@@ -1231,7 +1231,7 @@
         })
     `}
     after={`
-        // note: onModelCreate is available if you are targetting non-Record/Collection models
+        // note: onModelCreate is available if you are targeting non-Record/Collection models
         onRecordCreate((e) => {
             // e.record ...
 
@@ -1248,7 +1248,7 @@
         })
     `}
     after={`
-        // note: onModelAfterCreateSuccess is available if you are targetting non-Record/Collection models
+        // note: onModelAfterCreateSuccess is available if you are targeting non-Record/Collection models
         onRecordAfterCreateSuccess((e) => {
             // e.record ...
 
@@ -1265,7 +1265,7 @@
         })
     `}
     after={`
-        // note: onModelUpdate is available if you are targetting non-Record/Collection models
+        // note: onModelUpdate is available if you are targeting non-Record/Collection models
         onRecordUpdate((e) => {
             // e.record ...
 
@@ -1282,7 +1282,7 @@
         })
     `}
     after={`
-        // note: onModelAfterUpdateSuccess is available if you are targetting non-Record/Collection models
+        // note: onModelAfterUpdateSuccess is available if you are targeting non-Record/Collection models
         onRecordAfterUpdateSuccess((e) => {
             // e.record ...
 
@@ -1299,7 +1299,7 @@
         })
     `}
     after={`
-        // note: onModelDelete is available if you are targetting non-Record/Collection models
+        // note: onModelDelete is available if you are targeting non-Record/Collection models
         onRecordDelete((e) => {
             // e.record ...
 
@@ -1316,7 +1316,7 @@
         })
     `}
     after={`
-        // note: onModelAfterDeleteSuccess is available if you are targetting non-Record/Collection models
+        // note: onModelAfterDeleteSuccess is available if you are targeting non-Record/Collection models
         onRecordAfterDeleteSuccess((e) => {
             // e.record ...
 

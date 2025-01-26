@@ -95,7 +95,7 @@
     language="javascript"
     content={`
         // missing default options, system fields like id, email, etc. are initialized automatically
-        // and will be merged with the provided configuratio
+        // and will be merged with the provided configuration
         let collection = new Collection({
             type:       "base", // base | auth | view
             name:       "example",

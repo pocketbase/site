@@ -258,7 +258,7 @@
             // This field is optional and autopopulated for "view" collections based on the viewQuery.
             fields (required|optional): Array<Field>
 
-            // The collection indexes and unique constriants.
+            // The collection indexes and unique constraints.
             // Note that "view" collections don't support indexes.
             indexes (optional): Array<string>
 

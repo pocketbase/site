@@ -327,9 +327,9 @@
 
 <UpgradeTabs
     language="go"
-    before={`App.Dao().SuggestUniqueAuthRecordUsername(ollectionNameOrId, baseUsername, [excludeIds...])`}
+    before={`App.Dao().SuggestUniqueAuthRecordUsername(collectionNameOrId, baseUsername, [excludeIds...])`}
     after={`
-        // The "username" field is no longer required and has no special meaning. As a workaound you can use something like:
+        // The "username" field is no longer required and has no special meaning. As a workaround you can use something like:
         func suggestUniqueAuthRecordUsername(
           collectionModelOrIdentifier,
           baseUsername,
@@ -1088,7 +1088,7 @@
 <HeadingLink title="Routing changes" />
 
 <p>
-    PocketBase v0.23.0 ships with a new router built on top of the standarad
+    PocketBase v0.23.0 ships with a new router built on top of the standard
     <a href="https://go.dev/blog/routing-enhancements" target="_blank" rel="noopener noreferrer">
         Go 1.22 mux enhancements
     </a>.
@@ -1130,7 +1130,7 @@
     </li>
 </ul>
 
-<p class="txt-bold">Below you can find a short comparision table with the new routing interface:</p>
+<p class="txt-bold">Below you can find a short comparison table with the new routing interface:</p>
 
 <HeadingLink tag="h6" title="Route registration" />
 <UpgradeTabs
@@ -1748,7 +1748,7 @@
         })
     `}
     after={`
-        // note: OnModelCreate is available if you are targetting non-Record/Collection models
+        // note: OnModelCreate is available if you are targeting non-Record/Collection models
         app.OnRecordCreate().BindFunc(func(e *core.RecordEvent) error {
             // e.Record ...
 
@@ -1768,7 +1768,7 @@
         })
     `}
     after={`
-        // note: OnModelAfterCreateSuccess is available if you are targetting non-Record/Collection models
+        // note: OnModelAfterCreateSuccess is available if you are targeting non-Record/Collection models
         app.OnRecordAfterCreateSuccess().BindFunc(func(e *core.RecordEvent) error {
             // e.Record ...
 
@@ -1788,7 +1788,7 @@
         })
     `}
     after={`
-        // note: OnModelUpdate is available if you are targetting non-Record/Collection models
+        // note: OnModelUpdate is available if you are targeting non-Record/Collection models
         app.OnRecordUpdate().BindFunc(func(e *core.RecordEvent) error {
             // e.Record ...
 
@@ -1808,7 +1808,7 @@
         })
     `}
     after={`
-        // note: OnModelAfterUpdateSuccess is available if you are targetting non-Record/Collection models
+        // note: OnModelAfterUpdateSuccess is available if you are targeting non-Record/Collection models
         app.OnRecordAfterUpdateSuccess().BindFunc(func(e *core.RecordEvent) error {
             // e.Record ...
 
@@ -1828,7 +1828,7 @@
         })
     `}
     after={`
-        // note: OnModelDelete is available if you are targetting non-Record/Collection models
+        // note: OnModelDelete is available if you are targeting non-Record/Collection models
         app.OnRecordBeforeDelete().BindFunc(func(e *core.RecordEvent) error {
             // e.Record ...
 
@@ -1848,7 +1848,7 @@
         })
     `}
     after={`
-        // note: OnModelAfterDeleteSuccess is available if you are targetting non-Record/Collection models
+        // note: OnModelAfterDeleteSuccess is available if you are targeting non-Record/Collection models
         app.OnRecordAfterDeleteSuccess().BindFunc(func(e *core.RecordEvent) error {
             // e.Record ...
 

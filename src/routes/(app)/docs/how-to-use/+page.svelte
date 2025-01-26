@@ -276,7 +276,7 @@
                 }
             `}
         />
-        <p>Or in other words, you may have to apply a conditionional handling similar to:</p>
+        <p>Or in other words, you may have to apply a conditional handling similar to:</p>
         <CodeBlock
             language="javascript"
             content={`

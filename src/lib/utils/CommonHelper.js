@@ -87,7 +87,7 @@ export default class CommonHelper {
 
     /**
      * Checks whether `arr` is an object array where the first element has `keys`.
-     * NB! Empty arrays are considered thruethfull.
+     * NB! Empty arrays are considered truthful.
      *
      * @param  {Array}        arr
      * @param  {String|Array} keys
@@ -145,7 +145,7 @@ export default class CommonHelper {
     }
 
     /**
-     * Removes single element from array by loosely comparying values.
+     * Removes single element from array by loosely comparing values.
      *
      * @param {Array} arr
      * @param {Mixed} value
@@ -278,7 +278,7 @@ export default class CommonHelper {
      */
     static getNestedVal(data, path, defaultVal = null, delimiter = ".") {
         let result = data || {};
-        let parts  = path.split(delimiter);
+        let parts = path.split(delimiter);
 
         for (const part of parts) {
             if (
@@ -313,8 +313,8 @@ export default class CommonHelper {
             return
         }
 
-        let result   = data;
-        let parts    = path.split(delimiter);
+        let result = data;
+        let parts = path.split(delimiter);
         let lastPart = parts.pop();
 
         for (const part of parts) {
@@ -346,8 +346,8 @@ export default class CommonHelper {
      * @param  {String}       delimiter
      */
     static deleteByPath(data, path, delimiter = ".") {
-        let result   = data || {};
-        let parts    = path.split(delimiter);
+        let result = data || {};
+        let parts = path.split(delimiter);
         let lastPart = parts.pop();
 
         for (const part of parts) {

@@ -107,12 +107,12 @@
 <HeadingLink title="Path parameters and matching rules" tag="h5" />
 <p>
     Because PocketBase routing is based on top of the Go standard router mux, we follow the same pattern
-    matching rules. Below you could find a short overfiew but for more details please refer to
+    matching rules. Below you could find a short overview but for more details please refer to
     <!-- prettier-ignore -->
     <a href="https://pkg.go.dev/net/http#ServeMux" target="_blank" rel="noopener noreferrer"><code>net/http.ServeMux</code></a>.
 </p>
 <p>
-    In geneneral, a route pattern looks like <code>[METHOD ][HOST]/[PATH]</code>
+    In general, a route pattern looks like <code>[METHOD ][HOST]/[PATH]</code>
     (<em
         >the METHOD prefix is added automatically when using the designated <code>GET()</code>,
         <code>POST()</code>, etc. methods)</em
@@ -250,7 +250,7 @@
 <CodeBlock
     language="go"
     content={`
-        // retrieve the uploaded files and load the finded multipart data as ready to use []*filesystem.File
+        // retrieve the uploaded files and parse the found multipart data into a ready-to-use []*filesystem.File
         files, err := e.FindUploadedFiles("document")
 
         // or retrieve the raw single multipart/form-data file and header
@@ -293,7 +293,7 @@
 </ul>
 <p class="txt-bold">
     NB! When binding structs make sure that they don't have public fields that shouldn't be bindable and it is
-    advisible such fields to be unexported or define a separate struct with just the safe bindable fields.
+    advisable such fields to be unexported or define a separate struct with just the safe bindable fields.
 </p>
 <!-- prettier-ignore -->
 <CodeBlock
@@ -912,7 +912,7 @@
         <code>apis.RecordAuthResponse()</code>
     </a>
 
-    writes standardised JSON record auth response (aka. token + record data) into the specified request body.
+    writes standardized JSON record auth response (aka. token + record data) into the specified request body.
     Could be used as a return result from a custom auth route.
 </p>
 <!-- prettier-ignore -->

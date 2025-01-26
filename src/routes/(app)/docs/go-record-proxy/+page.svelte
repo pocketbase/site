@@ -111,7 +111,7 @@
         // change the title
         article.SetTitle("Lorem ipsum...")
 
-        // persist the change while also triggerring the original record validations and hooks
+        // persist the change while also triggering the original record validations and hooks
         err = app.Save(article)
         if err != nil {
             return err

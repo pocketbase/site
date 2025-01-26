@@ -205,7 +205,7 @@
         records, err := app.FindRecordsByFilter(
             "articles",                                    // collection
             "status = 'public' && category = {:category}", // filter
-            "-publised",                                   // sort
+            "-published",                                   // sort
             10,                                            // limit
             0,                                             // offset
             dbx.Params{ "category": "news" },              // optional filter params
@@ -556,7 +556,7 @@
 
                     record, err := e.App.FindFirstRecordByData("articles", "slug", slug)
                     if err != nil {
-                        return e.NotFoundError("Missing or invallid slug", err)
+                        return e.NotFoundError("Missing or invalid slug", err)
                     }
 
                     info, err := e.RequestInfo()

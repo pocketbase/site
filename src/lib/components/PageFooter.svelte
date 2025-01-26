@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import tooltip from "@/actions/tooltip";
 
-    // build seperately for very basic spam protection
+    // build separately for very basic spam protection
     let supportEmail = "support";
     onMount(() => {
         setTimeout(() => {

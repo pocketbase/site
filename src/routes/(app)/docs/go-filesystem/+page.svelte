@@ -142,7 +142,7 @@
 </ul>
 <p>
     Most users rarely will have to use the above methods directly because for collection records the file
-    persistance is handled transparently when saving the record model (it will also perform size and MIME type
+    persistence is handled transparently when saving the record model (it will also perform size and MIME type
     validation based on the collection <code>file</code> field options). For example:
 </p>
 <CodeBlock

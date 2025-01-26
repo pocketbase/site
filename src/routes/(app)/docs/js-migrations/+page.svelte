@@ -16,8 +16,8 @@
     in a transaction on <code>serve</code> (or on <code>migrate up</code>).
 </p>
 <p>
-    The generated migrations are safe to be commited to version control and can be shared with your other team
-    members.
+    The generated migrations are safe to be committed to version control and can be shared with your other
+    team members.
 </p>
 
 <Toc />
