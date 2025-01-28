@@ -565,7 +565,7 @@
     </li>
     <li>
         ensures that the emails of the auth record and its expanded auth relations are visible only for the
-        current logged admin, record owner or record with manage access
+        current logged superuser, record owner or record with manage access
     </li>
 </ul>
 <p>These helpers are also responsible for triggering the <code>onRecordEnrich</code> hook events.</p>

@@ -10,8 +10,8 @@
             code: 200,
             body: `
                 {
-                  "@collectionId": "a98f514eb05f454",
-                  "@collectionName": "demo",
+                  "collectionId": "a98f514eb05f454",
+                  "collectionName": "demo",
                   "id": "ae40239d2bc4477",
                   "updated": "2022-06-25 11:03:50.052",
                   "created": "2022-06-25 11:03:35.163",
@@ -166,8 +166,8 @@
                 <td>
                     Old auth record password.
                     <br />
-                    This field is required only when changing the record password. Admins and auth records with
-                    "Manage" access can skip this field.
+                    This field is required only when changing the record password. Superusers and auth records
+                    with "Manage" access can skip this field.
                 </td>
             </tr>
             <tr>

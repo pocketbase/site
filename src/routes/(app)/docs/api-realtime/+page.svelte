@@ -93,7 +93,7 @@
             created client ID.
         </p>
         <p class="txt-hint">
-            <strong>NB!</strong> The user/admin authorization happens during the first
+            <strong>NB!</strong> The user/superuser authorization happens during the first
             <a href="/docs/api-realtime#set-subscriptions">Set subscriptions</a>
             call.
         </p>
@@ -114,7 +114,7 @@
             <p>Sets new active client's subscriptions (and auto unsubscribes from the previous ones).</p>
             <p>
                 If <code>Authorization</code> header is set, will authorize the client SSE connection with the
-                associated user or admin.
+                associated user or superuser.
             </p>
         </div>
 

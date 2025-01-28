@@ -171,7 +171,7 @@
                     TestAppFactory:  setupTestApp,
                 },
                 {
-                    Name:   "try as authenticated admin",
+                    Name:   "try as authenticated superuser",
                     Method: http.MethodGet,
                     URL:    "/my/hello",
                     Headers: map[string]string{

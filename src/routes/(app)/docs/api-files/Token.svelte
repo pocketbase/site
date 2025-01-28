@@ -34,8 +34,8 @@
             <strong>protected file(s)</strong>.
         </p>
         <p>
-            The client must be admin or auth record authenticated (aka. have regular authorization token sent
-            with the request).
+            The client must be superuser or auth record authenticated (aka. have regular authorization token
+            sent with the request).
         </p>
     </div>
 

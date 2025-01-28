@@ -111,7 +111,7 @@
                     <span class="label">String</span>
                 </td>
                 <td valign="top">
-                    Admin <strong>file token</strong> for granting access to the
+                    Superuser <strong>file token</strong> for granting access to the
                     <strong>backup file</strong>.
                 </td>
             </tr>

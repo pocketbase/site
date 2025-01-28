@@ -10,8 +10,8 @@
             code: 200,
             body: `
                 {
-                  "@collectionId": "a98f514eb05f454",
-                  "@collectionName": "demo",
+                  "collectionId": "a98f514eb05f454",
+                  "collectionName": "demo",
                   "id": "ae40239d2bc4477",
                   "updated": "2022-06-25 11:03:50.052",
                   "created": "2022-06-25 11:03:35.163",

@@ -52,7 +52,7 @@
             body: `
                 {
                   "status": 403,
-                  "message": "Only admins can filter by '@collection.*'",
+                  "message": "Only superusers can filter by '@collection.*'",
                   "data": {}
                 }
             `,
