@@ -2,18 +2,6 @@
     import CodeBlock from "@/components/CodeBlock.svelte";
 </script>
 
-<div class="alert alert-info m-t-sm m-b-sm">
-    <div class="icon">
-        <i class="ri-information-line" />
-    </div>
-    <div class="content">
-        <p>
-            There are plans to introduce <code>go:generate</code> scripts to automate the generation of record
-            proxies in the near future.
-        </p>
-    </div>
-</div>
-
 <p>
     The available <a href="/docs/go-records"><code>core.Record</code> and its helpers</a>
     are usually the recommended way to interact with your data, but in case you want a typed access to your record
