@@ -16,7 +16,7 @@ export const indexExample = `
         import PocketBase from "https://cdn.jsdelivr.net/gh/pocketbase/js-sdk@master/dist/pocketbase.es.mjs"
 
         const pb          = new PocketBase("http://127.0.0.1:8090");
-        const redirectUrl = "http://127.0.0.1:8090/redirect.html";
+        const redirectURL = "http://127.0.0.1:8090/redirect.html";
 
         const authMethods = await pb.collection("users").listAuthMethods();
         const providers   = authMethods.oauth2?.providers || [];
@@ -26,7 +26,7 @@ export const indexExample = `
             const $li = $(\`<li><a>Login with \${provider.name}</a></li>\`);
 
             $li.find("a")
-                .attr("href", provider.authUrl + redirectUrl)
+                .attr("href", provider.authURL + redirectURL)
                 .data("provider", provider)
                 .click(function () {
                     // store provider's data on click for verification in the redirect page
