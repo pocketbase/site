@@ -50,7 +50,7 @@
 
         // retrieve the new uploaded files
         // (e.g. for inspecting and modifying the file(s) before save)
-        record.GetUploadedFiles("someFileField")
+        record.GetUnsavedFiles("someFileField")
 
         // unmarshal a single "json" field value into the provided result
         record.UnmarshalJSONField("someJSONField", &result)

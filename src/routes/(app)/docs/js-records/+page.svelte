@@ -50,7 +50,7 @@
 
         // retrieve the new uploaded files
         // (e.g. for inspecting and modifying the file(s) before save)
-        record.getUploadedFiles("someFileField")
+        record.getUnsavedFiles("someFileField")
 
         // unmarshal a single json field value into the provided result
         let result = new DynamicModel({ ... })
