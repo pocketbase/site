@@ -254,6 +254,10 @@
             // Unique collection name (used as a table name for the records table).
             name (required):  string
 
+            // Type of the collection.
+            // If not set, the collection type will be "base" by default.
+            type (optional): "base" | "view" | "auth"
+
             // List with the collection fields.
             // This field is optional and autopopulated for "view" collections based on the viewQuery.
             fields (required|optional): Array<Field>
