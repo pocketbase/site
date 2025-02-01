@@ -51,7 +51,7 @@
             language="go"
             content={`
                 res, err := app.DB().
-                    NewQuery("CREATE INDEX name_idx ON users (name)").
+                    NewQuery("DELETE FROM articles WHERE status = 'archived'").
                     Execute()
             `}
         />

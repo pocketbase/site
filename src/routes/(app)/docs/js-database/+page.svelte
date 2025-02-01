@@ -45,7 +45,7 @@
             language="javascript"
             content={`
                 $app.db()
-                    .newQuery("CREATE INDEX name_idx ON users (name)")
+                    .newQuery("DELETE FROM articles WHERE status = 'archived'")
                     .execute() // throw an error on db failure
             `}
         />
