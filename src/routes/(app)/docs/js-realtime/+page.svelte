@@ -49,11 +49,12 @@
             data: JSON.stringify({ ... }),
         });
 
+        // retrieve all clients (clients id indexed map)
         const clients = $app.subscriptionsBroker().clients()
 
-        for (let client of clients) {
-            if (client.hasSubscription("example")) {
-                client.send(message)
+        for (let clientId in clients) {
+            if (clients[clientId].hasSubscription("example")) {
+                clients[clientId].send(message)
             }
         }
     `}
