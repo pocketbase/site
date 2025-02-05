@@ -40,7 +40,7 @@ function jsModelEvent(hookName, model) {
 
             e.next()
         }, "users", "articles")
-    `
+    `;
 }
 
 function jsModelErrorEvent(hookName, model) {
@@ -62,7 +62,7 @@ function jsModelErrorEvent(hookName, model) {
 
             e.next()
         }, "users", "articles")
-    `
+    `;
 }
 
 function goModelEvent(hookName, model) {
@@ -99,7 +99,7 @@ function goModelEvent(hookName, model) {
                 log.Fatal(err)
             }
         }
-    `
+    `;
 }
 
 function goModelErrorEvent(hookName, model) {
@@ -138,7 +138,7 @@ function goModelErrorEvent(hookName, model) {
                 log.Fatal(err)
             }
         }
-    `
+    `;
 }
 
 function onModelValidateDocs(name = "Model") {
@@ -1407,7 +1407,7 @@ export default [
                     func main() {
                         app := pocketbase.New()
 
-                        app.OnRecordEnrich("posts").BindFunc(func(e core.*RecordEnrichEvent) {
+                        app.OnRecordEnrich("posts").BindFunc(func(e *core.RecordEnrichEvent) error {
                             // hide one or more fields
                             e.Record.Hide("role")
 
@@ -3563,7 +3563,6 @@ export default [
                     }
                 `,
             },
-
         },
     },
 
@@ -3675,4 +3674,4 @@ export default [
             },
         },
     },
-]
+];
