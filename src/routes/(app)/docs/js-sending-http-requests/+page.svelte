@@ -42,7 +42,7 @@
 <CodeBlock
     language="javascript"
     content={`
-        onRecordBeforeCreateRequest((e) => {
+        onRecordCreateRequest((e) => {
             const isbn = e.record.get("isbn");
 
             // try to update with the published date from the openlibrary API
