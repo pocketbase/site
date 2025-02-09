@@ -359,8 +359,8 @@
                 )
 
                 // disable password auth and enable OTP only
-                collection.passwordAuth.enabled = false
-                collection.otp.enabled = true
+                collection.PasswordAuth.Enabled = false
+                collection.OTP.Enabled = true
 
                 collection.AddIndex("idx_clients_company", false, "company", "")
 
