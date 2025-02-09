@@ -42,8 +42,8 @@
 <CodeBlock
     language="javascript"
     content={`
-        onRecordBeforeCreateRequest((e) => {
-            const isbn = e.record.get("isbn");
+        onRecordCreateRequest((e) => {
+            let isbn = e.record.get("isbn");
 
             // try to update with the published date from the openlibrary API
             try {
@@ -56,8 +56,10 @@
                     e.record.set("published", res.json.publish_date)
                 }
             } catch (err) {
-                console.log("request failed", err);
+                e.app.logger().error("Failed to retrieve book data", "error", err);
             }
+
+            return e.next()
         }, "books")
     `}
 />

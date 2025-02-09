@@ -92,15 +92,16 @@
                 Description = pocketbase
 
                 [Service]
-                Type           = simple
-                User           = root
-                Group          = root
-                LimitNOFILE    = 4096
-                Restart        = always
-                RestartSec     = 5s
-                StandardOutput = append:/root/pb/std.log
-                StandardError  = append:/root/pb/std.log
-                ExecStart      = /root/pb/pocketbase serve yourdomain.com
+                Type             = simple
+                User             = root
+                Group            = root
+                LimitNOFILE      = 4096
+                Restart          = always
+                RestartSec       = 5s
+                StandardOutput   = append:/root/pb/std.log
+                StandardError    = append:/root/pb/std.log
+                WorkingDirectory = /root/pb
+                ExecStart        = /root/pb/pocketbase serve yourdomain.com
 
                 [Install]
                 WantedBy = multi-user.target
