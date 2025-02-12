@@ -27,7 +27,7 @@
 
 <HeadingLink title="debug(message, attrs...)" tag="h5" />
 <CodeBlock
-    language="go"
+    language="javascript"
     content={`
         $app.logger().debug("Debug message!")
 
@@ -41,7 +41,7 @@
 
 <HeadingLink title="info(message, attrs...)" tag="h5" />
 <CodeBlock
-    language="go"
+    language="javascript"
     content={`
         $app.logger().info("Info message!")
 
@@ -55,7 +55,7 @@
 
 <HeadingLink title="warn(message, attrs...)" tag="h5" />
 <CodeBlock
-    language="go"
+    language="javascript"
     content={`
         $app.logger().warn("Warning message!")
 
@@ -69,7 +69,7 @@
 
 <HeadingLink title="error(message, attrs...)" tag="h5" />
 <CodeBlock
-    language="go"
+    language="javascript"
     content={`
         $app.logger().error("Error message!")
 
@@ -87,7 +87,7 @@
     following log.
 </p>
 <CodeBlock
-    language="go"
+    language="javascript"
     content={`
         const l = $app.logger().with("total", 123)
 
@@ -105,7 +105,7 @@
     group name.
 </p>
 <CodeBlock
-    language="go"
+    language="javascript"
     content={`
         const l = $app.logger().withGroup("sub")
 
@@ -125,7 +125,7 @@
     </a> query builder method. For example:
 </p>
 <CodeBlock
-    language="go"
+    language="javascript"
     content={`
         let logs = arrayOf(new DynamicModel({
             id:      "",
