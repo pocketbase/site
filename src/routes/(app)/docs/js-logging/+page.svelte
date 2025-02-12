@@ -115,3 +115,34 @@
 />
 
 <LogsSettingsSection />
+
+<HeadingLink title="Custom log queries" />
+<p>
+    The logs are usually meant to be filtered from the UI but if you want to programmatically retrieve and
+    filter the stored logs you can make use of the
+    <a href="/jsvm/functions/_app.logQuery.html" target="_blank" rel="noopener noreferrer">
+        <code>$app.logQuery()</code>
+    </a> query builder method. For example:
+</p>
+<CodeBlock
+    language="go"
+    content={`
+        let logs = arrayOf(new DynamicModel({
+            id:      "",
+            created: "",
+            message: "",
+            level:   0,
+            data:    {},
+        }))
+
+        // see https://pocketbase.io/docs/js-database/#query-builder
+        $app.logQuery().
+            // target only debug and info logs
+            andWhere($dbx.in("level", -4, 0)).
+            // the data column is serialized json object and could be anything
+            andWhere($dbx.exp("json_extract(data, '$.type') = 'request'")).
+            orderBy("created DESC").
+            limit(100).
+            all(logs)
+    `}
+/>

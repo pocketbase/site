@@ -115,3 +115,28 @@
 />
 
 <LogsSettingsSection />
+
+<HeadingLink title="Custom log queries" />
+<p>
+    The logs are usually meant to be filtered from the UI but if you want to programmatically retrieve and
+    filter the stored logs you can make use of the
+    <a href="{import.meta.env.PB_GODOC_URL}/core#BaseApp.LogsQuery" target="_blank" rel="noopener noreferrer">
+        <code>app.LogQuery()</code>
+    </a> query builder method. For example:
+</p>
+<CodeBlock
+    language="go"
+    content={`
+        logs := []*core.Log{}
+
+        // see https://pocketbase.io/docs/go-database/#query-builder
+        err := app.LogQuery().
+            // target only debug and info logs
+            AndWhere(dbx.In("level", -4, 0).
+            // the data column is serialized json object and could be anything
+            AndWhere(dbx.NewExp("json_extract(data, '$.type') = 'request'")).
+            OrderBy("created DESC").
+            Limit(100).
+            All(&logs)
+    `}
+/>
