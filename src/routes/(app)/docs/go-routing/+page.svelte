@@ -332,6 +332,7 @@
     language="go"
     content={`
         // send response with JSON body
+        // (it also provides a generic response fields picker/filter if the "fields" query parameter is set)
         e.JSON(http.StatusOK, map[string]any{"name": "John"})
 
         // send response with string body

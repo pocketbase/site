@@ -110,7 +110,7 @@
 </p>
 <p>Each migration file should have a single <code>m.Register(upFunc, downFunc)</code> call.</p>
 <p>
-    In the migration file, you are expected to write your "upgrade" code in the <code>upFunc</code> callback.
+    `n the migration file, you are expected to write your "upgrade" code in the <code>upFunc</code> callback.
     <br />
     The <code>downFunc</code> is optional and it should contains the "downgrade" operations to revert the
     changes made by the <code>upFunc</code>.
@@ -186,7 +186,7 @@
     By default the collections snapshot is imported in <em>extend</em> mode, meaning that collections and
     fields that don't exist in the snapshot are preserved. If you want the snapshot to <em>delete</em>
     missing collections and fields, you can edit the generated file and change the last argument of
-    <code>importCollections</code> method to <code>true</code>.
+    <code>ImportCollectionsByMarshaledJSON</code> method to <code>true</code>.
 </p>
 
 <HeadingLink title="Migrations history" />

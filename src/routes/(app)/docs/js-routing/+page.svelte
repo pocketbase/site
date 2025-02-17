@@ -224,6 +224,7 @@
     language="javascript"
     content={`
         // send response with JSON body
+        // (it also provides a generic response fields picker/filter if the "fields" query parameter is set)
         e.json(200, {"name": "John"})
 
         // send response with string body
