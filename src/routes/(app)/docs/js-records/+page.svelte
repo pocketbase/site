@@ -361,7 +361,7 @@
 
         // validate and persist
         // (use saveNoValidate to skip fields validation)
-        app.save(record);
+        $app.save(record);
     `}
 />
 
