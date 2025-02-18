@@ -196,7 +196,7 @@
 <ul>
     <li>the current working directory (<em>affects also relative paths</em>)</li>
     <li>any <code>node_modules</code> directory</li>
-    <li>any parent <code>node_modules</code> directory, up to the closest <code>package.json</code></li>
+    <li>any parent <code>node_modules</code> directory</li>
 </ul>
 <p>
     Currently only CommonJS (CJS) modules are supported and can be loaded with
