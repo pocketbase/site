@@ -579,7 +579,7 @@
             // enrich the records with the "categories" relation as default expand
             $apis.enrichRecords(e, records, "categories")
 
-            return e.JSON(http.StatusOK, records)
+            return e.json(http.StatusOK, records)
         })
     `}
 />
