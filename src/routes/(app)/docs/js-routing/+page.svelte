@@ -36,7 +36,7 @@
         // register "POST /api/myapp/settings" route (allowed only for authenticated users)
         routerAdd("POST", "/api/myapp/settings", (e) => {
             // do something ...
-            return e.json(http.StatusOK, {"success": true})
+            return e.json(200, {"success": true})
         }, $apis.requireAuth())
     `}
 />
@@ -579,7 +579,7 @@
             // enrich the records with the "categories" relation as default expand
             $apis.enrichRecords(e, records, "categories")
 
-            return e.json(http.StatusOK, records)
+            return e.json(200, records)
         })
     `}
 />
