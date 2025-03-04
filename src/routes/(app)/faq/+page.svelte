@@ -49,9 +49,24 @@
 
             <h5>1. Do you offer hosting?</h5>
             <p>
-                No. PocketBase is self-hosted only. If you are looking for free options for small POC and
-                hobby apps, you can check:
+                No. PocketBase is self-hosted only. If you are looking for <strong>free</strong> options for small
+                POC and hobby apps, you can check:
             </p>
+            <ul>
+                <li>
+                    <a
+                        href="https://cloud.google.com/free/docs/free-cloud-features#compute"
+                        target="_blank"
+                        rel="noreferrer noopener">Google Cloud</a
+                    >
+                    (<em
+                        >the free tier e2-micro compute instance comes with .25vCPU, 30GB disk storage, 1GB
+                        memory, and 200GB standard tier egress per month and region must be us-central1 |
+                        us-west1 | us-east1
+                    </em>)
+                </li>
+            </ul>
+            <p>Not Free - But Inexpensive Options:</p>
             <ul>
                 <li>
                     <a href="https://fly.io/" target="_blank" rel="noreferrer noopener">Fly.io</a> - see also
@@ -60,17 +75,17 @@
                         target="_blank"
                         rel="noreferrer noopener"
                     >
-                        <strong>Host for free on Fly.io</strong>
+                        <strong>Host on Fly.io</strong>
                     </a>
                     guide (<em
-                        >the free tier comes with 1vCPU, 256MB RAM and 1GB disk storage /up to 3GB but
-                        requires card details/</em
+                        >the legacy free tier came with 1vCPU, 256MB RAM and 1GB disk storage; but no longer
+                        offered for new members ~$1.94/month</em
                     >)
                 </li>
                 <!-- prettier-ignore -->
                 <li>
                     <a href="https://pockethost.io/" target="_blank" rel="noreferrer noopener">PocketHost.io</a>
-                    (<em>shared single VM instance, maintained and provided by <a href="https://github.com/benallfree" target="_blank" rel="noreferrer noopener">benallfree</a></em>)
+                    (<em>$5/month for a hosted instance with unlimited storage, bandwidth, and cpu</em>)
                 </li>
             </ul>
             <p>
