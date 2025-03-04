@@ -143,7 +143,7 @@
             'RECORD_ID',
             files: [
                 http.MultipartFile.fromString(
-                    'documents',
+                    'documents+',
                     'example content 3...',
                     filename: 'file3.txt',
                 ),
