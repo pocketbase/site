@@ -49,42 +49,64 @@
 
             <h5>1. Do you offer hosting?</h5>
             <p>
-                No. PocketBase is self-hosted only. If you are looking for free options for small POC and
+                No. PocketBase is self-hosted only. If you are looking for free options for small PoC and
                 hobby apps, you can check:
             </p>
             <ul>
                 <li>
-                    <a href="https://fly.io/" target="_blank" rel="noreferrer noopener">Fly.io</a> - see also
                     <a
-                        href="https://github.com/pocketbase/pocketbase/discussions/537"
+                        href="https://cloud.google.com/free/docs/free-cloud-features#compute"
                         target="_blank"
                         rel="noreferrer noopener"
                     >
-                        <strong>Host for free on Fly.io</strong>
+                        Google Cloud Free Tier
                     </a>
-                    guide (<em
-                        >the free tier comes with 1vCPU, 256MB RAM and 1GB disk storage /up to 3GB but
-                        requires card details/</em
-                    >)
+                    <br />
+                    <small>
+                        <em>
+                            The free tier e2-micro compute instance comes with 0.25vCPU, 30GB disk storage,
+                            1GB memory, and 200GB standard tier egress per month and region must be
+                            us-central1 | us-west1 | us-east1.
+                        </em>
+                    </small>
                 </li>
-                <!-- prettier-ignore -->
                 <li>
-                    <a href="https://pockethost.io/" target="_blank" rel="noreferrer noopener">PocketHost.io</a>
-                    (<em>shared single VM instance, maintained and provided by <a href="https://github.com/benallfree" target="_blank" rel="noreferrer noopener">benallfree</a></em>)
+                    <a href="https://www.oracle.com/cloud/free/" target="_blank" rel="noreferrer noopener">
+                        Oracle Cloud Always Free Services
+                    </a>
+                    <br />
+                    <small>
+                        <em>
+                            AMD and ARM based compute instances with varying free allowance and storage
+                            options (note: there were unconfirmed reports for randomly deleted "inactive"
+                            accounts).
+                        </em>
+                    </small>
+                </li>
+                <li>
+                    <a
+                        href="https://community.ibm.com/zsystems/form/l1cc-oss-vm-request/"
+                        target="_blank"
+                        rel="noreferrer noopener"
+                    >
+                        IBM LinuxONE Open Source Software Community Cloud
+                    </a>
+                    <br />
+                    <small>
+                        <em> Free IBM Z (s390x) VMs for open source projects (requires filling a form). </em>
+                    </small>
                 </li>
             </ul>
             <p>
-                <strong>
-                    For a more traditional setup you can use any VPS provider that comes with a persistent
-                    storage, like
-                    <a href="https://www.hetzner.com/" target="_blank" rel="noreferrer noopener">Hetzner</a>,
-                    <a href="https://www.vultr.com/" target="_blank" rel="noreferrer noopener">Vultr</a>,
-                    <a href="https://upcloud.com/" target="_blank" rel="noreferrer noopener">UpCloud</a>,
-                    <a href="https://www.linode.com/" target="_blank" rel="noreferrer noopener">Linode</a>,
-                    <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer noopener"
-                        >DigitalOcean</a
-                    >, etc.
-                </strong>
+                For a more traditional setup you can use any VPS provider that comes with a persistent
+                storage, like:
+                <a href="https://www.hetzner.com/" target="_blank" rel="noreferrer noopener">Hetzner</a>,
+                <a href="https://www.vultr.com/" target="_blank" rel="noreferrer noopener">Vultr</a>,
+                <a href="https://upcloud.com/" target="_blank" rel="noreferrer noopener">UpCloud</a>,
+                <a href="https://www.linode.com/" target="_blank" rel="noreferrer noopener">Linode</a>,
+                <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer noopener"
+                    >DigitalOcean</a
+                >, etc.
                 <br />
                 The
                 <a href="/docs/going-to-production/">Going to production</a> guide contains information how to
