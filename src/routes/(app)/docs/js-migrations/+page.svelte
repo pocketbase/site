@@ -218,7 +218,7 @@
                 },
                 otp: {
                     enabled: true,
-                }
+                },
                 indexes: [
                     "CREATE INDEX idx_clients_company ON clients (company)"
                 ],
