@@ -22,7 +22,7 @@
 <HeadingLink title="1. Setup" />
 
 <p>
-    Let's say that we have a custom API route <code>GET /my/hello</code> that requires admin authentication:
+    Let's say that we have a custom API route <code>GET /my/hello</code> that requires superuser authentication:
 </p>
 <CodeBlock
     language="go"
