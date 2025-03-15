@@ -114,8 +114,13 @@
                 <code>@request.context != "oauth2"</code>)
                 <br />
                 <small class="txt-hint">
-                    The currently supported context values are <code>default</code>, <code>oauth2</code>,
-                    <code>realtime</code>, <code>protectedFile</code>.
+                    The currently supported context values are
+                    <code>default</code>,
+                    <code>oauth2</code>,
+                    <code>otp</code>,
+                    <code>password</code>,
+                    <code>realtime</code>,
+                    <code>protectedFile</code>.
                 </small>
             </li>
             <li>

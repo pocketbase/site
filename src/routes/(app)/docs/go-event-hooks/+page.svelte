@@ -76,9 +76,13 @@
             the user to call <code>e.Next()</code> if they want to proceed with the execution chain.
         </p>
         <p class="txt-bold">
-            If you need to access the app instance from inside a hook handler prefer using the
+            If you need to access the app instance from inside a hook handler, prefer using the
             <code>e.App</code> field instead of reusing a parent scope app variable because the hook could be part
-            of a transaction and can cause deadlock.
+            of a DB transaction and can cause deadlock.
+        </p>
+        <p>
+            Also avoid using global mutex locks inside a hook handler because it could be invoked recursively
+            (e.g. cascade delete) and can cause deadlock.
         </p>
     </div>
 </div>

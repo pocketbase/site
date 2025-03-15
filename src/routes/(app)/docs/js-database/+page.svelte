@@ -60,6 +60,7 @@
             content={`
                 const result = new DynamicModel({
                     // describe the shape of the data (used also as initial values)
+                    // the keys cannot start with underscore and must be a valid Go struct field name
                     "id":     "",
                     "status": false,
                     "age":    0, // use -0 for a float value
@@ -85,6 +86,7 @@
             content={`
                 const result = arrayOf(new DynamicModel({
                     // describe the shape of the data (used also as initial values)
+                    // the keys cannot start with underscore and must be a valid Go struct field name
                     "id":     "",
                     "status": false,
                     "age":    0, // use -0 for a float value
