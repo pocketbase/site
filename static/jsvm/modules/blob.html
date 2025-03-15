@@ -16,40 +16,22 @@
 <li><a href="blob.html">blob</a></li></ul>
 <h1>Namespace blob</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>Package blob provides an easy and portable way to interact with blobs
-within a storage location. Subpackages contain driver implementations of
-blob for supported services.</p>
-<p>See <a href="https://gocloud.dev/howto/blob/">https://gocloud.dev/howto/blob/</a> for a detailed how-to guide.</p>
-<p>*blob.Bucket implements io/fs.FS and io/fs.SubFS, so it can be used with
-functions in that package.</p>
-<a id="md:errors" class="tsd-anchor"></a><h1><a href="#md:errors">Errors</a></h1><p>The errors returned from this package can be inspected in several ways:</p>
-<p>The Code function from gocloud.dev/gcerrors will return an error code, also
-defined in that package, when invoked on an error.</p>
-<p>The Bucket.ErrorAs method can retrieve the driver error underlying the returned
-error.</p>
-<a id="md:opencensus-integration" class="tsd-anchor"></a><h1><a href="#md:opencensus-integration">OpenCensus Integration</a></h1><p>OpenCensus supports tracing and metric collection for multiple languages and
-backend providers. See <a href="https://opencensus.io">https://opencensus.io</a>.</p>
-<p>This API collects OpenCensus traces and metrics for the following methods:</p>
-<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> Attributes</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> Copy</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> Delete</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> ListPage</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> NewRangeReader, from creation until the call to Close. (NewReader and ReadAll</span><br/><span class="hl-0">    are included because they call NewRangeReader.)</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> NewWriter, from creation until the call to Close.</span>
-</code><button>Copy</button></pre>
-<p>All trace and metric names begin with the package import path.
-The traces add the method name.
-For example, &quot;gocloud.dev/blob/Attributes&quot;.
-The metrics are &quot;completed_calls&quot;, a count of completed method calls by driver,
-method and status (error code); and &quot;latency&quot;, a distribution of method latency
-by driver and method.
-For example, &quot;gocloud.dev/blob/latency&quot;.</p>
-<p>It also collects the following metrics:</p>
-<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> gocloud.dev</span><span class="hl-1">/</span><span class="hl-0">blob</span><span class="hl-1">/</span><span class="hl-2">bytes_read</span><span class="hl-0">: the total number </span><span class="hl-1">of</span><span class="hl-0"> bytes read, by driver.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> gocloud.dev</span><span class="hl-1">/</span><span class="hl-0">blob</span><span class="hl-1">/</span><span class="hl-2">bytes_written</span><span class="hl-0">: the total number </span><span class="hl-1">of</span><span class="hl-0"> bytes written, by driver.</span>
-</code><button>Copy</button></pre>
-<p>To enable trace collection in your application, see &quot;Configure Exporter&quot; at
-<a href="https://opencensus.io/quickstart/go/tracing">https://opencensus.io/quickstart/go/tracing</a>.
-To enable metric collection in your application, see &quot;Exporting stats&quot; at
-<a href="https://opencensus.io/quickstart/go/metrics">https://opencensus.io/quickstart/go/metrics</a>.</p>
+<div class="tsd-comment tsd-typography"><p>Package blob defines a lightweight abstration for interacting with
+various storage services (local filesystem, S3, etc.).</p>
+<p>NB!
+For compatibility with earlier PocketBase versions and to prevent
+unnecessary breaking changes, this package is based and implemented
+as a minimal, stripped down version of the previously used gocloud.dev/blob.
+While there is no promise that it won&#39;t diverge in the future to accommodate
+better some PocketBase specific use cases, currently it copies and
+tries to follow as close as possible the same implementations,
+conventions and rules for the key escaping/unescaping, blob read/write
+interfaces and struct options as gocloud.dev/blob, therefore the
+credits goes to the original Go Cloud Development Kit Authors.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/e28ee72b4/jsvm/types.d.ts#L17819">types.d.ts:17819</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/fe65cb02f/jsvm/types.d.ts#L19019">types.d.ts:19019</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>
@@ -70,15 +52,7 @@ To enable metric collection in your application, see &quot;Exporting stats&quot;
 <ul id="tsd-filter-options">
 <li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></form></div>
 <div class="tsd-theme-toggle">
-<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
-<details open class="tsd-index-accordion tsd-page-navigation"><summary class="tsd-accordion-summary">
-<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg>On This Page</h3></summary>
-<div class="tsd-accordion-details">
-<ul>
-<li>
-<ul>
-<li><a href="#md:errors"><span>Errors</span></a></li>
-<li><a href="#md:opencensus-integration"><span>Open<wbr/>Census <wbr/>Integration</span></a></li></ul></li></ul></div></details></div>
+<h4 class="uppercase">Theme</h4><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>Pocket<wbr/>Base JSVM reference</span></a>
 <ul class="tsd-small-nested-navigation">
