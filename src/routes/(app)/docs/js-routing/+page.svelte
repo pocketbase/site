@@ -337,7 +337,7 @@
         // attach middleware to a single route
         //
         // "GET /hello" should print the sequence: 2,1,3,4
-        routerUse("GET", "/hello", (e) => {
+        routerAdd("GET", "/hello", (e) => {
             console.log(4)
             return e.string(200, "Hello!")
         }, (e) => {
@@ -434,7 +434,7 @@
         <br />
         <em>
             Loads the auth token from the <code>Authorization</code> header and populates the related auth
-            record into the request event (aka. <code>e.Auth</code>).
+            record into the request event (aka. <code>e.auth</code>).
         </em>
     </li>
     <li>
@@ -464,7 +464,7 @@
         <em>
             Applies a default max ~32MB request body limit for all custom routes ( system record routes have
             dynamic body size limit based on their collection field types). Can be overwritten on group/route
-            level by simply rebinding the <code>apis.BodyLimit(limitBytes)</code> middleware.
+            level by simply rebinding the <code>$apis.bodyLimit(limitBytes)</code> middleware.
         </em>
     </li>
 </ul>
