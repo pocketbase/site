@@ -319,6 +319,25 @@
 
 <header class="highlighted-title bg-danger-alt">
     <span class="label label-primary">highly recommended</span>
+    <HeadingLink title="Enable MFA for superusers" tag="h5" />
+</header>
+<p>
+    As an additional layer of security you can enable the MFA and OTP options for the <code>_superusers</code>
+    collection, which will enforce an additional one-time password (email code) requirement when authenticating
+    as superuser.
+</p>
+<p>
+    In case of email deliverability issues, you can also generate an OTP manually using the
+    <code>./pocketbase superuser otp yoursuperuser@example.com</code> command.
+</p>
+<img
+    src="/images/screenshots/superusers_mfa.png"
+    alt="Superusers MFA settings screenshot"
+    class="screenshot m-b-xs"
+/>
+
+<header class="highlighted-title bg-danger-alt">
+    <span class="label label-primary">highly recommended</span>
     <HeadingLink title="Enable rate limiter" tag="h5" />
 </header>
 <p>

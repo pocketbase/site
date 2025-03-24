@@ -309,79 +309,9 @@
         rightEye.style.transform = "rotate(" + rot + "deg)";
     }
 
-    // scroll reveal
-    // ---------------------------------------------------------------
-    const scrollTolerance = 0;
-    const revealDelay = 150;
-    let revealElems = [];
-    let revealTimers = [];
-
-    loadRevealElems();
-
-    async function loadRevealElems() {
-        if (typeof document === "undefined") {
-            return;
-        }
-        await tick();
-        clearRevealTimers();
-        revealElems = Array.from(document.querySelectorAll(".scroll-reveal:not(.scroll-reached)") || []);
-        scrollReveal();
-    }
-
-    function scrollReveal() {
-        if (revealElems.length <= 0) {
-            return;
-        }
-
-        let scrollTop = (window.scrollY || window.pageYOffset) << 0;
-        let scrollViewport = scrollTop + window.innerHeight + (scrollTop > 0 ? scrollTolerance : 0);
-        let toReveal = [];
-        for (let i = 0; i < revealElems.length; i++) {
-            if (scrollViewport >= revealElems[i].getBoundingClientRect().top + scrollTop) {
-                toReveal.push(revealElems[i]);
-            }
-        }
-
-        for (let i = 0; i < toReveal.length; i++) {
-            CommonHelper.removeByValue(revealElems, toReveal[i]);
-            revealTimers.push(
-                setTimeout(() => {
-                    if (toReveal[i]) {
-                        toReveal[i]?.classList.add("scroll-reached");
-                    }
-                }, i * revealDelay),
-            );
-        }
-    }
-
-    function clearRevealTimers() {
-        for (let i = revealTimers.length - 1; i >= 0; i--) {
-            clearTimeout(revealTimers[i]);
-        }
-        revealTimers = [];
-    }
-    // ---
-
-    function handleResize(e) {
-        scrollReveal();
-    }
-
     onMount(() => {
         document.body.classList.remove("loading");
         document.body.classList.add("loaded");
-
-        document.addEventListener("scroll", scrollReveal, {
-            capture: true,
-            passive: true,
-        });
-
-        return () => {
-            // detach event
-            document.removeEventListener("scroll", scrollReveal, {
-                capture: true,
-                passive: true,
-            });
-        };
     });
 </script>
 
@@ -389,7 +319,7 @@
     <title>PocketBase - Open Source backend in 1 file</title>
 </svelte:head>
 
-<svelte:window on:mousemove={onMousemove} on:resize={handleResize} />
+<svelte:window on:mousemove={onMousemove} />
 
 <div class="landing-hero" data-wave-pattern-credits="https://www.freepik.com/author/garrykillian">
     <PageHeader />
@@ -451,14 +381,14 @@
             <div class="content">
                 <a
                     href="/demo/"
-                    class="btn btn-lg btn-primary btn-expanded scroll-reveal"
+                    class="btn btn-lg btn-primary btn-expanded"
                     target="_blank"
                     rel="noreferrer noopener"
                 >
                     <span class="txt">Live demo</span>
                 </a>
                 <div class="clearfix m-b-sm" />
-                <a href="/docs" class="btn btn-lg btn-outline btn-expanded scroll-reveal">
+                <a href="/docs" class="btn btn-lg btn-outline btn-expanded">
                     <span class="txt">Read the documentation</span>
                 </a>
             </div>
@@ -469,7 +399,7 @@
 <div class="clearfix" />
 
 <div class="wrapper wrapper-lg">
-    <section class="landing-section m-t-45 scroll-reveal">
+    <section class="landing-section m-t-45">
         <h2 class="landing-title">Ready to use out of the box</h2>
 
         <div class="features-section">
@@ -556,7 +486,7 @@
                                 type="button"
                                 class="
                                     btn btn-sm btn-expanded-sm
-                                    {previewLanguage === btnLanguage ? 'btn-outline' : 'btn-hint'}
+                                    {previewLanguage === btnLanguage ? 'btn-primary' : 'btn-hint txt-primary'}
                                 "
                                 on:click={() => {
                                     setCodePreference(btnLanguage);
@@ -567,12 +497,12 @@
                         {/if}
                     {/each}
                 </div>
-                <CodeBlock theme="dark" language={previewLanguage} content={previewContent} />
+                <CodeBlock language={previewLanguage} content={previewContent} />
             </div>
         </div>
     </section>
 
-    <section class="landing-section txt-center scroll-reveal">
+    <section class="landing-section txt-center">
         <h2 class="landing-title">Integrate nicely with your favorite frontend stack</h2>
         <div class="logos-list">
             <a
