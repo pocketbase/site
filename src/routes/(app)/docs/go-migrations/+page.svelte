@@ -110,7 +110,7 @@
 </p>
 <p>Each migration file should have a single <code>m.Register(upFunc, downFunc)</code> call.</p>
 <p>
-    `n the migration file, you are expected to write your "upgrade" code in the <code>upFunc</code> callback.
+    In the migration file, you are expected to write your "upgrade" code in the <code>upFunc</code> callback.
     <br />
     The <code>downFunc</code> is optional and it should contains the "downgrade" operations to revert the
     changes made by the <code>upFunc</code>.
