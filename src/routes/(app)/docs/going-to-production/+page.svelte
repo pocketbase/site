@@ -135,7 +135,7 @@
 <p>
     If you plan hosting multiple applications on a single server or need finer network controls, you can
     always put PocketBase behind a reverse proxy such as
-    <em>NGINX</em>, <em>Apache</em>, <em>Caddy</em>, etc.
+    <em>NGINX</em>, <em>Apache</em>, <em>Caddy</em>, <em>HAProxy</em>, etc.
     <br />
     <em>
         Just note that when using a reverse proxy you may need to setup the "User IP proxy headers" in the
@@ -189,6 +189,21 @@
             }
         }
     }
+    `}
+/>
+<p>
+    And a <em>HAProxy</em> configuration is:
+</p>
+<CodeBlock
+    language="html"
+    content={`
+    frontend example.com
+      bind *:80
+      option forwardfor
+      default_backend example.com_bck
+    
+    backend example.com_bck
+      server srv1 127.0.0.1:8090
     `}
 />
 <HeadingLink title="Using Docker" tag="h5" />
