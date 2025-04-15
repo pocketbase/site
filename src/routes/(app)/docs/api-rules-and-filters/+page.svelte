@@ -311,6 +311,27 @@
     </small>
 </p>
 
+<HeadingLink title="geoDistance(lonA, latA, lonB, latB)" tag="h5" />
+<p>
+    The <code>geoDistance(lonA, latA, lonB, latB)</code> function could be used to calculate the Haversine distance
+    between 2 geographic points in kilometres.
+</p>
+<p>
+    The function is intented to be used primarily with the <code>geoPoint</code> field type, but the accepted
+    arguments could be any plain number or collection field identifier. If the identifier cannot be resolved
+    and converted to a numeric value, it resolves to <code>null</code>. Note that the
+    <code>geoDistance</code> function always results in a single row/record value meaning that "any/at-least-one-of"
+    type of constraint will be applied even if some of its arguments originate from a multiple relation field.
+</p>
+<p>For example:</p>
+<CodeBlock
+    class="m-b-0"
+    content={`
+        // offices that are less than 25km from my location (address is a geoPoint field in the offices collection)
+        geoDistance(address.lon, address.lat, 23.32, 42.69) < 25
+    `}
+/>
+
 <HeadingLink title="Examples" />
 <ul>
     <li class="m-b-sm">

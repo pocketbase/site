@@ -2,6 +2,7 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
     import Toc from "@/components/Toc.svelte";
     import CodeBlock from "@/components/CodeBlock.svelte";
+    import CodeTabs from "@/components/CodeTabs.svelte";
     import Accordion from "@/components/Accordion.svelte";
 </script>
 
@@ -393,6 +394,41 @@
                 JSONField defines <code>json</code> type field for storing any serialized JSON value,
                 including <code>null</code> (default).
             </p>
+        </div>
+    </Accordion>
+    <Accordion single title="GeoPoint">
+        <div class="content">
+            <p>
+                GeoPoint defines <code>geoPoint</code> type field for storing geographic coordinates
+                (longitute, latitude) as a serialized json object. For example:
+                <code>{`{"lon":12.34,"lat":56.78}`}</code>.
+            </p>
+            <p>
+                The default/zero value of a <code>geoPoint</code> is the "Null Island", aka.
+                <code>{`{"lon":0,"lat":0}`}</code>.
+            </p>
+            <p>
+                When extending PocketBase with Go/JSVM, the <code>geoPoint</code> field value could be set as
+                <code>types.GeoPoint</code> instance or a regular map with <code>lon</code> and
+                <code>lat</code> keys:
+            </p>
+            <CodeTabs
+                go={`
+                    // set types.GeoPoint
+                    record.Set("address", types.GeoPoint{Lon:12.34, Lat:45.67})
+
+                    // set map[string]any
+                    record.Set("address", map[string]any{"lon":12.34, "lat":45.67})
+
+                    // retrieve the field value as types.GeoPoint struct
+                    address := record.GetGeoPoint("address")
+                `}
+                js={`
+                    record.set("address", {"lon":12.34, "lat":45.67})
+
+                    const address = record.get("address")
+                `}
+            />
         </div>
     </Accordion>
 </div>
