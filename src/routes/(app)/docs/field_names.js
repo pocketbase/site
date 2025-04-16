@@ -11,4 +11,5 @@ export default [
     "FileField",
     "RelationField",
     "JSONField",
+    "GeoPointField",
 ]
