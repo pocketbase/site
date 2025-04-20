@@ -104,7 +104,7 @@
                     Get the thumb of the requested file.
                     <ThumbFormats />
                     If the thumb size is not defined in the file schema field options or the file resource is not
-                    an image (jpg, png, gif), then the original file resource is returned unmodified.
+                    an image (jpg, png, gif, webp), then the original file resource is returned unmodified.
                 </td>
             </tr>
             <tr>

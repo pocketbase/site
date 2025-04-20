@@ -216,13 +216,15 @@
     </code>
 </p>
 <p>
-    If your file field has the <strong>Thumb sizes</strong> option, you can get a thumb of the image file
-    (currently limited to jpg, png, and partially gif – its first frame) by adding the <code>thumb</code>
+    If your file field has the <strong>Thumb sizes</strong> option, you can get a thumb of the image file by
+    adding the <code>thumb</code>
     query parameter to the url like this:
     <!-- prettier-ignore -->
     <code>
         http://127.0.0.1:8090/api/files/<span class="txt-danger">COLLECTION_ID_OR_NAME</span>/<span class="txt-info">RECORD_ID</span>/<span class="txt-success">FILENAME</span><strong>?thumb=100x300</strong>
     </code>
+    <br />
+    <em>Currently limited to jpg, png, gif (its first frame) and partially webp (stored as png).</em>
 </p>
 
 <ThumbFormats />
