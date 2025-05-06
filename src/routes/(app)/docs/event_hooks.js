@@ -1268,7 +1268,7 @@ export default [
                     modify the submitted change.
                 `,
                 js: `
-                    OnRealtimeSubscribeRequest((e) => {
+                    onRealtimeSubscribeRequest((e) => {
                         // e.app
                         // e.client
                         // e.subscriptions
