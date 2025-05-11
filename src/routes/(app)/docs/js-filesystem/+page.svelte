@@ -41,8 +41,8 @@
 <HeadingLink title="Reading files" />
 <p>
     To retrieve the file content of a single stored file you can use
-    <a href="/jsvm/interfaces/filesystem.System.html#getFile" target="_blank" rel="noopener noreferrer">
-        <code>getFile(key)</code>
+    <a href="/jsvm/interfaces/filesystem.System.html#getReader" target="_blank" rel="noopener noreferrer">
+        <code>getReader(key)</code>
     </a>
     .
     <br />
@@ -65,19 +65,19 @@
         // construct the full file key by concatenating the record storage path with the specific filename
         let avatarKey = record.baseFilesPath() + "/" + record.get("avatar")
 
-        let fsys, file, content;
+        let fsys, reader, content;
 
         try {
             // initialize the filesystem
             fsys = $app.newFilesystem();
 
             // retrieve a file reader for the avatar key
-            file = fsys.getFile(avatarKey)
+            reader = fsys.getReader(avatarKey)
 
             // copy as plain string
-            content = toString(file)
+            content = toString(reader)
         } finally {
-            file?.close();
+            reader?.close();
             fsys?.close();
         }
     `}

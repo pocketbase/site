@@ -596,7 +596,7 @@
 
             // run a custom raw query (doesn't fire event hooks)
             rawQuery := "DELETE FROM articles WHERE status = 'pending'"
-            if _, err := txApp.NonconcurrentDB().NewQuery(rawQuery).Execute(); err != nil {
+            if _, err := txApp.DB().NewQuery(rawQuery).Execute(); err != nil {
                 return err
             }
 

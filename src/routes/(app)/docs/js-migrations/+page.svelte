@@ -84,7 +84,7 @@
     By default the collections snapshot is imported in <em>extend</em> mode, meaning that collections and
     fields that don't exist in the snapshot are preserved. If you want the snapshot to <em>delete</em>
     missing collections and fields, you can edit the generated file and change the last argument of
-    <code>ImportCollectionsByMarshaledJSON</code>
+    <code>importCollections</code>
     to <code>true</code>.
 </p>
 

@@ -46,11 +46,11 @@
 <p>
     To retrieve the file content of a single stored file you can use
     <a
-        href="{import.meta.env.PB_GODOC_URL}/tools/filesystem#System.GetFile"
+        href="{import.meta.env.PB_GODOC_URL}/tools/filesystem#System.GetReader"
         target="_blank"
         rel="noopener noreferrer"
     >
-        <code>GetFile(key)</code>
+        <code>GetReader(key)</code>
     </a>
     .
     <br />
@@ -91,7 +91,7 @@
         defer fsys.Close()
 
         // retrieve a file reader for the avatar key
-        r, err := fsys.GetFile(avatarKey)
+        r, err := fsys.GetReader(avatarKey)
         if err != nil {
             return err
         }
