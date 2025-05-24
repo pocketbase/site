@@ -200,11 +200,14 @@
 <CodeBlock
     language="javascript"
     content={`
-        // read the body via the parsed request object
+        // retrieve the entire raw body as string
+        console.log(toString(e.request.body))
+
+        // read the body fields via the parsed request object
         let body = e.requestInfo().body
         console.log(body.title)
 
-        // read/scan the request body fields into a typed object
+        // OR read/scan the request body fields into a typed object
         const data = new DynamicModel({
             // describe the fields to read (used also as initial values)
             someTextField:   "",
