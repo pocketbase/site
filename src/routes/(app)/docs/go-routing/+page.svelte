@@ -18,7 +18,7 @@
 <HeadingLink title="Routes" />
 
 <HeadingLink title="Registering new routes" tag="h5" />
-<p>Every route have a path, handler function and eventually middlewares attached to it. For example:</p>
+<p>Every route has a path, handler function and eventually middlewares attached to it. For example:</p>
 <CodeBlock
     language="go"
     content={`
