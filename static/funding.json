@@ -1,0 +1,66 @@
+{
+  "version": "v1.0.0",
+  "entity": {
+    "type": "individual",
+    "role": "maintainer",
+    "name": "Gani Georgiev",
+    "email": "support@pocketbase.io",
+    "phone": "",
+    "description": "Software developer and maintainer of several small open source projects including PocketBase and Presentator.",
+    "webpageUrl": {
+      "url": "https://pocketbase.io",
+      "wellKnown": ""
+    }
+  },
+  "projects": [
+    {
+      "guid": "pocketbase",
+      "name": "PocketBase",
+      "description": "PocketBase is an open source backend distributed as a single portable file that includes embedded SQLite database with realtime subscriptions, built-in files and users management, jobs scheduling, automated backups, convenient Dashboard UI, REST-ish API and many more. It could be also used as framework and further extended with Go or JavaScript for more advanced functionality like registering custom routes, middlewares, hooks, etc.",
+      "webpageUrl": {
+        "url": "https://pocketbase.io",
+        "wellKnown": ""
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/pocketbase",
+        "wellKnown": "https://github.com/pocketbase/site/blob/master/static/.well-known/funding-manifest-urls"
+      },
+      "licenses": [
+        "spdx:MIT"
+      ],
+      "tags": [
+        "backend",
+        "realtime",
+        "authentication",
+        "developer-tools",
+        "go-framework",
+        "database",
+        "sqlite",
+        "api"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "bank",
+        "type": "bank",
+        "address": "",
+        "description": "Please e-mail me for transfer details."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "stablerelease",
+        "status": "active",
+        "name": "Full time working on PocketBase for 1 year",
+        "description": "This level of funding will allow me to focus solely on PocketBase and ideally work full time on it for at least 1 year in order to fix long-lasting API warts, enable more easier external customization by implementing full-featured plugins support and finally publish a stable (v1) release once a community consensus about the plugins API has been reached.",
+        "amount":  30000,
+        "currency": "EUR",
+        "frequency": "one-time",
+        "channels": ["bank"]
+      }
+    ],
+    "history": []
+  }
+}
