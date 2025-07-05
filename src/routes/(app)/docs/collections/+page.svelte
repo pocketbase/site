@@ -362,7 +362,7 @@
                 For <strong>single</strong> <code>relation</code>
                 <em>(the <code>MaxSelect</code> option is {`<=`} 1)</em>
                 the field value is a string:
-                <code>""</code>, <code>"RECOD_ID"</code>.
+                <code>""</code>, <code>"RECORD_ID"</code>.
             </p>
             <p>
                 For <strong>multiple</strong> <code>relation</code>
