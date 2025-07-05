@@ -277,7 +277,11 @@
         <a href="/docs/api-records#impersonate">Impersonate endpoint</a>
         .
     </p>
-    <p>The generated impersonate auth tokens can have custom duration but are not refreshable!</p>
+    <p>
+        <strong>
+            The generated impersonate auth tokens can have custom duration but are not renewable!
+        </strong>
+    </p>
     <p>
         For convenience the official SDKs creates and returns a standalone client that keeps the token state
         in memory, aka. only for the duration of the impersonate client instance.
@@ -332,7 +336,7 @@
 <div class="content m-b-xs">
     <p>
         While PocketBase doesn't have "API keys" in the traditional sense, as a side effect of the support for
-        users impersonation, for such cases you can use instead the generated non-refreshable
+        users impersonation, for such cases you can use instead the generated nonrenewable
         <code>_superusers</code> impersonate auth token.
         <br />
         You can generate such token via the above impersonate API or from the

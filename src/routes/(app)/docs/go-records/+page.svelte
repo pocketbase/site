@@ -614,7 +614,7 @@
 
         token, err := record.NewFileToken() // for protected files
 
-        token, err := record.NewStaticAuthToken(optCustomDuration) // non-refreshable auth token
+        token, err := record.NewStaticAuthToken(optCustomDuration) // nonrenewable auth token
     `}
 />
 <p>

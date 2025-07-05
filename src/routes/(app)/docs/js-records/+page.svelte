@@ -524,7 +524,7 @@
 
         let token = record.newFileToken() // for protected files
 
-        let token = record.newStaticAuthToken(optCustomDuration) // non-refreshable auth token
+        let token = record.newStaticAuthToken(optCustomDuration) // nonrenewable auth token
     `}
 />
 <p>
