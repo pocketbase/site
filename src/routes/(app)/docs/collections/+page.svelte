@@ -400,7 +400,7 @@
         <div class="content">
             <p>
                 GeoPoint defines <code>geoPoint</code> type field for storing geographic coordinates
-                (longitute, latitude) as a serialized json object. For example:
+                (longitude, latitude) as a serialized json object. For example:
                 <code>{`{"lon":12.34,"lat":56.78}`}</code>.
             </p>
             <p>
