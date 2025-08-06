@@ -36,8 +36,10 @@
     <div class="content">
         <p>
             Keep in mind that the console commands execute in their own separate app process and run
-            independently from the main <code>serve</code> command (aka. hook events between different processes
-            are not shared with one another).
+            independently from the main <code>serve</code> command. This can cause surprising behavior;
+            hook events between different processes are not shared with one another, the realtime subscription
+            broker will not be aware of subscribed clients, and realtime subscription events will not be sent 
+            if collection records are changed.
         </p>
     </div>
 </div>
