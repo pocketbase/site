@@ -93,11 +93,14 @@
                 <em>Dashboard > Settings > Application</em>.
             </p>
             <p>
-                Because this endpoint process the requests in a single read&write transaction, other queries
-                could queue up and it could degrade the performance of your application if not used with
-                proper care and configuration (couple recommendations: prefer using the smallest possible max
-                processing time limit, avoid large file uploads over slow S3 networks, restrict the body size
-                limit to something smaller, etc.).
+                Because this endpoint processes the requests in a single read&write transaction, other queries
+                may queue up and it could degrade the performance of your application if not used with proper
+                care and configuration
+                <em>
+                    (some recommendations: prefer using the smallest possible max processing time and body
+                    size limits; avoid large file uploads over slow S3 networks and custom hooks that
+                    communicate with slow external APIs)</em
+                >.
             </p>
         </div>
     </div>
