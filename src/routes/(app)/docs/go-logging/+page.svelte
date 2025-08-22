@@ -140,3 +140,26 @@
             All(&logs)
     `}
 />
+
+<HeadingLink title="Intercepting logs write" />
+<p>
+    If you want to modify the log data before persisting in the database or to forward it to an external
+    system, then you can listen for changes of the <code>_logs</code> table by attaching to the
+    <a href="/docs/go-event-hooks/#base-model-hooks">base model hooks</a>. For example:
+</p>
+<CodeBlock
+    language="go"
+    content={`
+        app.OnModelCreate(core.LogsTableName).BindFunc(func(e *core.ModelEvent) error {
+            l := e.Model.(*core.Log)
+
+            fmt.Println(l.Id)
+            fmt.Println(l.Created)
+            fmt.Println(l.Level)
+            fmt.Println(l.Message)
+            fmt.Println(l.Data)
+
+            return e.Next()
+        })
+    `}
+/>

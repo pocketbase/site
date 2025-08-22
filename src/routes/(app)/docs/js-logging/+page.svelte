@@ -146,3 +146,24 @@
             all(logs)
     `}
 />
+
+<HeadingLink title="Intercepting logs write" />
+<p>
+    If you want to modify the log data before persisting in the database or to forward it to an external
+    system, then you can listen for changes of the <code>_logs</code> table by attaching to the
+    <a href="/docs/js-event-hooks/#base-model-hooks">base model hooks</a>. For example:
+</p>
+<CodeBlock
+    language="javascript"
+    content={`
+        onModelCreate((e) => {
+            console.log(e.model.id)
+            console.log(e.model.created)
+            console.log(e.model.level)
+            console.log(e.model.message)
+            console.log(e.model.data)
+
+            e.next()
+        }, "_logs")
+    `}
+/>
