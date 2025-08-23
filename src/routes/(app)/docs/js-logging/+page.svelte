@@ -157,6 +157,7 @@
     language="javascript"
     content={`
         onModelCreate((e) => {
+            // print log model fields
             console.log(e.model.id)
             console.log(e.model.created)
             console.log(e.model.level)
