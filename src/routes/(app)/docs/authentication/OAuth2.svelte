@@ -87,17 +87,20 @@
                     // window will be automatically closed and the OAuth2 data sent back
                     // to the user through the previously established realtime connection.
                     //
-                    // If the popup is being blocked on Safari, you can try the suggestion from:
-                    // https://github.com/pocketbase/pocketbase/discussions/2429#discussioncomment-5943061.
-                    const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' });
+                    // If the popup is being blocked on Safari, make sure that your click handler is not using async/await.
+                    pb.collection('users').authWithOAuth2({
+                        provider: 'google'
+                    }).then((authData) => {
+                        console.log(authData)
 
-                    // after the above you can also access the auth data from the authStore
-                    console.log(pb.authStore.isValid);
-                    console.log(pb.authStore.token);
-                    console.log(pb.authStore.record.id);
+                        // after the above you can also access the auth data from the authStore
+                        console.log(pb.authStore.isValid);
+                        console.log(pb.authStore.token);
+                        console.log(pb.authStore.record.id);
 
-                    // "logout" the last authenticated record
-                    pb.authStore.clear();
+                        // "logout" the last authenticated record
+                        pb.authStore.clear();
+                    });
                 `}
                 dart={`
                     import 'package:pocketbase/pocketbase.dart';
@@ -113,8 +116,11 @@
                     // Once the external OAuth2 sign-in/sign-up flow is completed, the browser
                     // window will be automatically closed and the OAuth2 data sent back
                     // to the user through the previously established realtime connection.
+                    //
+                    // Note that it requires the app and realtime connection to remain active in the background!
+                    // For Android 15+ check the note in https://github.com/pocketbase/dart-sdk#oauth2-and-android-15.
                     final authData = await pb.collection('users').authWithOAuth2('google', (url) async {
-                      // or use something like flutter_custom_tabs to make the transitions between native and web content more seamless
+                      // or use flutter_custom_tabs to make the transitions between native and web content more seamless
                       await launchUrl(url);
                     });
 

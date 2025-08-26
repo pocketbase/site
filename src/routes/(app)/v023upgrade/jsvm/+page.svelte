@@ -459,7 +459,7 @@
 
                 record.set("title", title)
 
-                txApp.saveRecord(record)
+                txApp.save(record)
             }
         })
     `}
