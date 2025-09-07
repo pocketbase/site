@@ -52,7 +52,12 @@ GODEBUG environment variable (see package runtime) to go or cgo, as in:</p>
 <pre><code><span class="hl-0"> </span><span class="hl-1">export</span><span class="hl-0"> </span><span class="hl-6">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">netdns</span><span class="hl-1">=</span><span class="hl-0">go    # force pure Go resolver</span><br/><span class="hl-0"> </span><span class="hl-1">export</span><span class="hl-0"> </span><span class="hl-6">GODEBUG</span><span class="hl-1">=</span><span class="hl-0">netdns</span><span class="hl-1">=</span><span class="hl-0">cgo   # force native </span><span class="hl-2">resolver</span><span class="hl-0"> (cgo, win32)</span>
 </code><button>Copy</button></pre>
 <p>The decision can also be forced while building the Go source tree
-by setting the netgo or netcgo build tag.</p>
+by setting the netgo or netcgo build tag.
+The netgo build tag disables entirely the use of the native (CGO) resolver,
+meaning the Go resolver is the only one that can be used.
+With the netcgo build tag the native and the pure Go resolver are compiled into the binary,
+but the native (CGO) resolver is preferred over the Go resolver.
+With netcgo, the Go resolver can still be forced at runtime with GODEBUG=netdns=go.</p>
 <p>A numeric netdns setting, as in GODEBUG=netdns=1, causes the resolver
 to print debugging information about its decisions.
 To force a particular resolver while also printing debugging information,
@@ -71,8 +76,8 @@ library functions, such as GetAddrInfo and DnsQuery.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L16219">types.d.ts:16219</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21394">types.d.ts:21394</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L16171">types.d.ts:16171</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21642">types.d.ts:21642</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>

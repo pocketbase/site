@@ -17,7 +17,10 @@
 <li><a href="bufio.Reader.html">Reader</a></li></ul>
 <h1>Interface Reader</h1></div>
 <section class="tsd-panel tsd-comment">
-<div class="tsd-comment tsd-typography"><p>Reader implements buffering for an io.Reader object.</p>
+<div class="tsd-comment tsd-typography"><p>Reader implements buffering for an io.Reader object.
+A new Reader is created by calling [NewReader] or [NewReaderSize];
+alternatively the zero value of a Reader may be used after calling [Reset]
+on it.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
 <section class="tsd-panel tsd-hierarchy">
@@ -25,22 +28,22 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">Reader</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21898">types.d.ts:21898</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21900">types.d.ts:21900</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21906">types.d.ts:21906</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21916">types.d.ts:21916</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21928">types.d.ts:21928</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21938">types.d.ts:21938</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21950">types.d.ts:21950</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21957">types.d.ts:21957</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21967">types.d.ts:21967</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21975">types.d.ts:21975</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21984">types.d.ts:21984</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21990">types.d.ts:21990</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L22005">types.d.ts:22005</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L22026">types.d.ts:22026</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L22038">types.d.ts:22038</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L22050">types.d.ts:22050</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21908">types.d.ts:21908</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21910">types.d.ts:21910</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21916">types.d.ts:21916</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21926">types.d.ts:21926</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21939">types.d.ts:21939</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21949">types.d.ts:21949</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21961">types.d.ts:21961</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21968">types.d.ts:21968</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21978">types.d.ts:21978</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21986">types.d.ts:21986</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21995">types.d.ts:21995</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22001">types.d.ts:22001</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22016">types.d.ts:22016</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22037">types.d.ts:22037</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22049">types.d.ts:22049</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22061">types.d.ts:22061</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -76,7 +79,7 @@
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21988">types.d.ts:21988</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21999">types.d.ts:21999</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="discard" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>discard</span><a href="#discard" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -95,16 +98,17 @@ reading from the underlying io.Reader.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21936">types.d.ts:21936</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21947">types.d.ts:21947</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="peek" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>peek</span><a href="#peek" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="peek.peek-1"><span class="tsd-kind-call-signature">peek</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">n</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><a href="#peek.peek-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Peek returns the next n bytes without advancing the reader. The bytes stop
-being valid at the next read call. If Peek returns fewer than n bytes, it
-also returns an error explaining why the read is short. The error is
-[ErrBufferFull] if n is larger than b&#39;s buffer size.</p>
+being valid at the next read call. If necessary, Peek will read more bytes
+into the buffer in order to make n bytes available. If Peek returns fewer
+than n bytes, it also returns an error explaining why the read is short.
+The error is [ErrBufferFull] if n is larger than b&#39;s buffer size.</p>
 <p>Calling Peek prevents a [Reader.UnreadByte] or [Reader.UnreadRune] call from succeeding
 until the next read operation.</p>
 </div>
@@ -116,7 +120,7 @@ until the next read operation.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21926">types.d.ts:21926</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21937">types.d.ts:21937</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="read" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read</span><a href="#read" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -138,7 +142,7 @@ then this Read method can do so as well; see the [io.Reader] docs.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21948">types.d.ts:21948</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21959">types.d.ts:21959</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="readByte" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>Byte</span><a href="#readByte" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -150,7 +154,7 @@ If no byte is available, returns an error.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21955">types.d.ts:21955</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21966">types.d.ts:21966</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="readBytes" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>Bytes</span><a href="#readBytes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -172,7 +176,7 @@ For simple uses, a Scanner may be more convenient.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L22036">types.d.ts:22036</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22047">types.d.ts:22047</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="readLine" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>Line</span><a href="#readLine" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -196,7 +200,7 @@ part of the line returned by ReadLine.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L22024">types.d.ts:22024</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22035">types.d.ts:22035</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="readRune" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>Rune</span><a href="#readRune" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -209,7 +213,7 @@ and returns unicode.ReplacementChar (U+FFFD) with a size of 1.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21973">types.d.ts:21973</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21984">types.d.ts:21984</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="readSlice" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>Slice</span><a href="#readSlice" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -234,7 +238,7 @@ ReadSlice returns err != nil if and only if line does not end in delim.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L22003">types.d.ts:22003</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22014">types.d.ts:22014</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="readString" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>String</span><a href="#readString" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -256,7 +260,7 @@ For simple uses, a Scanner may be more convenient.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L22048">types.d.ts:22048</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22059">types.d.ts:22059</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="reset" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>reset</span><a href="#reset" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -276,7 +280,7 @@ Calling b.Reset(b) (that is, resetting a [Reader] to itself) does nothing.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21914">types.d.ts:21914</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21924">types.d.ts:21924</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="size" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>size</span><a href="#size" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -287,7 +291,7 @@ Calling b.Reset(b) (that is, resetting a [Reader] to itself) does nothing.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21904">types.d.ts:21904</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21914">types.d.ts:21914</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unreadByte" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unread<wbr/>Byte</span><a href="#unreadByte" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -301,7 +305,7 @@ considered read operations.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21965">types.d.ts:21965</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21976">types.d.ts:21976</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unreadRune" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unread<wbr/>Rune</span><a href="#unreadRune" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -315,7 +319,7 @@ from any read operation.)</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21982">types.d.ts:21982</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21993">types.d.ts:21993</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="writeTo" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write<wbr/>To</span><a href="#writeTo" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -334,7 +338,7 @@ this calls the underlying [Reader.WriteTo] without buffering.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L22057">types.d.ts:22057</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L22068">types.d.ts:22068</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -535,7 +539,7 @@ this calls the underlying [Reader.WriteTo] without buffering.</p>
 <details class="tsd-index-accordion" data-key="bufio$Type Aliases"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Type Aliases</span></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../types/bufio._smLkWEh.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_sm<wbr/>LkWEh</span></a></li></ul></div></details></li></ul></div></details></li>
+<li><a href="../types/bufio._sxPXlDK.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_sxPXlDK</span></a></li></ul></div></details></li></ul></div></details></li>
 <li><a href="../modules/bytes.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>bytes</span></a></li>
 <li><a href="../modules/cobra.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>cobra</span></a></li>
 <li><a href="../modules/context.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>context</span></a></li>

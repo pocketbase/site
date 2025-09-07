@@ -22,6 +22,7 @@
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Rename renames (moves) oldpath to newpath.
 If newpath already exists and is not a directory, Rename replaces it.
+If newpath already exists and is a directory, Rename returns an error.
 OS-specific restrictions may apply when oldpath and newpath are in different directories.
 Even within the same directory, on non-Unix platforms Rename is not an atomic operation.
 If there is an error, it will be of type *LinkError.</p>
@@ -36,7 +37,7 @@ If there is an error, it will be of type *LinkError.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L1925">types.d.ts:1925</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L1931">types.d.ts:1931</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -79,6 +80,8 @@ If there is an error, it will be of type *LinkError.</p>
 <li><a href="_os.getwd.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>getwd</span></a></li>
 <li><a href="_os.mkdir.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>mkdir</span></a></li>
 <li><a href="_os.mkdirAll.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>mkdir<wbr/>All</span></a></li>
+<li><a href="_os.openInRoot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>open<wbr/>In<wbr/>Root</span></a></li>
+<li><a href="_os.openRoot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>open<wbr/>Root</span></a></li>
 <li><a href="_os.readDir.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>Dir</span></a></li>
 <li><a href="_os.readFile.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>File</span></a></li>
 <li><a href="_os.remove.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>remove</span></a></li>

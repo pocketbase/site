@@ -29,6 +29,7 @@ os.Open does. Additionally, the root of the fs.FS returned for a relative path,
 DirFS(&quot;prefix&quot;), will be affected by later calls to Chdir. DirFS is therefore not
 a general substitute for a chroot-style security mechanism when the directory tree
 contains arbitrary content.</p>
+<p>Use [Root.FS] to obtain a fs.FS that prevents escapes from the tree via symbolic links.</p>
 <p>The directory dir must not be &quot;&quot;.</p>
 <p>The result implements [io/fs.StatFS], [io/fs.ReadFileFS] and
 [io/fs.ReadDirFS].</p>
@@ -41,7 +42,7 @@ contains arbitrary content.</p>
 <h4 class="tsd-returns-title">Returns <a href="../interfaces/fs.FS.html" class="tsd-signature-type tsd-kind-interface">FS</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L2104">types.d.ts:2104</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L2112">types.d.ts:2112</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -84,6 +85,8 @@ contains arbitrary content.</p>
 <li><a href="_os.getwd.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>getwd</span></a></li>
 <li><a href="_os.mkdir.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>mkdir</span></a></li>
 <li><a href="_os.mkdirAll.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>mkdir<wbr/>All</span></a></li>
+<li><a href="_os.openInRoot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>open<wbr/>In<wbr/>Root</span></a></li>
+<li><a href="_os.openRoot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>open<wbr/>Root</span></a></li>
 <li><a href="_os.readDir.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>Dir</span></a></li>
 <li><a href="_os.readFile.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>File</span></a></li>
 <li><a href="_os.remove.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>remove</span></a></li>

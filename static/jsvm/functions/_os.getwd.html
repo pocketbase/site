@@ -20,15 +20,18 @@
 <ul class="tsd-signatures">
 <li class="tsd-signature tsd-anchor-link" id="getwd"><span class="tsd-kind-call-signature">getwd</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#getwd" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
-<div class="tsd-comment tsd-typography"><p>Getwd returns a rooted path name corresponding to the
+<div class="tsd-comment tsd-typography"><p>Getwd returns an absolute path name corresponding to the
 current directory. If the current directory can be
 reached via multiple paths (due to symbolic links),
 Getwd may return any one of them.</p>
+<p>On Unix platforms, if the environment variable PWD
+provides an absolute name, and it is a name of the
+current directory, it is returned.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L2324">types.d.ts:2324</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L2336">types.d.ts:2336</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -71,6 +74,8 @@ Getwd may return any one of them.</p>
 <li><a href="_os.getwd.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>getwd</span></a></li>
 <li><a href="_os.mkdir.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>mkdir</span></a></li>
 <li><a href="_os.mkdirAll.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>mkdir<wbr/>All</span></a></li>
+<li><a href="_os.openInRoot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>open<wbr/>In<wbr/>Root</span></a></li>
+<li><a href="_os.openRoot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>open<wbr/>Root</span></a></li>
 <li><a href="_os.readDir.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>Dir</span></a></li>
 <li><a href="_os.readFile.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>read<wbr/>File</span></a></li>
 <li><a href="_os.remove.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-64"></use></svg><span>remove</span></a></li>

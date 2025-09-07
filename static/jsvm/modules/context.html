@@ -23,26 +23,28 @@ and between processes.</p>
 calls to servers should accept a Context. The chain of function
 calls between them must propagate the Context, optionally replacing
 it with a derived Context created using [WithCancel], [WithDeadline],
-[WithTimeout], or [WithValue]. When a Context is canceled, all
-Contexts derived from it are also canceled.</p>
+[WithTimeout], or [WithValue].</p>
+<p>A Context may be canceled to indicate that work done on its behalf should stop.
+A Context with a deadline is canceled after the deadline passes.
+When a Context is canceled, all Contexts derived from it are also canceled.</p>
 <p>The [WithCancel], [WithDeadline], and [WithTimeout] functions take a
 Context (the parent) and return a derived Context (the child) and a
-[CancelFunc]. Calling the CancelFunc cancels the child and its
+[CancelFunc]. Calling the CancelFunc directly cancels the child and its
 children, removes the parent&#39;s reference to the child, and stops
 any associated timers. Failing to call the CancelFunc leaks the
-child and its children until the parent is canceled or the timer
-fires. The go vet tool checks that CancelFuncs are used on all
-control-flow paths.</p>
-<p>The [WithCancelCause] function returns a [CancelCauseFunc], which
-takes an error and records it as the cancellation cause. Calling
-[Cause] on the canceled context or any of its children retrieves
-the cause. If no cause is specified, Cause(ctx) returns the same
-value as ctx.Err().</p>
+child and its children until the parent is canceled. The go vet tool
+checks that CancelFuncs are used on all control-flow paths.</p>
+<p>The [WithCancelCause], [WithDeadlineCause], and [WithTimeoutCause] functions
+return a [CancelCauseFunc], which takes an error and records it as
+the cancellation cause. Calling [Cause] on the canceled context
+or any of its children retrieves the cause. If no cause is specified,
+Cause(ctx) returns the same value as ctx.Err().</p>
 <p>Programs that use Contexts should follow these rules to keep interfaces
 consistent across packages and enable static analysis tools to check context
 propagation:</p>
 <p>Do not store Contexts inside a struct type; instead, pass a Context
-explicitly to each function that needs it. The Context should be the first
+explicitly to each function that needs it. This is discussed further in
+<a href="https://go.dev/blog/context-and-structs">https://go.dev/blog/context-and-structs</a>. The Context should be the first
 parameter, typically named ctx:</p>
 <pre><code><span class="hl-0"> func </span><span class="hl-2">DoSomething</span><span class="hl-0">(ctx context.Context, arg Arg) error {</span><br/><span class="hl-0">   </span><span class="hl-3">// ... use ctx ...</span><br/><span class="hl-0"> }</span>
 </code><button>Copy</button></pre>
@@ -52,13 +54,13 @@ if you are unsure about which Context to use.</p>
 APIs, not for passing optional parameters to functions.</p>
 <p>The same Context may be passed to functions running in different goroutines;
 Contexts are safe for simultaneous use by multiple goroutines.</p>
-<p>See <a href="https://blog.golang.org/context">https://blog.golang.org/context</a> for example code for a server that uses
+<p>See <a href="https://go.dev/blog/context">https://go.dev/blog/context</a> for example code for a server that uses
 Contexts.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L16016">types.d.ts:16016</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L21219">types.d.ts:21219</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L15584">types.d.ts:15584</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L21627">types.d.ts:21627</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <h3 class="tsd-index-heading uppercase">Index</h3>

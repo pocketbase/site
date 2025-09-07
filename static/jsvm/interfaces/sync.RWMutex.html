@@ -25,7 +25,9 @@ The zero value for a RWMutex is an unlocked mutex.</p>
 one or more readers, concurrent calls to [RWMutex.RLock] will block until
 the writer has acquired (and released) the lock, to ensure that
 the lock eventually becomes available to the writer.
-Note that this prohibits recursive read-locking.</p>
+Note that this prohibits recursive read-locking.
+A [RWMutex.RLock] cannot be upgraded into a [RWMutex.Lock],
+nor can a [RWMutex.Lock] be downgraded into a [RWMutex.RLock].</p>
 <p>In the terminology of <a href="https://go.dev/ref/mem">the Go memory model</a>,
 the n&#39;th call to [RWMutex.Unlock] “synchronizes before” the m&#39;th call to Lock
 for any n &lt; m, just as for [Mutex].
@@ -40,14 +42,14 @@ the n+1&#39;th call to Lock.</p>
 <ul class="tsd-hierarchy">
 <li><span class="target">RWMutex</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14511">types.d.ts:14511</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14513">types.d.ts:14513</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14523">types.d.ts:14523</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14533">types.d.ts:14533</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14542">types.d.ts:14542</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14550">types.d.ts:14550</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14560">types.d.ts:14560</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14571">types.d.ts:14571</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14708">types.d.ts:14708</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14710">types.d.ts:14710</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14720">types.d.ts:14720</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14730">types.d.ts:14730</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14739">types.d.ts:14739</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14747">types.d.ts:14747</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14757">types.d.ts:14757</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14768">types.d.ts:14768</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -77,7 +79,7 @@ Lock blocks until the lock is available.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14548">types.d.ts:14548</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14745">types.d.ts:14745</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="rLock" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>r<wbr/>Lock</span><a href="#rLock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -91,7 +93,7 @@ documentation on the [RWMutex] type.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14521">types.d.ts:14521</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14718">types.d.ts:14718</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="rLocker" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>r<wbr/>Locker</span><a href="#rLocker" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -103,7 +105,7 @@ the [Locker.Lock] and [Locker.Unlock] methods by calling rw.RLock and rw.RUnlock
 <h4 class="tsd-returns-title">Returns <a href="sync.Locker.html" class="tsd-signature-type tsd-kind-interface">Locker</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14576">types.d.ts:14576</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14773">types.d.ts:14773</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="rUnlock" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>r<wbr/>Unlock</span><a href="#rUnlock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -117,7 +119,7 @@ on entry to RUnlock.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14540">types.d.ts:14540</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14737">types.d.ts:14737</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="tryLock" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>try<wbr/>Lock</span><a href="#tryLock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -131,7 +133,7 @@ in a particular use of mutexes.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14558">types.d.ts:14558</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14755">types.d.ts:14755</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="tryRLock" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>tryRLock</span><a href="#tryRLock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -145,7 +147,7 @@ in a particular use of mutexes.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14531">types.d.ts:14531</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14728">types.d.ts:14728</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unlock" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unlock</span><a href="#unlock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -160,7 +162,7 @@ arrange for another goroutine to [RWMutex.RUnlock] ([RWMutex.Unlock]) it.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/210d95a42/jsvm/types.d.ts#L14569">types.d.ts:14569</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/621baeae8/jsvm/types.d.ts#L14766">types.d.ts:14766</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
