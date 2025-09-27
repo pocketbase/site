@@ -37,6 +37,19 @@
     </div>
 </div>
 
+<div class="alert alert-warning m-b-sm">
+  <div class="icon">
+    <i class="ri-error-warning-line" />
+  </div>
+  <div class="content">
+    <p>
+      Keep in mind that the <code>email_verified</code> field in the <strong>Userinfo</strong> response should
+      be truthy. Otherwise, PocketBase will treat the email as unverified  and the <code>email</code> field will
+      remain empty in the <code>auth</code> table.
+    </p>
+  </div>
+</div>
+
 <div class="tabs">
     <div class="tabs-header compact left">
         <button
