@@ -109,10 +109,7 @@
                 <a href="https://www.hetzner.com/" target="_blank" rel="noreferrer noopener">Hetzner</a>,
                 <a href="https://www.vultr.com/" target="_blank" rel="noreferrer noopener">Vultr</a>,
                 <a href="https://upcloud.com/" target="_blank" rel="noreferrer noopener">UpCloud</a>,
-                <a href="https://www.linode.com/" target="_blank" rel="noreferrer noopener">Linode</a>,
-                <a href="https://www.digitalocean.com/" target="_blank" rel="noreferrer noopener"
-                    >DigitalOcean</a
-                >, etc.
+                <a href="https://www.linode.com/" target="_blank" rel="noreferrer noopener">Linode</a>, etc.
                 <br />
                 The
                 <a href="/docs/going-to-production/">Going to production</a> guide contains information how to
