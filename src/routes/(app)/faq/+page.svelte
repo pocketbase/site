@@ -44,6 +44,12 @@
                             to get a general idea where the project is headed but there are no fixed ETAs</em
                         >).
                     </p>
+                    <p>
+                        <strong>
+                            If you don't have the time to at least skim through the documentation and you plan
+                            to solely rely on some AI tool, then please do NOT use PocketBase!
+                        </strong>
+                    </p>
                 </div>
             </div>
 
