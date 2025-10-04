@@ -27,8 +27,8 @@
     </div>
     <div class="content">
         <p>
-            For more details and examples how to interact with Record and Collection models programmatically
-            you could also check <a href="/docs/go-collections">Collection operations</a>
+            For more details and examples on how to interact with Record and Collection models
+            programmatically you could also check <a href="/docs/go-collections">Collection operations</a>
             and
             <a href="/docs/go-records">Record operations</a> sections.
         </p>

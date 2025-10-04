@@ -183,7 +183,7 @@
     <div class="content">
         <p>
             Please note that the embedded JavaScript engine is not a Node.js or browser environment, meaning
-            that modules that relies on APIs like <em>window</em>, <em>fs</em>,
+            that modules that rely on APIs like <em>window</em>, <em>fs</em>,
             <em>fetch</em>, <em>buffer</em> or any other runtime specific API not part of the ES5 spec may not
             work!
         </p>

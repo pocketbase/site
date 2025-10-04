@@ -59,7 +59,7 @@
 
 <Accordion single title="List backups">
     <div class="content m-b-sm">
-        <p>Returns list with all available backup files.</p>
+        <p>Returns a list with all available backup files.</p>
         <p>Only superusers can perform this action.</p>
     </div>
 

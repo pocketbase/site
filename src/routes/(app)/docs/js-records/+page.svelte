@@ -378,7 +378,7 @@
             // overwrite the submitted "status" field value
             e.record.set("status", "pending")
 
-            // or you can also prevent the create event by returning an error
+            // or you can also prevent the update event by returning an error
             let status = e.record.get("status")
             if (
                 status != "pending" &&

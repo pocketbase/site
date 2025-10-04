@@ -13,8 +13,8 @@
                 <div class="content">
                     <h5>0. Why?</h5>
                     <p>
-                        PocketBase was created to assist building self-contained applications that can run on
-                        a single server without requiring to install anything in addition (<em
+                        PocketBase was created to assist in building self-contained applications that can run
+                        on a single server without requiring you to install anything in addition (<em
                             >see <a
                                 href="https://github.com/presentator/presentator/issues/183"
                                 target="_blank"
@@ -31,7 +31,7 @@
                     <p>
                         Please note that PocketBase is neither a startup, nor a business. There is no paid
                         team or company behind it. It is a personal open source project with intentionally
-                        limited scope and developed entirely on volunteer basis. There are no promises for
+                        limited scope and developed entirely on a volunteer basis. There are no promises for
                         maintenance and support beyond what is already available (<em
                             >you can explore the
                             <a
@@ -104,16 +104,16 @@
                 </li>
             </ul>
             <p>
-                For a more traditional setup you can use any VPS provider that comes with a persistent
-                storage, like:
+                For a more traditional setup you can use any VPS provider that comes with persistent storage,
+                like:
                 <a href="https://www.hetzner.com/" target="_blank" rel="noreferrer noopener">Hetzner</a>,
                 <a href="https://www.vultr.com/" target="_blank" rel="noreferrer noopener">Vultr</a>,
                 <a href="https://upcloud.com/" target="_blank" rel="noreferrer noopener">UpCloud</a>,
                 <a href="https://www.linode.com/" target="_blank" rel="noreferrer noopener">Linode</a>, etc.
                 <br />
                 The
-                <a href="/docs/going-to-production/">Going to production</a> guide contains information how to
-                deploy your PocketBase app and some config recommendations.
+                <a href="/docs/going-to-production/">Going to production</a> guide contains information on how
+                to deploy your PocketBase app and some config recommendations.
             </p>
 
             <h5>2. Does it scale?</h5>
@@ -151,7 +151,7 @@
 
             <h5>4. Does it support Google or Facebook login?</h5>
             <p>
-                Yes, currently there is support more than 15+ OAuth2 providers - Apple, Google, Facebook,
+                Yes, currently there is support for more than 15+ OAuth2 providers - Apple, Google, Facebook,
                 Microsoft, VK, GitHub, GitLab, and many more.
             </p>
 
@@ -171,8 +171,8 @@
                 no plans for supporting other databases.
                 <br />
                 <strong>
-                    For majority of the queries SQLite (in WAL mode) outperforms traditional databases like
-                    MySQL, MariaDB or PostgreSQL (especially for read operations).
+                    For the majority of the queries SQLite (in WAL mode) outperforms traditional databases
+                    like MySQL, MariaDB or PostgreSQL (especially for read operations).
                 </strong>
                 <br />
                 If you need replication and disaster recovery, a great companion app could be

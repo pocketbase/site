@@ -20,7 +20,7 @@
     by directly updating the field value - with a record id or array of ids, in case a multiple relation is used.
 </p>
 <p>
-    Below is an example that shows creating a new <strong>posts</strong> record with 2 assigned tags.
+    Below is an example that shows creating a new <strong>posts</strong> record with two assigned tags.
 </p>
 <!-- prettier-ignore -->
 <CodeTabs
@@ -143,7 +143,7 @@
             collection's <strong>View API Rule</strong>) will be expanded.
         </p>
         <p>
-            Nested relation references in <code>expand</code>, <code>filter</code> or <code>sort</code> are supported
+            Nested relation references in <code>expand</code>, <code>filter</code>, or <code>sort</code> are supported
             via dot-notation and up to 6-levels depth.
         </p>
     </div>
@@ -210,7 +210,7 @@
     <code>comments_via_post</code>).
 </p>
 <p>
-    For example, lets list the <strong>posts</strong> that has at least one <strong>comments</strong> record
+    For example, let's list the <strong>posts</strong> that have at least one <strong>comments</strong> record
     containing the word <em>"hello"</em>:
 </p>
 <!-- prettier-ignore -->

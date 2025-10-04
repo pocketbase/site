@@ -83,7 +83,7 @@
 
 <HeadingLink title="With(attrs...)" tag="h5" />
 <p>
-    <code>With(atrs...)</code> creates a new local logger that will "inject" the specified attributes with each
+    <code>With(attrs...)</code> creates a new local logger that will "inject" the specified attributes with each
     following log.
 </p>
 <CodeBlock

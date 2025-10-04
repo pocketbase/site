@@ -13,7 +13,7 @@
     JSON APIs for listing, pagination, sorting, filtering, etc.
 </p>
 <p>
-    The access and filter controls for your data is usually done through the
+    The access and filter controls for your data are usually done through the
     <a href="/docs/api-rules-and-filters/">collection API rules</a>
     .
 </p>
@@ -58,7 +58,7 @@
         <ul>
             <li>
                 <a href="/docs/use-as-framework">Use PocketBase as Go/JS framework</a> to create new routes or
-                intercept existing.
+                intercept existing ones.
             </li>
             <li>
                 <p>
@@ -94,7 +94,7 @@
                 `}
                 />
                 <p>
-                    Then you can import directly the file in your server-side actions and use the client as
+                    Then you can directly import the file in your server-side actions and use the client as
                     usual:
                 </p>
                 <CodeBlock
@@ -116,10 +116,10 @@
 
     <Accordion single title="Why not JS SSR">
         <p>
-            Using PocketBase with meta framework such as SvelteKit, Nuxt, Next.js, etc.
+            Using PocketBase with meta frameworks such as SvelteKit, Nuxt, Next.js, etc.
             <strong>in a JS SSR mode</strong>
             is possible but it comes with many complications and you need to carefully evaluate whether the cost
-            of having another backend (PocketBase) along-side your existing one (the Node.js server) is worth it.
+            of having another backend (PocketBase) alongside your existing one (the Node.js server) is worth it.
         </p>
         <p>
             You can read more about the potential problems in
@@ -133,8 +133,8 @@
         </p>
         <ul>
             <li>
-                Security issues caused by incorrectly initialized and shared JS SDK instance in a long-running
-                server-side context.
+                Security issues caused by incorrectly initialized and shared JS SDK instances in a
+                long-running server-side context.
             </li>
             <li>
                 OAuth2 integration difficulties related to the server-side only OAuth2 flow (or its mixed
@@ -152,10 +152,10 @@
         </ul>
         <p>
             This doesn't mean that using PocketBase with JS SSR is always a "bad thing" but based on the
-            dozens reported issues so far I would recommend it only after careful evaluation and only to more
-            experienced developers that have in-depth understanding of the used tools and their trade-offs. If
-            you still want to use PocketBase to handle regular users authentication with a JS SSR meta
-            framework, then you can find some JS SDK examples in the repo's
+            dozens of reported issues so far I would recommend it only after careful evaluation and only to
+            more experienced developers that have in-depth understanding of the used tools and their
+            trade-offs. If you still want to use PocketBase to handle regular users authentication with a JS
+            SSR meta framework, then you can find some JS SDK examples in the repo's
             <a
                 href="https://github.com/pocketbase/js-sdk#ssr-integration"
                 target="_blank"
@@ -176,7 +176,7 @@
             It is possible to use them with PocketBase but at the moment I don't recommend it because we lack
             the necessary helpers and utilities for building SSR-first applications, which means that you
             might have to create from scratch a lot of things on your own such as middlewares for handling
-            cookies (<em>and eventually taking care also for CORS and CSRF</em>) or custom authentication
+            cookies (<em>and eventually also taking care of CORS and CSRF</em>) or custom authentication
             endpoints and access controls (<em
                 >the collection API rules apply only for the builtin JSON routes</em
             >).
@@ -196,7 +196,7 @@
             and open/close state.
         </p>
         <p>
-            The SDKs comes with a helper async storage implementation that allows you to hook any custom
+            The SDKs come with a helper async storage implementation that allows you to hook any custom
             persistent layer (local file, SharedPreferences, key-value based database, etc.). Here is a
             minimal PocketBase SDKs initialization for React Native (JavaScript) and Flutter (Dart):
         </p>

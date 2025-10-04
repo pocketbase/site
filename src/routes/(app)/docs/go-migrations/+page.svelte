@@ -129,7 +129,7 @@
             <a href="/docs/go-collections">Collection operations</a> and
             <a href="/docs/go-records">Record operations</a>
             for more details how to interact with the database. You can also find
-            <a href="#examples">some examples</a> further below in ths guide.
+            <a href="#examples">some examples</a> further below in this guide.
         </p>
     </div>
 </div>

@@ -43,7 +43,7 @@
         let allCollections = $app.findAllCollections(/* optional types */)
 
         // only specific types
-        let authAndViewCollections := $app.findAllCollections("auth", "view")
+        let authAndViewCollections = $app.findAllCollections("auth", "view")
     `}
 />
 
@@ -76,7 +76,7 @@
     <div class="content">
         <p>
             All collection fields <em>(with exception of the <code>JSONField</code>)</em> are non-nullable and
-            uses a zero-default for their respective type as fallback value when missing.
+            use a zero-default for their respective type as fallback value when missing.
         </p>
     </div>
 </div>

@@ -32,7 +32,7 @@
     </li>
 </ul>
 <p>
-    Auth collections has an additional <code>options.manageRule</code> used to allow one user (it could be even
+    Auth collections have an additional <code>options.manageRule</code> used to allow one user (it could be even
     from a different collection) to be able to fully manage the data of another user (ex. changing their email,
     password, etc.).
 </p>
@@ -93,8 +93,8 @@
     width="550"
 />
 <p>
-    There is autocomplete to help you guide you while typing the rule filter expression, but in general you
-    have access to <strong>3 groups of fields</strong>:
+    There is autocomplete to help guide you while typing the rule filter expression, but in general you have
+    access to <strong>3 groups of fields</strong>:
 </p>
 <ul>
     <li>
@@ -230,7 +230,7 @@
 <p>
     <small class="txt-hint">
         Note that <code class="txt-sm">@request.body.*:isset</code> at the moment doesn't support checking for
-        new uploaded files because they are evaluated separately and cannot be serialized (<em
+        newly uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
     </small>
@@ -256,7 +256,7 @@
 <p>
     <small class="txt-hint">
         Note that <code class="txt-sm">@request.body.*:length</code> at the moment doesn't support checking
-        for new uploaded files because they are evaluated separately and cannot be serialized (<em
+        for newly uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
     </small>
@@ -281,7 +281,7 @@
 <p>
     <small class="txt-hint">
         Note that <code class="txt-sm">@request.body.*:each</code> at the moment doesn't support checking for
-        new uploaded files because they are evaluated separately and cannot be serialized (<em
+        newly uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
     </small>
@@ -317,7 +317,7 @@
     between 2 geographic points in kilometres.
 </p>
 <p>
-    The function is intented to be used primarily with the <code>geoPoint</code> field type, but the accepted
+    The function is intended to be used primarily with the <code>geoPoint</code> field type, but the accepted
     arguments could be any plain number or collection field identifier. If the identifier cannot be resolved
     and converted to a numeric value, it resolves to <code>null</code>. Note that the
     <code>geoDistance</code> function always results in a single row/record value meaning that "any/at-least-one-of"

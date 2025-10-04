@@ -36,7 +36,7 @@
     <div class="content">
         <p>
             Keep in mind that the console commands execute in their own separate app process and run
-            independently from the main <code>serve</code> command (aka. hook and realtime events between different
+            independently from the main <code>serve</code> command (aka. hooks and realtime events between different
             processes are not shared with one another).
         </p>
     </div>

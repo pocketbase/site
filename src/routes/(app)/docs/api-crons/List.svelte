@@ -65,7 +65,7 @@
 
 <Accordion single title="List cron jobs">
     <div class="content m-b-sm">
-        <p>Returns list with all registered app level cron jobs.</p>
+        <p>Returns a list with all registered app level cron jobs.</p>
         <p>Only superusers can perform this action.</p>
     </div>
 

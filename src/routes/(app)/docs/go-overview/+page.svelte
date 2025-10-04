@@ -10,7 +10,7 @@
 <HeadingLink title="Getting started" />
 <p>
     PocketBase can be used as regular Go package that exposes various helpers and hooks to help you implement
-    you own custom portable application.
+    your own custom portable application.
 </p>
 <p>
     A new PocketBase instance is created via
@@ -113,7 +113,7 @@
     </div>
 </div>
 <p>
-    PocketBase v0.23+ added supported for defining a <code>DBConnect</code> function as app configuration to
+    PocketBase v0.23+ added support for defining a <code>DBConnect</code> function as app configuration to
     load custom SQLite builds and drivers compatible with the standard Go <code>database/sql</code>.
 </p>
 <p>

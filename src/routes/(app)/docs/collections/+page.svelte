@@ -15,7 +15,7 @@
     <strong>name</strong> and <strong>fields</strong> (columns).
 </p>
 <p>
-    Single entry of a collection is called <strong>record</strong> (a single row in the SQL table).
+    A single entry of a collection is called <strong>record</strong> (a single row in the SQL table).
 </p>
 <p>
     You can manage your <strong>collections</strong> from the Dashboard, with the Web APIs using the
@@ -79,7 +79,7 @@
 <HeadingLink title="Auth collection" tag="h5" />
 <p>
     <strong>Auth collection</strong> has everything from the <strong>Base collection</strong> but with some additional
-    special fields to help you manage your app users and also providing various authentication options.
+    special fields to help you manage your app users and also provide various authentication options.
 </p>
 <p>
     Each Auth collection has the following special system fields:
@@ -153,7 +153,7 @@
     <div class="content">
         <p>
             All collection fields <em>(with exception of the <code>JSONField</code>)</em> are
-            <strong>non-nullable and uses a zero-default</strong> for their respective type as fallback value
+            <strong>non-nullable and use a zero-default</strong> for their respective type as fallback value
             when missing (empty string for <code>text</code>, 0 for <code>number</code>, etc.).
         </p>
         <p>

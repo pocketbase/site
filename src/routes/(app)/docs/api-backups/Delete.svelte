@@ -23,7 +23,7 @@
             body: `
                 {
                   "status": 401,
-                  "message": "The request requires valid record authorization token.",
+                  "message": "The request requires a valid record authorization token.",
                   "data": {}
                 }
             `,

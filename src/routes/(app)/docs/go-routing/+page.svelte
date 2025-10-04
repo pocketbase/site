@@ -121,7 +121,7 @@
 <p>
     Route paths can include parameters in the format <code>{`{paramName}`}</code>.
     <br />
-    You can also use <code>{`{paramName...}`}</code> format to specify a parameter that target more than one path
+    You can also use <code>{`{paramName...}`}</code> format to specify a parameter that targets more than one path
     segment.
 </p>
 <p class="txt-bold">
@@ -162,7 +162,7 @@
         // match only "GET /static/" (if no "/static" is registered, it is 301 redirected)
         se.Router.GET("/static/{$}")
 
-        // match "GET /customers/john", "GET /customer/jane", etc.
+        // match "GET /customers/john", "GET /customers/jane", etc.
         se.Router.GET("/customers/{name}")
     `}
 />
@@ -407,7 +407,7 @@
     <code>Bind</code>
     and <code>BindFunc</code> methods.
 </p>
-<p>Here is a minimal example of a what global middleware looks like:</p>
+<p>Here is a minimal example of what a global middleware looks like:</p>
 <CodeBlock
     language="go"
     content={`

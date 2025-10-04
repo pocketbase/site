@@ -7,7 +7,7 @@
 </script>
 
 <p>
-    <code>$app.logger()</code> could be used to writes any logs into the database so that they can be later
+    <code>$app.logger()</code> could be used to write any logs into the database so that they can be later
     explored from the PocketBase <em>Dashboard > Logs</em> section.
 </p>
 
@@ -83,7 +83,7 @@
 
 <HeadingLink title="with(attrs...)" tag="h5" />
 <p>
-    <code>with(atrs...)</code> creates a new local logger that will "inject" the specified attributes with each
+    <code>with(attrs...)</code> creates a new local logger that will "inject" the specified attributes with each
     following log.
 </p>
 <CodeBlock

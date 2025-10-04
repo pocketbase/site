@@ -4,7 +4,7 @@
 </script>
 
 <p>
-    If you have tasks that need to be performed periodically, you could setup crontab-like jobs with
+    If you have tasks that need to be performed periodically, you could set up crontab-like jobs with
     <code>cronAdd(id, expr, handler)</code>.
 </p>
 

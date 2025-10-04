@@ -13,7 +13,7 @@
 </p>
 <p>
     <code>$app.db()</code>
-    returns a <code>dbx.Builder</code> that could run all kind of SQL statements, including raw queries.
+    returns a <code>dbx.Builder</code> that can run all kinds of SQL statements, including raw queries.
 </p>
 <div class="alert alert-info">
     <div class="icon">
@@ -196,7 +196,7 @@
 
 <HeadingLink title="join()" tag="h5" />
 <p>
-    The <code>join(type, table, on)</code> method specifies a <code>JOIN</code> clause. It takes 3 parameters:
+    The <code>join(type, table, on)</code> method specifies a <code>JOIN</code> clause. It takes three parameters:
 </p>
 <ul>
     <li><code>type</code> - join type string like <code>INNER JOIN</code>, <code>LEFT JOIN</code>, etc.</li>

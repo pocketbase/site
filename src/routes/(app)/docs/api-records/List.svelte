@@ -166,14 +166,14 @@
                 <td>
                     <span class="label">Number</span>
                 </td>
-                <td>The page (aka. offset) of the paginated list (<em>default to 1</em>).</td>
+                <td>The page (aka. offset) of the paginated list (<em>defaults to 1</em>).</td>
             </tr>
             <tr>
                 <td id="query-perPage">perPage</td>
                 <td>
                     <span class="label">Number</span>
                 </td>
-                <td>The max returned records per page (<em>default to 30</em>).</td>
+                <td>The max returned records per page (<em>defaults to 30</em>).</td>
             </tr>
             <tr>
                 <td valign="top" id="query-sort">sort</td>

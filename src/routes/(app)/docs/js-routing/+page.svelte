@@ -587,7 +587,7 @@
     `}
 />
 
-<HeadingLink title="Sending request to custom routes using the SDKs" />
+<HeadingLink title="Sending requests to custom routes using the SDKs" />
 <p>
     The official PocketBase SDKs expose the internal <code>send()</code> method that could be used to send requests
     to your custom route(s).
