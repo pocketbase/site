@@ -3,8 +3,6 @@
     import CodeBlock from "@/components/CodeBlock.svelte";
     import CodeTabs from "@/components/CodeTabs.svelte";
 
-    const pageTitle = "Realtime";
-
     const responses = [
         {
             code: 204,

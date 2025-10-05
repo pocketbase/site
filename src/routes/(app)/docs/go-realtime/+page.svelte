@@ -41,7 +41,7 @@
     >
         <code>app.SubscriptionsBroker().ChunkedClients(size)</code>
     </a>
-    is similar but return the result as a chunked slice allowing you to split the iteration across several goroutines
+    is similar but returns the result as a chunked slice allowing you to split the iteration across several goroutines
     (usually combined with
     <a href="https://pkg.go.dev/golang.org/x/sync/errgroup" target="_blank" rel="noopener noreferrer">
         <code>errgroup</code>

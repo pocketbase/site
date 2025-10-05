@@ -128,7 +128,7 @@
                 t.Fatal(err)
             }
 
-            // setup the test ApiScenario app instance
+            // set up the test ApiScenario app instance
             setupTestApp := func(t testing.TB) *tests.TestApp {
                 testApp, err := tests.NewTestApp(testDataDir)
                 if err != nil {

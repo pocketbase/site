@@ -210,7 +210,7 @@
     <code>comments_via_post</code>).
 </p>
 <p>
-    For example, lets list the <strong>posts</strong> that has at least one <strong>comments</strong> record
+    For example, let's list the <strong>posts</strong> that have at least one <strong>comments</strong> record
     containing the word <em>"hello"</em>:
 </p>
 <!-- prettier-ignore -->

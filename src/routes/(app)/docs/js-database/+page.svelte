@@ -13,7 +13,7 @@
 </p>
 <p>
     <code>$app.db()</code>
-    returns a <code>dbx.Builder</code> that could run all kind of SQL statements, including raw queries.
+    returns a <code>dbx.Builder</code> that can run all kinds of SQL statements, including raw queries.
 </p>
 <div class="alert alert-info">
     <div class="icon">

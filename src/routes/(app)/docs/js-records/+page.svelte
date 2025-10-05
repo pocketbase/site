@@ -378,7 +378,7 @@
             // overwrite the submitted "status" field value
             e.record.set("status", "pending")
 
-            // or you can also prevent the create event by returning an error
+            // or you can also prevent the update event by returning an error
             let status = e.record.get("status")
             if (
                 status != "pending" &&
@@ -471,7 +471,7 @@
     method.
 </p>
 <p>
-    Below is an example of creating a custom route to retrieve a single article and checking the request
+    Below is an example of creating a custom route to retrieve a single article and checking if the request
     satisfy the View API rule of the record collection:
 </p>
 <CodeBlock

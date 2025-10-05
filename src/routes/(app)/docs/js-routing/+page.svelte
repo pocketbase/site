@@ -54,7 +54,7 @@
 <p>
     Route paths can include parameters in the format <code>{`{paramName}`}</code>.
     <br />
-    You can also use <code>{`{paramName...}`}</code> format to specify a parameter that target more than one path
+    You can also use <code>{`{paramName...}`}</code> format to specify a parameter that targets more than one path
     segment.
 </p>
 <p class="txt-bold">
@@ -95,7 +95,7 @@
         // match only "GET /static/" (if no "/static" is registered, it is 301 redirected)
        routerAdd("GET", "/static/{$}", ...)
 
-        // match "GET /customers/john", "GET /customer/jane", etc.
+        // match "GET /customers/john", "GET /customers/jane", etc.
        routerAdd("GET", "/customers/{name}", ...)
     `}
 />
@@ -297,7 +297,7 @@
 </p>
 
 <HeadingLink title="Registering middlewares" tag="h5" />
-<p>Here is a minimal example of a what global middleware looks like:</p>
+<p>Here is a minimal example of what a global middleware looks like:</p>
 <CodeBlock
     language="javascript"
     content={`

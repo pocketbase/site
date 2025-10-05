@@ -185,7 +185,7 @@
 <p>
     Similar to the previous section, most users rarely will have to use the <code>Delete</code> file method directly
     because for collection records the file deletion is handled transparently when removing the existing filename
-    from the record model (this also ensure that the db entry referencing the file is also removed). For example:
+    from the record model (this also ensures that the db entry referencing the file is also removed). For example:
 </p>
 <CodeBlock
     language="go"

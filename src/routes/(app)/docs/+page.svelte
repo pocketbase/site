@@ -41,7 +41,7 @@
 
 <p>
     PocketBase is an open source backend consisting of embedded database (SQLite) with realtime subscriptions,
-    built-in auth management, convenient dashboard UI and simple REST-ish API. It can be used both as Go
+    builtin auth management, convenient dashboard UI and simple REST-ish API. It can be used both as Go
     framework and as standalone application.
 </p>
 
@@ -178,8 +178,8 @@
 </p>
 <p>
     <strong>And that's it!</strong>
-    The first time it will generate an installer link that should be automatically opened in the browser to setup
-    your first superuser account
+    The first time it will generate an installer link that should be automatically opened in the browser to set
+    up your first superuser account
     <small class="txt-hint">
         (you can also create the first superuser manually via
         <code>./pocketbase superuser create EMAIL PASS</code>)

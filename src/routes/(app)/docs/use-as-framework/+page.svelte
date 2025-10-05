@@ -4,7 +4,7 @@
 </script>
 
 <p>
-    One of the main feature of PocketBase is that
+    One of the main features of PocketBase is that
     <strong>it can be used as a framework</strong> which enables you to write your own custom app business
     logic in
     <a href="/docs/go-overview">Go</a> or <a href="/docs/js-overview">JavaScript</a> and still have a portable

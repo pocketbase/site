@@ -151,7 +151,7 @@
 
             <h5>4. Does it support Google or Facebook login?</h5>
             <p>
-                Yes, currently there is support more than 15+ OAuth2 providers - Apple, Google, Facebook,
+                Yes, currently there is support for more than 15+ OAuth2 providers - Apple, Google, Facebook,
                 Microsoft, VK, GitHub, GitLab, and many more.
             </p>
 
@@ -171,8 +171,8 @@
                 no plans for supporting other databases.
                 <br />
                 <strong>
-                    For majority of the queries SQLite (in WAL mode) outperforms traditional databases like
-                    MySQL, MariaDB or PostgreSQL (especially for read operations).
+                    For the majority of the queries SQLite (in WAL mode) outperforms traditional databases
+                    like MySQL, MariaDB or PostgreSQL (especially for read operations).
                 </strong>
                 <br />
                 If you need replication and disaster recovery, a great companion app could be

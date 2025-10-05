@@ -11,12 +11,12 @@
 
 <HeadingLink title="Minimal setup" tag="h5" />
 <p>
-    One of the best PocketBase features is that it's completely portable. This mean that it doesn't require
+    One of the best PocketBase features is that it's completely portable. This means that it doesn't require
     any external dependency and
     <strong>could be deployed by just uploading the executable on your server</strong>.
 </p>
 <p>
-    Here is an example for starting a production HTTPS server (auto managed TLS with Let's Encrypt) on clean
+    Here is an example of starting a production HTTPS server (auto managed TLS with Let's Encrypt) on a clean
     Ubuntu 22.04 installation.
 </p>
 <ol>
@@ -61,7 +61,7 @@
         />
         <blockquote>
             <p>
-                Notice that in the above example we are logged in as <strong>root</strong> which allow us to
+                Notice that in the above example we are logged in as <strong>root</strong> which allows us to
                 bind to the
                 <strong>privileged 80 and 443 ports</strong>.
                 <br />
@@ -133,12 +133,12 @@
 
 <HeadingLink title="Using reverse proxy" tag="h5" />
 <p>
-    If you plan hosting multiple applications on a single server or need finer network controls, you can
+    If you plan on hosting multiple applications on a single server or need finer network controls, you can
     always put PocketBase behind a reverse proxy such as
     <em>NGINX</em>, <em>Apache</em>, <em>Caddy</em>, etc.
     <br />
     <em>
-        Just note that when using a reverse proxy you may need to setup the "User IP proxy headers" in the
+        Just note that when using a reverse proxy you may need to set up the "User IP proxy headers" in the
         PocketBase settings so that the application can extract and log the actual visitor/client IP (the
         headers are usually <code>X-Real-IP</code>, <code>X-Forwarded-For</code>).
     </em>
@@ -252,7 +252,7 @@
     <em>(for transactional safety make sure that the application is not running)</em>.
 </p>
 <p>
-    To make things slightly easier, PocketBase v0.16+ comes with built-in backups and restore APIs that could
+    To make things slightly easier, PocketBase v0.16+ comes with builtin backups and restore APIs that could
     be accessed from the Dashboard (
     <em>Settings</em>
     {`>`} <em>Backups</em>
@@ -341,8 +341,8 @@
     <HeadingLink title="Enable rate limiter" tag="h5" />
 </header>
 <p>
-    To minimize the risk of API abuse (e.g. excessive auth or record create requests) it is recommended to
-    setup a rate limiter.
+    To minimize the risk of API abuse (e.g. excessive auth or record create requests) it is recommended to set
+    up a rate limiter.
 </p>
 <p>
     PocketBase v0.23.0+ comes with a simple builtin rate limiter that should cover most of the cases but you
@@ -412,7 +412,7 @@
 </p>
 <p>
     While this is not a security issue on its own (PocketBase applications live entirely on a single server
-    and its expected only authorized users to have access to your server and application data), in some
+    and it is expected only authorized users to have access to your server and application data), in some
     situations it may be a good idea to store the settings encrypted in case someone get their hands on your
     database file (e.g. from an external stored backup).
 </p>

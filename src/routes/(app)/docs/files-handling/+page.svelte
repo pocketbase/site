@@ -289,7 +289,7 @@
 </p>
 
 <HeadingLink title="Protected files" />
-<p>By default all files are public accessible if you know their full url.</p>
+<p>By default all files are publicly accessible if you know their full url.</p>
 <p>
     For most applications this is fine and reasonably safe because all files have a random part appended to
     their name, but in some cases you may want an extra security to prevent unauthorized access to sensitive
@@ -356,7 +356,7 @@
 </p>
 <p>
     But if you have limited disk space you could switch to an external S3 compatible storage (AWS S3, MinIO,
-    Wasabi, DigitalOcean Spaces, Vultr Object Storage, etc.). The easiest way to setup the connection settings
-    is from the <em>Dashboard</em> > <em>Settings</em> > <em>Files storage</em>:
+    Wasabi, DigitalOcean Spaces, Vultr Object Storage, etc.). The easiest way to set up the connection
+    settings is from the <em>Dashboard</em> > <em>Settings</em> > <em>Files storage</em>:
 </p>
 <img src="/images/screenshots/files-storage.png" alt="Files storage settings screenshot" class="screenshot" />

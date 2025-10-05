@@ -4,7 +4,7 @@
 </script>
 
 <p>
-    If you have tasks that need to be performed periodically, you could setup crontab-like jobs with the
+    If you have tasks that need to be performed periodically, you could set up crontab-like jobs with the
     builtin <code>app.Cron()</code>
     <em>
         (it returns an app scoped
@@ -53,7 +53,7 @@
         </em>)
     </li>
     <li class="m-0">
-        <strong>handler</strong> - the function that will be executed everytime when the job runs
+        <strong>handler</strong> - the function that will be executed every time when the job runs
     </li>
 </ul>
 

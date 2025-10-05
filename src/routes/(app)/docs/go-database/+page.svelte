@@ -12,7 +12,7 @@
     is the main interface to interact with the database.
 </p>
 <p>
-    <code>App.DB()</code> returns a <code>dbx.Builder</code> that could run all kind of SQL statements, including
+    <code>App.DB()</code> returns a <code>dbx.Builder</code> that can run all kinds of SQL statements, including
     raw queries.
 </p>
 <p>
