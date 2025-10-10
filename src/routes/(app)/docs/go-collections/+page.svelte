@@ -241,7 +241,7 @@
 
         // change existing field
         // (returns a pointer and direct modifications are allowed without the need of reinsert)
-        titleField := collection.Fields.GetByName("title")
+        titleField := collection.Fields.GetByName("title").(*core.TextField)
         titleField.Min = 10
 
         // or: collection.Indexes = append(collection.Indexes, "CREATE INDEX idx_example_title ON example (title)")
