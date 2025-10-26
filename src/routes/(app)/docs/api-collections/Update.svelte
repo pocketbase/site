@@ -247,7 +247,7 @@
                     name (optional):      string
                     username (optional):  string
                     avatarURL (optional): string
-                }:
+                }
                 providers (optional): [
                     {
                         name (required):         string
