@@ -253,11 +253,12 @@
                         name (required):         string
                         clientId (required):     string
                         clientSecret (required): string
-                        authUrl (optional):      string
-                        tokenUrl (optional):     string
-                        userApiUrl (optional):   string
+                        authURL (optional):      string
+                        tokenURL (optional):     string
+                        userInfoURL (optional):  string
                         displayName (optional):  string
                         pkce (optional):         null|boolean
+                        extra (optional):        null|Object<string,any>
                     }
                 ]
             }
