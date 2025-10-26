@@ -327,7 +327,7 @@
                         clientSecret (required): string
                         authUrl (optional):      string
                         tokenUrl (optional):     string
-                        userApiUrl (optional):   string
+                        userInfoUrl (optional):   string
                         displayName (optional):  string
                         pkce (optional):         null|boolean
                     }
