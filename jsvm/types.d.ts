@@ -7078,7 +7078,7 @@ namespace core {
   onCollectionAfterDeleteError(...tags: string[]): (hook.TaggedHook<CollectionErrorEvent | undefined>)
   /**
    * OnMailerSend hook is triggered every time when a new email is
-   * being send using the [App.NewMailClient()] instance.
+   * being sent using the [App.NewMailClient()] instance.
    *
    * It allows intercepting the email message or to use a custom mailer client.
    */
