@@ -885,7 +885,7 @@ export default [
                 html: `
                     <p>
                         <code>OnMailerSend</code> hook is triggered every time when a new email is
-                        being send using the <code>App.NewMailClient()</code> instance.
+                        being sent using the <code>App.NewMailClient()</code> instance.
                     </p>
                     <p>It allows intercepting the email message or to use a custom mailer client.</p>
                 `,

@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "jstypes": "npx typedoc --options ./jsvm/typedoc.json",
+    "jstypes": "typedoc --options ./jsvm/typedoc.json",
     "dev": "vite dev",
-    "build": "vite build && rm -rf static/pagefind && npx pagefind --site build --output-path static/pagefind --glob docs/**/*.{html}",
+    "build": "vite build && rm -rf static/pagefind && pagefind --site build --output-path static/pagefind --glob docs/**/*.{html}",
     "preview": "vite preview"
   },
   "prettier": {
