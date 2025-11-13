@@ -166,6 +166,9 @@
             proxy_set_header X-Forwarded-Proto $scheme;
 
             # enable if you are serving under a subpath location
+            #
+            # note that it is better to use a subdomain when possible because of
+            # the same-origin isolation for localStorage and other resources
             # rewrite /yourSubpath/(.*) /$1  break;
 
             proxy_pass http://127.0.0.1:8090;

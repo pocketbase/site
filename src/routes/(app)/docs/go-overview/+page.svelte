@@ -140,6 +140,7 @@
 
 <div class="accordions m-t-sm">
     <Accordion single title="github.com/mattn/go-sqlite3">
+        <p>This is a CGO driver and requires to build your application with <code>CGO_ENABLED=1</code>.</p>
         <p>
             <em>
                 For all available options please refer to the
@@ -178,7 +179,7 @@
                                     PRAGMA synchronous        = NORMAL;
                                     PRAGMA foreign_keys       = ON;
                                     PRAGMA temp_store         = MEMORY;
-                                    PRAGMA cache_size         = -16000;
+                                    PRAGMA cache_size         = -32000;
                                 ` + "`" + `, nil)
 
                                 return err
@@ -233,7 +234,7 @@
                 func main() {
                     app := pocketbase.NewWithConfig(pocketbase.Config{
                         DBConnect: func(dbPath string) (*dbx.DB, error) {
-                            const pragmas = "?_pragma=busy_timeout(10000)&_pragma=journal_mode(WAL)&_pragma=journal_size_limit(200000000)&_pragma=synchronous(NORMAL)&_pragma=foreign_keys(ON)&_pragma=temp_store(MEMORY)&_pragma=cache_size(-16000)"
+                            const pragmas = "?_pragma=busy_timeout(10000)&_pragma=journal_mode(WAL)&_pragma=journal_size_limit(200000000)&_pragma=synchronous(NORMAL)&_pragma=foreign_keys(ON)&_pragma=temp_store(MEMORY)&_pragma=cache_size(-32000)"
 
                             return dbx.Open("sqlite3", "file:"+dbPath+pragmas)
                         },
