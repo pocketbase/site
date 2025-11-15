@@ -946,7 +946,7 @@ export default [
                         // e.mailer
                         // e.message
                         // e.record
-                        // e.meta
+                        // e.meta.info
 
                         // ex. change the mail subject
                         e.message.subject = "new subject"
@@ -972,7 +972,7 @@ export default [
                             // e.Mailer
                             // e.Message
                             // e.Record
-                            // e.Meta
+                            // e.Meta["info"].(string)
 
                             // ex. change the mail subject
                             e.Message.Subject = "new subject"
@@ -1001,7 +1001,7 @@ export default [
                         // e.mailer
                         // e.message
                         // e.record
-                        // e.meta
+                        // e.meta.token
 
                         // ex. change the mail subject
                         e.message.subject = "new subject"
@@ -1027,7 +1027,7 @@ export default [
                             // e.Mailer
                             // e.Message
                             // e.Record
-                            // e.Meta
+                            // e.Meta["token"].(string)
 
                             // ex. change the mail subject
                             e.Message.Subject = "new subject"
@@ -1056,7 +1056,7 @@ export default [
                         // e.mailer
                         // e.message
                         // e.record
-                        // e.meta
+                        // e.meta.token
 
                         // ex. change the mail subject
                         e.message.subject = "new subject"
@@ -1082,7 +1082,7 @@ export default [
                             // e.Mailer
                             // e.Message
                             // e.Record
-                            // e.Meta
+                            // e.Meta["token"].(string)
 
                             // ex. change the mail subject
                             e.Message.Subject = "new subject"
@@ -1111,7 +1111,8 @@ export default [
                         // e.mailer
                         // e.message
                         // e.record
-                        // e.meta
+                        // e.meta.token
+                        // e.meta.newEmail
 
                         // ex. change the mail subject
                         e.message.subject = "new subject"
@@ -1137,7 +1138,8 @@ export default [
                             // e.Mailer
                             // e.Message
                             // e.Record
-                            // e.Meta
+                            // e.Meta["token"].(string)
+                            // e.Meta["newEmail"].(string)
 
                             // ex. change the mail subject
                             e.Message.Subject = "new subject"
@@ -1166,7 +1168,8 @@ export default [
                         // e.mailer
                         // e.message
                         // e.record
-                        // e.meta
+                        // e.meta.otpId
+                        // e.meta.password
 
                         // ex. change the mail subject
                         e.message.subject = "new subject"
@@ -1192,7 +1195,8 @@ export default [
                             // e.Mailer
                             // e.Message
                             // e.Record
-                            // e.Meta
+                            // e.Meta["otpId"].(string)
+                            // e.Meta["password"].(string)
 
                             // ex. change the mail subject
                             e.Message.Subject = "new subject"
