@@ -219,7 +219,7 @@
 <p>
     The <code>:isset</code> field modifier is available only for the <code>@request.*</code> fields and can be
     used to check whether the client submitted a specific data with the request. Here is for example a rule that
-    disallows changing a "role" field:
+    disallows submitting a "role" field:
 </p>
 <CodeBlock
     class="m-b-0"
@@ -231,6 +231,28 @@
     <small class="txt-hint">
         Note that <code class="txt-sm">@request.body.*:isset</code> at the moment doesn't support checking for
         new uploaded files because they are evaluated separately and cannot be serialized (<em
+            >this behavior may change in the future</em
+        >).
+    </small>
+</p>
+
+<HeadingLink title=":changed modifier" tag="h5" />
+<p>
+    The <code>:changed</code> field modifier is available only for the <code>@request.body.*</code> fields and
+    can be used to check whether the client submitted AND changed a specific record field with the request. Here
+    is for example a rule that disallows changing a "role" field:
+</p>
+<CodeBlock
+    class="m-b-0"
+    content={`
+        // the same as: (@request.body.role:isset = false || @request.body.role = role)
+        @request.body.role:changed = false
+    `}
+/>
+<p>
+    <small class="txt-hint">
+        Note that <code class="txt-sm">@request.body.*:changed</code> at the moment doesn't support checking
+        for new uploaded files because they are evaluated separately and cannot be serialized (<em
             >this behavior may change in the future</em
         >).
     </small>
