@@ -249,7 +249,7 @@
                 have to specify the full datetime string format. For example to target a single day (e.g.
                 November 19, 2024) you can use something like:
                 <code>
-                    {`created >= '2024-11-19 00:00:00.000Z' && created <= '2024-11-19 23:59:59.999Z'`}
+                    {`created >= "2024-11-19 00:00:00.000Z" && created <= "2024-11-19 23:59:59.999Z"`}
                 </code>
             </p>
         </div>
