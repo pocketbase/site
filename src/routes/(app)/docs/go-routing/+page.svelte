@@ -222,11 +222,15 @@
 <CodeBlock
     language="go"
     content={`
+        // retrieve the first value of the "search" query param
         search := e.Request.URL.Query().Get("search")
 
         // or via the parsed request info
         info, err := e.RequestInfo()
         search := info.Query["search"]
+
+        // in case of array query params (e.g. search=123&search=456)
+        arr := e.Request.URL.Query()["search"] // []string{"123", "456"}
     `}
 />
 

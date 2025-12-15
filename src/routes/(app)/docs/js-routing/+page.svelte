@@ -155,10 +155,15 @@
 <CodeBlock
     language="javascript"
     content={`
+        // retrieve the first value of the "search" query param
         let search = e.request.url.query().get("search")
 
         // or via the parsed request info
         let search = e.requestInfo().query["search"]
+
+        // in case of array query params (e.g. search=123&search=456)
+        let query = JSON.parse(toString(e.request.url.query())) || {};
+        let arr = query.search; // ["123", "456"]
     `}
 />
 
