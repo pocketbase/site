@@ -250,7 +250,7 @@
 <Accordion single title="Scaffolds">
     <div class="content m-b-sm">
         <p>
-            Returns an object will all of the collection types and their default fields
+            Returns an object with all of the collection types and their default fields
             <em>(used primarily in the Dashboard UI)</em>.
         </p>
         <p>Only superusers can perform this action.</p>
