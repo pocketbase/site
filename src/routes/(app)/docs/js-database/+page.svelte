@@ -53,7 +53,11 @@
     <li>
         <p>
             <HeadingLink id="execute-one" title="one()" tag="code" />
-            - to populate a single row into <code>DynamicModel</code> object:
+            - to populate a single row into
+            <a href="/jsvm/classes/DynamicModel.html" target="_blank">
+                <code>DynamicModel</code>
+            </a>
+            object:
         </p>
         <CodeBlock
             language="javascript"
@@ -61,14 +65,16 @@
                 const result = new DynamicModel({
                     // describe the shape of the data (used also as initial values)
                     // the keys cannot start with underscore and must be a valid Go struct field name
-                    "id":     "",
-                    "status": false,
-                    "age":    0, // use -0 for a float value
-                    "roles":  [], // serialized json db arrays are decoded as plain arrays
+                    "id":         ""     // or nullString() if nullable
+                    "status":     false, // or nullBool() if nullable
+                    "age":        0,     // or nullInt() if nullable
+                    "totalSpent": -0,    // or nullFloat() if nullable
+                    "roles":      [],    // or nullArray() if nullable;
+                    "meta":       {},    // or nullObject() if nullable
                 })
 
                 $app.db()
-                    .newQuery("SELECT id, status, age, roles FROM users WHERE id=1")
+                    .newQuery("SELECT id, status, age, totalSpent, roles, meta FROM users WHERE id=1")
                     .one(result) // throw an error on db failure or missing row
 
                 console.log(result.id)
@@ -87,14 +93,16 @@
                 const result = arrayOf(new DynamicModel({
                     // describe the shape of the data (used also as initial values)
                     // the keys cannot start with underscore and must be a valid Go struct field name
-                    "id":     "",
-                    "status": false,
-                    "age":    0, // use -0 for a float value
-                    "roles":  [], // serialized json db arrays are decoded as plain arrays
+                    "id":         ""     // or nullString() if nullable
+                    "status":     false, // or nullBool() if nullable
+                    "age":        0,     // or nullInt() if nullable
+                    "totalSpent": -0,    // or nullFloat() if nullable
+                    "roles":      [],    // or nullArray() if nullable
+                    "meta":       {},    // or nullObject() if nullable
                 }))
 
                 $app.db()
-                    .newQuery("SELECT id, status, age, roles FROM users LIMIT 100")
+                    .newQuery("SELECT id, status, age, totalSpent, Roles, meta FROM users LIMIT 100")
                     .all(result) // throw an error on db failure
 
                 if (result.length > 0) {
