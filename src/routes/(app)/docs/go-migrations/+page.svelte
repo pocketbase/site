@@ -249,7 +249,7 @@
                 settings := app.Settings()
 
                 // for all available settings fields you could check
-                // https://github.com/pocketbase/pocketbase/blob/develop/core/settings_model.go#L121-L130
+                // https://github.com/pocketbase/pocketbase/blob/develop/core/settings_model.go#L144-L181
                 settings.Meta.AppName = "test"
                 settings.Meta.AppURL = "https://example.com"
                 settings.Logs.MaxDays = 2
