@@ -152,7 +152,7 @@
                         <p>
                             The new client subscriptions to set in the format:
                             <br />
-                            <code>COLLECTION_ID_OR_NAME</code> or
+                            <code>COLLECTION_ID_OR_NAME/*</code> or
                             <code>COLLECTION_ID_OR_NAME/RECORD_ID</code>.
                         </p>
                         <p>
