@@ -27,7 +27,7 @@
             random part (usually 10 characters). For example <code>test_52iwbgds7l.png</code>.
         </p>
         <p>
-            The max allowed size of a single file currently is limited to ~8GB (<small
+            The max allowed size of a single file currently is limited to ~8PB (<small
                 >2<sup>53</sup>-1 bytes</small
             >).
         </p>
