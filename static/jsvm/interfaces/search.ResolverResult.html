@@ -25,7 +25,7 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">ResolverResult</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/2be6056c8/jsvm/types.d.ts#L19408">types.d.ts:19408</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/e241f2c34/jsvm/types.d.ts#L17628">types.d.ts:17628</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -35,8 +35,8 @@
 <h3 class="tsd-index-heading">Properties</h3>
 <div class="tsd-index-list"><a href="search.ResolverResult.html#afterBuild" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-1024"><rect fill="var(--color-icon-background)" stroke="#FF984D" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M9.354 16V7.24H12.174C12.99 7.24 13.638 7.476 14.118 7.948C14.606 8.412 14.85 9.036 14.85 9.82C14.85 10.604 14.606 11.232 14.118 11.704C13.638 12.168 12.99 12.4 12.174 12.4H10.434V16H9.354ZM10.434 11.428H12.174C12.646 11.428 13.022 11.284 13.302 10.996C13.59 10.7 13.734 10.308 13.734 9.82C13.734 9.324 13.59 8.932 13.302 8.644C13.022 8.356 12.646 8.212 12.174 8.212H10.434V11.428Z" fill="var(--color-text)"></path></g></svg><span>after<wbr/>Build</span></a>
 <a href="search.ResolverResult.html#identifier" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>identifier</span></a>
-<a href="search.ResolverResult.html#multiMatchSubQuery" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>multi<wbr/>Match<wbr/>Sub<wbr/>Query</span></a>
-<a href="search.ResolverResult.html#noCoalesce" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>no<wbr/>Coalesce</span></a>
+<a href="search.ResolverResult.html#multiMatchSubQuery" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>multi<wbr/>Match<wbr/>Sub<wbr/>Query?</span></a>
+<a href="search.ResolverResult.html#nullFallback" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>null<wbr/>Fallback</span></a>
 <a href="search.ResolverResult.html#params" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>params</span></a>
 </div></section></div></details></section></section>
 <section class="tsd-panel-group tsd-member-group">
@@ -62,7 +62,7 @@ and combining the result of both resolved operands/sides in a single expression.
 <h4 class="tsd-returns-title">Returns <a href="dbx.Expression.html" class="tsd-signature-type tsd-kind-interface">Expression</a></h4>
 <div class="tsd-comment tsd-typography"></div></li></ul></li></ul></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/2be6056c8/jsvm/types.d.ts#L19433">types.d.ts:19433</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/e241f2c34/jsvm/types.d.ts#L17656">types.d.ts:17656</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="identifier" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>identifier</span><a href="#identifier" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">identifier</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
@@ -71,25 +71,27 @@ in the final db expression as left or right operand.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/2be6056c8/jsvm/types.d.ts#L19413">types.d.ts:19413</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/e241f2c34/jsvm/types.d.ts#L17633">types.d.ts:17633</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="multiMatchSubQuery" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>multi<wbr/>Match<wbr/>Sub<wbr/>Query</span><a href="#multiMatchSubQuery" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">multi<wbr/>Match<wbr/>Sub<wbr/>Query</span><span class="tsd-signature-symbol">:</span> <a href="dbx.Expression.html" class="tsd-signature-type tsd-kind-interface">Expression</a></div>
+<h3 class="tsd-anchor-link"><code class="tsd-tag ts-flagOptional">Optional</code> <span>multi<wbr/>Match<wbr/>Sub<wbr/>Query</span><a href="#multiMatchSubQuery" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">multi<wbr/>Match<wbr/>Sub<wbr/>Query</span><span class="tsd-signature-symbol">?:</span> <a href="search.MultiMatchSubquery.html" class="tsd-signature-type tsd-kind-interface">MultiMatchSubquery</a></div>
 <div class="tsd-comment tsd-typography"><p>MultiMatchSubQuery is an optional sub query expression that will be added
 in addition to the combined ResolverResult expression during build.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/2be6056c8/jsvm/types.d.ts#L19428">types.d.ts:19428</a></li></ul></aside></section>
-<section class="tsd-panel tsd-member"><a id="noCoalesce" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>no<wbr/>Coalesce</span><a href="#noCoalesce" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<div class="tsd-signature"><span class="tsd-kind-property">no<wbr/>Coalesce</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-<div class="tsd-comment tsd-typography"><p>NoCoalesce instructs to not use COALESCE or NULL fallbacks
-when building the identifier expression.</p>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/e241f2c34/jsvm/types.d.ts#L17651">types.d.ts:17651</a></li></ul></aside></section>
+<section class="tsd-panel tsd-member"><a id="nullFallback" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>null<wbr/>Fallback</span><a href="#nullFallback" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<div class="tsd-signature"><span class="tsd-kind-property">null<wbr/>Fallback</span><span class="tsd-signature-symbol">:</span> <a href="search.NullFallbackPreference.html" class="tsd-signature-type tsd-kind-interface">NullFallbackPreference</a></div>
+<div class="tsd-comment tsd-typography"><p>NullFallback specify the preference for how NULL or empty values
+should be resolved (default to &quot;auto&quot;).</p>
+<p>Set to NullFallbackDisabled to prevent any COALESCE or NULL fallbacks.
+Set to NullFallbackEnforced to prefer COALESCE or NULL fallbacks when needed.</p>
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/2be6056c8/jsvm/types.d.ts#L19418">types.d.ts:19418</a></li></ul></aside></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/e241f2c34/jsvm/types.d.ts#L17641">types.d.ts:17641</a></li></ul></aside></section>
 <section class="tsd-panel tsd-member"><a id="params" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>params</span><a href="#params" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <div class="tsd-signature"><span class="tsd-kind-property">params</span><span class="tsd-signature-symbol">:</span> <a href="dbx.Params.html" class="tsd-signature-type tsd-kind-interface">Params</a></div>
@@ -98,7 +100,7 @@ to the query when building both resolved operands/sides in a single expression.<
 </div>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/2be6056c8/jsvm/types.d.ts#L19423">types.d.ts:19423</a></li></ul></aside></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/e241f2c34/jsvm/types.d.ts#L17646">types.d.ts:17646</a></li></ul></aside></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -118,7 +120,7 @@ to the query when building both resolved operands/sides in a single expression.<
 <li><a href="#afterBuild" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>after<wbr/>Build</span></a></li>
 <li><a href="#identifier" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>identifier</span></a></li>
 <li><a href="#multiMatchSubQuery" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>multi<wbr/>Match<wbr/>Sub<wbr/>Query</span></a></li>
-<li><a href="#noCoalesce" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>no<wbr/>Coalesce</span></a></li>
+<li><a href="#nullFallback" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>null<wbr/>Fallback</span></a></li>
 <li><a href="#params" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-1024"></use></svg><span>params</span></a></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>Pocket<wbr/>Base JSVM reference</span></a>
@@ -313,7 +315,10 @@ to the query when building both resolved operands/sides in a single expression.<
 <details class="tsd-index-accordion" data-key="search$Interfaces"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Interfaces</span></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="search.ResolverResult.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-256"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)"></path></g></svg><span>Resolver<wbr/>Result</span></a></li>
+<li><a href="search.Join.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-256"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-interface)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.51 16V15.016H11.298V8.224H9.51V7.24H14.19V8.224H12.402V15.016H14.19V16H9.51Z" fill="var(--color-text)"></path></g></svg><span>Join</span></a></li>
+<li><a href="search.MultiMatchSubquery.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>Multi<wbr/>Match<wbr/>Subquery</span></a></li>
+<li><a href="search.NullFallbackPreference.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>Null<wbr/>Fallback<wbr/>Preference</span></a></li>
+<li><a href="search.ResolverResult.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>Resolver<wbr/>Result</span></a></li>
 <li><a href="search.Result.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>Result</span></a></li></ul></div></details></li></ul></div></details></li>
 <li><a href="../modules/security.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>security</span></a></li>
 <li><a href="../modules/slog.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>slog</span></a></li>

@@ -194,6 +194,7 @@
     language="html"
     content={`
         // all macros are UTC based
+        // (for more complex date operation check the strftime() function)
         @now        - the current datetime as string
         @second     - @now second number (0-59)
         @minute     - @now minute number (0-59)
@@ -351,6 +352,60 @@
     content={`
         // offices that are less than 25km from my location (address is a geoPoint field in the offices collection)
         geoDistance(address.lon, address.lat, 23.32, 42.69) < 25
+    `}
+/>
+
+<HeadingLink title="strftime(format, [time-value, modifiers...])" tag="h5" />
+<p>
+    The <code>strftime(format, [time-value, modifiers...])</code> returns a date string formatted according to
+    the specified format argument.
+</p>
+<p>
+    The function is similar to the builtin SQLite
+    <a href="https://sqlite.org/lang_datefunc.html" target="_blank" rel="noopener noreferrer">
+        <code>strftime</code>
+    </a>
+    with the main difference that NULL results will be normalized for consistency with the non-nullable PocketBase
+    <code>text</code> and <code>date</code> fields.
+</p>
+<p>The function accepts 1, 2 or 3+ arguments.</p>
+<ol>
+    <li>
+        The first (<strong>format</strong>) argument must be a formatting string with valid substitution
+        characters as listed in
+        <a href="https://sqlite.org/lang_datefunc.html" target="_blank" rel="noopener noreferrer">
+            https://sqlite.org/lang_datefunc.html
+        </a>.
+    </li>
+    <li>
+        The second (<strong>time-value</strong>) argument is optional and must be either a date
+        <strong>string</strong>,
+        <strong>number</strong> or <strong>collection field identifier</strong> with value matching one of the
+        formats listed in
+        <a href="https://sqlite.org/lang_datefunc.html#time_values" target="_blank" rel="noopener noreferrer">
+            https://sqlite.org/lang_datefunc.html#time_values
+        </a>. If not set the function fallbacks to the current datetime.
+    </li>
+    <li>
+        The remaining (<strong>modifiers</strong>) optional arguments are expected to be string literals
+        matching the listed modifiers in
+        <a href="https://sqlite.org/lang_datefunc.html#modifiers" target="_blank" rel="noopener noreferrer"
+            >https://sqlite.org/lang_datefunc.html#modifiers</a
+        > (up to 8 max).
+    </li>
+</ol>
+<p>
+    A multi-match constraint will be also applied in case the time-value is an identifier as a result of a
+    multi-value relation field. For example:
+</p>
+<CodeBlock
+    class="m-b-0"
+    content={`
+        // requires ANY/AT-LEAST-ONE-OF multiRel records to have "created" that match the formatted string "2026-01"
+        strftime('%Y-%m', multiRel.created) ?= "2026-01"
+
+        // requires ALL multiRel records to have "created" that match the formatted string "2026-01"
+        strftime('%Y-%m', multiRel.created) = "2026-01"
     `}
 />
 
