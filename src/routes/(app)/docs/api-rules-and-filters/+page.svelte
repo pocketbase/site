@@ -395,17 +395,17 @@
     </li>
 </ol>
 <p>
-    A multi-match constraint will be also applied in case the time-value is an identifier as a result of a
+    A match-all constraint will be also applied in case the time-value is an identifier as a result of a
     multi-value relation field. For example:
 </p>
 <CodeBlock
     class="m-b-0"
     content={`
-        // requires ANY/AT-LEAST-ONE-OF multiRel records to have "created" that match the formatted string "2026-01"
-        strftime('%Y-%m', multiRel.created) ?= "2026-01"
-
         // requires ALL multiRel records to have "created" that match the formatted string "2026-01"
         strftime('%Y-%m', multiRel.created) = "2026-01"
+
+        // requires ANY/AT-LEAST-ONE-OF multiRel records to have "created" that match the formatted string "2026-01"
+        strftime('%Y-%m', multiRel.created) ?= "2026-01"
     `}
 />
 

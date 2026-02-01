@@ -111,6 +111,14 @@
 
 <p>Single line comments are also supported: <code>// Example comment</code>.</p>
 
+<p>
+    Field expressions with array-like value or nested fields that originate from a source with multiple
+    records will apply a
+    <strong>match-all</strong> constraint by default. If you want <strong>any/at-least-one-of</strong> type of
+    constraint for such fields you'll have to prefix your operator with <code>?</code> (e.g.
+    <code>multiRelation.title ?= "test"</code>).
+</p>
+
 <style>
     .filter-op {
         display: inline-block;

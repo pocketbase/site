@@ -27,9 +27,11 @@
             random part (usually 10 characters). For example <code>test_52iwbgds7l.png</code>.
         </p>
         <p>
-            The max allowed size of a single file currently is limited to ~8PB (<small
-                >2<sup>53</sup>-1 bytes</small
-            >).
+            All <code>file</code> fields by default has a max allowed file size up to <strong>~5MB</strong>
+            <em
+                >(you can adjust it from the collection field options but keep in mind that allowing to upload
+                and serve large files could degrade the performance of your application)</em
+            >.
         </p>
     </div>
 </div>
