@@ -389,7 +389,7 @@
     <HeadingLink title="Set GOMEMLIMIT" tag="h5" />
 </header>
 <p>
-    If you are running in a memory constrained environment, defining the
+    If you are running in a memory constrained environment and/or allow upload of large files, defining the
     <a href="https://pkg.go.dev/runtime#hdr-Environment_Variables" target="_blank" rel="noopener">
         <code>GOMEMLIMIT</code>
     </a>
