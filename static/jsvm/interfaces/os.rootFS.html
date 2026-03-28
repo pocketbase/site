@@ -32,7 +32,7 @@ Linux bind mounts, /proc special files, or access to Unix device files.</p>
 the directory. If the directory is moved, methods on Root reference the original
 directory in its new location.</p>
 <p>Root&#39;s behavior differs on some platforms:</p>
-<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">windows, file names may not reference Windows reserved device names</span><br/><span class="hl-0">    such </span><span class="hl-1">as</span><span class="hl-0"> </span><span class="hl-2">NUL</span><span class="hl-0"> </span><span class="hl-2">and</span><span class="hl-0"> </span><span class="hl-2">COM1</span><span class="hl-0">.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">js, Root is vulnerable to </span><span class="hl-2">TOCTOU</span><span class="hl-0"> (time</span><span class="hl-1">-of-</span><span class="hl-0">check</span><span class="hl-1">-</span><span class="hl-0">time</span><span class="hl-1">-of-</span><span class="hl-0">use)</span><br/><span class="hl-0">    attacks </span><span class="hl-1">in</span><span class="hl-0"> symlink validation, and cannot ensure that operations will not</span><br/><span class="hl-0">    escape the root.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">plan9 or </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">js, Root does not track directories across renames.</span><br/><span class="hl-0">    On these platforms, a Root references a directory name, not a file descriptor.</span>
+<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">windows, file names may not reference Windows reserved device names</span><br/><span class="hl-0">    such </span><span class="hl-1">as</span><span class="hl-0"> </span><span class="hl-2">NUL</span><span class="hl-0"> </span><span class="hl-2">and</span><span class="hl-0"> </span><span class="hl-2">COM1</span><span class="hl-0">.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> On Unix, [Root.Chmod], [Root.Chown], and [Root.Chtimes] are vulnerable to a race condition.</span><br/><span class="hl-0">    If the target </span><span class="hl-1">of</span><span class="hl-0"> the operation is changed from a regular file to a symlink</span><br/><span class="hl-0">    </span><span class="hl-1">while</span><span class="hl-0"> the operation is </span><span class="hl-1">in</span><span class="hl-0"> progress, the operation may be performed on the link</span><br/><span class="hl-0">    rather than the link target.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">js, Root is vulnerable to </span><span class="hl-2">TOCTOU</span><span class="hl-0"> (time</span><span class="hl-1">-of-</span><span class="hl-0">check</span><span class="hl-1">-</span><span class="hl-0">time</span><span class="hl-1">-of-</span><span class="hl-0">use)</span><br/><span class="hl-0">    attacks </span><span class="hl-1">in</span><span class="hl-0"> symlink validation, and cannot ensure that operations will not</span><br/><span class="hl-0">    escape the root.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">plan9 or </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">js, Root does not track directories across renames.</span><br/><span class="hl-0">    On these platforms, a Root references a directory name, not a file descriptor.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> </span><span class="hl-6">WASI</span><span class="hl-0"> preview </span><span class="hl-6">1</span><span class="hl-0"> (</span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">wasip1) does not support [Root.Chmod].</span>
 </code><button>Copy</button></pre>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
@@ -43,11 +43,13 @@ directory in its new location.</p>
 <ul class="tsd-hierarchy">
 <li><span class="target">rootFS</span></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2674">types.d.ts:2674</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2675">types.d.ts:2675</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2678">types.d.ts:2678</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2681">types.d.ts:2681</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2684">types.d.ts:2684</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2809">types.d.ts:2809</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2810">types.d.ts:2810</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2813">types.d.ts:2813</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2816">types.d.ts:2816</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2819">types.d.ts:2819</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2822">types.d.ts:2822</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2825">types.d.ts:2825</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -55,24 +57,100 @@ directory in its new location.</p>
 <div class="tsd-accordion-details">
 <section class="tsd-index-section">
 <h3 class="tsd-index-heading">Methods</h3>
-<div class="tsd-index-list"><a href="os.rootFS.html#close" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-2048"><rect fill="var(--color-icon-background)" stroke="#FF4DB8" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M9.162 16V7.24H10.578L11.514 10.072C11.602 10.328 11.674 10.584 11.73 10.84C11.794 11.088 11.842 11.28 11.874 11.416C11.906 11.28 11.954 11.088 12.018 10.84C12.082 10.584 12.154 10.324 12.234 10.06L13.122 7.24H14.538V16H13.482V12.82C13.482 12.468 13.49 12.068 13.506 11.62C13.53 11.172 13.558 10.716 13.59 10.252C13.622 9.78 13.654 9.332 13.686 8.908C13.726 8.476 13.762 8.1 13.794 7.78L12.366 12.16H11.334L9.894 7.78C9.934 8.092 9.97 8.456 10.002 8.872C10.042 9.28 10.078 9.716 10.11 10.18C10.142 10.636 10.166 11.092 10.182 11.548C10.206 12.004 10.218 12.428 10.218 12.82V16H9.162Z" fill="var(--color-text)"></path></g></svg><span>close</span></a>
+<div class="tsd-index-list"><a href="os.rootFS.html#chmod" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-2048"><rect fill="var(--color-icon-background)" stroke="#FF4DB8" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="12"></rect><path d="M9.162 16V7.24H10.578L11.514 10.072C11.602 10.328 11.674 10.584 11.73 10.84C11.794 11.088 11.842 11.28 11.874 11.416C11.906 11.28 11.954 11.088 12.018 10.84C12.082 10.584 12.154 10.324 12.234 10.06L13.122 7.24H14.538V16H13.482V12.82C13.482 12.468 13.49 12.068 13.506 11.62C13.53 11.172 13.558 10.716 13.59 10.252C13.622 9.78 13.654 9.332 13.686 8.908C13.726 8.476 13.762 8.1 13.794 7.78L12.366 12.16H11.334L9.894 7.78C9.934 8.092 9.97 8.456 10.002 8.872C10.042 9.28 10.078 9.716 10.11 10.18C10.142 10.636 10.166 11.092 10.182 11.548C10.206 12.004 10.218 12.428 10.218 12.82V16H9.162Z" fill="var(--color-text)"></path></g></svg><span>chmod</span></a>
+<a href="os.rootFS.html#chown" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>chown</span></a>
+<a href="os.rootFS.html#chtimes" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>chtimes</span></a>
+<a href="os.rootFS.html#close" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>close</span></a>
 <a href="os.rootFS.html#create" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>create</span></a>
 <a href="os.rootFS.html#fs" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>fs</span></a>
+<a href="os.rootFS.html#lchown" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>lchown</span></a>
+<a href="os.rootFS.html#link" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>link</span></a>
 <a href="os.rootFS.html#lstat" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>lstat</span></a>
 <a href="os.rootFS.html#mkdir" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>mkdir</span></a>
+<a href="os.rootFS.html#mkdirAll" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>mkdir<wbr/>All</span></a>
 <a href="os.rootFS.html#name" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>name</span></a>
 <a href="os.rootFS.html#open" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>open</span></a>
 <a href="os.rootFS.html#openFile" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>open<wbr/>File</span></a>
 <a href="os.rootFS.html#openRoot" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>open<wbr/>Root</span></a>
 <a href="os.rootFS.html#readDir" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>read<wbr/>Dir</span></a>
-<a href="os.rootFS.html#readFile" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>read<wbr/>File</span></a>
+<a href="os.rootFS.html#readFile" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>read<wbr/>File</span></a>
+<a href="os.rootFS.html#readLink" class="tsd-index-link"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>read<wbr/>Link</span></a>
+<a href="os.rootFS.html#readlink-2" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>readlink</span></a>
 <a href="os.rootFS.html#remove" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>remove</span></a>
+<a href="os.rootFS.html#removeAll" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>remove<wbr/>All</span></a>
+<a href="os.rootFS.html#rename" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>rename</span></a>
 <a href="os.rootFS.html#stat" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>stat</span></a>
+<a href="os.rootFS.html#symlink" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>symlink</span></a>
+<a href="os.rootFS.html#writeFile" class="tsd-index-link tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>write<wbr/>File</span></a>
 </div></section></div></details></section></section>
 <section class="tsd-panel-group tsd-member-group">
 <h2>Methods</h2>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="chmod" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>chmod</span><a href="#chmod" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="chmod.chmod-1"><span class="tsd-kind-call-signature">chmod</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">mode</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#chmod.chmod-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Chmod changes the mode of the named file in the root to mode.
+See [Chmod] for more details.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">mode</span>: <a href="../modules/os.html" class="tsd-signature-type tsd-kind-namespace">os</a><span class="tsd-signature-symbol">.</span><a href="os.FileMode.html" class="tsd-signature-type tsd-kind-interface">FileMode</a></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#chmod">chmod</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2671">types.d.ts:2671</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="chown" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>chown</span><a href="#chown" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="chown.chown-1"><span class="tsd-kind-call-signature">chown</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">uid</span>, <span class="tsd-kind-parameter">gid</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#chown.chown-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Chown changes the numeric uid and gid of the named file in the root.
+See [Chown] for more details.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">uid</span>: <span class="tsd-signature-type">number</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">gid</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#chown">chown</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2699">types.d.ts:2699</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="chtimes" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>chtimes</span><a href="#chtimes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="chtimes.chtimes-1"><span class="tsd-kind-call-signature">chtimes</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">atime</span>, <span class="tsd-kind-parameter">mtime</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#chtimes.chtimes-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Chtimes changes the access and modification times of the named file in the root.
+See [Chtimes] for more details.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">atime</span>: <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">mtime</span>: <a href="time.Time.html" class="tsd-signature-type tsd-kind-interface">Time</a></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#chtimes">chtimes</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2713">types.d.ts:2713</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="close" class="tsd-anchor"></a>
-<h3 class="tsd-anchor-link"><span>close</span><a href="#close" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></h3>
+<h3 class="tsd-anchor-link"><span>close</span><a href="#close" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
 <li class="tsd-signature tsd-anchor-link" id="close.close-1"><span class="tsd-kind-call-signature">close</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#close.close-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
@@ -83,7 +161,7 @@ After Close is called, methods on Root return errors.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#close">close</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2598">types.d.ts:2598</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2633">types.d.ts:2633</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="create" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>create</span><a href="#create" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -101,21 +179,67 @@ See [Create] for more details.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#create">create</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2612">types.d.ts:2612</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2647">types.d.ts:2647</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="fs" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>fs</span><a href="#fs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
 <li class="tsd-signature tsd-anchor-link" id="fs.fs-1"><span class="tsd-kind-call-signature">fs</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="fs.FS.html" class="tsd-signature-type tsd-kind-interface">FS</a><a href="#fs.fs-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>FS returns a file system (an fs.FS) for the tree of files in the root.</p>
-<p>The result implements [io/fs.StatFS], [io/fs.ReadFileFS] and
-[io/fs.ReadDirFS].</p>
+<p>The result implements [io/fs.StatFS], [io/fs.ReadFileFS],
+[io/fs.ReadDirFS], and [io/fs.ReadLinkFS].</p>
 </div>
 <h4 class="tsd-returns-title">Returns <a href="fs.FS.html" class="tsd-signature-type tsd-kind-interface">FS</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#fs">fs</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2672">types.d.ts:2672</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2807">types.d.ts:2807</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="lchown" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>lchown</span><a href="#lchown" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="lchown.lchown-1"><span class="tsd-kind-call-signature">lchown</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">uid</span>, <span class="tsd-kind-parameter">gid</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#lchown.lchown-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Lchown changes the numeric uid and gid of the named file in the root.
+See [Lchown] for more details.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">uid</span>: <span class="tsd-signature-type">number</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">gid</span>: <span class="tsd-signature-type">number</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#lchown">lchown</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2706">types.d.ts:2706</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="link" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>link</span><a href="#link" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="link.link-1"><span class="tsd-kind-call-signature">link</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">oldname</span>, <span class="tsd-kind-parameter">newname</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#link.link-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Link creates newname as a hard link to the oldname file.
+Both paths are relative to the root.
+See [Link] for more details.</p>
+<p>If oldname is a symbolic link, Link creates new link to oldname and not its target.
+This behavior may differ from that of [Link] on some platforms.</p>
+<p>When GOOS=js, Link returns an error if oldname is a symbolic link.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">oldname</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">newname</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#link">link</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2771">types.d.ts:2771</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="lstat" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>lstat</span><a href="#lstat" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -135,7 +259,7 @@ See [Lstat] for more details.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#lstat">lstat</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2663">types.d.ts:2663</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2826">types.d.ts:2826</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="mkdir" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>mkdir</span><a href="#mkdir" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -145,7 +269,7 @@ See [Lstat] for more details.</p>
 with the specified name and permission bits (before umask).
 See [Mkdir] for more details.</p>
 <p>If perm contains bits other than the nine least-significant bits (0o777),
-OpenFile returns an error.</p>
+Mkdir returns an error.</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -158,7 +282,29 @@ OpenFile returns an error.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#mkdir">mkdir</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2640">types.d.ts:2640</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2682">types.d.ts:2682</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="mkdirAll" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>mkdir<wbr/>All</span><a href="#mkdirAll" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="mkdirAll.mkdirAll-1"><span class="tsd-kind-call-signature">mkdir<wbr/>All</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">perm</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#mkdirAll.mkdirAll-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>MkdirAll creates a new directory in the root, along with any necessary parents.
+See [MkdirAll] for more details.</p>
+<p>If perm contains bits other than the nine least-significant bits (0o777),
+MkdirAll returns an error.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">perm</span>: <a href="../modules/os.html" class="tsd-signature-type tsd-kind-namespace">os</a><span class="tsd-signature-symbol">.</span><a href="os.FileMode.html" class="tsd-signature-type tsd-kind-interface">FileMode</a></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#mkdirAll">mkdirAll</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2692">types.d.ts:2692</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -171,7 +317,7 @@ OpenFile returns an error.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#name">name</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2591">types.d.ts:2591</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2626">types.d.ts:2626</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="open" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>open</span><a href="#open" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -189,7 +335,7 @@ See [Open] for more details.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#open">open</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2676">types.d.ts:2676</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2811">types.d.ts:2811</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="openFile" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>open<wbr/>File</span><a href="#openFile" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -213,14 +359,14 @@ OpenFile returns an error.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#openFile">openFile</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2622">types.d.ts:2622</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2657">types.d.ts:2657</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="openRoot" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>open<wbr/>Root</span><a href="#openRoot" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
 <li class="tsd-signature tsd-anchor-link" id="openRoot.openRoot-1"><span class="tsd-kind-call-signature">open<wbr/>Root</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="os.Root.html" class="tsd-signature-type tsd-kind-interface">Root</a><a href="#openRoot.openRoot-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>OpenRoot opens the named directory in the root.
-If there is an error, it will be of type *PathError.</p>
+If there is an error, it will be of type [*PathError].</p>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
@@ -231,7 +377,7 @@ If there is an error, it will be of type *PathError.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#openRoot">openRoot</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2629">types.d.ts:2629</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2664">types.d.ts:2664</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="readDir" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>Dir</span><a href="#readDir" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -244,20 +390,56 @@ If there is an error, it will be of type *PathError.</p>
 <h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <a href="../modules/os.html" class="tsd-signature-type tsd-kind-namespace">os</a><span class="tsd-signature-symbol">.</span><a href="os.DirEntry.html" class="tsd-signature-type tsd-kind-interface">DirEntry</a><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2679">types.d.ts:2679</a></li></ul></aside></li></ul></section>
-<section class="tsd-panel tsd-member"><a id="readFile" class="tsd-anchor"></a>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2814">types.d.ts:2814</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="readFile" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>File</span><a href="#readFile" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
-<ul class="tsd-signatures">
+<ul class="tsd-signatures tsd-is-inherited">
 <li class="tsd-signature tsd-anchor-link" id="readFile.readFile-1"><span class="tsd-kind-call-signature">read<wbr/>File</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><a href="#readFile.readFile-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>ReadFile reads the named file in the root and returns its contents.
+See [ReadFile] for more details.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#readFile">readFile</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2817">types.d.ts:2817</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member"><a id="readLink" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>read<wbr/>Link</span><a href="#readLink" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures">
+<li class="tsd-signature tsd-anchor-link" id="readLink.readLink-1"><span class="tsd-kind-call-signature">read<wbr/>Link</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#readLink.readLink-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
 <h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
-<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4><aside class="tsd-sources">
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2682">types.d.ts:2682</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2820">types.d.ts:2820</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="readlink-2" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>readlink</span><a href="#readlink-2" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="readlink-2.readlink-3"><span class="tsd-kind-call-signature">readlink</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><a href="#readlink-2.readlink-3" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Readlink returns the destination of the named symbolic link in the root.
+See [Readlink] for more details.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#readlink">readlink</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2750">types.d.ts:2750</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="remove" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>remove</span><a href="#remove" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -275,7 +457,46 @@ See [Remove] for more details.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#remove">remove</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2647">types.d.ts:2647</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2720">types.d.ts:2720</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="removeAll" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>remove<wbr/>All</span><a href="#removeAll" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="removeAll.removeAll-1"><span class="tsd-kind-call-signature">remove<wbr/>All</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#removeAll.removeAll-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>RemoveAll removes the named file or directory and any children that it contains.
+See [RemoveAll] for more details.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#removeAll">removeAll</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2727">types.d.ts:2727</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="rename" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>rename</span><a href="#rename" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="rename.rename-1"><span class="tsd-kind-call-signature">rename</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">oldname</span>, <span class="tsd-kind-parameter">newname</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#rename.rename-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Rename renames (moves) oldname to newname.
+Both paths are relative to the root.
+See [Rename] for more details.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">oldname</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">newname</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#rename">rename</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2758">types.d.ts:2758</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="stat" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>stat</span><a href="#stat" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -293,7 +514,53 @@ See [Stat] for more details.</p>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#stat">stat</a></p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L2685">types.d.ts:2685</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2823">types.d.ts:2823</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="symlink" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>symlink</span><a href="#symlink" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="symlink.symlink-1"><span class="tsd-kind-call-signature">symlink</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">oldname</span>, <span class="tsd-kind-parameter">newname</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#symlink.symlink-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>Symlink creates newname as a symbolic link to oldname.
+See [Symlink] for more details.</p>
+<p>Symlink does not validate oldname,
+which may reference a location outside the root.</p>
+<p>On Windows, a directory link is created if oldname references
+a directory within the root. Otherwise a file link is created.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">oldname</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">newname</span>: <span class="tsd-signature-type">string</span></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#symlink">symlink</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2784">types.d.ts:2784</a></li></ul></aside></li></ul></section>
+<section class="tsd-panel tsd-member tsd-is-inherited"><a id="writeFile" class="tsd-anchor"></a>
+<h3 class="tsd-anchor-link"><span>write<wbr/>File</span><a href="#writeFile" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
+<ul class="tsd-signatures tsd-is-inherited">
+<li class="tsd-signature tsd-anchor-link" id="writeFile.writeFile-1"><span class="tsd-kind-call-signature">write<wbr/>File</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">name</span>, <span class="tsd-kind-parameter">data</span>, <span class="tsd-kind-parameter">perm</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span><a href="#writeFile.writeFile-1" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></li>
+<li class="tsd-description">
+<div class="tsd-comment tsd-typography"><p>WriteFile writes data to the named file in the root, creating it if necessary.
+See [WriteFile] for more details.</p>
+</div>
+<div class="tsd-parameters">
+<h4 class="tsd-parameters-title">Parameters</h4>
+<ul class="tsd-parameter-list">
+<li>
+<h5><span class="tsd-kind-parameter">name</span>: <span class="tsd-signature-type">string</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">data</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5></li>
+<li>
+<h5><span class="tsd-kind-parameter">perm</span>: <a href="../modules/os.html" class="tsd-signature-type tsd-kind-namespace">os</a><span class="tsd-signature-symbol">.</span><a href="os.FileMode.html" class="tsd-signature-type tsd-kind-interface">FileMode</a></h5></li></ul></div>
+<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+<div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
+<p>Inherited from <a href="os.Root.html">Root</a>.<a href="os.Root.html#writeFile">writeFile</a></p>
+<ul>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2798">types.d.ts:2798</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -310,19 +577,31 @@ See [Stat] for more details.</p>
 <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg>On This Page</h3></summary>
 <div class="tsd-accordion-details">
 <ul>
+<li><a href="#chmod" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>chmod</span></a></li>
+<li><a href="#chown" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>chown</span></a></li>
+<li><a href="#chtimes" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>chtimes</span></a></li>
 <li><a href="#close" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>close</span></a></li>
 <li><a href="#create" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>create</span></a></li>
 <li><a href="#fs" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>fs</span></a></li>
+<li><a href="#lchown" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>lchown</span></a></li>
+<li><a href="#link" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>link</span></a></li>
 <li><a href="#lstat" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>lstat</span></a></li>
 <li><a href="#mkdir" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>mkdir</span></a></li>
+<li><a href="#mkdirAll" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>mkdir<wbr/>All</span></a></li>
 <li><a href="#name" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>name</span></a></li>
 <li><a href="#open" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>open</span></a></li>
 <li><a href="#openFile" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>open<wbr/>File</span></a></li>
 <li><a href="#openRoot" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>open<wbr/>Root</span></a></li>
 <li><a href="#readDir" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>read<wbr/>Dir</span></a></li>
-<li><a href="#readFile" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>read<wbr/>File</span></a></li>
+<li><a href="#readFile" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>read<wbr/>File</span></a></li>
+<li><a href="#readLink" class=""><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>read<wbr/>Link</span></a></li>
+<li><a href="#readlink-2" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>readlink</span></a></li>
 <li><a href="#remove" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>remove</span></a></li>
-<li><a href="#stat" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>stat</span></a></li></ul></div></details></div>
+<li><a href="#removeAll" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>remove<wbr/>All</span></a></li>
+<li><a href="#rename" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>rename</span></a></li>
+<li><a href="#stat" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>stat</span></a></li>
+<li><a href="#symlink" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>symlink</span></a></li>
+<li><a href="#writeFile" class="tsd-is-inherited"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-2048"></use></svg><span>write<wbr/>File</span></a></li></ul></div></details></div>
 <div class="site-menu">
 <nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-namespace)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M9.33 16V7.24H10.77L13.446 14.74C13.43 14.54 13.41 14.296 13.386 14.008C13.37 13.712 13.354 13.404 13.338 13.084C13.33 12.756 13.326 12.448 13.326 12.16V7.24H14.37V16H12.93L10.266 8.5C10.282 8.692 10.298 8.936 10.314 9.232C10.33 9.52 10.342 9.828 10.35 10.156C10.366 10.476 10.374 10.784 10.374 11.08V16H9.33Z" fill="var(--color-text)"></path></g></svg><span>Pocket<wbr/>Base JSVM reference</span></a>
 <ul class="tsd-small-nested-navigation">
@@ -579,7 +858,7 @@ See [Stat] for more details.</p>
 <li><a href="os.openInRoot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>open<wbr/>In<wbr/>Root</span></a></li>
 <li><a href="os.openRoot.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>open<wbr/>Root</span></a></li>
 <li><a href="os.pipe.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>pipe</span></a></li>
-<li><a href="os.processMode.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>process<wbr/>Mode</span></a></li>
+<li><a href="os.processHandle.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>process<wbr/>Handle</span></a></li>
 <li><a href="os.processStatus.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>process<wbr/>Status</span></a></li>
 <li><a href="os.rawConn.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>raw<wbr/>Conn</span></a></li>
 <li><a href="os.readDir.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-256"></use></svg><span>read<wbr/>Dir</span></a></li>
@@ -611,9 +890,9 @@ See [Stat] for more details.</p>
 <details class="tsd-index-accordion" data-key="os$Type Aliases"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Type Aliases</span></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../types/os._sBXcDRr.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_sBXcDRr</span></a></li>
-<li><a href="../types/os._sXgZbLw.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_s<wbr/>Xg<wbr/>Zb<wbr/>Lw</span></a></li>
-<li><a href="../types/os._ssUkhmM.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_ss<wbr/>UkhmM</span></a></li></ul></div></details></li></ul></div></details></li>
+<li><a href="../types/os._sKSuTlM.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_sKSu<wbr/>TlM</span></a></li>
+<li><a href="../types/os._sQzDHAE.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_s<wbr/>QzDHAE</span></a></li>
+<li><a href="../types/os._sxHrDbQ.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_sx<wbr/>Hr<wbr/>DbQ</span></a></li></ul></div></details></li></ul></div></details></li>
 <li><a href="../modules/ozzo_validation.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>ozzo_<wbr/>validation</span></a></li>
 <li><a href="../modules/pocketbase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>pocketbase</span></a></li>
 <li><a href="../modules/router.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>router</span></a></li>

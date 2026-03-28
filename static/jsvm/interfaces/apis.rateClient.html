@@ -18,20 +18,17 @@
 <h1>Interface rateClient</h1></div>
 <section class="tsd-panel tsd-comment">
 <div class="tsd-comment tsd-typography">
-<h4>Todo</h4><p>evaluate swiching to a more traditional fixed window or sliding window counter
-implementations since some users complained that it is not intuitive (see #7329).</p>
-<p>rateClient is a mixture of token bucket and fixed window rate limit strategies
-that refills the allowance only after at least &quot;interval&quot; seconds
-has elapsed since the last request.</p>
+<h4>Todo</h4><p>evaluate swiching to sliding window with approximation counter similar to Cloudflare.</p>
+<p>rateClient implements fixed window rate limit strategy.</p>
 </div></section>
 <section class="tsd-panel tsd-hierarchy">
 <h4>Hierarchy</h4>
 <ul class="tsd-hierarchy">
-<li><a href="../types/apis._sESXLpl.html" class="tsd-signature-type tsd-kind-type-alias">_sESXLpl</a>
+<li><a href="../types/apis._sufklcW.html" class="tsd-signature-type tsd-kind-type-alias">_sufklcW</a>
 <ul class="tsd-hierarchy">
 <li><span class="target">rateClient</span></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L14461">types.d.ts:14461</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L14502">types.d.ts:14502</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -56,9 +53,9 @@ blocks until the mutex is available.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
-<p>Inherited from _sESXLpl.lock</p>
+<p>Inherited from _sufklcW.lock</p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L14826">types.d.ts:14826</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L14972">types.d.ts:14972</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="tryLock" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>try<wbr/>Lock</span><a href="#tryLock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -71,9 +68,9 @@ in a particular use of mutexes.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
-<p>Inherited from _sESXLpl.tryLock</p>
+<p>Inherited from _sufklcW.tryLock</p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L14836">types.d.ts:14836</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L14982">types.d.ts:14982</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member tsd-is-inherited"><a id="unlock" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unlock</span><a href="#unlock" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures tsd-is-inherited">
@@ -87,9 +84,9 @@ arrange for another goroutine to unlock it.</p>
 </div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
-<p>Inherited from _sESXLpl.unlock</p>
+<p>Inherited from _sufklcW.unlock</p>
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/64201c9bb/jsvm/types.d.ts#L14847">types.d.ts:14847</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L14993">types.d.ts:14993</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -347,10 +344,10 @@ arrange for another goroutine to unlock it.</p>
 <details class="tsd-index-accordion" data-key="apis$Type Aliases"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Type Aliases</span></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../types/apis._sDWXRNl.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_sDWXRNl</span></a></li>
-<li><a href="../types/apis._sESXLpl.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_sESXLpl</span></a></li>
-<li><a href="../types/apis._sLbNkpS.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_s<wbr/>Lb<wbr/>NkpS</span></a></li>
-<li><a href="../types/apis._sxMgnQt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_sx<wbr/>Mgn<wbr/>Qt</span></a></li></ul></div></details></li></ul></div></details></li>
+<li><a href="../types/apis._sXNNljx.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_sXNNljx</span></a></li>
+<li><a href="../types/apis._saSDjvK.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_saSDjvK</span></a></li>
+<li><a href="../types/apis._scKTXZU.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_scKTXZU</span></a></li>
+<li><a href="../types/apis._sufklcW.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_sufklcW</span></a></li></ul></div></details></li></ul></div></details></li>
 <li><a href="../modules/auth.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>auth</span></a></li>
 <li><a href="../modules/blob.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>blob</span></a></li>
 <li><a href="../modules/bufio.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>bufio</span></a></li>
