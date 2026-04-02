@@ -523,7 +523,7 @@
     language="javascript"
     content={`
         // serves static files from the provided dir (if exists)
-        routerAdd("GET", "/{path...}", $apis.static($os.dirFS("/path/to/public"), false))
+        routerAdd("GET", "/{path...}", $apis.static("/path/to/public", false))
     `}
 />
 
