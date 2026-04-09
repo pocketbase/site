@@ -32,7 +32,7 @@ Linux bind mounts, /proc special files, or access to Unix device files.</p>
 the directory. If the directory is moved, methods on Root reference the original
 directory in its new location.</p>
 <p>Root&#39;s behavior differs on some platforms:</p>
-<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">windows, file names may not reference Windows reserved device names</span><br/><span class="hl-0">    such </span><span class="hl-1">as</span><span class="hl-0"> </span><span class="hl-2">NUL</span><span class="hl-0"> </span><span class="hl-2">and</span><span class="hl-0"> </span><span class="hl-2">COM1</span><span class="hl-0">.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> On Unix, [Root.Chmod], [Root.Chown], and [Root.Chtimes] are vulnerable to a race condition.</span><br/><span class="hl-0">    If the target </span><span class="hl-1">of</span><span class="hl-0"> the operation is changed from a regular file to a symlink</span><br/><span class="hl-0">    </span><span class="hl-1">while</span><span class="hl-0"> the operation is </span><span class="hl-1">in</span><span class="hl-0"> progress, the operation may be performed on the link</span><br/><span class="hl-0">    rather than the link target.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">js, Root is vulnerable to </span><span class="hl-2">TOCTOU</span><span class="hl-0"> (time</span><span class="hl-1">-of-</span><span class="hl-0">check</span><span class="hl-1">-</span><span class="hl-0">time</span><span class="hl-1">-of-</span><span class="hl-0">use)</span><br/><span class="hl-0">    attacks </span><span class="hl-1">in</span><span class="hl-0"> symlink validation, and cannot ensure that operations will not</span><br/><span class="hl-0">    escape the root.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">plan9 or </span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">js, Root does not track directories across renames.</span><br/><span class="hl-0">    On these platforms, a Root references a directory name, not a file descriptor.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> </span><span class="hl-6">WASI</span><span class="hl-0"> preview </span><span class="hl-6">1</span><span class="hl-0"> (</span><span class="hl-6">GOOS</span><span class="hl-1">=</span><span class="hl-0">wasip1) does not support [Root.Chmod].</span>
+<pre><code><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-5">GOOS</span><span class="hl-1">=</span><span class="hl-0">windows, file names may not reference Windows reserved device names</span><br/><span class="hl-0">    such </span><span class="hl-1">as</span><span class="hl-0"> </span><span class="hl-2">NUL</span><span class="hl-0"> </span><span class="hl-2">and</span><span class="hl-0"> </span><span class="hl-2">COM1</span><span class="hl-0">.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> On Unix, [Root.Chmod], [Root.Chown], and [Root.Chtimes] are vulnerable to a race condition.</span><br/><span class="hl-0">    If the target </span><span class="hl-1">of</span><span class="hl-0"> the operation is changed from a regular file to a symlink</span><br/><span class="hl-0">    </span><span class="hl-1">while</span><span class="hl-0"> the operation is </span><span class="hl-1">in</span><span class="hl-0"> progress, the operation may be performed on the link</span><br/><span class="hl-0">    rather than the link target.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-5">GOOS</span><span class="hl-1">=</span><span class="hl-0">js, Root is vulnerable to </span><span class="hl-2">TOCTOU</span><span class="hl-0"> (time</span><span class="hl-1">-of-</span><span class="hl-0">check</span><span class="hl-1">-</span><span class="hl-0">time</span><span class="hl-1">-of-</span><span class="hl-0">use)</span><br/><span class="hl-0">    attacks </span><span class="hl-1">in</span><span class="hl-0"> symlink validation, and cannot ensure that operations will not</span><br/><span class="hl-0">    escape the root.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> When </span><span class="hl-5">GOOS</span><span class="hl-1">=</span><span class="hl-0">plan9 or </span><span class="hl-5">GOOS</span><span class="hl-1">=</span><span class="hl-0">js, Root does not track directories across renames.</span><br/><span class="hl-0">    On these platforms, a Root references a directory name, not a file descriptor.</span><br/><span class="hl-0">  </span><span class="hl-1">-</span><span class="hl-0"> </span><span class="hl-5">WASI</span><span class="hl-0"> preview </span><span class="hl-5">1</span><span class="hl-0"> (</span><span class="hl-5">GOOS</span><span class="hl-1">=</span><span class="hl-0">wasip1) does not support [Root.Chmod].</span>
 </code><button>Copy</button></pre>
 </div>
 <div class="tsd-comment tsd-typography"></div></section>
@@ -43,30 +43,30 @@ directory in its new location.</p>
 <ul class="tsd-hierarchy">
 <li><a href="os.rootFS.html" class="tsd-signature-type tsd-kind-interface">rootFS</a></li></ul></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2610">types.d.ts:2610</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2620">types.d.ts:2620</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2628">types.d.ts:2628</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2635">types.d.ts:2635</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2642">types.d.ts:2642</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2649">types.d.ts:2649</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2659">types.d.ts:2659</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2666">types.d.ts:2666</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2673">types.d.ts:2673</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2684">types.d.ts:2684</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2694">types.d.ts:2694</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2701">types.d.ts:2701</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2708">types.d.ts:2708</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2715">types.d.ts:2715</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2722">types.d.ts:2722</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2729">types.d.ts:2729</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2736">types.d.ts:2736</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2745">types.d.ts:2745</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2752">types.d.ts:2752</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2760">types.d.ts:2760</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2773">types.d.ts:2773</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2786">types.d.ts:2786</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2793">types.d.ts:2793</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2800">types.d.ts:2800</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2628">types.d.ts:2628</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2638">types.d.ts:2638</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2646">types.d.ts:2646</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2653">types.d.ts:2653</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2660">types.d.ts:2660</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2667">types.d.ts:2667</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2677">types.d.ts:2677</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2684">types.d.ts:2684</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2691">types.d.ts:2691</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2702">types.d.ts:2702</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2712">types.d.ts:2712</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2719">types.d.ts:2719</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2726">types.d.ts:2726</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2733">types.d.ts:2733</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2740">types.d.ts:2740</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2747">types.d.ts:2747</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2754">types.d.ts:2754</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2763">types.d.ts:2763</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2770">types.d.ts:2770</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2778">types.d.ts:2778</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2791">types.d.ts:2791</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2804">types.d.ts:2804</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2811">types.d.ts:2811</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2818">types.d.ts:2818</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -118,7 +118,7 @@ See [Chmod] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2671">types.d.ts:2671</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2689">types.d.ts:2689</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="chown" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>chown</span><a href="#chown" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -139,7 +139,7 @@ See [Chown] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2699">types.d.ts:2699</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2717">types.d.ts:2717</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="chtimes" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>chtimes</span><a href="#chtimes" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -160,7 +160,7 @@ See [Chtimes] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2713">types.d.ts:2713</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2731">types.d.ts:2731</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="close" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>close</span><a href="#close" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -172,7 +172,7 @@ After Close is called, methods on Root return errors.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2633">types.d.ts:2633</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2651">types.d.ts:2651</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="create" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>create</span><a href="#create" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -189,7 +189,7 @@ See [Create] for more details.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/os.html" class="tsd-signature-type tsd-kind-namespace">os</a><span class="tsd-signature-symbol">.</span><a href="os.File.html" class="tsd-signature-type tsd-kind-interface">File</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2647">types.d.ts:2647</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2665">types.d.ts:2665</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="fs" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>fs</span><a href="#fs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -202,7 +202,7 @@ See [Create] for more details.</p>
 <h4 class="tsd-returns-title">Returns <a href="fs.FS.html" class="tsd-signature-type tsd-kind-interface">FS</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2807">types.d.ts:2807</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2825">types.d.ts:2825</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="lchown" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>lchown</span><a href="#lchown" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -223,7 +223,7 @@ See [Lchown] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2706">types.d.ts:2706</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2724">types.d.ts:2724</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="link" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>link</span><a href="#link" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -246,7 +246,7 @@ This behavior may differ from that of [Link] on some platforms.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2771">types.d.ts:2771</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2789">types.d.ts:2789</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="lstat" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>lstat</span><a href="#lstat" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -265,7 +265,7 @@ See [Lstat] for more details.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/os.html" class="tsd-signature-type tsd-kind-namespace">os</a><span class="tsd-signature-symbol">.</span><a href="os.FileInfo.html" class="tsd-signature-type tsd-kind-interface">FileInfo</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2743">types.d.ts:2743</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2761">types.d.ts:2761</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="mkdir" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>mkdir</span><a href="#mkdir" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -287,7 +287,7 @@ Mkdir returns an error.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2682">types.d.ts:2682</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2700">types.d.ts:2700</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="mkdirAll" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>mkdir<wbr/>All</span><a href="#mkdirAll" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -308,7 +308,7 @@ MkdirAll returns an error.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2692">types.d.ts:2692</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2710">types.d.ts:2710</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="name" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>name</span><a href="#name" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -320,7 +320,7 @@ MkdirAll returns an error.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2626">types.d.ts:2626</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2644">types.d.ts:2644</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="open" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>open</span><a href="#open" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -337,7 +337,7 @@ See [Open] for more details.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/os.html" class="tsd-signature-type tsd-kind-namespace">os</a><span class="tsd-signature-symbol">.</span><a href="os.File.html" class="tsd-signature-type tsd-kind-interface">File</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2640">types.d.ts:2640</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2658">types.d.ts:2658</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="openFile" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>open<wbr/>File</span><a href="#openFile" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -360,7 +360,7 @@ OpenFile returns an error.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/os.html" class="tsd-signature-type tsd-kind-namespace">os</a><span class="tsd-signature-symbol">.</span><a href="os.File.html" class="tsd-signature-type tsd-kind-interface">File</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2657">types.d.ts:2657</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2675">types.d.ts:2675</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="openRoot" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>open<wbr/>Root</span><a href="#openRoot" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -377,7 +377,7 @@ If there is an error, it will be of type [*PathError].</p>
 <h4 class="tsd-returns-title">Returns <a href="os.Root.html" class="tsd-signature-type tsd-kind-interface">Root</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2664">types.d.ts:2664</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2682">types.d.ts:2682</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="readFile" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>read<wbr/>File</span><a href="#readFile" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -394,7 +394,7 @@ See [ReadFile] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2791">types.d.ts:2791</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2809">types.d.ts:2809</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="readlink" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>readlink</span><a href="#readlink" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -411,7 +411,7 @@ See [Readlink] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2750">types.d.ts:2750</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2768">types.d.ts:2768</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="remove" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>remove</span><a href="#remove" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -428,7 +428,7 @@ See [Remove] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2720">types.d.ts:2720</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2738">types.d.ts:2738</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="removeAll" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>remove<wbr/>All</span><a href="#removeAll" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -445,7 +445,7 @@ See [RemoveAll] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2727">types.d.ts:2727</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2745">types.d.ts:2745</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="rename" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>rename</span><a href="#rename" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -465,7 +465,7 @@ See [Rename] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2758">types.d.ts:2758</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2776">types.d.ts:2776</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="stat" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>stat</span><a href="#stat" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -482,7 +482,7 @@ See [Stat] for more details.</p>
 <h4 class="tsd-returns-title">Returns <a href="../modules/os.html" class="tsd-signature-type tsd-kind-namespace">os</a><span class="tsd-signature-symbol">.</span><a href="os.FileInfo.html" class="tsd-signature-type tsd-kind-interface">FileInfo</a></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2734">types.d.ts:2734</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2752">types.d.ts:2752</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="symlink" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>symlink</span><a href="#symlink" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -505,7 +505,7 @@ a directory within the root. Otherwise a file link is created.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2784">types.d.ts:2784</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2802">types.d.ts:2802</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="writeFile" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>write<wbr/>File</span><a href="#writeFile" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -526,7 +526,7 @@ See [WriteFile] for more details.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L2798">types.d.ts:2798</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L2816">types.d.ts:2816</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -854,9 +854,9 @@ See [WriteFile] for more details.</p>
 <details class="tsd-index-accordion" data-key="os$Type Aliases"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Type Aliases</span></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../types/os._sKSuTlM.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_sKSu<wbr/>TlM</span></a></li>
-<li><a href="../types/os._sQzDHAE.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_s<wbr/>QzDHAE</span></a></li>
-<li><a href="../types/os._sxHrDbQ.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_sx<wbr/>Hr<wbr/>DbQ</span></a></li></ul></div></details></li></ul></div></details></li>
+<li><a href="../types/os._sEowvrW.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_s<wbr/>EowvrW</span></a></li>
+<li><a href="../types/os._sUQXiYX.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_sUQXiYX</span></a></li>
+<li><a href="../types/os._sqpeBfS.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_sqpe<wbr/>BfS</span></a></li></ul></div></details></li></ul></div></details></li>
 <li><a href="../modules/ozzo_validation.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>ozzo_<wbr/>validation</span></a></li>
 <li><a href="../modules/pocketbase.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>pocketbase</span></a></li>
 <li><a href="../modules/router.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>router</span></a></li>

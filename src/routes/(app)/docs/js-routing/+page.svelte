@@ -516,7 +516,7 @@
     <a href="/jsvm/functions/_apis.static.html" target="_blank" rel="noopener noreferrer">
         <code>$apis.static()</code>
     </a>
-    serves static directory content from <code>fs.FS</code> instance.
+    serves static directory content from the specified dir path or <code>fs.FS</code> value.
 </p>
 <p>Expects the route to have a <code>{"{path...}"}</code> wildcard parameter.</p>
 <CodeBlock

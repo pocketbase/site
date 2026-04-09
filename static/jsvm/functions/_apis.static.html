@@ -18,17 +18,27 @@
 <h1>Function static</h1></div>
 <section class="tsd-panel">
 <ul class="tsd-signatures">
-<li class="tsd-signature tsd-anchor-link" id="static"><span class="tsd-kind-call-signature">static</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">dir</span>, <span class="tsd-kind-parameter">indexFallback</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">e</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><a href="#static" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
+<li class="tsd-signature tsd-anchor-link" id="static"><span class="tsd-kind-call-signature">static</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">dirOrFS</span>, <span class="tsd-kind-parameter">indexFallback</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">e</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><a href="#static" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><g stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" id="icon-anchor"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5"></path><path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5"></path></g></svg></a></li>
 <li class="tsd-description">
 <div class="tsd-comment tsd-typography"><p>Route handler to serve static directory content (html, js, css, etc.).</p>
-<p>If a file resource is missing and indexFallback is set, the request
-will be forwarded to the base index.html (useful for SPA).</p>
+<p>If a file resource is missing and indexFallback is true, the request
+will be forwarded to the base index.html (useful for SPA with pretty urls).</p>
+<p>NB! Expects the route to have a &quot;{path...}&quot; wildcard parameter.</p>
+<p>Special redirects:</p>
+<ul>
+<li>if &quot;path&quot; is a file that ends in index.html, it is redirected to its non-index.html version (eg. /test/index.html -&gt; /test/)</li>
+<li>if &quot;path&quot; is a directory that has index.html, the index.html file is rendered,
+otherwise if missing - returns 404 or fallback to the root index.html if indexFallback is true</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-js"><span class="hl-3">// serves static files from the provided dir string path (it will be wrapped in $os.dirFS())</span><br/><span class="hl-2">routerAdd</span><span class="hl-0">(</span><span class="hl-4">&quot;GET&quot;</span><span class="hl-0">, </span><span class="hl-4">&quot;/{path...}&quot;</span><span class="hl-0">, $apis.</span><span class="hl-2">static</span><span class="hl-0">(</span><span class="hl-4">&quot;/path/to/public&quot;</span><span class="hl-0">, </span><span class="hl-5">false</span><span class="hl-0">))</span><br/><br/><span class="hl-3">// serves static files from the explicit fs.FS value ($os.dirFS(), $os.openRoot().fs(), etc.)</span><br/><span class="hl-2">routerAdd</span><span class="hl-0">(</span><span class="hl-4">&quot;GET&quot;</span><span class="hl-0">, </span><span class="hl-4">&quot;/{path...}&quot;</span><span class="hl-0">, $apis.</span><span class="hl-2">static</span><span class="hl-0">($os.</span><span class="hl-2">dirFS</span><span class="hl-0">(</span><span class="hl-4">&quot;/path/to/public&quot;</span><span class="hl-0">), </span><span class="hl-5">false</span><span class="hl-0">))</span>
+</code><button>Copy</button></pre>
 </div>
 <div class="tsd-parameters">
 <h4 class="tsd-parameters-title">Parameters</h4>
 <ul class="tsd-parameter-list">
 <li>
-<h5><span class="tsd-kind-parameter">dir</span>: <span class="tsd-signature-type">string</span></h5></li>
+<h5><span class="tsd-kind-parameter">dirOrFS</span>: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/fs.FS.html" class="tsd-signature-type tsd-kind-interface">FS</a></h5></li>
 <li>
 <h5><span class="tsd-kind-parameter">indexFallback</span>: <span class="tsd-signature-type">boolean</span></h5></li></ul></div>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">e</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></h4>
@@ -45,7 +55,7 @@ will be forwarded to the base index.html (useful for SPA).</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4></li></ul></li></ul>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L1152">types.d.ts:1152</a></li></ul></aside></li></ul></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L1170">types.d.ts:1170</a></li></ul></aside></li></ul></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">

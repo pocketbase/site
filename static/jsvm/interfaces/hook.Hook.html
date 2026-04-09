@@ -20,7 +20,7 @@
 <div class="tsd-comment tsd-typography"><p>Hook defines a generic concurrent safe structure for managing event hooks.</p>
 <p>When using custom event it must embed the base [hook.Event].</p>
 <p>Example:</p>
-<pre><code><span class="hl-0">  </span><span class="hl-1">type</span><span class="hl-0"> </span><span class="hl-2">CustomEvent</span><span class="hl-0"> struct {</span><br/><span class="hl-0">    hook.Event</span><br/><span class="hl-0">    SomeField int</span><br/><span class="hl-0">  }</span><br/><br/><span class="hl-0">  </span><span class="hl-2">h</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> Hook[</span><span class="hl-1">*</span><span class="hl-0">CustomEvent]{}</span><br/><br/><span class="hl-0">  h.</span><span class="hl-2">BindFunc</span><span class="hl-0">(</span><span class="hl-2">func</span><span class="hl-0">(e </span><span class="hl-1">*</span><span class="hl-0">CustomEvent) error {</span><br/><span class="hl-0">    </span><span class="hl-2">println</span><span class="hl-0">(e.SomeField)</span><br/><br/><span class="hl-0">    return e.</span><span class="hl-2">Next</span><span class="hl-0">()</span><br/><span class="hl-0">  })</span><br/><br/><span class="hl-0">  h.</span><span class="hl-2">Trigger</span><span class="hl-0">(</span><span class="hl-1">&amp;</span><span class="hl-0">CustomEvent{ SomeField: </span><span class="hl-6">123</span><span class="hl-0"> })</span>
+<pre><code><span class="hl-0">  </span><span class="hl-1">type</span><span class="hl-0"> </span><span class="hl-2">CustomEvent</span><span class="hl-0"> struct {</span><br/><span class="hl-0">    hook.Event</span><br/><span class="hl-0">    SomeField int</span><br/><span class="hl-0">  }</span><br/><br/><span class="hl-0">  </span><span class="hl-2">h</span><span class="hl-0"> :</span><span class="hl-1">=</span><span class="hl-0"> Hook[</span><span class="hl-1">*</span><span class="hl-0">CustomEvent]{}</span><br/><br/><span class="hl-0">  h.</span><span class="hl-2">BindFunc</span><span class="hl-0">(</span><span class="hl-2">func</span><span class="hl-0">(e </span><span class="hl-1">*</span><span class="hl-0">CustomEvent) error {</span><br/><span class="hl-0">    </span><span class="hl-2">println</span><span class="hl-0">(e.SomeField)</span><br/><br/><span class="hl-0">    return e.</span><span class="hl-2">Next</span><span class="hl-0">()</span><br/><span class="hl-0">  })</span><br/><br/><span class="hl-0">  h.</span><span class="hl-2">Trigger</span><span class="hl-0">(</span><span class="hl-1">&amp;</span><span class="hl-0">CustomEvent{ SomeField: </span><span class="hl-5">123</span><span class="hl-0"> })</span>
 </code><button>Copy</button></pre>
 </div>
 <div class="tsd-comment tsd-typography"></div></section> 
@@ -34,13 +34,13 @@
 <ul class="tsd-hierarchy">
 <li><span class="target">Hook</span></li></ul></section><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18077">types.d.ts:18077</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18079">types.d.ts:18079</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18090">types.d.ts:18090</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18100">types.d.ts:18100</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18106">types.d.ts:18106</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18112">types.d.ts:18112</a></li>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18118">types.d.ts:18118</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L19982">types.d.ts:19982</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L19984">types.d.ts:19984</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L19995">types.d.ts:19995</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L20005">types.d.ts:20005</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L20011">types.d.ts:20011</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L20017">types.d.ts:20017</a></li>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L20023">types.d.ts:20023</a></li></ul></aside>
 <section class="tsd-panel-group tsd-index-group">
 <section class="tsd-panel tsd-index-panel">
 <details class="tsd-index-content tsd-index-accordion" open><summary class="tsd-accordion-summary tsd-index-summary">
@@ -75,7 +75,7 @@ then the old handler is replaced with the new one.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18088">types.d.ts:18088</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L19993">types.d.ts:19993</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="bindFunc" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>bind<wbr/>Func</span><a href="#bindFunc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -104,7 +104,7 @@ then the old handler is replaced with the new one.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18098">types.d.ts:18098</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L20003">types.d.ts:20003</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="length" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>length</span><a href="#length" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -115,7 +115,7 @@ then the old handler is replaced with the new one.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18116">types.d.ts:18116</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L20021">types.d.ts:20021</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="trigger" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>trigger</span><a href="#trigger" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -137,7 +137,7 @@ handler funcs that will be temporary appended to the handlers queue.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18128">types.d.ts:18128</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L20033">types.d.ts:20033</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unbind" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unbind</span><a href="#unbind" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -153,7 +153,7 @@ handler funcs that will be temporary appended to the handlers queue.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18104">types.d.ts:18104</a></li></ul></aside></li></ul></section>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L20009">types.d.ts:20009</a></li></ul></aside></li></ul></section>
 <section class="tsd-panel tsd-member"><a id="unbindAll" class="tsd-anchor"></a>
 <h3 class="tsd-anchor-link"><span>unbind<wbr/>All</span><a href="#unbindAll" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="#icon-anchor"></use></svg></a></h3>
 <ul class="tsd-signatures">
@@ -164,7 +164,7 @@ handler funcs that will be temporary appended to the handlers queue.</p>
 <h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 <div class="tsd-comment tsd-typography"></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/pocketbase/site/blob/3d528966e/jsvm/types.d.ts#L18110">types.d.ts:18110</a></li></ul></aside></li></ul></section></section></div>
+<li>Defined in <a href="https://github.com/pocketbase/site/blob/b64f26628/jsvm/types.d.ts#L20015">types.d.ts:20015</a></li></ul></aside></li></ul></section></section></div>
 <div class="col-sidebar">
 <div class="page-menu">
 <div class="tsd-navigation settings">
@@ -377,8 +377,8 @@ handler funcs that will be temporary appended to the handlers queue.</p>
 <details class="tsd-index-accordion" data-key="hook$Type Aliases"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="#icon-chevronDown"></use></svg><span>Type Aliases</span></summary>
 <div class="tsd-accordion-details">
 <ul class="tsd-nested-navigation">
-<li><a href="../types/hook._sCHNzyH.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_sCHNzyH</span></a></li>
-<li><a href="../types/hook._sJrziLV.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_s<wbr/>JrziLV</span></a></li></ul></div></details></li></ul></div></details></li>
+<li><a href="../types/hook._sVWAIPu.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><g id="icon-4194304"><rect fill="var(--color-icon-background)" stroke="var(--color-ts-type-alias)" stroke-width="1.5" x="1" y="1" width="22" height="22" rx="6"></rect><path d="M11.31 16V8.224H8.91V7.24H14.79V8.224H12.39V16H11.31Z" fill="var(--color-text)"></path></g></svg><span>_sVWAIPu</span></a></li>
+<li><a href="../types/hook._sboxsdB.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4194304"></use></svg><span>_sboxsdB</span></a></li></ul></div></details></li></ul></div></details></li>
 <li><a href="../modules/http.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>http</span></a></li>
 <li><a href="../modules/io.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>io</span></a></li>
 <li><a href="../modules/jwt.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="#icon-4"></use></svg><span>jwt</span></a></li>
