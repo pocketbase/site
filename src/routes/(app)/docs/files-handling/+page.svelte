@@ -310,6 +310,10 @@
             Only requests that satisfy the <strong>View API rule</strong> of the record collection will be able
             to access or download the protected file(s).
         </p>
+        <p>
+            The file token is used to populate the <code>@request.auth.*</code> filter fields and it could be optional depending on your View API rule.
+            For example, if a View API rule is an empty string then anyone will have access to the file even when there is no file token.
+        </p>
     </div>
 </div>
 <!-- prettier-ignore -->

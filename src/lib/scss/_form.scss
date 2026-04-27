@@ -123,17 +123,15 @@ button {
             background: var(--baseAlt4Color);
         }
         &:focus-visible,
-        &:hover,
-        &:active,
-        &.active {
+        &:hover {
             &:before {
-                opacity: 0.11;
+                opacity: 0.4;
             }
         }
         &.active,
         &:active {
             &:before {
-                opacity: 0.22;
+                opacity: 0.5;
             }
         }
         @each $name, $color in $variationsMap {
