@@ -35,6 +35,7 @@
             // ---
 
             // note: after this call all previously issued auth tokens are invalidated
+            // and the user will be marked as verified if not already
             await pb.collection('users').confirmPasswordReset(
                 'RESET_TOKEN',
                 'NEW_PASSWORD',
@@ -55,6 +56,7 @@
             // ---
 
             // note: after this call all previously issued auth tokens are invalidated
+            // and the user will be marked as verified if not already
             await pb.collection('users').confirmPasswordReset(
               'RESET_TOKEN',
               'NEW_PASSWORD',
