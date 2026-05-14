@@ -446,6 +446,16 @@
         </em>
     </li>
     <li>
+        <strong>Superuser IPs whitelist check</strong>
+        <small class="txt-hint">(id: pbSuperuserIPsWhitelist, priority: -1015)</small>
+        <br />
+        <em>
+            Ensures that the current authenticated superuser IP exists in a predifined IPs/subnets list.
+            <br>
+            This middleware does nothing if no whitelisted IPs/subnets are configured in the application settings.
+        </em>
+    </li>
+    <li>
         <strong>Security response headers</strong>
         <small class="txt-hint">(id: pbSecurityHeaders, priority: -1010)</small>
         <br />

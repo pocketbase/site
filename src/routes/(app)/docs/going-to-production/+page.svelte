@@ -365,6 +365,27 @@
 
 <header class="highlighted-title bg-warning-alt">
     <span class="label label-primary">optional</span>
+    <HeadingLink title="Limit superusers to specific IPs/subnets" tag="h5" />
+</header>
+<p>PocketBase v0.38.0+ added support for superuser IPs whitelist that can greatly help hardening the security of your application because even in case a malicious actor got their hands on a superuser auth token they will not be able to use it and will get 403 error.</p>
+<p>The IPs whitelist setting can be conveniently enabled from the <em>Dashboard > Settings > Application > Superuser IPs</em>:</p>
+<img src="/images/screenshots/superusers_ips.png" alt="Superusers IPs whitelist screenshot" class="screenshot m-b-xs" />
+<p>In case your IP changes, you can also reset/change the whitelist setting using the <code>superuser ips</code> console command:</p>
+<CodeBlock
+    language="html"
+    content={`
+        # note: --dir is optional and defaults to pb_data next to the executable
+
+        # clear whitelisted IPs
+        ./pocketbase superuser ips --dir=/path/to/your/pb_data
+
+        # OR change the whitelisted IPs to 127.0.0.1 and 10.0.0.0 (replace with your real IP)
+        ./pocketbase superuser ips 127.0.0.1 10.0.0.0 --dir=/path/to/your/pb_data
+    `}
+/>
+
+<header class="highlighted-title bg-warning-alt">
+    <span class="label label-primary">optional</span>
     <HeadingLink title="Increase the open file descriptors limit" tag="h5" />
 </header>
 <p class="txt-hint txt-bold">

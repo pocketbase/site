@@ -17,7 +17,7 @@
         <p>Sends auth record password reset email request.</p>
         <p>
             On successful password reset all previously issued auth tokens for the specific record will be
-            automatically invalidated.
+            invalidated (and the user will be marked as verified if not already).
         </p>
     </div>
     <CodeTabs
@@ -34,7 +34,8 @@
             // (optional) in your custom confirmation page:
             // ---
 
-            // note: after this call all previously issued auth tokens are invalidated
+            // note: all previous user auth tokens will be invalidated
+            // (and the user will be marked as verified if not already)
             await pb.collection('users').confirmPasswordReset(
                 'RESET_TOKEN',
                 'NEW_PASSWORD',
@@ -54,7 +55,8 @@
             // (optional) in your custom confirmation page:
             // ---
 
-            // note: after this call all previously issued auth tokens are invalidated
+            // note: all previous user auth tokens will be invalidated
+            // (and the user will be marked as verified if not already)
             await pb.collection('users').confirmPasswordReset(
               'RESET_TOKEN',
               'NEW_PASSWORD',

@@ -14,7 +14,8 @@
 
 <Accordion single title="Auth with OTP">
     <div class="content m-b-sm">
-        <p>Authenticate a single auth record with an one-time password (OTP).</p>
+        <p>Authenticate a single auth record with one-time/short-lived password (OTP).</p>
+        <p>On successful authentication the user will be also marked as verified (if the OTP source is email and the user is not verified already).</p>
         <p>
             Note that when requesting an OTP we return an <code>otpId</code> even if a user with the provided email
             doesn't exist as a very basic enumeration protection.

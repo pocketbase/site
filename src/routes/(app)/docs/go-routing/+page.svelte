@@ -739,6 +739,31 @@
         </em>
     </li>
     <li>
+        <strong>Superuser IPs whitelist check</strong>
+        <small class="txt-hint">
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultSuperuserIPsWhitelistMiddlewareId</code>
+            </a>
+            <a
+                href="{import.meta.env.PB_GODOC_URL}/apis#pkg-constants"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <code>apis.DefaultSuperuserIPsWhitelistMiddlewarePriority</code>
+            </a>
+        </small>
+        <br />
+        <em>
+            Ensures that the current authenticated superuser IP exists in a predifined IPs/subnets list.
+            <br>
+            This middleware does nothing if no whitelisted IPs/subnets are configured in the application settings.
+        </em>
+    </li>
+    <li>
         <strong>Security response headers</strong>
         <small class="txt-hint">
             <a
