@@ -5,8 +5,27 @@
 
     const responses = [
         {
-            code: 204,
-            body: `null`,
+            code: 200,
+            body: `
+                [
+                    {
+                        "name": "apple",
+                        "displayName": "Apple",
+                        "logo": "..."
+                    },
+                    {
+                        "name": "google",
+                        "displayName": "Google",
+                        "logo": "..."
+                    },
+                    {
+                        "name": "microsoft",
+                        "displayName": "Microsoft",
+                        "logo": "..."
+                    },
+                    ...
+                ]
+            `,
         },
         {
             code: 401,
@@ -28,24 +47,17 @@
                 }
             `,
         },
-        {
-            code: 404,
-            body: `
-                {
-                  "status": 404,
-                  "message": "Missing or invalid cron job.",
-                  "data": {}
-                }
-            `,
-        },
     ];
 
     let responseTab = responses[0].code;
 </script>
 
-<Accordion single title="Run cron job">
+<Accordion single title="List all configurable OAuth2 providers">
     <div class="content m-b-sm">
-        <p>Triggers a single cron job by its id.</p>
+        <p>
+            Returns a list with all configurable OAuth2 providers
+            <em>(used primarily in the Dashboard UI)</em>.
+        </p>
         <p>Only superusers can perform this action.</p>
     </div>
 
@@ -57,9 +69,9 @@
 
             ...
 
-            await pb.collection('_superusers').authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
-            await pb.crons.run('__pbLogsCleanup__');
+            const providers = await pb.collections.getAllOAuth2Providers();
         `}
         dart={`
             import 'package:pocketbase/pocketbase.dart';
@@ -68,38 +80,19 @@
 
             ...
 
-            await pb.collection('_superusers').authWithPassword('test@example.com', '1234567890');
+            await pb.collection("_superusers").authWithPassword('test@example.com', '1234567890');
 
-            await pb.crons.run('__pbLogsCleanup__');
+            final providers = await pb.collections.getAllOAuth2Providers();
         `}
     />
 
     <h6 class="m-b-xs">API details</h6>
-    <div class="api-route alert alert-success">
-        <strong class="label label-primary">POST</strong>
-        <div class="content">/api/crons/<code>jobId</code></div>
+
+    <div class="api-route alert alert-info">
+        <strong class="label label-primary">GET</strong>
+        <div class="content">/api/collections/meta/oauth2-providers</div>
         <small class="txt-hint auth-header">Requires <code>Authorization:TOKEN</code></small>
     </div>
-
-    <div class="section-title">Path parameters</div>
-    <table class="table-compact table-border m-b-base">
-        <thead>
-            <tr>
-                <th>Param</th>
-                <th>Type</th>
-                <th width="50%">Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>jobId</td>
-                <td>
-                    <span class="label">String</span>
-                </td>
-                <td>The identifier of the cron job to run.</td>
-            </tr>
-        </tbody>
-    </table>
 
     <div class="section-title">Responses</div>
     <div class="tabs">

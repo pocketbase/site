@@ -2,6 +2,7 @@
     import HeadingLink from "@/components/HeadingLink.svelte";
     import CommonHelper from "@/utils/CommonHelper";
     import CodeBlock from "@/components/CodeBlock.svelte";
+    import Accordion from "@/components/Accordion.svelte";
     import Toc from "@/components/Toc.svelte";
 </script>
 
@@ -294,168 +295,191 @@
 
 <HeadingLink title="Recommendations" />
 
-<header class="highlighted-title bg-danger-alt m-t-0">
-    <span class="label label-primary">highly recommended</span>
-    <HeadingLink title="Use SMTP mail server" tag="h5" />
-</header>
-<p>
-    By default, PocketBase uses the internal Unix <code>sendmail</code> command for sending emails.
-    <br />
-    While it's OK for development, it's not very useful for production, because your emails most likely will get
-    marked as spam or even fail to deliver.
-</p>
-<p>
-    To avoid deliverability issues, consider using a local SMTP server or an external mail service like
-    <a href="https://www.mailersend.com/" target="_blank" rel="noreferrer noopener">MailerSend</a>,
-    <a href="https://www.brevo.com/" target="_blank" rel="noreferrer noopener">Brevo</a>,
-    <a href="https://sendgrid.com/" target="_blank" rel="noreferrer noopener">SendGrid</a>,
-    <a href="https://www.mailgun.com/" target="_blank" rel="noreferrer noopener">Mailgun</a>,
-    <a href="https://aws.amazon.com/ses/" target="_blank" rel="noreferrer noopener">AWS SES</a>, etc.
-</p>
-<p>
-    Once you've decided on a mail service, you could configure the PocketBase SMTP settings from the
-    <em>
-        {`Dashboard > Settings > Mail settings`}
-    </em>:
-</p>
-<img src="/images/screenshots/smtp-settings.png" alt="SMTP settings screenshot" class="screenshot m-b-xs" />
+<div class="accordions">
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <HeadingLink title="Use SMTP mail server" tag="strong" />
+            <span class="label label-danger txt-bold m-l-auto">highly recommended</span>
+        </svelte:fragment>
 
-<header class="highlighted-title bg-danger-alt">
-    <span class="label label-primary">highly recommended</span>
-    <HeadingLink title="Enable MFA for superusers" tag="h5" />
-</header>
-<p>
-    As an additional layer of security you can enable the MFA and OTP options for the <code>_superusers</code>
-    collection, which will enforce an additional one-time password (email code) requirement when authenticating
-    as superuser.
-</p>
-<p>
-    In case of email deliverability issues, you can also generate an OTP manually using the
-    <code>./pocketbase superuser otp yoursuperuser@example.com</code> command.
-</p>
-<img
-    src="/images/screenshots/superusers_mfa.png"
-    alt="Superusers MFA settings screenshot"
-    class="screenshot m-b-xs"
-/>
+        <p>
+            By default, PocketBase uses the internal Unix <code>sendmail</code> command for sending emails.
+            <br />
+            While it's OK for development, it's not very useful for production, because your emails most likely will get
+            marked as spam or even fail to deliver.
+        </p>
+        <p>
+            To avoid deliverability issues, consider using a local SMTP server or an external mail service like
+            <a href="https://www.mailersend.com/" target="_blank" rel="noreferrer noopener">MailerSend</a>,
+            <a href="https://www.brevo.com/" target="_blank" rel="noreferrer noopener">Brevo</a>,
+            <a href="https://sendgrid.com/" target="_blank" rel="noreferrer noopener">SendGrid</a>,
+            <a href="https://www.mailgun.com/" target="_blank" rel="noreferrer noopener">Mailgun</a>,
+            <a href="https://aws.amazon.com/ses/" target="_blank" rel="noreferrer noopener">AWS SES</a>, etc.
+        </p>
+        <p>
+            Once you've decided on a mail service, you could configure the PocketBase SMTP settings from the
+            <em>
+                {`Dashboard > Settings > Mail settings`}
+            </em>:
+        </p>
+        <img src="/images/screenshots/smtp-settings.png" alt="SMTP settings screenshot" class="screenshot m-b-xs" />
+    </Accordion>
 
-<header class="highlighted-title bg-danger-alt">
-    <span class="label label-primary">highly recommended</span>
-    <HeadingLink title="Enable rate limiter" tag="h5" />
-</header>
-<p>
-    To minimize the risk of API abuse (e.g. excessive auth or record create requests) it is recommended to set
-    up a rate limiter.
-</p>
-<p>
-    PocketBase v0.23.0+ comes with a simple builtin rate limiter that should cover most of the cases but you
-    are also free to use any external one via reverse proxy if you need more advanced options.
-</p>
-<p>
-    You can configure the builtin rate limiter from the
-    <em>
-        {`Dashboard > Settings > Application`}:
-    </em>
-</p>
-<img
-    src="/images/screenshots/rate-limit-settings.png"
-    alt="Rate limit settings screenshot"
-    class="screenshot m-b-xs"
-/>
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <HeadingLink title="Enable rate limiter" tag="strong" />
+            <span class="label label-danger txt-bold m-l-auto">highly recommended</span>
+        </svelte:fragment>
 
-<header class="highlighted-title bg-warning-alt">
-    <span class="label label-primary">optional</span>
-    <HeadingLink title="Limit superusers to specific IPs/subnets" tag="h5" />
-</header>
-<p>PocketBase v0.38.0+ added support for superuser IPs whitelist that can greatly help hardening the security of your application because even in case a malicious actor got their hands on a superuser auth token they will not be able to use it and will get 403 error.</p>
-<p>The IPs whitelist setting can be conveniently enabled from the <em>Dashboard > Settings > Application > Superuser IPs</em>:</p>
-<img src="/images/screenshots/superusers_ips.png" alt="Superusers IPs whitelist screenshot" class="screenshot m-b-xs" />
-<p>In case your IP changes, you can also reset/change the whitelist setting using the <code>superuser ips</code> console command:</p>
-<CodeBlock
-    language="html"
-    content={`
-        # note: --dir is optional and defaults to pb_data next to the executable
+        <p>
+            To minimize the risk of API abuse (e.g. excessive auth or record create requests) it is recommended to set
+            up a rate limiter.
+        </p>
+        <p>
+            PocketBase v0.23.0+ comes with a simple builtin rate limiter that should cover most of the cases but you
+            are also free to use any external one via reverse proxy if you need more advanced options.
+        </p>
+        <p>
+            You can configure the builtin rate limiter from the
+            <em>
+                {`Dashboard > Settings > Application`}:
+            </em>
+        </p>
+        <img
+            src="/images/screenshots/rate-limit-settings.png"
+            alt="Rate limit settings screenshot"
+            class="screenshot m-b-xs"
+        />
+    </Accordion>
 
-        # clear whitelisted IPs
-        ./pocketbase superuser ips --dir=/path/to/your/pb_data
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <HeadingLink title="Restrict superusers to specific IPs/subnets" tag="strong" />
+            <span class="label label-danger txt-bold m-l-auto">highly recommended</span>
+        </svelte:fragment>
 
-        # OR change the whitelisted IPs to 127.0.0.1 and 10.0.0.0 (replace with your real IP)
-        ./pocketbase superuser ips 127.0.0.1 10.0.0.0 --dir=/path/to/your/pb_data
-    `}
-/>
+        <p>PocketBase v0.38.0+ added support for superuser IPs whitelist that can greatly help hardening the security of your application because even in case a malicious actor got their hands on a superuser auth token they will not be able to use it and will get 403 error.</p>
+        <p>The IPs whitelist setting can be conveniently enabled from the <em>Dashboard > Settings > Application > Superuser IPs</em>:</p>
+        <img src="/images/screenshots/superusers_ips.png" alt="Superusers IPs whitelist screenshot" class="screenshot m-b-xs" />
+        <p>In case your IP changes, you can also reset/change the whitelist setting using the <code>superuser ips</code> console command:</p>
+        <CodeBlock
+            language="html"
+            content={`
+                # note: --dir is optional and defaults to pb_data next to the executable
 
-<header class="highlighted-title bg-warning-alt">
-    <span class="label label-primary">optional</span>
-    <HeadingLink title="Increase the open file descriptors limit" tag="h5" />
-</header>
-<p class="txt-hint txt-bold">
-    The below instructions are for Linux but other operating systems have similar mechanism.
-</p>
-<p>
-    Unix uses <em>"file descriptors"</em> also for network connections and most systems have a default limit
-    of ~ 1024.
-    <br />
-    If your application has a lot of concurrent realtime connections, it is possible that at some point you would
-    get an error such as: <code>Too many open files</code>.
-</p>
-<p>
-    One way to mitigate this is to check your current account resource limits by running
-    <code>ulimit -a</code> and find the parameter you want to change. For example, if you want to increase the
-    open files limit (<em>-n</em>), you could run
-    <code>ulimit -n 4096</code> before starting PocketBase.
-</p>
+                # clear whitelisted IPs
+                ./pocketbase superuser ips --dir=/path/to/your/pb_data
 
-<header class="highlighted-title bg-warning-alt">
-    <span class="label label-primary">optional</span>
-    <HeadingLink title="Set GOMEMLIMIT" tag="h5" />
-</header>
-<p>
-    If you are running in a memory constrained environment and/or allow upload of large files, defining the
-    <a href="https://pkg.go.dev/runtime#hdr-Environment_Variables" target="_blank" rel="noopener">
-        <code>GOMEMLIMIT</code>
-    </a>
-    environment variable could help preventing out-of-memory (OOM) termination of your process. It is a "soft limit"
-    meaning that the memory usage could still exceed it in some situations, but it instructs the GC to be more
-    "aggressive" and run more often if needed. For example: <code>GOMEMLIMIT=512MiB</code>.
-</p>
-<p>
-    If after <code>GOMEMLIMIT</code> you are still experiencing OOM errors, you can try to enable swap
-    partitioning (if not already) or open a
-    <a href={import.meta.env.PB_DISCUSSIONS_URL} target="_blank" rel="noopener">Q&A discussion</a>
-    with some steps to reproduce the error in case it is something that we can improve in PocketBase.
-</p>
+                # OR change the whitelisted IPs to 127.0.0.1 and 10.0.0.0 (replace with your real IP)
+                ./pocketbase superuser ips 127.0.0.1 10.0.0.0 --dir=/path/to/your/pb_data
+            `}
+        />
+    </Accordion>
 
-<header class="highlighted-title bg-warning-alt">
-    <span class="label label-primary">optional</span>
-    <HeadingLink title="Enable settings encryption" tag="h5" />
-</header>
-<p class="txt-bold txt-hint">It is fine to ignore the below if you are not sure whether you need it.</p>
-<p>
-    By default, PocketBase stores the applications settings in the database as plain JSON text, including the
-    SMTP password and S3 storage credentials.
-</p>
-<p>
-    While this is not a security issue on its own (PocketBase applications live entirely on a single server
-    and it is expected only authorized users to have access to your server and application data), in some
-    situations it may be a good idea to store the settings encrypted in case someone get their hands on your
-    database file (e.g. from an external stored backup).
-</p>
-<p>To store your PocketBase settings encrypted:</p>
-<ol>
-    <li class="m-b-10">
-        Create a new environment variable and <strong>set a random 32 characters</strong> string as its value.
-        <br />
-        <span class="txt-hint">
-            e.g. add
-            <code>export PB_ENCRYPTION_KEY="{CommonHelper.randomString(32)}"</code>
-            in your shell profile file
-        </span>
-    </li>
-    <li>
-        Start the application with <code>--encryptionEnv=YOUR_ENV_VAR</code> flag.
-        <br />
-        <span class="txt-hint">
-            e.g. <code>pocketbase serve --encryptionEnv=PB_ENCRYPTION_KEY</code>
-        </span>
-    </li>
-</ol>
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <HeadingLink title="Enable MFA for superusers" tag="strong" />
+            <span class="label label-warning txt-bold m-l-auto">optional</span>
+        </svelte:fragment>
+
+        <p>
+            As an additional layer of security you can enable the MFA and OTP options for the <code>_superusers</code>
+            collection, which will enforce an additional one-time password (email code) requirement when authenticating
+            as superuser.
+        </p>
+        <p>
+            In case of email deliverability issues, you can also generate an OTP manually using the
+            <code>./pocketbase superuser otp yoursuperuser@example.com</code> command.
+        </p>
+        <img
+            src="/images/screenshots/superusers_mfa.png"
+            alt="Superusers MFA settings screenshot"
+            class="screenshot m-b-xs"
+        />
+    </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <HeadingLink title="Increase the open file descriptors limit" tag="strong" />
+            <span class="label label-warning txt-bold m-l-auto">optional</span>
+        </svelte:fragment>
+
+        <p class="txt-hint txt-bold">
+            The below instructions are for Linux but other operating systems have similar mechanism.
+        </p>
+        <p>
+            Unix uses <em>"file descriptors"</em> also for network connections and most systems have a default limit
+            of ~ 1024.
+            <br />
+            If your application has a lot of concurrent realtime connections, it is possible that at some point you would
+            get an error such as: <code>Too many open files</code>.
+        </p>
+        <p>
+            One way to mitigate this is to check your current account resource limits by running
+            <code>ulimit -a</code> and find the parameter you want to change. For example, if you want to increase the
+            open files limit (<em>-n</em>), you could run
+            <code>ulimit -n 4096</code> before starting PocketBase OR adjust the <code>LimitNOFILE</code> option in your systemd service file.
+        </p>
+    </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <HeadingLink title="Set GOMEMLIMIT" tag="strong" />
+            <span class="label label-warning txt-bold m-l-auto">optional</span>
+        </svelte:fragment>
+
+        <p>
+            If you are running in a memory constrained environment and/or allow upload of large files, defining the
+            <a href="https://pkg.go.dev/runtime#hdr-Environment_Variables" target="_blank" rel="noopener">
+                <code>GOMEMLIMIT</code>
+            </a>
+            environment variable could help preventing out-of-memory (OOM) termination of your process. It is a "soft limit"
+            meaning that the memory usage could still exceed it in some situations, but it instructs the GC to be more
+            "aggressive" and run more often if needed. For example: <code>GOMEMLIMIT=512MiB</code>.
+        </p>
+        <p>
+            If after <code>GOMEMLIMIT</code> you are still experiencing OOM errors, you can try to enable swap
+            partitioning (if not already) or open a
+            <a href={import.meta.env.PB_DISCUSSIONS_URL} target="_blank" rel="noopener">Q&A discussion</a>
+            with some steps to reproduce the error in case it is something that we can improve in PocketBase.
+        </p>
+    </Accordion>
+
+    <Accordion single>
+        <svelte:fragment slot="header">
+            <HeadingLink title="Enable settings encryption" tag="strong" />
+            <span class="label label-warning txt-bold m-l-auto">optional</span>
+        </svelte:fragment>
+
+        <p class="txt-bold txt-hint">It is fine to ignore the below if you are not sure whether you need it.</p>
+        <p>
+            By default, PocketBase stores the applications settings in the database as plain JSON text, including the
+            SMTP password and S3 storage credentials.
+        </p>
+        <p>
+            While this is not a security issue on its own (PocketBase applications live entirely on a single server
+            and it is expected only authorized users to have access to your server and application data), in some
+            situations it may be a good idea to store the settings encrypted in case someone get their hands on your
+            database file (e.g. from an external stored backup).
+        </p>
+        <p>To store your PocketBase settings encrypted:</p>
+        <ol>
+            <li class="m-b-10">
+                Create a new environment variable and <strong>set a random 32 characters</strong> string as its value.
+                <br />
+                <span class="txt-hint">
+                    e.g. add
+                    <code>export PB_ENCRYPTION_KEY="{CommonHelper.randomString(32)}"</code>
+                    in your shell profile file
+                </span>
+            </li>
+            <li>
+                Start the application with <code>--encryptionEnv=YOUR_ENV_VAR</code> flag.
+                <br />
+                <span class="txt-hint">
+                    e.g. <code>pocketbase serve --encryptionEnv=PB_ENCRYPTION_KEY</code>
+                </span>
+            </li>
+        </ol>
+    </Accordion>
+</div>
