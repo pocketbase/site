@@ -249,6 +249,21 @@
     </em>
 </p>
 
+<HeadingLink title="Managed hosting" tag="h5" />
+<p>
+    If you'd rather not run and maintain a server yourself, there are providers that run PocketBase for
+    you, keeping the executable, TLS, storage and backups managed.
+</p>
+<p>
+    <a href="https://zenith.hosting/host/pocketbase" target="_blank" rel="noopener noreferrer">
+        <img
+            alt="Deploy with Zenith"
+            src="https://cdn.zenith.hosting/buttons/deploy-with-zenith.svg"
+            height="40"
+        />
+    </a>
+</p>
+
 <HeadingLink title="Backup and Restore" />
 <p>
     To backup/restore your application it is enough to manually copy/replace your <code>pb_data</code>
