@@ -163,6 +163,11 @@ export const goLinks = [
         href: "/docs/go-record-proxy",
         title: "Record proxy",
     },
+    {
+        href:   "/godoc/go-reference.html",
+        target: "_blank",
+        title:  "Go API reference",
+    },
 ];
 
 export const jsLinks = [

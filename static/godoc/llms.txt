@@ -1,0 +1,9 @@
+# PocketBase Go Reference
+
+> github.com/pocketbase/pocketbase/apis
+
+## Go Reference
+
+- [apis](/go-reference/pkg-apis.html): github.com/pocketbase/pocketbase/apis
+- [core](/go-reference/pkg-core.html): Package core is the backbone of PocketBase.
+- [Go Reference](/go-reference.html): github.com/pocketbase/pocketbase
