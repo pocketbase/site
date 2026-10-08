@@ -635,7 +635,7 @@ export default [
                 html: `
                     <p>
                         <code>OnBootstrap</code> hook is triggered when initializing the main
-                        application resources (db, app settings, etc).
+                        application resources (db, app settings, etc.).
                     </p>
                     <p>Note that attempting to access the database before the <code>e.Next()</code> call will result in an error.</p>
                 `,
@@ -667,6 +667,47 @@ export default [
                             // e.App
 
                             return nil
+                        })
+
+                        if err := app.Start(); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                `,
+            },
+            OnBootstrapClear: {
+                html: `
+                    <p>
+                        <code>OnBootstrapClear</code> hook is triggered when clearing the main application
+                        resources (db connections, cron, logger, etc.).
+                    </p>
+                    <p>It is usually invoked automatically right before app termination or when manually calling <code>app.ClearBootstrap()</code>.</p>
+                    <p>Note that attempting to access the database after the <code>e.Next()</code> call will result in an error.</p>
+                `,
+                js: `
+                    onBootstrapClear((e) => {
+                        // e.app
+
+                        e.next()
+                    })
+                `,
+                go: `
+                    package main
+
+                    import (
+                        "log"
+
+                        "github.com/pocketbase/pocketbase"
+                        "github.com/pocketbase/pocketbase/core"
+                    )
+
+                    func main() {
+                        app := pocketbase.New()
+
+                        app.OnBootstrapClear().BindFunc(func(e *core.BootstrapEvent) error {
+                            // e.App
+
+                            return e.Next()
                         })
 
                         if err := app.Start(); err != nil {
