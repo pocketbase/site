@@ -358,7 +358,7 @@
             <span class="label label-danger txt-bold m-l-auto">highly recommended</span>
         </svelte:fragment>
 
-        <p>PocketBase v0.38.0+ added support for superuser IPs whitelist that can greatly help hardening the security of your application because even in case a malicious actor got their hands on a superuser auth token they will not be able to use it and will get 403 error.</p>
+        <p>PocketBase v0.38.0+ added support for superuser IPs whitelist that can greatly help harden the security of your application because even in case a malicious actor got their hands on a superuser auth token they will not be able to use it and will get 403 error.</p>
         <p>The IPs whitelist setting can be conveniently enabled from the <em>Dashboard > Settings > Application > Superuser IPs</em>:</p>
         <img src="/images/screenshots/superusers_ips.png" alt="Superusers IPs whitelist screenshot" class="screenshot m-b-xs" />
         <p>In case your IP changes, you can also reset/change the whitelist setting using the <code>superuser ips</code> console command:</p>
